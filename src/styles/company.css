@@ -1,0 +1,259 @@
+/* ============================================================================
+   company.css · the styles specific to the company wing built in phase 2:
+   History, Board & Leadership, Corporate Commitment (ESG), Global Presence,
+   News & Insights, Article.
+
+   This file is deliberately thin. The shared phase-2 primitives live in
+   pages.css and are used as-is: .pg-sec / .pg-in for bands, .pg-lede, .pg-note,
+   .pg-split, .pg-pull, .pg-slot for every labelled placeholder, .pg-cards,
+   .pg-stats, .pg-rel. Only the patterns those do not cover are defined here,
+   all prefixed `cp-` so the two sets can never collide.
+
+   Tokens only: --bg --bg2 --panel --ink --soft --faint --line --line2 --blue
+   --blue-bright --maxw --gut --e1 from base.css.
+   ============================================================================ */
+
+/* mono sub-kicker used inside split columns and above grouped lists */
+.cp-pk {
+  display: block; font-family: "JetBrains Mono", monospace; font-size: 10px;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--faint); font-weight: 700;
+}
+
+/* ------------------------------------------------------------- timeline ----
+   a hairline spine, the year on the rail, the milestone beside it            */
+.cp-tl { margin-top: clamp(24px, 3.6vw, 36px); position: relative; }
+.cp-tl::before {
+  content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 1px;
+  background: linear-gradient(180deg, transparent, var(--line2) 12%, var(--line2) 88%, transparent);
+}
+.cp-mile { position: relative; padding: 0 0 clamp(22px, 3.2vw, 36px) 34px; }
+.cp-mile:last-child { padding-bottom: 0; }
+.cp-mile::before {
+  content: ""; position: absolute; left: 3px; top: 7px; width: 9px; height: 9px;
+  background: var(--bg); border: 1.5px solid var(--line2);
+  transition: border-color .3s, background .3s;
+}
+.cp-mile:hover::before { border-color: var(--blue); background: var(--blue); }
+.cp-mile.key::before { background: var(--blue); border-color: var(--blue); }
+.cp-yr {
+  display: block; font-family: "JetBrains Mono", monospace; font-size: 11px;
+  letter-spacing: .18em; font-weight: 700; color: var(--blue-bright);
+}
+.cp-mile h3 { font-size: clamp(17px, 2vw, 21px); margin-top: 7px; }
+.cp-mile p { color: var(--soft); font-size: 14.5px; margin-top: 8px; max-width: 58ch; line-height: 1.6; }
+
+/* --------------------------------------------------------- record tiles ----
+   firsts, awards and proven records: text-led, no boxes inside boxes         */
+.cp-tiles {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px;
+  background: var(--line); border: 1px solid var(--line); margin-top: clamp(22px, 3vw, 32px);
+}
+.cp-tile { background: var(--bg2); padding: clamp(16px, 2.4vw, 22px); display: flex; flex-direction: column; gap: 8px; }
+.cp-tile .k {
+  font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .16em;
+  text-transform: uppercase; font-weight: 700; color: var(--faint);
+}
+.cp-tile b { font-family: "Switzer", sans-serif; font-size: clamp(16px, 2vw, 21px); font-weight: 600; letter-spacing: -.02em; line-height: 1.16; }
+.cp-tile span { font-size: 13.5px; color: var(--soft); line-height: 1.55; }
+
+/* --------------------------------------------------------------- people ----
+   the client's own board format: name, position, drop-down of experience     */
+.cp-people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.8vw, 16px); margin-top: clamp(22px, 3vw, 32px); }
+.cp-person { border: 1px solid var(--line); background: var(--bg2); display: flex; flex-direction: column; }
+.cp-portrait {
+  aspect-ratio: 4 / 5; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 9px; text-align: center; padding: 16px;
+  background:
+    repeating-linear-gradient(45deg, rgba(12, 18, 32, .045) 0 10px, transparent 10px 20px),
+    #EDF1F8;
+  border-bottom: 1px dashed var(--line2);
+}
+.cp-portrait svg { width: 30px; height: 30px; stroke: #8792A8; fill: none; stroke-width: 1.5; }
+.cp-portrait span {
+  font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .14em;
+  text-transform: uppercase; font-weight: 700; color: #3A445C;
+}
+.cp-person-b { padding: 15px 16px; }
+.cp-person-b b { display: block; font-family: "Switzer", sans-serif; font-size: 17px; font-weight: 600; letter-spacing: -.01em; line-height: 1.2; }
+.cp-person-b span {
+  display: block; font-family: "JetBrains Mono", monospace; font-size: 9.5px;
+  letter-spacing: .13em; text-transform: uppercase; color: var(--faint);
+  margin-top: 7px; font-weight: 700;
+}
+.cp-person details { border-top: 1px solid var(--line); margin-top: auto; }
+.cp-person summary {
+  list-style: none; cursor: pointer; padding: 13px 16px; min-height: 44px;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .14em;
+  text-transform: uppercase; font-weight: 700; color: var(--soft); transition: color .25s;
+}
+.cp-person summary::-webkit-details-marker { display: none; }
+.cp-person summary::after { content: "+"; font-size: 14px; line-height: 1; color: var(--blue); }
+.cp-person details[open] summary::after { content: "\2212"; }
+.cp-person summary:hover { color: var(--ink); }
+.cp-person summary:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+.cp-person details > div { padding: 0 16px 16px; font-size: 13px; line-height: 1.6; color: var(--soft); }
+
+/* ------------------------------------------------------- fact hairlines ----
+   label on the left, the fact on the right, one per row                      */
+.cp-facts { list-style: none; margin-top: 18px; border-top: 1px solid var(--line); }
+.cp-facts li {
+  display: flex; align-items: baseline; gap: 14px; padding: 11px 0;
+  border-bottom: 1px solid var(--line); font-size: 14px; color: var(--soft); line-height: 1.55;
+}
+.cp-facts li b {
+  font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--blue-bright); flex: none; min-width: 92px; font-weight: 700;
+}
+
+/* ------------------------------------------------------ certification chips */
+.cp-certs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.cp-certs em {
+  font-style: normal; font-family: "JetBrains Mono", monospace; font-size: 10.5px;
+  letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--ink);
+  border: 1px solid var(--line2); padding: 11px 14px; background: var(--bg2);
+}
+
+/* --------------------------------------------------------------- globe -----
+   a dark band inside the light page, matching the built about page footprint */
+.cp-globe-band {
+  background: #070C18; border-top: 1px solid var(--line);
+  padding: clamp(30px, 5vw, 56px) var(--gut);
+}
+.cp-globe-wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 4vw, 48px); align-items: center; }
+.cp-globe { position: relative; width: 100%; max-width: 400px; margin: 0 auto; }
+.cp-globe svg { width: 100%; height: auto; display: block; }
+.cp-globe-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; justify-content: center; }
+.cp-globe-legend span {
+  display: inline-flex; align-items: center; gap: 8px; font-family: "JetBrains Mono", monospace;
+  font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #8FA0BE; font-weight: 700;
+}
+.cp-globe-legend i { width: 8px; height: 8px; border-radius: 50%; display: block; flex: none; }
+.cp-globe-legend i.of { background: #FF3B44; }
+.cp-globe-legend i.dl { background: #7C8CAA; }
+.cp-globe-copy .eyebrow { color: #FF6A70; }
+.cp-globe-copy h2 { font-size: clamp(23px, 3.1vw, 34px); color: #F2F6FF; margin-top: 13px; max-width: 20ch; }
+.cp-globe-copy h2 em { font-style: normal; color: #FF6A70; }
+.cp-globe-copy p { color: #A9B7D2; font-size: 14.5px; line-height: 1.7; margin-top: 14px; max-width: 48ch; }
+
+/* ------------------------------------------------------------- offices -----*/
+.cp-offices {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px;
+  background: var(--line); border: 1px solid var(--line); margin-top: clamp(22px, 3vw, 30px);
+}
+.cp-office { background: var(--bg2); padding: clamp(16px, 2.4vw, 22px); }
+.cp-office .k { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--blue-bright); }
+.cp-office h3 { font-size: 19px; margin-top: 9px; }
+.cp-office p { font-size: 13.5px; color: var(--soft); line-height: 1.6; margin-top: 8px; }
+.cp-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; }
+.cp-chips .lbl { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--faint); }
+.cp-chips em, .cp-chips a {
+  font-style: normal; font-size: 12.5px; font-weight: 500; text-decoration: none; color: inherit;
+  border: 1px solid var(--line2); padding: 10px 12px; background: var(--bg2);
+  display: inline-flex; align-items: center; min-height: 40px; transition: border-color .25s, color .25s;
+}
+.cp-chips a:hover { border-color: var(--blue); color: var(--blue-bright); }
+
+/* ----------------------------------------------------------------- rows ----
+   a hairline register: key on the left, name in the middle, meta on the right */
+.cp-rows { border-top: 1px solid var(--line); margin-top: clamp(18px, 2.6vw, 26px); }
+.cp-row {
+  display: grid; grid-template-columns: 158px minmax(0, 1fr) auto; gap: 16px; align-items: baseline;
+  padding: 16px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit;
+  transition: padding-left .3s var(--e1), color .25s;
+}
+a.cp-row:hover, a.cp-row:focus-visible { padding-left: 8px; color: var(--blue-bright); }
+.cp-row .c { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+.cp-row .n { font-size: 14.5px; color: var(--soft); line-height: 1.5; }
+.cp-row .v { font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); font-weight: 700; white-space: nowrap; }
+
+/* ------------------------------------------------------------------ news ---*/
+.cp-feature { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(18px, 3.4vw, 44px); align-items: center; margin-top: 18px; }
+.cp-feature h2 { font-size: clamp(22px, 2.9vw, 33px); max-width: 22ch; margin-top: 13px; }
+.cp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.cp-tag {
+  font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .14em;
+  text-transform: uppercase; font-weight: 700; color: var(--blue-bright);
+  border: 1px solid rgba(236, 32, 39, .3); background: rgba(236, 32, 39, .05); padding: 6px 9px;
+}
+.cp-date { font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); font-weight: 600; }
+
+.cp-filter { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 20px; }
+.cp-filter .lbl { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--faint); margin-right: 4px; }
+.cp-fchip {
+  font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .1em;
+  text-transform: uppercase; font-weight: 700; color: var(--soft);
+  border: 1px solid var(--line2); background: var(--bg2); padding: 11px 13px;
+  min-height: 40px; cursor: pointer; transition: background .25s, color .25s, border-color .25s;
+}
+.cp-fchip:hover { border-color: var(--ink); color: var(--ink); }
+.cp-fchip[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+.cp-fchip:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+.cp-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px;
+  background: var(--line); border: 1px solid var(--line); margin-top: clamp(20px, 3vw, 28px);
+}
+.cp-card {
+  background: var(--bg2); padding: clamp(16px, 2.2vw, 20px); text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; gap: 12px; min-height: 170px; transition: background .25s;
+}
+.cp-card:hover, .cp-card:focus-visible { background: var(--panel); }
+.cp-card h3 { font-size: 15.5px; line-height: 1.32; font-weight: 600; }
+.cp-card:hover h3 { color: var(--blue-bright); }
+.cp-card .go {
+  margin-top: auto; font-family: "JetBrains Mono", monospace; font-size: 9px;
+  letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--faint);
+}
+.cp-card:hover .go { color: var(--blue-bright); }
+.cp-empty { border: 1px solid var(--line); background: var(--bg2); padding: 34px 22px; text-align: center; margin-top: 22px; }
+.cp-empty h3 { font-size: 18px; }
+.cp-empty p { color: var(--soft); font-size: 14px; margin-top: 8px; }
+
+/* -------------------------------------------------------------- article ----*/
+.cp-art-head { padding: clamp(34px, 5.5vh, 66px) var(--gut) clamp(18px, 3vh, 30px); background: var(--bg2); border-bottom: 1px solid var(--line); }
+.cp-art-head .pg-in > h1 { font-size: clamp(26px, 3.9vw, 44px); max-width: 23ch; margin-top: 16px; line-height: 1.1; }
+.cp-art-body { max-width: 68ch; }
+.cp-back {
+  display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
+  font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .14em;
+  text-transform: uppercase; font-weight: 700; color: var(--faint);
+  min-height: 40px; transition: color .25s;
+}
+.cp-back:hover, .cp-back:focus-visible { color: var(--blue-bright); }
+
+/* --------------------------------------------- the one action per page -----*/
+.cp-act { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 26px; }
+.cp-hint { font-size: 13.5px; color: var(--soft); max-width: 42ch; line-height: 1.55; }
+
+/* ============================ responsive ====================================
+   Short-content grids stay multi-column on phones. Prose and the primary
+   action go single column. Nothing overflows at 320 / 375 / 414 / 768 / 1024. */
+@media (max-width: 1000px) {
+  .cp-globe-wrap { grid-template-columns: minmax(0, 1fr); }
+  .cp-feature { grid-template-columns: minmax(0, 1fr); }
+  .cp-offices, .cp-tiles, .cp-grid, .cp-people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .cp-mile { padding-left: 28px; }
+  .cp-people { gap: 8px; }
+  .cp-person-b { padding: 12px; }
+  .cp-person-b b { font-size: 15px; }
+  .cp-person summary { padding: 12px; }
+  .cp-portrait { aspect-ratio: 1 / 1; padding: 10px; gap: 6px; }
+  .cp-portrait span { font-size: 8px; letter-spacing: .1em; }
+  .cp-row { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 14px 0; }
+  .cp-row .v { white-space: normal; }
+  .cp-facts li { flex-direction: column; gap: 4px; }
+  .cp-facts li b { min-width: 0; }
+  .cp-globe { max-width: 290px; }
+  .cp-globe-copy h2 { font-size: clamp(21px, 6.2vw, 27px); }
+  .cp-certs em { font-size: 9.5px; padding: 10px 11px; }
+}
+@media (max-width: 400px) {
+  .cp-tiles, .cp-grid, .cp-offices, .cp-people { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cp-row, .cp-card, .cp-mile::before, .cp-chips a { transition: none; }
+}

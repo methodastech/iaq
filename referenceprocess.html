@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IAQ — The Cycle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   IAQ — "From blueprint to handover" process section
+   Standalone. Desktop-first, art-directed at 1083 x 586.
+   Coordinate system for the diagram canvas: 1005 x 355 px.
+   ============================================================ */
+
+:root{
+  --bg:#F5F7FA;
+  --ink:#0B0F16;          /* headline */
+  --navy:#1B2A44;         /* icons / arrows */
+  --slate:#54677E;        /* body + descriptions */
+  --muted:#93A5B9;        /* eyebrow */
+  --num:#C4D1DF;          /* stage numbers */
+  --line:#C3D1E0;         /* process line */
+  --ring:#E2E9F1;         /* circle borders */
+  --red:#E31E24;          /* IAQ red */
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{height:100%}
+body{
+  background:var(--bg);
+  font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  color:var(--ink);
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  overflow-x:hidden;
+}
+
+/* very subtle cool wash, top-left lighter — barely perceptible */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background:
+    radial-gradient(120% 80% at 18% 0%, #FFFFFF 0%, rgba(255,255,255,0) 62%),
+    radial-gradient(90% 70% at 100% 100%, #EDF1F6 0%, rgba(237,241,246,0) 70%);
+  pointer-events:none;
+}
+
+.viewport{ width:100%; display:flex; justify-content:center; }
+
+/* fixed art-directed stage */
+.stage{
+  position:relative;
+  width:1083px;
+  height:586px;
+  padding:0 38px;
+  transform-origin:top center;
+  flex:0 0 auto;
+}
+
+/* ---------------- header ---------------- */
+.head{ position:relative; padding-top:34px; }
+
+.eyebrow{ display:flex; align-items:center; gap:14px; height:12px; }
+.eyebrow .rule{ width:26px; height:1.5px; background:var(--red); flex:0 0 auto; }
+.eyebrow .txt{
+  font-family:'Roboto Mono',ui-monospace,monospace;
+  font-size:10.5px; font-weight:500; letter-spacing:2.7px;
+  color:#9AAABC; text-transform:uppercase;
+}
+
+.h1{
+  margin-top:36px;
+  font-size:43px; font-weight:800; line-height:1.0;
+  letter-spacing:-1.9px; color:var(--ink);
+  max-width:600px;
+}
+.h1 .dot{ color:var(--red); }
+
+.lede{
+  position:absolute; left:587px; top:85px; width:390px;
+  font-size:15.3px; line-height:1.57; color:#41536A; font-weight:400;
+}
+.lede b{ color:var(--red); font-weight:700; }
+
+/* ---------------- diagram canvas ---------------- */
+.canvas{
+  position:relative;
+  width:1005px;
+  height:355px;
+  margin-top:27px;
+}
+
+.wire{ position:absolute; inset:0; width:1005px; height:355px; overflow:visible; }
+
+/* ---- stage block: anchored at the circle's top-left corner ---- */
+.node{ position:absolute; width:62px; height:62px; }
+
+.node .num{
+  position:absolute; top:-31px; left:-9px; width:80px;
+  text-align:center;
+  font-family:'Roboto Mono',ui-monospace,monospace;
+  font-size:19px; font-weight:400; letter-spacing:1.6px;
+  color:var(--num);
+}
+
+.node .disc{
+  position:absolute; inset:0;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid var(--ring);
+  box-shadow:0 3px 10px rgba(27,42,68,.055), 0 1px 2px rgba(27,42,68,.04);
+  display:flex; align-items:center; justify-content:center;
+}
+.node .disc svg{ width:27px; height:27px; display:block; color:var(--navy); }
+
+.node .txt{ position:absolute; left:80px; top:11px; white-space:nowrap; }
+.node .title{ font-size:19px; font-weight:700; letter-spacing:-.25px; color:#0D131C; line-height:1.15; }
+.node .desc{ margin-top:5px; font-size:13px; line-height:1.36; color:#65788E; font-weight:400; }
+
+/* ---- inline arrow chips sitting on the line ---- */
+.chip{
+  position:absolute; width:27px; height:27px; margin:-13.5px 0 0 -13.5px;
+  border-radius:50%; background:#fff; border:1px solid #DCE5EF;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 1px 3px rgba(27,42,68,.04);
+}
+.chip svg{ width:11px; height:11px; color:#3A4C67; display:block; }
+
+/* ---- bottom caption ---- */
+.caption{
+  position:absolute; left:0; top:326px;
+  display:flex; align-items:center;
+}
+.caption .rule{ width:44px; height:1.5px; background:var(--red); }
+.caption .dot{ width:6px; height:6px; border-radius:50%; background:var(--red); margin-left:2px; }
+.caption .txt{
+  margin-left:13px;
+  font-family:'Roboto Mono',ui-monospace,monospace;
+  font-size:10.5px; font-weight:500; letter-spacing:2.5px; color:var(--red);
+  text-transform:uppercase;
+}
+
+/* ---- barely-there technical mesh, bottom right ---- */
+.mesh{
+  position:absolute; right:-30px; bottom:-6px;
+  width:260px; height:150px;
+  opacity:.55; pointer-events:none;
+}
+
+/* ============================================================
+   ANIMATION
+   ============================================================ */
+#blueLine{ stroke-dasharray:2400; stroke-dashoffset:2400; }
+#redLine { stroke-dasharray:520;  stroke-dashoffset:520;  }
+#redHead, .wire .bead{ opacity:0; }
+.node, .chip{ opacity:0; transform:translateY(9px); }
+.chip{ transform:translateY(9px) scale(.72); }
+
+.play #blueLine{ transition:stroke-dashoffset 1750ms cubic-bezier(.45,.05,.25,1); stroke-dashoffset:0; }
+.play #redLine { transition:stroke-dashoffset 900ms cubic-bezier(.4,.05,.3,1) 1700ms; stroke-dashoffset:0; }
+.play #redHead { transition:opacity 320ms ease 2450ms; opacity:1; }
+.play .wire .bead{ transition:opacity 500ms ease var(--d,0ms); opacity:1; }
+.play .node{ transition:opacity 620ms ease var(--d,0ms), transform 620ms cubic-bezier(.22,.7,.3,1) var(--d,0ms); opacity:1; transform:translateY(0); }
+.play .chip{ transition:opacity 480ms ease var(--d,0ms), transform 520ms cubic-bezier(.3,1.35,.5,1) var(--d,0ms); opacity:1; transform:translateY(0) scale(1); }
+
+@media (prefers-reduced-motion:reduce){
+  #blueLine,#redLine{stroke-dashoffset:0 !important;transition:none !important}
+  #redHead,.wire .bead,.node,.chip{opacity:1 !important;transform:none !important;transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<div class="viewport">
+<section class="stage" id="stage">
+
+  <!-- ================= HEADER ================= -->
+  <header class="head">
+    <div class="eyebrow"><span class="rule"></span><span class="txt">The Cycle</span></div>
+
+    <h1 class="h1">From blueprint to handover,<br>and beyond<span class="dot">.</span></h1>
+
+    <p class="lede">
+      IAQ is not a set of separate service lines.<br>
+      It is <b>one delivery cycle</b>, carried by one team,<br>
+      and every stage below hands directly to the next.
+    </p>
+  </header>
+
+  <!-- ================= DIAGRAM ================= -->
+  <div class="canvas" id="canvas">
+
+    <!-- one absolute SVG carrying the entire pathway -->
+    <svg class="wire" viewBox="0 0 1005 355" fill="none" aria-hidden="true">
+      <defs>
+        <!-- knocks the line out beneath discs and label blocks -->
+        <mask id="wireMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1005" height="355">
+          <rect x="0" y="0" width="1005" height="355" fill="#fff"/>
+          <!-- discs (top row / bottom row) -->
+          <circle cx="103" cy="80"  r="35" fill="#000"/>
+          <circle cx="427" cy="80"  r="35" fill="#000"/>
+          <circle cx="742" cy="80"  r="35" fill="#000"/>
+          <circle cx="103" cy="243" r="35" fill="#000"/>
+          <circle cx="427" cy="243" r="35" fill="#000"/>
+          <circle cx="742" cy="243" r="35" fill="#000"/>
+          <!-- label blocks, top row -->
+          <rect x="134" y="52" width="134" height="70" fill="#000"/>
+          <rect x="458" y="52" width="125" height="70" fill="#000"/>
+          <rect x="773" y="52" width="105" height="70" fill="#000"/>
+          <!-- label blocks, bottom row -->
+          <rect x="134" y="215" width="128" height="70" fill="#000"/>
+          <rect x="458" y="215" width="119" height="70" fill="#000"/>
+          <rect x="773" y="215" width="111" height="70" fill="#000"/>
+        </mask>
+      </defs>
+
+      <!-- continuous blue pathway: Design → Procure → Construct → (U) → Commission → Maintain → Hookup -->
+      <g mask="url(#wireMask)">
+        <path id="blueLine"
+              d="M 103 80 H 878 C 1030 80 1030 243 878 243 H 103"
+              stroke="#C3D1E0" stroke-width="1.25" stroke-linecap="round" fill="none"/>
+      </g>
+
+      <!-- line beads (small stops before each receiving disc) -->
+      <circle class="bead" cx="386" cy="80"  r="3.1" fill="#C3D1E0" style="--d:900ms"/>
+      <circle class="bead" cx="697" cy="80"  r="3.1" fill="#C3D1E0" style="--d:1100ms"/>
+      <circle class="bead" cx="386" cy="243" r="3.1" fill="#C3D1E0" style="--d:1500ms"/>
+      <circle class="bead" cx="697" cy="243" r="3.1" fill="#C3D1E0" style="--d:1300ms"/>
+
+      <!-- red return: Hookup → back to Design -->
+      <path id="redLine"
+            d="M 74 243 H 30 A 20 20 0 0 1 10 223 V 96 A 20 20 0 0 1 30 76 H 60"
+            stroke="#E31E24" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+      <path id="redHead" d="M 10 130 L 15.6 141 L 4.4 141 Z" fill="#E31E24"/>
+      <circle class="bead" cx="60" cy="76" r="4" fill="#1B2A44" style="--d:2450ms"/>
+
+      <!-- barely-visible technical mesh, bottom-right -->
+      <g id="mesh" opacity=".5"></g>
+    </svg>
+
+    <!-- ---------- TOP ROW ---------- -->
+    <!-- 01 Design : cx 103 / cy 80 -->
+    <div class="node" style="left:72px; top:49px; --d:500ms">
+      <div class="num">01</div>
+      <div class="disc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="3.9" r="1.7"/>
+          <path d="M11.2 5.5 6.1 20.6"/>
+          <path d="M12.8 5.5 17.9 20.6"/>
+          <path d="M8.7 13.6a7.4 7.4 0 0 0 6.6 0"/>
+          <path d="M17.9 20.6 19.6 18"/>
+        </svg>
+      </div>
+      <div class="txt">
+        <div class="title">Design</div>
+        <div class="desc">Engineering Design<br>&amp; Consultation</div>
+      </div>
+    </div>
+
+    <!-- 02 Procure : cx 427 -->
+    <div class="node" style="left:396px; top:49px; --d:700ms">
+      <div class="num">02</div>
+      <div class="disc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3.4" y="3.2" width="11.4" height="14.4" rx="1.7"/>
+          <path d="M7.3 3.2V2.2h4.1v1"/>
+          <path d="M6.4 7.6h5.6M6.4 10.6h5.6M6.4 13.6h3.4"/>
+          <path d="M15.9 6.2h3.9l-1.1 6.1h-3.9"/>
+          <circle cx="15.6" cy="20.2" r="1.35"/>
+          <circle cx="19.5" cy="20.2" r="1.35"/>
+        </svg>
+      </div>
+      <div class="txt">
+        <div class="title">Procure</div>
+        <div class="desc">Procurement</div>
+      </div>
+    </div>
+
+    <!-- 03 Construct : cx 742 -->
+    <div class="node" style="left:711px; top:49px; --d:900ms">
+      <div class="num">03</div>
+      <div class="disc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2.6 21.4h18.8"/>
+          <path d="M6.4 21.4V3.4"/>
+          <path d="M3.1 3.4h17.4"/>
+          <path d="M6.4 3.4 3.1 7"/>
+          <path d="M17.6 3.4v3.1"/>
+          <path d="M16.2 6.5h2.9v2.4h-2.9z"/>
+          <path d="M6.4 6.6 11.4 12"/>
+          <path d="M9.9 21.4v-8.2h4.6v8.2"/>
+          <path d="M12.2 13.2v8.2"/>
+        </svg>
+      </div>
+      <div class="txt">
+        <div class="title">Construct</div>
+        <div class="desc">Construction</div>
+      </div>
+    </div>
+
+    <!-- ---------- BOTTOM ROW ---------- -->
+    <!-- 06 Hookup : cx 103 / cy 243 -->
+    <div class="node" style="left:72px; top:212px; --d:1500ms">
+      <div class="num">06</div>
+      <div class="disc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.4 14.6 14.6 9.4"/>
+          <path d="M7.6 10.6 5.4 12.8a3.7 3.7 0 0 0 5.2 5.2l2.2-2.2"/>
+          <path d="M16.4 13.4l2.2-2.2a3.7 3.7 0 0 0-5.2-5.2l-2.2 2.2"/>
+        </svg>
+      </div>
+      <div class="txt">
+        <div class="title">Hookup</div>
+        <div class="desc">Tools Hookup</div>
+      </div>
+    </div>
+
+    <!-- 05 Maintain : cx 427 -->
+    <div class="node" style="left:396px; top:212px; --d:1300ms">
+      <div class="num">05</div>
+      <div class="disc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15.1 3.1a4.6 4.6 0 0 0-5.5 6.1L3.3 15.5a1.9 1.9 0 0 0 2.7 2.7l6.3-6.3a4.6 4.6 0 0 0 6.1-5.5l-2.7 2.7-2.6-.7-.7-2.6z"/>
+          <path d="M14.4 14.1l5.4 5.4a1.7 1.7 0 0 1-2.4 2.4l-5.3-5.3"/>
+        </svg>
+      </div>
+      <div class="txt">
+        <div class="title">Maintain</div>
+        <div class="desc">Maintenance</div>
+      </div>
+    </div>
+
+    <!-- 04 Commission : cx 742 -->
+    <div class="node" style="left:711px; top:212px; --d:1100ms">
+      <div class="num">04</div>
+      <div class="disc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4.6" y="3.4" width="14.8" height="18.2" rx="2"/>
+          <path d="M9.1 3.4V2.2h5.8v1.2"/>
+          <path d="M8.6 12.4l2.6 2.6 4.6-5.2"/>
+        </svg>
+      </div>
+      <div class="txt">
+        <div class="title">Commission</div>
+        <div class="desc">Testing &amp;<br>Commissioning</div>
+      </div>
+    </div>
+
+    <!-- ---------- ARROW CHIPS ON THE LINE ---------- -->
+    <div class="chip" style="left:323px; top:80px;  --d:600ms">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13.5 6.5 19.5 12l-6 5.5"/></svg>
+    </div>
+    <div class="chip" style="left:634px; top:80px;  --d:800ms">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13.5 6.5 19.5 12l-6 5.5"/></svg>
+    </div>
+    <div class="chip" style="left:633px; top:243px; --d:1200ms">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5"/><path d="M10.5 6.5 4.5 12l6 5.5"/></svg>
+    </div>
+    <div class="chip" style="left:315px; top:243px; --d:1400ms">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5"/><path d="M10.5 6.5 4.5 12l6 5.5"/></svg>
+    </div>
+
+    <!-- ---------- BOTTOM CAPTION ---------- -->
+    <div class="caption">
+      <span class="rule"></span><span class="dot"></span>
+      <span class="txt">Tools Hookup feeds the next Design</span>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<script>
+(function () {
+  /* ---------- barely-visible technical mesh (bottom-right) ---------- */
+  var mesh = document.getElementById('mesh');
+  var parts = [];
+  for (var r = 0; r < 14; r++) {
+    var d = '', y0 = 302 + r * 8.5;
+    for (var c = 0; c <= 26; c++) {
+      var x = 858 + c * 7.5;
+      var y = y0 - c * 2.15 - Math.sin((c / 26) * Math.PI * 1.7 + r * 0.2) * (5 + r * 0.4);
+      d += (c ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+    }
+    parts.push('<path d="' + d + '" stroke="#B9CBDE" stroke-width=".7" fill="none" opacity="' + (0.22 + r * 0.03).toFixed(3) + '"/>');
+  }
+  mesh.innerHTML = parts.join('');
+
+  /* ---------- fit the fixed 1083px stage into narrower viewports ---------- */
+  var stage = document.getElementById('stage');
+  function fit() {
+    var k = Math.min(1, window.innerWidth / 1083);
+    stage.style.transform = k === 1 ? 'none' : 'scale(' + k + ')';
+    document.body.style.height = (586 * k + 30) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+
+  /* ---------- reveal on enter ---------- */
+  function play() { stage.classList.add('play'); }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { play(); io.disconnect(); } });
+    }, { threshold: 0.25 });
+    io.observe(document.getElementById('canvas'));
+  } else { play(); }
+})();
+</script>
+</body>
+</html>

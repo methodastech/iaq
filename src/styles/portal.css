@@ -1,0 +1,56 @@
+/* ============ the CMS portal ============
+   Admin surface, deliberately quieter than the public pages: one accent, flat
+   cards, dense forms. Shares the site tokens. */
+
+.cms-wrap{max-width:1060px;margin:0 auto;padding:110px 22px 80px}
+.cms-login{max-width:420px;margin:140px auto 120px;border:1px solid rgba(12,18,32,.12);border-radius:16px;padding:34px 32px;background:#fff;box-shadow:0 18px 50px rgba(12,18,32,.08)}
+.cms-login h1{font-size:24px;margin:10px 0 6px}
+.cms-login p{font-size:14px;color:#48536A;line-height:1.55}
+.cms-k{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#B5121B;font-weight:700}
+.cms-login form{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.cms-login input{border:1px solid rgba(12,18,32,.18);border-radius:10px;padding:11px 13px;font-size:14px;font-family:"JetBrains Mono",monospace}
+.cms-login button{background:#EC2027;color:#fff;border:0;border-radius:10px;padding:12px;font-weight:700;font-size:14px;cursor:pointer}
+.cms-login button:hover{background:#B5121B}
+.cms-err{color:#B5121B;font-size:13px}
+.cms-hint{margin-top:14px;padding-top:12px;border-top:1px dashed rgba(12,18,32,.15);font-size:12.5px;color:#828B9E}
+.cms-hint code{font-family:"JetBrains Mono",monospace;background:#F2F4F8;border-radius:5px;padding:1px 6px;color:#0C1220}
+
+.cms-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.cms-head h1{font-size:30px;line-height:1.1}
+.cms-head p{font-size:14px;color:#48536A;max-width:64ch;margin-top:6px}
+.cms-out{background:none;border:1px solid rgba(12,18,32,.18);border-radius:9px;padding:8px 14px;font-size:12.5px;font-weight:600;cursor:pointer;color:#48536A}
+.cms-out:hover{border-color:#B5121B;color:#B5121B}
+
+.cms-tabs{display:flex;gap:4px;border:1px solid rgba(12,18,32,.12);background:#F2F4F8;border-radius:11px;padding:4px;width:max-content;margin-bottom:22px}
+.cms-tabs button{border:0;background:none;border-radius:8px;padding:9px 16px;font-size:13px;font-weight:600;color:#48536A;cursor:pointer}
+.cms-tabs button.on{background:#0C1220;color:#fff}
+
+.cms-note{border-left:3px solid #EC2027;background:rgba(236,32,39,.05);padding:12px 16px;border-radius:0 10px 10px 0;font-size:13.5px;color:#48536A;margin-bottom:18px}
+.cms-note b{color:#0C1220}
+
+.cms-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.cms-add{background:#0C1220;color:#fff;border:0;border-radius:9px;padding:9px 15px;font-size:13px;font-weight:600;cursor:pointer}
+.cms-add:hover{background:#1F2940}
+.cms-reset{background:none;border:1px solid rgba(12,18,32,.18);border-radius:9px;padding:8px 13px;font-size:12.5px;cursor:pointer;color:#48536A}
+.cms-reset:hover{border-color:#B5121B;color:#B5121B}
+.cms-state{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#828B9E}
+.cms-state.dirty{color:#B5121B}
+
+.cms-list{display:flex;flex-direction:column;gap:10px}
+.cms-item{border:1px solid rgba(12,18,32,.12);border-radius:12px;background:#fff;overflow:hidden}
+.cms-item-h{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer}
+.cms-item-h:hover{background:#FAFBFD}
+.cms-item-h b{font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cms-chip{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#48536A;background:#F2F4F8;border-radius:6px;padding:3px 8px;white-space:nowrap}
+.cms-del{background:none;border:0;color:#828B9E;cursor:pointer;font-size:16px;line-height:1;padding:4px}
+.cms-del:hover{color:#B5121B}
+.cms-form{padding:4px 16px 16px;border-top:1px dashed rgba(12,18,32,.12);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.cms-form label{display:flex;flex-direction:column;gap:4px;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#828B9E}
+.cms-form input,.cms-form select,.cms-form textarea{border:1px solid rgba(12,18,32,.16);border-radius:8px;padding:9px 11px;font-size:13.5px;font-family:Inter,system-ui,sans-serif;background:#fff;color:#0C1220}
+.cms-form textarea{min-height:120px;resize:vertical;grid-column:1/-1;line-height:1.6}
+.cms-form .full{grid-column:1/-1}
+.cms-save{position:sticky;bottom:18px;display:flex;justify-content:flex-end;margin-top:20px}
+.cms-save button{background:#EC2027;color:#fff;border:0;border-radius:11px;padding:13px 26px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 10px 26px rgba(236,32,39,.35)}
+.cms-save button:disabled{background:#C9CFDA;box-shadow:none;cursor:default}
+.cms-saved-flash{font-size:13px;color:#0E7A3C;font-weight:600;align-self:center;margin-right:12px}
+@media(max-width:640px){.cms-wrap{padding-top:96px}}

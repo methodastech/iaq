@@ -1,0 +1,105 @@
+/* ============================================================================
+   03 · WHO WE SERVE. Market-specific styles only.
+
+   pages.css already owns the phase-2 page system (.pg-head, .pg-sec, .pg-split,
+   .pg-scope, .pg-rail, .pg-proof, .pg-slot, .pg-stats, .pg-cta, .pg-rel) and
+   base.css owns the tokens. Everything the market pages can borrow, they
+   borrow. Only three things are genuinely sector-specific and live here:
+
+     1. the dark sector hero band over the industry image, plus the fact strip
+        that sits inside it
+     2. the requirement tile grid, which needs 3 or 4 tracks depending on how
+        many requirements a market's sources record
+     3. the hub's seven image cards
+
+   Rules inherited from pages.css and held here: tokens only, every full-width
+   band carries its own horizontal gutter inside its padding shorthand, every
+   grid track is minmax(0, …), short tiles stay multi-column on phones.
+   ========================================================================= */
+
+/* ------------------------------------------------------- 1. sector hero band
+   PageHead renders .pg-head, which is a light band. Inside .mkb it becomes the
+   dark sector headband: same type scale, different ground. The two-class
+   selectors below outrank the pages.css originals whatever the import order. */
+.mkb { position: relative; background: #070C18; overflow: hidden; }
+.mkb-bg { position: absolute; inset: 0; }
+.mkb-bg img { width: 100%; height: 100%; object-fit: cover; opacity: .6; filter: saturate(.5) brightness(1.03); }
+.mkb-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,12,24,.93) 0%, rgba(7,12,24,.58) 52%, rgba(7,12,24,.18) 100%), linear-gradient(180deg, rgba(7,12,24,.2), rgba(7,12,24,.52)); }
+.mkb-grid { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 44px 44px; mask-image: linear-gradient(180deg, #000, transparent 72%); -webkit-mask-image: linear-gradient(180deg, #000, transparent 72%); }
+
+.mkb .pg-head { position: relative; z-index: 1; background: transparent; border-bottom: 0; }
+.mkb .pg-head h1 { color: #fff; }
+.mkb .pg-head h1 em { color: #FF4D55; }
+.mkb .pg-head-lede { color: #C2CCDD; }
+.mkb .eyebrow { color: #FF8A90; }
+
+/* the fact strip: what this market is measured by, plus the registry deep link */
+.mk-facts-w { position: relative; z-index: 1; padding: 0 var(--gut) clamp(26px, 4vh, 42px); }
+.mk-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.13); }
+.mk-fact { background: #0A101F; padding: 15px 16px; min-width: 0; }
+.mk-fact .k { display: block; font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: #7A87A2; font-weight: 700; }
+.mk-fact .v { display: block; margin-top: 8px; font-family: "Switzer", sans-serif; font-weight: 600; font-size: 17px; line-height: 1.18; letter-spacing: -.015em; color: #EDF2FC; overflow-wrap: break-word; }
+.mk-fact .v small { display: block; margin-top: 6px; font-family: "Instrument Sans", sans-serif; font-weight: 500; font-size: 12px; line-height: 1.45; letter-spacing: 0; color: #AAB6CE; }
+a.mk-fact { text-decoration: none; transition: background .25s; min-height: 40px; }
+a.mk-fact:hover, a.mk-fact:focus-visible { background: #101A30; }
+a.mk-fact .v { color: #FF8A90; }
+a.mk-fact .v small { color: #AAB6CE; }
+
+@media (max-width: 900px) { .mk-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .mk-facts-w { padding-bottom: 22px; }
+  .mk-fact { padding: 12px 12px; }
+  .mk-fact .v { font-size: 14px; }
+  .mk-fact .v small { font-size: 11px; }
+}
+
+/* --------------------------------------------------- 2. requirement tiles
+   Markets record three or four requirements. auto-fit lets three stretch to
+   three tracks and four settle into four, without a hole in the row. */
+.mk-dem { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 12px; margin-top: 26px; }
+.mk-dem li { min-width: 0; }
+@media (max-width: 640px) { .mk-dem { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+
+/* a mono sub-heading inside a section that already has its h2 */
+.mk-sub { margin-top: clamp(28px, 4vh, 40px); }
+
+/* --------------------------------------------------- 3. the hub's seven cards
+   The homepage industries grid, rebuilt on phase-2 tokens: image, line icon,
+   name, the approved one-liner, then what the market is measured by. */
+.mk-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; margin-top: 26px; }
+.mk-card { position: relative; display: flex; flex-direction: column; border: 1px solid var(--line); background: var(--panel); color: inherit; text-decoration: none; overflow: hidden; transition: border-color .35s, box-shadow .5s var(--e1), transform .45s var(--e1); }
+.mk-card:hover, .mk-card:focus-visible { border-color: rgba(236,32,39,.45); box-shadow: 0 24px 48px -24px rgba(12,18,32,.35); transform: translateY(-3px); }
+.mk-cv { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--line); background: #0C1428; }
+.mk-cv img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .9s var(--e1); filter: saturate(.42) brightness(1.05) contrast(1.02); }
+.mk-card:hover .mk-cv img { transform: scale(1.06); }
+.mk-cv::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(12,18,32,.05), transparent 34%); }
+.mk-cv .no { position: absolute; top: 11px; left: 13px; z-index: 1; font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: #0C1220; text-shadow: 0 1px 3px rgba(255,255,255,.85), 0 0 2px rgba(255,255,255,.9); }
+.mk-cb { flex: 1; display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto auto 1fr; column-gap: 12px; row-gap: 9px; padding: 16px 17px 17px; }
+.mk-cb .ic { grid-column: 1; grid-row: 1; align-self: center; width: 29px; height: 29px; color: var(--blue); }
+.mk-cb .ic svg { width: 100%; height: 100%; }
+.mk-cb h3 { grid-column: 2; grid-row: 1; align-self: center; font-size: 17px; line-height: 1.15; overflow-wrap: break-word; }
+.mk-cb p { grid-column: 1 / -1; grid-row: 2; font-size: 12.5px; line-height: 1.5; color: var(--soft); }
+.mk-cb .cls { grid-column: 1 / -1; grid-row: 3; font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); font-weight: 700; overflow-wrap: anywhere; }
+.mk-cb .cls b { color: var(--blue-bright); }
+.mk-cb .go { grid-column: 1 / -1; grid-row: 4; align-self: end; padding-top: 12px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--blue-bright); opacity: .85; transition: opacity .3s; }
+.mk-card:hover .mk-cb .go { opacity: 1; }
+@media (max-width: 640px) {
+  .mk-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .mk-cb { padding: 12px 11px 13px; column-gap: 9px; row-gap: 7px; }
+  .mk-cb h3 { font-size: 13.5px; }
+  .mk-cb p { font-size: 11px; }
+  .mk-cb .ic { width: 25px; height: 25px; }
+  .mk-cb .cls { font-size: 8px; letter-spacing: .06em; }
+  .mk-cb .go { font-size: 8.5px; padding-top: 9px; }
+}
+
+/* one or two published projects in a market would otherwise sit at half width
+   and read as a gap in the grid, so they get a comfortable single track */
+.pg-proof.few { grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 330px)); }
+@media (max-width: 640px) { .pg-proof.few { grid-template-columns: minmax(0, 1fr); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-card, .mk-cv img, a.mk-fact { transition: none; }
+  .mk-card:hover { transform: none; }
+  .mk-card:hover .mk-cv img { transform: none; }
+}

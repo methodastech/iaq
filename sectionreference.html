@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Support Beyond Buying and Selling — Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   "Support Beyond Buying and Selling" — services section
+   Standalone. Art-directed at 1920.
+   Grid: row 1 = 3 cards (exact reference geometry, 553 x 470)
+         row 2 = 4 cards (same height, same rhythm)
+   Hover: accordion — the hovered card stretches, siblings give
+   way, description fades up inside the widened card.
+   ============================================================ */
+
+:root{
+  --bg:#101312;
+  --white:#FFFFFF;
+  --offwhite:#F4F5F4;
+  --gray:#707170;
+  --pad:100px;          /* section horizontal padding @1920 */
+  --gap:30px;           /* card gap (columns and rows) */
+  --grow:1.33;          /* hovered card flex-grow → 667 / 501 @1920 */
+  --ease:cubic-bezier(.22,1,.36,1);
+
+  /* card height is derived from the 3-up reference card (553 x 470) */
+  --card-h:calc(((100vw - (var(--pad) * 2) - (var(--gap) * 2)) / 3) * .85);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  background:var(--bg);
+  font-family:'Inter','Helvetica Neue','Neue Haas Grotesk',Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  color:var(--white);
+}
+
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ------------------------------------------------------------
+   SECTION SHELL
+   ------------------------------------------------------------ */
+.services{
+  position:relative;
+  background:var(--bg);
+  padding:64px var(--pad) 90px;
+  overflow:hidden;
+}
+
+/* ------------------------------------------------------------
+   TOP TWO-COLUMN INTRO
+   ------------------------------------------------------------ */
+.intro{
+  display:grid;
+  grid-template-columns:0.8fr 1fr;
+  align-items:start;
+  column-gap:60px;
+}
+
+.intro__heading{
+  max-width:560px;
+  font-size:clamp(38px,3.23vw,62px);
+  font-weight:500;
+  line-height:.96;
+  letter-spacing:-.018em;
+  color:var(--white);
+}
+.intro__heading .muted{color:var(--gray)}
+
+.intro__right{
+  max-width:850px;
+  padding-top:4px;
+}
+
+.intro__copy{
+  font-size:clamp(18px,1.46vw,28px);
+  font-weight:500;
+  line-height:1.15;
+  letter-spacing:-.008em;
+  color:var(--gray);
+}
+.intro__copy .lead{color:var(--offwhite)}
+
+/* ------------------------------------------------------------
+   BUTTONS
+   ------------------------------------------------------------ */
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  border-radius:999px;
+  white-space:nowrap;
+  transition:transform 300ms var(--ease),
+             background-color 300ms var(--ease),
+             border-color 300ms var(--ease);
+}
+.pill .arrow{flex:0 0 auto;transition:transform 300ms var(--ease)}
+.pill:hover .arrow{transform:translateX(6px)}
+
+.pill--solid{
+  margin-top:44px;
+  width:280px;
+  height:60px;
+  padding:0 26px 0 32px;
+  background:var(--offwhite);
+  color:#0B0D0C;
+  font-size:17.5px;
+  font-weight:500;
+  letter-spacing:-.005em;
+}
+.pill--solid:hover{transform:scale(1.01);background:#FFFFFF}
+
+.pill--ghost{
+  width:192px;
+  height:54px;
+  padding:0 22px 0 26px;
+  border:1px solid rgba(255,255,255,.55);
+  background:rgba(255,255,255,0);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+  color:var(--white);
+  font-size:16.5px;
+  font-weight:400;
+  letter-spacing:-.003em;
+}
+.pill--ghost:hover{
+  background:rgba(255,255,255,.05);
+  border-color:rgba(255,255,255,.85);
+}
+
+/* ------------------------------------------------------------
+   CARD GRID — 7 SERVICES  (3 on top, 4 below)
+   ------------------------------------------------------------ */
+.grid{
+  margin-top:104px;
+  display:flex;
+  flex-direction:column;
+  gap:var(--gap);
+}
+
+.row{
+  display:flex;
+  gap:var(--gap);
+  align-items:stretch;
+}
+
+.card{
+  position:relative;
+  flex:1 1 0;
+  min-width:0;
+  height:var(--card-h);
+  background:#1A1D1C;
+  overflow:hidden;
+  border-radius:0;
+  transition:flex-grow 560ms var(--ease);
+}
+
+/* the stretch */
+.card:hover,
+.card:focus-within{flex-grow:var(--grow)}
+
+.card__media{position:absolute;inset:0;overflow:hidden}
+.card__media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1);
+  transition:transform 700ms var(--ease);
+  will-change:transform;
+}
+.card:hover .card__media img,
+.card:focus-within .card__media img{transform:scale(1.012)}
+
+/* readability scrim only — not decoration */
+.card__scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    rgba(0,0,0,.52) 0%,
+    rgba(0,0,0,.24) 34%,
+    rgba(0,0,0,.06) 58%,
+    rgba(0,0,0,.34) 100%);
+  pointer-events:none;
+}
+.card__tint{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,.18);
+  opacity:0;
+  transition:opacity 400ms var(--ease);
+  pointer-events:none;
+}
+.card:hover .card__tint,
+.card:focus-within .card__tint{opacity:1}
+
+.card__body{
+  position:absolute;
+  top:55px;
+  left:52px;
+  right:40px;
+}
+
+.card__title{
+  font-size:clamp(26px,2.29vw,44px);
+  font-weight:500;
+  line-height:1.06;
+  letter-spacing:-.014em;
+  color:var(--white);
+  white-space:nowrap;      /* line breaks stay authored, never reflow on stretch */
+}
+
+.card__desc{
+  margin-top:46px;
+  width:350px;
+  max-width:100%;
+  font-size:18px;
+  font-weight:400;
+  line-height:1.35;
+  letter-spacing:-.002em;
+  color:var(--white);
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity 420ms var(--ease) 60ms,transform 420ms var(--ease) 60ms;
+  pointer-events:none;
+}
+.card:hover .card__desc,
+.card:focus-within .card__desc{opacity:1;transform:translateY(0)}
+
+.card .pill--ghost{
+  position:absolute;
+  left:52px;
+  bottom:50px;
+}
+
+/* ------------------------------------------------------------
+   SCROLL REVEAL
+   ------------------------------------------------------------ */
+.reveal{
+  opacity:0;
+  transform:translateY(var(--ty,24px));
+  transition:opacity 820ms var(--ease),transform 820ms var(--ease);
+  transition-delay:var(--rd,0ms);
+}
+.reveal.is-in{opacity:1;transform:translateY(0)}
+
+/* the card also transitions flex-grow — keep both */
+.card.reveal{
+  transition:opacity 820ms var(--ease),
+             transform 820ms var(--ease),
+             flex-grow 560ms var(--ease);
+  transition-delay:var(--rd,0ms),var(--rd,0ms),0ms;
+}
+
+.intro__heading{--ty:30px}
+.intro__copy{--ty:25px;--rd:90ms}
+.pill--solid{--ty:15px;--rd:170ms}
+.card{--ty:35px}
+.row:first-child .card:nth-child(1){--rd:0ms}
+.row:first-child .card:nth-child(2){--rd:80ms}
+.row:first-child .card:nth-child(3){--rd:160ms}
+.row:last-child  .card:nth-child(1){--rd:240ms}
+.row:last-child  .card:nth-child(2){--rd:320ms}
+.row:last-child  .card:nth-child(3){--rd:400ms}
+.row:last-child  .card:nth-child(4){--rd:480ms}
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------ */
+@media (max-width:1440px){
+  :root{--pad:72px;--gap:26px}
+  .grid{margin-top:88px}
+  .card__body{top:44px;left:40px;right:32px}
+  .card .pill--ghost{left:40px;bottom:40px}
+  .card__desc{margin-top:34px;font-size:17px;width:320px}
+}
+
+@media (max-width:1200px){
+  :root{--pad:56px;--gap:24px}
+  .services{padding:56px var(--pad) 72px}
+  .intro{grid-template-columns:0.9fr 1fr;column-gap:44px}
+  .intro__heading{font-size:clamp(36px,4.2vw,50px);max-width:440px}
+  .intro__copy{font-size:clamp(18px,2.05vw,24px)}
+  .grid{margin-top:76px}
+
+  /* two per row, no accordion — the stretch needs desktop room */
+  :root{--card-h:calc(((100vw - (var(--pad) * 2) - var(--gap)) / 2) * .85)}
+  .row{flex-wrap:wrap}
+  .card{flex:0 0 calc((100% - var(--gap)) / 2)}
+  .card:hover,.card:focus-within{flex-grow:0}
+  .card__desc{width:auto;max-width:80%}
+}
+
+@media (max-width:900px){
+  .intro{grid-template-columns:1fr;row-gap:34px}
+  .intro__heading{max-width:none;font-size:clamp(34px,5.6vw,46px)}
+  .intro__right{max-width:640px;padding-top:0}
+  .pill--solid{margin-top:34px}
+}
+
+@media (max-width:768px){
+  :root{--pad:24px;--gap:20px}
+  .services{padding:48px var(--pad) 56px}
+  .intro__heading{font-size:clamp(34px,8.4vw,44px);line-height:1}
+  .intro__copy{font-size:clamp(18px,4.6vw,22px);line-height:1.2}
+  .pill--solid{width:100%;max-width:300px;height:56px;font-size:16px}
+
+  /* one per row */
+  :root{--card-h:calc((100vw - (var(--pad) * 2)) * 1.25)}
+  .grid{margin-top:56px}
+  .card{flex:0 0 100%}
+  .card__body{top:36px;left:28px;right:28px}
+  .card__title{font-size:clamp(28px,7.2vw,34px);white-space:normal}
+  /* descriptions always readable on touch */
+  .card__desc{
+    opacity:1;
+    transform:none;
+    margin-top:16px;
+    max-width:92%;
+    font-size:16px;
+  }
+  .card .pill--ghost{left:26px;bottom:26px;width:172px;height:52px;font-size:15.5px}
+}
+
+@media (max-width:480px){
+  :root{--card-h:calc((100vw - (var(--pad) * 2)) * 1)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .card,.card__media img,.card__desc,.card__tint,.pill,.pill .arrow{transition:none}
+  .card__desc{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<section class="services" id="services">
+
+  <!-- ===== TOP INTRO ===== -->
+  <div class="intro">
+    <h2 class="intro__heading reveal">
+      Support<br>
+      Beyond <span class="muted">Buying</span><br>
+      <span class="muted">and Selling</span>
+    </h2>
+
+    <div class="intro__right">
+      <p class="intro__copy reveal">
+        <span class="lead">The real estate market never stands still — and neither do we.</span>
+        Our experts offer continued support beyond the sale, helping you maximize your investment.
+      </p>
+
+      <a class="pill pill--solid reveal" href="#">
+        <span>Discover Our Services</span>
+        <svg class="arrow" width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+          <path d="M0 6h18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== CARD GRID — 7 SERVICES ===== -->
+  <div class="grid">
+
+    <!-- ROW 1 — the three reference cards, exact geometry -->
+    <div class="row">
+
+      <article class="card reveal" tabindex="0">
+        <div class="card__media">
+          <img src="https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&w=1600&q=80" alt="Dark urban building facade with repeating arched windows">
+        </div>
+        <div class="card__scrim"></div>
+        <div class="card__tint"></div>
+        <div class="card__body">
+          <h3 class="card__title">Mortgage<br>Services</h3>
+          <p class="card__desc">Helping you secure your dream home with flexible mortgage options.</p>
+        </div>
+        <a class="pill pill--ghost" href="#">
+          <span>Learn More</span>
+          <svg class="arrow" width="18" height="11" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+            <path d="M0 6h18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <article class="card reveal" tabindex="0">
+        <div class="card__media">
+          <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1600&q=80" alt="Balcony view over the city and river at sunset" style="object-position:50% 60%">
+        </div>
+        <div class="card__scrim"></div>
+        <div class="card__tint"></div>
+        <div class="card__body">
+          <h3 class="card__title">Property<br>Management</h3>
+          <p class="card__desc">Let us handle the details so you can enjoy the rewards.</p>
+        </div>
+        <a class="pill pill--ghost" href="#">
+          <span>Learn More</span>
+          <svg class="arrow" width="18" height="11" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+            <path d="M0 6h18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <article class="card reveal" tabindex="0">
+        <div class="card__media">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80" alt="Two people standing beside modern architecture" style="object-position:58% 68%">
+        </div>
+        <div class="card__scrim"></div>
+        <div class="card__tint"></div>
+        <div class="card__body">
+          <h3 class="card__title">Construction<br>and Real Estate<br>Development</h3>
+          <p class="card__desc">Guiding you through the intricacies of building and developing properties with expert insight and support.</p>
+        </div>
+        <a class="pill pill--ghost" href="#">
+          <span>Learn More</span>
+          <svg class="arrow" width="18" height="11" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+            <path d="M0 6h18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+    </div>
+
+    <!-- ROW 2 — four further services -->
+    <div class="row">
+
+      <article class="card reveal" tabindex="0">
+        <div class="card__media">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80" alt="Minimal warm interior with natural light" style="object-position:50% 55%">
+        </div>
+        <div class="card__scrim"></div>
+        <div class="card__tint"></div>
+        <div class="card__body">
+          <h3 class="card__title">Interior<br>Design</h3>
+          <p class="card__desc">Shaping considered interiors that elevate the way a property lives and sells.</p>
+        </div>
+        <a class="pill pill--ghost" href="#">
+          <span>Learn More</span>
+          <svg class="arrow" width="18" height="11" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+            <path d="M0 6h18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <article class="card reveal" tabindex="0">
+        <div class="card__media">
+          <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=1600&q=80" alt="Modern residence exterior at dusk" style="object-position:50% 62%">
+        </div>
+        <div class="card__scrim"></div>
+        <div class="card__tint"></div>
+        <div class="card__body">
+          <h3 class="card__title">Property<br>Valuation</h3>
+          <p class="card__desc">Precise, market-led appraisals so you always know what your asset is worth.</p>
+        </div>
+        <a class="pill pill--ghost" href="#">
+          <span>Learn More</span>
+          <svg class="arrow" width="18" height="11" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+            <path d="M0 6h18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <article class="card reveal" tabindex="0">
+        <div class="card__media">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80" alt="Low angle of a glass tower against a pale sky" style="object-position:50% 45%">
+        </div>
+        <div class="card__scrim"></div>
+        <div class="card__tint"></div>
+        <div class="card__body">
+          <h3 class="card__title">Investment<br>Advisory</h3>
+          <p class="card__desc">Building long-term portfolios around yield, timing and location.</p>
+        </div>
+        <a class="pill pill--ghost" href="#">
+          <span>Learn More</span>
+          <svg class="arrow" width="18" height="11" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+            <path d="M0 6h18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <article class="card reveal" tabindex="0">
+        <div class="card__media">
+          <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1600&q=80" alt="Residential home in warm afternoon light" style="object-position:50% 58%">
+        </div>
+        <div class="card__scrim"></div>
+        <div class="card__tint"></div>
+        <div class="card__body">
+          <h3 class="card__title">Relocation<br>Services</h3>
+          <p class="card__desc">Handling every detail of the move so arrival feels effortless.</p>
+        </div>
+        <a class="pill pill--ghost" href="#">
+          <span>Learn More</span>
+          <svg class="arrow" width="18" height="11" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+            <path d="M0 6h18M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+(function () {
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  items.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

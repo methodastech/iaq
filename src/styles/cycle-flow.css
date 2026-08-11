@@ -1,0 +1,351 @@
+/* ------------------------------------------------------------------ */
+/*  The delivery cycle — ported from referenceprocess.html              */
+/*  Fixed 1005 x 355 art-directed canvas, scaled to fit. One SVG wire   */
+/*  masked out beneath the discs and label blocks.                      */
+/* ------------------------------------------------------------------ */
+
+/* ---- split header: title left, three-line lede right ----------------- */
+
+.cyc-hd {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.cyc-hd h2 {
+  max-width: 15ch;
+  letter-spacing: -.035em;
+}
+
+.cyc-stop { color: var(--blue); }
+
+.cyc-hd .cyc-lede {
+  flex: none;
+  width: 390px;
+  margin-top: 16px;
+  font-size: 15.3px;
+  line-height: 1.57;
+  color: #41536A;
+}
+
+.cyc-lede b {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+@media (max-width: 1050px) {
+  .cyc-hd { display: block; }
+  .cyc-hd h2 { max-width: 24ch; }
+  .cyc-hd .cyc-lede { width: auto; max-width: 56ch; margin-top: 14px; }
+  .cyc-lede br { display: none; }
+}
+
+/* ---- the scaled canvas ------------------------------------------------ */
+
+/* the fixed canvas is centred in whatever width the section gives it; scaling
+   happens about the top centre so it stays centred at every size */
+.cyc-fit {
+  position: relative;
+  margin-top: 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.cyc-canvas {
+  position: relative;
+  flex: none;
+  width: 1005px;
+  height: 355px;
+  transform-origin: top center;
+}
+
+.cyc-wire {
+  position: absolute;
+  inset: 0;
+  width: 1005px;
+  height: 355px;
+  overflow: visible;
+}
+
+.cyc-red { stroke: var(--blue); }
+.cyc-redhead { fill: var(--blue); }
+
+/* ---- stage: anchored at the disc's top-left corner -------------------- */
+
+.cyc-node {
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  text-decoration: none;
+}
+
+.cyc-num {
+  position: absolute;
+  top: -31px;
+  left: -9px;
+  width: 80px;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: .09em;
+  color: #C4D1DF;
+  transition: color .3s var(--e1);
+}
+
+.cyc-disc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #E2E9F1;
+  box-shadow: 0 3px 10px rgba(27, 42, 68, .055), 0 1px 2px rgba(27, 42, 68, .04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1B2A44;
+  transition: border-color .3s var(--e1), color .3s var(--e1), transform .3s var(--e1);
+}
+
+.cyc-disc svg {
+  width: 27px;
+  height: 27px;
+  display: block;
+}
+
+.cyc-txt {
+  position: absolute;
+  left: 80px;
+  top: 11px;
+  white-space: nowrap;
+}
+
+.cyc-txt b {
+  display: block;
+  font-family: "Switzer", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -.013em;
+  line-height: 1.15;
+  color: #0D131C;
+  transition: color .3s var(--e1);
+}
+
+.cyc-txt small {
+  display: block;
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 1.36;
+  color: #65788E;
+}
+
+.cyc-node:hover .cyc-disc,
+.cyc-node:focus-visible .cyc-disc {
+  border-color: var(--blue);
+  color: var(--blue);
+  transform: scale(1.04);
+}
+
+.cyc-node:hover .cyc-txt b,
+.cyc-node:focus-visible .cyc-txt b { color: var(--blue); }
+
+.cyc-node:hover .cyc-num,
+.cyc-node:focus-visible .cyc-num { color: var(--blue); }
+
+.cyc-node:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 6px;
+  border-radius: 50%;
+}
+
+/* ---- inline arrow chips sitting on the line --------------------------- */
+
+.cyc-chip {
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  margin: -13.5px 0 0 -13.5px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #DCE5EF;
+  box-shadow: 0 1px 3px rgba(27, 42, 68, .04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3A4C67;
+  pointer-events: none;
+}
+
+.cyc-chip svg {
+  width: 11px;
+  height: 11px;
+  display: block;
+}
+
+/* ---- bottom caption --------------------------------------------------- */
+
+.cyc-caption {
+  position: absolute;
+  left: 0;
+  top: 326px;
+  display: flex;
+  align-items: center;
+}
+
+.cyc-caption .rule {
+  width: 44px;
+  height: 1.5px;
+  background: var(--blue);
+}
+
+.cyc-caption .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  margin-left: 2px;
+}
+
+.cyc-caption span {
+  margin-left: 13px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+/* ---- animation -------------------------------------------------------- */
+
+.cyc-blue { stroke-dasharray: 2400; stroke-dashoffset: 2400; }
+.cyc-red { stroke-dasharray: 520; stroke-dashoffset: 520; }
+.cyc-redhead, .cyc-bead { opacity: 0; }
+.cyc-node, .cyc-chip { opacity: 0; transform: translateY(9px); }
+.cyc-chip { transform: translateY(9px) scale(.72); }
+
+.play .cyc-blue { transition: stroke-dashoffset 1750ms cubic-bezier(.45, .05, .25, 1); stroke-dashoffset: 0; }
+.play .cyc-red { transition: stroke-dashoffset 900ms cubic-bezier(.4, .05, .3, 1) 1700ms; stroke-dashoffset: 0; }
+.play .cyc-redhead { transition: opacity 320ms ease 2450ms; opacity: 1; }
+.play .cyc-bead { transition: opacity 500ms ease var(--d, 0ms); opacity: 1; }
+
+.play .cyc-node {
+  transition: opacity 620ms ease var(--d, 0ms), transform 620ms cubic-bezier(.22, .7, .3, 1) var(--d, 0ms);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.play .cyc-chip {
+  transition: opacity 480ms ease var(--d, 0ms), transform 520ms cubic-bezier(.3, 1.35, .5, 1) var(--d, 0ms);
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* the hover transform must survive the reveal transform */
+.play .cyc-node:hover, .play .cyc-node:focus-visible { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cyc-blue, .cyc-red { stroke-dashoffset: 0 !important; transition: none !important; }
+  .cyc-redhead, .cyc-bead, .cyc-node, .cyc-chip {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* mobile-only vertical connectors, inert on the canvas layout */
+.cyc-mvert { display: none; }
+
+/* ---- mobile: the same cycle as one vertical timeline ------------------- */
+
+@media (max-width: 860px) {
+  .cyc-fit { height: auto !important; display: block; }
+
+  .cyc-canvas {
+    width: auto;
+    height: auto;
+    transform: none !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cyc-wire, .cyc-chip { display: none; }
+
+  /* the stage unpacks from its absolute frame into a plain row */
+  .cyc-node {
+    position: static;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .cyc-num {
+    position: static;
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: .15em;
+    font-weight: 600;
+    color: #8993A8;
+    margin-bottom: 2px;
+  }
+
+  .cyc-disc {
+    position: static;
+    flex: none;
+    width: 56px;
+    height: 56px;
+  }
+
+  .cyc-disc svg { width: 24px; height: 24px; }
+
+  .cyc-txt {
+    position: static;
+    white-space: normal;
+  }
+
+  .cyc-txt b { font-size: 17px; }
+  .cyc-txt small br { display: none; }
+
+  /* a plain vertical line with a small chevron between stages */
+  .cyc-mvert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 20px;
+    height: 34px;
+    margin: 6px 0 6px 18px;            /* centred under the 56px disc */
+    color: #97A1B5;
+  }
+
+  .cyc-mvert::before,
+  .cyc-mvert::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    height: 9px;
+    border-left: 1.5px solid #C3D1E0;
+  }
+
+  .cyc-mvert::before { top: 0; }
+  .cyc-mvert::after { bottom: 0; }
+
+  .cyc-mvert svg {
+    width: 13px;
+    height: 13px;
+    transform: rotate(90deg);
+  }
+
+  .cyc-caption {
+    position: static;
+    margin-top: 24px;
+  }
+
+  .cyc-caption span { letter-spacing: .2em; }
+}

@@ -1,0 +1,64 @@
+/* The shortlist page and the save control that feeds it. */
+
+.sl-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.sl-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:26px}
+.sl-ghost{
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  font-weight:700;color:var(--soft);background:none;border:1px solid var(--line2);
+  padding:11px 16px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;
+  transition:border-color .22s,color .22s,background .22s;
+}
+.sl-ghost:hover{border-color:var(--ink);color:var(--ink);background:rgba(12,18,32,.03)}
+.sl-danger:hover{border-color:var(--blue);color:var(--blue);background:rgba(236,32,39,.04)}
+
+.sl-list{list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.sl-row{
+  display:grid;grid-template-columns:112px 1fr auto;gap:20px;align-items:center;
+  padding:18px 0;border-bottom:1px solid var(--line);
+}
+.sl-v{display:block;aspect-ratio:4/3;overflow:hidden;background:var(--panel)}
+.sl-v img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--e1)}
+.sl-row:hover .sl-v img{transform:scale(1.045)}
+.sl-tx{min-width:0}
+.sl-tx h3{font-size:clamp(16px,1.7vw,19px);margin-top:6px;line-height:1.28}
+.sl-tx h3 a{text-decoration:none}
+.sl-tx h3 a:hover{color:var(--blue-bright)}
+.sl-x{
+  background:none;border:1px solid var(--line2);color:var(--faint);width:34px;height:34px;
+  cursor:pointer;font-size:13px;line-height:1;flex:none;transition:border-color .2s,color .2s;
+}
+.sl-x:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ---- the save control, used on the registry and on project pages ---- */
+.sl-save{
+  display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--line2);
+  font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:700;color:var(--soft);padding:9px 13px;cursor:pointer;
+  transition:border-color .22s,color .22s,background .22s;
+}
+.sl-save svg{width:13px;height:13px;flex:none}
+.sl-save:hover{border-color:var(--ink);color:var(--ink)}
+.sl-save.on{border-color:var(--blue);color:var(--blue);background:rgba(236,32,39,.05)}
+.sl-save:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* the nav counter, so a saved list is never invisible */
+.sl-count{
+  display:inline-flex;align-items:center;justify-content:center;min-width:17px;height:17px;
+  padding:0 5px;background:var(--blue);color:#fff;border-radius:9px;
+  font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;line-height:1;
+}
+
+@media(max-width:640px){
+  .sl-row{grid-template-columns:84px 1fr auto;gap:14px}
+  .sl-bar .cta,.sl-bar .sl-ghost{flex:1 1 auto;justify-content:center}
+}
+
+/* the nav entry and the detail-page control */
+.nav-sl{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:13.5px;
+  font-weight:500;color:var(--soft);padding:7px 11px;white-space:nowrap;transition:color .2s}
+.nav-sl:hover{color:var(--ink)}
+.prj-save{margin-top:16px}
+.prj-save .sl-save{border-color:rgba(255,255,255,.34);color:#fff;background:rgba(255,255,255,.08)}
+.prj-save .sl-save:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.16)}
+.prj-save .sl-save.on{border-color:var(--blue);color:#fff;background:var(--blue)}

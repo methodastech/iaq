@@ -1,0 +1,292 @@
+/* ------------------------------------------------------------------ */
+/*  "Where we build" — the seven markets                                */
+/*  Layout from sectionreference.html: two-column intro over an         */
+/*  accordion card wall (3 cards, then 4, all one height). Colour and   */
+/*  type are the IAQ system, not the reference's dark shell.            */
+/* ------------------------------------------------------------------ */
+
+.ig-intro {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  align-items: start;
+  column-gap: 52px;
+  margin-top: 26px;
+}
+
+/* ---- heading: first line solid, the rest stepped back --------------- */
+
+.ig-h {
+  max-width: 14ch;
+  font-family: "Switzer", sans-serif;
+  font-size: clamp(30px, 3.5vw, 50px);
+  font-weight: 600;
+  line-height: 1.0;
+  letter-spacing: -.03em;
+  color: var(--ink);
+}
+
+.ig-h .muted { color: var(--faint); }
+.ig-stop { color: var(--blue); }
+
+.ig-intro-r { padding-top: 4px; }
+
+.ig-copy {
+  font-size: clamp(15.5px, 1.4vw, 19px);
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: -.006em;
+  color: var(--faint);
+  max-width: 46ch;
+}
+
+.ig-copy .lead { color: var(--ink); }
+
+/* ---- the solid brand pill ------------------------------------------- */
+
+.ig-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  margin-top: 26px;
+  height: 52px;
+  padding: 0 22px 0 26px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: background-color .3s var(--e1), transform .3s var(--e1);
+}
+
+.ig-cta:hover {
+  background: var(--blue-bright);
+  transform: scale(1.01);
+}
+
+.ig-arw {
+  flex: none;
+  transition: transform .3s var(--e1);
+}
+
+.ig-cta:hover .ig-arw,
+.ig-card:hover .ig-arw { transform: translateX(5px); }
+
+/* ---- the card wall --------------------------------------------------- */
+
+.ig-grid {
+  --gap: 14px;
+  container-type: inline-size;
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.ig-row {
+  display: flex;
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+.ig-card {
+  position: relative;
+  display: block;
+  flex: 1 1 0;
+  min-width: 0;
+  /* both rows share one height, derived from the 3-up column width */
+  height: 340px;
+  height: calc((100cqw - var(--gap) * 2) / 3);
+  overflow: hidden;
+  background: #0F1626;
+  text-decoration: none;
+  transition: flex-grow 560ms var(--e1);
+}
+
+/* the accordion stretch */
+.ig-card:hover,
+.ig-card:focus-within { flex-grow: 1.42; }
+
+.ig-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.ig-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transform: scale(1.012);
+  transition: transform 700ms var(--e1);
+  will-change: transform;
+}
+
+.ig-card:hover .ig-media img,
+.ig-card:focus-within .ig-media img { transform: scale(1.055); }
+
+/* readability scrim, not decoration */
+.ig-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(8, 13, 24, .58) 0%,
+    rgba(8, 13, 24, .26) 34%,
+    rgba(8, 13, 24, .10) 56%,
+    rgba(8, 13, 24, .52) 100%);
+  pointer-events: none;
+}
+
+.ig-tint {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 13, 24, .22);
+  opacity: 0;
+  transition: opacity 400ms var(--e1);
+  pointer-events: none;
+}
+
+.ig-card:hover .ig-tint,
+.ig-card:focus-within .ig-tint { opacity: 1; }
+
+/* the technical index, kept from the old cards */
+.ig-no {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .82);
+}
+
+.ig-body {
+  position: absolute;
+  top: 26px;
+  left: 26px;
+  right: 22px;
+}
+
+.ig-title {
+  display: block;
+  font-family: "Switzer", sans-serif;
+  font-size: clamp(19px, 1.8vw, 25px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -.018em;
+  color: #fff;
+  /* authored breaks only: the stretch must never re-wrap the title */
+  white-space: nowrap;
+}
+
+.ig-desc {
+  display: block;
+  margin-top: 16px;
+  max-width: 34ch;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, .92);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms var(--e1) 60ms, transform 420ms var(--e1) 60ms;
+  pointer-events: none;
+}
+
+.ig-card:hover .ig-desc,
+.ig-card:focus-within .ig-desc { opacity: 1; transform: translateY(0); }
+
+/* ghost pill, bottom-left */
+.ig-pill {
+  position: absolute;
+  left: 26px;
+  bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 42px;
+  padding: 0 16px 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .55);
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  color: #fff;
+  white-space: nowrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: background-color .3s var(--e1), border-color .3s var(--e1);
+}
+
+.ig-pill .ig-arw { width: 17px; height: 10px; }
+
+.ig-card:hover .ig-pill,
+.ig-card:focus-within .ig-pill {
+  background: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .9);
+}
+
+.ig-card:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* ---- tablet: two per row, no accordion (the stretch needs room) ------ */
+
+@media (max-width: 1024px) {
+  .ig-intro { grid-template-columns: 1fr; row-gap: 26px; }
+  .ig-h { max-width: none; }
+  .ig-intro-r { padding-top: 0; max-width: 620px; }
+
+  .ig-grid { --gap: 12px; margin-top: 34px; }
+  .ig-row { flex-wrap: wrap; }
+
+  .ig-card {
+    flex: 0 0 calc((100% - var(--gap)) / 2);
+    height: calc((100cqw - var(--gap)) / 2 * .78);
+  }
+
+  .ig-card:hover,
+  .ig-card:focus-within { flex-grow: 0; }
+
+  /* no hover stretch to reveal it, so the description simply stays */
+  .ig-desc { opacity: 1; transform: none; }
+}
+
+/* ---- mobile: one per row -------------------------------------------- */
+
+@media (max-width: 640px) {
+  .ig-grid { --gap: 10px; }
+  .ig-card {
+    flex: 0 0 100%;
+    height: calc(100cqw * .8);
+    min-height: 280px;
+  }
+
+  .ig-body { top: 22px; left: 22px; right: 20px; }
+  .ig-no { top: 18px; right: 18px; }
+  .ig-title { white-space: normal; font-size: 22px; }
+  .ig-title br { display: none; }
+  .ig-desc { margin-top: 10px; max-width: 90%; }
+  .ig-pill { left: 22px; bottom: 20px; }
+  .ig-cta { width: 100%; max-width: 300px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ig-card, .ig-media img, .ig-desc, .ig-tint, .ig-pill, .ig-cta, .ig-arw {
+    transition: none;
+  }
+  .ig-desc { opacity: 1; transform: none; }
+}

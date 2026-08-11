@@ -1,0 +1,251 @@
+/* ============================================================================
+   PHASE 2 SHARED PAGE STYLES
+
+   Every page built in phase 2 imports this one file. It is namespaced `.pg-*`
+   so it can never collide with the built pages (home.css, about.css,
+   projects.css, careers.css) and so a later agent can extend it safely.
+
+   Rules this file holds to, all of them learned the hard way:
+
+   1. Tokens only. --bg --bg2 --panel --ink --soft --faint --line --line2
+      --blue --blue-bright --maxw --gut --e1 come from base.css. Never hardcode
+      a hex a token already covers.
+   2. Every full-width band carries its horizontal gutter INSIDE its own
+      `padding` shorthand (`padding: X var(--gut) Y`). A two-class selector can
+      outrank `.head.wrap` and flatten a page against the screen edge. That bug
+      already happened once, so no band here depends on `.wrap`.
+   3. Every grid track is `minmax(0, …)`. An implicit `auto` minimum is what
+      makes a long word push a page sideways.
+   4. Short content stays multi-column on phones (stats, tiles, project cards,
+      the cycle rail). Prose and the primary action go single column.
+   5. Tap targets 40px minimum.
+
+   DO NOT put page-specific one-offs in here. Keep every selector generic.
+   ============================================================================ */
+
+/* the inner column shared by every band: the band owns the gutter, this owns the width */
+.pg-in { max-width: var(--maxw); margin: 0 auto; }
+
+/* ---------------------------------------------------------------- page head */
+.pg-head { padding: clamp(40px, 6.5vh, 78px) var(--gut) clamp(20px, 3.2vh, 34px); background: var(--bg2); border-bottom: 1px solid var(--line); }
+.pg-head h1 { font-size: clamp(30px, 4.6vw, 56px); max-width: 19ch; margin-top: 15px; }
+.pg-head-lede { font-size: clamp(15px, 1.7vw, 18px); color: var(--soft); max-width: 60ch; margin-top: 16px; }
+
+.pg-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; list-style: none; }
+.pg-chip { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--soft); border: 1px solid var(--line); background: var(--bg); padding: 7px 10px; }
+.pg-chip.b { color: var(--blue-bright); border-color: rgba(236, 32, 39, .3); background: rgba(236, 32, 39, .05); }
+
+.pg-head-fig { margin: 26px 0 2px; max-width: 880px; }
+.pg-head-fig img { display: block; width: 100%; height: clamp(180px, 30vw, 320px); object-fit: cover; object-position: 50% 46%; border: 1px solid var(--line); background: #eef1f6; }
+.pg-head-fig figcaption { font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-top: 9px; }
+
+/* ----------------------------------------------------------- section rhythm */
+/* a dense band, then a calm one. Hairlines and space, not boxes around everything. */
+.pg-sec { padding: clamp(38px, 6vh, 74px) var(--gut); }
+.pg-sec.calm { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.pg-sec.tight { padding-top: clamp(24px, 3.4vh, 40px); }
+.pg-sec.flush { padding-bottom: clamp(22px, 3.2vh, 38px); }
+
+.pg-k { display: block; font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; color: var(--faint); }
+.pg-sec h2 { font-size: clamp(23px, 3.1vw, 36px); margin-top: 12px; max-width: 24ch; }
+.pg-lede { font-size: clamp(14.5px, 1.6vw, 17px); color: var(--soft); max-width: 62ch; margin-top: 14px; }
+.pg-body { font-size: clamp(14.5px, 1.6vw, 16.5px); color: var(--soft); max-width: 64ch; margin-top: 16px; }
+.pg-body + .pg-body { margin-top: 14px; }
+.pg-note { font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); line-height: 1.95; margin-top: 20px; max-width: 82ch; }
+
+.pg-split { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr); gap: clamp(22px, 4vw, 58px); align-items: start; margin-top: 26px; }
+.pg-pull { border-left: 2px solid var(--blue); padding: 3px 0 3px 18px; font-family: "Switzer", sans-serif; font-weight: 600; letter-spacing: -.01em; font-size: clamp(17px, 2.3vw, 23px); line-height: 1.28; max-width: 30ch; }
+.pg-pull small { display: block; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 12px; }
+
+/* ------------------------------------------------------------------- cards */
+.pg-cards { display: grid; gap: 12px; margin-top: 26px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
+.pg-cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pg-cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.pg-card { position: relative; border: 1px solid var(--line); background: var(--panel); padding: 22px 20px; display: flex; flex-direction: column; gap: 9px; color: inherit; text-decoration: none; transition: border-color .35s, transform .45s var(--e1); }
+a.pg-card:hover, a.pg-card:focus-visible { border-color: rgba(236, 32, 39, .45); transform: translateY(-4px); }
+.pg-card .pg-no { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .16em; font-weight: 700; color: var(--blue-bright); }
+.pg-card .pg-kick { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+.pg-card h3 { font-size: 19px; line-height: 1.2; }
+.pg-card h3 .pg-full { display: block; font-family: "JetBrains Mono", monospace; font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin-top: 7px; line-height: 1.6; }
+.pg-card p { font-size: 14px; color: var(--soft); line-height: 1.6; }
+.pg-list { list-style: none; display: grid; gap: 7px; margin-top: 12px; padding-top: 13px; border-top: 1px solid var(--line); }
+.pg-list li { position: relative; padding-left: 16px; font-size: 13px; color: var(--soft); line-height: 1.5; }
+.pg-list li::before { content: ""; position: absolute; left: 0; top: .66em; width: 8px; height: 1.5px; background: var(--blue); }
+.pg-card .pg-go { margin-top: auto; padding-top: 14px; font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--blue-bright); display: inline-flex; align-items: center; gap: 8px; }
+.pg-card .pg-go::after { content: "\2192"; transition: transform .3s var(--e1); }
+a.pg-card:hover .pg-go::after { transform: translateX(4px); }
+
+/* --------------------------------------------------------------- stat tiles */
+.pg-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 26px; }
+.pg-stat { background: var(--bg2); padding: 20px 16px; }
+.pg-stat b { display: block; font-family: "Switzer", sans-serif; font-weight: 600; letter-spacing: -.025em; line-height: 1; font-size: clamp(21px, 3.1vw, 33px); }
+.pg-stat span { display: block; font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); margin-top: 10px; line-height: 1.6; }
+
+/* -------------------------------------------------------------- scope lists */
+.pg-scope { list-style: none; margin-top: 24px; border-top: 1px solid var(--line); }
+.pg-scope li { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 14px; align-items: baseline; padding: 17px 2px; border-bottom: 1px solid var(--line); }
+.pg-scope li i { font-style: normal; font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .14em; font-weight: 700; color: var(--blue-bright); }
+.pg-scope li span { font-size: clamp(15px, 1.7vw, 17.5px); line-height: 1.42; }
+.pg-scope li span em { font-style: normal; display: block; font-size: 13px; color: var(--soft); margin-top: 6px; line-height: 1.55; }
+
+/* three short beats, used for "how it runs" and any other 3 step read */
+.pg-beats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 26px; }
+.pg-beat { border-top: 2px solid var(--blue); padding: 13px 2px 0; }
+.pg-beat i { font-style: normal; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .16em; font-weight: 700; color: var(--blue-bright); }
+.pg-beat p { font-size: 14.5px; line-height: 1.45; margin-top: 9px; }
+
+/* ------------------------------------------- the cycle rail (5 stage strip) */
+.pg-rail { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 26px; }
+.pg-rail-n { position: relative; border: 1px solid var(--line); background: var(--bg2); padding: 15px 13px 16px; display: flex; flex-direction: column; gap: 7px; color: inherit; text-decoration: none; min-height: 40px; transition: border-color .35s, transform .45s var(--e1), background .35s; }
+.pg-rail-n::after { content: ""; position: absolute; top: 50%; right: -8px; width: 8px; height: 1px; background: var(--line2); }
+.pg-rail-n:last-child::after { display: none; }
+a.pg-rail-n:hover, a.pg-rail-n:focus-visible { border-color: rgba(236, 32, 39, .45); transform: translateY(-3px); }
+.pg-rail-n .n { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .16em; font-weight: 700; color: var(--faint); }
+.pg-rail-n b { font-family: "Switzer", sans-serif; font-weight: 600; font-size: 15px; line-height: 1.15; letter-spacing: -.01em; }
+.pg-rail-n small { font-size: 12px; color: var(--soft); line-height: 1.45; }
+.pg-rail-n.on { border-color: var(--blue); background: rgba(236, 32, 39, .04); }
+.pg-rail-n.on .n { color: var(--blue-bright); }
+.pg-loop { display: flex; align-items: center; gap: 11px; margin-top: 16px; font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--blue-bright); }
+.pg-loop i { flex: none; width: 26px; height: 1px; background: var(--blue); }
+
+/* --------------------------------------------------------- reference proof */
+.pg-proof { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; margin-top: 26px; }
+.pg-pc { border: 1px solid var(--line); background: var(--panel); display: flex; flex-direction: column; overflow: hidden; color: inherit; text-decoration: none; transition: border-color .35s, transform .45s var(--e1); }
+.pg-pc:hover, .pg-pc:focus-visible { border-color: rgba(236, 32, 39, .45); transform: translateY(-4px); }
+.pg-pcv { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: linear-gradient(120deg, #0C1428 0%, #111C36 55%, #0A101F 100%); border-bottom: 1px solid var(--line); }
+.pg-pcv img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s var(--e1); }
+.pg-pc:hover .pg-pcv img { transform: scale(1.045); }
+.pg-pc-in { padding: 15px 15px 17px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+.pg-pc .pg-ref { display: flex; justify-content: space-between; gap: 8px; font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+.pg-pc .pg-ref .iso { color: var(--blue-bright); font-weight: 700; text-align: right; }
+.pg-pc h3 { font-size: 16px; line-height: 1.22; }
+.pg-pc .pg-cl { font-size: 12.5px; color: var(--soft); }
+.pg-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 11px; }
+.pg-tag { font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 8px; border: 1px solid var(--line); color: var(--soft); background: var(--bg); }
+.pg-tag.b { color: var(--blue-bright); border-color: rgba(236, 32, 39, .3); background: rgba(236, 32, 39, .05); }
+
+/* a quiet inline link: never competes with the page's one primary action */
+.pg-more { display: inline-flex; align-items: center; gap: 9px; margin-top: 20px; padding: 10px 0; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--blue-bright); text-decoration: none; border-bottom: 1px solid rgba(236, 32, 39, .3); }
+.pg-more::after { content: "\2192"; transition: transform .3s var(--e1); }
+.pg-more:hover::after { transform: translateX(4px); }
+.pg-mores { display: flex; flex-wrap: wrap; gap: 12px 26px; }
+
+/* ------------------------------------------------- labelled placeholder slot
+   Content IAQ still owes. A bordered panel with a dashed inner frame and a mono
+   tag naming exactly what belongs there and who supplies it, so the gap reads as
+   intentional rather than as an empty section. */
+.pg-slot { border: 1px solid var(--line2); background: var(--bg2); padding: 12px; margin-top: 20px; }
+.pg-slot-in { border: 1px dashed var(--line2); padding: 22px 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 11px; }
+.pg-slot-tag { font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--blue-bright); border: 1px solid rgba(236, 32, 39, .3); background: rgba(236, 32, 39, .05); padding: 6px 9px; }
+.pg-slot b { font-family: "Switzer", sans-serif; font-weight: 600; font-size: clamp(15px, 1.9vw, 18px); line-height: 1.25; letter-spacing: -.01em; }
+.pg-slot p { font-size: 13.5px; color: var(--soft); line-height: 1.6; max-width: 60ch; }
+.pg-slot ul { list-style: none; display: grid; gap: 6px; }
+.pg-slot li { position: relative; padding-left: 15px; font-size: 13px; color: var(--soft); line-height: 1.5; }
+.pg-slot li::before { content: ""; position: absolute; left: 0; top: .66em; width: 7px; height: 1px; background: var(--line2); }
+.pg-slot.mini { margin-top: 14px; padding: 8px; }
+.pg-slot.mini .pg-slot-in { padding: 14px 13px; gap: 9px; }
+.pg-slot.mini p { font-size: 12.5px; }
+
+/* ------------------------------------------------------------- next in line */
+.pg-nextcard { display: flex; align-items: center; gap: 16px; border: 1px solid var(--line); background: var(--bg2); padding: 20px; margin-top: 22px; color: inherit; text-decoration: none; transition: border-color .35s, transform .45s var(--e1); }
+.pg-nextcard:hover, .pg-nextcard:focus-visible { border-color: rgba(236, 32, 39, .45); transform: translateY(-3px); }
+.pg-nextic { flex: none; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(236, 32, 39, .22); background: rgba(236, 32, 39, .05); color: var(--blue); }
+.pg-nextic svg { width: 21px; height: 21px; }
+.pg-nextcard b { display: block; font-family: "Switzer", sans-serif; font-weight: 600; letter-spacing: -.015em; font-size: clamp(17px, 2.2vw, 22px); line-height: 1.15; }
+.pg-nextcard small { display: block; font-size: 13.5px; color: var(--soft); margin-top: 6px; line-height: 1.5; }
+.pg-nextarrow { margin-left: auto; flex: none; color: var(--blue); }
+.pg-nextarrow svg { width: 22px; height: 22px; }
+
+/* ---------------------------------------------- the one primary action band */
+.pg-cta { padding: clamp(40px, 6.5vh, 74px) var(--gut); background: #070C18; color: #EDF2FC; }
+.pg-cta .pg-in { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(22px, 4vw, 56px); align-items: center; }
+.pg-cta .eyebrow { color: #FF6A70; }
+.pg-cta h2 { font-size: clamp(24px, 3.3vw, 38px); margin-top: 13px; max-width: 20ch; }
+.pg-cta p { font-size: clamp(14px, 1.6vw, 16px); color: #AAB6CE; margin-top: 15px; max-width: 48ch; line-height: 1.65; }
+.pg-cta-act { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.pg-cta-act .cta { font-size: 12px; padding: 15px 22px; }
+.pg-cta-meta { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #7A87A2; line-height: 1.9; }
+.pg-cta-meta a { color: #C7D3EE; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, .2); }
+.pg-cta-meta a:hover { color: #fff; }
+
+/* ------------------------- where this goes next: satisfies interlinking R05 */
+.pg-rel { padding: clamp(30px, 5vh, 56px) var(--gut); background: var(--bg); border-top: 1px solid var(--line); }
+.pg-rel-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 232px), 1fr)); gap: 10px; margin-top: 16px; }
+.pg-rel-a { display: flex; align-items: flex-start; gap: 12px; min-height: 64px; border: 1px solid var(--line); background: var(--bg2); padding: 14px; color: inherit; text-decoration: none; transition: border-color .3s, transform .4s var(--e1); }
+.pg-rel-a:hover, .pg-rel-a:focus-visible { border-color: rgba(236, 32, 39, .45); transform: translateY(-3px); }
+.pg-rel-ic { flex: none; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line); background: var(--bg); color: var(--blue); }
+.pg-rel-ic svg { width: 17px; height: 17px; }
+.pg-rel-tx { min-width: 0; }
+.pg-rel-tx b { display: block; font-family: "Switzer", sans-serif; font-weight: 600; font-size: 14.5px; line-height: 1.2; letter-spacing: -.01em; }
+.pg-rel-tx small { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 6px; font-size: 12px; color: var(--soft); line-height: 1.45; }
+.pg-rel-go { margin-left: auto; flex: none; color: var(--faint); }
+.pg-rel-go svg { width: 15px; height: 15px; }
+
+/* ------------------------------------------------- overflow safety net
+   Two things push a page sideways at 320px: an unbreakable token inside a
+   fixed-width chip, and a flex item that will not shrink below its content
+   because `min-width` defaults to `auto`. Both are closed here rather than
+   per page, so a later agent inherits the fix. */
+.pg-chip, .pg-tag, .pg-slot-tag, .pg-note, .pg-cta-meta { max-width: 100%; overflow-wrap: anywhere; }
+.pg-nextcard span, .pg-card, .pg-pc-in, .pg-beat, .pg-rel-tx, .pg-scope li span { min-width: 0; }
+.pg-card h3, .pg-pc h3, .pg-nextcard b, .pg-rail-n b, .pg-rail-n small, .pg-slot b { overflow-wrap: break-word; }
+
+/* -------------------------------------------------------------- responsive */
+@media (max-width: 1024px) {
+  .pg-split { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .pg-pull { max-width: 46ch; }
+}
+@media (max-width: 900px) {
+  .pg-rail { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pg-rail-n::after { display: none; }
+  .pg-cta .pg-in { grid-template-columns: minmax(0, 1fr); }
+  .pg-cards.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .pg-head { padding: 28px var(--gut) 22px; }
+  .pg-head h1 { font-size: clamp(26px, 7.6vw, 36px); max-width: 16ch; }
+  .pg-head-lede { font-size: 14px; margin-top: 13px; }
+  .pg-head-fig { margin-top: 20px; }
+  .pg-head-fig img { height: clamp(150px, 46vw, 210px); }
+
+  .pg-sec { padding: 30px var(--gut); }
+  .pg-sec h2 { font-size: clamp(20px, 6vw, 27px); }
+  .pg-lede, .pg-body { font-size: 13.5px; line-height: 1.55; }
+
+  /* prose cards go single column, short tiles stay multi column */
+  .pg-cards, .pg-cards.two, .pg-cards.three { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .pg-card { padding: 18px 16px; }
+  .pg-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pg-stat { padding: 15px 13px; }
+  .pg-beats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .pg-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+  .pg-proof { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pg-pc-in { padding: 12px 11px 13px; }
+  .pg-pc h3 { font-size: 13.5px; }
+  .pg-pc .pg-cl { font-size: 11.5px; }
+  .pg-pc .pg-ref { flex-direction: column; gap: 3px; }
+  .pg-pc .pg-ref .iso { text-align: left; }
+  .pg-tag { font-size: 7.5px; letter-spacing: .06em; padding: 4px 6px; }
+  .pg-scope li { grid-template-columns: 34px minmax(0, 1fr); gap: 10px; padding: 14px 2px; }
+  .pg-scope li span { font-size: 14.5px; }
+  .pg-slot-in { padding: 16px 14px; }
+  .pg-nextcard { padding: 16px; gap: 13px; }
+  .pg-cta { padding: 32px var(--gut); }
+  .pg-cta-act .cta { width: 100%; justify-content: center; }
+  .pg-rel { padding: 26px var(--gut); }
+  .pg-rel-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* iOS must never zoom a field on focus, and touch targets stay honest */
+@media (hover: none) {
+  .pg-rel-a, .pg-rail-n, .pg-card, .pg-pc { -webkit-tap-highlight-color: rgba(236, 32, 39, .08); }
+  .pg-more { padding: 12px 0; }
+  input, select, textarea { font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pg-card, .pg-pc, .pg-rail-n, .pg-rel-a, .pg-nextcard, .pg-pcv img { transition: none; }
+  a.pg-card:hover, .pg-pc:hover, a.pg-rail-n:hover, .pg-rel-a:hover, .pg-nextcard:hover { transform: none; }
+  .pg-pc:hover .pg-pcv img { transform: none; }
+}

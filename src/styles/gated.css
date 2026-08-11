@@ -1,0 +1,143 @@
+/* ============================================================================
+   gated.css · group 06 "Gated & compliance": Investor Relations, Policies,
+   Digital Exhibition.
+
+   This file only carries what is genuinely unique to group 06: the sealed IR
+   gate, the policy index and detail shell, the certification grid, the mode
+   tiles and the exhibition stop rail. Everything else (sections, kickers, prose,
+   cards, tags, the primary action band and the placeholder slot itself) comes
+   from src/styles/pages.css so these three pages read as native phase 2 pages.
+
+   The placeholder slot here extends .pg-slot rather than replacing it: same
+   bordered panel, same dashed inner frame, same red mono tag, plus the icon
+   badge these three pages need because they carry more slots than any others.
+
+   Every class is prefixed `g`, so nothing here can collide with `pg-`. Tokens
+   only: no hex that base.css already covers.
+   ============================================================================ */
+
+/* ---------------------------------------- section header with a status chip */
+.ghead { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; }
+.ghead > div:first-child { min-width: 0; flex: 1 1 340px; }
+.ghead p { font-size: 14.5px; color: var(--soft); max-width: 56ch; margin-top: 13px; line-height: 1.6; }
+.ghead .pg-tag { align-self: center; white-space: nowrap; }
+
+/* -------------------------------------------- the labelled placeholder slot
+   .pg-slot with an icon badge. Grid-safe: no stray top margin, equal heights. */
+.gslots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
+.gslots.one { grid-template-columns: minmax(0, 1fr); }
+.gslots > .pg-slot { margin-top: 0; display: flex; flex-direction: column; min-width: 0; }
+.gslots > .pg-slot > .pg-slot-in { flex: 1; }
+@media (max-width: 720px) { .gslots { grid-template-columns: minmax(0, 1fr); } }
+
+.gslot .pg-slot-in { background-image: repeating-linear-gradient(135deg, rgba(12, 18, 32, .022) 0 1px, transparent 1px 9px); }
+.gslot-badge { flex: none; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(236, 32, 39, .22); background: rgba(236, 32, 39, .06); color: var(--blue); }
+.gslot-badge svg { width: 18px; height: 18px; }
+.gslot .pg-slot-tag { margin-top: 4px; line-height: 1.7; max-width: min(52ch, 100%); overflow-wrap: anywhere; }
+
+/* -------------------------------------------------------------- the IR gate */
+.ggate { padding: clamp(30px, 5.5vh, 60px) var(--gut) clamp(40px, 7vh, 82px); }
+.ggate-panel { position: relative; overflow: hidden; border: 1px solid var(--line); background: #0A101F; color: #C7D3EE; padding: clamp(26px, 4.4vw, 52px); max-width: 760px; }
+.ggate-panel::before { content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(125% 100% at 88% 0%, #000, transparent 72%);
+  -webkit-mask-image: radial-gradient(125% 100% at 88% 0%, #000, transparent 72%);
+  pointer-events: none; }
+.ggate-panel > * { position: relative; z-index: 1; }
+.ggate-lock { width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(236, 32, 39, .45); background: rgba(236, 32, 39, .12); color: #FF6A70; }
+.ggate-lock svg { width: 22px; height: 22px; }
+.ggate-k { display: block; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #FF6A70; font-weight: 700; margin-top: 22px; }
+.ggate-panel h2 { font-size: clamp(23px, 3.4vw, 34px); color: #fff; margin-top: 14px; max-width: 20ch; }
+.ggate-panel p { font-size: 15px; line-height: 1.68; color: #AAB6CE; max-width: 50ch; margin-top: 14px; }
+
+.ggate-form { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.ggate-form label { display: block; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: #7A87A2; font-weight: 700; margin-bottom: 8px; }
+.ggate-field { flex: 1 1 240px; min-width: 0; }
+.ggate-form input { width: 100%; height: 48px; font-family: "JetBrains Mono", monospace; font-size: 16px; letter-spacing: .16em; text-transform: uppercase; color: #fff; background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .2); padding: 0 14px; border-radius: 0; -webkit-appearance: none; appearance: none; transition: border-color .25s, background .25s; }
+.ggate-form input::placeholder { color: #5B6780; letter-spacing: .16em; }
+.ggate-form input:focus { outline: none; border-color: var(--blue); background: rgba(255, 255, 255, .08); }
+.ggate-form button { align-self: flex-end; height: 48px; min-width: 132px; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: #fff; background: var(--blue); border: 0; cursor: pointer; padding: 0 20px; transition: background .25s; }
+.ggate-form button:hover { background: var(--blue-bright); }
+.ggate-form button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.ggate-err { min-height: 18px; margin-top: 12px; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #FF6A70; font-weight: 700; line-height: 1.6; }
+.ggate-demo { margin-top: 18px; border-top: 1px solid rgba(255, 255, 255, .12); padding-top: 16px; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .07em; line-height: 1.9; color: #7A87A2; text-transform: uppercase; }
+.ggate-demo b { color: #fff; font-weight: 700; letter-spacing: .16em; }
+
+.ggate-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .12); margin-top: 28px; }
+.ggate-meta div { background: #0A101F; padding: 14px 16px; min-width: 0; }
+.ggate-meta span { display: block; font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: .18em; text-transform: uppercase; color: #7A87A2; font-weight: 700; }
+.ggate-meta b { display: block; font-size: 13.5px; font-weight: 600; color: #EAF0FB; margin-top: 7px; line-height: 1.4; overflow-wrap: anywhere; }
+
+/* the unlocked banner */
+.gopen { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; border: 1px solid var(--line); background: var(--bg2); padding: 12px 16px; }
+.gopen .gdot { width: 8px; height: 8px; background: var(--blue); flex: none; }
+.gopen p { font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); line-height: 1.8; min-width: 0; }
+.gopen button { margin-left: auto; min-height: 40px; font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--soft); background: none; border: 1px solid var(--line2); padding: 0 14px; cursor: pointer; transition: color .25s, border-color .25s; }
+.gopen button:hover { color: var(--blue-bright); border-color: rgba(236, 32, 39, .4); }
+
+/* ----------------------------------- mode tiles: 2-up minimum on phones */
+.gtiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(212px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 26px; }
+.gtile { background: var(--bg2); padding: clamp(16px, 2.2vw, 24px); min-width: 0; }
+.gtile .gk { display: flex; align-items: center; gap: 9px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--blue-bright); font-weight: 700; }
+.gtile .gk svg { width: 14px; height: 14px; flex: none; }
+.gtile h3 { font-size: 15.5px; font-weight: 600; margin-top: 12px; line-height: 1.2; }
+.gtile p { font-size: 13.5px; color: var(--soft); margin-top: 9px; line-height: 1.55; }
+@media (max-width: 720px) { .gtiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 400px) { .gtile { padding: 13px 12px; } .gtile h3 { font-size: 14px; } .gtile p { font-size: 12.5px; } }
+
+/* --------------------------------------------------------- the policy index */
+.gindex { border-top: 1px solid var(--line); margin-top: 24px; }
+.grow { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; align-items: center; gap: 14px; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 15px 4px; min-height: 56px; cursor: pointer; font: inherit; color: inherit; transition: background .25s, padding-left .3s var(--e1); }
+.grow:hover { background: var(--bg2); padding-left: 12px; }
+.grow[aria-selected="true"] { background: var(--bg2); box-shadow: inset 2px 0 0 var(--blue); padding-left: 12px; }
+.grow:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+.grow .gn { font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .08em; color: var(--faint); font-weight: 700; }
+.grow h3 { font-size: 16px; font-weight: 500; letter-spacing: -.005em; }
+.grow .gsub { display: block; font-size: 13px; color: var(--soft); margin-top: 4px; line-height: 1.5; }
+@media (max-width: 560px) {
+  .grow { grid-template-columns: 26px minmax(0, 1fr); row-gap: 9px; }
+  .grow .pg-tag { grid-column: 2; justify-self: start; }
+}
+@media (min-width: 561px) {
+  .grow .pg-tag { white-space: nowrap; }
+}
+
+.gdetail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr); gap: clamp(18px, 3vw, 36px); align-items: start; margin-top: 24px; }
+.gdetail > div > .gslots { margin-top: 0; }
+@media (max-width: 900px) { .gdetail { grid-template-columns: minmax(0, 1fr); } }
+
+/* ------------------------------------------------------- certification grid */
+.gcerts { display: grid; grid-template-columns: repeat(auto-fit, minmax(168px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 26px; }
+.gcert { background: var(--bg2); padding: 18px clamp(13px, 2vw, 20px); min-width: 0; }
+.gcert b { display: block; font-family: "Switzer", sans-serif; font-size: 15px; font-weight: 600; letter-spacing: -.015em; overflow-wrap: anywhere; }
+.gcert span { display: block; font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin-top: 9px; line-height: 1.7; }
+@media (max-width: 720px) { .gcerts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* --------------------------------------------- exhibition: guided stop rail */
+.gstops { display: grid; gap: 12px; margin-top: 26px; }
+.gstop { display: grid; grid-template-columns: 76px minmax(0, 1fr); border: 1px solid var(--line); background: var(--bg2); }
+.gstop-n { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-right: 1px solid var(--line); background: var(--panel); padding: 18px 8px; }
+.gstop-n b { font-family: "JetBrains Mono", monospace; font-size: 17px; font-weight: 700; color: var(--blue); letter-spacing: .04em; }
+.gstop-n span { font-family: "JetBrains Mono", monospace; font-size: 8px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); font-weight: 700; text-align: center; }
+.gstop-b { min-width: 0; padding: clamp(16px, 2.2vw, 24px); }
+.gstop-b h3 { font-size: 17px; font-weight: 600; letter-spacing: -.012em; line-height: 1.2; }
+.gstop-b p { font-size: 14px; color: var(--soft); margin-top: 9px; max-width: 58ch; line-height: 1.6; }
+.gstop-b .pg-slot-tag { display: inline-block; margin-top: 15px; line-height: 1.7; max-width: min(62ch, 100%); overflow-wrap: anywhere; }
+@media (max-width: 520px) {
+  .gstop { grid-template-columns: minmax(0, 1fr); }
+  .gstop-n { flex-direction: row; justify-content: flex-start; gap: 12px; border-right: 0; border-bottom: 1px solid var(--line); padding: 10px 16px; }
+  .gstop-n span { text-align: left; }
+}
+
+/* -------------------------- fact grid inside the dark primary action band */
+.gfacts { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .12); }
+.gfacts div { background: #070C18; padding: 13px 15px; min-width: 0; }
+.gfacts span { display: block; font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: #7A87A2; font-weight: 700; }
+.gfacts b { display: block; font-size: 12.5px; font-weight: 600; color: #EAF0FB; margin-top: 7px; line-height: 1.45; overflow-wrap: anywhere; }
+
+/* ------------------------------------------------------------- small pieces */
+.ghair { height: 1px; background: var(--line); margin: clamp(26px, 4vh, 42px) 0; }
+.gsub-note { font-size: 14px; color: var(--soft); max-width: 60ch; margin-top: 14px; line-height: 1.62; }
+.gsub-note b { color: var(--ink); font-weight: 600; }

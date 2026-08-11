@@ -1,0 +1,502 @@
+/* ------------------------------------------------------------------ */
+/*  Pinned horizontal story timeline — ported from the "story" concept  */
+/*  Layout + choreography kept; type, colour and image treatment follow */
+/*  the IAQ system (Switzer / Instrument Sans / JetBrains Mono, red).   */
+/* ------------------------------------------------------------------ */
+
+.story {
+  --s: 1;                                   /* photo scale factor, stepped down per breakpoint */
+  --story-line: var(--line2);
+  --story-tick: rgba(12, 18, 32, .2);
+  position: relative;
+  /* real height (travel + settle + viewport) is set inline by StoryTimeline.jsx */
+  min-height: 100vh;
+  background: var(--bg);
+  z-index: 20;
+}
+
+/* sticky viewport, not ScrollTrigger pin: same pattern as the homepage showpiece */
+.story__pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.story__track {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+}
+
+/* thin horizontal line running through the whole canvas */
+.story__line {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--story-line);
+  pointer-events: none;
+}
+
+/* travelling marker — same voice as the site's eyebrows */
+.story__label {
+  position: absolute;
+  left: 30px;
+  top: 55%;
+  transform: translateY(-160%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--blue-bright);
+  white-space: nowrap;
+}
+
+.story__label::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--blue);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Scene basics                                                       */
+/* ------------------------------------------------------------------ */
+
+.scene {
+  position: relative;
+  flex: none;
+  height: 100%;
+}
+
+.scene--y1994 { width: 100vw; }
+.scene--y2000 { width: 95vw; }
+.scene--y2007 { width: 90vw; }
+.scene--y2009 { width: 90vw; }
+.scene--y2013 { width: 100vw; }
+.scene--y2015 { width: 105vw; }
+.scene--y2020 { width: 100vw; }
+.scene--y2022 { width: 105vw; }
+.scene--y2025 { width: 90vw; }
+.scene--today { width: 100vw; }
+
+/* ghost year: outlined, the same treatment as the old .tl-yearbig */
+.scene__year {
+  position: absolute;
+  top: 15vh;
+  font-family: "Switzer", "Instrument Sans", system-ui, sans-serif;
+  font-size: clamp(90px, 9vw, 150px);
+  font-weight: 700;
+  letter-spacing: -.04em;
+  line-height: .9;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--blue);
+  white-space: nowrap;
+}
+
+/* red square node sitting on the line */
+.scene__node {
+  position: absolute;
+  top: 55%;
+  width: 11px;
+  height: 11px;
+  background: var(--blue);
+  transform: translate(-50%, -50%);
+}
+
+/* thin engineering ticks around the line */
+.scene__tick {
+  position: absolute;
+  width: 1px;
+  background: var(--story-tick);
+  pointer-events: none;
+}
+
+.scene__tick--up { bottom: 45%; }
+.scene__tick--down { top: 55%; }
+
+/* milestone copy block */
+.scene__copy {
+  position: absolute;
+  max-width: 360px;
+}
+
+.scene__k {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--blue-bright);
+}
+
+.scene__title {
+  margin-top: 10px;
+  font-family: "Switzer", sans-serif;
+  font-size: clamp(24px, 2vw, 32px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.scene__subtitle {
+  margin-top: 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: .04em;
+  line-height: 1.5;
+  color: var(--blue-bright);
+}
+
+.scene__body {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--soft);
+}
+
+/* photo cards: squared, hairline border + soft shadow, per the site's card language */
+.scene__img {
+  position: absolute;
+  overflow: hidden;
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 54px -28px rgba(12, 18, 32, .35);
+  will-change: transform;
+}
+
+.scene__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s var(--e1);
+}
+
+.scene__img:hover img {
+  transform: scale(1.02);
+}
+
+/* interim-asset disclosure chip, carried over from the old cards */
+.scene__chip {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #EAF0FB;
+  background: rgba(10, 16, 31, .78);
+  padding: 4px 8px;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------ */
+/*  1994 — the workshop, single dominant frame                         */
+/* ------------------------------------------------------------------ */
+
+.scene--y1994 .scene__year { left: 22vw; top: 16vh; }
+.scene--y1994 .scene__node { left: 31vw; }
+.scene--y1994 .scene__copy { left: 31vw; top: 60vh; }
+
+.scene--y1994 .scene__img--a {
+  left: 62vw; top: 24vh;
+  width: calc(400px * var(--s));
+  height: calc(320px * var(--s));
+  z-index: 2;
+}
+
+/* ------------------------------------------------------------------ */
+/*  2000 — construction in China, wide frame                           */
+/* ------------------------------------------------------------------ */
+
+.scene--y2000 .scene__year { left: 12vw; top: 15vh; }
+.scene--y2000 .scene__node { left: 21vw; }
+.scene--y2000 .scene__copy { left: 21vw; top: 60vh; }
+
+.scene--y2000 .scene__img--a {
+  left: 58vw; top: 26vh;
+  width: calc(400px * var(--s));
+  height: calc(290px * var(--s));
+  z-index: 2;
+}
+
+/* ------------------------------------------------------------------ */
+/*  2007 — Europe, tall frame                                          */
+/* ------------------------------------------------------------------ */
+
+.scene--y2007 .scene__year { left: 10vw; top: 15vh; }
+.scene--y2007 .scene__node { left: 19vw; }
+.scene--y2007 .scene__copy { left: 19vw; top: 60vh; }
+
+.scene--y2007 .scene__img--a {
+  left: 60vw; top: 22vh;
+  width: calc(300px * var(--s));
+  height: calc(430px * var(--s));
+  z-index: 2;
+}
+
+/* ------------------------------------------------------------------ */
+/*  2009 — the cleanroom itself                                        */
+/* ------------------------------------------------------------------ */
+
+.scene--y2009 .scene__year { left: 10vw; top: 14vh; }
+.scene--y2009 .scene__node { left: 18vw; }
+.scene--y2009 .scene__copy { left: 18vw; top: 60vh; }
+
+.scene--y2009 .scene__img--a {
+  left: 58vw; top: 26vh;
+  width: calc(380px * var(--s));
+  height: calc(290px * var(--s));
+  z-index: 2;
+}
+
+/* ------------------------------------------------------------------ */
+/*  2013 — energy pivot, wide + offset pair                            */
+/* ------------------------------------------------------------------ */
+
+.scene--y2013 .scene__year { left: 12vw; top: 15vh; }
+.scene--y2013 .scene__node { left: 22vw; }
+.scene--y2013 .scene__copy { left: 22vw; top: 60vh; }
+
+.scene--y2013 .scene__img--a {
+  left: 56vw; top: 24vh;
+  width: calc(360px * var(--s));
+  height: calc(290px * var(--s));
+  z-index: 2;
+}
+
+.scene--y2013 .scene__img--b {
+  left: 77vw; top: 46vh;
+  width: calc(240px * var(--s));
+  height: calc(260px * var(--s));
+  z-index: 3;
+}
+
+/* ------------------------------------------------------------------ */
+/*  2015 — semiconductor scale, overlapping pair                       */
+/* ------------------------------------------------------------------ */
+
+.scene--y2015 .scene__year { left: 14vw; top: 15vh; }
+.scene--y2015 .scene__node { left: 25vw; }
+.scene--y2015 .scene__copy { left: 25vw; top: 58vh; max-width: 380px; }
+
+.scene--y2015 .scene__img--a {
+  left: 58vw; top: 23vh;
+  width: calc(340px * var(--s));
+  height: calc(300px * var(--s));
+  z-index: 2;
+}
+
+.scene--y2015 .scene__img--b {
+  left: 76vw; top: 44vh;
+  width: calc(260px * var(--s));
+  height: calc(280px * var(--s));
+  z-index: 3;
+}
+
+/* ------------------------------------------------------------------ */
+/*  2020 — the EV era, wide + tall pair                                */
+/* ------------------------------------------------------------------ */
+
+.scene--y2020 .scene__year { left: 10vw; top: 14vh; }
+.scene--y2020 .scene__node { left: 18vw; }
+.scene--y2020 .scene__copy { left: 18vw; top: 60vh; }
+
+.scene--y2020 .scene__img--a {
+  left: 58vw; top: 24vh;
+  width: calc(360px * var(--s));
+  height: calc(300px * var(--s));
+  z-index: 2;
+}
+
+.scene--y2020 .scene__img--b {
+  left: 79vw; top: 40vh;
+  width: calc(230px * var(--s));
+  height: calc(290px * var(--s));
+  z-index: 3;
+}
+
+/* ------------------------------------------------------------------ */
+/*  2022 — mega projects, wide + tall pair                             */
+/* ------------------------------------------------------------------ */
+
+.scene--y2022 .scene__year { left: 12vw; top: 15vh; }
+.scene--y2022 .scene__node { left: 22vw; }
+.scene--y2022 .scene__copy { left: 22vw; top: 58vh; }
+
+.scene--y2022 .scene__img--a {
+  left: 57vw; top: 22vh;
+  width: calc(380px * var(--s));
+  height: calc(300px * var(--s));
+  z-index: 2;
+}
+
+.scene--y2022 .scene__img--b {
+  left: 78vw; top: 44vh;
+  width: calc(260px * var(--s));
+  height: calc(320px * var(--s));
+  z-index: 3;
+}
+
+/* ------------------------------------------------------------------ */
+/*  2025 — going global, single large frame                            */
+/* ------------------------------------------------------------------ */
+
+.scene--y2025 .scene__year { left: 10vw; top: 15vh; }
+.scene--y2025 .scene__node { left: 19vw; }
+.scene--y2025 .scene__copy { left: 19vw; top: 60vh; }
+
+.scene--y2025 .scene__img--a {
+  left: 60vw; top: 24vh;
+  width: calc(360px * var(--s));
+  height: calc(430px * var(--s));
+  z-index: 2;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Today — calm final composition                                     */
+/* ------------------------------------------------------------------ */
+
+.scene--today .scene__year { left: 14vw; top: 15vh; }
+.scene--today .scene__node { left: 24vw; }
+.scene--today .scene__copy { left: 24vw; top: 60vh; }
+
+.scene--today .scene__img--a {
+  left: 58vw; top: 24vh;
+  width: calc(340px * var(--s));
+  height: calc(420px * var(--s));
+  z-index: 2;
+}
+
+.scene--today .scene__img--b {
+  left: 78vw; top: 50vh;
+  width: calc(240px * var(--s));
+  height: calc(220px * var(--s));
+  z-index: 3;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Tablet                                                             */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 1100px) {
+  .story { --s: 0.72; }
+
+  .scene__year { font-size: clamp(70px, 10vw, 95px); }
+  .scene__copy { max-width: 300px; }
+  .scene__body { font-size: 14px; }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Mobile — same pinned horizontal story, compressed scenes           */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 767px) {
+  .story { --s: 0.52; }
+
+  .scene--y1994, .scene--y2000, .scene--y2007, .scene--y2009, .scene--y2013,
+  .scene--y2015, .scene--y2020, .scene--y2022, .scene--y2025, .scene--today {
+    width: 96vw;
+  }
+
+  .scene__year {
+    font-size: clamp(60px, 17vw, 82px);
+    left: 7vw !important;
+    top: 13vh !important;
+  }
+
+  .scene__node { left: 8vw !important; }
+
+  .scene__copy {
+    left: 8vw !important;
+    top: 57vh !important;
+    max-width: 82vw !important;
+  }
+
+  .scene__title { font-size: 21px; }
+  .scene__subtitle { font-size: 11px; margin-top: 10px; }
+  .scene__body { font-size: 14px; }
+
+  .story__label { font-size: 9.5px; left: 18px; }
+
+  /* pull pairs left so they stay inside the narrower scenes */
+  .scene__img--a { left: 42vw !important; top: 20vh !important; }
+  .scene__img--b { left: 66vw !important; top: 36vh !important; }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reduced motion — plain vertical story, no pinning                  */
+/* ------------------------------------------------------------------ */
+
+.story--static,
+.story--static .story__track {
+  height: auto;
+  overflow: visible;
+}
+
+.story--static .story__pin {
+  position: static;
+  height: auto;
+  overflow: visible;
+}
+
+.story--static .story__track {
+  display: block;
+  width: 100%;
+  transform: none !important;
+}
+
+.story--static .story__line,
+.story--static .scene__tick {
+  display: none;
+}
+
+.story--static .story__label {
+  position: static;
+  transform: none;
+  padding: 10vh var(--gut) 0;
+}
+
+.story--static .scene {
+  width: 100% !important;
+  height: auto;
+  padding: 7vh var(--gut);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.story--static .scene__year,
+.story--static .scene__copy,
+.story--static .scene__img {
+  position: static !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.story--static .scene__node {
+  position: static;
+  transform: none;
+}
+
+.story--static .scene__images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.story--static .scene__img {
+  flex: none;
+}
