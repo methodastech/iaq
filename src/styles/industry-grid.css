@@ -1,8 +1,9 @@
 /* ------------------------------------------------------------------ */
 /*  "Where we build" — the seven markets                                */
-/*  Layout from sectionreference.html: two-column intro over an         */
-/*  accordion card wall (3 cards, then 4, all one height). Colour and   */
-/*  type are the IAQ system, not the reference's dark shell.            */
+/*  A two-column intro over one straight ACCIONA-style row: all seven   */
+/*  markets side by side as tall vertical panels, icon + uppercase      */
+/*  label on top. Hovering a panel stretches it, its siblings give      */
+/*  way, and the description and pill fade up inside the widened one.   */
 /* ------------------------------------------------------------------ */
 
 .ig-intro {
@@ -77,21 +78,25 @@
 .ig-cta:hover .ig-arw,
 .ig-card:hover .ig-arw { transform: translateX(5px); }
 
-/* ---- the card wall --------------------------------------------------- */
+/* ---- the straight row ------------------------------------------------ */
 
+/* full-bleed: the strip sits OUTSIDE the .wrap (the intro carries its own
+   wrap div), so as a plain block it spans the viewport edge to edge with
+   no vw math and nothing to overflow */
 .ig-grid {
-  --gap: 14px;
+  --gap: 0px;
   container-type: inline-size;
   margin-top: 44px;
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap);
 }
 
 .ig-row {
   display: flex;
   gap: var(--gap);
   align-items: stretch;
+  /* the stretch animates flex-grow, so panel widths pass through fractional
+     pixels and hairline seams open between them; painted dark, those seams
+     read as part of the imagery instead of flashing white */
+  background: #0F1626;
 }
 
 .ig-card {
@@ -99,9 +104,7 @@
   display: block;
   flex: 1 1 0;
   min-width: 0;
-  /* both rows share one height, derived from the 3-up column width */
-  height: 340px;
-  height: calc((100cqw - var(--gap) * 2) / 3);
+  height: clamp(420px, 42vw, 560px);
   overflow: hidden;
   background: #0F1626;
   text-decoration: none;
@@ -110,7 +113,7 @@
 
 /* the accordion stretch */
 .ig-card:hover,
-.ig-card:focus-within { flex-grow: 1.42; }
+.ig-card:focus-within { flex-grow: 1.9; }
 
 .ig-media {
   position: absolute;
@@ -132,69 +135,83 @@
 .ig-card:hover .ig-media img,
 .ig-card:focus-within .ig-media img { transform: scale(1.055); }
 
-/* readability scrim, not decoration */
+/* the heavy resting tint, ACCIONA-style, lifted on hover */
 .ig-scrim {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg,
-    rgba(8, 13, 24, .58) 0%,
-    rgba(8, 13, 24, .26) 34%,
-    rgba(8, 13, 24, .10) 56%,
-    rgba(8, 13, 24, .52) 100%);
+    rgba(8, 13, 24, .66) 0%,
+    rgba(8, 13, 24, .48) 34%,
+    rgba(8, 13, 24, .44) 62%,
+    rgba(8, 13, 24, .66) 100%);
   pointer-events: none;
 }
 
 .ig-tint {
   position: absolute;
   inset: 0;
-  background: rgba(8, 13, 24, .22);
-  opacity: 0;
-  transition: opacity 400ms var(--e1);
+  background: rgba(8, 13, 24, .34);
+  opacity: 1;
+  transition: opacity 500ms var(--e1);
   pointer-events: none;
 }
 
 .ig-card:hover .ig-tint,
-.ig-card:focus-within .ig-tint { opacity: 1; }
+.ig-card:focus-within .ig-tint { opacity: 0; }
 
-/* the technical index, kept from the old cards */
-.ig-no {
+/* ---- icon + label, top ------------------------------------------------ */
+
+.ig-head {
   position: absolute;
   top: 22px;
-  right: 22px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 9px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: rgba(255, 255, 255, .82);
+  left: 18px;
+  right: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #fff;
 }
 
-.ig-body {
-  position: absolute;
-  top: 26px;
-  left: 26px;
-  right: 22px;
+.ig-ic {
+  flex: none;
+  width: 19px;
+  height: 19px;
+  margin-top: -2px;
+  opacity: .95;
 }
 
 .ig-title {
   display: block;
-  font-family: "Switzer", sans-serif;
-  font-size: clamp(19px, 1.8vw, 25px);
-  font-weight: 600;
-  line-height: 1.08;
-  letter-spacing: -.018em;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.6;
   color: #fff;
-  /* authored breaks only: the stretch must never re-wrap the title */
+  /* authored breaks only: the stretch must never re-wrap the label */
   white-space: nowrap;
+}
+
+/* ---- description + pill, revealed by the stretch ---------------------- */
+
+.ig-foot {
+  position: absolute;
+  left: 18px;
+  right: 16px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
 }
 
 .ig-desc {
   display: block;
-  margin-top: 16px;
-  max-width: 34ch;
-  font-size: 13.5px;
+  max-width: 30ch;
+  font-size: 13px;
   line-height: 1.45;
-  color: rgba(255, 255, 255, .92);
+  color: rgba(255, 255, 255, .94);
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 420ms var(--e1) 60ms, transform 420ms var(--e1) 60ms;
@@ -204,16 +221,13 @@
 .ig-card:hover .ig-desc,
 .ig-card:focus-within .ig-desc { opacity: 1; transform: translateY(0); }
 
-/* ghost pill, bottom-left */
+/* ghost pill, hidden until the panel has the room for it */
 .ig-pill {
-  position: absolute;
-  left: 26px;
-  bottom: 24px;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  height: 42px;
+  height: 40px;
   padding: 0 16px 0 18px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, .55);
@@ -227,13 +241,18 @@
   letter-spacing: .1em;
   text-transform: uppercase;
   font-weight: 700;
-  transition: background-color .3s var(--e1), border-color .3s var(--e1);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms var(--e1) 120ms, transform 420ms var(--e1) 120ms,
+    background-color .3s var(--e1), border-color .3s var(--e1);
 }
 
 .ig-pill .ig-arw { width: 17px; height: 10px; }
 
 .ig-card:hover .ig-pill,
 .ig-card:focus-within .ig-pill {
+  opacity: 1;
+  transform: translateY(0);
   background: rgba(255, 255, 255, .1);
   border-color: rgba(255, 255, 255, .9);
 }
@@ -243,44 +262,53 @@
   outline-offset: 3px;
 }
 
-/* ---- tablet: two per row, no accordion (the stretch needs room) ------ */
+/* ---- tablet: wrap into rows, no accordion (the stretch needs room) ---- */
 
 @media (max-width: 1024px) {
   .ig-intro { grid-template-columns: 1fr; row-gap: 26px; }
   .ig-h { max-width: none; }
   .ig-intro-r { padding-top: 0; max-width: 620px; }
 
-  .ig-grid { --gap: 12px; margin-top: 34px; }
+  .ig-grid { --gap: 0px; margin-top: 34px; }
   .ig-row { flex-wrap: wrap; }
 
   .ig-card {
-    flex: 0 0 calc((100% - var(--gap)) / 2);
-    height: calc((100cqw - var(--gap)) / 2 * .78);
+    flex: 0 0 calc((100% - var(--gap) * 2) / 3);
+    height: 320px;
   }
 
   .ig-card:hover,
   .ig-card:focus-within { flex-grow: 0; }
 
-  /* no hover stretch to reveal it, so the description simply stays */
-  .ig-desc { opacity: 1; transform: none; }
+  /* no hover stretch to reveal them, so they simply stay */
+  .ig-desc, .ig-pill { opacity: 1; transform: none; }
+  .ig-tint { opacity: 0; }
 }
 
-/* ---- mobile: one per row -------------------------------------------- */
+/* ---- mobile: a one-panel snap carousel (auto-advanced from the JSX) ---- */
 
 @media (max-width: 640px) {
-  .ig-grid { --gap: 10px; }
+  .ig-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .ig-row::-webkit-scrollbar { display: none; }
+
   .ig-card {
     flex: 0 0 100%;
-    height: calc(100cqw * .8);
-    min-height: 280px;
+    /* fill most of the phone screen, like the live site's industry slides */
+    height: clamp(520px, 74vh, 680px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
-  .ig-body { top: 22px; left: 22px; right: 20px; }
-  .ig-no { top: 18px; right: 18px; }
-  .ig-title { white-space: normal; font-size: 22px; }
-  .ig-title br { display: none; }
-  .ig-desc { margin-top: 10px; max-width: 90%; }
-  .ig-pill { left: 22px; bottom: 20px; }
+  .ig-head { top: 18px; left: 18px; right: 14px; }
+  .ig-foot { left: 18px; right: 16px; bottom: 20px; }
+  .ig-desc { display: block; }
+  .ig-pill { height: 38px; padding: 0 14px 0 16px; gap: 12px; }
   .ig-cta { width: 100%; max-width: 300px; }
 }
 
@@ -288,5 +316,6 @@
   .ig-card, .ig-media img, .ig-desc, .ig-tint, .ig-pill, .ig-cta, .ig-arw {
     transition: none;
   }
-  .ig-desc { opacity: 1; transform: none; }
+  .ig-desc, .ig-pill { opacity: 1; transform: none; }
+  .ig-tint { opacity: 0; }
 }

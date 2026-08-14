@@ -1,0 +1,195 @@
+/* ------------------------------------------------------------------ */
+/*  The newsroom rail — press-center pattern                            */
+/*  Filter pills left, round prev/next right, horizontal snap rail      */
+/*  of cards below. Lead card is photographic; the rest are quiet       */
+/*  panels with a big crimson day-of-month anchoring the bottom.        */
+/* ------------------------------------------------------------------ */
+
+.nr-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.nr-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.nr-pill {
+  height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid var(--line2);
+  background: var(--bg2);
+  color: var(--ink);
+  font: 600 14px/1 "Instrument Sans", sans-serif;
+  cursor: pointer;
+  transition: background-color .25s var(--e1), color .25s var(--e1), border-color .25s var(--e1);
+}
+
+.nr-pill:hover { border-color: var(--faint); }
+
+.nr-pill.on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.nr-arrows { display: flex; gap: 10px; margin-left: auto; }
+
+.nr-arw {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--line2);
+  background: var(--bg2);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color .25s var(--e1), color .25s var(--e1),
+    border-color .25s var(--e1), opacity .25s var(--e1);
+}
+
+.nr-arw svg { width: 19px; height: 12px; }
+
+.nr-arw.dark { background: var(--ink); border-color: var(--ink); color: #fff; }
+.nr-arw:hover:not(:disabled) { border-color: var(--ink); }
+.nr-arw.dark:hover:not(:disabled) { background: var(--blue); border-color: var(--blue); }
+.nr-arw:disabled { opacity: .35; cursor: default; }
+
+.nr-pill:focus-visible, .nr-arw:focus-visible, .nr-card:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* ---- the rail --------------------------------------------------------- */
+
+.nr-rail {
+  display: flex;
+  gap: 14px;
+  margin-top: 26px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* let card edges breathe past the wrap without clipping hover states */
+  padding-bottom: 6px;
+}
+
+.nr-rail::-webkit-scrollbar { display: none; }
+
+.nr-card {
+  position: relative;
+  flex: 0 0 clamp(280px, 26vw, 400px);
+  height: clamp(380px, 42vw, 480px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px 26px 24px;
+  background: #F2F4F8;
+  text-decoration: none;
+  overflow: hidden;
+  transition: background-color .3s var(--e1);
+}
+
+.nr-card:hover { background: #EBEEF4; }
+
+/* every card rests as a quiet panel; the photo fades in under the pointer
+   and the flat card becomes a photographic one */
+.nr-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 450ms var(--e1), transform 900ms var(--e1);
+  will-change: transform, opacity;
+}
+.nr-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8,13,24,.62) 0%, rgba(8,13,24,.18) 55%, rgba(8,13,24,.55) 100%);
+  opacity: 0;
+  transition: opacity 450ms var(--e1);
+  pointer-events: none;
+}
+.nr-card:hover .nr-img,
+.nr-card:focus-visible .nr-img { opacity: 1; transform: scale(1.01); }
+.nr-card:hover .nr-scrim,
+.nr-card:focus-visible .nr-scrim { opacity: 1; }
+
+/* text flips to white once the photo is underneath it */
+.nr-title { transition: color 350ms var(--e1); }
+.nr-date { transition: border-top-color 350ms var(--e1); }
+.nr-date b, .nr-my { transition: color 350ms var(--e1); }
+.nr-card:hover .nr-title,
+.nr-card:focus-visible .nr-title { color: #fff; }
+.nr-card:hover .nr-date,
+.nr-card:focus-visible .nr-date { border-top-color: rgba(255,255,255,.35); }
+.nr-card:hover .nr-date b,
+.nr-card:focus-visible .nr-date b { color: #fff; }
+.nr-card:hover .nr-my,
+.nr-card:focus-visible .nr-my { color: rgba(255,255,255,.85); }
+
+.nr-title {
+  position: relative;
+  font-family: "Switzer", sans-serif;
+  font-size: clamp(16.5px, 1.5vw, 20px);
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -.012em;
+  color: var(--ink);
+  /* long registry titles: clamp rather than overflow */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---- the date row ------------------------------------------------------ */
+
+.nr-date {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line2, #E2E7F0);
+}
+
+.nr-date b {
+  font-family: "Switzer", sans-serif;
+  font-size: clamp(52px, 4.6vw, 72px);
+  font-weight: 650;
+  line-height: .82;
+  letter-spacing: -.03em;
+  color: var(--blue-bright);
+}
+
+.nr-my {
+  font-size: 13.5px;
+  line-height: 1.35;
+  text-align: right;
+  color: var(--faint);
+}
+
+/* ---- small screens ----------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .nr-bar { row-gap: 14px; }
+  .nr-pill { height: 40px; padding: 0 16px; font-size: 13px; }
+  .nr-arw { width: 46px; height: 46px; }
+  .nr-card { flex: 0 0 82%; height: 400px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nr-pill, .nr-arw, .nr-card, .nr-img, .nr-scrim, .nr-title, .nr-date,
+  .nr-date b, .nr-my { transition: none; }
+}

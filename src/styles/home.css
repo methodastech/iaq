@@ -71,7 +71,48 @@ html.is-loading{overflow:hidden}
   linear-gradient(90deg,rgba(7,12,24,.88) 0%,rgba(7,12,24,.74) 30%,rgba(7,12,24,.34) 64%,rgba(7,12,24,.42) 100%),
   linear-gradient(180deg,rgba(7,12,24,.5) 0%,rgba(7,12,24,0) 26%,rgba(7,12,24,0) 72%,rgba(7,12,24,.72) 100%)}
 #heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+/* the veil: whitens the whole hero backdrop mid-transition so the seam to the
+   white page has no contrast left to show through the clouds */
+.hero-veil{position:absolute;inset:0;z-index:2;background:#F7F9FC;opacity:0;pointer-events:none;will-change:opacity}
 .hero-inner{position:relative;z-index:3;max-width:var(--maxw);margin:0 auto;padding:clamp(56px,9vh,110px) var(--gut);width:100%}
+
+/* ============ the cloud transition ============
+   Four layers straddle the hero/glance seam, animated by scenes/cloudx.js.
+   The container is a zero-height marker between the two sections; layers
+   hang off it, wider than the viewport so no rectangular edge ever shows.
+   The photographic layers are white-on-black and screen-blended, so their
+   black simply vanishes and only cloud remains. CSS values below are the
+   resting state: a soft static mist that hides the seam even with no JS. */
+.cldx{position:relative;z-index:6;height:0;pointer-events:none}
+.cldx-l{position:absolute;left:-12vw;width:124vw;will-change:transform,opacity}
+/* far mist: a huge soft mass behind everything */
+.cldx-rear{top:-44vh;height:56vh;filter:blur(26px);opacity:.3;background:
+  radial-gradient(60% 85% at 18% 78%,rgba(250,251,253,.95),transparent 62%),
+  radial-gradient(52% 78% at 52% 92%,rgba(250,251,253,.9),transparent 64%),
+  radial-gradient(58% 88% at 84% 80%,rgba(250,251,253,.95),transparent 62%)}
+/* the photographic cloud bank, mid-field; masked on BOTH edges so no image
+   boundary can ever show as a horizontal band while the layer travels */
+.cldx-main{top:-48vh;height:60vh;opacity:.32;mix-blend-mode:screen;filter:blur(1.5px);
+  background:url(/assets/clouds/cloud-bank.webp) center 78%/cover no-repeat;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.55) 16%,#000 34%,#000 62%,rgba(0,0,0,.5) 84%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.55) 16%,#000 34%,#000 62%,rgba(0,0,0,.5) 84%,transparent 100%)}
+/* thin wisps crossing in front, most blurred, fastest */
+.cldx-fore{top:-34vh;height:46vh;opacity:.22;mix-blend-mode:screen;filter:blur(4px);
+  background:url(/assets/clouds/cloud-wisps.webp) center 60%/cover no-repeat;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.5) 20%,#000 40%,#000 58%,rgba(0,0,0,.45) 82%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.5) 20%,#000 40%,#000 58%,rgba(0,0,0,.45) 82%,transparent 100%)}
+/* the finishing white: taller, denser, and reaching well below the seam so
+   the hero's bottom edge is buried before the clouds thin out */
+.cldx-wash{top:-40vh;height:50vh;background:
+  radial-gradient(80% 95% at 26% 96%,rgba(247,249,252,.8),transparent 78%),
+  radial-gradient(76% 90% at 74% 100%,rgba(247,249,252,.75),transparent 78%),
+  linear-gradient(180deg,transparent 0,rgba(247,249,252,.18) 22%,rgba(247,249,252,.5) 42%,rgba(247,249,252,.85) 60%,#F7F9FC 76%)}
+@media(max-width:640px){
+  .cldx-rear{top:-28vh;height:38vh;filter:blur(18px)}
+  .cldx-main{top:-32vh;height:42vh}
+  .cldx-fore{top:-22vh;height:32vh;filter:blur(3px)}
+  .cldx-wash{top:-24vh;height:32vh}
+}
 .hero h1{font-size:clamp(34px,5.6vw,72px);max-width:none;margin-top:18px;font-weight:600;letter-spacing:-.025em}
 .hero h1 em{color:#FF4D55}
 .hl{display:block;overflow:hidden}
@@ -87,6 +128,38 @@ html.motion .hero .hl:nth-child(3)>span{animation-delay:.22s}
 .hero .lede{margin-top:22px}
 .hero-ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;align-items:center}
 .cta-ghost{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--blue-bright);text-decoration:none;padding:11px 18px;border:1px solid var(--line2);transition:border-color .25s,background .25s}
+
+/* ============ hero furniture: the record + the market card ============ */
+/* the red dash before the hero eyebrow */
+.hero .eyebrow::before{content:"";width:26px;height:2px;background:var(--blue);flex:none}
+
+/* the record, in glass: four real registry numbers under the CTAs */
+.hero-stats{display:flex;margin-top:clamp(26px,4.5vh,46px);max-width:780px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(10,16,31,.44);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hst{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:12px;padding:16px 18px}
+.hst+.hst{border-left:1px solid rgba(255,255,255,.12)}
+.hst svg{width:22px;height:22px;color:rgba(255,255,255,.88);flex:none}
+.hst b{display:block;font-family:"Switzer",sans-serif;font-size:22px;font-weight:650;letter-spacing:-.02em;line-height:1;color:#FF4D55}
+.hst span{display:block;margin-top:4px;font-size:12px;line-height:1.25;color:rgba(255,255,255,.78)}
+
+/* the market card, glass on the skyline side */
+.hero-card{position:absolute;right:var(--gut);bottom:clamp(48px,9vh,96px);z-index:3;width:min(360px,29vw);padding:22px 22px 14px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(10,16,31,.5);backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2)}
+.hc-k{display:inline-flex;align-items:center;gap:9px;font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#EAF0FB}
+.hc-k svg{width:17px;height:17px;color:#FF4D55}
+.hero-card p{margin-top:12px;font-family:"Switzer",sans-serif;font-size:19.5px;font-weight:600;line-height:1.3;letter-spacing:-.015em;color:#fff}
+.hc-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}
+.hc-tiles a{display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px 4px;border-radius:8px;text-decoration:none;transition:background-color .25s}
+.hc-tiles a:hover{background:rgba(255,255,255,.08)}
+.hc-tiles a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.hc-tiles svg{width:20px;height:20px;color:#fff;opacity:.92}
+.hc-tiles span{font-size:9.5px;line-height:1.25;text-align:center;color:rgba(255,255,255,.8)}
+
+@media(max-width:1220px){.hero-card{display:none}}
+@media(max-width:760px){
+  .hero-stats{flex-wrap:wrap}
+  .hst{flex:1 1 50%}
+  .hst:nth-child(3){border-left:0}
+  .hst:nth-child(n+3){border-top:1px solid rgba(255,255,255,.12)}
+}
 .cta-ghost:hover{border-color:var(--blue);background:rgba(236,32,39,.05)}
 
 /* ============ the film ============ */

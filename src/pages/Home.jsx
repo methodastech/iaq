@@ -4,13 +4,17 @@ import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
 import { MarkPrj, MarkCln, MarkEmp, MarkCtr, MarkShr, MarkCrb } from '../components/Marks.jsx'
 import IndustryGrid from '../components/IndustryGrid.jsx'
+import NewsRail from '../components/NewsRail.jsx'
 import initHome from '../scenes/home.js'
+import initCloudX from '../scenes/cloudx.js'
 import '../styles/home.css'
 
 export default function Home() {
   useEffect(() => {
     document.title = 'IAQ Group · Homepage Concept · Brand Method'
-    return initHome()
+    const offHome = initHome()
+    const offCloud = initCloudX()
+    return () => { if (typeof offHome === 'function') offHome(); offCloud() }
   }, [])
   return (
     <>
@@ -29,6 +33,7 @@ export default function Home() {
       </div>
       <div className="hero-scrim" aria-hidden="true"></div>
       <canvas id="heroCanvas" aria-hidden="true"></canvas>
+      <div className="hero-veil" aria-hidden="true"></div>
       <div className="hero-inner">
         <span className="eyebrow"><span data-scramble="" data-scramble-speed="22" data-scramble-stagger="26">TOTAL FACILITY SOLUTIONS · EST. 1994</span></span>
         <h1 aria-label="We build the environments where the future is made.">
@@ -41,9 +46,64 @@ export default function Home() {
           <Link className="cta" to="/projects">Explore 230+ projects</Link>
           <a className="cta-ghost" href="#showpiece">See the 3D layer</a>
         </div>
+
+        {/* the record, in glass: real registry numbers only */}
+        <div className="hero-stats" data-reveal="">
+          <div className="hst">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 2.5 4.5 5.5v6c0 4.6 3.2 8.1 7.5 9.5 4.3-1.4 7.5-4.9 7.5-9.5v-6z"/><path d="m8.8 11.8 2.2 2.2 4.2-4.5"/></svg>
+            <div><b>32+</b><span>Years of excellence</span></div>
+          </div>
+          <div className="hst">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6M9 11h6"/></svg>
+            <div><b>230+</b><span>Projects delivered</span></div>
+          </div>
+          <div className="hst">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.4 4 5.8 4 9.5s-1.4 7.1-4 9.5c-2.6-2.4-4-5.8-4-9.5s1.4-7.1 4-9.5z"/></svg>
+            <div><b>8</b><span>Countries served</span></div>
+          </div>
+          <div className="hst">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5M16 5.6a3.2 3.2 0 0 1 0 4.8M18.5 15.2c1.1.8 1.8 2 2 3.8"/></svg>
+            <div><b>450+</b><span>Experts group-wide</span></div>
+          </div>
+        </div>
       </div>
+
+      {/* the market card, in glass on the skyline side */}
+      <aside className="hero-card" data-reveal="">
+        <span className="hc-k">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.4 4 5.8 4 9.5s-1.4 7.1-4 9.5c-2.6-2.4-4-5.8-4-9.5s1.4-7.1 4-9.5z"/></svg>
+          Asia Pacific market
+        </span>
+        <p>Engineering the future<br />of high-tech facilities.</p>
+        <div className="hc-tiles">
+          <Link to="/markets/semiconductor">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1"/><path d="M9.5 9.5h5v5h-5zM9 2.5v3.5M15 2.5v3.5M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/></svg>
+            <span>Semiconductors</span>
+          </Link>
+          <Link to="/markets/ev-battery">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2.5" y="7.5" width="17" height="9" rx="1.5"/><path d="M21.5 10.5v3M12.2 9l-2.4 3h4l-2.4 3"/></svg>
+            <span>EV Batteries</span>
+          </Link>
+          <Link to="/markets/data-centre">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="7" rx="1"/><rect x="3.5" y="13.5" width="17" height="7" rx="1"/><path d="M7 7h.01M7 17h.01M11 7h3M11 17h3"/></svg>
+            <span>Data Centres</span>
+          </Link>
+          <Link to="/markets/bio-lifescience">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9.5 3h5M10.5 3v6l-5.2 9a1.6 1.6 0 0 0 1.4 2.4h10.6a1.6 1.6 0 0 0 1.4-2.4L13.5 9V3"/><path d="M8 15.5h8"/></svg>
+            <span>Life Sciences</span>
+          </Link>
+        </div>
+      </aside>
     </header>
 
+    {/* the cloud transition: four layers straddling the hero/glance seam,
+        driven by a scrubbed ScrollTrigger in scenes/cloudx.js */}
+    <div className="cldx" id="cldx" aria-hidden="true">
+      <div className="cldx-l cldx-rear" id="cldxRear"></div>
+      <div className="cldx-l cldx-main" id="cldxMain"></div>
+      <div className="cldx-l cldx-fore" id="cldxFore"></div>
+      <div className="cldx-l cldx-wash" id="cldxWash"></div>
+    </div>
 
     <section className="glance" id="story">
       <div className="glance-glow" aria-hidden="true"></div>
@@ -127,8 +187,7 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="sec wrap" id="industries" style={{paddingTop:'20px'}}>
-      <span className="eyebrow"><span data-scramble="">WHERE WE BUILD</span></span>
+    <section className="sec" id="industries" style={{paddingTop:'20px',paddingBottom:'0'}}>
       <IndustryGrid />
     </section>
 
@@ -224,11 +283,7 @@ export default function Home() {
     <section className="sec wrap" id="news" style={{paddingTop:'20px'}}>
       <span className="eyebrow"><span data-scramble="">NEWSROOM</span></span>
       <h2 className="u-mt14">Signals from the group</h2>
-      <div className="news">
-        <a href="https://iaqtechnology.com.my/iaq-opens-official-branch-office-in-penang-strengthening-commitment-to-the-northern-region/" target="_blank" rel="noopener" data-reveal=""><span className="d">Jul 23, 2025</span><span className="t">IAQ opens official branch office in Penang, strengthening the northern region</span><span className="go">&rarr;</span></a>
-        <a href="https://iaqtechnology.com.my/iaq-joins-prime-ministers-high-level-business-roundtable-in-france-representing-malaysias-growing-global-presence/" target="_blank" rel="noopener" data-reveal=""><span className="d">Jul 9, 2025</span><span className="t">IAQ joins the Prime Minister&rsquo;s high-level business roundtable in France</span><span className="go">&rarr;</span></a>
-        <a href="https://iaqtechnology.com.my/iaq-featured-in-the-star-a-national-spotlight-on-excellence-in-hi-tech-facility-construction/" target="_blank" rel="noopener" data-reveal=""><span className="d">Dec 24, 2024</span><span className="t">Featured in The Star: a national spotlight on hi-tech facility construction</span><span className="go">&rarr;</span></a>
-      </div>
+      <NewsRail />
     </section>
 
     <section className="sec wrap" id="careers">
