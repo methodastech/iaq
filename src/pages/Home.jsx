@@ -6,15 +6,12 @@ import { MarkPrj, MarkCln, MarkEmp, MarkCtr, MarkShr, MarkCrb } from '../compone
 import IndustryGrid from '../components/IndustryGrid.jsx'
 import NewsRail from '../components/NewsRail.jsx'
 import initHome from '../scenes/home.js'
-import initCloudX from '../scenes/cloudx.js'
 import '../styles/home.css'
 
 export default function Home() {
   useEffect(() => {
     document.title = 'IAQ Group · Homepage Concept · Brand Method'
-    const offHome = initHome()
-    const offCloud = initCloudX()
-    return () => { if (typeof offHome === 'function') offHome(); offCloud() }
+    return initHome()
   }, [])
   return (
     <>
@@ -33,7 +30,6 @@ export default function Home() {
       </div>
       <div className="hero-scrim" aria-hidden="true"></div>
       <canvas id="heroCanvas" aria-hidden="true"></canvas>
-      <div className="hero-veil" aria-hidden="true"></div>
       <div className="hero-inner">
         <span className="eyebrow"><span data-scramble="" data-scramble-speed="22" data-scramble-stagger="26">TOTAL FACILITY SOLUTIONS · EST. 1994</span></span>
         <h1 aria-label="We build the environments where the future is made.">
@@ -95,15 +91,6 @@ export default function Home() {
         </div>
       </aside>
     </header>
-
-    {/* the cloud transition: four layers straddling the hero/glance seam,
-        driven by a scrubbed ScrollTrigger in scenes/cloudx.js */}
-    <div className="cldx" id="cldx" aria-hidden="true">
-      <div className="cldx-l cldx-rear" id="cldxRear"></div>
-      <div className="cldx-l cldx-main" id="cldxMain"></div>
-      <div className="cldx-l cldx-fore" id="cldxFore"></div>
-      <div className="cldx-l cldx-wash" id="cldxWash"></div>
-    </div>
 
     <section className="glance" id="story">
       <div className="glance-glow" aria-hidden="true"></div>

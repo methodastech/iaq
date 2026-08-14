@@ -71,48 +71,7 @@ html.is-loading{overflow:hidden}
   linear-gradient(90deg,rgba(7,12,24,.88) 0%,rgba(7,12,24,.74) 30%,rgba(7,12,24,.34) 64%,rgba(7,12,24,.42) 100%),
   linear-gradient(180deg,rgba(7,12,24,.5) 0%,rgba(7,12,24,0) 26%,rgba(7,12,24,0) 72%,rgba(7,12,24,.72) 100%)}
 #heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:2}
-/* the veil: whitens the whole hero backdrop mid-transition so the seam to the
-   white page has no contrast left to show through the clouds */
-.hero-veil{position:absolute;inset:0;z-index:2;background:#F7F9FC;opacity:0;pointer-events:none;will-change:opacity}
 .hero-inner{position:relative;z-index:3;max-width:var(--maxw);margin:0 auto;padding:clamp(56px,9vh,110px) var(--gut);width:100%}
-
-/* ============ the cloud transition ============
-   Four layers straddle the hero/glance seam, animated by scenes/cloudx.js.
-   The container is a zero-height marker between the two sections; layers
-   hang off it, wider than the viewport so no rectangular edge ever shows.
-   The photographic layers are white-on-black and screen-blended, so their
-   black simply vanishes and only cloud remains. CSS values below are the
-   resting state: a soft static mist that hides the seam even with no JS. */
-.cldx{position:relative;z-index:6;height:0;pointer-events:none}
-.cldx-l{position:absolute;left:-12vw;width:124vw;will-change:transform,opacity}
-/* far mist: a huge soft mass behind everything */
-.cldx-rear{top:-44vh;height:56vh;filter:blur(26px);opacity:.3;background:
-  radial-gradient(60% 85% at 18% 78%,rgba(250,251,253,.95),transparent 62%),
-  radial-gradient(52% 78% at 52% 92%,rgba(250,251,253,.9),transparent 64%),
-  radial-gradient(58% 88% at 84% 80%,rgba(250,251,253,.95),transparent 62%)}
-/* the photographic cloud bank, mid-field; masked on BOTH edges so no image
-   boundary can ever show as a horizontal band while the layer travels */
-.cldx-main{top:-48vh;height:60vh;opacity:.32;mix-blend-mode:screen;filter:blur(1.5px);
-  background:url(/assets/clouds/cloud-bank.webp) center 78%/cover no-repeat;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.55) 16%,#000 34%,#000 62%,rgba(0,0,0,.5) 84%,transparent 100%);
-  mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.55) 16%,#000 34%,#000 62%,rgba(0,0,0,.5) 84%,transparent 100%)}
-/* thin wisps crossing in front, most blurred, fastest */
-.cldx-fore{top:-34vh;height:46vh;opacity:.22;mix-blend-mode:screen;filter:blur(4px);
-  background:url(/assets/clouds/cloud-wisps.webp) center 60%/cover no-repeat;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.5) 20%,#000 40%,#000 58%,rgba(0,0,0,.45) 82%,transparent 100%);
-  mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.5) 20%,#000 40%,#000 58%,rgba(0,0,0,.45) 82%,transparent 100%)}
-/* the finishing white: taller, denser, and reaching well below the seam so
-   the hero's bottom edge is buried before the clouds thin out */
-.cldx-wash{top:-40vh;height:50vh;background:
-  radial-gradient(80% 95% at 26% 96%,rgba(247,249,252,.8),transparent 78%),
-  radial-gradient(76% 90% at 74% 100%,rgba(247,249,252,.75),transparent 78%),
-  linear-gradient(180deg,transparent 0,rgba(247,249,252,.18) 22%,rgba(247,249,252,.5) 42%,rgba(247,249,252,.85) 60%,#F7F9FC 76%)}
-@media(max-width:640px){
-  .cldx-rear{top:-28vh;height:38vh;filter:blur(18px)}
-  .cldx-main{top:-32vh;height:42vh}
-  .cldx-fore{top:-22vh;height:32vh;filter:blur(3px)}
-  .cldx-wash{top:-24vh;height:32vh}
-}
 .hero h1{font-size:clamp(34px,5.6vw,72px);max-width:none;margin-top:18px;font-weight:600;letter-spacing:-.025em}
 .hero h1 em{color:#FF4D55}
 .hl{display:block;overflow:hidden}
