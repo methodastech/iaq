@@ -46,18 +46,22 @@ const GLANCE = [
 ]
 
 /* the six core values, each with the deck's own headline and body */
+/* Each value carries a photograph, and the side it sits on alternates: the six bands were the
+   longest stretch of unbroken type on the page, and a value you can SEE being held reads harder
+   than a value you are told about. House photography only — the registry shots with client
+   wordmarks on the building stay off this page as they do on /home2. */
 const VALUES = [
-  ['01', 'Safety Commitment', 'Everybody Goes Home Safe',
+  ['01', 'Safety Commitment', 'Everybody Goes Home Safe', '/assets/ph-crane.webp',
     'IAQ is committed to an injury-free workplace where everybody goes home safe. Senior leadership is actively engaged to proactively manage risk during project execution, using active risk management and continuous improvement techniques to protect both our people and our reputation. Enforcing and upscaling best working practices through multilingual training and educational aids is at the forefront of everything we do.'],
-  ['02', 'Quality Consistency', 'Excellence, Built Into Every Process',
+  ['02', 'Quality Consistency', 'Excellence, Built Into Every Process', '/assets/contact-cleanroom.webp',
     'Our team has the skills to bring excellence to every project. A robust Quality Management System (QMS), including Project Quality Plans (PQP), procedures, Inspection Test Plans (ITPs), witness hold points, and full records, proactively manages quality at every stage. Digitalized quality management tools, combined with strong project management, give clients a single point of contact throughout construction, ensuring progress never comes at the expense of quality.'],
-  ['03', 'Honesty and Integrity', 'Built on Honesty, Sustained by Trust',
+  ['03', 'Honesty and Integrity', 'Built on Honesty, Sustained by Trust', '/assets/photo-opening.webp',
     'Honesty and integrity are the cornerstone of our organizational ethos. We believe in transparent communication of accurate information, encouraging openness and sincerity in all interactions. Upholding consistency between words and actions, we prioritize ethical practices and moral principles fostering a culture of trust among our team members and stakeholders.'],
-  ['04', 'Engineering Capabilities', 'An In-House Team Built for Complexity',
+  ['04', 'Engineering Capabilities', 'An In-House Team Built for Complexity', '/assets/ph-blueprint.webp',
     'Our experienced, multi-disciplinary in-house engineering team integrates advanced technology and value engineering solutions for hi-tech facilities. With over 20 years of excellence, our multi-rounded solutions and considerations are tailored to deliver total facility solutions to our esteemed clients.'],
-  ['05', 'Efficiency & Proficiency', 'Speed Without Compromise',
+  ['05', 'Efficiency & Proficiency', 'Speed Without Compromise', '/assets/about-2015-robotics.webp',
     'Flexible fast-track execution and contractual approaches are available to fit each client’s needs. IAQ is driven by innovative engineering solutions that accelerate build time and time to market. Construction timelines are tracked across multiple critical paths to keep progress aligned with schedule and resources, and we are committed to maximizing available resources to achieve the best result collectively.'],
-  ['06', 'Pursuit of Excellence', 'Delivering on Every Commitment',
+  ['06', 'Pursuit of Excellence', 'Delivering on Every Commitment', '/assets/photo-awards.webp',
     'IAQ delivers on our commitments with the highest degree of engineering excellence. Our customer-focused approach to project execution fosters mutual trust and credibility, and we conduct business in accordance with the highest ethical, moral, and legal standards.'],
 ]
 
@@ -163,6 +167,10 @@ function Glance () {
     <section className="a2-glance" id="glance" ref={root}>
       <div className="h2-wrap">
         <div className="a2-glance-top">
+          <div className="a2-glance-media">
+            <img src="/assets/hero-campus.webp" alt="An IAQ-delivered facility campus" loading="lazy" />
+          </div>
+          <div>
           <h2 className="h2-xl">32 Years of Technical Excellence, <em>One Trusted Name</em></h2>
           <p className="a2-glance-copy">
             IAQ is a leading ISO 9001:2015, ISO 14001:2015, and ISO 45001:2018 certified
@@ -171,6 +179,7 @@ function Glance () {
             in diverse industries — both locally and globally. With 32 years of technical excellence
             across multiple service models, our presence now spans 8 countries.
           </p>
+          </div>
         </div>
         <div className="a2-stats">
           {GLANCE.map(({ v, suf, lab }) => (
@@ -215,6 +224,7 @@ function VisionMission () {
       <div className="h2-wrap">
         <div className="a2-vm-grid">
           <article className="a2-vm-card">
+            <div className="a2-vm-media"><img src="/assets/film-backdrop.webp" alt="" loading="lazy" /></div>
             <span className="a2-k">IAQ Vision</span>
             <blockquote>
               To be a regional facility solutions provider with engineering excellence, facilitating
@@ -222,6 +232,7 @@ function VisionMission () {
             </blockquote>
           </article>
           <article className="a2-vm-card">
+            <div className="a2-vm-media"><img src="/assets/tl-2020-dryroom.webp" alt="" loading="lazy" /></div>
             <span className="a2-k">IAQ Mission</span>
             <blockquote>
               Providing innovative and sustainable facility and engineering solutions that benefit
@@ -251,8 +262,10 @@ function Values () {
           y: 0, opacity: 1, duration: .9, ease: 'power3.out',
           scrollTrigger: { trigger: row, start: 'top 82%', once: true },
         })
-        gsap.fromTo(row.querySelector('.a2-val-n'), { yPercent: 40 }, {
-          yPercent: -40, ease: 'none',
+        /* the picture travels inside its frame, which does not — parallax as depth, not drift.
+           Overscan is 12% a side against a ±8% travel; the other way round shows the frame. */
+        gsap.fromTo(row.querySelector('.a2-val-media img'), { yPercent: -8 }, {
+          yPercent: 8, ease: 'none',
           scrollTrigger: { trigger: row, start: 'top bottom', end: 'bottom top', scrub: .7 },
         })
         gsap.fromTo(row.querySelector('.a2-val-rule'), { scaleX: 0 }, {
@@ -269,10 +282,13 @@ function Values () {
       <div className="h2-wrap">
         <h2 className="h2-xl h2-on-dark a2-values-head">Six values, <em>held on every site.</em></h2>
       </div>
-      {VALUES.map(([n, k, head, body]) => (
+      {VALUES.map(([n, k, head, img, body]) => (
         <article className="a2-val" key={n}>
           <div className="h2-wrap a2-val-grid">
-            <span className="a2-val-n" aria-hidden="true">{n}</span>
+            <figure className="a2-val-media">
+              <img src={img} alt="" loading="lazy" />
+              <span className="a2-val-n" aria-hidden="true">{n}</span>
+            </figure>
             <div className="a2-val-in">
               <span className="a2-k">{k}</span>
               <h3>{head}</h3>
