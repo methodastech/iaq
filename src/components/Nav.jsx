@@ -88,6 +88,9 @@ export default function Nav() {
   }, [menuOpen])
 
   const here = ({ isActive }) => (isActive ? 'here' : undefined)
+  /* the prototype switcher lights its OWN current page. Web 1 was hard-coded .on, so it stayed lit
+     while you were looking at Web 2. NavLink needs end on "/" or it matches every route. */
+  const onHere = ({ isActive }) => (isActive ? 'on' : undefined)
   const close = () => setMenuOpen(false)
 
   return (
@@ -95,7 +98,7 @@ export default function Nav() {
       <div className="topbar"><div className="topbar-in">
         <div className="wscrumb"><b>IAQ &middot; Website 1</b><span>Brand Method &middot; Admin Navigation</span></div>
         <nav className="wsw">
-          <a href="audit.html"><i>00</i>Web Audit</a><a href="competitors.html"><i>01</i>Competitors</a><a href="plan.html"><i>02</i>Web Plan</a><Link to="/" className="on"><i>03</i>Prototype Web 1</Link><Link to="/portal"><i>04</i>CMS</Link>
+          <a href="audit.html"><i>00</i>Web Audit</a><a href="competitors.html"><i>01</i>Competitors</a><a href="plan.html"><i>02</i>Web Plan</a><NavLink to="/" end className={onHere}><i>03</i>Prototype Web 1</NavLink><NavLink to="/home2" className={onHere}><i>04</i>Prototype Web 2</NavLink><Link to="/portal"><i>05</i>CMS</Link>
         </nav>
       </div></div>
 
