@@ -26,6 +26,25 @@
 </head>
 <body>
 <div id="root"></div>
+<script>
+/* CLEAN PATHS INTO THE HASH ROUTER, before the app boots.
+   The router is a HashRouter on purpose: the second build target is one self-contained file opened
+   over file://, where a history router has no server to fall back on. The cost is that a typed or
+   pasted /home2 gets index.html from the dev server's SPA fallback, HashRouter then reads an empty
+   hash, and the HOMEPAGE renders under someone else's URL — silently, which is the worst version of
+   wrong. Translate the path to its hash route here, ahead of first paint, so no wrong page ever
+   shows and the address bar keeps the route the visitor asked for.
+   Bails out on file:// (no server, and the path is a real .html), on any URL that already carries a
+   hash route, and on anything with a file extension, which is a real asset and not a route.
+   Assumes the app is served from the origin root, which is where every target here puts it. */
+(function () {
+  if (location.protocol !== 'http:' && location.protocol !== 'https:') return
+  if (location.hash && location.hash !== '#' && location.hash !== '#/') return
+  var p = location.pathname.replace(/\/index\.html$/i, '/')
+  if (p === '/' || /\.[a-z0-9]+$/i.test(p)) return
+  location.replace('/' + location.search + '#' + p)
+})()
+</script>
 <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
