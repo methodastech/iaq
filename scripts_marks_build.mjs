@@ -172,6 +172,37 @@ export function pin (id, cx, cy, r) {
     `<path d="M${n(cx - r * 1.1)} ${n(cy - r * .8)}A${n(r * 1.5)} ${n(r * 1.5)} 0 0 1 ${n(cx - r * .1)} ${n(cy - r * 1.5)}" fill="none" stroke="${P.SIG_CHAM_L}" stroke-width="1.3" stroke-linecap="round"/>`,
   ]
 }
+/* A FREE-STANDING EXTRUDED BOX, for marks that assemble several masses by hand rather than as one
+   tiered stack. Same three faces, same seam lift and the same two front chamfers as slab(), minus
+   the tier bookkeeping — and with a red variant, because a mass that IS the signal part needs the
+   accent on its faces rather than as a pad stuck to them. */
+export function boxParts (id, key, p, t, red = false) {
+  const k = `${id}-${key}`
+  const G = [
+    bodyGrad(id, key + 'r', red ? P.SIG_SHADE : P.RGT_HI, red ? P.SIG_DEEP : P.RGT_LO),
+    bodyGrad(id, key + 'l', red ? P.SIG_LIT : P.LFT_HI, red ? P.SIG_SHADE : P.LFT_LO),
+    bodyGrad(id, key + 't', red ? P.SIG_LIT : P.TOP_HI, red ? P.SIG_SHADE : P.TOP_LO),
+    `<clipPath id="${k}c"><path d="${poly([p.T, p.R, p.F, p.L])}"/></clipPath>`,
+  ]
+  const lift = 2
+  const Rr = [p.R[0], p.R[1] - lift], Fr = [p.F[0], p.F[1] - lift], Lr = [p.L[0], p.L[1] - lift]
+  const S = 'stroke-linecap="square" stroke-linejoin="miter" fill="none"'
+  const O = [
+    `<path d="${poly([Rr, Fr, down(p.F, t), down(p.R, t)])}" fill="url(#${k}r)"/>`,
+    `<path d="${poly([Fr, Lr, down(p.L, t), down(p.F, t)])}" fill="url(#${k}l)"/>`,
+    `<path d="${poly([p.T, p.R, p.F, p.L])}" fill="url(#${k}t)"/>`,
+    /* chamfers clipped to the top face, so only the inner half survives and the silhouette
+       never bulges by half a stroke */
+    `<g clip-path="url(#${k}c)">`,
+    `<path d="${seg(p.T, p.R)}" stroke="${red ? P.SIG_WALL : P.BACK}" stroke-width="2.2" ${S}/>`,
+    `<path d="${seg(p.L, p.T)}" stroke="${red ? P.SIG_WALL : P.BACK}" stroke-width="2.2" ${S}/>`,
+    `<path d="${seg(p.R, p.F)}" stroke="${red ? P.SIG_CHAM_R : P.CHAM_R}" stroke-width="2.6" ${S}/>`,
+    `<path d="${seg(p.F, p.L)}" stroke="${red ? P.SIG_CHAM_L : P.CHAM_L}" stroke-width="3" ${S}/>`,
+    `</g>`,
+  ]
+  return { O, G }
+}
+
 /* one person: a head and a shouldered body. Read at 29px because the proportion is right, not
    because the detail is. */
 export function figure (cx, cy, s, lit) {
@@ -189,7 +220,7 @@ export function figure (cx, cy, s, lit) {
 /* ------------------------------------------------------------------------ assemble a mark */
 export function buildMark (m) {
   const id = 'iaq-' + m.slot
-  const defs = [], body = []
+  const defs = [], body = [], gnd = []
   const shape = o => o.A !== undefined ? plan(o.cx, o.cy, o.A, o.B) : rhombus(o.cx, o.cy, o.a)
   const masses = m.masses.map((s, i) => ({ r: shape(s), t: s.t, i }))
   const grounded = masses[0] || { r: rhombus(48, 62, 30), t: 0 }
@@ -199,12 +230,14 @@ export function buildMark (m) {
   const gy = grounded.r.F[1] + grounded.t
   const grx = m.ground?.rx ?? grounded.r.a - 2
   defs.push(`<radialGradient id="${id}-gnd"><stop offset="0" stop-color="${P.INK}" stop-opacity=".16"/><stop offset=".55" stop-color="${P.INK}" stop-opacity=".07"/><stop offset="1" stop-color="${P.INK}" stop-opacity="0"/></radialGradient>`)
-  body.push(`<ellipse cx="${n(grounded.r.cx)}" cy="${n(gy - 1)}" rx="${n(grx)}" ry="9" fill="url(#${id}-gnd)"/>`)
+  gnd.push(`<ellipse cx="${n(grounded.r.cx)}" cy="${n(gy - 1)}" rx="${n(grx)}" ry="9" fill="url(#${id}-gnd)"/>`)
 
   /* L1 contact line — one hard edge deliberately: a soft multi-step ramp bands visibly on a
-     near-white page. */
+     near-white page. Ground pool and contact line ship in their OWN group, outside the object:
+     they belong to the page, not to the mark, so nothing the object does in motion may carry
+     its own shadow along with it. */
   const bR = down(grounded.r.R, grounded.t), bF = down(grounded.r.F, grounded.t), bL = down(grounded.r.L, grounded.t)
-  body.push(`<path d="${seg(bR, bF)}L${n(bL[0])} ${n(bL[1])}" fill="none" stroke="${P.INK}" stroke-width="1.8" stroke-opacity=".17" stroke-linecap="square" stroke-linejoin="miter"/>`)
+  gnd.push(`<path d="${seg(bR, bF)}L${n(bL[0])} ${n(bL[1])}" fill="none" stroke="${P.INK}" stroke-width="1.8" stroke-opacity=".17" stroke-linecap="square" stroke-linejoin="miter"/>`)
 
   /* L2 masses, back to front. Correct under the painter's algorithm because every successive mass
      is displaced along +x and/or +z, both of which move toward the camera. */
@@ -252,11 +285,253 @@ export function buildMark (m) {
     defs.push(`<linearGradient id="${id}-sig" ${LIGHT}><stop offset="0" stop-color="${P.SIG_LIT}"/><stop offset="1" stop-color="${P.SIG_SHADE}"/></linearGradient>`)
     body.push(`<g class="iaq-sig">`, ...m.signalPath(id), `</g>`)
   }
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" class="iaq-mk" aria-hidden="true" focusable="false"><title>${m.title}</title><defs>${defs.join('')}</defs>${body.join('')}</svg>`
+  /* The object rides in one group so a stylesheet has a single handle for the whole mass — the
+     hover lift and every entry move hang off .mk-obj, and the ground stays put underneath it. */
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" class="iaq-mk iaq-mk-${m.slot}" aria-hidden="true" focusable="false"><title>${m.title}</title><defs>${defs.join('')}</defs><g class="mk-gnd">${gnd.join('')}</g><g class="mk-obj">${body.join('')}</g></svg>`
 }
 
 /* ------------------------------------------------------------------------------ the set */
 export const MARKS = [
+  {
+    slot: 'yrs', title: 'Years of technical excellence',
+    /* A CORNERSTONE. Thirty-two years is a foundation claim, so the mark is the block a building
+       is started from: one upright mass, two engraved courses, and the dedication plaque inlaid
+       in red on the lit face. Not a calendar and not an hourglass — both of those say "time
+       running out", which is the opposite of what a 32-year record is for. */
+    /* taller than it is wide, deliberately: a cube reads as a crate, and a crate is procurement.
+       The proportion is the whole difference between a box and a monument. */
+    masses: [{ cx: 48, cy: 29, A: 13, B: 13, t: 34 }],
+    extra: () => {
+      const r = plan(48, 29, 13, 13), O = []
+      /* coursing on the shaded face: incised, parallel to the block's own edge, never drawn on */
+      for (const d of [13, 23]) O.push(...groove(seg([r.R[0] - 3, r.R[1] + 1.5 + d], [r.F[0] + 3, r.F[1] - 1.5 + d])))
+      return O
+    },
+    /* the one signal part: the dedication plaque, standing proud of the key-lit face */
+    signalPath: id => {
+      const F = [48, 42], L = [22, 29]
+      const p = (s, d) => [F[0] + (L[0] - F[0]) * s, F[1] + (L[1] - F[1]) * s + d]
+      const q = [p(.14, 9), p(.86, 9), p(.86, 24), p(.14, 24)]
+      const d0 = 'M' + q.map(v => n(v[0]) + ' ' + n(v[1])).join('L') + 'Z'
+      return [
+        `<path d="${d0}" fill="${P.SIG_DEEP}"/>`,
+        `<g transform="translate(-2.6 1.3)">`,
+        `<path d="${d0}" fill="url(#${id}-sig)"/>`,
+        `<path d="${seg(q[0], q[1])}" stroke="${P.SIG_CHAM_L}" stroke-width="1.6" fill="none" stroke-linecap="square"/>`,
+        `</g>`,
+      ]
+    },
+  },
+  {
+    slot: 'iso', title: 'ISO certifications',
+    /* THREE certificates, stepped in plan so the count is in the outline and survives the
+       black-fill test (Law 3), with the accent as the seal pressed into the top sheet. A single
+       certificate with lettering on it would be text at 46px, which is to say nothing at all. */
+    masses: [
+      { cx: 48, cy: 48, A: 19, B: 19, t: 6 },
+      { cx: 48, cy: 42, A: 15, B: 15, t: 6 },
+      { cx: 48, cy: 36, A: 11, B: 11, t: 6 },
+    ],
+    signalPath: id => {
+      const cx = 48, cy = 36, rx = 9.6, ry = 4.8, proud = 3, O = []
+      /* THE SEAL, AND NOT A COG. A disc with radial teeth reads as a gear at every size, and this
+         system already owns a gear. So the rim stays smooth and the RIBBONS carry the read: two
+         tails running down the sheet along the plan's own +y direction, so they lie on the paper
+         instead of floating over it, and draping past the top sheet onto the one below. */
+      const ribbon = (S, L, W, dy) => {
+        const p = [S, [S[0] - L, S[1] + L / 2], [S[0] - L + W, S[1] + (L + W) / 2], [S[0] + W, S[1] + W / 2]]
+        return 'M' + p.map(v => n(v[0]) + ' ' + n(v[1] + dy)).join('L') + 'Z'
+      }
+      const RA = [[43.5, 36.6], 19, 5.4], RB = [[49.5, 39.2], 12.5, 4.6]
+      O.push(`<path d="${ribbon(...RA, proud)}" fill="${P.SIG_DEEP}"/>`)
+      O.push(`<path d="${ribbon(...RB, proud)}" fill="${P.SIG_DEEP}"/>`)
+      O.push(`<path d="${ribbon(...RA, 0)}" fill="${P.SIG_SHADE}"/>`)
+      O.push(`<path d="${ribbon(...RB, 0)}" fill="url(#${id}-sig)"/>`)
+      /* the pressed pad: one mass, one rim light, nothing serrated anywhere */
+      O.push(`<ellipse cx="${cx}" cy="${n(cy + proud)}" rx="${rx}" ry="${ry}" fill="${P.SIG_DEEP}"/>`)
+      O.push(`<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="url(#${id}-sig)"/>`)
+      O.push(`<path d="M${n(cx - rx * .88)} ${n(cy - ry * .48)}A${rx} ${ry} 0 0 1 ${n(cx - rx * .08)} ${n(cy - ry * .99)}" fill="none" stroke="${P.SIG_CHAM_L}" stroke-width="1.5" stroke-linecap="round"/>`)
+      /* the impression itself: one incised ring, well inside the rim so it cannot read as a hub */
+      O.push(`<ellipse cx="${cx}" cy="${n(cy + .4)}" rx="${n(rx * .58)}" ry="${n(ry * .58)}" fill="none" stroke="${P.SIG_DEEP}" stroke-width="1.4" opacity=".5"/>`)
+      return O
+    },
+  },
+  {
+    slot: 'ind', title: 'Industries served',
+    /* SEVEN SECTORS, as a divided plan. Seven little buildings would be seven 8px silhouettes and
+       would count as none; a plan divided into seven counts in the outline, which is Law 3 doing
+       the work it was written for. One sector lifts out in red: the market you are standing in. */
+    scale: 1.0, masses: [],
+    custom: id => {
+      const cx = 48, cy = 46, RX = 34, RY = 17, T = 10, N = 7
+      const step = 2 * Math.PI / N, ph0 = Math.PI / 4  /* world 0deg lands at screen 45deg */
+      const rim = ph => [cx + RX * Math.cos(ph), cy + RY * Math.sin(ph)]
+      const front = `M${n(cx - RX)} ${n(cy)}A${RX} ${RY} 0 0 0 ${n(cx + RX)} ${n(cy)}`
+      const O = []
+      O.push(`<g class="mk-drum">`)
+      O.push(`<path d="${front}V${n(cy + T)}A${RX} ${RY} 0 0 1 ${n(cx - RX)} ${n(cy + T)}Z" fill="url(#${id}-wall)"/>`)
+      O.push(`<ellipse cx="${cx}" cy="${cy}" rx="${RX}" ry="${RY}" fill="url(#${id}-top)"/>`)
+      O.push(`<path d="M${n(cx - RX)} ${n(cy)}A${RX} ${RY} 0 0 1 ${n(cx + RX)} ${n(cy)}" fill="none" stroke="${P.BACK}" stroke-width="1.6" opacity=".7"/>`)
+      O.push(`<path d="${front}" fill="none" stroke="${P.CHAM_L}" stroke-width="2.4" stroke-linecap="round"/>`)
+      O.push(`</g>`)
+      /* the seven divisions, incised into the plan rather than stacked on it */
+      O.push(`<g class="mk-spokes">`)
+      for (let k = 0; k < N; k++) O.push(...groove(seg([cx, cy], rim(ph0 + k * step))))
+      O.push(`</g>`)
+      const LIFT = 6, q0 = rim(ph0 + step), q1 = rim(ph0 + 2 * step)
+      const wedge = up => `M${n(cx)} ${n(cy - up)}L${n(q0[0])} ${n(q0[1] - up)}A${RX} ${RY} 0 0 1 ${n(q1[0])} ${n(q1[1] - up)}Z`
+      O.push(`<g class="iaq-sig">`)
+      O.push(`<path d="${wedge(0)}" fill="${P.SIG_DEEP}"/>`)
+      O.push(`<path d="${wedge(LIFT)}" fill="url(#${id}-sig)"/>`)
+      O.push(`<path d="M${n(cx)} ${n(cy - LIFT)}L${n(q1[0])} ${n(q1[1] - LIFT)}" fill="none" stroke="${P.SIG_CHAM_L}" stroke-width="1.5" stroke-linecap="round"/>`)
+      O.push(`</g>`)
+      return {
+        defs: [bodyGrad(id, 'top', P.TOP_HI, P.TOP_LO), bodyGrad(id, 'wall', P.LFT_HI, P.RGT_LO),
+               bodyGrad(id, 'sig', P.SIG_LIT, P.SIG_SHADE)],
+        body: O,
+      }
+    },
+  },
+  /* ---------------------------------------------------------------- the business models
+     Four marks for the /home2 delivery-model cards. They obey the same six laws as the stat set
+     and share its lamp, but they carry a DIFFERENT job: a stat mark stands beside a number, and
+     these stand beside a paragraph, so each one has to say what the model DOES, not how much of
+     it there is. Note they are read on a near-black panel — which is why none of them leans on
+     the ground pool, an ink wash that has nothing to darken there. */
+  {
+    slot: 'epc', title: 'EPC · engineering, procurement and construction',
+    /* THREE SUPPORTS CARRYING ONE DECK, with the delivered unit set on top in red. Turnkey is
+       three disciplines under one accountable team, so the mark is literally three masses holding
+       one plane — the count is in the outline (Law 3) and the accent is the thing handed over.
+       A key was the obvious alternative and it is a stock-icon cliché that says nothing about
+       who carried the work. */
+    scale: 1.0, masses: [],
+    custom: id => {
+      const O = [], G = []
+      const deck = plan(48, 46, 18, 18), DT = 6
+      /* legs at three of the four plan corners: the front corner stays open so the deck reads as
+         supported rather than as a solid block */
+      const legs = [[-10, -10], [-10, 10], [10, -10]]
+      legs.forEach(([u, v], i) => {
+        const c = [48 + u - v, 46 + DT + (u + v) / 2]
+        const b = boxParts(id, 'g' + i, plan(c[0], c[1], 4.5, 4.5), 15)
+        G.push(...b.G)
+        O.push(`<g class="mk-leg">`, ...b.O, `</g>`)
+      })
+      const dk = boxParts(id, 'dk', deck, DT)
+      const sg = boxParts(id, 'sg', plan(48, 39, 7, 7), 7, true)
+      G.push(...dk.G, ...sg.G)
+      return {
+        defs: G,
+        body: [
+          `<g class="mk-legs">`, ...O, `</g>`,
+          `<g class="mk-deck">`, ...dk.O, `</g>`,
+          `<g class="iaq-sig">`, ...sg.O, `</g>`,
+        ],
+      }
+    },
+  },
+  {
+    slot: 'pcu', title: 'Process critical utilities',
+    /* A RUN WITH A VALVE ON IT. Specialty gases, chemical delivery and process water are all the
+       same object to a facility: a line you can shut. The handwheel is the accent because it is
+       the functional part — the one thing on the mark a person actually touches. */
+    scale: 1.0, masses: [],
+    custom: id => {
+      const O = [], G = []
+      const run = boxParts(id, 'rn', plan(48, 52, 24, 6), 9)
+      G.push(...run.G)
+      /* two risers off the run, at world u = -14 and +8 */
+      const R1 = [48 - 14, 52 - 7 - 20], R2 = [48 + 8, 52 + 4 - 13]
+      const r1 = boxParts(id, 'r1', plan(R1[0], R1[1], 4, 4), 20)
+      const r2 = boxParts(id, 'r2', plan(R2[0], R2[1], 4, 4), 13)
+      G.push(...r1.G, ...r2.G)
+      G.push(bodyGrad(id, 'sig', P.SIG_LIT, P.SIG_SHADE))
+      /* the handwheel, in plan on top of the tall riser: rim, hub and four spokes */
+      const wx = R1[0], wy = R1[1], rx = 10, ry = 5
+      const W = []
+      W.push(`<ellipse cx="${wx}" cy="${n(wy + 2.6)}" rx="${rx}" ry="${ry}" fill="${P.SIG_DEEP}"/>`)
+      /* the spokes ship in their own group so a stylesheet can TURN the wheel. rx/ry is exactly 2,
+         which is what lets the turn be written as scaleY(.5) rotate() scaleY(2) — unsquash the
+         ellipse to a circle, rotate there, squash back. A plain screen-space rotate would swing
+         the spoke ends off the rim, because this wheel is a circle seen in plan and not a disc. */
+      W.push(`<g class="mk-wheel">`)
+      for (let k = 0; k < 4; k++) {
+        const a = k * Math.PI / 4 + Math.PI / 8
+        /* chamfer red, not shade red: shade on the deep-red pan is a two-step difference that
+           vanishes at card size, and a wheel whose spokes cannot be seen cannot be seen to turn */
+        W.push(`<path d="M${n(wx - rx * Math.cos(a))} ${n(wy - ry * Math.sin(a))}L${n(wx + rx * Math.cos(a))} ${n(wy + ry * Math.sin(a))}" stroke="${P.SIG_CHAM_R}" stroke-width="2.2" stroke-linecap="round" fill="none"/>`)
+      }
+      W.push(`</g>`)
+      W.push(`<ellipse cx="${wx}" cy="${wy}" rx="${rx}" ry="${ry}" fill="none" stroke="url(#${id}-sig)" stroke-width="3.4"/>`)
+      W.push(`<ellipse cx="${wx}" cy="${wy}" rx="3.4" ry="1.7" fill="${P.SIG_SHADE}"/>`)
+      W.push(`<path d="M${n(wx - rx * .8)} ${n(wy - ry * .5)}A${rx} ${ry} 0 0 1 ${n(wx - rx * .1)} ${n(wy - ry * .96)}" fill="none" stroke="${P.SIG_CHAM_L}" stroke-width="1.5" stroke-linecap="round"/>`)
+      return {
+        defs: G,
+        body: [
+          `<g class="mk-run">`, ...run.O, `</g>`,
+          `<g class="mk-risers">`, ...r1.O, ...r2.O, `</g>`,
+          `<g class="iaq-sig">`, ...W, `</g>`,
+        ],
+      }
+    },
+  },
+  {
+    slot: 'tol', title: 'Total tool installation',
+    /* A TOOL SET ON ITS PAD, connected. The subject of a hook-up is not the machine and not the
+       floor: it is the JOINT between them, so the accent is the connection block on the tool's
+       lit face with its stub running back to the pad edge. */
+    scale: 1.0, masses: [],
+    custom: id => {
+      const G = []
+      const pad = boxParts(id, 'pd', plan(48, 50, 18, 18), 5)
+      const tool = boxParts(id, 'tl', plan(48, 35, 11, 11), 15)
+      G.push(...pad.G, ...tool.G, bodyGrad(id, 'sig', P.SIG_LIT, P.SIG_SHADE))
+      /* the connection, proud of the tool's screen-left face (world +y) */
+      const F = [48, 46], L = [26, 35]
+      const p = (s, d) => [F[0] + (L[0] - F[0]) * s, F[1] + (L[1] - F[1]) * s + d]
+      const q = [p(.2, 4), p(.8, 4), p(.8, 12), p(.2, 12)]
+      const d0 = 'M' + q.map(v => n(v[0]) + ' ' + n(v[1])).join('L') + 'Z'
+      return {
+        defs: G,
+        body: [
+          `<g class="mk-pad">`, ...pad.O, `</g>`,
+          `<g class="mk-tool">`, ...tool.O, `</g>`,
+          `<g class="iaq-sig">`,
+          /* the stub: the umbilical running down the pad to the tool */
+          `<path d="M${n(q[2][0] - 1)} ${n(q[2][1] + 1)}L${n(q[2][0] - 11)} ${n(q[2][1] + 6)}" stroke="${P.SIG_DEEP}" stroke-width="4.6" stroke-linecap="butt" fill="none"/>`,
+          `<path d="${d0}" fill="${P.SIG_DEEP}"/>`,
+          `<g transform="translate(-2.4 1.2)">`,
+          `<path d="${d0}" fill="url(#${id}-sig)"/>`,
+          `<path d="${seg(q[0], q[1])}" stroke="${P.SIG_CHAM_L}" stroke-width="1.5" fill="none" stroke-linecap="square"/>`,
+          `</g>`,
+          `</g>`,
+        ],
+      }
+    },
+  },
+  {
+    slot: 'enr', title: 'Energy management',
+    /* THREE PILLARS STEPPING DOWN toward the viewer, the last one red. Energy management is a
+       number going down over time, and the descent is the whole message — so it is carried by the
+       silhouette itself and not by an arrow. The system already has exactly one downward arrow
+       (carbon reduced) and it should keep having exactly one. */
+    scale: 1.0, masses: [],
+    custom: id => {
+      const G = [], O = []
+      /* spread and thickness set by alpha coverage, not by taste: three thin pillars at ±13 read
+         a third smaller than the other model marks beside them, and a set that is ragged at a
+         glance is a set however good each mark is on its own */
+      const bars = [[-18, 30], [0, 20], [18, 12]]
+      bars.forEach(([u, h], i) => {
+        const c = [48 + u, 68 + u / 2 - h]
+        const b = boxParts(id, 'b' + i, plan(c[0], c[1], 7, 7), h, i === 2)
+        G.push(...b.G)
+        O.push(`<g class="${i === 2 ? 'iaq-sig mk-bar' : 'mk-bar'}">`, ...b.O, `</g>`)
+      })
+      return { defs: G, body: [`<g class="mk-bars">`, ...O, `</g>`] }
+    },
+  },
   {
     slot: 'prj', title: 'Completed projects',
     /* A delivered facility with an approval check. The three-tier stack this replaced satisfied the
@@ -269,6 +544,7 @@ export const MARKS = [
              bodyGrad(id, 'tick', P.SIG_LIT, P.SIG_SHADE)],
       body: [
         /* the plant: a long low block with a saw-tooth roof, the industrial read */
+        `<g class="mk-plant">`,
         `<path d="M16 44H80V70H16Z" fill="url(#${id}-wall)"/>`,
         `<path d="M16 44L26 34L36 44L46 34L56 44L66 34L76 44Z" fill="url(#${id}-roof)"/>`,
         `<path d="M16 44L26 34L36 44" fill="none" stroke="${P.SPEC}" stroke-width="1.5" stroke-linejoin="miter" opacity=".85"/>`,
@@ -276,10 +552,15 @@ export const MARKS = [
         ...groove('M22 52H74'),
         ...groove('M22 60H74'),
         `<path d="M16 70H80" stroke="${P.INK}" stroke-width="1.8" stroke-opacity=".2" fill="none"/>`,
-        /* the one signal part: an approval tick, overlapping the corner so it reads as applied */
+        `</g>`,
+        /* the one signal part: an approval tick, overlapping the corner so it reads as applied.
+           The three strokes share one group so a single dash offset on the parent draws all of
+           them — the shadow, the body and the chamfer arrive as one gesture, never three. */
+        `<g class="iaq-sig mk-tick">`,
         `<path d="M58 58L67 67L84 46" fill="none" stroke="${P.SIG_DEEP}" stroke-width="10.5" stroke-linecap="square" stroke-linejoin="miter" transform="translate(0 3)"/>`,
         `<path d="M58 58L67 67L84 46" fill="none" stroke="url(#${id}-tick)" stroke-width="10.5" stroke-linecap="square" stroke-linejoin="miter"/>`,
         `<path d="M58 58L67 67L84 46" fill="none" stroke="${P.SIG_CHAM_L}" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" transform="translate(-1.4 -2.6)" opacity=".8"/>`,
+        `</g>`,
       ],
     }),
   },
@@ -294,24 +575,30 @@ export const MARKS = [
       const O = [], A = 30, B = 30, cx = 48, cy = 44
       const pl = plan(cx, cy, A, B)
       /* the slab */
+      O.push(`<g class="mk-plate">`)
       O.push(`<path d="${poly([pl.R, pl.F, down(pl.F, 7), down(pl.R, 7)])}" fill="${P.RGT_HI}"/>`)
       O.push(`<path d="${poly([pl.F, pl.L, down(pl.L, 7), down(pl.F, 7)])}" fill="${P.LFT_HI}"/>`)
       O.push(`<path d="${poly([pl.T, pl.R, pl.F, pl.L])}" fill="url(#${id}-top)"/>`)
       /* the 3x3 filter grid, engraved into the plan rather than stacked on it */
+      O.push(`<g class="mk-grid">`)
       for (const f of [-1 / 3, 1 / 3]) {
         const a0 = [cx + (-A + B) + 2 * A * (f + .5), cy - (A + B) / 2 + A * (f + .5)]
         O.push(...groove(seg(a0, [a0[0] - 2 * B, a0[1] + B])))
         const b0 = [cx + (-A + B) - 2 * B * (f + .5), cy - (A + B) / 2 + B * (f + .5)]
         O.push(...groove(seg(b0, [b0[0] + 2 * A, b0[1] + A])))
       }
+      O.push(`</g>`)
       O.push(`<path d="${seg(pl.F, pl.L)}" stroke="${P.CHAM_L}" stroke-width="3" fill="none" stroke-linecap="square"/>`)
       O.push(`<path d="${seg(pl.R, pl.F)}" stroke="${P.CHAM_R}" stroke-width="2.6" fill="none" stroke-linecap="square"/>`)
+      O.push(`</g>`)
       /* the dimension run: the one signal part, and the thing that turns a grid into an area */
       const d0 = [pl.L[0] + 3, pl.L[1] + 9], d1 = [pl.F[0] - 3, pl.F[1] + 9]
+      O.push(`<g class="iaq-sig mk-dim">`)
       O.push(`<path d="${seg(d0, d1)}" stroke="${P.SIG_LIT}" stroke-width="2.6" fill="none" stroke-linecap="butt"/>`)
       for (const [e, dir] of [[d0, 1], [d1, -1]])
         O.push(`<path d="M${n(e[0])} ${n(e[1] - 4.5)}V${n(e[1] + 4.5)}" stroke="${P.SIG_LIT}" stroke-width="2.6" fill="none"/>`,
                `<path d="M${n(e[0] + dir * 7)} ${n(e[1] - 3.4)}L${n(e[0])} ${n(e[1])}L${n(e[0] + dir * 7)} ${n(e[1] + 3.4)}Z" fill="${P.SIG_SHADE}"/>`)
+      O.push(`</g>`)
       return { defs: [bodyGrad(id, 'top', P.TOP_HI, P.TOP_LO)], body: O }
     },
   },
@@ -345,12 +632,19 @@ export const MARKS = [
       return {
         defs: [...sph.G, bodyGrad(id, 'pin', P.SIG_LIT, P.SIG_SHADE)],
         body: [
+          `<g class="mk-glb">`,
           ...sph.O,
           /* equator and two meridians: three lines, and the circle becomes a globe */
           `<ellipse cx="46" cy="47" rx="26" ry="8.6" fill="none" stroke="${P.ENGRAVE}" stroke-width="1.5" opacity=".5"/>`,
           `<ellipse cx="46" cy="47" rx="10.4" ry="26" fill="none" stroke="${P.ENGRAVE}" stroke-width="1.5" opacity=".45"/>`,
           `<ellipse cx="46" cy="47" rx="21" ry="26" fill="none" stroke="${P.ENGRAVE}" stroke-width="1.3" opacity=".3"/>`,
+          `</g>`,
+          /* the locator ping. Painted at zero opacity, so it exists ONLY while a stylesheet is
+             animating it: a mark rendered with no CSS shows a globe and a pin and no stray ring. */
+          `<ellipse class="mk-ping" cx="68" cy="40" rx="11" ry="5.5" fill="none" stroke="${P.SIG_LIT}" stroke-width="2" opacity="0"/>`,
+          `<g class="iaq-sig">`,
           ...pin(id, 68, 26, 6),
+          `</g>`,
         ],
       }
     },
@@ -555,7 +849,8 @@ export function emitReact () {
     let svg = toJSX(buildMark(m))
     /* merge, never override: spreading props first would let the component's own className win
        and silently drop the caller's sizing class */
-    svg = svg.replace('className="iaq-mk"', 'className={'+"'iaq-mk' + (p.className ? ' ' + p.className : '')"+'}')
+    svg = svg.replace(/className="(iaq-mk[^"]*)"/, (_m, cls) =>
+      'className={' + JSON.stringify(cls) + " + (p.className ? ' ' + p.className : '')}")
     svg = svg.replace('<svg ', '<svg {...p} ')
     return `export function ${name} (p) {\n  return (\n    ${svg}\n  )\n}`
   })

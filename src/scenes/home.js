@@ -1188,13 +1188,14 @@ var S3D=window.S3D={str:1,mep:1,ffu:1,flow:1,prog:0,zoom:0,spin:0};
     var _grid=document.querySelector('.gstats');
     if(_grid){
       var _rows=gsap.utils.toArray('.gstats .gstat');
-      var _marks=gsap.utils.toArray('.gstats .gstat .gic');
-      var tl=gsap.timeline({scrollTrigger:{trigger:_grid,start:'top 85%',once:true}});
+      var tl=gsap.timeline({scrollTrigger:{trigger:_grid,start:'top 85%',once:true,
+        /* THE MARKS ANIMATE THEMSELVES. Each of the six is a different object — a cornerstone, a
+           globe, three certificates, a divided plan, a plant, a floor plate — so each one moves in
+           its own language, authored in the stylesheet beside the geometry it moves. GSAP's job
+           here is only to say WHEN: one class, and the six choreographies run off --mk-d. Scaling
+           the whole <svg> from JS as well would put a second, contradictory motion on top. */
+        onEnter:function(){ _grid.classList.add('mk-in'); }}});
       tl.from(_rows,{y:14,opacity:0,duration:.62,ease:'power3.out',stagger:.085,immediateRender:false},0);
-      /* the mark lands a beat after its own row, and only barely: at 46px a big scale reads as a
-         bounce, and this block is a record, not a toy */
-      tl.from(_marks,{scale:.86,opacity:0,duration:.5,ease:'power2.out',stagger:.085,
-        transformOrigin:'50% 55%',immediateRender:false},0.08);
       /* the counters already run on their own ScrollTrigger, so nothing here touches the numbers */
     }
   }

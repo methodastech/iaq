@@ -1,0 +1,126 @@
+/* ============================================================
+   MILESTONE MARK MOTION — one entry move per mark, in the mark's own language.
+
+   Lives apart from any one page's stylesheet because two homepage concepts now show the same six
+   objects, and a choreography copied into two files is a choreography that drifts. The hook is
+   .mk-stage on the container: any grid of marks opts in by carrying it, and the page's own script
+   adds .mk-in when the block reveals.
+
+   THE RULE THAT MATTERS: every from-state lives behind .mk-in. A mark with no JS, a mark in a PDF
+   export and a mark in a tender document are simply PAINTED — nothing here can leave one invisible,
+   which is exactly what an opacity:0 default would do. The ground pool is a sibling of the object
+   and never a child, so nothing carries its own shadow along while it drops.
+
+   Direct children of .mk-stage stamp --mk-d, so the six choreographies arrive in reading order
+   rather than as one lump.
+   ============================================================ */
+
+.mk-stage > *:nth-child(1) { --mk-d: 0s }
+.mk-stage > *:nth-child(2) { --mk-d: .085s }
+.mk-stage > *:nth-child(3) { --mk-d: .17s }
+.mk-stage > *:nth-child(4) { --mk-d: .255s }
+.mk-stage > *:nth-child(5) { --mk-d: .34s }
+.mk-stage > *:nth-child(6) { --mk-d: .425s }
+
+.mk-stage .iaq-mk .mk-obj {
+  transform-box: fill-box;
+  transform-origin: 50% 84%;
+  transition: transform .5s cubic-bezier(.2, .8, .25, 1);
+}
+.mk-stage > *:hover .iaq-mk .mk-obj { transform: translateY(-3px) scale(1.05) }
+
+/* dash long enough to cover the whole tick, so the un-animated state is a solid stroke */
+.iaq-mk-prj .mk-tick { stroke-dasharray: 44 }
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes mkSet   { 0%{transform:translateY(-19px)} 64%{transform:none} 80%{transform:translateY(-2.5px)} 100%{transform:none} }
+  @keyframes mkInlay { from{transform:scale(.5);opacity:0} to{transform:none;opacity:1} }
+  @keyframes mkPlate { from{transform:translateY(11px);opacity:0} to{transform:none;opacity:1} }
+  @keyframes mkStamp { 0%{transform:translateY(-13px) scale(1.55);opacity:0} 52%{opacity:1} 72%{transform:translateY(0) scale(.93)} 100%{transform:none;opacity:1} }
+  @keyframes mkPop   { from{transform:scale(.84);opacity:0} to{transform:none;opacity:1} }
+  @keyframes mkOpen  { from{transform:scale(.14);opacity:0} to{transform:none;opacity:1} }
+  @keyframes mkLift  { from{transform:translateY(9px);opacity:0} to{transform:none;opacity:1} }
+  @keyframes mkGrow  { from{transform:scaleY(.42);opacity:0} to{transform:none;opacity:1} }
+  @keyframes mkTick  { from{stroke-dashoffset:44} to{stroke-dashoffset:0} }
+  @keyframes mkRun   { from{transform:scaleX(.04);opacity:0} to{transform:none;opacity:1} }
+  @keyframes mkPin   { 0%{transform:translateY(-27px) scale(.72);opacity:0} 42%{opacity:1} 74%{transform:translateY(2px)} 100%{transform:none;opacity:1} }
+  @keyframes mkPing  { 0%{transform:scale(.25);opacity:0} 25%{opacity:.75} 100%{transform:scale(1.5);opacity:0} }
+  @keyframes mkFade  { from{opacity:0} to{opacity:1} }
+
+  .mk-stage.mk-in .iaq-mk .mk-gnd {
+    animation: mkFade .5s ease-out both;
+    animation-delay: calc(var(--mk-d, 0s) + .22s);
+  }
+  .mk-stage.mk-in .iaq-mk .iaq-s0, .mk-stage.mk-in .iaq-mk .iaq-s1, .mk-stage.mk-in .iaq-mk .iaq-s2,
+  .mk-stage.mk-in .iaq-mk .iaq-sig, .mk-stage.mk-in .iaq-mk .mk-drum, .mk-stage.mk-in .iaq-mk .mk-spokes,
+  .mk-stage.mk-in .iaq-mk .mk-glb, .mk-stage.mk-in .iaq-mk .mk-plant, .mk-stage.mk-in .iaq-mk .mk-plate,
+  .mk-stage.mk-in .iaq-mk .mk-grid, .mk-stage.mk-in .iaq-mk .mk-ping {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+  }
+
+  /* 32 years — the cornerstone is SET, then the dedication plaque is inlaid */
+  .mk-stage.mk-in .iaq-mk-yrs .iaq-s0  { animation: mkSet .8s cubic-bezier(.24,.9,.3,1) both; animation-delay: var(--mk-d, 0s) }
+  .mk-stage.mk-in .iaq-mk-yrs .iaq-sig { animation: mkInlay .44s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .46s) }
+
+  /* 8 countries — the globe arrives, the locator drops onto it, one ping and it is placed */
+  .mk-stage.mk-in .iaq-mk-ctr .mk-glb  { animation: mkPop .62s cubic-bezier(.2,.8,.25,1) both; animation-delay: var(--mk-d, 0s) }
+  .mk-stage.mk-in .iaq-mk-ctr .iaq-sig { transform-origin: 50% 100%; animation: mkPin .66s cubic-bezier(.3,1.1,.4,1) both; animation-delay: calc(var(--mk-d, 0s) + .2s) }
+  .mk-stage.mk-in .iaq-mk-ctr .mk-ping { animation: mkPing .9s ease-out both; animation-delay: calc(var(--mk-d, 0s) + .74s) }
+
+  /* 3 certifications — three sheets land in order, then the seal is pressed into the top one */
+  .mk-stage.mk-in .iaq-mk-iso .iaq-s0  { animation: mkPlate .5s cubic-bezier(.2,.8,.25,1) both; animation-delay: var(--mk-d, 0s) }
+  .mk-stage.mk-in .iaq-mk-iso .iaq-s1  { animation: mkPlate .5s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .1s) }
+  .mk-stage.mk-in .iaq-mk-iso .iaq-s2  { animation: mkPlate .5s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .2s) }
+  .mk-stage.mk-in .iaq-mk-iso .iaq-sig { animation: mkStamp .52s cubic-bezier(.3,.9,.3,1) both; animation-delay: calc(var(--mk-d, 0s) + .42s) }
+
+  /* 7 industries — the plan appears, the seven divisions open out of the centre, one sector lifts */
+  .mk-stage.mk-in .iaq-mk-ind .mk-drum   { animation: mkPop .58s cubic-bezier(.2,.8,.25,1) both; animation-delay: var(--mk-d, 0s) }
+  .mk-stage.mk-in .iaq-mk-ind .mk-spokes { animation: mkOpen .52s cubic-bezier(.2,.85,.3,1) both; animation-delay: calc(var(--mk-d, 0s) + .24s) }
+  .mk-stage.mk-in .iaq-mk-ind .iaq-sig   { animation: mkLift .5s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .44s) }
+
+  /* 250 projects — the plant rises off its own footing, then the approval tick is drawn on */
+  .mk-stage.mk-in .iaq-mk-prj .mk-plant { transform-origin: 50% 100%; animation: mkGrow .56s cubic-bezier(.2,.8,.25,1) both; animation-delay: var(--mk-d, 0s) }
+  .mk-stage.mk-in .iaq-mk-prj .mk-tick  { animation: mkTick .5s cubic-bezier(.4,0,.2,1) both; animation-delay: calc(var(--mk-d, 0s) + .34s) }
+
+  /* 1,000,000 m² — the floor plate lands, the filter grid comes up, the dimension run measures it */
+  .mk-stage.mk-in .iaq-mk-cln .mk-plate { animation: mkPop .58s cubic-bezier(.2,.8,.25,1) both; animation-delay: var(--mk-d, 0s) }
+  .mk-stage.mk-in .iaq-mk-cln .mk-grid  { animation: mkFade .46s ease-out both; animation-delay: calc(var(--mk-d, 0s) + .26s) }
+  .mk-stage.mk-in .iaq-mk-cln .mk-dim   { animation: mkRun .5s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .42s) }
+
+  /* ── the four business models ─────────────────────────────────────────────
+     Same rule as above: every move is an ASSEMBLY of the object it belongs to, so the animation
+     says the same thing the mark says. Nothing here spins for the sake of spinning. */
+  @keyframes mkTurn { from { transform: scaleY(.5) rotate(-160deg) scaleY(2) } to { transform: scaleY(.5) rotate(0deg) scaleY(2) } }
+
+  .mk-stage.mk-in .iaq-mk-epc .mk-leg, .mk-stage.mk-in .iaq-mk-pcu .mk-run,
+  .mk-stage.mk-in .iaq-mk-pcu .mk-risers, .mk-stage.mk-in .iaq-mk-tol .mk-pad,
+  .mk-stage.mk-in .iaq-mk-tol .mk-tool, .mk-stage.mk-in .iaq-mk-enr .mk-bar,
+  .mk-stage.mk-in .iaq-mk-epc .mk-deck, .mk-stage.mk-in .iaq-mk-pcu .mk-wheel {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+  }
+
+  /* EPC — three supports rise, the deck is SET onto them, the delivered unit lands on top */
+  .mk-stage.mk-in .iaq-mk-epc .mk-leg:nth-child(1) { animation: mkPlate .46s cubic-bezier(.2,.8,.25,1) both; animation-delay: var(--mk-d, 0s) }
+  .mk-stage.mk-in .iaq-mk-epc .mk-leg:nth-child(2) { animation: mkPlate .46s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .08s) }
+  .mk-stage.mk-in .iaq-mk-epc .mk-leg:nth-child(3) { animation: mkPlate .46s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .16s) }
+  .mk-stage.mk-in .iaq-mk-epc .mk-deck { animation: mkSet .62s cubic-bezier(.24,.9,.3,1) both; animation-delay: calc(var(--mk-d, 0s) + .3s) }
+  .mk-stage.mk-in .iaq-mk-epc .iaq-sig { animation: mkInlay .44s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .66s) }
+
+  /* PCU — the run arrives, the risers stand up on it, then the valve is OPENED */
+  .mk-stage.mk-in .iaq-mk-pcu .mk-run    { animation: mkPlate .5s cubic-bezier(.2,.8,.25,1) both; animation-delay: var(--mk-d, 0s) }
+  .mk-stage.mk-in .iaq-mk-pcu .mk-risers { animation: mkPlate .48s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .14s) }
+  .mk-stage.mk-in .iaq-mk-pcu .iaq-sig   { animation: mkPop .44s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .3s) }
+  .mk-stage.mk-in .iaq-mk-pcu .mk-wheel  { animation: mkTurn .9s cubic-bezier(.3,.9,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .42s) }
+
+  /* Tool installation — the pad lands, the tool is lowered onto it, the connection is made */
+  .mk-stage.mk-in .iaq-mk-tol .mk-pad  { animation: mkPlate .5s cubic-bezier(.2,.8,.25,1) both; animation-delay: var(--mk-d, 0s) }
+  .mk-stage.mk-in .iaq-mk-tol .mk-tool { animation: mkSet .64s cubic-bezier(.24,.9,.3,1) both; animation-delay: calc(var(--mk-d, 0s) + .16s) }
+  .mk-stage.mk-in .iaq-mk-tol .iaq-sig { animation: mkInlay .42s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .6s) }
+
+  /* Energy — the pillars arrive tallest first, so the eye reads the descent as it is built */
+  .mk-stage.mk-in .iaq-mk-enr .mk-bar:nth-child(1) { animation: mkPlate .5s cubic-bezier(.2,.8,.25,1) both; animation-delay: var(--mk-d, 0s) }
+  .mk-stage.mk-in .iaq-mk-enr .mk-bar:nth-child(2) { animation: mkPlate .5s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .13s) }
+  .mk-stage.mk-in .iaq-mk-enr .mk-bar:nth-child(3) { animation: mkPlate .5s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--mk-d, 0s) + .26s) }
+}

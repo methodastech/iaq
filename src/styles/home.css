@@ -173,6 +173,8 @@ html.motion .hero .hl:nth-child(3)>span{animation-delay:.22s}
 .gstat .gtxt{display:flex;flex-direction:column;min-width:0}
 .gstat .num{font-family:"Switzer",sans-serif;font-weight:600;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.01em;color:var(--ink);line-height:1.05}
 .gstat .lab{font-family:"JetBrains Mono",monospace;font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);margin-top:8px;line-height:1.4}
+/* the six milestone marks carry their own entry choreography — see styles/mark-motion.css,
+   shared with the /home2 concept and hooked by .mk-stage on this grid */
 .globe-col{display:flex;flex-direction:column;align-items:center;gap:14px}
 .globe-host{position:relative;width:100%;max-width:560px;aspect-ratio:1/1;cursor:grab}
 .globe-host:active{cursor:grabbing}

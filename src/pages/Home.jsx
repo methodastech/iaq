@@ -2,11 +2,12 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
-import { MarkPrj, MarkCln, MarkEmp, MarkCtr, MarkShr, MarkCrb } from '../components/Marks.jsx'
+import { MarkYrs, MarkCtr, MarkIso, MarkInd, MarkPrj, MarkCln } from '../components/Marks.jsx'
 import IndustryGrid from '../components/IndustryGrid.jsx'
 import NewsRail from '../components/NewsRail.jsx'
 import initHome from '../scenes/home.js'
 import '../styles/home.css'
+import '../styles/mark-motion.css'
 
 export default function Home() {
   useEffect(() => {
@@ -96,18 +97,20 @@ export default function Home() {
       <div className="glance-glow" aria-hidden="true"></div>
       <div className="glance-in wrap">
         <div className="glance-head">
-          <span className="eyebrow"><span data-scramble="">IAQ AT A GLANCE</span></span>
-          <h2 className="u-mt14 u-mw22">One group, measured across the globe</h2>
+          <span className="eyebrow"><span data-scramble="">COMPANY SNAPSHOT</span></span>
+          <h2 className="u-mt14 u-mw22">Milestones that define us</h2>
         </div>
         <div className="glance-body">
           <p className="lede u-mt14">From a Malaysian indoor air quality specialist to a total facility solutions provider operating across 8 countries. Drag the globe. The numbers are the record.</p>
-          <div className="gstats">
-            <div className="gstat" data-reveal=""><MarkPrj className="gic" /><div className="gtxt"><div className="num"><span data-count="230">0</span>+</div><div className="lab">Completed projects</div></div></div>
-            <div className="gstat" data-reveal=""><MarkCln className="gic" /><div className="gtxt"><div className="num"><span data-count="1050000">0</span></div><div className="lab">m&sup2; cleanroom built-up</div></div></div>
-            <div className="gstat" data-reveal=""><MarkEmp className="gic" /><div className="gtxt"><div className="num"><span data-count="450">0</span></div><div className="lab">Employees group-wide</div></div></div>
-            <div className="gstat" data-reveal=""><MarkCtr className="gic" /><div className="gtxt"><div className="num"><span data-count="8">0</span></div><div className="lab">Countries, global offices</div></div></div>
-            <div className="gstat" data-reveal=""><MarkShr className="gic" /><div className="gtxt"><div className="num"><span data-count="2600000">0</span></div><div className="lab">Safe manhours</div></div></div>
-            <div className="gstat" data-reveal=""><MarkCrb className="gic" /><div className="gtxt"><div className="num"><span data-count="20">0</span>t</div><div className="lab">Carbon reduced / yr</div></div></div>
+          {/* THE MILESTONES, in the client's own order: the two long-service claims first, the
+              two credentials next, and the two big built numbers last, where the eye lands. */}
+          <div className="gstats mk-stage">
+            <div className="gstat" data-reveal=""><MarkYrs className="gic" /><div className="gtxt"><div className="num"><span data-count="32">0</span></div><div className="lab">Years of technical excellence</div></div></div>
+            <div className="gstat" data-reveal=""><MarkCtr className="gic" /><div className="gtxt"><div className="num"><span data-count="8">0</span></div><div className="lab">Countries with global presence</div></div></div>
+            <div className="gstat" data-reveal=""><MarkIso className="gic" /><div className="gtxt"><div className="num"><span data-count="3">0</span></div><div className="lab">ISO certifications</div></div></div>
+            <div className="gstat" data-reveal=""><MarkInd className="gic" /><div className="gtxt"><div className="num"><span data-count="7">0</span></div><div className="lab">Industries served</div></div></div>
+            <div className="gstat" data-reveal=""><MarkPrj className="gic" /><div className="gtxt"><div className="num"><span data-count="250">0</span></div><div className="lab">Projects completed</div></div></div>
+            <div className="gstat" data-reveal=""><MarkCln className="gic" /><div className="gtxt"><div className="num"><span data-count="1000000">0</span></div><div className="lab">m&sup2; cleanroom built</div></div></div>
           </div>
         </div>
         <div className="globe-col">
