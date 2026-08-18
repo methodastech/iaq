@@ -6,8 +6,10 @@ import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
 import NewsRail from '../components/NewsRail.jsx'
 import ModelFigure from '../components/ModelFigure.jsx'
-import CountField from '../components/CountField.jsx'
-import { MarkEpc, MarkPcu, MarkTol, MarkEnr } from '../components/Marks.jsx'
+import {
+  MarkYrs, MarkCtr, MarkIso, MarkInd, MarkPrj, MarkCln,
+  MarkEpc, MarkPcu, MarkTol, MarkEnr,
+} from '../components/Marks.jsx'
 import { PROJECTS } from '../data/projects.js'
 import '../styles/home2.css'
 import '../styles/mark-motion.css'
@@ -54,18 +56,14 @@ gsap.registerPlugin(ScrollTrigger)
 
 const Arr = () => <span className="h2-arr" aria-hidden="true">&rarr;</span>
 
-/* THE SIX MILESTONES, as a ledger and not a grid of pictures.
-   These numbers are the section's content, so they are also its design: set large enough to be
-   read across a room, ruled off from each other, and indexed 01–06 down the left the way a
-   certificate register or a bill of quantities is. Nothing illustrates them, because a drawing of
-   a cleanroom beside "1,000,000 m²" adds a picture and subtracts a fact. */
+/* the six milestones — the client's Company Snapshot counters, in their order */
 const MILESTONES = [
-  { k: 'yrs', v: 32, unit: '', lab: 'Years of technical excellence' },
-  { k: 'ctr', v: 8, unit: '', lab: 'Countries with global presence' },
-  { k: 'iso', v: 3, unit: '', lab: 'ISO certifications' },
-  { k: 'ind', v: 7, unit: '', lab: 'Industries served' },
-  { k: 'prj', v: 250, unit: '', lab: 'Projects completed' },
-  { k: 'cln', v: 1000000, unit: 'm²', lab: 'Cleanroom built' },
+  { M: MarkYrs, v: 32, lab: 'Years of technical excellence' },
+  { M: MarkCtr, v: 8, lab: 'Countries with global presence' },
+  { M: MarkIso, v: 3, lab: 'ISO certifications' },
+  { M: MarkInd, v: 7, lab: 'Industries served' },
+  { M: MarkPrj, v: 250, lab: 'Projects completed' },
+  { M: MarkCln, v: 1000000, lab: 'm² cleanroom built' },
 ]
 
 /* What We Do — the client's six items and their taglines. Item 6 arrived with an
@@ -238,7 +236,6 @@ function Hero() {
       </div>
 
       <div className="h2-hero-copy">
-        <span className="h2-eyebrow">IAQ Group · Est. 1994</span>
         <h1 className="h2-hero-title" aria-label="Your Total Facility Solutions Provider">
           <span className="h2-hl" aria-hidden="true"><span>Your Total Facility</span></span>
           <span className="h2-hl" aria-hidden="true"><span><em>Solutions Provider</em></span></span>
@@ -264,7 +261,7 @@ function Snapshot() {
   useEffect(() => {
     const ctx = gsap.context(self => {
       const q = self.selector
-      const led = q('.h2-led')[0]
+      const grid = q('.h2-ms')[0]
 
       /* THE COUNTERS run whether or not motion is allowed — a number that never
          arrives at its value is a broken number, not a calm one. */
@@ -272,27 +269,28 @@ function Snapshot() {
         const end = +el.dataset.count
         if (still()) { el.textContent = end.toLocaleString('en-US'); return }
         gsap.to({ v: 0 }, {
-          v: end, duration: 1.6, ease: 'power2.out',
+          v: end, duration: 1.5, ease: 'power2.out',
           onUpdate () { el.textContent = Math.round(this.targets()[0].v).toLocaleString('en-US') },
         })
       }
 
       ScrollTrigger.create({
-        trigger: led, start: 'top 84%', once: true,
-        onEnter: () => q('[data-count]').forEach(runCount),
+        trigger: grid, start: 'top 82%', once: true,
+        onEnter: () => {
+          /* one class, and the six marks run their own choreographies off --mk-d */
+          grid.classList.add('mk-in')
+          q('[data-count]').forEach(runCount)
+        },
       })
 
       if (still()) return
-      /* each row is ruled off, and the RULE is what arrives first: it draws across, and the line
-         it just made is where the figure lands. The order matters — a number that appears before
-         its own baseline reads as floating. */
-      gsap.fromTo(q('.h2-led-row'), { y: 26, opacity: 0 }, {
-        y: 0, opacity: 1, duration: .8, ease: 'power3.out', stagger: .085,
-        scrollTrigger: { trigger: led, start: 'top 84%', once: true },
+      gsap.fromTo(q('.h2-ms-cell'), { y: 22, opacity: 0 }, {
+        y: 0, opacity: 1, duration: .7, ease: 'power3.out', stagger: .075,
+        scrollTrigger: { trigger: grid, start: 'top 82%', once: true },
       })
-      gsap.fromTo(q('.h2-led-row'), { '--led-rule': 0 }, {
-        '--led-rule': 1, duration: 1.05, ease: 'power3.inOut', stagger: .085,
-        scrollTrigger: { trigger: led, start: 'top 84%', once: true },
+      gsap.fromTo(q('.h2-snap-rule'), { scaleX: 0 }, {
+        scaleX: 1, duration: 1.1, ease: 'power3.inOut',
+        scrollTrigger: { trigger: root.current, start: 'top 78%', once: true },
       })
     }, root)
     return () => ctx.revert()
@@ -302,23 +300,21 @@ function Snapshot() {
     <section className="h2-snap" id="snapshot" ref={root}>
       <div className="h2-wrap">
         <div className="h2-head">
-          <span className="h2-eyebrow">Company Snapshot</span>
           <h2 className="h2-xl">Milestones That <em>Define Us</em></h2>
         </div>
+        <div className="h2-snap-rule" aria-hidden="true" />
 
-        <ol className="h2-led">
-          {MILESTONES.map(({ k, v, unit, lab }, i) => (
-            <li className="h2-led-row" key={lab}>
-              <span className="h2-led-i">{String(i + 1).padStart(2, '0')}</span>
-              <span className="h2-led-n">
-                <span data-count={v}>0</span>
-                {unit && <i className="h2-led-u">{unit}</i>}
-              </span>
-              <CountField kind={k} />
-              <span className="h2-led-l">{lab}</span>
-            </li>
+        <div className="h2-ms mk-stage">
+          {MILESTONES.map(({ M, v, lab }) => (
+            <div className="h2-ms-cell" key={lab}>
+              <M className="h2-ms-mark" />
+              <div className="h2-ms-txt">
+                <div className="h2-ms-num"><span data-count={v}>0</span></div>
+                <div className="h2-ms-lab">{lab}</div>
+              </div>
+            </div>
           ))}
-        </ol>
+        </div>
       </div>
     </section>
   )
@@ -364,7 +360,6 @@ function WhatWeDo() {
     <section className="h2-do" id="what-we-do" ref={root}>
       <div className="h2-wrap h2-do-head">
         <div className="h2-head">
-          <span className="h2-eyebrow">What We Do</span>
           <h2 className="h2-xl">From Blueprint to Handover, <em>and Beyond</em></h2>
         </div>
         <Link to="/services" className="h2-pill h2-pill-ghost h2-do-cta">See How We Work <Arr /></Link>
@@ -418,7 +413,6 @@ function Industries() {
     <section className="h2-ind" id="industries" ref={root}>
       <div className="h2-wrap">
         <div className="h2-head">
-          <span className="h2-eyebrow">Industries We Serve</span>
           <h2 className="h2-xl">Built for Hi-Tech. <em>Engineered for Precision.</em></h2>
         </div>
         <div className="h2-ind-grid">
@@ -464,7 +458,6 @@ function BusinessModel() {
     <section className="h2-mod" id="business-model" ref={root}>
       <div className="h2-wrap">
         <div className="h2-head">
-          <span className="h2-eyebrow">Our Business Model</span>
           <h2 className="h2-xl h2-on-dark">Four Ways We <em>Deliver Certainty</em></h2>
           <p className="h2-lede h2-on-dark">
             IAQ structures every engagement around its core business models, giving clients the
@@ -520,7 +513,6 @@ function TrackRecord() {
     <section className="h2-rec" id="track-record" ref={root}>
       <div className="h2-wrap h2-do-head">
         <div className="h2-head">
-          <span className="h2-eyebrow">Track Record Highlight</span>
           <h2 className="h2-xl">Trusted at Home. <em>Expanding Across the Globe</em></h2>
         </div>
         <Link to="/projects" className="h2-pill h2-pill-ghost h2-do-cta">View Our Projects <Arr /></Link>
@@ -531,7 +523,6 @@ function TrackRecord() {
           <article className={'h2-rec-row' + (i % 2 ? ' h2-rec-flip' : '')} key={k}>
             <div className="h2-rec-media"><img src={p.img} alt={p.name} loading="lazy" /></div>
             <div className="h2-rec-body">
-              <span className="h2-eyebrow">{'0' + (i + 1)} · {k}</span>
               <h3 className="h2-rec-t">{p.name}</h3>
               <dl className="h2-rec-meta">
                 <div><dt>Client</dt><dd>{p.client}</dd></div>
@@ -635,7 +626,6 @@ function Mission() {
         <div className="h2-mis-scrim" aria-hidden="true" />
 
         <div className="h2-mis-copy">
-          <span className="h2-eyebrow">Our Mission</span>
           <p>
             Providing innovative and sustainable facility and engineering solutions benefitting our
             clients and stakeholders, driven by our leadership, employees and partners globally.
@@ -659,7 +649,6 @@ function NewsTeaser() {
           capped element that is also the auto-margined container centres itself on the page */}
       <div className="h2-wrap">
         <div className="h2-head">
-          <span className="h2-eyebrow">News &amp; Insights</span>
           <h2 className="h2-xl">Stay Ahead <em>With IAQ</em></h2>
           <p className="h2-lede">
             Explore our latest project milestones, industry insights, and company updates as we
@@ -698,7 +687,6 @@ function ClosingCta() {
         <img className="h2-final-bg" src="/assets/contact-cleanroom.webp" alt="" loading="lazy" />
       </div>
       <div className="h2-final-in">
-        <span className="h2-eyebrow">Closing</span>
         <h2 className="h2-xl h2-on-dark">Let’s Build Your Next <em>Facility Together</em></h2>
         <p className="h2-lede h2-on-dark">
           Have a project that demands precision, speed, and proven expertise? Talk to our team and

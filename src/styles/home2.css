@@ -39,14 +39,6 @@
 
 /* ── shared type ──────────────────────────────────────────── */
 
-.h2-eyebrow {
-  display: block;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--h2-red);
-}
 .h2-xl {
   font-size: clamp(30px, 3.9vw, 58px);
   letter-spacing: -.035em;
@@ -165,23 +157,6 @@
   margin: 0 auto clamp(72px, 12vh, 150px);
   color: #fff;
 }
-/* RED ON A PHOTOGRAPH is the one colour that cannot be trusted to hold: the brand red is a
-   mid-tone, so it sinks into a dusk sky and disappears into a lit facade. Every eyebrow that lands
-   on imagery goes white and keeps the accent as a lead rule instead, where the red is a shape and
-   not a letterform. */
-.h2-hero-copy .h2-eyebrow, .h2-final .h2-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: rgba(255, 255, 255, .78);
-}
-.h2-hero-copy .h2-eyebrow::before, .h2-final .h2-eyebrow::before {
-  content: "";
-  width: 34px;
-  height: 2px;
-  background: var(--h2-red);
-  flex: none;
-}
 .h2-hero-title {
   font-size: clamp(38px, 6.6vw, 104px);
   line-height: .98;
@@ -225,113 +200,43 @@
 
 /* ══ 2 · COMPANY SNAPSHOT ═════════════════════════════════════ */
 
-.h2-snap { padding: clamp(72px, 11vh, 132px) 0; background: var(--h2-white) }
-/* ── THE LEDGER ────────────────────────────────────────────────────────────
-   No pictures. These six numbers ARE the content of the section, so they are also its design:
-   set large, ruled off from one another, and indexed 01-06 down the left the way a register is.
-   An illustration beside "1,000,000 m²" adds a drawing and subtracts a fact.
-
-   The rule under each row is a scaled pseudo-element rather than a border, so it can be swept
-   across on reveal; --led-rule carries that progress. */
-.h2-led { list-style: none; margin: clamp(26px, 3.6vw, 48px) 0 0; padding: 0 }
-.h2-led-row {
-  --led-rule: 1;
-  position: relative;
-  display: grid;
-  grid-template-columns: 3.6rem auto minmax(90px, 1fr) auto;
-  align-items: baseline;
-  gap: clamp(12px, 2vw, 30px);
-  padding: clamp(10px, 1.4vw, 18px) 0 clamp(12px, 1.6vw, 20px);
-  transition: background .4s var(--h2-ease);
-}
-/* THE COUNT FIELD occupies the span between the figure and its label — the stretch that was a
-   lake of white in the first cut. Underneath it sits the LEADER, the plain hairline a ledger runs
-   between an amount and its entry, which is what shows when there is no WebGL to draw the field. */
-.h2-led-field {
-  position: relative;
-  align-self: center;
-  display: block;
-  /* tall enough for the field's diagonal lift: at 30° the long axis rises across the frame, and a
-     shorter strip crops its far end off */
-  height: 132px;
-  min-width: 0;
-}
-.h2-led-lead {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 1px;
-  background: var(--h2-line);
-  transform: scaleX(var(--led-rule));
-  transform-origin: 0 50%;
-  transition: opacity .6s var(--h2-ease);
-}
-/* once the field has drawn a frame the hairline steps out of its way */
-.h2-led-field.is-3d .h2-led-lead { opacity: 0 }
-.h2-led-row::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
+.h2-snap { padding: clamp(100px, 16vh, 200px) 0; background: var(--h2-white) }
+.h2-snap-rule {
   height: 1px;
   background: var(--h2-line2);
-  transform: scaleX(var(--led-rule));
+  margin: clamp(36px, 4.6vw, 62px) 0 clamp(44px, 5.6vw, 78px);
   transform-origin: 0 50%;
 }
-/* the marker: a red bar that grows out of the baseline on hover, so the row being read is the
-   row that is marked */
-.h2-led-row::before {
-  content: "";
-  position: absolute;
-  left: 0; bottom: 0;
-  width: 3px; height: 100%;
-  background: var(--h2-red);
-  transform: scaleY(0);
-  transform-origin: 50% 100%;
-  transition: transform .45s var(--h2-ease);
+.h2-ms {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(40px, 4.8vw, 74px) clamp(26px, 3vw, 46px);
 }
-.h2-led-row:hover::before { transform: scaleY(1) }
-.h2-led-row:hover { background: linear-gradient(90deg, rgba(236, 32, 39, .05), transparent 46%) }
-
-.h2-led-i {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  letter-spacing: .16em;
-  color: var(--h2-faint);
-  padding-left: clamp(0px, 1.4vw, 18px);
-  transition: color .35s;
+.h2-ms-cell {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-right: 12px;
 }
-.h2-led-row:hover .h2-led-i { color: var(--h2-red) }
-
-.h2-led-n {
+/* object-fit does not apply to inline SVG, and display:block kills the inline-baseline gap */
+.h2-ms-mark { width: 76px; height: 76px; flex: none; display: block }
+.h2-ms-txt { min-width: 0 }
+.h2-ms-num {
   font-family: "Switzer", sans-serif;
   font-weight: 600;
-  font-size: clamp(38px, 5.2vw, 84px);
-  letter-spacing: -.045em;
-  line-height: .88;
-  color: var(--h2-ink);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
+  font-size: clamp(32px, 3.5vw, 52px);
+  letter-spacing: -.03em;
+  line-height: 1;
 }
-.h2-led-u {
-  font-style: normal;
-  font-size: .3em;
-  letter-spacing: -.01em;
-  color: var(--h2-soft);
-  margin-left: .35em;
-  vertical-align: .62em;
-}
-.h2-led-l {
+.h2-ms-lab {
   font-family: "JetBrains Mono", monospace;
-  font-size: clamp(9px, .78vw, 11px);
-  letter-spacing: .15em;
+  font-size: 9.5px;
+  letter-spacing: .13em;
   text-transform: uppercase;
   color: var(--h2-soft);
-  text-align: right;
-  line-height: 1.6;
-  transition: color .35s;
+  margin-top: 12px;
+  line-height: 1.5;
 }
-.h2-led-row:hover .h2-led-l { color: var(--h2-ink) }
 
 /* ══ 3 · WHAT WE DO ═══════════════════════════════════════════
    One perspective for the whole rail and preserve-3d on the track, so the cards share a vanishing
@@ -678,7 +583,6 @@
   color: #fff;
   pointer-events: none;
 }
-.h2-mis-copy .h2-eyebrow { color: rgba(255, 255, 255, .74); margin-bottom: 22px; display: block }
 .h2-mis-copy p {
   font-family: "Switzer", sans-serif;
   font-weight: 600;
@@ -715,13 +619,19 @@
 
 .h2-news { padding: clamp(72px, 11vh, 132px) 0 clamp(40px, 6vh, 70px); background: var(--h2-white) }
 .h2-news .h2-head { margin-bottom: clamp(26px, 3.4vw, 44px) }
+/* NewsRail returns a bare fragment — bar and rail are siblings with no container — so on this
+   page they run edge to edge and the "All" pill and the next arrow are cut off. Same gutter as
+   .h2-wrap, so the rail starts and ends on the page margin while still scrolling full bleed. */
+.h2-news .nr-bar,
+.h2-news .nr-rail { padding-inline: max(var(--h2-pad), (100% - 1360px) / 2) }
+.h2-news .nr-rail { scroll-padding-inline: max(var(--h2-pad), (100% - 1360px) / 2) }
 
 /* ══ 8 · CLOSING ══════════════════════════════════════════════ */
 
 .h2-final {
   position: relative;
   overflow: clip;
-  padding: clamp(90px, 15vh, 190px) 0;
+  padding: clamp(120px, 24vh, 300px) 0;
   background: var(--h2-dark);
 }
 .h2-final-media { position: absolute; inset: 0 }
@@ -744,9 +654,14 @@
 .h2-final-in > * { max-width: 42ch }
 .h2-final-in .h2-pill { margin-top: 32px }
 
+/* The footer carries a 40px top margin site-wide, which on a page that ends DARK shows a strip of
+   paper between the closing statement and the footer — a seam where there should be none. */
+.h2-page + .sitefoot { margin-top: 0 }
+
 /* ── responsive ───────────────────────────────────────────── */
 
 @media (max-width: 1100px) {
+  .h2-ms { grid-template-columns: repeat(2, 1fr) }
   .h2-ind-grid { grid-template-columns: repeat(2, 1fr) }
   .h2-ind-card:first-child { grid-column: span 2; grid-row: span 1 }
   .h2-ind-card:nth-child(6), .h2-ind-card:nth-child(7) { grid-column: auto }
@@ -761,15 +676,7 @@
   .h2-rec-meta { grid-template-columns: 1fr 1fr }
   .h2-do-head { align-items: flex-start }
   .h2-stage-card { flex-basis: 78vw }
-  /* the ledger drops its third column: the label goes UNDER the figure rather than shrinking to
-     nothing beside it, and the index keeps its own column so the rows still read as a register */
-  .h2-led-row {
-    grid-template-columns: 3.2rem minmax(0, 1fr);
-    row-gap: 8px;
-    align-items: end;
-  }
-  .h2-led-field { grid-column: 1 / -1; height: 74px }
-  .h2-led-l { grid-column: 2; text-align: left }
+.h2-ms { grid-template-columns: 1fr }
 }
 
 /* The 3D is decoration, not information: with reduced motion every plane sits flat, every card
