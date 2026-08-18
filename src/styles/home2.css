@@ -238,9 +238,13 @@
   line-height: 1.5;
 }
 
-/* ══ 3 · WHAT WE DO ═══════════════════════════════════════════
-   One perspective for the whole rail and preserve-3d on the track, so the cards share a vanishing
-   point instead of each owning a private one — six private perspectives is six separate rooms. */
+/* ══ 3 · WHAT WE DO — editorial rows ══════════════════════════
+   One full-width row per service, image alternating sides, every one of them reached by
+   scrolling down. The card rail this replaces scrolled sideways and read as six equals; a
+   stacked run reads as the SEQUENCE the section is describing.
+
+   Each row's red rule is drawn by GSAP (scaleX), so its resting state here is the drawn one:
+   a visitor with no JS sees finished rules, never missing ones. */
 
 .h2-do { padding: clamp(72px, 11vh, 132px) 0; background: var(--h2-paper); overflow: clip }
 .h2-do-head {
@@ -249,72 +253,90 @@
   justify-content: space-between;
   gap: 28px;
   flex-wrap: wrap;
-  margin-bottom: clamp(32px, 4vw, 56px);
+  margin-bottom: clamp(18px, 2.6vw, 36px);
 }
 .h2-do-cta { flex: none }
 
-.h2-stages {
-  display: flex;
-  gap: clamp(16px, 1.6vw, 26px);
-  padding: 26px var(--h2-pad) 34px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  perspective: 1500px;
-  perspective-origin: 50% 50%;
-  /* the rail runs past the right edge on purpose — a row that stops short says "this is all of
-     it", and there are six. The fade is the affordance that says keep going, and it is a mask
-     rather than a gradient overlay so it works over any section background. */
-  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 86%, transparent 100%);
-  mask-image: linear-gradient(90deg, #000 0, #000 86%, transparent 100%);
-}
-.h2-stages::-webkit-scrollbar { display: none }
-
-.h2-stage-card {
-  flex: 0 0 clamp(250px, 24vw, 330px);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background: var(--h2-white);
-  border: 1px solid var(--h2-line);
-  border-radius: 4px;
-  overflow: hidden;
-  transform-style: preserve-3d;
-  transition: transform .55s var(--h2-ease), border-color .35s;
-  will-change: transform;
-}
-.h2-stage-card:hover {
-  transform: translateY(-10px) rotateY(-6deg) rotateX(2deg);
-  border-color: var(--h2-line2);
-}
-.h2-stage-n {
+.h2-svc { display: block; position: relative; padding: clamp(34px, 4.6vw, 68px) 0 }
+.h2-svc-rule {
   position: absolute;
-  top: 14px;
-  left: 16px;
-  z-index: 2;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
-  letter-spacing: .16em;
-  color: #fff;
-  mix-blend-mode: difference;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--h2-red);
+  transform-origin: 0 50%;
 }
-.h2-stage-img { aspect-ratio: 4 / 3; overflow: hidden; background: #E8ECF3 }
-.h2-stage-img img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .8s var(--h2-ease);
+/* the rule grows out of the text side, so it alternates with the layout */
+.h2-svc-flip .h2-svc-rule { transform-origin: 100% 50% }
+
+.h2-svc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.12fr;
+  gap: clamp(24px, 4vw, 72px);
+  align-items: center;
 }
-.h2-stage-card:hover .h2-stage-img img { transform: scale(1.07) }
-.h2-stage-body { padding: 22px 20px 24px; display: flex; flex-direction: column; flex: 1 }
-.h2-stage-t { font-size: 18px; letter-spacing: -.02em; line-height: 1.25 }
-.h2-stage-tag { margin-top: 10px; font-size: 13.5px; color: var(--h2-soft); line-height: 1.55; flex: 1 }
-.h2-stage-go {
+.h2-svc-flip .h2-svc-media { order: -1 }
+
+.h2-svc-n {
+  display: block;
+  overflow: hidden;
+  font-family: "Switzer", sans-serif;
+  font-weight: 600;
+  font-size: clamp(40px, 4.6vw, 76px);
+  line-height: .92;
+  letter-spacing: -.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.2px var(--h2-line2);
+}
+.h2-svc-n > span { display: block }
+.h2-svc-body h3 {
   margin-top: 18px;
+  font-size: clamp(22px, 2.4vw, 38px);
+  letter-spacing: -.032em;
+  line-height: 1.12;
+  max-width: 18ch;
+  transition: color .35s;
+}
+.h2-svc:hover .h2-svc-body h3 { color: var(--h2-red) }
+.h2-svc-body p {
+  margin-top: 14px;
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.7;
+  color: var(--h2-soft);
+  max-width: 44ch;
+}
+.h2-svc-go {
+  display: inline-block;
+  margin-top: 22px;
   font-family: "JetBrains Mono", monospace;
   font-size: 10px;
-  letter-spacing: .14em;
+  letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--h2-red);
 }
-.h2-stage-card:hover .h2-stage-go .h2-arr { transform: translateX(4px) }
+.h2-svc:hover .h2-svc-go .h2-arr { transform: translateX(5px) }
+
+.h2-svc-media {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #E8ECF3;
+  will-change: clip-path;
+}
+.h2-svc-media img {
+  position: absolute;
+  /* 112% against a ±5% scrub: the overscan must exceed the parallax or the frame shows through */
+  inset: -6% 0;
+  width: 100%;
+  height: 112%;
+  object-fit: cover;
+  will-change: transform;
+  transition: filter .5s;
+}
+.h2-svc:hover .h2-svc-media img { filter: saturate(1.08) }
 
 /* ══ 4 · INDUSTRIES ═══════════════════════════════════════════ */
 
@@ -675,7 +697,10 @@
   .h2-rec-flip .h2-rec-media { order: 0 }
   .h2-rec-meta { grid-template-columns: 1fr 1fr }
   .h2-do-head { align-items: flex-start }
-  .h2-stage-card { flex-basis: 78vw }
+  /* one column, and the picture always leads: alternating is a rhythm only with two columns */
+  .h2-svc-grid { grid-template-columns: 1fr; gap: 18px }
+  .h2-svc-flip .h2-svc-media { order: -1 }
+  .h2-svc-media { order: -1 }
 .h2-ms { grid-template-columns: 1fr }
 }
 
@@ -690,7 +715,7 @@
   .h2-mis-tile:not(.h2-mis-hero) { display: none }
   .h2-mis-cta { position: relative; left: auto; top: auto; transform: none; opacity: 1; margin-top: 34px }
   .h2-mis-stage { display: flex; flex-direction: column; justify-content: center }
-  .h2-hero-planes, .h2-stage-card, .h2-ind-card, .h2-mod-card { transform: none !important }
-  .h2-stage-card:hover, .h2-ind-card:hover, .h2-mod-card:hover, .h2-pill:hover { transform: none !important }
+  .h2-hero-planes, .h2-ind-card, .h2-mod-card { transform: none !important }
+  .h2-ind-card:hover, .h2-mod-card:hover, .h2-pill:hover { transform: none !important }
   .h2-hero-sky { transform: scale(1.1) !important }
 }

@@ -321,9 +321,15 @@ function Snapshot() {
 }
 
 /* ------------------------------------------------------------- what we do
-   The depth rail. Cards share one perspective and one 3D context; each rotates
-   out of the wall by an amount set from its own distance to centre, so the row
-   reads as a sequence receding rather than six equal tiles. */
+   FULL-WIDTH EDITORIAL ROWS, one per service, replacing the card rail. A card
+   grid makes six equals; a stacked run of rows makes a SEQUENCE, which is what
+   "blueprint to handover" actually is. The picture changes sides each row so the
+   eye is handed across the page instead of marched down one gutter.
+
+   The reveal, per row: the red rule draws across first, the number slides up out
+   of its own mask, the title and tagline follow, and the photograph WIPES open
+   toward its own side of the page — a clip-path reveal, so the image is
+   uncovered in place rather than arriving from somewhere. */
 function WhatWeDo() {
   const root = useRef(null)
 
@@ -332,24 +338,29 @@ function WhatWeDo() {
       const q = self.selector
       if (still()) return
 
-      gsap.fromTo(q('.h2-stage-card'), { yPercent: 14, opacity: 0, rotateY: -14 }, {
-        yPercent: 0, opacity: 1, rotateY: 0, duration: .85, ease: 'power3.out', stagger: .07,
-        scrollTrigger: { trigger: q('.h2-stages')[0], start: 'top 80%', once: true },
-      })
+      q('.h2-svc').forEach(row => {
+        const flip = row.classList.contains('h2-svc-flip')
+        const at = { trigger: row, start: 'top 78%', once: true }
 
-      /* the rail slides its own length as the section passes, so the last two
-         cards are reachable without a scrollbar under the row */
-      const rail = q('.h2-stages')[0]
-      const mm = gsap.matchMedia()
-      mm.add('(min-width: 900px)', () => {
-        const over = () => Math.max(0, rail.scrollWidth - rail.clientWidth)
-        if (over() < 8) return
-        gsap.to(rail, {
-          scrollLeft: over, ease: 'none',
-          scrollTrigger: {
-            trigger: root.current, start: 'top 12%', end: () => '+=' + over(),
-            scrub: .5, invalidateOnRefresh: true,
-          },
+        /* the rule leads, and it grows out of the text side */
+        gsap.fromTo(row.querySelector('.h2-svc-rule'), { scaleX: 0 }, {
+          scaleX: 1, duration: 1.05, ease: 'power3.inOut', scrollTrigger: at,
+        })
+        /* the number rises out of its own mask */
+        gsap.fromTo(row.querySelector('.h2-svc-n > span'), { yPercent: 115 }, {
+          yPercent: 0, duration: .85, ease: 'power3.out', delay: .12, scrollTrigger: at,
+        })
+        gsap.fromTo(row.querySelectorAll('.h2-svc-body h3, .h2-svc-body p, .h2-svc-go'),
+          { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: .8, ease: 'power3.out', stagger: .09, delay: .18, scrollTrigger: at })
+        /* the wipe travels toward the picture's own side of the page */
+        gsap.fromTo(row.querySelector('.h2-svc-media'),
+          { clipPath: flip ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)' },
+          { clipPath: 'inset(0 0% 0 0%)', duration: 1.15, ease: 'power4.inOut', delay: .1, scrollTrigger: at })
+        /* in-frame parallax, same overscan contract as the rest of the page */
+        gsap.fromTo(row.querySelector('.h2-svc-media img'), { yPercent: -5 }, {
+          yPercent: 5, ease: 'none',
+          scrollTrigger: { trigger: row, start: 'top bottom', end: 'bottom top', scrub: .7 },
         })
       })
     }, root)
@@ -365,15 +376,20 @@ function WhatWeDo() {
         <Link to="/services" className="h2-pill h2-pill-ghost h2-do-cta">See How We Work <Arr /></Link>
       </div>
 
-      <div className="h2-stages">
-        {STAGES.map(s => (
-          <Link className="h2-stage-card" to={s.to} key={s.n}>
-            <span className="h2-stage-n">{s.n}</span>
-            <div className="h2-stage-img"><img src={s.img} alt="" loading="lazy" /></div>
-            <div className="h2-stage-body">
-              <h3 className="h2-stage-t">{s.t}</h3>
-              <p className="h2-stage-tag">{s.tag}</p>
-              <span className="h2-stage-go">Read more <Arr /></span>
+      <div className="h2-wrap h2-svcs">
+        {STAGES.map((s, i) => (
+          <Link className={'h2-svc' + (i % 2 ? ' h2-svc-flip' : '')} to={s.to} key={s.n}>
+            <i className="h2-svc-rule" aria-hidden="true" />
+            <div className="h2-svc-grid">
+              <div className="h2-svc-body">
+                <span className="h2-svc-n" aria-hidden="true"><span>{s.n}</span></span>
+                <h3>{s.t}</h3>
+                <p>{s.tag}</p>
+                <span className="h2-svc-go">Explore <Arr /></span>
+              </div>
+              <figure className="h2-svc-media">
+                <img src={s.img} alt="" loading="lazy" />
+              </figure>
             </div>
           </Link>
         ))}
