@@ -110,7 +110,11 @@ export default function Nav() {
           <img className="lface" src={LOGO} alt="IAQ" />
         </span></span></Link>
         <div className="nav-links">
-          {/* 7 Aug decision: no Home tab. The logo is the way home. */}
+          {/* 7 Aug decision: no Home tab, the logo is the way home — still true for the SITE.
+              Home 2 is here anyway, by request: while two homepage concepts are in review, the
+              quickest way to compare them is one click from wherever you happen to be. It goes
+              with the concept it points at. */}
+          <NavLink to="/home2" className={here}>Home 2</NavLink>
           <NavLink to="/about" className={here}>About</NavLink>
           {MENUS.map(m => (
             <div className="nav-has" key={m.hub}
