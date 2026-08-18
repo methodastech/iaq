@@ -299,29 +299,6 @@ function Reach () {
   )
 }
 
-/* ═══════════════════════════════════════════════════ 3 · the break
-   One full-bleed photograph between the evidence and the method. No copy is
-   invented for it: the deck has none, and a picture is allowed to be a breath. */
-function Break () {
-  const root = useRef(null)
-  useEffect(() => {
-    const ctx = gsap.context(self => {
-      const q = self.selector
-      if (still()) return
-      gsap.fromTo(q('.a2-break img'), { yPercent: -12, scale: 1.16 }, {
-        yPercent: 12, ease: 'none',
-        scrollTrigger: { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: .6 },
-      })
-    }, root)
-    return () => ctx.revert()
-  }, [])
-  return (
-    <section className="a2-break" ref={root} aria-hidden="true">
-      <img src="/assets/projects/prj-006.webp" alt="" loading="lazy" />
-    </section>
-  )
-}
-
 /* ═════════════════════════════════════════════════════ 4 · method
    The six values, reframed as how the work is done, with a spine down the page
    that tells you which of the six you are in. The old page made you guess. */
@@ -493,7 +470,6 @@ export default function About2 () {
         <Hero />
         <Proof />
         <Reach />
-        <Break />
         <Method />
         <Purpose />
         <Close />
