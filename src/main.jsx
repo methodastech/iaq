@@ -7,6 +7,7 @@ import './styles/base.css'
 
 const Home = lazy(() => import('./pages/Home.jsx'))
 const Home2 = lazy(() => import('./pages/Home2.jsx'))
+const About2 = lazy(() => import('./pages/About2.jsx'))
 const About = lazy(() => import('./pages/About.jsx'))
 const Projects = lazy(() => import('./pages/Projects.jsx'))
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail.jsx'))
@@ -75,6 +76,7 @@ root.render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home2" element={<Home2 />} />
+          <Route path="/about2" element={<About2 />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:id" element={<ProjectDetail />} />

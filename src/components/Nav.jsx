@@ -115,6 +115,7 @@ export default function Nav() {
               quickest way to compare them is one click from wherever you happen to be. It goes
               with the concept it points at. */}
           <NavLink to="/home2" className={here}>Home 2</NavLink>
+          <NavLink to="/about2" className={here}>About 2</NavLink>
           <NavLink to="/about" className={here}>About</NavLink>
           {MENUS.map(m => (
             <div className="nav-has" key={m.hub}
