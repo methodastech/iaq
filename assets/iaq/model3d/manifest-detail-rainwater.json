@@ -1,0 +1,88 @@
+{
+  "layer": "detail-rainwater",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -70.69830836431657,
+      2.8224987983703613,
+      -37.064715029124926
+    ],
+    "max": [
+      69.36828099115218,
+      27.567623138427734,
+      51.13023507463484
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      85.53921508789062,
+      2.8224987983703613,
+      -40.623348236083984
+    ],
+    "max": [
+      225.60580444335938,
+      27.567623138427734,
+      47.57160186767578
+    ]
+  },
+  "storeys": [
+    {
+      "index": 0,
+      "key": "apron",
+      "name": "APRON",
+      "elevation": 4.2,
+      "file": "detail-rainwater-0-apron.glb",
+      "triangles": 5752,
+      "sizeKB": 63
+    },
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-rainwater-1-gf.glb",
+      "triangles": 4504,
+      "sizeKB": 50
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-rainwater-2-1f.glb",
+      "triangles": 1776,
+      "sizeKB": 25
+    },
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-rainwater-3-2f.glb",
+      "triangles": 4402,
+      "sizeKB": 48
+    },
+    {
+      "index": 4,
+      "key": "3f",
+      "name": "3F",
+      "elevation": 21.05,
+      "file": "detail-rainwater-4-3f.glb",
+      "triangles": 37654,
+      "sizeKB": 365
+    },
+    {
+      "index": 5,
+      "key": "rf",
+      "name": "RF",
+      "elevation": 27.71,
+      "file": "detail-rainwater-5-rf.glb",
+      "triangles": 7536,
+      "sizeKB": 78
+    }
+  ]
+}

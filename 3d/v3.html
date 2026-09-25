@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IAQ Cleanroom · V3</title>
+    <script type="module" crossorigin src="./assets/main-DFKh-ZaJ.js"></script>
+    <script src="./iaq-trim.js"></script>  <!-- 25 Sep: the third building off, models untouched -->
+    <script src="./iaq-look.js"></script>  <!-- 25 Sep: build view post pass (occlusion, filmic curve) -->
+    <link rel="stylesheet" crossorigin href="./assets/main-DUkQVcKG.css">
+  </head>
+  <body>
+    <!-- The drawing itself. Labelled and described, because it is the whole
+         content of the page rather than an illustration beside it, and because
+         its controls are gestures with no other affordance. The build sequence
+         is also written out in the panel beside it, which is what a reader who
+         cannot use the canvas actually reads. -->
+    <canvas id="app" role="img" tabindex="0"
+      aria-label="Three-dimensional model of the fab, assembling as the page scrolls. Drag to turn it, pinch or use the zoom controls to move closer, hover a part to name it."></canvas>
+
+    <!-- The section's scroll runway.
+         Tall and empty: the canvas is fixed, so scrolling this is what drives
+         the build. It is the same shape a pinned section takes in any page,
+         which is why the embed needs no other machinery. -->
+    <div id="scroll-runway" hidden aria-hidden="true"></div>
+
+    <!-- Which interface the Scroll to Build section wears.
+         Two finished alternatives over one unchanged 3D sequence: version 1 is
+         the page-style caption panel below, version 2 the instrument panel
+         built in cleanroom/section/hud.ts over the site treatment in boss.ts, and
+         version 3 that same site with the utility building moved (src/layout.ts).
+         The switch exists so the two can be compared side by side rather than
+         from memory, and it shows only in the section — the walkthrough has no
+         second version to offer. -->
+    <div id="skin-switch" hidden role="group" aria-label="Section version">
+      <button type="button" id="skin-v1" aria-pressed="true" aria-label="V1 · Classic" title="V1 · Classic">V1<span class="sv-name"> · Classic</span></button>
+      <button type="button" id="skin-v3" aria-pressed="false" aria-label="V2 · Technical Accuracy" title="V2 · Technical Accuracy">V2<span class="sv-name"> · Technical Accuracy</span></button>
+    </div>
+
+    <!-- Zoom and the key to the gestures, for every version of the section.
+         The label chip follows the pointer when a part of the model is under
+         it; see cleanroom/section/hover.ts. -->
+    <div id="view-tools" hidden>
+      <p class="vt-keys">
+        <span class="on-scroll"><b>Scroll</b> build</span><span class="on-tap"><b>Tap</b> build</span><span><b>Drag</b> rotate</span>
+        <span><b>Pinch or ±</b> zoom</span><span><b>Hover</b> a part</span>
+      </p>
+      <div class="vt-zoom" role="group" aria-label="Zoom">
+        <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+        <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
+        <button type="button" id="zoom-reset" aria-label="Reset view">↺</button>
+      </div>
+    </div>
+    <div id="part-chip" hidden aria-live="polite"></div>
+
+    <!-- Callout chips for version 2, pinned to the parts going in.
+         Positions are set in this layer's own pixels, so it has to cover the
+         canvas exactly; see cleanroom/section/callouts.ts. Decorative: the same
+         names are in the panel's own copy, so a screen reader gets them there
+         rather than as a stream of floating labels. -->
+    <div id="callouts" aria-hidden="true"></div>
+
+    <section id="assembly-ui" hidden>
+      <div class="card">
+        <!-- The client's own service headings. The chapter holds for every beat
+             that belongs to it; the title names the part currently arriving. -->
+        <p class="chapter" id="stage-chapter"></p>
+        <h2 id="stage-title">Piling</h2>
+        <p class="detail" id="stage-detail"></p>
+        <p class="blurb" id="stage-blurb"></p>
+        <!-- The client's own sections, as a rail: where you are in the
+             sequence, what is still to come, and a way to jump to any of it.
+             Twenty-five dots said how far through you were and nothing about
+             what you were looking at. -->
+        <ol class="rail" id="stage-rail"></ol>
+        <p class="step" id="stage-step">1 / 25</p>
+        <p class="scrollhint" id="scroll-hint"><span class="on-scroll">Scroll to build</span><span class="on-tap">Tap a system to build</span></p>
+        <!-- The handoff. The section ends on the finished building, which is
+             the moment someone is most likely to want to walk into it. -->
+        <button type="button" id="explore-cta" hidden>
+          Explore the cleanroom<span aria-hidden="true">&#8202;→</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Covers the moment the section becomes the walkthrough. -->
+
+    <!-- Walkthrough HUD, redesigned 2026-09-15 ("too much like a sausage").
+         Three quiet pieces instead of one long capsule: the floor list top
+         left, the way out top right, and a small dock bottom centre holding
+         only the camera switch and a Controls button. The key legend lives in
+         a card that opens from that button (and once by itself on arrival),
+         so it is there when wanted and off the view the rest of the time.
+         Floor rows are filled from the manifest in main.ts. -->
+    <nav id="floor-switch" hidden aria-label="Choose a floor">
+      <p class="fs-title">Level</p>
+      <ul id="floor-list"></ul>
+    </nav>
+
+    <div id="room-bar" hidden>
+      <button type="button" id="exit-room" class="rb-glass">
+        <svg aria-hidden="true" viewBox="0 0 16 16" width="14" height="14"><path d="M10 3.5 5.5 8 10 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Exit walkthrough</span>
+      </button>
+
+      <div class="rb-dock rb-glass">
+        <div class="rb-seg" role="group" aria-label="Camera">
+          <span class="rb-thumb" aria-hidden="true"></span>
+          <button type="button" id="view-1p" aria-pressed="true">1st person</button>
+          <button type="button" id="view-3p" aria-pressed="false">3rd person</button>
+        </div>
+        <span class="rb-sep" aria-hidden="true"></span>
+        <button type="button" id="keys-toggle" class="rb-icon" aria-expanded="false" aria-controls="room-keys">
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16"><rect x="2.5" y="5" width="15" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5.5 8h1M8.5 8h1M11.5 8h1M14 8h.5M6.5 12h7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <span>Controls</span>
+        </button>
+      </div>
+
+      <!-- A door is the other way to change level (22 Sep 2026): aim at
+           one, click it, and this asks where you are going. Rows are filled
+           from the manifest in main.ts, like the floor list. -->
+      <div id="door-hint" hidden>Click the door or press E to change level</div>
+      <div id="door-switch" class="rb-glass" role="dialog" aria-label="Change level" hidden>
+        <p class="ds-title">Door</p>
+        <p class="ds-lead">Where are you going?</p>
+        <ul id="door-list"></ul>
+        <button type="button" id="door-close">Stay on this level</button>
+      </div>
+
+      <div id="room-keys" class="rb-glass" role="region" aria-label="Controls">
+        <p class="rk-title">Controls</p>
+        <!-- Touch screens get their own list: no keyboard, no mouse. The
+             stylesheet shows one or the other by (hover: none). -->
+        <dl class="rk-touch">
+          <div><dt><kbd>Tap</kbd></dt><dd>Walk there</dd></div>
+          <div><dt><kbd>Tap a door</kbd></dt><dd>Change level</dd></div>
+          <div><dt><kbd>Drag</kbd></dt><dd>Look around</dd></div>
+          <div><dt><kbd>3rd person</kbd></dt><dd>See yourself walk</dd></div>
+        </dl>
+        <dl class="rk-keys">
+          <div><dt><kbd>Click</kbd></dt><dd>Walk here</dd></div>
+          <div><dt><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></dt><dd>Move</dd></div>
+          <div><dt><kbd>Shift</kbd></dt><dd>Run</dd></div>
+          <div><dt><kbd>Drag</kbd></dt><dd>Look around</dd></div>
+          <div><dt><kbd>V</kbd></dt><dd>Switch camera</dd></div>
+          <div><dt><kbd>E</kbd></dt><dd>Use a door (change level)</dd></div>
+          <div><dt><kbd>F</kbd></dt><dd>Fly</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- Shown only if the 3D cannot run (no WebGL, or the GPU gave out); see
+         src/core/fallback.ts. The stills are this app's own renders. -->
+    <div id="fallback" hidden>
+      <picture>
+        <source media="(orientation: portrait)" srcset="fallback/facility-tall.webp" />
+        <img src="fallback/facility-wide.webp" alt="The IAQ fab, fully assembled: structure, envelope, and every service system inside it." />
+      </picture>
+      <div class="fb-card">
+        <p class="fb-eyebrow">The 3D layer</p>
+        <h2>The finished facility</h2>
+        <p class="fb-lead"></p>
+        <p class="fb-sub">Open this page on a laptop or desktop to watch it assemble floor by floor.</p>
+        <button type="button" class="fb-retry">Try again</button>
+      </div>
+    </div>
+
+    <div id="veil" aria-hidden="true"></div>
+
+    <div id="overlay">
+      <!--
+        A loading indicator, not a title page.
+
+        This used to be a splash: name, key legend and a Start button held in
+        front of the thing the visitor came for. Nobody arrives at a building
+        presentation wanting to read the controls first, and the section that
+        follows explains itself as it assembles — so the panel now says only
+        how far the load has got, and gets out of the way by itself the moment
+        the model is ready.
+
+        The button survives for one job: releasing the cursor mid-walkthrough
+        puts this panel back up, and something has to dismiss it.
+      -->
+      <div class="panel">
+        <p class="sub" id="status">Loading…</p>
+        <div class="actions">
+          <button id="enter" disabled>Resume</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="crosshair" hidden></div>
+    <div id="readout" hidden></div>
+
+    <!-- v3: the same page with the site layout changed; see src/layout.ts. -->
+    <script>window.IAQ_LAYOUT = 'v3'</script>
+  </body>
+</html>

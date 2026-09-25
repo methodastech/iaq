@@ -1,0 +1,60 @@
+{
+  "layer": "detail-tools-collide",
+  "source": "detail-tools-collide from detail-tools-lite: make-lite --error 0.003 --band -0.5,2.5 --normals flat",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -66.46061375988293,
+      -7.765601136129715,
+      -34.86984674299212
+    ],
+    "max": [
+      38.79422702742008,
+      18.829999995851527,
+      2.590718958874036
+    ]
+  },
+  "storeys": [
+    {
+      "index": 0,
+      "key": "apron",
+      "name": "APRON",
+      "elevation": 4.2,
+      "file": "detail-tools-collide-0-apron.glb",
+      "triangles": 374,
+      "sizeKB": 7
+    },
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-tools-collide-1-gf.glb",
+      "triangles": 2040980,
+      "sizeKB": 5300
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-tools-collide-2-1f.glb",
+      "triangles": 819163,
+      "sizeKB": 2264
+    },
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-tools-collide-3-2f.glb",
+      "triangles": 857631,
+      "sizeKB": 2273
+    }
+  ],
+  "flatShading": true
+}

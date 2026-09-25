@@ -1,0 +1,1 @@
+.tid{width:100%;height:auto;display:block;background:#fff}.tid text{font-family:Instrument Sans,Switzer,system-ui,sans-serif;letter-spacing:-.005em}.tid .tid-flow{stroke-dasharray:9 6;animation:tidFlow 1.6s linear infinite;animation-delay:calc(var(--i,0) * -.13s)}@keyframes tidFlow{to{stroke-dashoffset:-15}}@media(prefers-reduced-motion:reduce){.tid .tid-flow{animation:none}}
