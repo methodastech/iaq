@@ -1,0 +1,5 @@
+import{e as r,h as i,r as d,j as e,g as m}from"./react-BgeS5Iz0.js";import{u as l,v as a}from"./brandFonts-o1Si2GoA.js";import"./FlowIcon-C8dzaK26.js";function u(){l();const{id:n}=r(),[o]=i(),t=a[n];if(d.useEffect(()=>(document.title="IAQ booth · "+(t?t.k:"artwork"),document.documentElement.classList.add("ba-on"),()=>document.documentElement.classList.remove("ba-on")),[t]),!t)return e.jsxs("div",{style:{padding:40,font:"16px system-ui"},children:["No artwork “",n,"”. Try: ",Object.keys(a).join(", ")]});const s=t.C;return m.createPortal(e.jsxs("div",{className:"ba","data-w":t.w,"data-h":t.h,"data-unit":t.unit,children:[e.jsx(s,{bleed:o.get("bleed")==="1",print:o.get("print")==="1"}),e.jsx("style",{children:`html.ba-on,html.ba-on body{margin:0;background:#fff;zoom:1!important;overflow:hidden}
+        html.ba-on .bmws,html.ba-on .skip-link{display:none!important}
+        .ba{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:2147483600;background:#fff}
+        .ba > svg{display:block;width:100%;height:100%}
+        html.ba-on .bt-bleedline{display:${o.get("marks")==="0"?"none":"inline"}}`})]}),document.body)}export{u as default};

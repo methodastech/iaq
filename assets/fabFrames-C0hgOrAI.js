@@ -1,0 +1,1 @@
+const s=Array.from({length:61},(t,a)=>`/assets/iaq/model-seq/${a===60?"final":String(a).padStart(2,"0")}.webp`),e=Array.from({length:61},(t,a)=>`/assets/iaq/model-seq-t/${a===60?"final":String(a).padStart(2,"0")}.webp`);export{e as F,s as a};

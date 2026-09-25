@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>IAQ · Project description format · Brand Method</title>
+<link rel="stylesheet" href="/bmws.css">
+<style>
+:root{--bg:#0B0F17;--panel:#111826;--line:#1E2738;--text:#E6ECF7;--muted:#8B97AD;--red:#EC2027;--lime:#B8F04A;--amber:#F2B84B;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--sans:"Instrument Sans",system-ui,sans-serif}
+*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.55 var(--sans)}
+a{color:var(--text)}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 90px}
+.k{font:700 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+h1{font:600 32px/1.1 "Switzer",var(--sans);letter-spacing:-.02em;margin:10px 0 8px}h1 em{font-style:normal;color:var(--red)}
+h2{font:600 20px/1.2 "Switzer",var(--sans);letter-spacing:-.01em;margin:48px 0 8px}
+.lede{color:var(--muted);max-width:74ch;margin:0 0 18px}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0}
+.card{background:var(--panel);padding:14px 16px}.card b{display:block;font:600 26px/1 "Switzer",var(--sans)}.card span{display:block;margin-top:6px;font:700 10px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.card.red b{color:var(--red)}.card.lime b{color:var(--lime)}
+.tw{overflow-x:auto;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:860px}
+th{text-align:left;font:700 10px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:12px;background:#0E1420}
+td{padding:11px 12px;vertical-align:top;font-size:13px}
+tbody tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+td.id,td.num{font:700 11px var(--mono);color:var(--muted);white-space:nowrap}
+td.k2{font-weight:600;white-space:nowrap;width:220px}
+.ev{color:var(--muted);font-size:12px;margin-top:3px}
+.gap{color:var(--amber);font-weight:600}.ok{color:var(--lime);font-weight:600}
+ul.rules{margin:0;padding:0;list-style:none;display:grid;gap:8px;max-width:86ch}
+ul.rules li{background:var(--panel);padding:12px 14px}ul.rules b{color:var(--text)}
+.tpl{position:relative;background:var(--panel);padding:18px 18px 16px}
+.tpl pre{margin:0;white-space:pre-wrap;font:12.5px/1.75 var(--mono);color:var(--text)}
+.tpl button{position:absolute;top:12px;right:12px;background:var(--red);color:#fff;border:0;font:600 12px var(--sans);padding:8px 12px;cursor:pointer}
+@media(max-width:760px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}h1{font-size:26px}}
+</style>
+</head>
+<body class="bmws-page">
+<div id="bmws-bar" data-active="03"></div>
+<main class="wrap">
+  <span class="k">Checklist pn3 · for Nabilah</span>
+  <h1>Project description format, <em>one per project.</em></h1>
+  <p class="lede">Every project page on the site already has a place for each field below. Send the fields for a project and its page fills in with no design change. An empty field shows as a labelled gap, never a guess.</p>
+  <div class="cards">
+    <div class="card"><b>18</b><span>Project pages built</span></div>
+    <div class="card lime"><b>0</b><span>Fully described</span></div>
+    <div class="card red"><b>18</b><span>Waiting on IAQ</span></div>
+    <div class="card"><b>60+</b><span>Projects IAQ plans to add</span></div>
+  </div>
+
+  <h2>What to send</h2>
+  <p class="lede">Twenty fields. The example column is project 01 as the company profile records it.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Field</th><th>What to write</th><th>Example</th><th>Where it shows</th><th>Needed</th></tr></thead>
+    <tbody><tr><td class="k2">Project title</td><td>Type and scale, never the client</td><td>Testing manufacturing plant, 25,000 m² greenfield</td><td>Page title and headline</td><td>Yes</td></tr>
+<tr><td class="k2">Market</td><td>One of the seven markets</td><td>Semiconductor</td><td>Fact tile, market filter</td><td>Yes</td></tr>
+<tr><td class="k2">Location</td><td>City or state, and country</td><td>Malaysia</td><td>Fact tile</td><td>Yes</td></tr>
+<tr><td class="k2">Completion year</td><td>The year IAQ handed over</td><td><span class="gap">IAQ to supply</span></td><td>Fact tile, History timeline</td><td>Yes</td></tr>
+<tr><td class="k2">Programme length</td><td>As IAQ records it</td><td><span class="gap">IAQ to supply</span></td><td>Fact tile</td><td>Yes</td></tr>
+<tr><td class="k2">IAQ’s role</td><td>General contractor, EPCC contractor, cleanroom package</td><td>General contractor</td><td>Fact tile</td><td>Yes</td></tr>
+<tr><td class="k2">Site type</td><td>Greenfield, brownfield, or greenfield on brownfield</td><td>Greenfield</td><td>Fact tile</td><td>If known</td></tr>
+<tr><td class="k2">Built-up area</td><td>In m², as recorded</td><td>25,000 m²</td><td>Fact tile</td><td>If known</td></tr>
+<tr><td class="k2">Cleanroom class</td><td>The full class string</td><td>ISO 6, 7 (Class 1K, 10K)</td><td>Class and contract</td><td>If a cleanroom</td></tr>
+<tr><td class="k2">Scope delivered</td><td>One item per line</td><td>CSA; MEP and process utilities; cleanroom package</td><td>Scope delivered</td><td>Yes</td></tr>
+<tr><td class="k2">Systems</td><td>One item per line</td><td>Cleanroom; CSA; M&amp;E; process utilities</td><td>Scope icons</td><td>Yes</td></tr>
+<tr><td class="k2">The brief</td><td>Three short lines: what the client needed</td><td><span class="gap">IAQ to supply</span></td><td>The brief</td><td>Yes</td></tr>
+<tr><td class="k2">Challenge</td><td>Two or three sentences</td><td><span class="gap">IAQ to supply</span></td><td>The story</td><td>Yes</td></tr>
+<tr><td class="k2">Approach</td><td>Two or three sentences</td><td><span class="gap">IAQ to supply</span></td><td>The story</td><td>Yes</td></tr>
+<tr><td class="k2">Result</td><td>Two or three sentences, with a number where one exists</td><td><span class="gap">IAQ to supply</span></td><td>The story</td><td>Yes</td></tr>
+<tr><td class="k2">Stages delivered</td><td>Design, Procure, Construct, Commission, Maintain, Hookup</td><td><span class="gap">IAQ to supply</span></td><td>How IAQ delivers</td><td>Yes</td></tr>
+<tr><td class="k2">Business units</td><td>EPC, EFM, Tools Hookup</td><td><span class="gap">IAQ to supply</span></td><td>Business units</td><td>Yes</td></tr>
+<tr><td class="k2">Photographs</td><td>6 to 10, cleared for public use, one caption each</td><td><span class="gap">IAQ to supply</span></td><td>Gallery and full screen viewer</td><td>Yes</td></tr>
+<tr><td class="k2">Film</td><td>A link to one film</td><td><span class="gap">IAQ to supply</span></td><td>Walk the facility</td><td>Optional</td></tr>
+<tr><td class="k2">Client name</td><td>For Brand Method’s records only</td><td>Held, never published</td><td>Nowhere on the site</td><td>Yes</td></tr></tbody>
+  </table></div>
+
+  <h2>House rules</h2>
+  <ul class="rules">
+    <li><b>No client names.</b> Titles, text and photographs name the type and the location, never the client.</li>
+    <li><b>Numbers as IAQ records them.</b> Area, class and programme length are copied, not rounded.</li>
+    <li><b>Leave it empty rather than estimate.</b> A missing field shows as a gap; an estimate shows as a fact.</li>
+    <li><b>One idea per sentence.</b> Challenge, approach and result are two or three sentences each.</li>
+    <li><b>Photographs cleared for public use.</b> No client signs, logos or client staff without consent.</li>
+    <li><b>Values, dates and quotes need written clearance.</b> Contract values and client quotes appear only when cleared.</li>
+  </ul>
+
+  <h2>Copy and send</h2>
+  <p class="lede">Paste this into a message or a document, one copy per project.</p>
+  <div class="tpl"><button type="button" id="cp">Copy</button><pre id="tpl">PROJECT DESCRIPTION · one per project
+1   Project title (type and scale, no client name):
+2   Market:
+3   Location (city or state, country):
+4   Completion year:
+5   Programme length:
+6   IAQ’s role:
+7   Site type (greenfield, brownfield, greenfield on brownfield):
+8   Built-up area (m²):
+9   Cleanroom class:
+10  Scope delivered (one item per line):
+11  Systems (one item per line):
+12  The brief, three lines:
+13  Challenge (two or three sentences):
+14  Approach (two or three sentences):
+15  Result (two or three sentences, a number where one exists):
+16  Stages delivered (Design, Procure, Construct, Commission, Maintain, Hookup):
+17  Business units (EPC, EFM, Tools Hookup):
+18  Photographs (6 to 10, cleared, no client signs or logos, one caption each):
+19  Film link (optional):
+20  Client name (for our records only, never published):</pre></div>
+
+  <h2>Worked example · project 01</h2>
+  <p class="lede">What the page already knows, and what is still to come.</p>
+  <div class="tw"><table><tbody><tr><td class="k2">Project title</td><td>Testing manufacturing plant, 25,000 m² greenfield</td></tr>
+<tr><td class="k2">Market</td><td>Semiconductor</td></tr>
+<tr><td class="k2">Location</td><td>Malaysia</td></tr>
+<tr><td class="k2">Completion year</td><td><span class="gap">IAQ to supply</span></td></tr>
+<tr><td class="k2">Programme length</td><td><span class="gap">IAQ to supply</span></td></tr>
+<tr><td class="k2">IAQ’s role</td><td>General contractor</td></tr>
+<tr><td class="k2">Site type</td><td>Greenfield</td></tr>
+<tr><td class="k2">Built-up area</td><td>25,000 m²</td></tr>
+<tr><td class="k2">Cleanroom class</td><td>ISO 6, 7 (Class 1K, 10K)</td></tr>
+<tr><td class="k2">Scope delivered</td><td>Main building civil, structural and architectural (CSA); Mechanical, electrical and process utilities (MEP); Cleanroom package</td></tr>
+<tr><td class="k2">Systems</td><td>Cleanroom; CSA; Mechanical and electrical; Process utilities</td></tr>
+<tr><td class="k2">The brief</td><td><span class="gap">IAQ to supply</span></td></tr>
+<tr><td class="k2">Challenge</td><td><span class="gap">IAQ to supply</span></td></tr>
+<tr><td class="k2">Approach</td><td><span class="gap">IAQ to supply</span></td></tr>
+<tr><td class="k2">Result</td><td><span class="gap">IAQ to supply</span></td></tr>
+<tr><td class="k2">Stages delivered</td><td><span class="gap">IAQ to supply</span></td></tr>
+<tr><td class="k2">Business units</td><td><span class="gap">IAQ to supply</span></td></tr>
+<tr><td class="k2">Photographs</td><td><span class="gap">IAQ to supply</span></td></tr></tbody></table></div>
+
+  <h2>The 18 projects on the site</h2>
+  <p class="lede">Verified fields counts role, class, scope, systems, site type and built-up area from the company profile. The next column is what IAQ still has to send.</p>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Project</th><th>Verified</th><th>IAQ to send</th><th>Notes</th><th>Page</th></tr></thead>
+    <tbody><tr><td class="id">01</td><td><b>Testing manufacturing plant, 25,000 m² greenfield</b><div class="ev">Semiconductor · Malaysia</div></td><td class="num">6 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td></td><td><a href="/projects/0">Open page</a></td></tr>
+<tr><td class="id">02</td><td><b>Wafer fab facility and expansion, cleanroom package with utilities</b><div class="ev">Semiconductor · the northern corridor, Kedah</div></td><td class="num">4 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td>Client attribution to confirm<br>Registry photo shows client signage: replace or clear</td><td><a href="/projects/1">Open page</a></td></tr>
+<tr><td class="id">03</td><td><b>Semiconductor backend plant, 43,000 m² test, probe and assembly</b><div class="ev">Semiconductor · Malaysia</div></td><td class="num">5 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td></td><td><a href="/projects/2">Open page</a></td></tr>
+<tr><td class="id">04</td><td><b>DLP cleanroom facility</b><div class="ev">Semiconductor · Malaysia</div></td><td class="num">3 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td>Registry photo shows client signage: replace or clear</td><td><a href="/projects/3">Open page</a></td></tr>
+<tr><td class="id">05</td><td><b>Silicon wafer manufacturing, multi-class greenfield with full MEP</b><div class="ev">Semiconductor · Ipoh, Perak</div></td><td class="num">4 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td>Registry photo shows client signage: replace or clear</td><td><a href="/projects/4">Open page</a></td></tr>
+<tr><td class="id">06</td><td><b>Lithium-ion battery gigafactory dry room, 62,000 m²</b><div class="ev">EV Battery · Europe</div></td><td class="num">4 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td></td><td><a href="/projects/5">Open page</a></td></tr>
+<tr><td class="id">07</td><td><b>EV battery gigafab phase 1, 8,000 m² dry room system</b><div class="ev">EV Battery · Europe</div></td><td class="num">5 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td></td><td><a href="/projects/6">Open page</a></td></tr>
+<tr><td class="id">08</td><td><b>Lithium cell facility, 79,000 m² air-conditioning system</b><div class="ev">EV Battery · China</div></td><td class="num">4 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td>Client attribution to confirm<br>Registry photo shows client signage: replace or clear</td><td><a href="/projects/7">Open page</a></td></tr>
+<tr><td class="id">09</td><td><b>Pharmaceutical manufacturing plant, small volume parenteral</b><div class="ev">Bio LifeScience · Malaysia</div></td><td class="num">3 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td></td><td><a href="/projects/8">Open page</a></td></tr>
+<tr><td class="id">10</td><td><b>Healthcare manufacturing plant, medical device greenfield</b><div class="ev">Bio LifeScience · Malaysia</div></td><td class="num">5 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td></td><td><a href="/projects/9">Open page</a></td></tr>
+<tr><td class="id">11</td><td><b>Tissue culture laboratory, class 1K to 10K cleanroom</b><div class="ev">Bio LifeScience · Singapore</div></td><td class="num">3 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td></td><td><a href="/projects/10">Open page</a></td></tr>
+<tr><td class="id">12</td><td><b>District cooling centre, Malaysia's largest</b><div class="ev">District Cooling &amp; Heating · Kuala Lumpur</div></td><td class="num">2 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td></td><td><a href="/projects/11">Open page</a></td></tr>
+<tr><td class="id">13</td><td><b>Co-generative plant, first in Southeast Asia</b><div class="ev">District Cooling &amp; Heating · Malaysia</div></td><td class="num">2 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td>Client attribution to confirm</td><td><a href="/projects/12">Open page</a></td></tr>
+<tr><td class="id">14</td><td><b>Cool energy centre</b><div class="ev">District Cooling &amp; Heating · Malaysia</div></td><td class="num">0 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td></td><td><a href="/projects/13">Open page</a></td></tr>
+<tr><td class="id">15</td><td><b>Flavour manufacturing plant</b><div class="ev">fnb · Malaysia</div></td><td class="num">2 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td>Registry photo shows client signage: replace or clear</td><td><a href="/projects/14">Open page</a></td></tr>
+<tr><td class="id">16</td><td><b>Flavour manufacturing plant</b><div class="ev">fnb · Malaysia</div></td><td class="num">3 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td></td><td><a href="/projects/15">Open page</a></td></tr>
+<tr><td class="id">17</td><td><b>Data centre campus phase 1, chilled and condenser water piping</b><div class="ev">Data Centre · Kuala Lumpur</div></td><td class="num">3 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td></td><td><a href="/projects/16">Open page</a></td></tr>
+<tr><td class="id">18</td><td><b>Solar panel manufacturing plant, KMW building M&amp;E works</b><div class="ev">photovoltaic · the northern corridor, Kedah</div></td><td class="num">3 of 6</td><td>Completion year<br>Programme length<br>Brief in three lines<br>Challenge, approach and result<br>Stages delivered<br>Business units<br>6 to 10 cleared photographs<br>Film (optional)</td><td></td><td><a href="/projects/17">Open page</a></td></tr></tbody>
+  </table></div>
+</main>
+<script>
+document.getElementById('cp').addEventListener('click', function () {
+  var t = document.getElementById('tpl').textContent, b = this
+  ;(navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { b.textContent = 'Copied' }, function () { b.textContent = 'Select and copy' })
+  setTimeout(function () { b.textContent = 'Copy' }, 1800)
+})
+</script>
+
+</body>
+</html>
