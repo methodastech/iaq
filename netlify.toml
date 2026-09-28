@@ -1,9 +1,19 @@
-# Netlify builds the public site from source/ and publishes only the launch build (see START-HERE.md).
-# build:launch strips the review portal, Codex and internal notes from the output (tools/prune-launch.mjs).
+# Netlify builds from source/ (see START-HERE.md).
+#
+# 28 Sep 2026: iaq.netlify.app is the REVIEW site: the website with the Super Admin bar and its review pages
+# (audit, competitors, plan, design, Web 1, CMS, Codex), minus the Amendments checklist (tools/prune-review.mjs).
+# It holds internal material, so it asks search engines not to index it.
+# For the clean public site instead (no admin bar, no portal, no internal pages), set
+#   command = "npm run build:launch"   and   publish = "dist-launch"
 [build]
   base = "source"
-  command = "npm run build:launch"
-  publish = "dist-launch"
+  command = "npm run build:review"
+  publish = "dist-review"
 
 [build.environment]
   NODE_VERSION = "22"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

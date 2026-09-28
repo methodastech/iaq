@@ -14,7 +14,10 @@ import { useLocation } from 'react-router-dom'
 const GROUPS = [
   /* 25 Sep (Bazil: "create a tab here the videos and photos shared by our client"): everything IAQ has shared, stored at
      Client info/IAQ outside the repo and served on dev only (tools/vite-client-files.mjs) */
-  [['00', 'Web Audit', '/audit.html'], ['01', 'Competitors', '/competitors.html'], ['02', 'Web Plan', '/plan.html'], ['03', 'Amendments', '/checklist.html'], ['10', 'Client files', '/client-files.html']],
+  /* 28 Sep ("need the super admin. but the Amendments hide"): the Netlify review build (MODE review) leaves the
+     Amendments tab out; the dev server keeps it */
+  [['00', 'Web Audit', '/audit.html'], ['01', 'Competitors', '/competitors.html'], ['02', 'Web Plan', '/plan.html'],
+   ...(import.meta.env.MODE === 'review' ? [] : [['03', 'Amendments', '/checklist.html']]), ['10', 'Client files', '/client-files.html']],
   [['04', 'Design', '/design.html']],
   /* 9 Sep: the labels were long enough that the strip overflowed and tabs 06 to 08 scrolled off
      the end, so the LIVE build looked missing. The dim state already says superseded; the word

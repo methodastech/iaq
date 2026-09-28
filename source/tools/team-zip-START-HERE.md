@@ -32,6 +32,8 @@ This writes the public build to `source/dist-launch/`. Upload that folder's cont
 
 Only ever publish `dist-launch`. Never publish `dist/` or the `source/` folder: they contain the review portal and internal notes.
 
+**Netlify (iaq.netlify.app) runs the review build** (28 Sep 2026): `netlify.toml` builds `npm run build:review` into `source/dist-review/`. That is the website with the Super Admin bar and its review pages (Web Audit, Competitors, Web Plan, Design, Web 1, CMS, Codex), without the Amendments checklist, the client walkthrough video or the staff notes (`tools/prune-review.mjs`), and marked not to be indexed. It is a review site, not the public launch: for the launch, change `netlify.toml` to `npm run build:launch` and `dist-launch`.
+
 ## Checks to run after every public build
 
 Run these inside `source/dist-launch/`. Every one must print 0.

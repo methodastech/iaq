@@ -2,6 +2,7 @@
 node_modules/
 source/dist/
 source/dist-launch/
+source/dist-review/
 site-netlify/
 # local noise
 .DS_Store

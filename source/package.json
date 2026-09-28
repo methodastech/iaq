@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "build:file": "vite build --config vite.config.file.js && node scripts_build_file.mjs",
-    "build:launch": "node tools/sitemap.mjs && vite build --mode launch --outDir dist-launch && node tools/prune-launch.mjs dist-launch"
+    "build:review": "node tools/sitemap.mjs && vite build --mode review --outDir dist-review && node tools/prune-review.mjs dist-review",
+    "build:launch":"node tools/sitemap.mjs && vite build --mode launch --outDir dist-launch && node tools/prune-launch.mjs dist-launch"
   },
   "dependencies": {
     "gsap": "3.12.5",
