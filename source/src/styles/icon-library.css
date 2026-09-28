@@ -1,0 +1,39 @@
+/* IconLibrary · every icon set as the site draws it (25 Sep) */
+.il{padding:clamp(40px,6vh,72px) 0 0;--mk:#6E56E6;--mk-t:#5840C9;--mk-m:#9D8CF5;--mk-l:#B4A8F7;--blue:#EC2027}
+.il h2 em{font-style:normal;color:#EC2027}
+.il-g{margin-top:clamp(26px,3.6vh,40px)}
+.il-g h3{display:flex;align-items:center;gap:10px;margin:0 0 14px;font:600 17px/1.2 "Switzer",sans-serif;color:#0C1220}
+.il-g h3 i{width:10px;height:10px;display:block}
+.il-g h3 small{font:500 12px/1 "Instrument Sans",sans-serif;color:rgba(12,18,32,.45)}
+.il-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:22px 14px}
+.il-grid-lg{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+.il-it{margin:0;display:grid;justify-items:center;gap:10px;text-align:center}
+.il-ic{display:grid;place-items:center;width:44px;height:44px}
+.il-ic svg{width:36px;height:36px}
+.il-it figcaption{font:500 12px/1.3 "Instrument Sans",sans-serif;color:rgba(12,18,32,.66);text-transform:none}
+.il-dark{background:#17213A;padding:22px 22px 26px}
+.il-dark h3{color:#fff}.il-dark h3 small{color:rgba(255,255,255,.5)}
+.il-dark .il-it figcaption{color:rgba(255,255,255,.7);}
+.il-dark .il-ic svg .mk-mv path{fill:#fff}
+.il-obj{display:block;width:110px;height:110px}
+.il-obj svg{width:100%;height:100%;display:block;overflow:visible}
+.il-obj svg>ellipse[fill*="gnd"]{display:none}
+.il-scene{display:block;width:100%;max-width:220px;aspect-ratio:3/2}
+.il-scene .mm,.il-scene .mm svg{width:100%;height:100%;display:block}
+
+/* 25 Sep, late night (Bazil, on the markets row: "purple and white, majority purple, you were wrong in the icons"):
+   on the navy band the market marks are violet with the one signature part in white, never red */
+.il-g[data-group="Markets"] .il-it{color:#9D8CF5}
+.il-g[data-group="Markets"] .il-ic svg .mk-mv path{stroke:#fff}
+.il-g[data-group="Markets"] .il-ic svg .mk-mv path[stroke="none"]{fill:#fff;stroke:none}
+.il-g[data-group="Markets"] .il-ic{width:52px;height:52px}
+.il-g[data-group="Markets"] .il-ic svg{width:44px;height:44px}
+/* the delivery models: ink, one red part (ModelIcon reads --mdl-sig) */
+.il-g[data-group="Delivery models"]{--mdl-sig:#EC2027}
+/* the service objects as isometric renders, in motion and at work */
+.il-obj3{display:block;width:100%;max-width:210px;aspect-ratio:1;overflow:hidden;background:#fff}
+.il-obj3 img,.il-obj3 video{width:100%;height:100%;object-fit:contain;display:block}
+.il-obj3.v{aspect-ratio:16/9;max-width:260px}
+.il-obj3.v video{object-fit:cover}
+.il-obj3.w{aspect-ratio:2/1;max-width:280px}
+.il-objects .il-grid-lg{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}

@@ -1,0 +1,11 @@
+import puppeteer from 'puppeteer-core'
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', protocolTimeout: 120000, args: ['--no-sandbox', '--disable-gpu'] })
+const p = await b.newPage(); const wait = ms => new Promise(r => setTimeout(r, ms))
+await p.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 })
+await p.goto('http://localhost:52158/services', { waitUntil: 'networkidle0', timeout: 90000 }); await wait(2500)
+const t = await p.evaluate(() => document.querySelector('.sm-asks').getBoundingClientRect().top + scrollY)
+await p.evaluate(y => { document.documentElement.style.marginTop = (-y + 90) + 'px' }, t); await wait(2200)
+const m = await p.evaluate(() => { const c = document.querySelector('.sm-cell'); const cs = getComputedStyle(c, '::before'); return { content: cs.content, bg: cs.backgroundImage.slice(0, 40), w: cs.width, h: cs.height, left: cs.left } })
+await p.screenshot({ path: process.argv[2] + '/asks-arrows.png', clip: { x: 0, y: 60, width: 1440, height: 640 } })
+console.log(JSON.stringify(m))
+await b.close()

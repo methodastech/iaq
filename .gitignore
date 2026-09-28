@@ -1,0 +1,9 @@
+# dependencies and build output: rebuilt from source (npm install, npm run build:launch)
+node_modules/
+source/dist/
+source/dist-launch/
+site-netlify/
+# local noise
+.DS_Store
+Thumbs.db
+*.log

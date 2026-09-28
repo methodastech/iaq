@@ -1,0 +1,33 @@
+{
+  "layer": "detail-exterior-phone",
+  "source": "detail-exterior-phone from detail-exterior: make-lite --error 0.03 --prune --normals flat",
+  "needsNormals": false,
+  "flatShading": true,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -178.5745391845703,
+      -4.297731399536133,
+      -33.88904571533203
+    ],
+    "max": [
+      -58.33786392211914,
+      29.051664352416992,
+      2.5927255153656006
+    ]
+  },
+  "storeys": [
+    {
+      "index": 0,
+      "key": "all",
+      "name": "ALL",
+      "elevation": 4.2,
+      "file": "detail-exterior-phone-0-all.glb",
+      "triangles": 203779,
+      "sizeKB": 873
+    }
+  ]
+}

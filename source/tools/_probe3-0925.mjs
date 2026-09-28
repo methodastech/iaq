@@ -1,0 +1,20 @@
+import puppeteer from 'puppeteer-core'
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--use-angle=metal','--enable-gpu'] })
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 950 })
+const errs=[]; p.on('pageerror', e => errs.push(e.message))
+await p.goto('http://localhost:5177/services', { waitUntil: 'domcontentloaded' })
+await new Promise(r => setTimeout(r, 250))
+await p.screenshot({ path: '/private/tmp/claude-501/-Users-zieel-Bazil-Claude-3-Websites/f19488ad-dbd8-4061-ade0-b04e4d89e671/scratchpad/fr-loading.png' })
+const early = await p.$$eval('.fr', e => e.map(x => x.className))
+await new Promise(r => setTimeout(r, 6000))
+await p.screenshot({ path: '/private/tmp/claude-501/-Users-zieel-Bazil-Claude-3-Websites/f19488ad-dbd8-4061-ade0-b04e4d89e671/scratchpad/fr-ready.png' })
+const late = await p.$$eval('.fr', e => e.map(x => x.className))
+await p.evaluate(() => document.querySelector('.sysm-foot').scrollIntoView({ block: 'center' }))
+await new Promise(r => setTimeout(r, 800))
+const hs = []
+for (const [i, el] of (await p.$$('.sysm-u')).entries()) { await el.hover(); await new Promise(r => setTimeout(r, 300)); hs.push(await p.$eval('.sysm-foot', e => Math.round(e.getBoundingClientRect().height))); if (i === 1) await (await p.$('.sysm-foot')).screenshot({ path: '/private/tmp/claude-501/-Users-zieel-Bazil-Claude-3-Websites/f19488ad-dbd8-4061-ade0-b04e4d89e671/scratchpad/sysm-pcu.png' }) }
+const st = await p.$$('.sysm-st'); await st[4].hover(); await new Promise(r => setTimeout(r, 300)); hs.push(await p.$eval('.sysm-foot', e => Math.round(e.getBoundingClientRect().height)))
+const cells = await p.$$('.sysm-bar i'); await cells[13].hover(); await new Promise(r => setTimeout(r, 300)); hs.push(await p.$eval('.sysm-foot', e => Math.round(e.getBoundingClientRect().height)))
+await (await p.$('.sysm-foot')).screenshot({ path: '/private/tmp/claude-501/-Users-zieel-Bazil-Claude-3-Websites/f19488ad-dbd8-4061-ade0-b04e4d89e671/scratchpad/sysm-cell.png' })
+console.log(JSON.stringify({ early, late, hs, errs }))
+await b.close()

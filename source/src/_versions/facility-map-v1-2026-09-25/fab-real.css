@@ -1,0 +1,44 @@
+/* the real fab in the banner (components/FabReal.jsx, scenes/fabreal.js): the same dark ground as the section */
+.fr{position:relative;width:100%;aspect-ratio:1.3;min-height:320px;background:transparent}
+.fr-host{position:absolute;inset:0;cursor:grab;touch-action:pan-y}
+.fr-host:active{cursor:grabbing}
+.fr-canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
+.fr-labs{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.fr-lab{position:absolute;left:0;top:0;opacity:0;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;pointer-events:auto;cursor:pointer;background:none;border:0;padding:0;font:inherit;color:inherit;transition:opacity .3s;--lift:0px}
+.fr-lab b{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:600 12px/1 "Switzer",sans-serif;color:#0C1220;background:#fff;padding:6px 9px 6px 7px;box-shadow:0 0 0 1px color-mix(in srgb,var(--c) 45%,transparent),0 8px 22px -12px rgba(0,0,0,.7)}
+.fr-lab i{position:relative;display:block;width:1.5px;height:calc(22px + var(--lift));background:var(--c);box-shadow:0 0 0 1px rgba(15,19,25,.5)}
+.fr-lab i::after{content:"";position:absolute;left:50%;bottom:-3px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:var(--c);box-shadow:0 0 0 2px rgba(15,19,25,.85)}
+.fr-lab-ic{width:16px;height:16px;flex:none}
+.fr-tools{position:absolute;right:10px;bottom:10px;display:flex;gap:4px}
+.fr-tools button{width:32px;height:32px;border:0;background:rgba(255,255,255,.1);color:#fff;font:600 15px/1 "Switzer",sans-serif;cursor:pointer}
+.fr-tools button:hover{background:rgba(255,255,255,.2)}
+.fr-hint{position:absolute;left:10px;bottom:12px;margin:0;font-size:12px;color:rgba(255,255,255,.62);pointer-events:none;background:rgba(15,19,25,.7);padding:5px 9px}
+@media(max-width:560px){.fr-lab b{display:none}.fr-hint{display:none}.fr{aspect-ratio:1.15}}
+
+/* 25 Sep, night (Bazil: "can the tagging be more modern"): a dark glass chip with the kind's colour as a point inside it,
+   a hairline stem to a lit point on the model; no white box */
+.fr-lab b{color:#fff;background:rgba(15,19,25,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:7px 11px 7px 9px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 10px 24px -12px rgba(0,0,0,.8);letter-spacing:.005em}
+.fr-lab b::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c);flex:none}
+.fr-lab-ic{display:none}
+.fr-lab i{width:1px;background:color-mix(in srgb,var(--c) 70%,transparent);box-shadow:none}
+.fr-lab i::after{width:8px;height:8px;margin-left:-4px;bottom:-4px;box-shadow:0 0 0 2px rgba(15,19,25,.85),0 0 10px var(--c)}
+.fr-lab:hover b{background:rgba(15,19,25,.9);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 70%,transparent)}
+
+/* a chip that hangs below its point (it would have crossed the banner's head): the stalk runs down from the point */
+.fr-lab.below{transform:translate(-50%,0);flex-direction:column-reverse}
+
+/* 25 Sep, night (Bazil: "do a quick loading on this banner before everything appear"): until the building stands the
+   model, its pins and its tools wait under one loading line; then the model fades up in place */
+.fr .fr-host,.fr .fr-labs,.fr .fr-tools{opacity:0;transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.fr .fr-host{transform:scale(.985)}
+.fr.is-ready .fr-host,.fr.is-ready .fr-labs,.fr.is-ready .fr-tools{opacity:1;transform:none}
+.fr-load{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;pointer-events:none;transition:opacity .5s ease}
+.fr.is-ready .fr-load{opacity:0}
+.fr-load p{margin:0;font:500 13px/1 "Switzer","Instrument Sans",sans-serif;color:rgba(255,255,255,.62);letter-spacing:.01em}
+.fr-load-bar{position:relative;display:block;width:min(180px,40%);height:2px;background:rgba(255,255,255,.12);overflow:hidden}
+.fr-load-bar i{position:absolute;top:0;bottom:0;left:0;width:38%;background:#EC2027;animation:frLoad 1.15s cubic-bezier(.5,0,.3,1) infinite}
+@keyframes frLoad{0%{transform:translateX(-100%)}100%{transform:translateX(265%)}}
+@media(prefers-reduced-motion:reduce){.fr-load-bar i{animation:none;width:100%;opacity:.6}.fr .fr-host{transform:none}}
+/* the loading line sits in the model's own column (--fr-left, the share the model is framed into) and above the
+   tools row (--fr-bottom), so on the Services banner it never lands behind the map's cards */
+.fr-load{right:auto;width:calc(var(--fr-left,1) * 100%);bottom:auto;height:calc(var(--fr-bottom,1) * 100%)}

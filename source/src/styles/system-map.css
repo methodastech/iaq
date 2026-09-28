@@ -1,0 +1,243 @@
+/* SystemMap · the whole system on one chart (24 Sep) */
+.sysm{--unit:#EC2027;--unit-t:#C8141D;--svc:#0B8FD8;--svc-t:#0772AE;--work:#231F20;--work-t:#231F20;--csa:#231F20;--mep:#231F20;--process:#231F20;--e1:cubic-bezier(.2,.7,.2,1);background:#fff}
+.sysm .pg-lede{max-width:64ch}
+.pg-sec.sysm h2 em{font-style:normal;color:var(--unit)}
+@media(max-width:720px){.pg-sec.sysm h2 em{display:block;white-space:nowrap}}
+.sysm-grid{display:grid;grid-template-columns:minmax(210px,1.15fr) repeat(6,minmax(0,1fr)) minmax(180px,.95fr);gap:12px 0;align-items:stretch;margin-top:clamp(28px,4vh,44px)}
+.sysm-corner,.sysm-wh{align-self:end;padding:0 0 10px;font:600 12.5px/1.2 "Switzer",sans-serif;color:rgba(12,18,32,.55)}
+.sysm-wh{padding-left:18px}
+/* the process across the top */
+.sysm-proc{grid-column:2/8;position:relative;padding-top:30px}
+.sysm-stages{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));list-style:none;margin:0;padding:0}
+.sysm-st{position:relative;display:grid;justify-items:center;gap:3px;padding:6px 4px 10px;text-align:center;cursor:default;outline:0;opacity:0;transform:translateY(8px);transition:opacity .5s var(--e1) calc(var(--c,0) * .08s),transform .5s var(--e1) calc(var(--c,0) * .08s),background .3s}
+.sysm.in .sysm-st{opacity:1;transform:none}
+.sysm-st .sysm-mk{display:block;width:40px;height:40px}
+.sysm-st .sysm-mk svg{display:block;width:100%;height:100%}
+.sysm-st b{font:600 11.5px/1 "Switzer",sans-serif;color:var(--unit-t)}
+.sysm-st span{font:600 13.5px/1.15 "Switzer",sans-serif;color:#0C1220;white-space:nowrap}
+/* the hand-off chevron between stages */
+.sysm-st+.sysm-st::before{content:"";position:absolute;left:-6px;top:22px;width:8px;height:8px;border-top:2px solid rgba(12,18,32,.28);border-right:2px solid rgba(12,18,32,.28);transform:rotate(45deg)}
+.sysm-st.lit{background:color-mix(in srgb,var(--svc) 9%,#fff)}
+.sysm-st.lit span{color:var(--svc-t)}
+/* the return from 6 to 1: a dashed red route over the top, arriving on Design */
+.sysm-ret{position:absolute;left:calc(100% / 12);right:calc(100% / 12);top:4px;height:22px;border:1.5px dashed var(--unit);border-bottom:0;opacity:0;transition:opacity .6s var(--e1) .7s}
+.sysm.in .sysm-ret{opacity:1}
+.sysm-ret::before{content:"";position:absolute;left:-6.5px;bottom:-8px;border-left:5.5px solid transparent;border-right:5.5px solid transparent;border-top:8px solid var(--unit)}
+.sysm-ret span{position:absolute;left:50%;top:-8px;transform:translateX(-50%);padding:0 10px;background:#fff;font:600 12px/1.3 "Switzer",sans-serif;color:var(--unit-t);white-space:nowrap}
+/* unit rows */
+.sysm-u{display:grid;gap:4px;align-content:center;padding:0 18px 0 0;border:0;background:transparent;text-align:left;cursor:default;font:inherit;color:inherit;opacity:0;transform:translateX(-8px);transition:opacity .5s var(--e1) calc(.25s + var(--r,0) * .22s),transform .5s var(--e1) calc(.25s + var(--r,0) * .22s)}
+.sysm.in .sysm-u{opacity:1;transform:none}
+.sysm-u b{display:flex;align-items:center;gap:8px;font:600 16px/1.15 "Switzer",sans-serif;color:#0C1220}
+.sysm-u b i{font-style:normal;font:600 11px/1 "Switzer",sans-serif;color:#fff;background:var(--unit);padding:4px 6px}
+.sysm-u small{font:400 13px/1.35 "Instrument Sans",sans-serif;color:rgba(12,18,32,.62)}
+.sysm-u small em{display:block;margin-top:2px;font-style:normal;color:var(--unit-t);font-weight:600}
+.sysm-bar{grid-column:2/8;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));min-height:50px}
+.sysm-bar i{position:relative;display:flex;align-items:center;font-style:normal;transform:scaleX(0);transform-origin:0 50%;transition:transform .7s var(--e1) calc(.3s + var(--r,0) * .22s + var(--c,0) * .06s),opacity .3s,background .3s}
+.sysm.in .sysm-bar i{transform:none}
+.sysm-bar i.core{background:var(--unit)}
+.sysm-bar i.core span{padding-left:12px;font:600 12.5px/1 "Switzer",sans-serif;color:#fff;letter-spacing:.01em}
+.sysm-bar i.ask{outline:1.5px dashed var(--unit);outline-offset:-1.5px;justify-content:center}
+.sysm-bar i.ask em{font:500 11.5px/1.2 "Instrument Sans",sans-serif;color:var(--unit-t);text-align:center;padding:0 4px}
+.sysm-bar i.off{background:rgba(12,18,32,.045)}
+.sysm-w{display:flex;flex-wrap:wrap;align-content:center;gap:6px;padding-left:18px}
+.sysm-w .sm-chip{padding:6px 9px;font:600 12.5px/1 "Switzer",sans-serif}
+.sysm-w .sm-chip.s{background:color-mix(in srgb,var(--svc) 14%,#fff);color:var(--svc-t)}
+/* lit and dimmed */
+.sysm .dim{opacity:.38}
+.sysm-bar.dim i.core{background:color-mix(in srgb,var(--unit) 55%,#fff)}
+.sysm-u.lit b{color:var(--unit-t)}
+.sysm-w .sm-chip.lit{box-shadow:inset 0 0 0 1.5px currentColor}
+.sysm-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:rgba(12,18,32,.62)}
+.sysm-key i{display:inline-block;width:22px;height:11px;margin-right:7px;vertical-align:-1px}
+.sysm-key i.core{background:var(--unit)}.sysm-key i.ask{outline:1.5px dashed var(--unit);outline-offset:-1.5px}.sysm-key i.off{background:rgba(12,18,32,.06)}
+/* the four kinds of work */
+.sysm-work{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:clamp(28px,4vh,44px)}
+.sysm-wk{padding:18px 18px 16px;background:#F5F7FA;outline:0;cursor:default;opacity:0;transform:translateY(10px);transition:opacity .5s var(--e1) calc(.5s + var(--i,0) * .1s),transform .5s var(--e1) calc(.5s + var(--i,0) * .1s),background .3s}
+.sysm.in .sysm-wk{opacity:1;transform:none}
+.sysm-wk.lit{background:color-mix(in srgb,var(--work) 9%,#fff)}
+.sysm-wk.lit:has(.sm-chip.s){background:color-mix(in srgb,var(--svc) 9%,#fff)}
+.sysm-wk.dim{opacity:.5}
+.sysm-wk h3{display:grid;gap:8px;justify-items:start;margin:0;font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:rgba(12,18,32,.62)}
+.sysm-wk h3 .sm-chip{font:600 14px/1 "Switzer",sans-serif;padding:7px 10px}
+.sysm-wk h3 .sm-chip.s{background:color-mix(in srgb,var(--svc) 14%,#fff);color:var(--svc-t)}
+.sysm-wk-line{margin:12px 0 0;font:600 14.5px/1.35 "Switzer",sans-serif;color:#0C1220}
+.sysm-wk-by,.sysm-wk-in{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0 0;font:500 12px/1.2 "Instrument Sans",sans-serif;color:rgba(12,18,32,.55)}
+.sysm-wk-by span,.sysm-wk-in span{margin-right:2px}
+.sysm-wk-by b{padding:4px 7px;background:#fff;font:600 12px/1 "Switzer",sans-serif;color:#0C1220;box-shadow:inset 0 0 0 1.5px rgba(12,18,32,.14)}
+.sysm-wk-by b.lit{background:var(--unit);color:#fff;box-shadow:none}
+.sysm-wk-in b{width:22px;height:22px;display:grid;place-items:center;font:600 11px/1 "Switzer",sans-serif;color:#fff;background:var(--work)}
+.sysm-wk-in b.d-hookup{background:var(--svc)}
+@media(max-width:1100px){.sysm-grid{grid-template-columns:minmax(170px,1fr) repeat(6,minmax(0,1fr)) minmax(130px,.8fr)}.sysm-st span{font-size:12px}.sysm-work{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){
+  .sysm-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px 0}
+  .sysm-corner,.sysm-wh{display:none}
+  .sysm-proc{grid-column:1/-1;padding-top:26px}
+  .sysm-st{padding:4px 0 8px}
+  .sysm-st .sysm-mk{width:30px;height:30px}
+  .sysm-st span{font-size:10px}
+  .sysm-st b{font-size:10.5px}
+  .sysm-st+.sysm-st::before{top:14px;width:6px;height:6px;left:-4px}
+  .sysm-ret{height:18px}.sysm-ret span{font-size:10.5px;padding:0 6px}
+  .sysm-u{grid-column:1/-1;margin-top:14px;padding:0}
+  .sysm-bar{grid-column:1/-1;min-height:40px}
+  .sysm-bar i.core span{padding-left:8px;font-size:11px}
+  .sysm-bar i.ask em{font-size:9.5px;padding:0 2px}
+  .sysm-w{grid-column:1/-1;padding:0;margin-top:6px}
+  .sysm-work{grid-template-columns:1fr;gap:10px}
+}
+@media(prefers-reduced-motion:reduce){.sysm-st,.sysm-u,.sysm-bar i,.sysm-wk,.sysm-ret{transition:none;opacity:1;transform:none}}
+
+/* embedded in the Codex: no band padding, the grid starts at once */
+.sysm-embed{background:transparent}
+.sysm-embed .sysm-grid{margin-top:18px}
+.sysm-embed .sysm-key{margin-bottom:0}
+
+/* 26 Sep (Bazil: "refine this table so it looks more premium"): the colour code (units blue in three shades, services red,
+   work yellow), tints instead of dashed outlines, thin seams between cells, the dashed return route gone */
+.sysm{--unit:#0B8FD8;--unit-t:#0772AE;--svc:#EC2027;--svc-t:#C8141D}
+.pg-sec.sysm h2 em{color:var(--svc)}
+.sysm-ret{display:none}
+.sysm-proc{padding-top:4px}
+.sysm-stages{background:#F7F8FA;padding:6px 0 2px}
+.sysm-st b{color:var(--svc-t)}
+.sysm-st.lit{background:color-mix(in srgb,var(--svc) 8%,#fff)}
+.sysm-st.lit span{color:var(--svc-t)}
+.sysm-st+.sysm-st::before{border-color:rgba(12,18,32,.16)}
+.sysm-grid{gap:6px 0}
+.sysm-u b i{background:var(--ub,var(--unit))}
+.sysm-u small em{color:var(--unit-t)}
+.sysm-bar{column-gap:3px;min-height:58px}
+.sysm-bar i.core{background:var(--ub,var(--unit))}
+.sysm-bar i.ask{outline:0;background:color-mix(in srgb,var(--ub,var(--unit)) 14%,#fff)}
+.sysm-bar i.ask em{color:var(--unit-t);font-weight:600}
+.sysm-bar i.off{background:#F3F5F8}
+.sysm-bar.dim i.core{background:color-mix(in srgb,var(--ub,var(--unit)) 45%,#fff)}
+.sysm-w{padding-left:16px}
+.sysm-key i.core{background:var(--unit)}
+.sysm-key i.ask{outline:0;background:color-mix(in srgb,var(--unit) 14%,#fff)}
+.sysm-key i.off{background:#F3F5F8}
+.sysm-wk-by b.lit{background:var(--unit)}
+@media(max-width:720px){.sysm-bar{column-gap:2px}}
+/* the title's three counts in their departments' colours, spaced as three items */
+.pg-sec.sysm h2 .k-s{color:var(--svc)}.pg-sec.sysm h2 .k-u{color:var(--unit)}.pg-sec.sysm h2 .k-w{color:var(--work-t)}
+.pg-sec.sysm h2 span+span{margin-left:.45em}
+
+/* 25 Sep (Bazil: "you still haven't beautified this section"): a tile matrix. The service heads stand on the page with no
+   strip; each cell is one square tile carrying the service's mark: the unit's blue with a white mark when always carried,
+   a tint with a blue mark on request, faint grey otherwise. Rows breathe, nothing is outlined, the legend shows the tiles */
+.sysm-stages{background:transparent;padding:0}
+.sysm-st{padding:4px 4px 10px;gap:4px}
+.sysm-st .sysm-mk{width:44px;height:44px}
+.sysm-grid{gap:10px 0;align-items:center}
+.sysm-corner,.sysm-wh{padding-bottom:6px}
+.sysm-u{padding-right:16px}
+.sysm-u b{gap:8px}
+.sysm-u b .sysm-ui{width:20px;height:20px;color:var(--ub,var(--unit));flex:none}
+.sysm-bar{column-gap:8px;min-height:0;align-items:center}
+.sysm-bar i,.sysm-bar i.core,.sysm-bar i.ask,.sysm-bar i.off{background:transparent;outline:0;justify-content:center;transform:translateY(6px);opacity:0;transition:opacity .45s var(--e1) calc(.25s + var(--r,0) * .18s + var(--c,0) * .05s),transform .45s var(--e1) calc(.25s + var(--r,0) * .18s + var(--c,0) * .05s)}
+.sysm.in .sysm-bar i{transform:none;opacity:1}
+.sysm-tile{display:grid;place-items:center;width:46px;height:46px;background:var(--ub,var(--unit));color:#fff;transition:background .3s,color .3s}
+.sysm-tile svg{width:22px;height:22px}
+.sysm-bar i.ask .sysm-tile{background:color-mix(in srgb,var(--ub,var(--unit)) 15%,#fff);color:var(--unit-t)}
+.sysm-bar i.off .sysm-tile{background:#F3F5F8;color:rgba(12,18,32,.2)}
+.sysm-bar.dim i.core .sysm-tile{background:color-mix(in srgb,var(--ub,var(--unit)) 45%,#fff)}
+.sysm-bar.dim{opacity:.55}
+.sysm-w{padding-left:16px;gap:5px}
+.sysm-key{margin-top:18px;gap:6px 22px;align-items:center}
+.sysm-key i{width:16px;height:16px;margin-right:8px;vertical-align:-3px}
+.sysm-key i.core{background:var(--unit)}.sysm-key i.ask{background:color-mix(in srgb,var(--unit) 15%,#fff)}.sysm-key i.off{background:#F3F5F8}
+@media(max-width:1100px){.sysm-tile{width:40px;height:40px}.sysm-tile svg{width:20px;height:20px}}
+@media(max-width:720px){.sysm-bar{column-gap:4px}.sysm-tile{width:100%;aspect-ratio:1;height:auto}.sysm-tile svg{width:18px;height:18px}.sysm-u{margin-top:10px}}
+
+/* 25 Sep (Bazil's reference: light ground, white panels, crisp tiles, quiet hierarchy): the matrix sits in one white panel
+   on the section's light ground; the old bar tints are cleared everywhere so only the tiles paint */
+.sysm{background:#EEF1F5}
+.sysm-grid{background:#fff;padding:22px 24px 20px;box-shadow:0 14px 34px -24px rgba(12,18,32,.22);margin-top:clamp(24px,3.4vh,40px)}
+.sysm-proc,.sysm-stages{background:transparent}
+.sysm-bar i,.sysm-bar i.core,.sysm-bar i.ask,.sysm-bar i.off,.sysm-bar.dim i.core,.sysm-bar.lit i.core,.sysm-bar.dim i.ask,.sysm-bar.dim i.off{background:transparent}
+.sysm-key{padding:0 2px}
+.sysm-corner,.sysm-wh{color:rgba(12,18,32,.5)}
+.sysm-embed .sysm-grid{box-shadow:none;padding:0;background:transparent}
+/* the old in-bar label rules must not touch the tile (they targeted span and em inside the cells) */
+.sysm-bar i.core span.sysm-tile,.sysm-bar i.ask span.sysm-tile,.sysm-bar i.off span.sysm-tile{display:grid;padding:0;letter-spacing:0}
+/* a lit stage is named in red rather than tinted, so the head never reads as a solid strip when a unit carries all six */
+.sysm-st.lit{background:transparent}
+.sysm-st.lit span,.sysm-st.lit b{color:var(--svc-t)}
+
+/* 25 Sep (Bazil: "this looks worse now, we're not sure what is what, the animation before is better, 'when you ask' is
+   gone", "do not make it worse to understand"): the bars are back with their sweep, their unit name and their
+   "when you ask" cells; the colour code, the tints, the white panel and the red lit stages stay */
+.sysm-bar{column-gap:3px;min-height:58px;align-items:stretch}
+.sysm-bar i,.sysm-bar i.core,.sysm-bar i.ask,.sysm-bar i.off{opacity:1;transform:scaleX(0);transform-origin:0 50%;justify-content:flex-start;transition:transform .7s var(--e1) calc(.3s + var(--r,0) * .22s + var(--c,0) * .06s),opacity .3s,background .3s}
+.sysm.in .sysm-bar i,.sysm.in .sysm-bar i.core,.sysm.in .sysm-bar i.ask,.sysm.in .sysm-bar i.off{transform:none;opacity:1}
+.sysm-bar i.core,.sysm-bar.lit i.core{background:var(--ub,var(--unit))}
+.sysm-bar i.ask,.sysm-bar.lit i.ask{background:color-mix(in srgb,var(--ub,var(--unit)) 14%,#fff);justify-content:center}
+.sysm-bar i.off{background:#F3F5F8}
+.sysm-bar.dim i.core{background:color-mix(in srgb,var(--ub,var(--unit)) 45%,#fff)}
+.sysm-bar.dim i.ask{background:color-mix(in srgb,var(--ub,var(--unit)) 8%,#fff)}
+.sysm-bar i.core span{display:block;padding-left:12px;font:600 12.5px/1 "Switzer",sans-serif;color:#fff;letter-spacing:.01em}
+.sysm-bar i.ask em{display:block;font:600 11.5px/1.2 "Instrument Sans",sans-serif;color:var(--unit-t);text-align:center;padding:0 4px}
+.sysm-key i.core{background:var(--unit)}.sysm-key i.ask{background:color-mix(in srgb,var(--unit) 14%,#fff)}.sysm-key i.off{background:#F3F5F8}
+.sysm-key i{width:22px;height:11px;margin-right:7px;vertical-align:-1px}
+@media(max-width:720px){.sysm-bar{column-gap:2px;min-height:40px}}
+
+/* 25 Sep, 08:50 (Bazil: "we cannot make it vague"): the service name sits in every carried cell, one line, never cut */
+.sysm-bar i.core span{padding:0 10px;white-space:nowrap;letter-spacing:0}
+.sysm-bar i.ask em{padding:0 6px;font-size:11.5px;line-height:1.25}
+@media(max-width:1100px){.sysm-bar i.core span{font-size:11.5px;padding:0 7px}.sysm-bar i.ask em{font-size:10.5px}}
+/* under 720px the cells are too narrow for a name, so each carried or asked cell shows its stage number (a second span,
+   never a zero font size); the stage row above carries the number, the mark and the name, and the key says what the tint
+   means. The inner spans are addressed by class at a higher specificity than the cell's own "i.core span" rules. */
+.sysm-bar i.core span.sysm-cn,.sysm-bar i.ask em span.sysm-cn{display:none}
+@media(max-width:720px){
+  .sysm-bar i.core span.sysm-ct,.sysm-bar i.ask em span.sysm-ct{display:none}
+  .sysm-bar i.core span.sysm-cn,.sysm-bar i.ask em span.sysm-cn{display:block;padding:0;font:600 11.5px/1 "Switzer",sans-serif}
+  .sysm-bar i.core>span,.sysm-bar i.ask>em{padding:0;display:grid;place-items:center;width:100%;height:100%}
+  .sysm-bar i.core span.sysm-cn{color:#fff}
+  .sysm-bar i.ask em span.sysm-cn{color:var(--unit-t)}
+}
+/* 25 Sep, 09:05: the stage names collided under 480px (Construct, Commission, Maintain); the stage row keeps number and
+   mark, and one wrapping line under it names the six at a legible size */
+.sysm-stage-names{display:none}
+@media(max-width:480px){
+  .sysm-st span{display:none}
+  .sysm-stage-names{display:flex;flex-wrap:wrap;gap:4px 12px;grid-column:1/-1;margin:2px 0 0;font:500 11.5px/1.3 "Instrument Sans",sans-serif;color:rgba(12,18,32,.72)}
+  .sysm-stage-names b{font:600 11.5px/1 "Switzer",sans-serif;color:var(--svc-t)}
+}
+
+/* 25 Sep, midday (Bazil: "is this hoverable or something or what, try out"): every cell and every work chip answers the
+   pointer; one reading line under the grid says the relation; the rows the tour is not on keep legible labels */
+.sysm-bar i.core,.sysm-bar i.ask,.sysm-w .sm-chip{cursor:default}
+.sysm-bar i.core:hover,.sysm-bar i.ask:hover{filter:brightness(1.05)}
+.sysm-bar.dim i.core span{color:rgba(12,18,32,.72)}
+.sysm-bar.dim i.ask em{color:rgba(12,18,32,.6)}
+.sysm-read{margin:16px 0 0;min-height:1.6em;font:500 14.5px/1.55 "Instrument Sans",system-ui,sans-serif;color:var(--ink)}
+.sysm-read b{font-weight:600}
+.sysm-read .c-u{color:var(--unit-t)}.sysm-read .c-s{color:var(--svc-t)}.sysm-read .c-w{color:var(--work-t)}.sysm-read .c-y{color:#0B8452}.sysm-read .c-m{color:var(--ink)}
+.sysm-key{margin-top:10px}
+
+/* 25 Sep, night (Bazil: "the way you present this info must be a lot better"): the readout is a panel. Head (chip and
+   name), one line, then labelled facts as chips; the key stands at the right edge as a short list. The panel holds a
+   fixed height so the touring units never make the page jump. */
+.sysm .sysm-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px 48px;align-items:start;margin-top:14px;background:#fff;padding:22px 26px;box-shadow:0 1px 0 rgba(12,18,32,.04),0 18px 40px -30px rgba(12,18,32,.35)}
+.sysm-rd{min-height:150px}
+.sysm-rd-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.sysm-rd-h strong{font:600 20px/1.2 "Switzer",sans-serif;letter-spacing:-.015em;color:#0C1220}
+.sysm-rd-h span{font:400 14px/1.3 "Instrument Sans",sans-serif;color:rgba(12,18,32,.55)}
+.sysm-rd-l{margin:8px 0 0;font:500 15px/1.45 "Instrument Sans",sans-serif;color:#0C1220}
+.sysm-rd-l em{font-style:normal;color:var(--unit-t);font-weight:600;margin-left:4px}
+.sysm-rd-fs{display:flex;flex-wrap:wrap;gap:14px 34px;margin:16px 0 0}
+.sysm-rd-f{display:grid;gap:6px;align-content:start;min-width:0}
+.sysm-rd-f dt{font:500 12px/1.2 "Instrument Sans",sans-serif;color:rgba(12,18,32,.5)}
+.sysm-rd-f dd{margin:0;display:flex;flex-wrap:wrap;gap:4px;font:600 13.5px/1.35 "Switzer",sans-serif;color:#0C1220}
+.sysm-foot b.rd-u,.sysm-foot b.rd-s,.sysm-foot b.rd-w{display:inline-flex;align-items:center;gap:6px;padding:5px 8px;font:600 12px/1.15 "Switzer",sans-serif;white-space:nowrap}
+.sysm-foot b.rd-u{background:var(--ub,var(--unit));color:#fff}
+.sysm-foot b.rd-s{background:color-mix(in srgb,var(--svc) 9%,#fff);color:var(--svc-t)}
+.sysm-foot b.rd-s i{font-style:normal;opacity:.6}
+.sysm-foot b.rd-w{background:color-mix(in srgb,var(--work) 16%,#fff);color:var(--work-t)}
+.sysm-foot b.rd-w.h{background:color-mix(in srgb,var(--svc) 9%,#fff);color:var(--svc-t)}
+.sysm .sysm-foot .sysm-key{display:grid;gap:9px;margin:0;padding:2px 0 0;list-style:none;font:500 12.5px/1.2 "Instrument Sans",sans-serif;color:rgba(12,18,32,.62)}
+.sysm .sysm-foot .sysm-key li{display:flex;align-items:center;gap:9px;white-space:nowrap}
+.sysm .sysm-foot .sysm-key i{flex:none;width:22px;height:12px;margin:0;vertical-align:0}
+.sysm .sysm-foot .sysm-key i.off{background:#EEF1F5}
+@media(max-width:760px){.sysm .sysm-foot{grid-template-columns:1fr;padding:18px}.sysm-rd{min-height:0}.sysm .sysm-foot .sysm-key{grid-auto-flow:row}}

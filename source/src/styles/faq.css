@@ -1,0 +1,102 @@
+/* Faq · grouped, indexed, animated (24 Sep) */
+.faq{--red:#EC2027;--red-t:#C8141D;--ink:#0C1220;--soft:rgba(12,18,32,.66);--e1:cubic-bezier(.2,.7,.2,1);display:grid;grid-template-columns:minmax(240px,.8fr) minmax(0,1.8fr);gap:clamp(28px,4vw,64px);margin-top:clamp(24px,3.4vh,40px);align-items:start}
+/* the index */
+.faq-ix{position:sticky;top:calc(var(--tbv,0px) + 96px)}
+.faq-ic{display:grid;place-items:center;width:22px;height:22px;color:var(--ink)}
+.faq-ic svg{width:20px;height:20px;display:block}
+.faq-ix-n{margin:0 0 12px;font:600 12.5px/1.3 "Switzer",sans-serif;color:rgba(12,18,32,.5)}
+.faq-ix ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.faq-ix-b{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"i n c" "i l c";gap:2px 12px;align-items:center;width:100%;padding:12px 14px;border:0;background:#fff;text-align:left;cursor:pointer;font:inherit;color:inherit;opacity:0;transform:translateX(-8px);transition:opacity .5s var(--e1) calc(var(--i,0) * .07s),transform .5s var(--e1) calc(var(--i,0) * .07s),background .25s,box-shadow .25s}
+.faq.in .faq-ix-b{opacity:1;transform:none}
+.faq-ix-b .faq-ic{grid-area:i;align-self:start;margin-top:1px}
+.faq-ix-b.on .faq-ic{color:#fff}
+.faq-ix-b b{grid-area:n;font:600 15px/1.2 "Switzer",sans-serif;color:var(--ink)}
+.faq-ix-b small{grid-area:l;font:400 12.5px/1.35 "Instrument Sans",sans-serif;color:var(--soft)}
+.faq-ix-b i{grid-area:c;font:600 12px/1 "Switzer",sans-serif;color:rgba(12,18,32,.5);padding:5px 7px;background:#F1F3F7;font-style:normal}
+.faq-ix-b:hover{box-shadow:inset 0 0 0 1.5px rgba(12,18,32,.14)}
+.faq-ix-b.on{background:var(--ink)}
+.faq-ix-b.on b{color:#fff}.faq-ix-b.on small{color:rgba(255,255,255,.7)}.faq-ix-b.on i{background:var(--red);color:#fff}
+.faq-ix-cta{margin:18px 0 0;padding:16px;background:#fff;display:grid;gap:4px}
+.faq-ix-cta span{font:600 12.5px/1.3 "Switzer",sans-serif;color:rgba(12,18,32,.5)}
+.faq-ix-cta a{font:600 14.5px/1.3 "Switzer",sans-serif;color:var(--red-t);text-decoration:none}
+.faq-ix-cta a i{font-style:normal}
+/* the groups */
+.faq-list{display:grid;gap:clamp(28px,4vh,44px)}
+.faq-g{scroll-margin-top:calc(var(--tbv,0px) + 92px)}
+.faq-g h3{margin:0}
+.faq-gb{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:14px;width:100%;padding:16px 18px;border:0;background:#fff;text-align:left;cursor:pointer;font:inherit;color:inherit;transition:box-shadow .25s}
+.faq-gb .faq-ic{width:36px;height:36px;background:#F1F3F7}
+.faq-gb .faq-ic svg{width:20px;height:20px}
+.faq-gt{display:grid;gap:2px}
+.faq-gt b{font:600 19px/1.2 "Switzer",sans-serif;letter-spacing:-.015em;color:var(--ink)}
+.faq-gt small{font:400 13.5px/1.4 "Instrument Sans",sans-serif;color:var(--soft)}
+.faq-gn{font:600 12px/1 "Switzer",sans-serif;color:rgba(12,18,32,.5);padding:5px 7px;background:#F1F3F7}
+.faq-gb i{position:relative;width:14px;height:14px}
+.faq-gb i::before,.faq-gb i::after{content:"";position:absolute;left:0;top:6px;width:14px;height:2px;background:var(--red);transition:transform .35s var(--e1)}
+.faq-gb i::after{transform:rotate(90deg)}
+.faq-g.is-open .faq-gb i::after{transform:rotate(0)}
+.faq-g.is-open .faq-gb{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.faq-g.is-open .faq-gb .faq-ic{background:var(--ink);color:#fff}
+.faq-gl{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--e1)}
+.faq-g.is-open .faq-gl{grid-template-rows:1fr}
+.faq-gl>ul{overflow:hidden;min-height:0;list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.faq-g.is-open .faq-gl>ul{padding-top:8px}
+.faq-i{background:#fff;box-shadow:inset 0 0 0 1px rgba(12,18,32,.06);opacity:0;transform:translateY(8px);transition:opacity .5s var(--e1) calc(.1s + var(--i,0) * .06s),transform .5s var(--e1) calc(.1s + var(--i,0) * .06s),box-shadow .25s}
+.faq.in .faq-i{opacity:1;transform:none}
+.faq-i.open{box-shadow:inset 0 0 0 1.5px var(--red)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:18px 22px;border:0;background:transparent;text-align:left;cursor:pointer;font:600 16.5px/1.3 "Switzer",sans-serif;letter-spacing:-.015em;color:var(--ink)}
+.faq-q:hover span{color:var(--red-t)}
+.faq-q i{flex:none;position:relative;width:14px;height:14px}
+.faq-q i::before,.faq-q i::after{content:"";position:absolute;left:0;top:6px;width:14px;height:2px;background:var(--red);transition:transform .35s var(--e1)}
+.faq-q i::after{transform:rotate(90deg)}
+.faq-i.open .faq-q i::after{transform:rotate(0)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--e1)}
+.faq-i.open .faq-a{grid-template-rows:1fr}
+.faq-a>div{overflow:hidden;min-height:0}
+.faq-a p{margin:0;padding:0 22px 20px;font:400 15px/1.6 "Instrument Sans",sans-serif;color:var(--soft);max-width:66ch}
+.faq-more{display:inline-flex;align-items:center;gap:6px;margin:-8px 22px 20px;font:600 13.5px/1.2 "Switzer",sans-serif;color:var(--red-t);text-decoration:none}
+.faq-more i{font-style:normal}
+.faq-q:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
+/* embedded in the Codex */
+.faq-embed{margin-top:18px}
+@media(max-width:960px){
+  .faq{grid-template-columns:minmax(0,1fr);gap:18px}
+  .faq-ix,.faq-list{min-width:0}
+  .faq-ix{position:static}
+  .faq-ix ul{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+  .faq-ix ul::-webkit-scrollbar{display:none}
+  .faq-ix li{flex:none}
+  .faq-ix-b{grid-template-columns:auto auto;grid-template-areas:"n c";padding:10px 12px;transform:none}
+  .faq-ix-b small{display:none}
+  .faq-ix-b{grid-template-columns:auto auto auto;grid-template-areas:"i n c"}
+  .faq-gb{padding:12px 14px;gap:10px}
+  .faq-gt b{font-size:16.5px}
+  .faq-gt small{display:none}
+  .faq-ix-cta{display:none}
+  .faq-q{padding:16px 16px;font-size:15.5px}
+  .faq-a p{padding:0 16px 18px;font-size:14.5px}
+  .faq-more{margin:-6px 16px 18px}
+  .faq-g h3{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){.faq-ix-b,.faq-i{transition:none;opacity:1;transform:none}.faq-a{transition:none}}
+/* the heading mark */
+/* 24 Sep (Bazil: "do not cut it out and do not indent it"): the plate draws 12% past the SVG box on both sides, so the
+   mark keeps overflow visible; it sits ABOVE the title on the text's own left edge, so the title is not pushed right */
+/* 24 Sep: the head is one row, the cube at the left of the title and the lede; the cube keeps only its box and
+   question mark (the shadow ellipse, the three platform faces and the dot grid are hidden) */
+.sm-faq-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 26px;align-items:start}
+.sm-faq-head>div{min-width:0}
+.sm-faq-head .pg-lede{margin-top:12px}
+.sm-faq-h{display:block;margin:0}
+.sm-faq-head .faq-hic{display:block;overflow:visible;width:104px;height:104px;margin:-22px 0 0 -4px}
+.sm-faq-head .faq-hic>ellipse,.sm-faq-head .faq-hic>path:nth-of-type(1),.sm-faq-head .faq-hic>path:nth-of-type(2),.sm-faq-head .faq-hic>path:nth-of-type(3),.sm-faq-head .faq-hic>circle[fill="#B6BFCE"]{display:none}
+@media(max-width:720px){.sm-faq-head{gap:0 16px}.sm-faq-head .faq-hic{width:60px;height:60px;margin-top:-2px}}
+/* 24 Sep: print and the Codex PDF cannot open an accordion, so every group and every answer prints open */
+@media print{
+  .faq-g .faq-gl,.faq-a{grid-template-rows:1fr!important;transition:none!important}
+  .faq-i{opacity:1!important;transform:none!important}   /* the in-view reveal never fires on a printed page */
+  .faq-gt small,.faq-gn{display:block!important}   /* the paper is narrower than a laptop, so the phone rules hid the group leads in print */
+  .faq-a>div{overflow:visible!important}
+  .faq-g{break-inside:avoid-page}
+  .faq-ix{display:none}
+}

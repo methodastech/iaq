@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IAQ Group · Engineering Controlled Environments</title>
+<meta name="description" content="IAQ Technology: design, procurement, construction, commissioning and maintenance of cleanrooms and hi-tech facilities across Asia.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="canonical" href="https://iaqtechnology.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="IAQ Group">
+<meta property="og:title" content="IAQ Group · Engineering Controlled Environments">
+<meta property="og:description" content="IAQ Technology: design, procurement, construction, commissioning and maintenance of cleanrooms and hi-tech facilities across Asia.">
+<meta property="og:image" content="https://iaqtechnology.com/assets/hero-campus.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://iaqtechnology.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IAQ Group · Engineering Controlled Environments">
+<meta name="twitter:description" content="IAQ Technology: design, procurement, construction, commissioning and maintenance of cleanrooms and hi-tech facilities across Asia.">
+<meta name="twitter:image" content="https://iaqtechnology.com/assets/hero-campus.webp">
+<noscript></noscript>
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/Switzer-600-normal.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/InstrumentSans-400-normal-latin.woff2">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+/* 26 Sep (Bazil: "it loads like loading screen"): on the home route the first paint is the loader itself, white with
+   the pale IAQ mark where the loader draws it, instead of the page frame for the half second before the app mounts
+   #loader. The script under #boot hands over the moment #loader is up; every other route drops it before paint.
+   Sized like .ld-logofill in styles/home.css, with the root zoom from base.css, which may not have loaded yet:
+   --bz is that zoom, divided by --zoomf once base.css is in so it never applies twice. */
+#boot{position:fixed;inset:0;z-index:2147483600;background:#FFFFFF;pointer-events:none}
+#boot i{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(272px,66vw);aspect-ratio:668/276;
+  -webkit-mask:url(/assets/iaq-logo.webp) center/contain no-repeat;mask:url(/assets/iaq-logo.webp) center/contain no-repeat;
+  background:linear-gradient(to top,#EC2027 0%,#DFE5EE 2.5%);zoom:calc(var(--bz,1) / var(--zoomf,1))}
+@media(max-width:640px){#boot i{width:min(200px,52vw)}}
+@media(min-width:1025px){#boot{--bz:1.12}}
+@media(min-width:2240px){#boot{--bz:1.5}}
+@media(min-width:3200px){#boot{--bz:2.1}}
+</style>
+</head>
+<body>
+<div id="boot" aria-hidden="true"><i></i></div>
+<script>
+(function () {
+  var b = document.getElementById('boot'), h = location.hash
+  function drop() { if (b && b.parentNode) b.parentNode.removeChild(b); b = null }
+  /* only the home route opens with the loader; any other route, or a path the next script redirects, drops it now */
+  if ((h && h !== '#' && h !== '#/') || location.pathname.replace(/\/index\.html$/i, '/') !== '/') { drop(); return }
+  var t0 = Date.now()
+  ;(function wait() {
+    if (!b) return
+    var l = document.getElementById('loader')
+    /* hand over once #loader is up and styled (fixed and white over the page), or give up after 5 s */
+    if ((l && getComputedStyle(l).position === 'fixed') || Date.now() - t0 > 5000) { requestAnimationFrame(drop); return }
+    requestAnimationFrame(wait)
+  })()
+  addEventListener('hashchange', drop)
+  setTimeout(drop, 6000)   /* rAF sleeps in a background tab */
+})()
+</script>
+<div id="root"></div>
+<script>
+/* CLEAN PATHS INTO THE HASH ROUTER, before the app boots.
+   The router is a HashRouter on purpose: the second build target is one self-contained file opened
+   over file://, where a history router has no server to fall back on. The cost is that a typed or
+   pasted /home2 gets index.html from the dev server's SPA fallback, HashRouter then reads an empty
+   hash, and the HOMEPAGE renders under someone else's URL — silently, which is the worst version of
+   wrong. Translate the path to its hash route here, ahead of first paint, so no wrong page ever
+   shows and the address bar keeps the route the visitor asked for.
+   Bails out on file:// (no server, and the path is a real .html), on any URL that already carries a
+   hash route, and on anything with a file extension, which is a real asset and not a route.
+   Assumes the app is served from the origin root, which is where every target here puts it. */
+(function () {
+  if (location.protocol !== 'http:' && location.protocol !== 'https:') return
+  if (location.hash && location.hash !== '#' && location.hash !== '#/') return
+  var p = location.pathname.replace(/\/index\.html$/i, '/')
+  if (p === '/' || /\.[a-z0-9]+$/i.test(p)) return
+  location.replace('/' + location.search + '#' + p)
+})()
+</script>
+<script type="module" src="/src/main.jsx"></script>
+</body>
+</html>

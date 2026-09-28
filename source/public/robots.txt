@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /portal
+Disallow: /web1/
+Disallow: /audit.html
+Disallow: /plan.html
+Disallow: /design.html
+Disallow: /checklist.html
+Disallow: /competitors.html
+Disallow: /qa.html
+Sitemap: https://iaqtechnology.com/sitemap.xml

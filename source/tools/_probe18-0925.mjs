@@ -1,0 +1,20 @@
+import puppeteer from 'puppeteer-core'
+const OUT = process.argv[2]
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--use-angle=metal', '--ignore-gpu-blocklist'] })
+setTimeout(() => { console.log('TIMEOUT'); process.exit(1) }, 90000)
+await b.defaultBrowserContext().overridePermissions('http://localhost:5177', ['clipboard-read', 'clipboard-write', 'clipboard-sanitized-write'])
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 1000 })
+const errs = []; p.on('pageerror', e => errs.push(e.message)); p.on('console', m => { if (m.type() === 'error') errs.push(m.text().slice(0, 160)) })
+await p.goto('http://localhost:5177/', { waitUntil: 'load' }); await p.evaluate(() => { localStorage.setItem('iaq.cms.session.v1', '1'); localStorage.removeItem('iaq.signature.v1') })
+await p.goto('http://localhost:5177/portal/signature', { waitUntil: 'load' }); await new Promise(r => setTimeout(r, 2500))
+const typeIn = async (label, v) => { const h = await p.evaluateHandle(l => [...document.querySelectorAll('.sg-form label')].find(x => x.querySelector('span') && x.querySelector('span').textContent.startsWith(l)).querySelector('input,textarea'), label); await h.click(); await h.type(v) }
+await typeIn('Full name', 'Nur Aisyah Rahman'); await typeIn('Job title', 'Senior Project Engineer'); await typeIn('Department', 'EPC')
+await typeIn('Email', 'aisyah@iaqtechnology.com.my'); await typeIn('Mobile', '+60 12 345 6789')
+await new Promise(r => setTimeout(r, 500))
+const r = await p.evaluate(() => ({ side: [...document.querySelectorAll('.pt-sg-b')].map(x => x.textContent.trim()), prev: document.querySelector('.sg-prev')?.innerText, img: (() => { const i = document.querySelector('.sg-prev img'); return i ? [i.getAttribute('src'), i.complete && i.naturalWidth] : null })(), docW: document.documentElement.scrollWidth }))
+await p.click('.sg-go'); await new Promise(r => setTimeout(r, 600))
+const clip = await p.evaluate(async () => { try { const items = await navigator.clipboard.read(); const out = []; for (const it of items) out.push(it.types.join(',')); const t = await navigator.clipboard.readText(); return out.join('|') + ' :: ' + t.slice(0, 60) } catch (e) { return 'read fail ' + e.message } })
+const done = await p.evaluate(() => document.querySelector('.sg-done').textContent)
+await p.screenshot({ path: `${OUT}/signature.png` })
+console.log(JSON.stringify({ ...r, clip, done, errs }, null, 1))
+await b.close(); process.exit(0)

@@ -1,0 +1,16 @@
+import puppeteer from 'puppeteer-core'
+const OUT = process.argv[2]
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--no-sandbox'] })
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 900 })
+const errs = []; p.on('console', m => { if (m.type() === 'error') errs.push(m.text()) }); p.on('pageerror', e => errs.push(String(e)))
+await p.goto('http://localhost:5177/careers', { waitUntil: 'networkidle2' }); await new Promise(r => setTimeout(r, 2000))
+await p.screenshot({ path: `${OUT}/careers-top.png`, captureBeyondViewport: false })
+await Promise.all([p.waitForNavigation({ waitUntil: 'networkidle2' }).catch(() => {}), p.click('.cr-culture')])
+await new Promise(r => setTimeout(r, 1200))
+const path1 = await p.evaluate(() => location.pathname + ' | ' + document.title)
+const p2 = await b.newPage(); await p2.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true })
+await p2.goto('http://localhost:5177/careers', { waitUntil: 'networkidle2' }); await new Promise(r => setTimeout(r, 1500))
+const drawer = await p2.evaluate(() => [...document.querySelectorAll('#navDrawer .nd-sub a')].map(a => a.getAttribute('href')).filter(h => /careers/.test(h)))
+await p2.screenshot({ path: `${OUT}/careers-top-390.png`, captureBeyondViewport: false })
+console.log(JSON.stringify({ path1, drawer, errs }))
+await b.close()

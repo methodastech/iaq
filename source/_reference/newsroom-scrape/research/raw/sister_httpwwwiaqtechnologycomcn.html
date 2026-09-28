@@ -1,0 +1,417 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="css.css" rel="stylesheet" type="text/css">
+<meta name="description" content="江苏百科建筑工程有限公司系 TOPTRANS 独资的 IAQ 集团子公司，成立于 1996 年，是一家提供研发设计、土木建设、机电安装和洁净室工程服务的专业公司。自成立以来，公司已成功地承建了一百多项“交钥匙工程”，尤其在半导体、电子、光伏、制药、医疗设备、食品、研发实验室和手术室等不同领域取得了卓越的成绩。"/>
+<meta name="keywords" content="江苏百科建筑工程有限公司" />
+<title>江苏百科建筑工程有限公司</title>
+<SCRIPT language=JavaScript src="menu.js"></SCRIPT>
+<script type="text/JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+
+<body onload="MM_preloadImages('images/home_1.jpg','images/company_1.jpg','images/service_1.jpg','images/news_1.jpg','images/cases_1.jpg','images/job_1.jpg','images/jp_1.jpg','images/contact_1.jpg')">
+
+
+<script type="text/javascript">
+var menu = function(){
+	var t = 15, z = 50, s = 6, a;
+	function sl(c, f){
+		var h = c.offsetHeight;
+		if ((h <= 0 && f != 1) || (h >= c.mh && f == 1)) {
+			if (f == 1) {
+				c.style.filter = '';
+				c.style.opacity = 1;
+				c.style.overflow = 'visible';
+			}
+			clearInterval(c.t);
+			return
+		}
+		var d = (f == 1) ? Math.ceil((c.mh - h) / s) : Math.ceil(h / s), o = h / c.mh;
+		c.style.opacity = o;
+		c.style.filter = 'alpha(opacity=' + (o * 100) + ')';
+		c.style.height = h + (d * f) + 'px';
+	};
+	function dd(n){
+		this.h = [];//存取有子菜单的项目
+		this.c = [];//存取子菜单
+	};
+	dd.prototype = {
+		init: function(p, c){
+			a = c;
+			var that = this;
+			var w = document.getElementById(p), s = w.getElementsByTagName('ul'), l = s.length/*二级菜单的个数*/, i = 0;
+			for (i; i < l; i++) {
+				var h = s[i].parentNode;
+				this.h[i] = h;
+				this.c[i] = s[i];
+				/*
+				 * 重点就在这里，一点JS的语法技巧，通过闭包来实现对i（索引的传递）
+				 * 然后就是Javascript里比较奇怪的一点，必须在内部的函数之外声明that=this
+				 * 这样对象的作用域才可以保持，很奇怪，但是很有效
+				*/ 
+				h.onmouseover = function(index){
+					return function(){
+						that.st(index, true);
+					}
+				}(i);
+				h.onmouseout = function(index){
+					return function(){
+						that.st(index, false);
+					}
+				}(i);
+			}
+		},
+		st: function(x, f){
+			var c = this.c[x], h = this.h[x], p = h.getElementsByTagName('a')[0];
+			if (c.t) {
+				clearInterval(c.t);
+			}
+			c.style['overflow'] = 'hidden';
+			if (f) {
+				p.className += ' ' + a;
+				if (!c.mh) {
+					c.style.display = 'block';
+					c.style.height = '';
+					c.mh = c.offsetHeight;
+					c.style.height = 0;
+				}
+				if (c.mh == c.offsetHeight) {
+					c.style.overflow = 'visible';
+				}
+				else {
+					c.style.zIndex = z;
+					z++;
+					c.t = setInterval(function(){
+						sl(c, 1)
+					}, t);
+				}
+			}
+			else {
+				p.className = p.className.replace(a, '');
+				c.t = setInterval(function(){
+					sl(c, -1)
+				}, t);
+			}
+		}
+	};
+	return {
+		dd: dd
+	};
+}();
+</script>
+<div align="center">
+  <table width="970" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><table width="970" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="484"><div align="left"><img src="images/logo.jpg" width="454" height="94" /></div></td>
+          <td width="486"><div align="right">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td style="padding-right:20px"><div align="right">
+                  <table width="160" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="30"><div align="center"><img src="images/china.jpg" width="17" height="11" /></div></td>
+                      <td width="50" style="padding-top:2px"><div align="left"><a href="index.asp" class="top">中文版</a></div></td>
+                      <td width="30"><div align="center"><img src="images/english.jpg" width="17" height="11" /></div></td>
+                      <td width="50" style="padding-top:2px"><div align="left"><a href="english/index.asp" class="top">English</a></div></td>
+					  
+                    </tr>
+                  </table>
+                </div></td>
+              </tr>
+              <tr>
+                <td height="30">&nbsp;</td>
+              </tr>
+              <tr>
+                <td><div align="right">
+                  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="46%" style="padding-right:15px"><div align="right"><img src="images/tel.gif" width="37" height="24" /></div></td>
+                      <td width="54%" style="padding-top:2px"><div align="left"><font style="font-size:24px; font-weight:bold; font-family:Arial; color:#333333">+86-512-62745199</font></div></td>
+                    </tr>
+                  </table>
+                </div></td>
+              </tr>
+            </table>
+          </div></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="center">
+        <table width="970" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="center"><ul class="menu" id="menu">
+                <li>
+                  <div><a href="index.asp" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image7','','images/home_1.jpg',1)"><img src="images/home.jpg" name="Image7" width="141" height="40" border="0" id="Image7" /></a></div>
+                </li>
+              <li>
+                <div><img src="images/menu_bj.jpg" /></div>
+              </li>
+              <li>
+                <div><a href="company.asp?c=%B9%AB%CB%BE%BC%F2%BD%E9" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','images/service_1.jpg',1)"><img src="images/service.jpg" name="Image9" width="137" height="40" border="0" id="Image9" /></a>
+                      <ul>
+                        <li style="width:137px;"><a href="company.asp?c=%B9%AB%CB%BE%BC%F2%BD%E9">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;公司简介</a></li>
+                        <li style="width:137px;"><a href="honor.asp?bigclass=%D7%CA%D6%CA%D6%A4%CA%E9">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;资质证书</a></li>
+						<li style="width:137px;"><a href="honor.asp?bigclass=%C8%D9%D3%FE%D6%A4%CA%E9">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;荣誉证书</a></li>
+						<li style="width:137px;"><a href="honor.asp?bigclass=%BF%CD%BB%A7%B8%D0%D0%BB%D0%C5">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;客户感谢信</a></li>
+                        <li style="width:137px;"><a href="company.asp?c=%D7%E9%D6%AF%BC%DC%B9%B9">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;组织架构</a></li>
+                      </ul>
+                </div>
+              </li>
+              <li>
+                <div><img src="images/menu_bj.jpg" /></div>
+              </li>
+			  <li>
+                <div><a href="service.asp" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','images/company_1.jpg',1)"><img src="images/company.jpg" name="Image8" width="137" height="40" border="0" id="Image8" /></a>
+                    <ul>
+                        <li style="width:137px;"><a href="service.asp">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;服务范围</a></li>
+                       
+					   <li style="width:137px;"><a href="japan.asp">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;日企服务</a></li><li style="width:137px;"><a href="casespic.asp?/1_1">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;服务图示</a></li>
+					   <li style="width:137px;"><a href="marketing.asp">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;业务区域</a></li>
+                  
+					  
+                    </ul>
+                </div>
+              </li>
+             
+              <li>
+                <div><img src="images/menu_bj.jpg" /></div>
+              </li>
+			  
+              <li>
+                <div><a href="cases.asp?bigclass=%B5%E7%D7%D3%26%B0%EB%B5%BC%CC%E5%D0%D0%D2%B5" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','images/news_1.jpg',1)"><img src="images/news.jpg" name="Image11" width="137" height="40" border="0" id="Image11" /></a>
+                      <ul>
+                        <li style="width:137px;"><a href="cases.asp?bigclass=%B5%E7%D7%D3%26%B0%EB%B5%BC%CC%E5%D0%D0%D2%B5">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;电子&半导体行业</a></li>
+                       
+                        <li style="width:137px;"><a href="cases.asp?bigclass=%D2%BD%D2%A9%D0%D0%D2%B5">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;医药行业</a></li>
+                       
+                        <li style="width:137px;"><a href="cases.asp?bigclass=%D1%D0%B7%A2%D6%D0%D0%C4">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;研发中心</a></li>
+                       
+                        <li style="width:137px;"><a href="cases.asp?bigclass=%B9%E2%B7%FC%D0%D0%D2%B5">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;光伏行业</a></li>
+                       
+                        <li style="width:137px;"><a href="cases.asp?bigclass=%C6%E4%CB%FB%D0%D0%D2%B5">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;其他行业</a></li>
+                       
+                        <li style="width:137px;"><a href="cases.asp?bigclass=%C8%D5%D7%CA%CF%EE%C4%BF">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;日资项目</a></li>
+                       
+                      </ul>
+                </div>
+              </li>
+              <li>
+                <div><img src="images/menu_bj.jpg" /></div>
+              </li>
+			  
+              <li>
+                <div><a href="knowledge.asp?bigclass=%CA%B2%C3%B4%CA%C7%BE%BB%B7%BF" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','images/cases_1.jpg',1)"><img src="images/cases.jpg" name="Image12" width="137" height="40" border="0" id="Image12" /></a><ul>  
+                        <li style="width:138px;"><a href="knowledge.asp?bigclass=%CA%B2%C3%B4%CA%C7%BE%BB%B7%BF&a=1">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;什么是净房</a></li>
+                         
+                        <li style="width:138px;"><a href="knowledge.asp?bigclass=%BE%BB%B7%BF%B5%C4%C9%E8%BC%C6&a=2">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;净房的设计</a></li>
+                         
+                        <li style="width:138px;"><a href="knowledge.asp?bigclass=%BE%BB%B7%BF%B2%E2%CA%D4&a=3">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;净房测试</a></li>
+                         
+                        <li style="width:138px;"><a href="knowledge.asp?bigclass=%BE%BB%B7%BF%B9%DC%BF%D8&a=4">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;净房管控</a></li>
+                         
+                      </ul></div>
+              </li>
+              <li>
+                <div><img src="images/menu_bj.jpg" /></div>
+              </li>
+              <li>
+                <div><a href="job.asp" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image13','','images/job_1.jpg',1)"><img src="images/job.jpg" name="Image13" width="137" height="40" border="0" id="Image13" /></a>
+                      <ul>
+                        <li style="width:137px;"><a href="job.asp">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;人才理念</a></li>
+                        <li style="width:137px;"><a href="jobs.asp">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;招贤纳士</a></li>
+                      </ul>
+                </div>
+              </li>
+              <li>
+                <div><img src="images/menu_bj.jpg" /></div>
+              </li>
+             
+              <li>
+                <div><a href="contact.asp" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image14','','images/contact_1.jpg',1)"><img src="images/contact.jpg" name="Image14" width="138" height="40" border="0" id="Image14" /></a>
+                      <ul>
+                        <li style="width:137px;"><a href="contact.asp">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;联系我们</a></li>
+                        <li style="width:137px;"><a href="feedback.asp">&nbsp;&nbsp;<font style="font-family:宋体">·</font>&nbsp;信息咨询</a></li>
+                      </ul>
+                </div>
+              </li>
+            </ul>
+                <script type="text/javascript">
+	var menu=new menu.dd();
+	menu.init("menu","menuhover");
+                </script></td>
+          </tr>
+        </table>
+      </div></td>
+    </tr>
+
+  </table>
+</div>
+
+
+<div align="center">
+  <table width="970" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><img src="images/banner4.jpg" width="970" height="290" /></td>
+    </tr>
+    <tr>
+      <td height="467" valign="top" background="images/middle_bj.jpg"><div align="center">
+        <table width="950" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><table width="950" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="351" valign="top"><table width="351" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><img src="images/index_new.jpg" width="351" height="30" border="0" usemap="#Map" /></td>
+                  </tr>
+                  <tr>
+                    <td height="8"></td>
+                  </tr>
+                  <tr>
+                    <td height="180" valign="top" style="border:1px solid #D9D9D9;"><div align="center">
+                      <table width="98%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td height="8"></td>
+                        </tr>
+                        <tr>
+                          <td style="padding-left:5px"><div align="left"><font style="line-height:170%"><strong>IAQ  提供以下专业服务</strong><br>
+                                  <strong>专业咨询</strong><br />
+                            IAQ   提供工厂规划，工艺布局规划及专业问题解决方案。<br />
+                            <strong>专业设计</strong><br />
+                            IAQ   拥有强大的设计团队和创新的设计理念，提供优良的设计方案，为您节约每一分钱。<br />
+                            <strong>专业施工</strong><br />
+                            机电工程、空调工程、电气工程、工艺系统、特殊气体...</font> </div></td>
+                        </tr>
+                        <tr>
+                          <td height="6"></td>
+                        </tr>
+                      </table>
+                    </div></td>
+                  </tr>
+                </table></td>
+                <td width="12"></td>
+                <td width="345" valign="top"><table width="345" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><img src="images/index_company.jpg" width="345" height="30" border="0" usemap="#Map2" /></td>
+                  </tr>
+                  <tr>
+                    <td height="8"></td>
+                  </tr>
+                  <tr>
+                    <td height="180" valign="top" style="border:1px solid #D9D9D9;"><div align="center">
+                      <table width="94%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td height="10"></td>
+                        </tr>
+                        <tr>
+                          <td><div align="left"><font style="line-height:220%; text-indent:2em">江苏百科建筑工程有限公司系 TOPTRANS 独资的 IAQ 集团的子公司，成立于 2002 年，是一家提供研发设计、土木建设、机电安装和洁净室工程服务的专业公司。自成立以来，公司已成功地承建了一百多项“交钥匙工程”，尤其在半导体、电子、光伏、制药、医疗设备、食品、研发实验室和手术室等不同领域取得了卓越的成绩。</font></div></td>
+                        </tr>
+                        <tr>
+                          <td height="8"></td>
+                        </tr>
+                      </table>
+                    </div></td>
+                  </tr>
+                </table></td>
+                <td width="12"></td>
+                <td width="230" valign="top"><table width="230" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><img src="images/index_contact.jpg" width="230" height="30" border="0" usemap="#Map3" /></td>
+                  </tr>
+                  <tr>
+                    <td height="8"></td>
+                  </tr>
+                  <tr>
+                   <td height="180" style="border:1px solid #D9D9D9;"><div align="center"><a href="contact.asp"><img src="images/contact_map.jpg" width="228" height="178" border="0" /></a></div></td>
+                  </tr>
+                </table></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td height="15" background="images/index_top_end.jpg"></td>
+          </tr>
+          <tr>
+            <td height="8"></td>
+          </tr>
+          <tr>
+            <td><table width="950" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="30"><img src="images/index_case.jpg" width="30" height="189" /></td>
+                <td width="920" style="border-bottom:1px solid #D9D9D9; border-right:1px solid #D9D9D9; border-top:1px solid #D9D9D9;"><div align="center">
+                  <iframe src="p.asp" name="abc" width="900" height="180" scrolling="No" frameborder="0" id="abc" border="0"></iframe>
+                </div></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td height="20" background="images/index_case_end.jpg">&nbsp;</td>
+          </tr>
+         
+        </table>
+      </div></td>
+    </tr>
+
+  </table>
+</div>
+
+<div align="center">
+  <table width="970" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="66" background="images/end.jpg"><div align="center"><font style="line-height:200%; font-family:Times New Roman">地址：苏州市相城区渭塘镇爱格豪路35号海美国际B幢2楼 &nbsp; |  &nbsp; 电话：+86-512-62745199  &nbsp; |  &nbsp; 传真：+86-512-62743199  &nbsp; |  &nbsp; <a href="sitemap.asp" class="left" target="_blank">网站地图</a><br />
+      COPYRIGHT (C) 2012 江苏百科建筑工程有限公司. ALL RIGHTS RESERVED.  &nbsp; 备案号：<a href="https://beian.miit.gov.cn/" target="_blank" class="left">苏ICP备2023000364号</a></font></div></td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+
+<map name="Map" id="Map"><area shape="rect" coords="289,9,343,25" href="service.asp" />
+</map>
+<map name="Map2" id="Map2">
+<area shape="rect" coords="284,9,336,24" href="company.asp?c=%B9%AB%CB%BE%BC%F2%BD%E9" />
+</map>
+<map name="Map3" id="Map3">
+<area shape="rect" coords="173,9,223,26" href="contact.asp" />
+</map></body>
+
+</html>
+
+
+
+
+

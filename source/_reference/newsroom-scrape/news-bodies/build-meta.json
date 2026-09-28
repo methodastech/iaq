@@ -1,0 +1,44 @@
+{
+ "noimg": [
+  "university-malaya-strategic-collaboration",
+  "east-malaysia-2-million-safe-manhours",
+  "johor-data-centre-hub",
+  "national-semiconductor-strategy-2024",
+  "penang-semiconductor-leap-forward",
+  "semiconductor-strategic-plan-miti",
+  "malaysia-data-centre-potential",
+  "malaysia-semiconductor-powerhouse",
+  "semiconductor-global-demand-2024",
+  "morrow-batteries-dry-room-milestone",
+  "ai-data-centres-nvidia-foxconn",
+  "northvolt-sodium-ion-breakthrough",
+  "malaysia-data-centre-boom",
+  "ceo-message-2023",
+  "factory-acceptance-test-fat"
+ ],
+ "counts": {
+  "posts": 70,
+  "imgs": 65
+ },
+ "skipped": {
+  "2025/06/Testing.png": "AI-generated watermark with a pasted logo",
+  "2023/12/Untitled-design-2023-12-12T170012.194.png": "stock photograph (solar farm)",
+  "2024/01/CEO.png": "stock New Year graphic",
+  "2024/01/CEO-1.png": "stock New Year graphic",
+  "2025/06/2-mil.jpg": "text poster naming the client",
+  "2024/07/Data-Center-2.png": "stock data centre render",
+  "2024/06/Anwar-at-SEMICON.jpeg": "press photograph of a third party event",
+  "2024/06/Penang.webp": "stock chip graphic",
+  "2024/06/MITI.jpg": "government press photograph",
+  "2024/04/Data-center-linkedin.jpeg": "stock skyline (freepik watermark)",
+  "2024/04/Semiconductor-linkedin.jpeg": "stock or wire photograph",
+  "2024/03/Data-center.jpeg": "stock circuit board",
+  "2024/01/Morrow.jpeg": "Morrow's own press photograph",
+  "2024/01/Morrow-1.jpeg": "Morrow's own press photograph",
+  "2023/12/Untitled-design-2023-12-21T112343.981.png": "stock data centre render",
+  "2024/01/sweden.jpeg": "stock EV charging photograph",
+  "2024/01/sweden-1.jpeg": "stock EV charging photograph",
+  "2024/01/nvidia.jpg": "press photograph of a third party visit",
+  "2024/01/nvidia-1.jpg": "press photograph of a third party visit"
+ }
+}

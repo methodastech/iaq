@@ -1,0 +1,65 @@
+/* ------------------------------------------------------------------------
+   THE SPAN: figures and achievements (15 Sep).
+   Scoped to .hx- so nothing here reaches the shared page styles. Sharp
+   corners, no frames, no borders, no rules: the figure is a flat plate that
+   sits between the entry's copy and its specification strip.
+   ------------------------------------------------------------------------ */
+
+/* ---- the figure --------------------------------------------------------- */
+
+.hx-fig{ margin:18px 0 0; max-width:680px; }
+.hx-fig-box{ position:relative; width:100%; max-width:100%; aspect-ratio:var(--ar,16 / 9);
+             overflow:hidden; background:var(--bg); }
+.hx-fig-box img,.hx-fig-box video{ position:absolute; inset:0; width:100%; height:100%;
+             display:block; object-fit:cover; object-position:var(--pos,50% 50%); }
+/* a clip sits over its poster image and fades up once it is actually playing,
+   so the poster-to-frame swap never reads as a cut, and the poster is what
+   stands before playback and under reduced motion */
+.hx-fig-box .hx-poster{ z-index:0; }
+.hx-fig-box video{ z-index:1; opacity:0; transition:opacity .6s var(--e1); }
+.hx-fig-box video[data-on="1"]{ opacity:1; }
+
+/* the caption: the existing label style, a kind tag then one line of plain text */
+.hx-cap{ margin:9px 0 0; font-family:var(--label); font-size:11.5px; line-height:1.5;
+         letter-spacing:.01em; color:var(--soft); max-width:60ch; }
+.hx-cap b{ display:inline-block; margin-right:10px; font-size:10px; font-weight:600;
+           letter-spacing:.16em; text-transform:uppercase; color:var(--soft); }
+.hx-fig[data-rep="1"] .hx-cap b{ color:var(--blue-bright); }
+
+/* ---- badge artwork ------------------------------------------------------ */
+
+/* trailing a photograph: small */
+.hx-badges{ display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px;
+            margin:16px 0 0; padding:0; list-style:none; }
+.hx-badges li{ margin:0; padding:0; }
+.hx-badges img{ display:block; height:58px; width:auto; max-width:100%; }
+/* standing alone as the entry's figure: the badges take the figure's place
+   and scale. The artwork is on white, as is the section, so no plate. */
+.hx-badges[data-solo="1"]{ margin-top:22px; gap:18px 40px; max-width:680px; }
+.hx-badges[data-solo="1"] img{ height:92px; }
+
+/* ---- achievements: a smaller filled red square on the rail, and a kind tag - */
+
+.hx-item[data-kind="achievement"] .hx-mark{ left:2px; top:7px; width:7px; height:7px;
+            background:var(--blue); border-color:var(--blue); }
+.hx-kind{ display:inline-block; margin-left:10px; padding:3px 7px 2px;
+          font-family:var(--label); font-style:normal; font-size:10px; font-weight:600;
+          letter-spacing:.16em; text-transform:uppercase; color:var(--blue-bright);
+          background:rgba(236,32,39,.07); vertical-align:2px; }
+
+/* ---- narrow ------------------------------------------------------------ */
+
+@media(max-width:560px){
+  .hx-fig{ margin-top:16px; }
+  .hx-cap{ font-size:11px; }
+  .hx-badges{ gap:12px 18px; }
+  .hx-badges img{ height:46px; }
+  .hx-badges[data-solo="1"]{ gap:14px 24px; }
+  .hx-badges[data-solo="1"] img{ height:64px; }
+}
+
+/* ---- reduced motion: the poster stands, the clip never starts ----------- */
+
+@media(prefers-reduced-motion:reduce){
+  .hx-fig-box video{ transition:none; }
+}

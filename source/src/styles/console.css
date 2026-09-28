@@ -1,0 +1,95 @@
+/* ============ the filter console ============
+   ONE definition of the toolbar that Careers and the Project registry both use:
+   the tinted band, the facet labels, the chips and their counts, the search
+   field, the reset control, the readout, the empty state and the page footnote.
+
+   WHY THIS FILE EXISTS. careers.css and projects.css each carried their own copy
+   of all of it, under the SAME global class names. CSS is global once both pages
+   have been visited in one session, so whichever stylesheet loaded last silently
+   won on every shared selector — and the two copies had already drifted apart.
+   `.search` was max-width 320px in one and 430px in the other; `.fchip .ct` was
+   `opacity:.55` in one and `color:var(--faint)` in the other, and when both
+   loaded, the non-conflicting declarations MERGED and dropped the per-facet count
+   to roughly 1.69:1 on the band. That is not a style difference, it is a bug that
+   only appears after a visitor has been to both pages.
+
+   So: this is the canonical console. Neither page stylesheet may redefine these
+   selectors. Page-specific controls that genuinely belong to one page only —
+   the Projects sort segment, its collapsible panel and its facet badge — stay in
+   projects.css, because nothing else uses them.
+
+   CONTRAST. Two rules held here rather than per page:
+     · the selected chip fills with --blue-bright (#B5121B), not #EC2027. The mark
+       red puts white 9.5px letter-spaced mono at 4.37:1, and the selected state is
+       the most important feedback the console gives.
+     · the per-facet count runs at full opacity in --soft, never --faint and never
+       an opacity trick. It is the most useful number in the toolbar. */
+
+/* the band. Sticky at the same offset the newsroom bar uses: --sticktop is written
+   by base.css and follows the measured nav, so the toolbar stays reachable down a
+   long list without ever parking under the header. No top or bottom hairline —
+   the tint is the separation. */
+.console{position:sticky;top:var(--sticktop,75px);z-index:6;
+  background:rgba(228,233,240,.97);padding:16px 0;
+  box-shadow:0 14px 30px rgba(12,18,32,0);transition:box-shadow .3s}
+.console.stuck{box-shadow:0 14px 30px rgba(12,18,32,.08)}
+.console .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.console .row + .row{margin-top:9px}
+
+/* facet labels */
+.flabel{display:flex;align-items:center;gap:7px;font-family: var(--label);
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);
+  font-weight:600;width:112px;flex:none}
+.flabel svg{width:14px;height:14px;color:var(--blue);flex:none}
+
+/* chips */
+.chips{display:flex;gap:6px;flex-wrap:wrap;flex:1;min-width:0}
+.fchip{font-family: var(--label);font-size:10.5px;letter-spacing:.06em;
+  text-transform:uppercase;padding:7px 11px;border:0;
+  background:rgba(23,33,58,.06);color:var(--soft);cursor:pointer;transition:all .2s;user-select:none}   /* 26 Sep (IAQ graphic rules): a filled slim box, no grey outline */
+.fchip:hover{background:rgba(236,35,38,.08);color:var(--blue-bright);transform:translateY(-1px)}
+.fchip.on{background:var(--blue-bright);border-color:var(--blue-bright);color:#fff}
+.fchip .ct{font-size:9px;color:var(--soft);margin-left:6px;font-weight:600;letter-spacing:0}
+.fchip.on .ct{color:#fff}
+.fchip:hover .ct{color:inherit}
+.fchip.zero{opacity:.4}
+.fchip:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* search */
+.search{display:flex;align-items:center;gap:8px;border:0;
+  background:rgba(23,33,58,.06);padding:8px 12px;flex:1;min-width:170px;max-width:430px}   /* 26 Sep: a filled slim box, no grey outline */
+.search:focus-within{box-shadow:inset 0 -2px 0 #EC2326}   /* the field in use carries the red line under it */
+.search svg{width:13px;height:13px;color:var(--soft);flex:none}
+.search input{border:0;outline:0;background:none;font:500 13px "Instrument Sans",sans-serif;
+  color:var(--ink);width:100%}
+@media (hover:none), (max-width:960px){.search input{font-size:16px}}/* 16px stops iOS/iPad zoom-on-focus */
+
+/* readout and reset */
+.readout{font-family: var(--label);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--blue-bright);font-weight:600;margin-left:auto;white-space:nowrap}
+.readout .rd-n,.readout .rn{display:inline-block}
+.readout .rd-n.tick,.readout .rn.tick{animation:consoleTick .24s var(--e1)}
+@keyframes consoleTick{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+/* Reset is a control a filtering visitor has to be able to find: it used to be the
+   faintest thing in the console at 9px --faint */
+.clearbtn{font-family: var(--label);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--soft);background:none;border:0;cursor:pointer;
+  text-decoration:underline;padding:6px;font-weight:600}
+.clearbtn:hover{color:var(--blue-bright)}
+
+/* the empty state: a soft tint block, never a dashed box */
+.empty{display:none;background:var(--bg2);padding:44px 24px;text-align:center;margin:30px 0}
+.empty.show{display:block}
+.empty h3{font-size:20px}
+.empty p{color:var(--soft);font-size:14px;margin-top:8px}
+
+/* the page footnote under a filtered list */
+.note{font-family: var(--label);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--soft);padding:18px 0 56px;line-height:2}
+
+@media(max-width:640px){
+  .flabel{width:100%;padding-bottom:4px}
+  .chips{overflow-x:auto;flex-wrap:nowrap;scroll-snap-type:x proximity;padding-bottom:3px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .fchip{flex:0 0 auto;scroll-snap-align:start}
+}

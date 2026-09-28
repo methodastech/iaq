@@ -1,0 +1,18 @@
+import puppeteer from 'puppeteer-core'
+const B = process.argv[2] || 'http://localhost:5177'
+const browser = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--no-sandbox'] })
+const sleep = ms => new Promise(r => setTimeout(r, ms))
+const p = await browser.newPage(); await p.setViewport({ width: 1280, height: 800 })
+const reqs = []; p.on('request', r => reqs.push(r.url()))
+await p.goto(B + '/#/about', { waitUntil: 'networkidle2', timeout: 60000 }); await sleep(800)
+console.log('old hash link →', await p.evaluate(() => location.pathname + location.hash), '· title', await p.title())
+await p.goto(B + '/projects#semiconductor', { waitUntil: 'networkidle2', timeout: 60000 }); await sleep(1500)
+console.log('deep link →', JSON.stringify(await p.evaluate(() => ({ path: location.pathname + location.hash, shown: document.querySelectorAll('a.pc').length, readout: document.querySelector('.readout, .nw-count, #count')?.textContent.trim().slice(0, 30) }))))
+await p.evaluate(() => document.querySelector('a.pc').click()); await sleep(1200)
+console.log('card click →', JSON.stringify(await p.evaluate(() => ({ path: location.pathname, h1: document.querySelector('h1')?.textContent.trim().slice(0, 40), reloaded: !window.__lenis ? 'no lenis' : 'spa ok' }))))
+await p.goto(B + '/about', { waitUntil: 'networkidle2', timeout: 60000 }); await sleep(800)
+console.log('fonts →', JSON.stringify(await p.evaluate(() => ({ switzer: document.fonts.check('600 20px Switzer'), instrument: document.fonts.check('400 14px "Instrument Sans"'), mono: document.fonts.check('700 10px "JetBrains Mono"'), h1Font: getComputedStyle(document.querySelector('h1')).fontFamily.split(',')[0] }))), '· third-party font requests:', reqs.filter(u => /googleapis|gstatic|fontshare/.test(u)).length, '· local woff2:', reqs.filter(u => /\/assets\/fonts\/.*woff2/.test(u)).length)
+await p.evaluate(() => document.querySelector('nav a[href="/services"], nav a[href$="/services"]')?.click()); await sleep(1200)
+console.log('nav click →', await p.evaluate(() => location.pathname + ' · ' + document.title))
+console.log('canonical →', await p.evaluate(() => document.querySelector('link[rel=canonical]')?.href || document.querySelector('meta[property="og:url"]')?.content))
+await browser.close()

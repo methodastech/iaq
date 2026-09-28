@@ -1,0 +1,17 @@
+Subject: IAQ 3D, next pass: the look and the weight
+
+Hi Azwan,
+
+Thank you for "3D ONLY (4)". It is live on the IAQ home page as delivered, embedded as a frame that the page's scroll drives, with nothing in your bundle changed.
+
+Bazil's note on it: the 3D should look very high end, and stay light and smooth all the way through the build.
+
+The attached brief sets out exactly what that means, in three parts: the look (materials per system, an environment light, PBR Neutral tone mapping, one soft shadow, the build's motion), the weight (pixel ratio capped at 1.5, merged draw calls, a lerped scrub, the loop stopped off screen, a frame-rate budget), and how the page embeds your build so nothing you change breaks it. Two frames of the current render are attached as the baseline.
+
+Please keep index.html's ids, the fixed canvas and the scroll runway as they are; everything else in the brief is yours to do in the source.
+
+Could you send a first pass with the materials, the environment light and the tone mapping, so we can judge the look before the weight work?
+
+Regards,
+Bazil
+Brand Method

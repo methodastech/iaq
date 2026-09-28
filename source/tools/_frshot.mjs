@@ -1,0 +1,12 @@
+import puppeteer from 'puppeteer-core'
+const out = process.argv[2], tag = process.argv[3] || 'fr', sleep = ms => new Promise(r => setTimeout(r, ms))
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--use-angle=metal','--enable-gpu'] })
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 900 }); await p.setCacheEnabled(false)
+p.evaluateOnNewDocument(() => { const WS = window.WebSocket; window.WebSocket = function (u, pr) { if (String(pr).includes('vite')) return { addEventListener() {}, removeEventListener() {}, send() {}, close() {}, readyState: 0 }; return new WS(u, pr) } })
+const errs = []; p.on('pageerror', e => errs.push(String(e.message || e).slice(0, 200))); p.on('console', m => { if (m.type() === 'error') errs.push(m.text().slice(0, 200)) })
+await p.goto('http://localhost:49996/services?nointro=1', { waitUntil: 'domcontentloaded', timeout: 90000 }); await sleep(4000)
+const has = await p.evaluate(() => { const c = document.querySelector('.fr-canvas'); if (!c) return null; c.scrollIntoView({ block: 'center' }); const r = c.getBoundingClientRect(); return [r.x, r.y, r.width, r.height].map(Math.round) })
+await sleep(9000)
+const r2 = await p.evaluate(() => { const r = document.querySelector('.fr-canvas').getBoundingClientRect(); return [r.x, r.y, r.width, r.height].map(Math.round) })
+await p.screenshot({ path: `${out}/${tag}-page.png` })
+console.log('canvas', JSON.stringify(r2), 'errors', JSON.stringify(errs.slice(0, 4))); await b.close()

@@ -1,0 +1,13 @@
+import puppeteer from 'puppeteer-core'
+const out = process.argv[2], sleep = ms => new Promise(r => setTimeout(r, ms))
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--use-angle=metal','--enable-gpu'] })
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 900 }); await p.setCacheEnabled(false)
+p.evaluateOnNewDocument(() => { const WS = window.WebSocket; window.WebSocket = function (u, pr) { if (String(pr).includes('vite')) return { addEventListener() {}, removeEventListener() {}, send() {}, close() {}, readyState: 0 }; return new WS(u, pr) } })
+const errs = []; p.on('pageerror', e => errs.push(String(e.message || e).slice(0, 200))); p.on('console', m => { if (m.type() === 'error' || /ao-pass/.test(m.text())) errs.push(m.text().slice(0, 200)) })
+await p.goto('http://localhost:49996/services?nointro=1', { waitUntil: 'domcontentloaded', timeout: 90000 }); await sleep(4000)
+await p.evaluate(() => document.querySelector('.fr-canvas').scrollIntoView({ block: 'center' })); await sleep(9000)
+const clicked = await p.evaluate(() => { const el = [...document.querySelectorAll('button,a,li,[role=button]')].find(e => /^Fire protection$/i.test(e.textContent.trim())); if (!el) return null; el.click(); return el.tagName })
+await sleep(4000); await p.screenshot({ path: `${out}/pick-on.png` })
+await p.evaluate(() => { window.__aoOff = true }); await sleep(800); await p.screenshot({ path: `${out}/pick-off.png` })
+const fps = await p.evaluate(() => new Promise(res => { window.__aoOff = false; let n = 0; const t = performance.now(); const f = () => { n++; if (performance.now() - t < 2500) requestAnimationFrame(f); else res(Math.round(n / 2.5)) }; requestAnimationFrame(f) }))
+console.log('clicked', clicked, 'fps', fps, 'errors', JSON.stringify(errs.slice(0, 4))); await b.close()

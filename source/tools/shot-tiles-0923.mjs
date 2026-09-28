@@ -1,0 +1,15 @@
+import puppeteer from 'puppeteer-core'
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', protocolTimeout: 120000, args: ['--use-angle=metal', '--enable-gpu', '--no-sandbox'] })
+const p = await b.newPage()
+await p.setViewport({ width: 1440, height: 900, deviceScaleFactor: 3 })
+await p.goto('http://localhost:5177/?noanim', { waitUntil: 'networkidle0', timeout: 60000 })
+await new Promise(r => setTimeout(r, 2200))
+await p.evaluate(() => {
+  document.querySelector('.hmk-row.hmk-iso').scrollIntoView({ block: 'center' })
+  document.querySelectorAll('.hmk-iso li').forEach(l => { l.style.animation = 'none'; const s = l.querySelector('.hmk-stage'); if (s) s.style.animation = 'none' })
+})
+await new Promise(r => setTimeout(r, 700))
+const li = await p.$$('.hmk-iso li')
+for (let i = 0; i < li.length; i++) await li[i].screenshot({ path: `${process.argv[2]}/tile-${i}.png` })
+console.log('tiles', li.length)
+await b.close()

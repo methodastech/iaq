@@ -1,0 +1,11 @@
+import puppeteer from 'puppeteer-core'
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', protocolTimeout: 120000, args: ['--no-sandbox', '--disable-gpu'] })
+const p = await b.newPage()
+await p.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 })
+await p.goto('http://localhost:52158/services', { waitUntil: 'networkidle0', timeout: 90000 }); await new Promise(r => setTimeout(r, 2500))
+const m = await p.evaluate(() => { const st = [...document.querySelectorAll('.sysm-st')]; const rects = st.map(e => e.getBoundingClientRect()); let overlap = 0; for (let i = 1; i < rects.length; i++) if (rects[i].left < rects[i - 1].right - 1) overlap++; const names = document.querySelector('.sysm-stage-names'); return { stageNamesShown: st.filter(e => getComputedStyle(e.querySelector('span')).display !== 'none').length, overlap, line: names && getComputedStyle(names).display, lineText: names && names.textContent.trim(), lineFont: names && getComputedStyle(names).fontSize, docW: document.documentElement.scrollWidth, small: [...document.querySelectorAll('.sysm *')].filter(e => e.childNodes.length && [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()) && parseFloat(getComputedStyle(e).fontSize) < 11 && getComputedStyle(e).display !== 'none').map(e => e.className + ':' + getComputedStyle(e).fontSize).slice(0, 6) } })
+const t = await p.evaluate(() => document.querySelector('.sysm').getBoundingClientRect().top + scrollY)
+await p.evaluate(y => { document.documentElement.style.marginTop = (-y + 10) + 'px' }, t); await new Promise(r => setTimeout(r, 2200))
+await p.screenshot({ path: process.argv[2] + '/svc-chart-390.png', clip: { x: 0, y: 0, width: 390, height: 700 } })
+console.log(JSON.stringify(m))
+await b.close()

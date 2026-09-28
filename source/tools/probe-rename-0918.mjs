@@ -1,0 +1,16 @@
+import puppeteer from 'puppeteer-core'
+const OUT = process.argv[2]
+const browser = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--no-sandbox'] })
+const page = await browser.newPage(); await page.setViewport({ width: 1440, height: 900 })
+const errs = []; page.on('pageerror', e => errs.push(String(e).slice(0, 200))); page.on('console', m => { if (m.type() === 'error') errs.push(m.text().slice(0, 160)) })
+await page.goto('http://localhost:5177/services', { waitUntil: 'domcontentloaded', timeout: 90000 }); await new Promise(x => setTimeout(x, 2500))
+const h = await page.evaluateHandle(() => [...document.querySelectorAll('.nav-links a')].find(a => a.textContent.trim() === 'Services'))
+await h.asElement().hover(); await new Promise(x => setTimeout(x, 1800))
+await page.screenshot({ path: OUT + '/wing-services2.png' })
+const wing = await page.evaluate(() => { const w = document.querySelector('.nav-mega.open'); const r = w.getBoundingClientRect(); return { segs: [...w.querySelectorAll('.nm-seg-a em')].map(e => e.textContent), right: Math.round(r.right), h: Math.round(r.height) } })
+const hub = await page.evaluate(() => [...document.querySelectorAll('.un-card h3')].map(h => h.textContent.slice(0, 90)))
+await page.mouse.move(700, 880)
+await page.goto('http://localhost:5177/services/tool-installation', { waitUntil: 'domcontentloaded', timeout: 90000 }); await new Promise(x => setTimeout(x, 2500))
+const tool = await page.evaluate(() => ({ chips: [...document.querySelectorAll('.un-chip, .pg-chip')].map(c => c.textContent).slice(0, 4), facts: [...document.querySelectorAll('.un-fact, .un-facts > *')].map(f => f.textContent.replace(/\s+/g, ' ').trim()).slice(0, 3), steps: [...document.querySelectorAll('.un-cycle .un-row, .un-step, [class*="un-cyc"] li')].length, stepHeads: [...document.querySelectorAll('.un-cycle h3, .un-cycle b')].map(b => b.textContent).slice(0, 8), pharma: /pharma/i.test(document.body.innerText), svcLit: document.querySelectorAll('.un-svc.is-on').length }))
+console.log(JSON.stringify({ wing, hub, tool })); console.log('errors', errs.length, errs.slice(0, 3))
+await browser.close()

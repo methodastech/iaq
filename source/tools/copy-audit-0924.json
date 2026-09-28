@@ -1,0 +1,872 @@
+{
+ "/": {
+  "h": [
+   "h1: We build the environments where the future is made.",
+   "h2: Total facility solutions, engineered since 1995.",
+   "h2: The delivery cycle.",
+   "h3: Engineering Design & Consultation",
+   "h2: The facility assembles as you scroll.",
+   "h2: Seven markets, one standard of clean.",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "The end-to-end partner for cleanrooms, dry rooms and hi-tech facilities. Designed, built and maintained by one team for 31 years.",
+   "Cleanrooms, dry rooms and the systems that hold them in spec, for the facilities that cannot be allowed to fail. One accountable team from design to handover, in seven countries.",
+   "Each is judged by its own measure: a particle count, a dew point, a temperature that never moves, a hygiene regime.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project",
+   "See Engineering Design & Consultation",
+   "Compare the seven markets",
+   "See the market",
+   "Start a project→"
+  ]
+ },
+ "/about": {
+  "h": [
+   "h1: Engineering trust, since 1995.",
+   "h2: What IAQ is for, in its own words.",
+   "h2: Six values, held on every site.",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "IAQ is a Malaysian total facility solutions provider. For 31 years it has designed, built and maintained hi-tech facilities through three business units.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/about/history": {
+  "h": [
+   "h1: Thirty-one years, compounded.",
+   "h2: Every milestone, to scale.",
+   "h3: Founded on air",
+   "h3: First build abroad",
+   "h3: Into Europe",
+   "h3: Class 1, delivered",
+   "h3: The energy pivot",
+   "h3: Semiconductor scale",
+   "h3: The EV era",
+   "h3: Mega projects",
+   "h3: Gold for OSH Management",
+   "h3: Builder of the Year",
+   "h3: Featured in The Star",
+   "h3: 2.6 million safe manhours",
+   "h3: One system, three standards",
+   "h3: A new safety benchmark in Sarawak",
+   "h3: Going global",
+   "h3: Held and audited",
+   "h3: Listing-grade",
+   "h2: What thirty-one years have proved.",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Founded in Malaysia in 1995 by Ir. Tiew Soon Aik, IAQ began as a cleanroom specialist and now delivers hi-tech facilities end to end, from design to maintenance.",
+   "The company started locally and is now global. Its footprint covers Singapore, Sweden, Poland, France, India and Germany, and it is still expanding. Globally IAQ grows as a cleanroom specialist. Regionally it operates as a total solutions provider: one accountable team from the first drawing to final handover, and then for the life of the facility.",
+   "Drawn to scale: one tick for each of the 31 years. Achievements carry IAQ’s own newsroom photographs. Any image that is not the project itself is labelled a representation.",
+   "Each is on record in IAQ’s company profile, its newsroom or the project registry.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "See the projects",
+   "Start a project→"
+  ]
+ },
+ "/about/commitment": {
+  "h": [
+   "h1: Certified, compliant, run like a listed firm.",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "The policies, certifications and safety record behind the delivery: ISO 9001, ISO 14001 and ISO 45001, held and audited.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/about/leadership": {
+  "h": [
+   "h1: The people accountable.",
+   "h2: Founder, chief executive, board of directors.",
+   "h2: The layer that runs delivery.",
+   "h2: Doing business the right way.",
+   "h2: Grow with a team that is growing too.",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "The people who lead IAQ, grouped by position. Names beyond the founder are published as IAQ confirms them.",
+   "Grouped by position. Open any entry for that person’s professional experience. The founder is on the record today, and each further name is added as IAQ confirms it.",
+   "The C-suite and the managerial level, in the same format as the board. Names are added as IAQ confirms each entry.",
+   "IAQ has 31 years of engineering behind it, and offices in Singapore, Germany, India, Sweden, the USA and Ireland. Engineers here get hands-on experience and a long career runway, on projects that matter to hi-tech industries worldwide.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Join the team",
+   "Start a project→"
+  ]
+ },
+ "/about/esg": {
+  "h": [
+   "h1: Building responsibly matters as much as building well.",
+   "h2: Three commitments, held as operating standards.",
+   "h2: Sustainable by design.",
+   "h2: People first.",
+   "h2: Doing business the right way.",
+   "h2: Standards we hold ourselves to.",
+   "h2: What we report, and where.",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Here is how we protect our people, our environment, and the trust our clients place in us.",
+   "IAQ integrates environmental, social and corporate governance principles into every project. Not a report published once a year: the way the work is run.",
+   "ISO 9001 (Quality), ISO 14001 (Environmental) and ISO 45001 (Safety): internationally recognised standards that guide how we work.",
+   "The commitment is evidenced in the newsroom as it happens. These are the published items tagged to community, safety and quality.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Talk to us",
+   "Start a project→"
+  ]
+ },
+ "/global-presence": {
+  "h": [
+   "h1: Rooted in Malaysia, building across borders.",
+   "h2: The pin map, and the work behind it.",
+   "h2: The addresses that answer.",
+   "h3: Shah Alam, Malaysia",
+   "h3: Penang, Malaysia",
+   "h3: Dresden, Germany",
+   "h2: Reach, as evidence.",
+   "h2: Building somewhere on this map.",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "From a modest Malaysian engineering firm in 1995 to a trusted global total facility solutions provider. Our reach is measured in offices that run programmes and in projects handed over.",
+   "The publishable record, grouped by where it was built. Every entry opens the full project.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project",
+   "Start a project→"
+  ]
+ },
+ "/services": {
+  "h": [
+   "h1: One process, six stages, one accountable team.",
+   "h2: Six services, three units, four kinds of work, in one view.",
+   "h3: CSACivil, Structural and Architectural",
+   "h3: MEPMechanical, Electrical and Plumbing",
+   "h3: Process utilitiesThe utilities a production tool consumes",
+   "h3: Tools hookupService 6, the tools themselves",
+   "h2: Three business units. Which one you buy from.",
+   "h3: EPCEngineering, Procurement and Construction",
+   "h3: PCU & TTIThe specialist EPCM partner for semiconductor fabs",
+   "h3: EFMEnergy Facility Management",
+   "h2: The six services,in order.",
+   "h2: What to settle before you ask for a quote.",
+   "h3: Six typical requests, and what each one needs",
+   "h2: The three kinds of work, and what each one builds.",
+   "h2: Questions, answeredQuestions clients ask, answered.",
+   "h3: Choosing a modelHow IAQ is engaged, and who answers for what.4",
+   "h3: Time and costHow long each engagement runs, and what is paid when.4",
+   "h3: A live fabBringing tools into a fab that has not stopped.4",
+   "h3: After handoverRunning and maintaining what was built.3",
+   "h3: Working with IAQStandards, reach, and how to start.4",
+   "h2: Projects delivered this way.",
+   "h3: Testing manufacturing plant, 25,000 m² greenfield",
+   "h3: Semiconductor backend plant, 43,000 m² test, probe and assembly",
+   "h3: Lithium-ion battery gigafactory dry room, 62,000 m²",
+   "h3: District cooling centre, Malaysia's largest",
+   "h3: Data centre campus phase 1, chilled and condenser water piping",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Design, procurement, construction, commissioning, maintenance and tools hookup, run as one cycle by one team.",
+   "IAQ’s own Revit model of a fab. Every layer is designed, procured, built and proven by the same company.",
+   "Which unit carries which service, and the work each one does.",
+   "EPC builds the facility. PCU & TTI re-equips a running fab. EFM runs and maintains it.",
+   "Hookup feeds the next design, so the cycle repeats. Click a stage to open its page.",
+   "Three things: the model, the scope and the work.",
+   "Most contractors do one. IAQ does all three in house.",
+   "The questions facility owners ask before they engage IAQ, answered. If yours is not here, ask; the reply comes within a working day.",
+   "Five of the 250+ delivered projects, each linked to its full case study.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Open EPC →",
+   "Open PCU & TTI →",
+   "Open EFM →",
+   "See EPC →",
+   "See PCU & TTI →",
+   "See EFM →",
+   "See Maintain →",
+   "About the Group →",
+   "Global Presence →",
+   "Start a project →",
+   "Start a project→"
+  ]
+ },
+ "/services/design": {
+  "h": [
+   "h1: Where every great facility begins.",
+   "h2: The stage where cost and compliance are decided.",
+   "h2: What IAQ carries at this stage.",
+   "h2: Three things have to be true before it moves on.",
+   "h2: Designed, then built by the same team.",
+   "h3: Wafer fab facility and expansion, cleanroom package with utilities",
+   "h3: Semiconductor backend plant, 43,000 m² test, probe and assembly",
+   "h3: Silicon wafer manufacturing, multi-class greenfield with full MEP",
+   "h3: Testing manufacturing plant, 25,000 m² greenfield",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Concept to detailed design across CSA and MEP, with expert advice through the development of the project.",
+   "One process, six stages: every project below ran the full cycle. These are drawn from the published registry, chosen for the class and the scale of the design package.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/services/procurement": {
+  "h": [
+   "h1: The right materials, the right partners, right on time.",
+   "h2: The design intent, held all the way to site.",
+   "h2: What IAQ carries at this stage.",
+   "h2: Three things have to be true before it moves on.",
+   "h2: Plant and equipment heavy, delivered to programme.",
+   "h3: District cooling centre, Malaysia's largest",
+   "h3: Co-generative plant, first in Southeast Asia",
+   "h3: Data centre campus phase 1, chilled and condenser water piping",
+   "h3: Solar panel manufacturing plant, KMW building M&E works",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Tracked, organised sourcing aligned to project requirements, quality standards and budget constraints.",
+   "One process, six stages: every project below ran the full cycle. These are drawn from the published registry, chosen because their programme was set by plant and long-lead equipment.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/services/construction": {
+  "h": [
+   "h1: Precision engineering, built to exact standards.",
+   "h2: A live site, held to the programme.",
+   "h2: What IAQ carries at this stage.",
+   "h2: Three things have to be true before it moves on.",
+   "h2: Built at scale, on live industrial sites.",
+   "h3: Lithium cell facility, 79,000 m² air-conditioning system",
+   "h3: Lithium-ion battery gigafactory dry room, 62,000 m²",
+   "h3: Semiconductor backend plant, 43,000 m² test, probe and assembly",
+   "h3: Testing manufacturing plant, 25,000 m² greenfield",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Project management, coordination and communication through a construction programme tailored to each client, on schedule and within budget.",
+   "One process, six stages: every project below ran the full cycle. These are drawn from the published registry, chosen for the floor area carried through construction.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Compare the business models",
+   "Start a project→"
+  ]
+ },
+ "/services/commissioning": {
+  "h": [
+   "h1: Proven performance before you move in.",
+   "h2: The stage that turns a specification into a number.",
+   "h2: What IAQ carries at this stage.",
+   "h2: Three things have to be true before handover.",
+   "h2: Classified, tested, handed over.",
+   "h3: DLP cleanroom facility",
+   "h3: Silicon wafer manufacturing, multi-class greenfield with full MEP",
+   "h3: Pharmaceutical manufacturing plant, small volume parenteral",
+   "h3: Tissue culture laboratory, class 1K to 10K cleanroom",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Established testing and commissioning programmes that prove every facility operates as intended, at its optimum, before handover.",
+   "One process, six stages: every project below ran the full cycle. These are drawn from the published registry, chosen for the tightness of the classification they were proven against.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/services/maintenance": {
+  "h": [
+   "h1: Protecting your investment, long after handover.",
+   "h2: The facility, kept at the standard it was handed over at.",
+   "h2: What IAQ carries at this stage.",
+   "h2: Three things run continuously, not once.",
+   "h2: Assets that have to run every day.",
+   "h3: District cooling centre, Malaysia's largest",
+   "h3: Co-generative plant, first in Southeast Asia",
+   "h3: Cool energy centre",
+   "h3: Data centre campus phase 1, chilled and condenser water piping",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Planned maintenance that protects asset lifespan, minimises downtime and keeps facilities compliant.",
+   "One process, six stages: every project below ran the full cycle. These are drawn from the published registry, chosen because they are continuously operated plant. Operation and maintenance of district cooling systems sits inside IAQ’s Energy Management model.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/services/tool-installation": {
+  "h": [
+   "h1: The last hundred metres, where a facility becomes a fab.",
+   "h2: Total Tool Installation, in plain terms.",
+   "h2: What arrives, what leaves.",
+   "h3: Delivered",
+   "h3: Producing",
+   "h2: Six services, the ones this unit carries.",
+   "h3: The work, and the systems inside it.",
+   "h2: The project cycle, stage by stage.",
+   "h2: From IAQ’s own model.",
+   "h2: Why owners choose it.",
+   "h2: Delivered this way.",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Tool hook-up connects production equipment into the facility it sits in. Here is what the work involves, step by step.",
+   "Call Total Tool Installation whenYour fab is running and new tools are coming in, or the gas, chemical, water or exhaust systems need to grow.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "See all semiconductor projects",
+   "Start a project→"
+  ]
+ },
+ "/services/epc-construction": {
+  "h": [
+   "h1: One contract, from first drawing to final handover.",
+   "h2: EPC, in plain terms.",
+   "h2: Two contract models, one accountable team.",
+   "h3: EPCC",
+   "h3: EPCM",
+   "h2: Six services, the ones this unit carries.",
+   "h3: The work, and the systems inside it.",
+   "h2: The project cycle, stage by stage.",
+   "h2: From IAQ’s own model.",
+   "h2: Why owners choose it.",
+   "h2: Delivered this way.",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "One contract covers design, procurement and construction. IAQ answers for the system working as intended.",
+   "Call EPC whenYou are building or extending a facility and want one company to answer for all of it.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "See all published projects",
+   "Start a project→"
+  ]
+ },
+ "/services/energy-management": {
+  "h": [
+   "h1: Lower energy bills, with no upfront cost.",
+   "h2: EFM, in plain terms.",
+   "h2: Two ways to pay for it.",
+   "h3: Cooling as a Service",
+   "h3: Energy Performance Contracting",
+   "h2: Six services, the ones this unit carries.",
+   "h3: The work, and the systems inside it.",
+   "h2: The project cycle, stage by stage.",
+   "h2: From IAQ’s own model.",
+   "h2: Why owners choose it.",
+   "h2: Delivered this way.",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "IAQ funds, builds and runs the energy upgrade. You pay from the savings, or a fixed cooling tariff.",
+   "Call EFM whenYour energy or cooling bill is high and you want it cut without spending your own capital.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "See all district cooling projects",
+   "Start a project→"
+  ]
+ },
+ "/markets": {
+  "h": [
+   "h1: Seven industries, one standard of clean.",
+   "h2: Pick the environment you are building.",
+   "h2: What clean means, market by market",
+   "h2: One project from each market",
+   "h3: Semiconductor backend plant, 43,000 m² test, probe and assembly",
+   "h3: Data centre campus phase 1, chilled and condenser water piping",
+   "h3: Lithium cell facility, 79,000 m² air-conditioning system",
+   "h3: Solar panel manufacturing plant, KMW building M&E works",
+   "h3: District cooling centre, Malaysia's largest",
+   "h3: Pharmaceutical manufacturing plant, small volume parenteral",
+   "h3: Flavour manufacturing plant",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Each market page sets out what the environment demands, how IAQ builds it and the projects that prove it.",
+   "Clean is not one number. A wafer fab counts particles, a battery line counts moisture, a cooling plant counts kilowatt hours. Find yours below.",
+   "Seven flagships from the sample registry, one per market. The full 250+ record migrates with the new site.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "See the market",
+   "See the full registry",
+   "Search the whole recordEvery project tagged by market, location, delivery model and cleanroom class.Search all projects →",
+   "Start a project→"
+  ]
+ },
+ "/markets/semiconductor": {
+  "h": [
+   "h1: Nanometre precision, delivered at breakneck speed.",
+   "h2: Cleanliness, efficiency and safety, held at fab speed",
+   "h2: One accountable team, every system",
+   "h2: ISO 3 to ISO 7, proven by test",
+   "h2: Delivered in this market",
+   "h3: Testing manufacturing plant, 25,000 m² greenfield",
+   "h3: Wafer fab facility and expansion, cleanroom package with utilities",
+   "h3: Semiconductor backend plant, 43,000 m² test, probe and assembly",
+   "h3: DLP cleanroom facility",
+   "h3: Silicon wafer manufacturing, multi-class greenfield with full MEP",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Wafer fabs, backend plants, ISO 3 to 7 cleanrooms. See how we build the cleanrooms behind the chips.",
+   "The same six stages carry a fab from the first concept drawing to the tools hookup that feeds the next expansion. Open any stage to see how it runs.",
+   "Published semiconductor projects from the sample registry, each one linked to its full record.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/markets/data-centre": {
+  "h": [
+   "h1: Where uptime is everything.",
+   "h2: Heat management is the job, and it never pauses",
+   "h2: One accountable team, every system",
+   "h2: No cleanroom class. A different bar entirely.",
+   "h2: Delivered in this market",
+   "h3: Data centre campus phase 1, chilled and condenser water piping",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Cooling, power and controlled environments at scale. See how we engineer cooling and reliability for the digital world.",
+   "Cooling plant, distribution and controls run through the same six stages. Commissioning carries the weight: the load arrives on a fixed date, and the plant is proven against it.",
+   "Published data centre work from the sample registry. The hyperscale project stands on the record by scale alone, 160 MW, held under client confidentiality.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/markets/ev-battery": {
+  "h": [
+   "h1: High stakes, precision to match.",
+   "h2: Humidity, contamination and hazard, controlled together",
+   "h2: One accountable team, every system",
+   "h2: Dry room, not cleanroom",
+   "h2: Delivered in this market",
+   "h3: Lithium-ion battery gigafactory dry room, 62,000 m²",
+   "h3: EV battery gigafab phase 1, 8,000 m² dry room system",
+   "h3: Lithium cell facility, 79,000 m² air-conditioning system",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Gigafactory dry rooms, humidity-critical builds. See our approach to safe, contamination-controlled battery manufacturing.",
+   "A dry room performs to the standard of its envelope and its dehumidification plant, so design and commissioning carry the outcome on every battery project.",
+   "Published EV battery projects from the sample registry, from European gigafactory dry rooms to lithium cell facilities in Southeast Asia.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/markets/photovoltaics": {
+  "h": [
+   "h1: Solar moves fast. So do we.",
+   "h2: The process changes faster than the building",
+   "h2: One accountable team, every system",
+   "h2: Classified where the process needs it",
+   "h2: Delivered in this market",
+   "h3: Solar panel manufacturing plant, KMW building M&E works",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Solar cell and module production facilities. See how we keep pace with an ever-evolving industry.",
+   "Solar plants change process faster than most sectors, so design and procurement are run to keep the facility able to take the next generation of tooling.",
+   "Published photovoltaics work from the sample registry. Further solar cell and module projects sit in the wider record and migrate at launch.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/markets/district-cooling": {
+  "h": [
+   "h1: Powering comfort at scale.",
+   "h2: Efficiency at scale, held for decades",
+   "h2: One accountable team, every system",
+   "h2: Measured in efficiency, not in particles",
+   "h2: Delivered in this market",
+   "h3: District cooling centre, Malaysia's largest",
+   "h3: Co-generative plant, first in Southeast Asia",
+   "h3: Cool energy centre",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Including Malaysia's largest district cooling centre. See how we design efficient, centralised cooling for entire communities.",
+   "District energy is the one market where the fifth stage is the point. Maintenance runs for decades after handover, and what it learns goes back into the next plant.",
+   "Published district cooling and co-generation work from the sample registry.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/markets/bio-lifescience": {
+  "h": [
+   "h1: Ultra-clean, and heavily regulated.",
+   "h2: Contamination control is patient safety",
+   "h2: One accountable team, every system",
+   "h2: ISO class and GMP grade, held together",
+   "h2: Delivered in this market",
+   "h3: Pharmaceutical manufacturing plant, small volume parenteral",
+   "h3: Healthcare manufacturing plant, medical device greenfield",
+   "h3: Tissue culture laboratory, class 1K to 10K cleanroom",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "GMP parenteral, labs and medical device plants. See how we engineer facilities that meet the strictest regulatory standards.",
+   "Regulated work is proved in the documentation trail, so every stage produces the record the validation team needs at handover.",
+   "Published Bio LifeScience projects from the sample registry, from small volume parenteral through to tissue culture laboratories.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/markets/food-beverage": {
+  "h": [
+   "h1: Perfection starts with spotless.",
+   "h2: Hygiene is a building decision, not a cleaning routine",
+   "h2: One accountable team, every system",
+   "h2: A hygienic specification, not an ISO class",
+   "h2: Delivered in this market",
+   "h3: Flavour manufacturing plant",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Hygienic flavour and food production environments. See how we build facilities from farm to package.",
+   "Hygiene is a design decision before it is a cleaning routine, which is why the layout, the finishes and the utilities are settled in stage one.",
+   "Published food and beverage work from the sample registry, both flavour manufacturing plants.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/projects": {
+  "h": [
+   "h1: 250+ projects. Findable in seconds.",
+   "h2: Project registry",
+   "h3: Testing manufacturing plant, 25,000 m² greenfield",
+   "h3: Wafer fab facility and expansion, cleanroom package with utilities",
+   "h3: Semiconductor backend plant, 43,000 m² test, probe and assembly",
+   "h3: DLP cleanroom facility",
+   "h3: Silicon wafer manufacturing, multi-class greenfield with full MEP",
+   "h3: Lithium-ion battery gigafactory dry room, 62,000 m²",
+   "h3: EV battery gigafab phase 1, 8,000 m² dry room system",
+   "h3: Lithium cell facility, 79,000 m² air-conditioning system",
+   "h3: Pharmaceutical manufacturing plant, small volume parenteral",
+   "h3: Healthcare manufacturing plant, medical device greenfield",
+   "h3: Tissue culture laboratory, class 1K to 10K cleanroom",
+   "h3: District cooling centre, Malaysia's largest",
+   "h3: Co-generative plant, first in Southeast Asia",
+   "h3: Cool energy centre",
+   "h3: Flavour manufacturing plant",
+   "h3: Data centre campus phase 1, chilled and condenser water piping",
+   "h3: Solar panel manufacturing plant, KMW building M&E works",
+   "h3: No projects match that combination",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Every project carries structured tags: industry, location, delivery model and cleanroom class. Filter to the environment you are building and the record narrows to the work that matches it.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Filter0",
+   "Reset",
+   "Start a project→"
+  ]
+ },
+ "/news": {
+  "h": [
+   "h1: Stay ahead with IAQ",
+   "h2: Featured",
+   "h2: Latest",
+   "h3: Bridging the Gap: IAQ Shares Real-World Engineering Insight at University of Malaya",
+   "h3: IAQ and University of Malaya Forge Strategic Collaboration to Advance Innovation in Worksite Environments",
+   "h3: Excellence Through Integration: IAQ Reinforces Commitment to IMS and Global Standards",
+   "h3: IAQ Annual Dinner 2025: Hawaiian Night Getaway Strengthens Team Spirit and Togetherness",
+   "h3: Inspiring Future Engineers: IAQ at UMENGINE Career Day 2025",
+   "h3: Celebrating Unity and Festivity: IAQ Eid Celebration 2025",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "Project milestones, industry insight and company updates from across the group.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Start a project→"
+  ]
+ },
+ "/careers": {
+  "h": [
+   "h1: The people behind the cleanest rooms.",
+   "h2: It started with the air itself.",
+   "h2: Six values, on the record.",
+   "h3: Safety commitment",
+   "h3: Quality consistency",
+   "h3: Honesty & integrity",
+   "h3: Engineering capabilities",
+   "h3: Efficiency & proficiency",
+   "h3: Pursuit of excellence",
+   "h2: Everybody goes home safe.",
+   "h2: Engineers start and growWhere engineers start and grow.",
+   "h3: Training and coaching",
+   "h3: With universities",
+   "h2: People, by name.",
+   "h2: Build the buildings the future needs.",
+   "h2: Engineering",
+   "h3: Engineer, Mechanical",
+   "h3: Senior Engineer, Mechanical",
+   "h3: Senior Engineer, Electrical",
+   "h3: Engineer, Electrical",
+   "h3: Engineer, Process",
+   "h3: Senior Engineer, Process",
+   "h3: BIM Coordinator",
+   "h3: Engineer, QAQC",
+   "h2: Project",
+   "h3: Manager, Project",
+   "h3: BIM Modeler",
+   "h3: Manager, Construction",
+   "h3: Site Safety Supervisor",
+   "h3: Document Controller",
+   "h2: Commercial",
+   "h3: Manager, Commercial",
+   "h2: Finance & Accounts",
+   "h3: Manager, Finance",
+   "h3: Senior Executive, Accounts",
+   "h3: No roles match that combination",
+   "h2: Why build your career at IAQ.",
+   "h3: Engineering & Construction Profession",
+   "h3: Career and Professional Growth",
+   "h3: Global Opportunities",
+   "h3: People and Cultures",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Follow",
+   "h2: Bring your engineering here"
+  ],
+  "ledes": [
+   "450 people in seven countries build facilities that must hold their class. How the team works, and the roles open now.",
+   "Ir. Tiew Soon Aik founded IAQ in Malaysia in 1995, as a cleanroom specialist. Today it builds in seven countries.",
+   "The values are IAQ’s own words. Beside each one is where the record already shows it.",
+   "An injury free workplace is the aim of IAQ’s EHS policy.",
+   "IAQ trains its engineers in house and coaches its leaders. It also takes the work into universities.",
+   "IAQ signed a strategic collaboration with University of Malaya in May 2025. Its engineers also meet students on campus.",
+   "Named colleagues, in the words and careers IAQ has published.",
+   "Engineering, project delivery, commercial and finance roles, on facilities that have to work to the micron.",
+   "Sixteen roles are open across four departments. If none of them is yours, HR still wants the CV."
+  ],
+  "ctas": [
+   "See open roles",
+   "The record since 1995",
+   "Read the story",
+   "Reset",
+   "Contact us"
+  ]
+ },
+ "/careers/culture": {
+  "h": [
+   "h1: The people behind the cleanest rooms.",
+   "h2: It started with the air itself.",
+   "h2: Six values, on the record.",
+   "h3: Safety commitment",
+   "h3: Quality consistency",
+   "h3: Honesty & integrity",
+   "h3: Engineering capabilities",
+   "h3: Efficiency & proficiency",
+   "h3: Pursuit of excellence",
+   "h2: Everybody goes home safe.",
+   "h2: Engineers start and growWhere engineers start and grow.",
+   "h3: Training and coaching",
+   "h3: With universities",
+   "h2: People, by name.",
+   "h2: Build the buildings the future needs.",
+   "h2: Engineering",
+   "h3: Engineer, Mechanical",
+   "h3: Senior Engineer, Mechanical",
+   "h3: Senior Engineer, Electrical",
+   "h3: Engineer, Electrical",
+   "h3: Engineer, Process",
+   "h3: Senior Engineer, Process",
+   "h3: BIM Coordinator",
+   "h3: Engineer, QAQC",
+   "h2: Project",
+   "h3: Manager, Project",
+   "h3: BIM Modeler",
+   "h3: Manager, Construction",
+   "h3: Site Safety Supervisor",
+   "h3: Document Controller",
+   "h2: Commercial",
+   "h3: Manager, Commercial",
+   "h2: Finance & Accounts",
+   "h3: Manager, Finance",
+   "h3: Senior Executive, Accounts",
+   "h3: No roles match that combination",
+   "h2: Why build your career at IAQ.",
+   "h3: Engineering & Construction Profession",
+   "h3: Career and Professional Growth",
+   "h3: Global Opportunities",
+   "h3: People and Cultures",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Follow",
+   "h2: Bring your engineering here"
+  ],
+  "ledes": [
+   "450 people in seven countries build facilities that must hold their class. How the team works, and the roles open now.",
+   "Ir. Tiew Soon Aik founded IAQ in Malaysia in 1995, as a cleanroom specialist. Today it builds in seven countries.",
+   "The values are IAQ’s own words. Beside each one is where the record already shows it.",
+   "An injury free workplace is the aim of IAQ’s EHS policy.",
+   "IAQ trains its engineers in house and coaches its leaders. It also takes the work into universities.",
+   "IAQ signed a strategic collaboration with University of Malaya in May 2025. Its engineers also meet students on campus.",
+   "Named colleagues, in the words and careers IAQ has published.",
+   "Engineering, project delivery, commercial and finance roles, on facilities that have to work to the micron.",
+   "Sixteen roles are open across four departments. If none of them is yours, HR still wants the CV."
+  ],
+  "ctas": [
+   "See open roles",
+   "The record since 1995",
+   "Read the story",
+   "Reset",
+   "Contact us"
+  ]
+ },
+ "/contact": {
+  "h": [
+   "h1: Tell us what you are building.",
+   "h2: Or reach us directly.",
+   "h3: What happens next",
+   "h2: Find us in Shah Alam.",
+   "h2: Seven countries, one inbox.",
+   "h3: Malaysia",
+   "h3: Singapore",
+   "h3: Germany",
+   "h3: India",
+   "h3: Sweden",
+   "h3: United States",
+   "h3: Ireland",
+   "h3: Not sure which office?",
+   "h2: Follow",
+   "h2: The Company",
+   "h2: What we do",
+   "h2: Tell us what you are building."
+  ],
+  "ledes": [
+   "From feasibility to handover, one accountable team. Send the brief and the right engineer replies within one working day.",
+   "Feasibility to handover, one accountable team. Response in a working day."
+  ],
+  "ctas": [
+   "Get directions→",
+   "Start a project→"
+  ]
+ }
+}

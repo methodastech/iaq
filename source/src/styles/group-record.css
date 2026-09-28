@@ -1,0 +1,210 @@
+/* ---------------------------------------------------------------------------
+   GROUP RECORD (21 Sep) · the home page's numbers and the world.
+   See components/GroupRecord.jsx for the brief. Third cut the same day, on Bazil's notes: a light
+   grey ground, no boxes anywhere, the number on the same line as its drawing, nothing complicated.
+   The layout rules for .glance-in / .globe-host still live in home.css.
+   --------------------------------------------------------------------------- */
+/* 24 Sep (Bazil: "gradient grey from the top and transparent to the bottom"): the grey ground fades out, so the band
+   ends in the page instead of on a hard edge */
+.glance.gr { background: linear-gradient(180deg, #D3DAE3 0%, #E1E6ED 46%, #EEF1F5 100%); color: var(--ink); padding: clamp(64px, 10vh, 120px) 0 clamp(20px, 3vh, 36px); }   /* 24 Sep: the ground now fades out, so the band no longer reserves a deep empty foot under the globe */
+
+.gr .glance-in { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto 1fr; align-items: start; }
+.gr .glance-head { padding-top: 0; align-self: start; }
+.gr h2 { margin: 0; max-width: 19ch;   /* 23 Sep: 16ch is narrower than "engineered since 1995." held together at the 58px ceiling, so the phrase ran 50px past the box. Measured at six widths. */ color: var(--ink); font-size: clamp(32px, 4vw, 58px); letter-spacing: -.034em; line-height: 1.02; }
+.gr h2 em { font-style: normal; color: var(--blue); }
+.gr .lede { margin-top: clamp(16px, 2vh, 22px); max-width: 46ch; color: var(--soft); }
+
+/* ---- the six numbers: the drawing and the number on one line, the label under them ---- */
+.gr .gstats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(30px, 4.6vh, 48px) clamp(24px, 3.4vw, 48px); margin-top: clamp(30px, 4.4vh, 48px); }
+.gr .gstat { display: block; padding: 0; background: none; box-shadow: none; }
+/* the row wraps: where a long number (1,050,000) cannot share the line, it drops under its drawing
+   instead of running into the next column */
+.gr .grow { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 18px; }
+.gr .gstat .num { color: var(--ink); font-size: clamp(26px, 2.5vw, 37px); letter-spacing: -.035em; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.gr .gstat .lab { margin-top: 10px; color: var(--soft); font-family: "Instrument Sans", system-ui, sans-serif;
+  font-size: 13.5px; letter-spacing: 0; text-transform: none; line-height: 1.4; }
+
+.gviz { display: block; flex: none; width: 88px; height: 22px; overflow: visible; }
+.gv-t { font: 500 7.4px/1 "Switzer", "Instrument Sans", system-ui, sans-serif; fill: #66708A; letter-spacing: .02em; }
+.gv-tb { font-weight:600; fill: var(--ink); font-size: 7.8px; }
+.gv-base { stroke: rgba(12,18,32,.28); stroke-width: 1.5; }
+.gv-tick { stroke: rgba(12,18,32,.28); stroke-width: 1.5; }
+.gv-red { stroke: var(--blue); stroke-width: 2; stroke-linecap: butt; }
+.gv-dot { fill: var(--blue); }
+.gv-halo { fill: rgba(236,32,39,.16); }
+.gv-box { fill: none; stroke: rgba(12,18,32,.3); stroke-width: 1.5; }
+.gv-seg { stroke: rgba(12,18,32,.3); stroke-width: 4.5; }
+.gv-seg-r { stroke: var(--blue); }
+.gv-bar { fill: rgba(12,18,32,.26); }
+.gv-bar-r { fill: var(--blue); }
+.gv-cell { fill: rgba(12,18,32,.26); }
+.gv-cell-r { fill: var(--blue); }
+.gv-hatch { stroke: var(--blue); stroke-width: 1.5; }
+
+/* everything is drawn at rest, so a page that never fires the observer still shows every drawing.
+   .is-in only plays the arrival. */
+.gstats.is-in .gv-pop { animation: gvPop .6s var(--e1) both; animation-delay: calc(.25s + var(--i, 0) * .07s); transform-box: fill-box; transform-origin: 50% 50%; }
+.gstats.is-in .gv-draw { stroke-dasharray: 1; animation: gvDraw 1.5s var(--e1) .25s both; }
+.gstats.is-in .gv-wipe { animation: gvWipe 1.5s var(--e1) .3s both; transform-box: fill-box; transform-origin: 0 50%; }
+@keyframes gvPop { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+@keyframes gvDraw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes gvWipe { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ---- the world: a cloud of particles on the grey ---- */
+.gr .globe-col { transform: none; gap: 0; align-self: center; }
+.gr .globe-host { max-width: 620px; }
+/* 22 Sep (Bazil: "for the world remove the shadow"): the ground shadow under the globe is gone. */
+
+/* the chips on the globe are controls: the light glass they always were, red when in focus */
+.gr .globe-tag { pointer-events: auto; cursor: pointer; transition: opacity .25s, background .3s var(--e1), color .3s var(--e1), border-color .3s var(--e1); }
+.gr .globe-tag:hover { background: #fff; border-color: rgba(12,18,32,.3); }
+.gr .globe-tag.sel { background: #EC2027; border-color: #EC2027; color: #fff; }
+/* an office on the far side keeps its name, parked on the limb and quieter */
+.gr .globe-tag.far { opacity: .62 !important; background: rgba(255,255,255,.7); box-shadow: none; }
+.gr .globe-tag.far:hover { opacity: 1 !important; background: #fff; }
+.gr .globe-tag.sel::before, .gr .globe-tag.sel::after { background: #fff; box-shadow: none; }
+.gr .globe-tag:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+@media (max-width: 900px) {
+  .gr .glance-in { grid-template-columns: 1fr; }
+  .gr .globe-host { max-width: 340px; }
+}
+@media (max-width: 640px) {
+  .gr .gstats { gap: 26px 16px; }
+  .gr .grow { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .gr .gstat .num { font-size: 26px; }
+  .gr .gstat .lab { font-size: 12.5px; margin-top: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gstats.is-in .gv-pop, .gstats.is-in .gv-draw, .gstats.is-in .gv-wipe { animation: none; }
+}
+
+/* the red phrase stays on one line (the unbroken emphasis rule) */
+.gr .glance-head h2 em { white-space: nowrap; }
+
+/* 22 Sep (Bazil: "does it look too flat and boring"): the record is IAQ's biggest facts, so the numbers read at display
+   size, the labels a step up, and the section closes tighter under the world */
+.gr .gstat .num { font-size: clamp(32px, 3.2vw, 50px); }
+.gr .gstat .lab { font-size: 14.5px; color: #3E485C; }
+
+/* 23 Sep (Bazil: "make the fonts smaller and the icon more detailed and not flat"): the numbers were at display size
+   and read louder than the facts they carry. Down a step, the label with them, and the mark up a step, because the
+   record marks are now drawn objects (scripts_marks_record.mjs) rather than flat plates. */
+.gr .gstat .num { font-size: clamp(26px, 2.3vw, 34px); letter-spacing: -.03em; }
+.gr .gstat .lab { font-size: 13px; }
+.gr .gr-mk { width: clamp(62px, 5.4vw, 78px); height: clamp(62px, 5.4vw, 78px); }
+.glance.gr { padding-bottom: clamp(40px, 6vh, 72px); }
+
+/* 22 Sep: the record's isometric marks, on the number's line; the one red part of each lifts, one after another */
+.gr .gr-mk { flex: none; width: clamp(58px, 5vw, 72px); height: clamp(58px, 5vw, 72px); }
+.gr .grow { gap: 10px 16px; }
+/* 24 Sep (Bazil: "why aren't the icons animating"): 1.6px of lift on a 24px mark was invisible. The red part now
+   breathes, scale and weight together, on its own centre. */
+.gr .gr-mk .iaq-sig, .gr .gr-mk .mk-mv { transform-box: fill-box; transform-origin: 50% 50%; animation: grLift 2.4s ease-in-out infinite alternate; }
+.gr .gstat:nth-child(2) .gr-mk .iaq-sig { animation-delay: .4s; } .gr .gstat:nth-child(3) .gr-mk .iaq-sig { animation-delay: .8s; }
+.gr .gstat:nth-child(4) .gr-mk .iaq-sig { animation-delay: 1.2s; } .gr .gstat:nth-child(5) .gr-mk .iaq-sig { animation-delay: 1.6s; }
+.gr .gstat:nth-child(6) .gr-mk .iaq-sig { animation-delay: 2s; }
+@keyframes grLift { from { transform: scale(.9); opacity: .7; } to { transform: scale(1.22); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .gr .gr-mk .iaq-sig, .gr .gr-mk .mk-mv { animation: none; } }
+
+/* 23 Sep (Bazil: "icon should be as big as number"): the mark matches the number's cap height instead of towering
+   over it, so each stat reads as one object: mark, number, label. */
+.gr .gr-mk { width: clamp(28px, 2.5vw, 37px); height: clamp(28px, 2.5vw, 37px); }
+.gr .grow { gap: 10px 12px; }
+
+/* 23 Sep (Bazil: "more compact and nicely put together"): each stat is one cluster now, not three loose lines. The
+   mark sits in a left gutter and the number and its label share one text column, so the six read as a tidy block and
+   the rows close up. */
+@media (min-width: 861px) {
+  .gr .gstats { gap: clamp(18px, 2.6vh, 28px) clamp(20px, 2.6vw, 38px); margin-top: clamp(22px, 3vh, 34px); }
+  /* a fixed gutter, so every number in the block starts on the same line whatever its mark is shaped like */
+  .gr .gstat { display: grid; grid-template-columns: clamp(30px, 2.7vw, 40px) minmax(0, 1fr); column-gap: 14px; align-items: start; }
+  .gr .grow { display: contents; }
+  .gr .gstat .gr-mk { grid-column: 1; grid-row: 1 / span 2; align-self: center; justify-self: start; width: 100%; height: auto; margin: 0; }
+  .gr .gstat .num { grid-column: 2; grid-row: 1; }
+  .gr .gstat .lab { grid-column: 2; grid-row: 2; margin-top: 2px; line-height: 1.3; }
+  .gr .gstat { row-gap: 0; }
+}
+
+/* the record marks inherit the block's ink now, the way the interface set does, and the red signal is drawn rather
+   than filled, so the six sit inside the house spec (24 grid, stroke 1, butt caps, mitred joins, no fill) */
+.gr .gr-mk { color: #111A2B; }
+.gr .gstat .gr-mk .iaq-sig { transform-box: view-box; }
+
+/* 23 Sep (Bazil: "smaller numbers, a bit bigger icon, but more fine and detailed, not a bit thick and all over the
+   place"): the number gives up a step to the mark, and the mark is drawn finer (stroke .85 on the 24 grid) so that
+   the extra size buys detail rather than weight. */
+.gr .gstat .num { font-size: clamp(22px, 1.95vw, 28px); }
+.gr .gstat .lab { font-size: 12.5px; }
+@media (min-width: 861px) {
+  .gr .gstat { grid-template-columns: clamp(36px, 3.2vw, 46px) minmax(0, 1fr); column-gap: 13px; }
+  .gr .gr-mk { width: clamp(36px, 3.2vw, 46px); height: clamp(36px, 3.2vw, 46px); }
+}
+
+/* 23 Sep (Bazil: "more premium position, not just floating around"): the mark was centred against the pair, which
+   left it hanging between two lines of text. It sits on the number's own cap line now, with the text block starting
+   on the same optical line, so each stat reads as one anchored object rather than an icon parked beside some words. */
+@media (min-width: 861px) {
+  .gr .gstat .gr-mk { align-self: start; margin-top: .18em; }
+  .gr .gstat .num { line-height: 1.05; }
+}
+
+/* 23 Sep (Bazil: "in the grey layout section after the banner, can you make the grey fade out to white when it
+   reaches the services section"): the record band held one flat grey and then met a hard edge against the white
+   services band. It fades out into the white over its last third instead, so the two sections read as one page. */
+/* 24 Sep (Bazil: "grey from the top to white to the bottom right", "stretch a bit to the bottom more"): the wash
+   runs on the diagonal and holds its grey further down before it goes to white in the bottom right corner */
+/* 24 Sep (Bazil: "gradient grey from the top and transparent to the bottom"; and the deep foot under the globe went with
+   it): straight down, grey to nothing, and the band ends where the globe ends */
+.glance.gr { background: linear-gradient(180deg, #D3DAE3 0%, #E1E6ED 46%, #EEF1F5 100%); padding-bottom: clamp(16px, 2.6vh, 32px); }
+
+/* 23 Sep · the new heading is longer than the old one, and on a phone "engineered since 1995." held
+   together ran 18px past its column: the 16ch max-width is narrower than the phrase at the clamp's
+   32px floor. Below 560 the cap comes off and the floor drops, so the phrase fits on one line at
+   360, 375 and 390 without breaking the unbroken-emphasis rule. Measured at all three. */
+@media (max-width: 560px) {
+  .gr h2 { max-width: none; font-size: clamp(26px, 7.4vw, 34px); }
+}
+
+/* 24 Sep (Bazil: "make sure the lines aren't cut, so the whole section is the canvas"; "don't put the info in a box"):
+   the canvas is the section; the sphere is still placed in the right column (the scene reads the host's box); the country
+   tags are plain text with a red dot, no box, red when picked; the text column sits above the canvas */
+.glance.gr{overflow:visible}
+.gr .glance-in{position:static}
+.gr .globe-host{position:static}
+.gr #globeCv{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;cursor:grab}
+.gr .glance-head,.gr .glance-body{position:relative;z-index:2;pointer-events:none}
+.gr .glance-head *,.gr .glance-body *{pointer-events:auto}
+/* 25 Sep (Bazil: "remove the red square beside the flag"): the chip is flag + name only */
+.gr .globe-tag,.gr .globe-tag:hover,.gr .globe-tag.far,.gr .globe-tag.far:hover{background:transparent;border:0;box-shadow:none;padding:0;z-index:3}
+.gr .globe-tag.sel{background:transparent;color:#EC2027}
+.gr .globe-tag::before{display:none}
+.gr .globe-tag::after{display:none}
+@media(max-width:900px){.gr #globeCv{position:absolute}.gr .glance-in{position:static}}
+
+/* 25 Sep (Bazil: "the top part is grey, getting whiter and whiter as it goes to section 2"): the ground opens on a firm
+   grey and runs to white where the ring section starts (the ring is white); the red tint of the night before is gone.
+   Both .glance.gr rules above carry the same gradient (the second overrode the first once). */
+/* 24 Sep, late (Bazil: "don't cut the lines, expand the canvas"): the scroll parallax in scenes/home.js moves .globe-host
+   by a transform, and a transformed box is the containing block of everything absolute inside it, so the canvas was
+   still the host's square and the arcs left it. The host keeps no transform now; the canvas and the tags are contained
+   by the section, as group-record.css intends. */
+.gr .globe-host{transform:none!important}
+.gr .glance-head,.gr .glance-body{position:relative;z-index:2}
+
+/* a tag near the right edge stretched the page by 6px at 1440: the band clips sideways only, nothing vertical is cut */
+.glance.gr{overflow-x:clip}
+
+/* 25 Sep (Bazil: "stronger grey please gradient"): the ground starts a step darker (#C9D1DC) and holds it to mid-band before
+   fading to white; both .glance.gr rules above carry the same stops, as the 24 Sep note requires. */
+
+/* 25 Sep (Bazil: "background grey needs to be reduced a bit but more elongated to the bottom where it reaches a bit to the
+   second bottom section"): a step lighter at the top (#D3DAE3), and the band no longer reaches white at its own foot: it
+   ends on #EEF1F5, and the delivery cycle section below picks that up and fades it to white over its first 280px, so the
+   ground runs on past the boundary. Both .glance.gr rules above carry the same stops, as the 24 Sep note requires. */
+.glance.gr + .sec.lpx-band { background: linear-gradient(180deg, #EEF1F5 0, #FFFFFF 280px); }
+
+/* 25 Sep, phone pass (Bazil: "make sure phone view awesome"): the 24 Sep static host lets the canvas span the band so the
+   desktop arcs are never cut; on a phone the band is a tall column and the globe was drawn 992px tall behind the copy,
+   its tags floating in white. The host is positioned again under 900px, so the globe is the 340px square it is meant to be. */
+@media (max-width: 900px) { .gr .globe-host { position: relative; } }

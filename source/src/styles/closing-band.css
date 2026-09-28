@@ -1,0 +1,161 @@
+/* ---------------------------------------------------------------------------
+   THE CLOSING BAND (21 Sep). See components/ClosingBand.jsx for the brief.
+   The ask leads, the ledger sits beside it, the sitemap follows. No boxes: the four answers are
+   words, the one in play is white with the red mark, and the only filled shape is the button.
+   The .crow ledger rows, .close-h and the f-nav rules in base.css are reused as they are.
+   --------------------------------------------------------------------------- */
+.cb-stage { position: relative; --mx: 70%; --my: 30%; }
+
+/* 26 Sep (Bazil: "this organic looking visual that is like gradient circle is actually quite wrong"): the soft field that
+   followed the pointer is gone; the band is one navy block */
+.cb-light { display: none; }
+
+.cb-in { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: clamp(28px, 5vw, 96px); align-items: end; padding-top: clamp(64px, 10vh, 120px); }
+
+/* base.css sets .close3d .close-h to one unbroken line above 1100px, which was right for the old
+   half-width column and ran this larger headline into the ledger. Two lines here, by design. */
+/* 25 Sep, night (Bazil: "reduce size") */
+.close3d.cb .cb-h { margin: 0; max-width: 13ch; white-space: normal; font-size: clamp(30px, 3.9vw, 58px); letter-spacing: -.038em; line-height: 1; color: #fff; }
+.close3d.cb .cb-h em { font-style: normal; color: #FF4D55; }
+.cb-lede { margin-top: clamp(14px, 2vh, 22px); max-width: 46ch; color: rgba(255,255,255,.7); }
+
+/* what are you building? four words, one in play */
+.cb-pick { display: flex; flex-wrap: wrap; gap: 6px clamp(16px, 2vw, 28px); margin-top: clamp(24px, 3.6vh, 40px); }
+.cb-pick button { position: relative; padding: 8px 0 8px 16px; border: 0; background: none; cursor: pointer;
+  font: 600 clamp(15px, 1.25vw, 18px)/1.2 "Switzer", "Instrument Sans", system-ui, sans-serif; letter-spacing: -.012em;
+  color: rgba(255,255,255,.5); transition: color .3s var(--e1); }
+.cb-pick button::before { content: ""; position: absolute; left: 0; top: 50%; width: 7px; height: 7px; margin-top: -3.5px;
+  background: rgba(255,255,255,.24); transition: background .3s var(--e1), transform .4s var(--e1); }
+.cb-pick button:hover { color: #fff; }
+.cb-pick button.on { color: #fff; }
+.cb-pick button.on::before { background: #FF3B44; transform: scale(1.25); }
+.cb-pick button:focus-visible { outline: 2px solid #FF4D55; outline-offset: 4px; }
+
+.cb-go { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 22px; margin-top: clamp(18px, 2.6vh, 28px); }
+.cb-cta { display: inline-flex; align-items: center; gap: 14px; padding: 18px 26px; background: #EC2027; color: #fff; text-decoration: none;
+  font: 600 16px/1 "Switzer", "Instrument Sans", system-ui, sans-serif; letter-spacing: -.01em;
+  box-shadow: none; transition: background .3s var(--e1), transform .4s var(--e1); }   /* 26 Sep (IAQ graphic rules): a flat red block, no glow */
+.cb-cta span { display: inline-block; animation: cbSwap .45s var(--e1) both; }
+.cb-cta i { font-style: normal; transition: transform .35s var(--e1); }
+.cb-cta:hover { background: #C9161D; transform: translateY(-2px); box-shadow: none; }
+.cb-cta:hover i { transform: translateX(6px); }
+.cb-cta:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+/* 24 Sep (Bazil: "put this info beside the button"): the line stays on the button's row at every width and wraps
+   its own words instead of dropping under the button; below 640 the button is full width and the line follows it */
+.cb-go { flex-wrap: nowrap; }
+.cb-line { margin: 0; flex: 1 1 0; min-width: 0; font-size: 14.5px; line-height: 1.4; color: rgba(255,255,255,.62); animation: cbSwap .45s var(--e1) both; }
+@media (max-width: 640px) { .cb-go { flex-wrap: wrap; } .cb-line { flex-basis: 100%; } }
+@keyframes cbSwap { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* the ledger: the open rows from 28 Aug, with a second action on the email */
+.cb-ledger { display: flex; flex-direction: column; min-width: 0; }
+.cb-row { position: relative; }
+.cb-copy { position: absolute; right: 44px; top: 50%; transform: translateY(-50%); padding: 6px 0; border: 0; background: none; cursor: pointer;
+  font: 600 12.5px/1 "Switzer", sans-serif; color: rgba(255,255,255,.5); transition: color .3s var(--e1); }
+.cb-copy:hover { color: #fff; }
+.cb-copy.done { color: #FF6A70; }
+.cb-copy:focus-visible { outline: 2px solid #FF4D55; outline-offset: 3px; }
+
+/* the sitemap follows, across the band: mark on the left, the columns beside it */
+.cb-nav { position: relative; z-index: 1; margin-top: clamp(48px, 8vh, 96px); padding-bottom: clamp(26px, 4vh, 48px); }
+.cb-nav .f-nav { max-width: none; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(28px, 5vw, 96px); align-items: start; }
+.cb-nav .f-brand { grid-column: 1; }
+.cb-nav .f-cols { grid-column: 2; grid-row: 1; margin-top: 0; }
+.cb-nav .f-social { grid-column: 1; margin-top: clamp(16px, 2vh, 24px); }
+
+@media (max-width: 900px) {
+  .cb-in { grid-template-columns: 1fr; align-items: start; }
+  .cb-nav .f-nav { grid-template-columns: 1fr; }
+  .cb-nav .f-cols, .cb-nav .f-social { grid-column: 1; grid-row: auto; }
+  .cb-copy { right: 36px; }
+}
+@media (max-width: 560px) {
+  .cb-pick { flex-direction: column; gap: 2px; }
+  .cb-cta { width: 100%; justify-content: space-between; }
+  .cb-copy { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cb-cta span, .cb-line { animation: none; }
+  .cb-cta, .cb-cta i, .cb-light { transition: none; }
+}
+
+/* 22 Sep (Bazil: "iaq logo needs to be at top"): the brand block heads the band, above the ask; the lower row keeps the
+   two link columns, with Follow level with them in the left column */
+.cb-top { position: relative; z-index: 1; padding-top: clamp(56px, 9vh, 104px); }
+.cb-top .cb-brand { max-width: none; }
+.cb-top + .cb-in { padding-top: clamp(40px, 6vh, 72px); }
+.cb-nav .f-social { grid-row: 1; margin-top: 0; }
+/* option B: the band is the ask alone, so it closes with its own room */
+.cb-b .cb-in { padding-bottom: clamp(56px, 9vh, 104px); }
+
+/* 22 Sep, the band re-laid (Bazil: "put to the right" of the ask, "to the left" of the contacts and links): left column
+   = the brand, the ledger, the two link columns and Follow; right column = the ask, level with the brand */
+.cb .cb-in2 { grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); align-items: start; padding-bottom: clamp(40px, 7vh, 88px); }
+.cb .cb-left { display: grid; gap: clamp(34px, 5.5vh, 60px); align-content: start; min-width: 0; }
+.cb .cb-left .cb-brand { max-width: none; }
+.cb .cb-left .cb-nav { margin-top: 0; padding-bottom: 0; }
+.cb .cb-left .cb-nav .f-nav { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(20px, 3vh, 28px); }
+.cb .cb-left .cb-nav .f-cols { grid-column: 1; grid-row: auto; }
+.cb .cb-left .cb-nav .f-social { grid-column: 1; grid-row: auto; margin-top: 0; }
+.cb .cb-in2 .cb-ask { align-self: start; }
+@media (max-width: 1100px) {
+  .cb .cb-in2 { grid-template-columns: 1fr; }
+  .cb .cb-left { display: contents; }
+  .cb .cb-left .cb-brand { order: 1; } .cb .cb-in2 .cb-ask { order: 2; } .cb .cb-left .cb-ledger { order: 3; } .cb .cb-left .cb-nav { order: 4; }
+}
+/* the band already carries its own top room (.close3d and .close-stage), so the re-laid grid adds none */
+.cb .cb-in2 { padding-top: 0; }
+
+/* 22 Sep, second arrangement: left = brand then links and Follow (pushed up under the logo); right = the ask then the
+   contact ledger. Phones: brand, ask, ledger, links. */
+.cb .cb-right { display: grid; gap: clamp(36px, 6vh, 64px); align-content: start; min-width: 0; }
+.cb .cb-left .cb-nav { margin-top: 0; }
+@media (max-width: 1100px) {
+  .cb .cb-right { display: contents; }
+  .cb .cb-right .cb-ask { order: 2; } .cb .cb-right .cb-ledger { order: 3; } .cb .cb-left .cb-nav { order: 4; }
+}
+
+/* 22 Sep (Bazil: "align bottom properly"): both columns run the full height and their last block sits on the floor, so
+   Follow (left) and the HQ address (right) end on one line, as the logo and the ask start on one */
+@media (min-width: 1101px) {
+  .cb .cb-in2 { align-items: stretch; }
+  .cb .cb-left, .cb .cb-right { display: flex; flex-direction: column; }
+  .cb .cb-left > :last-child, .cb .cb-right > :last-child { margin-top: auto; }
+  .cb .cb-left > * + *, .cb .cb-right > * + * { margin-top: clamp(34px, 5.5vh, 60px); }
+  .cb .cb-left > :last-child:not(:first-child), .cb .cb-right > :last-child:not(:first-child) { margin-top: auto; padding-top: clamp(34px, 5.5vh, 60px); }
+}
+
+/* 23 Sep (Bazil: "align properly", "some lines are not in line", "and weird empty space"): the bottom-aligned columns
+   were doing it. Pushing each column's last block to the floor left a hole in the middle of the left column, and the
+   two columns' blocks started on different lines. The band is one grid now: brand and ask on row one, links and
+   contacts on row two, so the four blocks line up across and the hole is gone. */
+@media (min-width: 1101px) {
+  .cb .cb-in2 {
+    align-items: start;
+    grid-template-rows: auto auto;
+    row-gap: clamp(38px, 6vh, 72px);
+  }
+  .cb .cb-left, .cb .cb-right { display: contents; }
+  .cb .cb-left > :last-child, .cb .cb-right > :last-child { margin-top: 0; }
+  .cb .cb-left > * + *, .cb .cb-right > * + * { margin-top: 0; }
+  .cb .cb-left > :last-child:not(:first-child), .cb .cb-right > :last-child:not(:first-child) { margin-top: 0; padding-top: 0; }
+  .cb .cb-in2 .cb-brand { grid-column: 1; grid-row: 1; }
+  .cb .cb-in2 .cb-nav { grid-column: 1; grid-row: 2; }
+  .cb .cb-in2 .cb-ask { grid-column: 2; grid-row: 1; }
+  .cb .cb-in2 .cb-ledger { grid-column: 2; grid-row: 2; }
+}
+/* Follow now sits under the brand, so it gets the brand block's rhythm rather than the link columns' */
+.cb .cb-in2 .cb-brand .f-social { margin-top: clamp(26px, 4vh, 40px); }
+.cb .cb-in2 .cb-brand .f-social ul { margin: 0; }
+
+/* 23 Sep (Bazil: "make sure it's aligned properly"): the two row-two blocks already started on the same line, but
+   their first LABELS did not, because the link columns use .f-h4 (10.5px, 12px below it) and the ledger uses .ref at
+   its own metrics. Both labels carry the same size, tracking and gap now, so THE COMPANY and EMAIL sit on one line. */
+@media (min-width: 1101px) {
+  .cb .cb-ledger .crow .ref { font-size: 10.5px; letter-spacing: .16em; line-height: 1.1; margin-bottom: 12px; display: block; }
+  .cb .cb-nav .f-h4, .cb .cb-ledger .crow .ref { color: #7A87A2; font-weight:600; text-transform: uppercase; }
+  .cb .cb-ledger .crow:first-child { margin-top: 0; }
+  /* 24 Sep (Bazil: "align nicely, same level"): the first row's 11px top padding put EMAIL 12px under THE COMPANY */
+  .cb .cb-right .cb-ledger .crow:first-child { padding-top: 0; }
+}

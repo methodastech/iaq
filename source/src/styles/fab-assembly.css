@@ -1,0 +1,278 @@
+/* 9 Sep, second pass (Bazil, on the white treatment: "revert this to the previous design with
+   colours etc"). The section went light-on-dark -> dark-on-light this morning and the model with
+   it: nine BIM system hues flattened to a grey ladder, the ground to paper, the crane to white.
+   That is undone. The band is dark again, every system carries its own colour again, and the
+   rail marks read in those colours rather than all going red on the active step.
+
+   The two things that did NOT come back with it, because they were fixed for their own reasons
+   and not as part of the white pass: JetBrains Mono is still gone from every run of numbers here
+   (client: "this weird rectangle font needs to be replaced with a better one"), and the excavator
+   is still removed from the scene (client: "remove this"). */
+/* ---------------------------------------------------------------------------
+   THE FAB ASSEMBLY
+   Runway = section height; stage = sticky. No rules: structure comes from the
+   ground plane, the tint of the active stage, and space.
+   --------------------------------------------------------------------------- */
+
+/* 9 Sep: 1300 -> 1800vh. Nine stages over 1800vh is 200vh each, and the build occupies the
+   first 55% of that = 110vh of scrolling per system, against 79vh before. This is the single
+   biggest lever on "too fast": everything else only changes how the same scroll is spent. */
+/* 22 Sep (Bazil: "does it look too flat and boring"): 1800vh was about 70% of the home page's scroll for nine steps, so it
+   dragged. 800vh keeps every system on screen for most of a viewport, and the scene reads its progress from this height. */
+.fab{ position:relative; height:calc(800vh + clamp(120px,16vh,220px)); overflow:visible; background:#0C0C0C; color:#F0F0F0; }
+/* the seam. The section carries only `.fab` (no `.dark-band`), so the old two-class rule never
+   applied and the top edge has been a hard cut since 7 Sep. 10 Sep: the industry band now
+   FOLLOWS this section (it took the news slot at the foot of the page), so the last stretch fades
+   navy back to the page ground; it shows through the transparent stage as the scrub ends. */
+.fab{ background:linear-gradient(180deg,#0C0C0C calc(100% - clamp(120px,14vh,190px)),var(--bg,#FAFAFA) 100%) #0C0C0C; }
+/* the desktop zoom:1.12 inflates viewport units at render time, so the stage divides by it to fit the real viewport */
+.fab-stage{ position:sticky; top:0; height:calc(100vh / var(--zoomf,1)); height:calc(100svh / var(--zoomf,1)); display:flex;
+  align-items:center; overflow:hidden; }
+.fab-stage::before{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(90deg,rgba(12,12,12,.92) 0%,rgba(12,12,12,.72) 30%,rgba(12,12,12,.18) 52%,transparent 66%); }
+/* 10 Sep: the rail was overrunning a 900px stage by 92px with the active description open,
+   because the top pad alone was up to 96px. Both pads are pulled in so the column sits inside
+   the stage on a laptop, and the grid centres it against the model. */
+.fab-in{ position:relative; z-index:2; width:100%; display:grid; grid-template-columns:minmax(300px,.38fr) minmax(0,1fr);
+  gap:clamp(24px,4vw,64px); align-items:center; pointer-events:none;
+  padding-top:clamp(36px,5vh,64px); padding-bottom:clamp(28px,4vh,52px); }
+.fab-rail{ pointer-events:auto; }
+
+/* ---- rail -------------------------------------------------------------- */
+
+.fab-rail .eyebrow{ color:#FF8A90; }
+.fab-rail h2{ margin-top:10px; color:#fff; font-size:clamp(26px,2.5vw,40px); letter-spacing:-.03em;
+  line-height:1.04; max-width:16ch; text-wrap:balance; }
+.fab-rail h2 em{ font-style:normal; color:#FF4D55; }
+.fab-lede{ margin-top:14px; max-width:44ch; color:#C1C1C1; font-size:14.5px; line-height:1.6; }
+
+.fab-stages{ list-style:none; margin:clamp(14px,2vh,22px) 0 0; padding:0;
+  display:flex; flex-direction:column; gap:0; }
+/* 10 Sep (Bazil: "align the screen well, vertically and horizontally"). The rows are set to
+   one fixed rhythm: 44px mark cell, 6px gap, so nine rows read as one column whatever the
+   viewport height, and the whole rail centres against the model rather than stretching down
+   the stage. */
+.fab-st{ width:100%; display:grid; grid-template-columns:34px 26px minmax(0,1fr); gap:10px; align-items:center;
+  text-align:left; padding:4px 12px 4px 10px; background:transparent; border:0; color:inherit;
+  font:inherit; cursor:pointer; position:relative;
+  transition:background .3s var(--e1), padding-left .3s var(--e1); }
+.fab-st-n{ font-family: var(--num); font-size:10.5px; font-weight:600;
+  letter-spacing:.14em; color:#666666; padding-top:4px; font-variant-numeric:tabular-nums;
+  transition:color .3s ease; }
+.fab-st-b b{ display:block; font-family:"Switzer",sans-serif; font-weight:600; font-size:16.5px;
+  letter-spacing:-.015em; line-height:1.3; color:#878787; transition:color .3s ease; }
+.fab-st-d{ display:block; margin-top:4px; font-size:13.5px; line-height:1.55; color:#D1D1D1;
+  max-width:40ch; max-height:0; opacity:0; overflow:hidden;
+  transition:max-height .45s var(--e1), opacity .35s ease, margin-top .35s ease; }
+/* the active stage is lit and open; the rest are greyed, done stages a shade brighter */
+/* 4 Sep (client: "the sections that's not complete please grey out / semitransparent").
+   It was the wrong way round: DONE was dimmed while stages not yet reached sat at full strength,
+   so the panel gave the most weight to work that has not happened. Three levels now, and the
+   eye lands on the stage being built: upcoming recedes, done settles back, active is full. */
+.fab-st{ opacity:.34; transition:background .3s var(--e1), padding-left .3s var(--e1), opacity .45s var(--e1); }
+.fab-st.done{ opacity:.62; }
+.fab-st.on{ opacity:1; }
+.fab-st.done .fab-st-b b,.fab-st.done .fab-st-n{ color:#B3B3B3; }
+/* 10 Sep (Bazil, on the active stage: "i dont want it to be in a box"). It was a filled panel
+   behind the words, which is the one thing this client has rejected in every review: no boxes
+   behind copy, no icons in squares, "more subtlety rather than this bulky UI". The active stage
+   already carries four signals without it: full opacity against 34%, its mark and number in the
+   system colour, the title in white, and the scope and counter unfolding underneath. The fill
+   was a fifth signal doing the least work and making the most noise.
+
+   What replaces it is the spine. A red segment lights on the hairline beside the active stage,
+   which is the same grammar as the nav marker and the eyebrow rule: a mark on a line, not a
+   plate under type. The indent stays, so the row still steps forward as it opens. */
+.fab-st.on{ background:transparent; padding-left:14px; }
+.fab-st::after{ content:""; position:absolute; left:-1px; top:9px; bottom:9px; width:2px;
+  background:#EC2027; transform:scaleY(0); transform-origin:50% 50%; opacity:0;
+  transition:transform .45s var(--e1), opacity .3s ease; }
+.fab-st.on::after{ transform:scaleY(1); opacity:1; }
+/* 9 Sep (client: "this weird rectangle font needs to be replaced with a better one").
+   The scope list was set in JetBrains Mono, UPPERCASE, tracked out, at 10px, and it wrapped to
+   three lines: mono squares every glyph to one width, so a running list of real words in it
+   reads as a block of rectangles rather than as text. Mono earns its place on NUMBERS, where
+   tabular alignment is the point, so the count keeps it and the prose does not.
+   The list is now the site's own sans at a readable size, in sentence case. */
+.fab-st-seq{ display:none; font-family:"Switzer","Instrument Sans",system-ui,sans-serif;
+  font-size:12.5px; font-weight:500; letter-spacing:0; line-height:1.5; text-transform:none; }
+.fab-st-ct{ display:none; font-family: var(--num); font-size:10.5px; letter-spacing:.06em; line-height:1.55; font-variant-numeric:tabular-nums; }
+.fab-st.on .fab-st-seq{ display:block; margin-top:9px; color:#BABABA; text-transform:none; }
+.fab-st.on .fab-st-ct{ display:block; margin-top:4px; color:#F3F3F3; }
+.fab-st.on .fab-st-ct:empty{ display:none; }
+.fab-st.on .fab-st-n{ color:#FF4D55; }
+.fab-st.on .fab-st-b b{ color:#fff; }
+.fab-st.on .fab-st-d{ max-height:6em; opacity:1; margin-top:5px; }
+.fab-st:hover:not(.on) .fab-st-b b{ color:#DADADA; }
+.fab-st:focus-visible{ outline:2px solid #FF4D55; outline-offset:2px; }
+
+.fab-foot{ margin-top:clamp(16px,2.4vh,26px); display:flex; align-items:center; gap:14px; }
+.fab-count{ font-family: var(--num); font-size:11px; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase; color:#D1D1D1; font-variant-numeric:tabular-nums; }
+/* frame preload: a thin gauge that fills as frames arrive, then fades */
+.fab-gauge{ flex:1; max-width:140px; height:2px; background:rgba(255,255,255,.12); overflow:hidden;
+  transition:opacity .6s ease .4s; }
+.fab-gauge i{ display:block; height:100%; width:100%; background:#EC2027; transform:scaleX(0);
+  transform-origin:left; transition:transform .3s ease; }
+.fab[data-loaded="1"] .fab-gauge{ opacity:0; }
+
+/* ---- view -------------------------------------------------------------- */
+
+.fab-view{ position:absolute; inset:0; z-index:0; height:auto; min-height:0; isolation:isolate; }
+.fab-view canvas{ position:relative; z-index:2; display:block; width:100%; height:100%; }
+
+/* the CSS ground of the frame build is retired: the scene draws its own ground */
+.fab-ground{ display:none; }
+.fab-ground{ position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
+.fab-grid{ position:absolute; left:-30%; right:-30%; top:calc(var(--gy,.64) * 100%); height:70%;
+  transform-origin:top center; transform:perspective(900px) rotateX(62deg);
+  background-image:
+    linear-gradient(rgba(255,255,255,.075) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.075) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.35) 45%,transparent 100%);
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.35) 45%,transparent 100%);
+  transition:top .5s var(--e1); }
+.fab-glow{ position:absolute; left:10%; right:10%; top:calc(var(--gy,.64) * 100% - 2px); height:4px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22) 30%,rgba(255,255,255,.22) 70%,transparent);
+  box-shadow:0 0 40px 8px rgba(148,148,148,.12); transition:top .5s var(--e1); }
+
+/* one scroll cue per layout: a chip on desktop, filled by progress */
+
+/* ---- narrow ------------------------------------------------------------ */
+
+@media(max-width:900px){
+  .fab{ height:calc(560vh + clamp(120px,16vh,220px)); }
+  .fab-in{ grid-template-columns:1fr; gap:14px; align-content:start;
+    padding-top:calc(var(--tbh,0px) + 64px); }
+  .fab-in{ align-content:end; padding-bottom:64px; }
+  .fab-st:not(.on){ display:none; }
+  .fab-stage::before{ background:linear-gradient(180deg,transparent 30%,rgba(12,12,12,.86) 70%); }
+  .fab-rail h2{ font-size:clamp(24px,6vw,32px); }
+  .fab-lede{ display:none; }
+  .fab-st-d{ display:none; }
+  .fab-st{ padding:6px 10px; }
+  }
+
+/* ---- reduced motion: no pin, final frame, rail static ------------------ */
+
+@media(prefers-reduced-motion:reduce){
+  .fab{ height:auto; }
+  .fab-stage{ position:relative; min-height:0; }
+  .fab-st-d{ max-height:none; opacity:1; margin-top:5px; }
+  }
+
+/* ---- live 3D (4 Sep) ------------------------------------------------------ */
+.fab-view canvas{ cursor:grab; touch-action:pan-y; }
+.fab-view canvas:active{ cursor:grabbing; }
+/* 10 Sep (Bazil: "put the UI properly" / "button size same with icon"). One control strip on
+   one hairline, right-anchored to the model column: the four verbs, then the three controls.
+   The controls are 22px, the size of a rail mark, and carry no fill and no border. A 32px
+   filled slab is a button from a different product; a bare glyph on the strip is chrome. */
+.fab-ctl{ position:absolute; right:clamp(14px,1.5vw,26px); bottom:clamp(14px,2.4vh,26px); z-index:3;
+  display:flex; align-items:center; gap:26px; padding-top:10px; border-top:1px solid rgba(255,255,255,.28);
+  opacity:.9; transition:opacity .35s var(--e1); }
+.fab-view:hover .fab-ctl{ opacity:1; }
+.fab-keys{ margin:0; padding:0; list-style:none; display:flex; gap:20px; pointer-events:none; }
+/* the strip crosses the light hardstanding on the last stage, so its type carries a 1px dark
+   shadow: legibility without a plate, the same device the labels on the model use */
+.fab-keys li{ display:flex; align-items:baseline; gap:6px; font-family: var(--label); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap;
+  text-shadow:0 1px 3px rgba(8,8,8,.85); }
+.fab-keys b{ font-weight:600; color:#F2F2F2; }
+.fab-keys span{ color:#B8B8B8; }
+.fab-zoom{ display:flex; gap:10px; pointer-events:auto; }
+.fab-zoom button{ width:22px; height:22px; display:grid; place-items:center; background:transparent; border:0;
+  color:#E4E4E4; cursor:pointer; padding:0; transition:color .2s; filter:drop-shadow(0 1px 2px rgba(8,8,8,.8)); }
+.fab-zoom button svg{ width:22px; height:22px; display:block; }
+.fab-zoom button:hover{ color:#fff; }
+.fab-zoom button:focus-visible{ outline:2px solid #FF4D55; outline-offset:2px; }
+.fab[data-nogl="1"] .fab-view::after{ content:"The 3D model cannot start in this browser. The nine systems are listed alongside, in the order they are built."; position:absolute; inset:0;
+  display:grid; place-items:center; color:#9A9A9A; font-size:13px; }
+@media(max-width:900px){ .fab-keys{ display:none; } .fab-ctl{ bottom:8px; right:8px; border-top:0; padding-top:0; } }
+
+/* ---- stage icons and the spine (client: "beautiful icons and animation... with colours") ---- */
+.fab-stages{ position:relative; padding-left:6px; }
+/* the spine: a soft glow that fills to the active stage */
+/* 4 Sep (client: "i don't want the red loading bar at the left"). The filling red spine read as
+   a page loader rather than as progress through nine systems, and it was the loudest thing in a
+   panel whose job is to be read. The track stays as a hairline so the steps still hang off a
+   spine; which stage you are on is carried by the stage itself now. */
+.fab-stages::before{ content:""; position:absolute; left:0; top:12px; bottom:12px; width:1px;
+  background:rgba(255,255,255,.16); }
+/* 4 Sep (client: "lets not put icons inside squares"). Nine bordered tiles stacked down the
+   panel read as a toolbar. The mark carries the colour on its own; the active one is lifted by
+   a glow around the glyph itself rather than by a box drawn around it. */
+.fab-st-ic{ width:34px; height:34px; display:grid; place-items:center; color:var(--c,#fff);
+  border:0; background:transparent;
+  transition:opacity .4s var(--e1), filter .4s var(--e1), transform .4s var(--e1); }
+/* 10 Sep (Bazil: "stop making lighted square effect"). The active mark carried a 10px
+   drop-shadow in its own colour, and on the dark rail that halo read as a lit tile behind
+   the icon. The colour, the red number, the white title and the spine marker already say
+   which stage is live. The mark keeps its breathe and loses the light. */
+.fab-st.on .fab-st-ic{ animation:fabBreathe 2.6s ease-in-out infinite; }
+@keyframes fabBreathe{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-1.5px) } }
+.fab-st.on .fab-st-n{ color:var(--c,#FF4D55); }
+@media(prefers-reduced-motion:reduce){ .fab-st.on .fab-st-ic{ animation:none; } .fab-stages::after{ transition:none; } }
+@media(max-width:900px){ .fab-st{ grid-template-columns:30px 26px 1fr; } .fab-st-ic{ width:30px; height:30px; } }
+
+/* the secure blip on the rail: one expanding ring when a stage lands complete */
+.fab-st.blip .fab-st-ic{ animation:fabBlip 1.2s cubic-bezier(.22,1,.36,1) 1, fabBreathe 2.6s ease-in-out infinite 1.2s; }
+/* the landing blip was an expanding box-shadow ring, which is a square of light around a
+   square element. It is a brightness pulse on the mark itself now: same event, no tile. */
+@keyframes fabBlip{ 0%{ opacity:1 } 30%{ opacity:.35 } 60%{ opacity:1 } 100%{ opacity:1 } }
+@media(prefers-reduced-motion:reduce){ .fab-st.blip .fab-st-ic{ animation:none; } }
+
+/* labels pinned to the model: a dot on the part, the name beside it */
+.fab-lab{ position:absolute; left:0; top:0; z-index:3; pointer-events:none; opacity:0;
+  display:inline-flex; align-items:center; gap:7px; transform:translate(-9999px,-9999px);
+  transition:opacity .35s ease; will-change:transform; }
+/* 7 Sep (holographic references): the callout is a glowing node, a hairline leader, then the chip */
+.fab-lab i{ width:7px; height:7px; border-radius:50%; background:#F3F3F3; flex:none; margin-left:-3px; position:relative;
+  box-shadow:0 0 0 3px rgba(219,219,219,.22), 0 0 14px rgba(219,219,219,.75); }
+.fab-lab i::after{ content:""; position:absolute; left:100%; top:50%; width:18px; height:1px; background:linear-gradient(90deg,rgba(219,219,219,.9),rgba(219,219,219,.15)); }
+.fab-lab b{ font-family: var(--label); font-size:10.5px; font-weight:600; letter-spacing:.14em; margin-left:14px;
+  text-transform:uppercase; color:#F0F0F0; background:rgba(14,14,14,.84); padding:5px 8px 4px; white-space:nowrap;
+  border:1px solid rgba(219,219,219,.28); box-shadow:0 0 18px rgba(219,219,219,.08); }
+@media(max-width:900px){ .fab-lab b{ font-size:9px; padding:4px 6px 3px; } }
+
+/* part picking: hover chip follows the cursor, a pinned chip sits on the part in red */
+.fab-pick{ z-index:4; transition:opacity .18s ease; }
+.fab-pick i{ background:#EC2027; box-shadow:0 0 0 3px rgba(236,32,39,.22), 0 0 12px rgba(236,32,39,.5); }
+.fab-pick.on b{ border-color:#EC2027; box-shadow:0 0 0 3px rgba(236,32,39,.22); }
+
+/* ---- the isometric cut on the rail (10 Sep, tried against the line marks) ---- */
+.fab-iso-w{ display:block; width:44px; height:44px; }
+.fab-iso-w .fab-iso{ width:100%; height:100%; display:block; }
+.fab-st:not(.on) .fab-iso-w{ filter:grayscale(1); opacity:.55; transition:opacity .4s var(--e1), filter .4s var(--e1); }
+.fab-st.on .fab-iso-w{ filter:none; opacity:1; }
+.fab-st.done .fab-iso-w{ opacity:.8; }
+
+/* 10 Sep: the skip control sits on the same strip as the zoom controls */
+.fab-skip{ background:transparent; border:1px solid rgba(255,255,255,.28); color:#F0F0F0; font:600 11.5px/1 "Switzer","Instrument Sans",system-ui,sans-serif; letter-spacing:.04em; padding:9px 12px; cursor:pointer; margin-right:10px; transition:border-color .2s, background .2s; }
+.fab-skip:hover{ border-color:#fff; background:rgba(255,255,255,.08); }
+.fab-skip:focus-visible{ outline:2px solid #EC2027; outline-offset:2px; }
+
+/* 15 Sep (Bazil: "why got double line here"): the active stage drew its own 2px red bar beside the spine hairline,
+   so the rail showed two lines at the active step. The spine alone carries the rail now. */
+.fab-st::after{ display:none; }
+/* 15 Sep (Bazil: "no lines and make it more visible"): the control strip loses its top rule and the skip button its
+   border; hints and controls read at full strength instead of fading until hover. */
+.fab-ctl{ border-top:0; padding-top:0; opacity:1; }
+.fab-keys li{ font-size:11.5px; }
+.fab-keys b{ color:#fff; }
+.fab-keys span{ color:#DADADA; }
+.fab-skip{ border:0; background:rgba(255,255,255,.16); color:#fff; padding:10px 14px; }
+.fab-skip:hover{ border-color:transparent; background:rgba(255,255,255,.26); }
+.fab-zoom button{ color:#F2F2F2; }
+
+/* 15 Sep (checklist d3): the colour key replaces the pop-up callouts. Top right of the view, no box, no rule;
+   a swatch and a name per system, the active one at full strength. The click-a-part chip (.fab-pick) stays. */
+.fab-lab:not(.fab-pick){ display:none !important; }
+.fab-legend{ position:absolute; right:clamp(14px,1.5vw,26px); top:clamp(84px,12vh,120px); z-index:3; margin:0; padding:0; list-style:none;
+  display:flex; flex-direction:column; gap:7px; pointer-events:none; }
+.fab-legend li{ display:flex; align-items:center; gap:10px; justify-content:flex-end; font:600 12.5px/1.2 "Switzer","Instrument Sans",system-ui,sans-serif;
+  color:rgba(255,255,255,.62); text-shadow:0 1px 3px rgba(8,8,8,.85); transition:color .35s var(--e1); }
+.fab-legend li i{ order:2; flex:none; width:22px; height:6px; background:var(--c); opacity:.55; transition:opacity .35s var(--e1), width .35s var(--e1); }
+.fab-legend li.on{ color:#fff; }
+.fab-legend li.on i{ opacity:1; width:30px; }
+@media(max-width:900px){ .fab-legend{ top:auto; bottom:52px; right:10px; gap:4px; } .fab-legend li{ font-size:11px; } .fab-legend li:not(.on){ display:none; } }

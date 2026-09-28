@@ -1,0 +1,721 @@
+/* ============================================================
+   /home2 — the LANDING PAGE (HOME) brief, as the successor to the live homepage.
+
+   Everything is h2- prefixed. The obvious names (.hero, .card, .step, .final, .muted) all collide
+   with the live site's stylesheets, which stay loaded once their route has been visited.
+
+   THE DEPTH RULE for this page: no effect may use a drop shadow to imply height. Every card that
+   sits above the page does it with a real transform on a real perspective, and every photograph
+   that moves does it inside a frame that does not. A shadow is what you reach for when the geometry
+   is flat, and the geometry here is not.
+   ============================================================ */
+
+.h2-page {
+  --h2-ink: #0B0F18;
+  --h2-soft: #47526A;
+  --h2-faint: #7C8598;
+  --h2-line: rgba(11, 15, 24, .10);
+  --h2-line2: rgba(11, 15, 24, .18);
+  --h2-paper: #F6F8FC;
+  --h2-white: #FFFFFF;
+  --h2-dark: #0B0F18;
+  --h2-red: #EC2027;
+  --h2-red-d: #B5121B;
+  --h2-pad: clamp(20px, 4vw, 64px);
+  --h2-ease: cubic-bezier(.22, 1, .36, 1);
+
+  background: var(--h2-paper);
+  color: var(--h2-ink);
+  line-height: 1.4;
+  overflow-x: clip;
+}
+
+.h2-page img { display: block; max-width: 100% }
+.h2-page a { color: inherit; text-decoration: none }
+.h2-page h1, .h2-page h2, .h2-page h3 { font-family: "Switzer", sans-serif; font-weight: 600 }
+.h2-page em { font-style: normal; color: var(--h2-red) }
+
+.h2-wrap { width: min(1360px, 100% - var(--h2-pad) * 2); margin-inline: auto }
+
+/* ── shared type ──────────────────────────────────────────── */
+
+.h2-xl {
+  font-size: clamp(30px, 3.9vw, 58px);
+  letter-spacing: -.035em;
+  line-height: 1.04;
+  margin-top: 14px;
+  max-width: 20ch;
+}
+.h2-lede {
+  font-size: clamp(15px, 1.15vw, 17px);
+  color: var(--h2-soft);
+  line-height: 1.65;
+  max-width: 62ch;
+  margin-top: 18px;
+}
+.h2-muted { color: var(--h2-soft) }
+.h2-on-dark { color: #fff }
+.h2-on-dark.h2-lede { color: rgba(255, 255, 255, .72) }
+.h2-head { max-width: 46ch }
+.h2-arr { display: inline-block; transition: transform .35s var(--h2-ease) }
+
+/* ── pills ────────────────────────────────────────────────── */
+
+.h2-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 0; /* no rounded buttons (24 Aug) */
+  font-family: var(--label);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  transition: background .3s, color .3s, border-color .3s, transform .3s var(--h2-ease);
+}
+.h2-pill:hover { transform: translateY(-2px) }
+.h2-pill:hover .h2-arr { transform: translateX(4px) }
+.h2-pill-red { background: var(--h2-red); color: #fff }
+.h2-pill-red:hover { background: var(--h2-red-d) }
+.h2-pill-ghost { border-color: var(--h2-line2); color: var(--h2-ink) }
+.h2-pill-ghost:hover { border-color: var(--h2-ink); background: var(--h2-ink); color: #fff }
+.h2-on-dark ~ .h2-pill-ghost, .h2-mod .h2-pill-ghost { border-color: rgba(255, 255, 255, .3); color: #fff }
+
+/* ══ 1 · HERO ═════════════════════════════════════════════════
+   Four planes on one perspective. The stage owns the perspective, .h2-hero-planes is the 3D
+   context that yaws under the pointer, and each plane sits at its own translateZ so the scroll
+   tween's differing rates land on geometry that is already separated in depth. */
+
+/* CAPPED, NOT FULL-HEIGHT. The hero sits BELOW the header, so a literal 100svh pushes its own
+   call-to-action past the fold on any laptop — the one thing in the section that has a job to do.
+   Same convention the other concept uses on .hero, for the same reason. */
+.h2-hero {
+  position: relative;
+  min-height: min(84svh, 900px);
+  display: grid;
+  align-items: end;
+  overflow: clip;
+  background: var(--h2-dark);
+}
+.h2-hero-stage {
+  position: absolute;
+  inset: 0;
+  perspective: 1200px;
+  perspective-origin: 50% 42%;
+}
+.h2-hero-planes {
+  position: absolute;
+  inset: -6%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.h2-hero-sky, .h2-hero-far, .h2-hero-near { position: absolute; inset: 0 }
+.h2-hero-sky {
+  transform: translateZ(-320px) scale(1.34);
+  background:
+    radial-gradient(120% 90% at 50% 8%, #2B3550 0%, #141B2C 42%, #080B14 100%);
+}
+.h2-hero-far { transform: translateZ(-150px) scale(1.16); opacity: .38 }
+.h2-hero-near { transform: translateZ(0) }
+.h2-hero-far img { width: 100%; height: 100%; object-fit: cover }
+/* poster and footage occupy the SAME box, so the crossfade cannot shift the frame by a pixel */
+.h2-hero-near img, .h2-hero-vid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 58%;
+}
+.h2-hero-vid { opacity: 0; transition: opacity 1s var(--h2-ease) }
+.h2-hero-vid.is-live { opacity: 1 }
+.h2-hero-veil {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(180deg, rgba(8, 11, 20, .1), rgba(8, 11, 20, .92));
+}
+/* THE READABILITY FLOOR, tuned to the FOOTAGE and not to the poster. The still is a bright dusk
+   facade and wanted a heavy scrim; the clip it hands over to is graded dark and already carries
+   its own falloff, so the same scrim buried it. Enough to hold white type through the headline
+   band, and no more — every extra percent here is footage the client paid for and cannot see. */
+.h2-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    rgba(8, 11, 20, .58) 0%, rgba(8, 11, 20, .10) 32%,
+    rgba(8, 11, 20, .42) 62%, rgba(8, 11, 20, .84) 100%);
+}
+
+.h2-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: min(1360px, 100% - var(--h2-pad) * 2);
+  margin: 0 auto clamp(72px, 12vh, 150px);
+  color: #fff;
+}
+.h2-hero-title {
+  font-size: clamp(38px, 6.6vw, 104px);
+  line-height: .98;
+  letter-spacing: -.045em;
+  margin-top: 18px;
+}
+/* each line rides in its own mask, so the rise reads as type setting itself */
+.h2-hl { display: block; overflow: hidden; padding-bottom: .06em }
+.h2-hl > span { display: block }
+.h2-hero-sub {
+  margin-top: 22px;
+  font-size: clamp(15px, 1.3vw, 20px);
+  max-width: 54ch;
+  line-height: 1.55;
+}
+.h2-hero-sub .h2-muted { color: rgba(255, 255, 255, .66) }
+.h2-hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px }
+.h2-hero-ctas .h2-pill-ghost { border-color: rgba(255, 255, 255, .34); color: #fff }
+.h2-hero-ctas .h2-pill-ghost:hover { background: #fff; border-color: #fff; color: var(--h2-ink) }
+
+.h2-hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--label);
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .62);
+}
+.h2-hero-scroll i {
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, .8));
+}
+
+/* ══ 2 · COMPANY SNAPSHOT ═════════════════════════════════════ */
+
+.h2-snap { padding: clamp(100px, 16vh, 200px) 0; background: var(--h2-white) }
+.h2-snap-rule {
+  height: 1px;
+  background: var(--h2-line2);
+  margin: clamp(36px, 4.6vw, 62px) 0 clamp(44px, 5.6vw, 78px);
+  transform-origin: 0 50%;
+}
+.h2-ms {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(40px, 4.8vw, 74px) clamp(26px, 3vw, 46px);
+}
+.h2-ms-cell {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-right: 12px;
+}
+/* object-fit does not apply to inline SVG, and display:block kills the inline-baseline gap */
+.h2-ms-mark { width: 76px; height: 76px; flex: none; display: block }
+.h2-ms-txt { min-width: 0 }
+.h2-ms-num {
+  font-family: "Switzer", sans-serif;
+  font-weight: 600;
+  font-size: clamp(32px, 3.5vw, 52px);
+  letter-spacing: -.03em;
+  line-height: 1;
+}
+.h2-ms-lab {
+  font-family: var(--label);
+  font-size: 10.5px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--h2-soft);
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* ══ 3 · WHAT WE DO — editorial rows ══════════════════════════
+   One full-width row per service, image alternating sides, every one of them reached by
+   scrolling down. The card rail this replaces scrolled sideways and read as six equals; a
+   stacked run reads as the SEQUENCE the section is describing.
+
+   Each row's red rule is drawn by GSAP (scaleX), so its resting state here is the drawn one:
+   a visitor with no JS sees finished rules, never missing ones. */
+
+.h2-do { padding: clamp(72px, 11vh, 132px) 0; background: var(--h2-paper); overflow: clip }
+.h2-do-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(18px, 2.6vw, 36px);
+}
+.h2-do-cta { flex: none }
+
+.h2-svc { display: block; position: relative; padding: clamp(34px, 4.6vw, 68px) 0 }
+.h2-svc-rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--h2-red);
+  transform-origin: 0 50%;
+}
+/* the rule grows out of the text side, so it alternates with the layout */
+.h2-svc-flip .h2-svc-rule { transform-origin: 100% 50% }
+
+.h2-svc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.12fr;
+  gap: clamp(24px, 4vw, 72px);
+  align-items: center;
+}
+.h2-svc-flip .h2-svc-media { order: -1 }
+
+.h2-svc-n {
+  display: block;
+  overflow: hidden;
+  font-family: "Switzer", sans-serif;
+  font-weight: 600;
+  font-size: clamp(40px, 4.6vw, 76px);
+  line-height: .92;
+  letter-spacing: -.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.2px var(--h2-line2);
+}
+.h2-svc-n > span { display: block }
+.h2-svc-body h3 {
+  margin-top: 18px;
+  font-size: clamp(22px, 2.4vw, 38px);
+  letter-spacing: -.032em;
+  line-height: 1.12;
+  max-width: 18ch;
+  transition: color .35s;
+}
+.h2-svc:hover .h2-svc-body h3 { color: var(--h2-red) }
+.h2-svc-body p {
+  margin-top: 14px;
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.7;
+  color: var(--h2-soft);
+  max-width: 44ch;
+}
+.h2-svc-go {
+  display: inline-block;
+  margin-top: 22px;
+  font-family: var(--label);
+  font-size: 10.5px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--h2-red);
+}
+.h2-svc:hover .h2-svc-go .h2-arr { transform: translateX(5px) }
+
+.h2-svc-media {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius:0;
+  background: #E8ECF3;
+  will-change: clip-path;
+}
+.h2-svc-media img {
+  position: absolute;
+  /* 112% against a ±5% scrub: the overscan must exceed the parallax or the frame shows through */
+  inset: -6% 0;
+  width: 100%;
+  height: 112%;
+  object-fit: cover;
+  will-change: transform;
+  transition: filter .5s;
+}
+.h2-svc:hover .h2-svc-media img { filter: saturate(1.08) }
+
+/* ══ 4 · INDUSTRIES ═══════════════════════════════════════════ */
+
+.h2-ind { padding: clamp(72px, 11vh, 132px) 0; background: var(--h2-white) }
+.h2-ind-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(12px, 1.2vw, 20px);
+  margin-top: clamp(32px, 4vw, 56px);
+  perspective: 1400px;
+}
+/* SEVEN INTO FOUR COLUMNS. A hole in a grid of markets reads as a missing market, so the count
+   is absorbed by the shape: the lead card takes 2x2, four small cards fill the two rows beside
+   it, and the last two take two columns each to close the bottom row exactly. */
+.h2-ind-card:first-child { grid-column: span 2; grid-row: span 2 }
+.h2-ind-card:nth-child(6), .h2-ind-card:nth-child(7) { grid-column: span 2 }
+.h2-ind-card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 210px;
+  padding: 22px;
+  border-radius:0;
+  overflow: hidden;
+  isolation: isolate;
+  transform-style: preserve-3d;
+  transition: transform .55s var(--h2-ease);
+}
+.h2-ind-card:hover { transform: translateZ(34px) }
+/* OVERSCAN BUDGET: a parallax photograph must be taller than its frame by MORE than it travels,
+   or the frame shows its own background at the end of the scrub. Travel is ±9% here, so the
+   overscan is 14% a side and never the other way round. */
+.h2-ind-media { position: absolute; inset: -14% 0; z-index: -2 }
+.h2-ind-media img { width: 100%; height: 100%; object-fit: cover }
+.h2-ind-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(8, 11, 20, .12) 30%, rgba(8, 11, 20, .82) 100%);
+  transition: background .45s;
+}
+.h2-ind-card:hover .h2-ind-scrim {
+  background: linear-gradient(180deg, rgba(236, 32, 39, .18) 20%, rgba(8, 11, 20, .88) 100%);
+}
+.h2-ind-t { color: #fff; font-size: clamp(15px, 1.3vw, 22px); letter-spacing: -.02em; max-width: 12ch }
+.h2-ind-go {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  color: #fff;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity .35s, transform .35s var(--h2-ease);
+}
+.h2-ind-card:hover .h2-ind-go { opacity: 1; transform: none }
+
+/* ══ 5 · BUSINESS MODEL ═══════════════════════════════════════ */
+
+.h2-mod {
+  padding: clamp(72px, 11vh, 132px) 0;
+  background: var(--h2-dark);
+  background-image: radial-gradient(120% 80% at 15% 0%, rgba(236, 32, 39, .14), transparent 60%);
+}
+.h2-mod-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(14px, 1.4vw, 22px);
+  margin-top: clamp(34px, 4.4vw, 58px);
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+.h2-mod-card {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px 26px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius:0;
+  background: rgba(255, 255, 255, .035);
+  color: #fff;
+  transition: transform .5s var(--h2-ease), background .4s, border-color .4s;
+  will-change: transform;
+}
+.h2-mod-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, .07);
+  border-color: rgba(236, 32, 39, .55);
+}
+.h2-mod-n {
+  font-family: var(--label);
+  font-size: 10.5px;
+  letter-spacing: .18em;
+  color: var(--h2-red);
+}
+/* ── the figure: a proper stage, not a bullet-sized glyph ──────────────────
+   The object gets a panel of its own at the top of the card, so it reads as an illustration with
+   somewhere to turn rather than as an icon parked beside a heading. Two layers share the box: the
+   flat mark, which assembles and is what everyone gets, and the WebGL wireframe of the same object
+   in the same projection, which fades in over it and rotates. */
+.h2-mod-fig {
+  position: relative;
+  height: 168px;
+  margin: 20px -6px 20px;
+  border-radius:0;
+  overflow: hidden;
+  background:
+    radial-gradient(94% 78% at 50% 42%, rgba(236, 32, 39, .09), transparent 62%),
+    rgba(255, 255, 255, .022);
+}
+/* THE MARK SITS ON ITS OWN LIGHT. These objects were drawn for a near-white page, where the ground
+   pool is an ink wash — on a near-black panel that wash has nothing to darken, so the object would
+   float. The pool is hidden and a soft ellipse of light stands in for it. */
+.h2-mod-mark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 118px;
+  height: 118px;
+  margin: -59px 0 0 -59px;
+  transition: opacity .7s var(--h2-ease);
+}
+.h2-mod-mark .mk-gnd { display: none }
+.h2-mod-fig::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  width: 108px;
+  height: 26px;
+  margin-left: -54px;
+  background: radial-gradient(closest-side, rgba(200, 214, 236, .14), transparent);
+}
+/* the handover waits for the mark to finish assembling, then the same object starts to turn */
+.h2-mod-fig.is-3d .h2-mod-mark { opacity: 0; transition-delay: .35s }
+
+/* the shared figure canvas: one context for all ten objects, fixed over the viewport and
+   transparent everywhere it is not asked to draw. z-index 2 clears the section backgrounds and
+   stays far below the header (80) and the search overlay (400). */
+.fig3d-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+/* base.css sets a colour on h1-h3 site-wide, which beats inheritance from the card — so every
+   heading that lands on a dark panel has to say white out loud */
+.h2-mod-t { margin-top: 16px; font-size: 20px; letter-spacing: -.02em; line-height: 1.2; color: #fff }
+.h2-mod-copy { margin-top: 12px; font-size: 13.5px; line-height: 1.6; color: rgba(255, 255, 255, .68); flex: 1 }
+.h2-mod-go {
+  margin-top: 22px;
+  font-family: var(--label);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.h2-mod-card:hover .h2-arr { transform: translateX(4px) }
+
+/* ══ 6 · TRACK RECORD ═════════════════════════════════════════ */
+
+.h2-rec { padding: clamp(72px, 11vh, 132px) 0; background: var(--h2-paper) }
+.h2-rec-row {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: clamp(26px, 4vw, 66px);
+  align-items: center;
+  padding: clamp(28px, 4vw, 54px) 0;
+  border-top: 1px solid var(--h2-line);
+}
+.h2-rec-flip .h2-rec-media { order: 2 }
+.h2-rec-media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius:0;
+  background: #E8ECF3;
+  will-change: clip-path;
+}
+.h2-rec-media img { width: 100%; height: 100%; object-fit: cover; will-change: transform }
+.h2-rec-t { font-size: clamp(21px, 2.1vw, 32px); letter-spacing: -.03em; line-height: 1.16; margin-top: 14px }
+.h2-rec-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--h2-line);
+}
+.h2-rec-meta dt {
+  font-family: var(--label);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--h2-soft);
+}
+.h2-rec-meta dd { margin: 8px 0 0; font-size: 14px; line-height: 1.45 }
+.h2-rec-go {
+  display: inline-block;
+  margin-top: 26px;
+  font-family: var(--label);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--h2-red);
+}
+.h2-rec-go:hover .h2-arr { transform: translateX(4px) }
+
+/* == 6b · MISSION, the zoom-out =============================================
+   The stage is STICKY rather than ScrollTrigger-pinned: pinning does not survive this project's
+   Lenis + :root zoom setup, which is why the other long sections here use sticky too.
+
+   Every cell of the 3x3 is one viewport, so at --s:1 the centre cell is EXACTLY the screen at any
+   window size — no measuring, nothing to recompute on resize. --g opens the gaps, and both the
+   padding and the radius divide by --s so they arrive at a constant ON-SCREEN size instead of
+   ballooning as the grid shrinks. */
+/* --vpw / --vph are the REAL viewport, measured in JS and divided by the root zoom — see the note
+   in Home2.jsx. The vh fallbacks only apply before that lands, or if it never does. */
+.h2-mission { position: relative; height: calc(var(--vph, 100vh) * 4.2); background: #05070C }
+.h2-mis-stage {
+  position: sticky;
+  top: 0;
+  height: var(--vph, 100vh);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.h2-mis-grid {
+  --s: 1;
+  --g: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--vpw, 100vw) * 3);
+  height: calc(var(--vph, 100vh) * 3);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  transform: translate(-50%, -50%) scale(var(--s));
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+.h2-mis-tile { position: relative; padding: calc(13px * var(--g) / var(--s)) }
+.h2-mis-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius:0;
+}
+/* the eight around the hero sit back a little, so the centre stays the subject even at full
+   zoom-out — a wall of nine equals is a contact sheet, not a statement */
+.h2-mis-tile:not(.h2-mis-hero) img { opacity: .76 }
+
+/* the statement is white type over whatever the hero happens to be, and this hero is a near-white
+   cleanroom — so the scrim is not a mood, it is the only thing making the words legible */
+.h2-mis-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(120% 78% at 50% 50%, rgba(5, 7, 12, .74), rgba(5, 7, 12, .52));
+}
+.h2-mis-copy {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, 100% - var(--h2-pad) * 2);
+  text-align: center;
+  color: #fff;
+  pointer-events: none;
+}
+.h2-mis-copy p {
+  font-family: "Switzer", sans-serif;
+  font-weight: 600;
+  font-size: clamp(26px, 4.1vw, 62px);
+  line-height: 1.1;
+  letter-spacing: -.035em;
+  text-shadow: 0 2px 40px rgba(5, 7, 12, .55);
+}
+/* the calls to action live OUTSIDE the grid, pinned to the stage centre — which is where the
+   centre tile's middle stays throughout — so they hold their size while the picture retreats
+   behind them, as the reference does */
+.h2-mis-cta {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: flex;
+  gap: 14px;
+  opacity: 0;
+}
+/* the buttons finish the sequence sitting on a bright tile, so the outline one carries its own
+   ground — a white outline on white is an outline of nothing */
+.h2-mis-cta .h2-pill-ghost {
+  border-color: rgba(255, 255, 255, .9);
+  color: #fff;
+  background: rgba(5, 7, 12, .5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.h2-mis-cta .h2-pill-ghost:hover { background: #fff; border-color: #fff; color: var(--h2-ink) }
+
+/* ══ 7 · NEWS ═════════════════════════════════════════════════ */
+
+.h2-news { padding: clamp(72px, 11vh, 132px) 0 clamp(40px, 6vh, 70px); background: var(--h2-white) }
+.h2-news .h2-head { margin-bottom: clamp(26px, 3.4vw, 44px) }
+/* NewsRail returns a bare fragment — bar and rail are siblings with no container — so on this
+   page they run edge to edge and the "All" pill and the next arrow are cut off. Same gutter as
+   .h2-wrap, so the rail starts and ends on the page margin while still scrolling full bleed. */
+.h2-news .nr-bar,
+.h2-news .nr-rail { padding-inline: max(var(--h2-pad), (100% - 1360px) / 2) }
+.h2-news .nr-rail { scroll-padding-inline: max(var(--h2-pad), (100% - 1360px) / 2) }
+
+/* ══ 8 · CLOSING ══════════════════════════════════════════════ */
+
+.h2-final {
+  position: relative;
+  overflow: clip;
+  padding: clamp(120px, 24vh, 300px) 0;
+  background: var(--h2-dark);
+}
+.h2-final-media { position: absolute; inset: 0 }
+.h2-final-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 11, 20, .72), rgba(8, 11, 20, .92));
+}
+/* 145% against a ±10% travel: same overscan budget as the record rows */
+.h2-final-bg { position: absolute; inset: -22% 0; width: 100%; height: 145%; object-fit: cover; will-change: transform }
+/* the container is auto-margined and full width; the COPY inside it is what caps at 40ch. Capping
+   the container itself centres the whole block on the page — the same trap as .h2-head. */
+.h2-final-in {
+  position: relative;
+  z-index: 1;
+  width: min(1360px, 100% - var(--h2-pad) * 2);
+  margin-inline: auto;
+}
+.h2-final-in > * { max-width: 42ch }
+.h2-final-in .h2-pill { margin-top: 32px }
+
+/* The footer carries a 40px top margin site-wide, which on a page that ends DARK shows a strip of
+   paper between the closing statement and the footer — a seam where there should be none. */
+.h2-page + .sitefoot { margin-top: 0 }
+
+/* ── responsive ───────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .h2-ms { grid-template-columns: repeat(2, 1fr) }
+  .h2-ind-grid { grid-template-columns: repeat(2, 1fr) }
+  .h2-ind-card:first-child { grid-column: span 2; grid-row: span 1 }
+  .h2-ind-card:nth-child(6), .h2-ind-card:nth-child(7) { grid-column: auto }
+  .h2-mod-grid { grid-template-columns: repeat(2, 1fr) }
+}
+@media (max-width: 760px) {
+  .h2-ind-grid { grid-template-columns: 1fr }
+  .h2-ind-card, .h2-ind-card:first-child { grid-column: auto; grid-row: auto; min-height: 190px }
+  .h2-mod-grid { grid-template-columns: 1fr }
+  .h2-rec-row { grid-template-columns: 1fr }
+  .h2-rec-flip .h2-rec-media { order: 0 }
+  .h2-rec-meta { grid-template-columns: 1fr 1fr }
+  .h2-do-head { align-items: flex-start }
+  /* one column, and the picture always leads: alternating is a rhythm only with two columns */
+  .h2-svc-grid { grid-template-columns: 1fr; gap: 18px }
+  .h2-svc-flip .h2-svc-media { order: -1 }
+  .h2-svc-media { order: -1 }
+.h2-ms { grid-template-columns: 1fr }
+}
+
+/* The 3D is decoration, not information: with reduced motion every plane sits flat, every card
+   stops leaving the page, and the content is exactly as complete. */
+@media (prefers-reduced-motion: reduce) {
+  /* the mission stops being a scroll sequence and becomes one plain frame: the statement, the two
+     buttons under it, one photograph. Nothing is lost but the choreography. */
+  .h2-mission { height: auto }
+  .h2-mis-stage { position: static; height: 88vh; place-items: center }
+  .h2-mis-grid { width: 100%; height: 100%; grid-template-columns: 1fr; grid-template-rows: 1fr }
+  .h2-mis-tile:not(.h2-mis-hero) { display: none }
+  .h2-mis-cta { position: relative; left: auto; top: auto; transform: none; opacity: 1; margin-top: 34px }
+  .h2-mis-stage { display: flex; flex-direction: column; justify-content: center }
+  .h2-hero-planes, .h2-ind-card, .h2-mod-card { transform: none !important }
+  .h2-ind-card:hover, .h2-mod-card:hover, .h2-pill:hover { transform: none !important }
+  .h2-hero-sky { transform: scale(1.1) !important }
+}

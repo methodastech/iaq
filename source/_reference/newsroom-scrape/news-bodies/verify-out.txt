@@ -1,0 +1,838 @@
+{
+ "news-d": {
+  "ovNews": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "bdNews": [],
+  "errs": [],
+  "drift": [
+   "translate3d(-1294.52px, 0px, 0px)",
+   "translate3d(-1225.23px, 0px, 0px)"
+  ],
+  "moved": true,
+  "facts": [
+   "70Published stories",
+   "5Topics covered",
+   "23Months publishing",
+   "Aug 2025Most recent"
+  ],
+  "counts": {
+   "featured": 5,
+   "latest": 6
+  },
+  "groups": [
+   {
+    "h": "Company24 stories",
+    "rows": 6,
+    "more": "Show all 24 Company stories↓"
+   },
+   {
+    "h": "Industry16 stories",
+    "rows": 6,
+    "more": "Show all 16 Industry stories↓"
+   },
+   {
+    "h": "CSR10 stories",
+    "rows": 6,
+    "more": "Show all 10 CSR stories↓"
+   },
+   {
+    "h": "EHS8 stories",
+    "rows": 6,
+    "more": "Show all 8 EHS stories↓"
+   },
+   {
+    "h": "Quality1 story",
+    "rows": 1,
+    "more": ""
+   }
+  ],
+  "opened": [
+   24,
+   6,
+   6,
+   6,
+   1
+  ],
+  "note": "70 stories from the IAQ newsroom · text and photographs as IAQ published them on iaqtechnology.com.my · 15 stories whose posts had no IAQ photograph show newsroom artwork",
+  "imgs": {
+   "total": 77,
+   "broken": []
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "borders": []
+ },
+ "art-house-of-love-chocolate-museum-day-d": {
+  "errs": [],
+  "h1": "IAQ Brings Joy to Children from House of Love with a Day at Chocolate Museum Malaysia",
+  "paras": 4,
+  "heads": 0,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/newsroom/house-of-love-chocolate-museum-day.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 21,
+   "broken": []
+  },
+  "measure": {
+   "lines": 5,
+   "perLine": [
+    71,
+    70,
+    71,
+    75
+   ],
+   "avg": 72,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 609
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "borders": []
+ },
+ "art-malam-bakti-sekalung-kasih-d": {
+  "errs": [],
+  "h1": "IAQ Celebrates Community and Philanthropy at Malam Bakti Sekalung Kasih",
+  "paras": 3,
+  "heads": 0,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/newsroom/malam-bakti-sekalung-kasih.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 21,
+   "broken": []
+  },
+  "measure": {
+   "lines": 5,
+   "perLine": [
+    72,
+    72,
+    75,
+    64
+   ],
+   "avg": 71,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 609
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "borders": []
+ },
+ "art-lim-kar-leang-20-years-d": {
+  "errs": [],
+  "h1": "Honouring Dedication: Mr. Lim Kar Leang Celebrates 20 Years with IAQ",
+  "paras": 3,
+  "heads": 1,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/newsroom/lim-kar-leang-20-years.webp",
+  "gallery": 1,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 23,
+   "broken": []
+  },
+  "measure": {
+   "lines": 8,
+   "perLine": [
+    70,
+    70,
+    73,
+    70,
+    71,
+    59,
+    64
+   ],
+   "avg": 68,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 609
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "borders": []
+ },
+ "art-house-of-love-chinese-new-year-giving-d": {
+  "errs": [],
+  "h1": "Spreading Love & Joy This Chinese New Year",
+  "paras": 5,
+  "heads": 0,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/newsroom/house-of-love-chinese-new-year-giving.webp",
+  "gallery": 3,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 25,
+   "broken": []
+  },
+  "measure": {
+   "lines": 4,
+   "perLine": [
+    70,
+    74,
+    75
+   ],
+   "avg": 73,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 609
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "borders": []
+ },
+ "art-featured-in-the-star-d": {
+  "errs": [],
+  "h1": "IAQ Featured in The Star: A National Spotlight on Excellence in Hi-Tech Facility Construction",
+  "paras": 7,
+  "heads": 2,
+  "lists": 0,
+  "links": [
+   "https://www.thestar.com.my/starpicks/2024/12/24/leading-the-future-in-hi-tech-facility-solutions"
+  ],
+  "lead": "/assets/newsroom/featured-in-the-star.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 22,
+   "broken": []
+  },
+  "measure": {
+   "lines": 6,
+   "perLine": [
+    67,
+    66,
+    70,
+    68,
+    74
+   ],
+   "avg": 69,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 609
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "borders": []
+ },
+ "art-wafer-fab-facility-design-excellence-d": {
+  "errs": [],
+  "h1": "Elevating Engineering Excellence in Wafer Fab Facility Design",
+  "paras": 5,
+  "heads": 0,
+  "lists": 4,
+  "links": [],
+  "lead": "/assets/newsroom/wafer-fab-facility-design-excellence.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 22,
+   "broken": []
+  },
+  "measure": {
+   "lines": 6,
+   "perLine": [
+    64,
+    68,
+    69,
+    64,
+    69
+   ],
+   "avg": 67,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 609
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "borders": []
+ },
+ "art-johor-data-centre-hub-d": {
+  "errs": [],
+  "h1": "Johor Emerges as the Next Data Centre Hub: IAQ at the Forefront",
+  "paras": 4,
+  "heads": 1,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/industries/data-centre.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 22,
+   "broken": []
+  },
+  "measure": {
+   "lines": 4,
+   "perLine": [
+    71,
+    70,
+    76
+   ],
+   "avg": 72,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 609
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "borders": []
+ },
+ "art-ceo-message-2023-d": {
+  "errs": [],
+  "h1": "Reflecting on 2023: A Message from IAQ Group CEO",
+  "paras": 5,
+  "heads": 0,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/hero-campus.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 22,
+   "broken": []
+  },
+  "measure": {
+   "lines": 8,
+   "perLine": [
+    72,
+    74,
+    74,
+    67,
+    67,
+    63,
+    67
+   ],
+   "avg": 69,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 609
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "borders": []
+ },
+ "art-osh-excellence-awards-2024-gold-d": {
+  "errs": [],
+  "h1": "IAQ Honoured with Gold Award for OSH Management at the 20th OSH Excellence Awards 2024",
+  "paras": 5,
+  "heads": 0,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/newsroom/osh-excellence-awards-2024-gold-photo.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 22,
+   "broken": []
+  },
+  "measure": {
+   "lines": 7,
+   "perLine": [
+    72,
+    69,
+    65,
+    62,
+    64,
+    64
+   ],
+   "avg": 66,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 609
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "borders": []
+ },
+ "news-m": {
+  "ovNews": {
+   "sw": 390,
+   "cw": 390
+  },
+  "bdNews": [],
+  "errs": [],
+  "drift": [
+   "translate3d(-985.32px, 0px, 0px)",
+   "translate3d(-915.34px, 0px, 0px)"
+  ],
+  "moved": true,
+  "facts": [
+   "70Published stories",
+   "5Topics covered",
+   "23Months publishing",
+   "Aug 2025Most recent"
+  ],
+  "counts": {
+   "featured": 5,
+   "latest": 6
+  },
+  "groups": [
+   {
+    "h": "Company24 stories",
+    "rows": 6,
+    "more": "Show all 24 Company stories↓"
+   },
+   {
+    "h": "Industry16 stories",
+    "rows": 6,
+    "more": "Show all 16 Industry stories↓"
+   },
+   {
+    "h": "CSR10 stories",
+    "rows": 6,
+    "more": "Show all 10 CSR stories↓"
+   },
+   {
+    "h": "EHS8 stories",
+    "rows": 6,
+    "more": "Show all 8 EHS stories↓"
+   },
+   {
+    "h": "Quality1 story",
+    "rows": 1,
+    "more": ""
+   }
+  ],
+  "opened": [
+   24,
+   6,
+   6,
+   6,
+   1
+  ],
+  "note": "70 stories from the IAQ newsroom · text and photographs as IAQ published them on iaqtechnology.com.my · 15 stories whose posts had no IAQ photograph show newsroom artwork",
+  "imgs": {
+   "total": 77,
+   "broken": []
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "borders": []
+ },
+ "art-house-of-love-chocolate-museum-day-m": {
+  "errs": [],
+  "h1": "IAQ Brings Joy to Children from House of Love with a Day at Chocolate Museum Malaysia",
+  "paras": 4,
+  "heads": 0,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/newsroom/house-of-love-chocolate-museum-day.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 21,
+   "broken": []
+  },
+  "measure": {
+   "lines": 8,
+   "perLine": [
+    42,
+    44,
+    46,
+    49,
+    48,
+    49,
+    46
+   ],
+   "avg": 46,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 362
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "borders": []
+ },
+ "art-malam-bakti-sekalung-kasih-m": {
+  "errs": [],
+  "h1": "IAQ Celebrates Community and Philanthropy at Malam Bakti Sekalung Kasih",
+  "paras": 3,
+  "heads": 0,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/newsroom/malam-bakti-sekalung-kasih.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 21,
+   "broken": []
+  },
+  "measure": {
+   "lines": 7,
+   "perLine": [
+    48,
+    42,
+    44,
+    49,
+    48,
+    48
+   ],
+   "avg": 47,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 362
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "borders": []
+ },
+ "art-lim-kar-leang-20-years-m": {
+  "errs": [],
+  "h1": "Honouring Dedication: Mr. Lim Kar Leang Celebrates 20 Years with IAQ",
+  "paras": 3,
+  "heads": 1,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/newsroom/lim-kar-leang-20-years.webp",
+  "gallery": 1,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 23,
+   "broken": []
+  },
+  "measure": {
+   "lines": 13,
+   "perLine": [
+    46,
+    45,
+    45,
+    45,
+    46,
+    45,
+    38,
+    48,
+    41,
+    42,
+    48,
+    45
+   ],
+   "avg": 45,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 362
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "borders": []
+ },
+ "art-house-of-love-chinese-new-year-giving-m": {
+  "errs": [],
+  "h1": "Spreading Love & Joy This Chinese New Year",
+  "paras": 5,
+  "heads": 0,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/newsroom/house-of-love-chinese-new-year-giving.webp",
+  "gallery": 3,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 25,
+   "broken": []
+  },
+  "measure": {
+   "lines": 6,
+   "perLine": [
+    47,
+    47,
+    46,
+    47,
+    45
+   ],
+   "avg": 46,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 362
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "borders": []
+ },
+ "art-featured-in-the-star-m": {
+  "errs": [],
+  "h1": "IAQ Featured in The Star: A National Spotlight on Excellence in Hi-Tech Facility Construction",
+  "paras": 7,
+  "heads": 2,
+  "lists": 0,
+  "links": [
+   "https://www.thestar.com.my/starpicks/2024/12/24/leading-the-future-in-hi-tech-facility-solutions"
+  ],
+  "lead": "/assets/newsroom/featured-in-the-star.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 22,
+   "broken": []
+  },
+  "measure": {
+   "lines": 9,
+   "perLine": [
+    43,
+    47,
+    43,
+    52,
+    44,
+    42,
+    51,
+    44
+   ],
+   "avg": 46,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 362
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "borders": []
+ },
+ "art-wafer-fab-facility-design-excellence-m": {
+  "errs": [],
+  "h1": "Elevating Engineering Excellence in Wafer Fab Facility Design",
+  "paras": 5,
+  "heads": 0,
+  "lists": 4,
+  "links": [],
+  "lead": "/assets/newsroom/wafer-fab-facility-design-excellence.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 22,
+   "broken": []
+  },
+  "measure": {
+   "lines": 8,
+   "perLine": [
+    48,
+    40,
+    49,
+    45,
+    50,
+    48,
+    38
+   ],
+   "avg": 45,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 362
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "borders": []
+ },
+ "art-johor-data-centre-hub-m": {
+  "errs": [],
+  "h1": "Johor Emerges as the Next Data Centre Hub: IAQ at the Forefront",
+  "paras": 4,
+  "heads": 1,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/industries/data-centre.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 22,
+   "broken": []
+  },
+  "measure": {
+   "lines": 6,
+   "perLine": [
+    47,
+    45,
+    42,
+    44,
+    47
+   ],
+   "avg": 45,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 362
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "borders": []
+ },
+ "art-ceo-message-2023-m": {
+  "errs": [],
+  "h1": "Reflecting on 2023: A Message from IAQ Group CEO",
+  "paras": 5,
+  "heads": 0,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/hero-campus.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 22,
+   "broken": []
+  },
+  "measure": {
+   "lines": 12,
+   "perLine": [
+    46,
+    46,
+    44,
+    46,
+    49,
+    40,
+    42,
+    41,
+    42,
+    44,
+    44
+   ],
+   "avg": 44,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 362
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "borders": []
+ },
+ "art-osh-excellence-awards-2024-gold-m": {
+  "errs": [],
+  "h1": "IAQ Honoured with Gold Award for OSH Management at the 20th OSH Excellence Awards 2024",
+  "paras": 5,
+  "heads": 0,
+  "lists": 0,
+  "links": [],
+  "lead": "/assets/newsroom/osh-excellence-awards-2024-gold-photo.webp",
+  "gallery": 0,
+  "slot": false,
+  "srclink": false,
+  "oldNote": false,
+  "imgs": {
+   "total": 22,
+   "broken": []
+  },
+  "measure": {
+   "lines": 10,
+   "perLine": [
+    50,
+    45,
+    46,
+    41,
+    42,
+    44,
+    42,
+    45,
+    41
+   ],
+   "avg": 44,
+   "fontSize": "17px",
+   "lineHeight": "29.24px",
+   "colWidth": 362
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "borders": []
+ },
+ "home": {
+  "errs": [],
+  "railCards": 12,
+  "railImgs": [
+   "/assets/newsroom/house-of-love-chocolate-museum-day.webp",
+   "/assets/newsroom/osh-week-safety-pledge-signing.webp",
+   "/assets/newsroom/penang-branch-office-opening.webp",
+   "/assets/newsroom/prime-minister-business-roundtable-france.webp",
+   "/assets/newsroom/dosh-kuching-safety-benchmark-sarawak.webp",
+   "/assets/newsroom/university-malaya-engineering-insight.webp",
+   "/assets/industries/photovoltaic.webp",
+   "/assets/newsroom/ims-global-standards-commitment.webp",
+   "/assets/newsroom/annual-dinner-2025.webp",
+   "/assets/newsroom/umengine-career-day-2025.webp",
+   "/assets/newsroom/eid-celebration-2025.webp",
+   "/assets/newsroom/celebrating-2-6-million-safe-manhours.webp"
+  ],
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  }
+ },
+ "all": {
+  "checked": 70,
+  "bad": []
+ }
+}

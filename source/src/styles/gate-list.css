@@ -1,0 +1,16 @@
+/* The gate ledger, owned by components/GateList.jsx and imported by it.
+   10 Sep: these rules were first appended to services.css, which the SERVICE DETAIL pages do
+   not import (only the hub does), so the ledger rendered unstyled and its check mark filled
+   the viewport. A component that imports its own sheet cannot be unstyled on any page. */
+/* ---- the gate ledger on the service pages (10 Sep): see components/GateList.jsx ---- */
+.gl { list-style: none; margin: 22px 0 0; padding: 0; max-width: 760px; border-top: 1px solid var(--line); }
+.gl-i { display: grid; grid-template-columns: 40px minmax(0, 1fr) 28px; align-items: center; gap: 14px;
+  padding: 15px 0; border-bottom: 1px solid var(--line);
+  opacity: 0; transform: translateY(6px); animation: glIn .6s var(--e1) both var(--d, 0ms); }
+@keyframes glIn { to { opacity: 1; transform: none } }
+@media (prefers-reduced-motion: reduce) { .gl-i { animation: none; opacity: 1; transform: none } }
+.gl-n { font-family: var(--num); font-size: 11px; font-weight:600; letter-spacing: .12em; color: var(--blue-bright); }
+.gl-t { font-family: "Switzer", sans-serif; font-size: clamp(16px, 1.4vw, 19px); font-weight: 600; line-height: 1.25; letter-spacing: -.012em; color: var(--ink); }
+.gl-c { width: 28px; height: 28px; display: grid; place-items: center; color: var(--faint); border: 1px solid var(--line); }
+.gl-c svg { width: 18px; height: 18px; }
+.gl-i:hover .gl-c { color: var(--blue-bright); border-color: rgba(236, 32, 39, .35); }

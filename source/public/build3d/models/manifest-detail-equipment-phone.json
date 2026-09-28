@@ -1,0 +1,54 @@
+{
+  "layer": "detail-equipment-phone",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -65.00713099615251,
+      18.798999786376953,
+      -33.27792608869524
+    ],
+    "max": [
+      36.93287144525374,
+      24.404085159301758,
+      1.463701604481031
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      91.23039245605469,
+      18.798999786376953,
+      -36.8365592956543
+    ],
+    "max": [
+      193.17039489746094,
+      24.404085159301758,
+      -2.0949316024780273
+    ]
+  },
+  "storeys": [
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-equipment-phone-3-2f.glb",
+      "triangles": 90464,
+      "sizeKB": 326
+    },
+    {
+      "index": 4,
+      "key": "3f",
+      "name": "3F",
+      "elevation": 21.05,
+      "file": "detail-equipment-phone-4-3f.glb",
+      "triangles": 48,
+      "sizeKB": 2
+    }
+  ],
+  "source": "detail-equipment-phone from detail-equipment: make-lite --error 0.02 --normals flat",
+  "flatShading": true
+}

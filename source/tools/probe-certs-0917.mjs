@@ -1,0 +1,26 @@
+import puppeteer from 'puppeteer-core'
+const OUT = process.argv[2]
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--no-sandbox'] })
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 900 })
+const errs = []; p.on('pageerror', e => errs.push(String(e).slice(0, 140))); p.on('console', m => { if (m.type() === 'error') errs.push(m.text().slice(0, 140)) })
+const out = {}
+await p.goto('http://localhost:5177/policies', { waitUntil: 'networkidle2' }); await new Promise(r => setTimeout(r, 1800))
+let y = await p.evaluate(() => document.querySelector('.gcerts').getBoundingClientRect().top + scrollY - 140)
+await p.evaluate(y => window.scrollTo(0, y), y); await new Promise(r => setTimeout(r, 1500))
+out.policies = await p.evaluate(() => ({ cards: document.querySelectorAll('.gcert').length, files: [...document.querySelectorAll('.gcert-file')].map(a => a.getAttribute('href')), thumbs: [...document.querySelectorAll('.gcert-th img')].map(i => i.complete && i.naturalWidth > 0), meta: [...document.querySelectorAll('.gcert-meta dd')].map(d => d.textContent) }))
+await p.screenshot({ path: `${OUT}/certs-policies.png`, captureBeyondViewport: false })
+const r = await p.goto('http://localhost:5177/docs/certificates/IAQ-ISO-9001-2015-certificate.pdf'); out.pdfStatus = r.status(); out.pdfType = r.headers()['content-type']
+await p.goto('http://localhost:5177/about/commitment', { waitUntil: 'networkidle2' }); await new Promise(r => setTimeout(r, 1800))
+await p.evaluate(() => document.querySelectorAll('details').forEach(d => d.open = true))
+y = await p.evaluate(() => document.querySelector('.cmt-cert').getBoundingClientRect().top + scrollY - 200)
+await p.evaluate(y => window.scrollTo(0, y), y); await new Promise(r => setTimeout(r, 1200))
+out.commitment = await p.evaluate(() => ({ certLines: [...document.querySelectorAll('.cmt-cert b')].map(b => b.textContent), badge: !!document.querySelector('img[src*="badge-highwire-2026"]') }))
+await p.screenshot({ path: `${OUT}/certs-commitment.png`, captureBeyondViewport: false })
+y = await p.evaluate(() => document.querySelector('.awardrow').getBoundingClientRect().top + scrollY - 300)
+await p.evaluate(y => window.scrollTo(0, y), y); await new Promise(r => setTimeout(r, 1200))
+await p.screenshot({ path: `${OUT}/certs-awards.png`, captureBeyondViewport: false })
+await p.goto('http://localhost:5177/policies?launchview', { waitUntil: 'networkidle2' }); await new Promise(r => setTimeout(r, 1800))
+out.launch = await p.evaluate(() => ({ cards: document.querySelectorAll('.gcert').length, slots: [...document.querySelectorAll('.gslot')].filter(e => getComputedStyle(e).display !== 'none').length }))
+await p.evaluate(() => sessionStorage.removeItem('iaq_launchview'))
+console.log(JSON.stringify({ out, errs }))
+await b.close()

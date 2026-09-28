@@ -1,0 +1,11 @@
+import puppeteer from 'puppeteer-core'
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', protocolTimeout: 180000, args: ['--use-angle=metal', '--enable-gpu', '--no-sandbox', '--ignore-gpu-blocklist'] })
+const p = await b.newPage(); const wait = ms => new Promise(r => setTimeout(r, ms)); const errs = []; p.on('pageerror', e => errs.push(String(e).slice(0, 160)))
+await p.setViewport({ width: 390, height: 844, deviceScaleFactor: 1, isMobile: true, hasTouch: true })
+await p.goto('http://localhost:52158/', { waitUntil: 'networkidle0', timeout: 120000 }); await wait(2500)
+const top = await p.evaluate(() => document.getElementById('build3d').getBoundingClientRect().top + scrollY)
+await p.evaluate(v => scrollTo(0, v), top - 600); await wait(1500); await p.evaluate(v => scrollTo(0, v), top); await wait(9000)
+const st = await p.evaluate(() => { const s = document.getElementById('build3d'); const i = s.querySelector('.db3-intro'); const f = s.querySelector('iframe'); const d = f && f.contentDocument; const m = d ? /(\d+)\s*\/\s*\d+\s*placed/i.exec(d.body.innerText) : null; return { cls: s.className, ghost: getComputedStyle(i).opacity, box: (r => [Math.round(r.left), Math.round(r.top), Math.round(r.width), Math.round(r.height)])(i.getBoundingClientRect()), placed: m ? +m[1] : null, docW: document.documentElement.scrollWidth } })
+await p.screenshot({ path: `${process.argv[2]}/db3-intro-phone.png`, captureBeyondViewport: false })
+console.log(JSON.stringify({ errs, st }))
+await b.close()

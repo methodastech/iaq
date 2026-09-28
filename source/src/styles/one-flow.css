@@ -1,0 +1,43 @@
+/* OneFlow (24 Sep): five stations left to right, chevrons between, the unit's chips lit. Codex colours, flat, no glow. */
+.of{--u:#0B8FD8;--ut:#0772AE;--s:#EC2027;--st:#C8141D;--w:#231F20;--wt:#231F20;--y:#0FA968;--yt:#0B8452;--m:#0C1220;margin-top:clamp(20px,3vh,32px);background:#fff;padding:clamp(16px,2vw,26px);box-shadow:inset 0 0 0 1px rgba(12,18,32,.08)}
+.of-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.of-tabs button{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;padding:12px 14px;border:0;cursor:pointer;font:inherit;color:var(--ink,#0C1220);background:#F5F7FA;box-shadow:inset 0 0 0 1px transparent;transition:background .2s,box-shadow .2s,color .2s}
+.of-tabs button i{grid-column:1/-1;font:600 11px/1 "Switzer",sans-serif;font-style:normal;color:var(--ut);margin-bottom:6px}
+.of-tabs button svg{width:20px;height:20px;grid-row:2;color:var(--ut)}
+.of-tabs button b{grid-row:2;font:600 15px/1.15 "Switzer",sans-serif;letter-spacing:-.012em}
+.of-tabs button small{grid-column:2;font-size:12.5px;line-height:1.3;color:var(--soft,#66708A);margin-top:2px}
+.of-tabs button:hover{box-shadow:inset 0 0 0 1.5px var(--u)}
+.of-tabs button.on{background:var(--u);color:#fff}
+.of-tabs button.on i,.of-tabs button.on svg{color:#fff}.of-tabs button.on small{color:rgba(255,255,255,.8)}
+.of-tabs button:focus-visible{outline:2px solid var(--u);outline-offset:2px}
+.of-row{display:grid;grid-template-columns:minmax(0,.8fr) auto minmax(0,1fr) auto minmax(0,1.4fr) auto minmax(0,1fr) auto minmax(0,1.5fr);gap:0 8px;align-items:start;margin-top:18px;animation:ofIn .45s var(--e1,ease) both}
+@keyframes ofIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.of-st{min-width:0}
+.of-st h4{margin:0 0 9px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 8px;font:600 13.5px/1.2 "Switzer",sans-serif;color:var(--ct)}
+.of-st h4 i{width:8px;height:8px;border-radius:50%;background:var(--c);align-self:center}
+.of-st h4 span{font:500 12px/1.2 "Instrument Sans",system-ui,sans-serif;color:var(--soft,#66708A)}
+.of-st.k-u{--c:var(--u);--ct:var(--ut)}.of-st.k-m{--c:#0C1220;--ct:#0C1220}.of-st.k-s{--c:var(--s);--ct:var(--st)}.of-st.k-w{--c:var(--w);--ct:var(--wt)}.of-st.k-y{--c:var(--y);--ct:var(--yt)}
+.of-st.k-m h4 i{background:#fff;box-shadow:inset 0 0 0 2px #0C1220}
+.of-chips{display:flex;flex-wrap:wrap;gap:5px}
+.of-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;font:600 12.5px/1.2 "Switzer",sans-serif;letter-spacing:-.005em;color:var(--ct);background:color-mix(in srgb,var(--c) 12%,#fff);transition:opacity .25s,background .25s}
+.of-chip svg{width:14px;height:14px}
+.of-chip b{font-weight:600;font-size:11px;color:var(--ct);opacity:.8}
+.of-chip.sm{font-weight:500;font-size:12px;padding:5px 8px}
+.of-st.k-u .of-chip.on{background:var(--u);color:#fff}
+.of-st.k-m .of-chip{background:#fff;box-shadow:inset 0 0 0 1.5px #0C1220}
+.of-chip.ask{background:transparent;outline:1.5px dashed var(--c);outline-offset:-1.5px}
+.of-chip.off{opacity:.32}
+.of-chev{align-self:start;margin-top:34px;color:rgba(12,18,32,.35)}   /* beside the first row of chips, not lost mid-column */
+.of-chev svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter}
+.of-read{margin:18px 0 0;padding:14px 16px;background:#F3F6FB;font-size:15px;line-height:1.55;color:var(--soft,#48536A);max-width:none;animation:ofIn .45s var(--e1,ease) both}
+.of-read b{font-family:"Switzer",sans-serif;font-weight:600}
+.of-read .c-u{color:var(--ut)}.of-read .c-s{color:var(--st)}.of-read .c-w{color:var(--wt)}.of-read .c-y{color:var(--yt)}.of-read .c-m{color:#0C1220}
+.of .ab-x{display:none}
+.of-key{margin:12px 0 0;display:flex;flex-wrap:wrap;gap:6px 16px;font:500 12px/1 "Switzer",sans-serif;color:var(--soft,#66708A)}
+.of-key span{display:inline-flex;align-items:center;white-space:nowrap}
+.of-key i{display:inline-block;width:14px;height:10px;margin-right:6px;vertical-align:-1px;background:var(--u)}
+.of-key i.ask{background:transparent;outline:1.5px dashed var(--u);outline-offset:-1.5px}
+.of-key i.off{background:rgba(12,18,32,.14)}
+@media(max-width:1100px){.of-row{grid-template-columns:1fr;gap:10px}.of-chev{margin:0;transform:rotate(90deg);justify-self:start;margin-left:6px}}
+@media(max-width:640px){.of-tabs{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.of-row,.of-read{animation:none}}

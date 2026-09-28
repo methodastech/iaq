@@ -1,0 +1,11 @@
+import puppeteer from 'puppeteer-core'
+const sleep = ms => new Promise(r => setTimeout(r, ms))
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--use-angle=metal','--enable-gpu'] })
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 900 }); await p.setCacheEnabled(false)
+p.evaluateOnNewDocument(() => { const WS = window.WebSocket; window.WebSocket = function (u, pr) { if (String(pr).includes('vite')) return { addEventListener() {}, removeEventListener() {}, send() {}, close() {}, readyState: 0 }; return new WS(u, pr) } })
+const logs = []; p.on('console', m => logs.push(m.type() + ' ' + m.text().slice(0, 300))); p.on('pageerror', e => logs.push('pageerror ' + String(e.message || e).slice(0, 300)))
+await p.goto('http://localhost:49996/?nointro=1', { waitUntil: 'domcontentloaded', timeout: 90000 }); await sleep(3500)
+await p.evaluate(() => document.querySelector('#build3d').scrollIntoView({ block: 'start' }))
+await p.waitForFunction(() => { const f = document.querySelector('.db3-frame'); return f && f.contentDocument && f.contentDocument.querySelector('#overlay.hidden') }, { timeout: 90000, polling: 500 }); await sleep(2500)
+const st = await p.evaluate(() => { const f = document.querySelector('.db3-frame'), W = f.contentWindow; return { frameW: f.clientWidth, frameH: f.clientHeight, innerW: W.innerWidth, look: typeof W.__iaqLook, off: W.__iaqLookOff, mm: W.matchMedia('(max-width: 899px), (hover: none) and (pointer: coarse)').matches, active: W.__iaqLook && W.__iaqLook.active(W.__iaqRenderer), gl2: W.__iaqRenderer && W.__iaqRenderer.capabilities.isWebGL2, src: [...f.contentDocument.scripts].map(s => s.src.split('/').pop()) } })
+console.log(JSON.stringify(st)); console.log(logs.filter(l => !/\[vite\]|Download the React/.test(l)).slice(0, 25).join('\n')); await b.close()

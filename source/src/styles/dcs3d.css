@@ -1,0 +1,159 @@
+/* District cooling, in 3D, and Energy as a Service (25 Sep, EFM). The stage is the model; the column beside it is the
+   tour; the three delivery models follow as cards. Blue is this unit's colour; supply blue and return red are the pipes'. */
+.dcs3{ --dc-s:#1E88E5; --dc-r:#EF4B2A; --dc-g:#27A560; }   /* 26 Sep: the return drawn warm */
+.dcs3-wrap{ display:grid; grid-template-columns:minmax(0, 1.6fr) minmax(300px, .82fr); gap:clamp(18px, 2.2vw, 32px); margin-top:clamp(24px, 3.4vh, 40px); align-items:stretch; }
+
+/* ---- the stage ---- */
+.dcs3-stage{ position:relative; height:clamp(460px, calc(66vh / var(--zoomf, 1)), 680px); background:#F7F9FC; overflow:hidden; box-shadow:0 30px 60px -44px rgba(12,18,32,.35); }
+.dcs3-stage canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; opacity:0; transition:opacity .8s var(--e1, ease); touch-action:pan-y; }
+.dcs3-stage.is-ready canvas{ opacity:1; }
+.dcs3-load{ position:absolute; inset:0; display:grid; place-content:center; justify-items:center; gap:12px; color:#48536A; font:600 13px/1 "Switzer", sans-serif; transition:opacity .5s ease; pointer-events:none; }
+.dcs3-stage.is-ready .dcs3-load{ opacity:0; }
+.dcs3-spin{ width:28px; height:28px; border-radius:50%; border:2.5px solid rgba(11,143,216,.18); border-top-color:#0B8FD8; animation:dcs3spin 1s linear infinite; }
+@keyframes dcs3spin{ to{ transform:rotate(360deg) } }
+
+/* labels on the model */
+.dcs3-labels{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.dcs3-lb{ position:absolute; left:0; top:0; white-space:nowrap; padding:6px 9px; background:rgba(255,255,255,.96); color:#0C1220; font:600 12.5px/1.15 "Switzer", sans-serif; letter-spacing:-.005em; box-shadow:0 10px 24px -14px rgba(12,18,32,.45); opacity:0; transition:opacity .45s ease; will-change:transform; }
+.dcs3-lb.on{ opacity:1; }
+.dcs3-lb::after{ content:""; position:absolute; left:50%; bottom:-5px; width:8px; height:8px; margin-left:-4px; background:inherit; transform:rotate(45deg); box-shadow:3px 3px 6px -4px rgba(12,18,32,.35); }
+.dcs3-lb.is-note{ color:#0772AE; }
+.dcs3-lb.is-flow.is-s{ background:var(--dc-s); color:#fff; }
+.dcs3-lb.is-flow.is-r{ background:var(--dc-r); color:#fff; }
+.dcs3-lb.is-ets{ background:#0C1220; color:#fff; }
+.dcs3-lb.is-pin{ display:inline-flex; align-items:center; gap:7px; }
+.dcs3-lb.is-pin i{ width:8px; height:8px; border-radius:50%; background:#0B8FD8; box-shadow:0 0 0 3px rgba(11,143,216,.2); }
+.dcs3-tip{ position:absolute; left:0; top:0; padding:6px 9px; background:#0C1220; color:#fff; font:600 12px/1.1 "Switzer", sans-serif; white-space:nowrap; opacity:0; transition:opacity .2s ease; pointer-events:none; }
+.dcs3-tip.on{ opacity:1; }
+
+.dcs3-tools{ position:absolute; top:14px; right:14px; display:grid; gap:6px; z-index:2; }
+.dcs3-tools button{ width:38px; height:38px; display:grid; place-items:center; border:0; background:rgba(255,255,255,.96); color:#0C1220; cursor:pointer; box-shadow:0 10px 24px -16px rgba(12,18,32,.5); transition:background .2s, color .2s; }
+.dcs3-tools button:hover{ background:#0C1220; color:#fff; }
+.dcs3-tools svg, .dcs3-play svg{ width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.dcs3-legend{ position:absolute; left:14px; bottom:14px; z-index:2; display:flex; flex-wrap:wrap; gap:6px 16px; margin:0; padding:9px 12px; list-style:none; background:rgba(255,255,255,.94); font:500 12.5px/1.2 "Instrument Sans", sans-serif; color:#48536A; box-shadow:0 10px 24px -18px rgba(12,18,32,.45); }
+.dcs3-legend li{ display:inline-flex; align-items:center; gap:7px; }
+.dcs3-legend i{ width:18px; height:6px; display:inline-block; }
+.dcs3-legend i.s{ background:var(--dc-s); } .dcs3-legend i.r{ background:var(--dc-r); } .dcs3-legend i.e{ width:10px; height:10px; background:#fff; box-shadow:inset 0 -3px 0 var(--dc-s), 0 0 0 1px rgba(12,18,32,.18); }
+.dcs3-hint{ position:absolute; right:16px; bottom:14px; margin:0; font:500 12px/1 "Instrument Sans", sans-serif; color:#7B8599; pointer-events:none; }
+
+/* ---- the tour ---- */
+.dcs3-side{ display:flex; flex-direction:column; gap:12px; min-width:0; }
+.dcs3-play{ align-self:flex-start; display:inline-flex; align-items:center; gap:9px; height:44px; padding:0 18px; border:0; background:#0C1220; color:#fff; font:600 14px/1 "Switzer", sans-serif; cursor:pointer; transition:background .2s; }
+.dcs3-play:hover{ background:#0772AE; }
+.dcs3-play svg{ fill:currentColor; stroke:none; width:15px; height:15px; }
+.dcs3-steps{ list-style:none; margin:0; padding:0; display:grid; gap:4px; }
+.dcs3-steps button{ width:100%; display:grid; grid-template-columns:34px minmax(0, 1fr); column-gap:10px; row-gap:4px; align-items:baseline; padding:12px 14px; border:0; background:transparent; text-align:left; cursor:pointer; color:inherit; font:inherit; transition:background .3s ease, box-shadow .3s ease; }
+.dcs3-steps button:hover{ background:rgba(11,143,216,.05); }
+.dcs3-steps .n{ font:700 13px/1 "Switzer", sans-serif; color:#0B8FD8; }
+.dcs3-steps b{ font:600 16.5px/1.25 "Switzer", sans-serif; letter-spacing:-.015em; color:#0C1220; }
+.dcs3-steps .d{ grid-column:2; font-size:14px; line-height:1.5; color:#66708A; }
+.dcs3-steps li.on button{ background:#fff; box-shadow:0 18px 36px -26px rgba(12,18,32,.4); }
+.dcs3-steps li.on .n{ display:inline-grid; place-items:center; width:26px; height:26px; margin-top:-6px; background:#0B8FD8; color:#fff; }
+.dcs3-steps li.on .d{ color:#48536A; }
+
+/* ---- Energy as a Service ---- */
+.dcs3-eaas{ margin-top:clamp(56px, 8vh, 96px); }
+.dcs3-h3{ margin:0; font:600 clamp(24px, 2.3vw, 34px)/1.1 "Switzer", sans-serif; letter-spacing:-.025em; color:#0C1220; }
+.dcs3-h3 em{ font-style:normal; color:var(--blue, #0B8FD8); white-space:nowrap; }
+.dcs3-models{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:clamp(14px, 1.6vw, 22px); margin-top:clamp(20px, 3vh, 32px); align-items:stretch; }
+.dcs3-m{ display:flex; flex-direction:column; padding:clamp(20px, 2vw, 28px); background:#fff; box-shadow:0 24px 48px -38px rgba(12,18,32,.4); transition:background .35s ease, box-shadow .35s ease; }
+.dcs3-m.on{ background:color-mix(in srgb, #0B8FD8 5%, #fff); box-shadow:0 0 0 1.5px rgba(11,143,216,.45), 0 24px 48px -38px rgba(12,18,32,.4); }
+.dcs3-m header{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.dcs3-mi svg{ width:30px; height:30px; fill:none; stroke:#0B8FD8; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; display:block; }
+.dcs3-dur{ padding:5px 9px; background:rgba(11,143,216,.09); color:#0772AE; font:600 12.5px/1 "Switzer", sans-serif; }
+.dcs3-m h4{ margin:16px 0 0; font:600 19px/1.22 "Switzer", sans-serif; letter-spacing:-.018em; color:#0C1220; }
+.dcs3-md{ margin:8px 0 0; font-size:14.5px; line-height:1.5; color:#48536A; }
+.dcs3-ms{ list-style:none; margin:16px 0 0; padding:0; display:grid; gap:7px; }
+.dcs3-ms li{ display:flex; align-items:center; gap:10px; font-size:14px; line-height:1.35; color:#0C1220; }
+.dcs3-ms li span{ flex:none; width:22px; height:22px; display:inline-grid; place-items:center; background:#F1F5FA; color:#0772AE; font:700 11.5px/1 "Switzer", sans-serif; }
+.dcs3-fig{ margin:20px 0 0; padding:14px 12px 10px; background:#F7F9FC; }
+.dcs3-fig figcaption{ margin-top:8px; font-size:12px; line-height:1.4; color:#7B8599; }
+.dcs3-bars, .dcs3-bot{ display:block; width:100%; height:auto; }
+.dcs3-bv{ font:700 11px/1 "Switzer", sans-serif; fill:#fff; }
+.dcs3-bl{ font:600 12px/1 "Switzer", sans-serif; fill:#48536A; }
+.dcs3-dg{ font:600 12.5px/1 "Switzer", sans-serif; fill:#0C1220; }
+.dcs3-dg.is-w{ fill:#fff; }
+.dcs3-ds{ font:500 11.5px/1 "Instrument Sans", sans-serif; fill:#48536A; }
+.dcs3-key{ list-style:none; margin:8px 0 0; padding:0; display:grid; gap:4px; font-size:12.5px; line-height:1.35; color:#48536A; }
+.dcs3-key li{ display:flex; align-items:center; gap:8px; }
+.dcs3-key i{ flex:none; width:10px; height:10px; }
+.dcs3-pk table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+.dcs3-pk th, .dcs3-pk td{ padding:9px 8px; text-align:center; font-weight:500; color:#0C1220; }
+.dcs3-pk thead th{ font:600 12.5px/1.25 "Switzer", sans-serif; color:#48536A; vertical-align:bottom; }
+.dcs3-pk tbody th{ text-align:left; font-weight:500; }
+.dcs3-pk tbody tr:nth-child(odd){ background:#fff; }
+.dcs3-pk i{ display:inline-block; width:12px; height:12px; border-radius:50%; }
+.dcs3-pk i.y{ background:var(--dc-g); box-shadow:0 0 0 3px rgba(39,165,96,.18); }
+.dcs3-pk i.n{ background:transparent; box-shadow:inset 0 0 0 1.5px #B7C0CD; }
+.dcs3-pk-h{ margin:14px 0 0; font:600 12.5px/1 "Switzer", sans-serif; color:#48536A; }
+.dcs3-cov{ list-style:none; margin:8px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:6px; }
+.dcs3-cov li{ display:inline-flex; align-items:center; gap:7px; padding:7px 10px; background:#fff; font:600 13px/1 "Switzer", sans-serif; color:#0C1220; }
+.dcs3-cov li::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--dc-g); }
+.dcs3-see{ margin-top:auto; padding-top:18px; align-self:flex-start; border:0; background:none; color:#0772AE; font:600 14px/1 "Switzer", sans-serif; cursor:pointer; display:inline-flex; align-items:center; gap:8px; }
+.dcs3-see::after{ content:"\2192"; transition:transform .25s ease; }
+.dcs3-see:hover::after{ transform:translateX(3px); }
+.dcs3-by{ max-width:70ch; margin-top:clamp(28px, 4vh, 44px) !important; }
+.dcs3-nw{ white-space:nowrap; }
+.dcs3-sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+
+/* the stage switch: the 3D model or IAQ's own animation */
+.dcs3-view{ position:absolute; top:14px; left:14px; z-index:3; display:flex; padding:3px; background:rgba(255,255,255,.96); box-shadow:0 10px 24px -16px rgba(12,18,32,.5); }
+.dcs3-view button{ border:0; background:transparent; padding:8px 12px; font:600 13px/1 "Switzer", sans-serif; color:#48536A; cursor:pointer; transition:background .2s, color .2s; }
+.dcs3-view button[aria-pressed=true]{ background:#0C1220; color:#fff; }
+.dcs3-view button:hover:not([aria-pressed=true]){ color:#0C1220; }
+.dcs3-anim{ position:absolute; inset:0; z-index:2; margin:0; background:#FAFAFA; display:grid; place-items:center; }
+.dcs3-anim video{ width:100%; height:100%; object-fit:contain; display:block; }
+.dcs3-anim figcaption{ position:absolute; left:14px; bottom:14px; padding:6px 9px; background:rgba(255,255,255,.94); font:600 12px/1.2 "Switzer", sans-serif; color:#48536A; }
+.dcs3-stage.is-anim .dcs3-labels, .dcs3-stage.is-anim .dcs3-tools, .dcs3-stage.is-anim .dcs3-legend, .dcs3-stage.is-anim .dcs3-hint{ display:none; }
+
+@media (max-width:1100px){
+  .dcs3-models{ grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); }
+  .dcs3-models .dcs3-m:last-child{ grid-column:1 / -1; }
+}
+@media (max-width:900px){
+  .dcs3-wrap{ grid-template-columns:minmax(0, 1fr); }
+  .dcs3-stage{ height:clamp(380px, 78vw, 560px); }
+  .dcs3-steps .d{ display:none; }
+  .dcs3-steps li.on .d{ display:block; }
+  .dcs3-hint{ display:none; }
+  .dcs3-legend{ font-size:11.5px; gap:4px 12px; padding:7px 9px; left:10px; bottom:10px; right:60px; }
+}
+@media (max-width:640px){
+  .dcs3-models{ grid-template-columns:minmax(0, 1fr); }
+  .dcs3-lb{ font-size:11px; padding:5px 7px; }
+}
+@media (prefers-reduced-motion: reduce){ .dcs3-spin{ animation:none; } .dcs3-stage canvas, .dcs3-lb{ transition:none; } }
+
+/* 26 Sep (Bazil: "label numbers or interact with the visual"): the five steps numbered on the model */
+.dcs3-num{position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;border:0;padding:0;cursor:pointer;pointer-events:auto;display:grid;place-items:center;background:#0C1220;color:#fff;font:600 13px/1 "Switzer",sans-serif;box-shadow:0 0 0 3px rgba(255,255,255,.9),0 8px 18px -8px rgba(12,18,32,.6);transition:background .25s,transform .25s,opacity .25s}
+.dcs3-num::after{content:"";position:absolute;inset:-6px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(11,143,216,.55);opacity:0;animation:dcsPing 2.6s cubic-bezier(.2,.7,.2,1) infinite}
+.dcs3-num:hover{background:#0B8FD8}
+.dcs3-num.on{background:#0B8FD8;width:32px;height:32px;font-size:14px}
+.dcs3-num.on::after{animation-duration:1.8s}
+.dcs3-num.dim{opacity:.45}
+@keyframes dcsPing{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+@media (prefers-reduced-motion:reduce){.dcs3-num::after{animation:none}}
+/* the list's numbers read as the same markers */
+.dcs3-steps .n{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#0C1220;color:#fff;font:600 11.5px/1 "Switzer",sans-serif}
+.dcs3-steps li.on .n{background:#0B8FD8}
+
+/* 26 Sep (Bazil: "make sure the interface is clean and beautiful"): a quiet marker is white with an ink number, not a grey
+   smudge; the lit one is the unit blue with its halo */
+.dcs3-num.dim{opacity:1;background:#fff;color:#0C1220;box-shadow:0 0 0 1px rgba(12,18,32,.14),0 6px 14px -8px rgba(12,18,32,.45)}
+.dcs3-num.dim::after{animation:none;opacity:0}
+.dcs3-num.dim:hover{background:#0B8FD8;color:#fff}
+
+/* 26 Sep, IAQ graphic rules (square, not round; no rings or glows; no grey lines): the step markers, list numbers,
+   pins, bullets and package dots are squares; the ping ring is off */
+.dcs3-num{border-radius:0;box-shadow:0 0 0 2px #fff,0 8px 18px -8px rgba(12,18,32,.6)}
+.dcs3-num.on{width:30px;height:30px}
+.dcs3-num::after{display:none}
+.dcs3-num.dim{box-shadow:0 0 0 2px #fff,0 6px 14px -8px rgba(12,18,32,.45)}
+.dcs3-steps .n{border-radius:0}
+.dcs3-lb.is-pin i{border-radius:0;box-shadow:none}
+.dcs3-pk i{border-radius:0}
+.dcs3-cov li::before{border-radius:0}
+.dcs3-legend i.e{box-shadow:inset 0 -3px 0 var(--dc-s);background:#DCE9F7}
+/* 26 Sep, graphic-rules audit: the loading mark is a square in IAQ red, not a blue ring */
+.dcs3-spin{border-radius:0;width:22px;height:22px;border:2px solid rgba(236,32,39,.2);border-top-color:#EC2027}

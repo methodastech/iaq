@@ -1,0 +1,71 @@
+/* WorksBand · the four kinds of work, detailed (26 Sep) */
+.sm-works{--unit:#0B8FD8;--unit-t:#0772AE;--svc:#EC2027;--svc-t:#C8141D;--work:#231F20;--work-t:#231F20;--sys:#0FA968;--sys-t:#0B8452;--e1:cubic-bezier(.2,.7,.2,1);background:#F3F5F8}
+.sm-works h2{color:var(--work-t)}
+.sm-works .pg-lede{max-width:64ch}
+.wk-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:clamp(24px,3.4vh,40px)}
+.wk-card{background:#fff;padding:22px 22px 20px;display:flex;flex-direction:column;gap:14px;opacity:0;transform:translateY(12px);transition:opacity .55s var(--e1) calc(var(--i,0) * .09s),transform .55s var(--e1) calc(var(--i,0) * .09s)}
+.sm-works.in .wk-card{opacity:1;transform:none}
+.wk-head{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center}
+.wk-ic{display:grid;place-items:center;width:44px;height:44px;color:var(--work)}
+.wk-card.k-s .wk-ic{color:var(--svc)}
+.wk-ic svg{width:36px;height:36px}
+.wk-head h3{margin:0;font:600 21px/1.1 "Switzer",sans-serif;letter-spacing:-.02em;color:#0C1220}
+.wk-head h3 small{display:block;margin-top:4px;font:400 13px/1.3 "Instrument Sans",sans-serif;color:rgba(12,18,32,.6)}
+.wk-line{margin:0;font:600 15.5px/1.35 "Switzer",sans-serif;color:#0C1220}
+.wk-row{display:grid;gap:6px}
+.wk-k{font:500 12px/1.2 "Instrument Sans",sans-serif;color:rgba(12,18,32,.55)}
+.wk-sys{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:5px}
+.wk-sys li{padding:5px 8px;background:color-mix(in srgb,var(--sys) 13%,#fff);color:var(--sys-t);font:600 12px/1.25 "Switzer",sans-serif}
+.wk-units{display:flex;flex-wrap:wrap;gap:5px}
+.wk-units b{padding:5px 8px;background:var(--ub,var(--unit));color:#fff;font:600 12px/1.2 "Switzer",sans-serif}
+.wk-pins{display:flex;flex-wrap:wrap;gap:5px}
+.wk-pins b{display:grid;place-items:center;width:24px;height:24px;background:var(--work);color:#fff;font:600 11.5px/1 "Switzer",sans-serif}
+.wk-pins b.p-s{background:var(--svc)}
+@media(max-width:1100px){.wk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.wk-grid{grid-template-columns:1fr;gap:10px}.wk-card{padding:18px}}
+@media(prefers-reduced-motion:reduce){.wk-card{transition:none;opacity:1;transform:none}}
+
+/* 25 Sep, night (Bazil: "make their vertical card correct", "make the card more premium looking"). Every card is a
+   subgrid of the same six rows, so the heads, the lines, Systems, Done by and In the model start at one height across
+   all four whatever wraps. Premium pass: a kind-coloured top rule, more air, systems as a clean list with a green mark
+   (the chip wall read busy), tinted model numbers, a lift on hover. */
+.wk-grid{grid-template-rows:none;grid-auto-rows:auto;row-gap:0;column-gap:16px}
+.wk-card{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:18px;padding:28px 26px 26px;position:relative;
+  box-shadow:0 1px 0 rgba(12,18,32,.04),0 22px 44px -34px rgba(12,18,32,.45);
+  transition:opacity .55s var(--e1) calc(var(--i,0) * .09s),transform .55s var(--e1) calc(var(--i,0) * .09s),box-shadow .35s ease}
+.wk-card::before{content:none}
+/* 26 Sep, 06:00 (Bazil, 05:40: "no separated lines", "most common use should be the 1 line straight", "cannot have too
+   many lines"): the four red card tops read as one line cut into four; one straight red line runs over the whole grid */
+.wk-grid{position:relative}
+.wk-grid::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--red,#EC2027);z-index:1;pointer-events:none}
+.sm-works.in .wk-card:hover{transform:translateY(-3px);box-shadow:0 1px 0 rgba(12,18,32,.04),0 30px 54px -30px rgba(12,18,32,.5)}
+.wk-head{grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:start}
+.wk-ic{width:40px;height:40px}
+.wk-ic svg{width:34px;height:34px}
+.wk-head h3{font-size:22px;padding-top:2px}
+.wk-head h3 small{margin-top:6px;font-size:13px;line-height:1.35}
+.wk-line{font-size:16px;line-height:1.35;letter-spacing:-.005em}
+.wk-row{gap:9px;align-content:start}
+.wk-k{font:500 12px/1.2 "Instrument Sans",sans-serif;color:rgba(12,18,32,.5)}
+.wk-sys{display:grid;gap:8px}
+.wk-sys li{display:grid;grid-template-columns:6px minmax(0,1fr);gap:10px;align-items:baseline;padding:0;background:none;color:#0C1220;font:500 13.5px/1.35 "Instrument Sans",sans-serif}
+.wk-sys li::before{content:"";width:6px;height:6px;background:var(--sys);transform:translateY(-1px)}
+.wk-units b{padding:6px 9px}
+.wk-pins b{width:26px;height:26px;background:color-mix(in srgb,var(--work) 20%,#fff);color:var(--work-t);font-size:12px}
+.wk-pins b.p-s{background:color-mix(in srgb,var(--svc) 10%,#fff);color:var(--svc-t)}
+.wk-why{display:grid;grid-template-columns:40px minmax(0,auto) minmax(0,1fr);gap:4px 18px;align-items:center;margin:16px 0 0;padding:18px 26px;background:#fff;
+  box-shadow:0 1px 0 rgba(12,18,32,.04),0 22px 44px -34px rgba(12,18,32,.45);font:400 14.5px/1.5 "Instrument Sans",sans-serif;color:rgba(12,18,32,.75)}
+.wk-why-ic{display:grid;place-items:center;width:40px;height:40px;color:var(--svc)}
+.wk-why-ic svg{width:30px;height:30px}
+.wk-why b{font:600 15px/1.3 "Switzer",sans-serif;color:var(--svc-t);white-space:nowrap}
+@media(max-width:900px){.wk-why{grid-template-columns:40px minmax(0,1fr);padding:18px 20px}.wk-why>span:last-child{grid-column:1 / -1}.wk-why b{white-space:normal}}
+.wk-head h3,.wk-head h3 small{max-width:none;text-wrap:pretty}
+@media(max-width:1100px){.wk-card{margin-bottom:16px}}
+@media(max-width:640px){.wk-card{padding:22px 20px;row-gap:14px}}
+@media(prefers-reduced-motion:reduce){.sm-works.in .wk-card:hover{transform:none}}
+
+/* embedded in the Codex: the cards and the note, no head, no band */
+.sm-works-embed{padding:0!important;background:transparent}
+.sm-works-embed #sm-works-h,.sm-works-embed>.pg-in>.pg-lede{display:none}
+.sm-works-embed>.pg-in{max-width:none;padding:0}
+.sm-works-embed .wk-grid{margin-top:clamp(14px,2vh,22px)}

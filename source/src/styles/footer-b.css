@@ -1,0 +1,30 @@
+/* Footer option B (22 Sep 2026). See components/FooterB.jsx. Light ground, two square cards, the giant faint wordmark. */
+.fb { position: relative; overflow: hidden; background: #F3F5F8; color: var(--ink); padding: clamp(48px, 7vh, 88px) var(--gut) 0; }
+.fb-in { position: relative; z-index: 1; max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: minmax(280px, .36fr) minmax(0, 1fr); gap: 14px; }
+.fb-brand { display: flex; flex-direction: column; gap: 22px; padding: clamp(22px, 2.4vw, 34px); min-height: 360px;
+  background: radial-gradient(120% 90% at 100% 100%, rgba(236,32,39,.28), transparent 55%), linear-gradient(160deg, #111A33 0%, #0A101F 70%); color: #fff; }
+.fb-mark { align-self: flex-start; background: #fff; padding: 14px 16px; }
+.fb-mark img { display: block; width: clamp(120px, 11vw, 160px); height: auto; }
+.fb-say { margin-top: auto; }
+.fb-tag { margin: 0; font: 600 clamp(19px, 1.6vw, 24px)/1.2 "Switzer", sans-serif; letter-spacing: -.02em; color: #fff; max-width: 18ch; }
+.fb-since { margin: 8px 0 0; font-size: 14.5px; line-height: 1.5; color: #AEB8CC; }
+.fb-social { list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; }
+.fb-social a { display: inline-flex; align-items: center; gap: 10px; min-height: 42px; padding: 0 16px 0 13px; background: rgba(255,255,255,.08); color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 600; transition: background .2s; }
+.fb-social a:hover { background: rgba(255,255,255,.16); }
+.fb-social svg { width: 16px; height: 16px; }
+.fb-links { display: flex; flex-direction: column; padding: clamp(22px, 2.4vw, 34px); background: #fff; box-shadow: 0 1px 2px rgba(12,18,32,.04); }
+.fb-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 48px); }
+.fb .fb-cols .fb-h { margin: 0 0 14px; font: 600 13px/1.2 "Instrument Sans", sans-serif; letter-spacing: 0; color: var(--faint); }
+.fb-cols a { display: block; padding: 5px 0; color: var(--ink); text-decoration: none; font-size: 15px; transition: color .2s; }
+.fb-cols a:hover { color: #EC2027; }
+.fb-cta { display: inline-flex !important; align-items: center; gap: 10px; margin-top: 14px; padding: 12px 18px !important; background: #EC2027; color: #fff !important; font-weight: 600; }
+.fb-cta:hover { background: #C8141D; }
+.fb-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; margin-top: auto; padding-top: clamp(28px, 5vh, 56px); font-size: 12.5px; color: var(--faint); }
+.fb-base a { color: var(--ink); text-decoration: none; font-weight: 600; }
+.fb-word { position: relative; z-index: 0; max-width: var(--maxw); margin: clamp(10px, 2vh, 24px) auto 0; height: clamp(90px, 13vw, 230px); overflow: hidden; pointer-events: none; }
+.fb-word img { display: block; width: 100%; height: auto; filter: grayscale(1) brightness(1.2); opacity: .08; }
+/* the review ribbon keeps its strip under the cards; the dark footer's own base line is not shown in B */
+.fb + .sitefoot { background: #F3F5F8; margin-top: 0; padding-top: 0; }
+.fb + .sitefoot .f-base { display: none; }
+@media (max-width: 900px) { .fb-in { grid-template-columns: 1fr; } .fb-brand { min-height: 0; } .fb-cols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .fb-cols { grid-template-columns: 1fr; } }

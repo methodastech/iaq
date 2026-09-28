@@ -1,0 +1,12 @@
+import puppeteer from 'puppeteer-core'
+const [out, t = '0'] = process.argv.slice(2)
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new' })
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 1000, deviceScaleFactor: 1.5 })
+await p.goto('http://localhost:5177/design.html', { waitUntil: 'networkidle2' }); await p.evaluate(() => document.fonts.ready)
+await p.addStyleTag({ content: '.bmws{visibility:hidden}' })
+const el = await p.$('#art-services'); await p.addStyleTag({ content: 'html{scroll-behavior:auto!important}' }); await el.evaluate(e => e.scrollIntoView({ block: 'center', behavior: 'instant' }))
+await new Promise(r => setTimeout(r, +t))
+const live = await p.$$eval('.sm2', e => e.map(x => x.classList.contains('is-live')))
+await el.screenshot({ path: out })
+console.log(JSON.stringify({ live }))
+await b.close()

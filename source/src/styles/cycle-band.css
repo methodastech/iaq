@@ -1,0 +1,20 @@
+/* CycleBand (24 Sep): the serpentine cycle on the home page, with the words that used to head the Services cover */
+.cyb{position:relative;padding:clamp(56px,9vh,104px) 0 clamp(40px,7vh,80px);background:#fff}
+.cyb-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(20px,3vw,48px);align-items:end}
+.cyb-side{min-width:0;padding-bottom:6px}
+.cyb h2,.cyb h1{margin:0;font:600 clamp(34px,4.2vw,58px)/1.02 "Switzer",sans-serif;letter-spacing:-.035em;color:var(--ink)}
+.cyb h2 em,.cyb h1 em{font-style:normal;color:var(--blue-bright,#B5121B);white-space:nowrap}
+/* as the Services page head: a touch more room under the nav, the title at the page-head scale */
+.cyb-ashead{padding-top:clamp(48px,8vh,88px)}
+.cyb-ashead h1{font-size:clamp(38px,4.8vw,64px)}
+.cyb-lede{margin:0;font-size:clamp(16px,1.25vw,19px);line-height:1.55;color:var(--soft,#48536A);max-width:56ch}
+.cyb-facts{list-style:none;margin:clamp(16px,2.4vh,26px) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px clamp(20px,2.6vw,36px)}
+.cyb-facts li{display:inline-flex;align-items:center;gap:9px;font:600 14.5px/1.2 "Switzer",sans-serif;letter-spacing:-.006em;color:var(--ink)}
+.cyb-facts li svg{width:18px;height:18px;color:var(--blue,#EC2027);flex:none}
+.cyb .cyc,.cyb .cycle-flow{margin-top:clamp(28px,4.4vh,52px)}
+@media(max-width:900px){.cyb-head{grid-template-columns:1fr;align-items:start}.cyb-lede{margin-top:clamp(14px,2vh,22px)}}
+@media(max-width:720px){.cyb h2 em,.cyb h1 em{white-space:normal}}
+
+/* 26 Sep (Bazil: "align the title to the top a bit with the description"): the head's two columns start from one top */
+.cyb-head{align-items:start}
+.cyb-side{padding-bottom:0;padding-top:6px}

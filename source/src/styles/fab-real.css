@@ -1,0 +1,50 @@
+/* the real fab in the banner (components/FabReal.jsx, scenes/fabreal.js): the same dark ground as the section */
+.fr{position:relative;width:100%;aspect-ratio:1.3;min-height:320px;background:transparent}
+.fr-host{position:absolute;inset:0;cursor:grab;touch-action:pan-y}
+.fr-host:active{cursor:grabbing}
+.fr-canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
+.fr-labs{position:absolute;inset:0;pointer-events:none;overflow:visible}
+/* the callouts. 26 Sep (IAQ graphic rules: no vertical line, no gradient, no glow, square not round): a flat navy slim
+   box touching its point; the point a small square in the layer's colour with a dark keyline so it reads on the light
+   model. No stalk. FabReal.jsx places each tag above or below its point, centred or flush left or right (.al-l, .al-r),
+   whichever is clear of the tags and points already placed. Earlier glass chip, stem and halo versions:
+   src/_backups/fr-callouts-0926/fab-real.css */
+.fr-lab{position:absolute;left:0;top:0;opacity:0;display:flex;flex-direction:column;align-items:center;gap:5px;transform:translate(-50%,calc(-100% + 3px));pointer-events:auto;cursor:pointer;background:none;border:0;padding:0;font:inherit;color:inherit;transition:opacity .3s}
+.fr-lab.al-l{align-items:flex-start;transform:translate(-3px,calc(-100% + 3px))}
+.fr-lab.al-r{align-items:flex-end;transform:translate(calc(-100% + 3px),calc(-100% + 3px))}
+.fr-lab.below{flex-direction:column-reverse;transform:translate(-50%,-3px)}
+.fr-lab.below.al-l{transform:translate(-3px,-3px)}
+.fr-lab.below.al-r{transform:translate(calc(-100% + 3px),-3px)}
+.fr-lab b{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font:500 12.5px/1 "Switzer",sans-serif;letter-spacing:.005em;color:#fff;background:#17213A;padding:7px 10px 7px 9px;border-radius:0}
+.fr-lab b::before{content:"";flex:none;width:6px;height:6px;background:var(--c)}
+.fr-lab i{display:block;width:6px;height:6px;background:var(--c);box-shadow:0 0 0 1.5px #0F1319}
+.fr-lab:hover b{background:#EC2326}
+.fr-lab-ic{display:none}
+.fr-tools{position:absolute;right:10px;bottom:10px;display:flex;gap:4px}
+.fr-tools button{width:32px;height:32px;border:0;background:rgba(255,255,255,.1);color:#fff;font:600 15px/1 "Switzer",sans-serif;cursor:pointer}
+.fr-tools button:hover{background:rgba(255,255,255,.2)}
+.fr-hint{position:absolute;left:10px;bottom:12px;margin:0;font-size:12px;color:rgba(255,255,255,.62);pointer-events:none;background:rgba(15,19,25,.7);padding:5px 9px}
+@media(max-width:560px){.fr-lab b{display:none}.fr-hint{display:none}.fr{aspect-ratio:1.15}}
+
+/* 25 Sep, night (Bazil: "do a quick loading on this banner before everything appear"): until the building stands the
+   model, its pins and its tools wait under one loading line; then the model fades up in place */
+.fr .fr-host,.fr .fr-labs,.fr .fr-tools{opacity:0;transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.fr .fr-host{transform:scale(.985)}
+.fr.is-ready .fr-host,.fr.is-ready .fr-labs,.fr.is-ready .fr-tools{opacity:1;transform:none}
+.fr-load{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;pointer-events:none;transition:opacity .5s ease}
+.fr.is-ready .fr-load{opacity:0}
+.fr-load p{margin:0;font:500 13px/1 "Switzer","Instrument Sans",sans-serif;color:rgba(255,255,255,.62);letter-spacing:.01em}
+.fr-load-bar{position:relative;display:block;width:min(180px,40%);height:2px;background:rgba(255,255,255,.12);overflow:hidden}
+.fr-load-bar i{position:absolute;top:0;bottom:0;left:0;width:38%;background:#EC2027;animation:frLoad 1.15s cubic-bezier(.5,0,.3,1) infinite}
+@keyframes frLoad{0%{transform:translateX(-100%)}100%{transform:translateX(265%)}}
+@media(prefers-reduced-motion:reduce){.fr-load-bar i{animation:none;width:100%;opacity:.6}.fr .fr-host{transform:none}}
+/* the loading line sits in the model's own column (--fr-left, the share the model is framed into) and above the
+   tools row (--fr-bottom), so on the Services banner it never lands behind the map's cards */
+.fr-load{right:auto;width:calc(var(--fr-left,1) * 100%);bottom:auto;height:calc(var(--fr-bottom,1) * 100%)}
+/* beside its point (FabReal.jsx .side): the tag level with the point, to its right (.al-r) or left (.al-l) */
+.fr-lab.side{flex-direction:row;align-items:center}
+.fr-lab.side.al-r{flex-direction:row-reverse;transform:translate(-3px,-50%)}
+.fr-lab.side.al-l{transform:translate(calc(-100% + 3px),-50%)}
+/* no clear place left: the point alone, the name on hover */
+.fr-lab.mute b{display:none}
+.fr-lab.mute:hover b,.fr-lab.mute:focus-visible b{display:inline-flex}

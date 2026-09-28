@@ -1,0 +1,9 @@
+The publish bundle was split into parts to get through a 30 MB file limit. Join them back into one zip before opening:
+
+Mac or Linux (Terminal, in the folder with the parts):
+  cat IAQ-website-publish-2026-09-15.zip.part* > IAQ-website-publish-2026-09-15.zip
+
+Windows (Command Prompt, in the folder with the parts):
+  copy /b IAQ-website-publish-2026-09-15.zip.part0+IAQ-website-publish-2026-09-15.zip.part1+IAQ-website-publish-2026-09-15.zip.part2+IAQ-website-publish-2026-09-15.zip.part3+IAQ-website-publish-2026-09-15.zip.part4 IAQ-website-publish-2026-09-15.zip
+
+Then unzip. Inside: DEPLOY.md (read first), site/ (upload its contents to the web root), source/ (the code).

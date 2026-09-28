@@ -1,0 +1,32 @@
+/* Culture hero photo set (components/CultureCollage.jsx), 15 Sep 2026.
+   A wide frame over two, on a 10px gap, sharp corners, no borders. Captions are a small dark chip, the
+   same treatment the safety photos use. Motion: a bottom-up wipe per frame on reveal, then momentum drift. */
+.cu-hero .cu-hero-in { align-items: center; }
+.cuh { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1.45fr 1fr; gap: 10px; height: clamp(440px, 38vw, 610px); }
+.cuh-f { position: relative; margin: 0; overflow: hidden; background: #E9EDF3; }
+.cuh-a { grid-column: 1 / 3; }
+.cuh-mo { position: absolute; inset: 0; display: block; will-change: transform; }
+.cuh-mo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--e1); }
+.cuh-f:hover .cuh-mo img { transform: scale(1.04); }
+.cuh-f figcaption { position: absolute; left: 12px; bottom: 12px; z-index: 1; padding: 6px 10px; background: rgba(9, 14, 26, .74); color: #fff; font: 500 12.5px/1.25 "Instrument Sans", system-ui, sans-serif; letter-spacing: .005em; }
+
+/* reveal: the set is its own reveal item; the frames wipe up in turn and the captions follow */
+.cu-armed .cuh.cu-rv:not(.cu-in) { opacity: 1; transform: none; }
+.cuh .cuh-f { clip-path: inset(0 0 0 0); transition: clip-path 1.25s var(--e1); }
+.cu-armed .cuh:not(.cu-in) .cuh-f { clip-path: inset(100% 0 0 0); }
+.cuh .cuh-b { transition-delay: .16s; }
+.cuh .cuh-c { transition-delay: .3s; }
+.cuh figcaption { transition: opacity .6s ease .95s, transform .6s var(--e1) .95s; }
+.cu-armed .cuh:not(.cu-in) figcaption { opacity: 0; transform: translateY(6px); }
+
+@media (max-width: 980px) {
+  .cuh { height: auto; grid-template-rows: auto auto; margin-top: 8px; }
+  .cuh-a { aspect-ratio: 16 / 10; }
+  .cuh-b, .cuh-c { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 640px) { .cuh-f figcaption { left: 8px; bottom: 8px; font-size: 11.5px; padding: 5px 8px; } }
+@media (prefers-reduced-motion: reduce) { .cuh .cuh-f, .cuh figcaption, .cuh-mo img { transition: none; } }
+
+/* 25 Sep: the tag on a generated frame, top right so it never meets the caption */
+.cuh-rep { position: absolute; right: 12px; top: 12px; z-index: 1; padding: 5px 8px; background: rgba(9, 14, 26, .55); color: #fff; font: 600 11px/1.2 "Switzer", sans-serif; letter-spacing: .02em; }
+@media (max-width: 640px) { .cuh-rep { right: 8px; top: 8px; } }

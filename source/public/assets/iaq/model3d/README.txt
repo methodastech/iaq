@@ -1,0 +1,2 @@
+The fab model, by layer and storey: the IAQ Cleanroom app (iaq3d.netlify.app, Bazil, 25 Sep 2026: "here you go, I put it online, you can take everything"). Draco-compressed GLB per storey per layer, manifests as the app wrote them. The heavy variants (tools, pipes, ducts, sprinklers, equipment, raisedfloor, ceiling-lite) are not mirrored.
+manifest-detail-exterior-v3 (the app's alternative site, the utility building moved) is left out: it doubled the building.

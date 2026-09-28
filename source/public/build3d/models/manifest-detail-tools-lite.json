@@ -1,0 +1,59 @@
+{
+  "layer": "detail-tools-lite",
+  "source": "fbx: KSM 04-1 2F STR all.fbx, KSM 1F-A mechanical equipment.fbx, KSM 1F-B pipes.fbx, KSM 1F-C other.fbx, KSM 2F-A mechanical equipment.fbx, KSM 2F-B pipes.fbx, KSM 2F-C other.fbx, KSM 3F all.fbx, KSM APRON all.fbx, KSM GF-C1 pipes.fbx, KSM GF-C2 pipe fittings.fbx, KSM GF-C3 valves flex.fbx, KSM GF-C4 ducts.fbx, KSM GF-C5 trays conduits.fbx, KSM GF-C6 generic specialty.fbx, KSM GF-M1 machines.fbx, KSM GF-M2 machines.fbx, KSM GF-M3 machines.fbx, KSM GF-M4 machines.fbx, KSM GF-M5 machines.fbx, KSM GF-M6 machines.fbx, KSM GF-M7 machines.fbx, KSM GF-M8 machines.fbx, KSM GF-M9 machines.fbx, KSM GF-S1 supports.fbx, KSM GF-S2 supports.fbx, KSM GF-S3 supports.fbx, KSM GF-S4 unistrut 82.fbx, KSM GF-S5 rods unistrut.fbx, KSM GF-S6 clips clamps.fbx, KSM GF_FAB file all.fbx, KSM IRST FLOOR all.fbx, KSM NoLevel all.fbx, KSM UNDERSLAB all.fbx",
+  "needsNormals": true,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -66.46061375988293,
+      -7.765601136129715,
+      -34.86984674299212
+    ],
+    "max": [
+      38.79422702742008,
+      18.829999995851527,
+      2.590718958874036
+    ]
+  },
+  "storeys": [
+    {
+      "index": 0,
+      "key": "apron",
+      "name": "APRON",
+      "elevation": 4.2,
+      "file": "detail-tools-lite-0-apron.glb",
+      "triangles": 2112,
+      "sizeKB": 18
+    },
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-tools-lite-1-gf.glb",
+      "triangles": 3814069,
+      "sizeKB": 10013
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-tools-lite-2-1f.glb",
+      "triangles": 2338775,
+      "sizeKB": 6060
+    },
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-tools-lite-3-2f.glb",
+      "triangles": 1544050,
+      "sizeKB": 4023
+    }
+  ]
+}

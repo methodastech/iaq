@@ -1,0 +1,106 @@
+/* ============================================================================
+   The services hub: the SIX SERVICES grid (2 Sep, Bazil: "one main service page and
+   other pages explaining each service, easy to understand").
+
+   One card per service, in cycle order, each carrying the stage's own loop (the same
+   clip the homepage ring and the service page use, so the object is recognised across
+   all three). At rest the poster shows; on hover the loop plays and the card lifts.
+   Two columns of three on desktop so the 1 → 6 order reads in a Z, one column on phones.
+   Namespaced .sv-* so it never collides with the shared .pg-* vocabulary.
+   ============================================================================ */
+.sv-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 26px; }
+
+.sv-card { position: relative; display: flex; flex-direction: column; border: 1px solid var(--line); background: var(--panel); color: inherit; text-decoration: none; overflow: hidden; transition: border-color .35s, transform .45s var(--e1), box-shadow .45s var(--e1); }
+.sv-card:hover, .sv-card:focus-visible { border-color: rgba(236, 32, 39, .45); transform: translateY(-5px); box-shadow: 0 26px 50px -30px rgba(12, 18, 32, .35); }
+.sv-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* the visual: the loop sits on white exactly as the render does, no frame around the frame.
+   The filter is the ring's white lift (the clip's white decodes at 231-236). */
+.sv-vis { position: relative; aspect-ratio: 16 / 10; background: #fff; border-bottom: 1px solid var(--line); overflow: hidden; }
+/* 4 Sep (client: "what the heck too bright?"). This carried brightness(1.1), which suited the
+   OLD isometric renders — they were dark line art on grey. The photoreal stills that replaced
+   them are already correctly exposed, so a +10% boost blew the cleanroom whites out entirely.
+   Contrast keeps a touch of snap; the brightness lift is gone. */
+.sv-vis video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%; filter: contrast(1.02); transform: scale(1.02); transition: transform 1.1s var(--e1); }
+.sv-card:hover .sv-vis video, .sv-card:focus-visible .sv-vis video { transform: scale(1.07); }
+/* 9 Sep (Bazil: "just have more said there" / "the eyebrow have it as title, combine maybe or
+   maybe it bigger, put the numbers in the description"). The card used to be a grey caps tag, a
+   title, one six-word line and a link, with the stage number floated over the photograph. Three
+   things changed and each of them removes something rather than adding a layer on top of it:
+
+     - .sv-no is gone. A number sitting on a photograph is decoration; the same number leading the
+       heading is a position in a sequence, which is what it actually means.
+     - .sv-kick is gone. It repeated the title one size down in grey caps.
+     - the scope tag moved to .sv-foot, opposite the link, where it reads as a label on the card
+       rather than as a second, smaller headline above the real one.
+
+   The body is now the stage's own sentence plus its three scope points, both of which were
+   already written in STAGES and were being thrown away on this page. */
+
+/* number and title share one baseline row. The number is mono and red so it is legible as an
+   index at a glance, and it never wraps under the title: the grid column is sized to it. */
+.sv-head { display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 9px; }
+.sv-ic { width: 24px; height: 24px; color: var(--ink); display: grid; place-items: center; }
+.sv-ic svg { width: 22px; height: 22px; }
+.sv-card:hover .sv-ic { color: var(--blue-bright); }
+.sv-n { font-family: var(--num); font-size: 15px; font-weight: 600; line-height: 1; color: var(--blue-bright); font-variant-numeric: tabular-nums; }
+
+.sv-in { padding: 16px 16px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.sv-in h3 { font-size: clamp(16px, 1.5vw, 19px); line-height: 1.2; letter-spacing: -.01em; }
+.sv-in p { font-size: 13.5px; color: var(--soft); line-height: 1.55; }
+
+/* the three scope points. A hairline runs above the list instead of a bullet on every row: one
+   rule separates the summary from the scope, where six markers would have added six new marks to
+   a page that already carries the cycle, the discs and the marks in the chips. */
+.sv-pts { list-style: none; margin: 4px 0 0; padding: 9px 0 0; border-top: 1px solid var(--line); display: grid; gap: 6px; }
+.sv-pts li { position: relative; padding-left: 13px; font-size: 12.5px; line-height: 1.45; color: var(--faint); }
+.sv-pts li::before { content: ""; position: absolute; left: 0; top: .52em; width: 4px; height: 1px; background: var(--line2); }
+.sv-card:hover .sv-pts li::before { background: var(--blue); }
+
+/* the foot: the affordance on the left, the scope label on the right, on one hairline. margin-top
+   auto pins it to the bottom of the tallest card, so six cards of unequal copy still line up. */
+.sv-foot { margin-top: auto; padding-top: 13px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.sv-tag { font-family: var(--label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--faint); text-align: right; }
+/* the one affordance: an arrow that draws right on hover, same grammar as .pg-more */
+.sv-go { font-family: var(--label); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.sv-go::after { content: "\2192"; transition: transform .3s var(--e1); }
+.sv-card:hover .sv-go::after { transform: translateX(4px); }
+
+@media (max-width: 1024px) { .sv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .sv-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .sv-vis { aspect-ratio: 16 / 9; }
+  .sv-in { padding: 14px 14px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sv-card, .sv-vis video, .sv-go::after { transition: none; }
+  .sv-card:hover { transform: none; }
+  .sv-card:hover .sv-vis video { transform: scale(1.02); }
+}
+
+/* ============================================================================
+   The proof strip on the hub (2 Sep): numbers that count, one featured project, a hover cue.
+   ============================================================================ */
+/* the red bar under each figure fills as the number lands */
+.sv-stat { position: relative; overflow: hidden; }
+.sv-stat-bar { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 1.6s var(--e1) .1s; }
+.sv-stat.in .sv-stat-bar { transform: scaleX(1); }
+.sv-stat b { transition: color .4s ease; }
+.sv-stat.in b { color: var(--ink); }
+/* featured: the first card spans two columns and two rows on desktop, so its image is the frame */
+.sv-proof { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: auto; }
+.sv-proof .pg-pc:first-child { grid-column: span 2; grid-row: span 2; }
+.sv-proof .pg-pc:first-child .pg-pcv { aspect-ratio: auto; flex: 1; min-height: 300px; }
+/* 4 Sep (client: "why the content so empty?"). The lead card spans two rows, so it is roughly
+   twice the height of its neighbours. Both the image AND the text block carried flex:1, so the
+   surplus height was split between them: the copy block ended up ~800px tall holding four short
+   lines, with .pg-tags{margin-top:auto} shoving the tags to the very bottom and leaving a huge
+   dead field in the middle of the card. The extra height belongs to the PHOTOGRAPH, which is
+   the reason the card is featured. The text block now takes its natural height and the tags sit
+   directly under the client line where they belong. */
+.sv-proof .pg-pc:first-child .pg-pc-in { flex: 0 0 auto; }
+.sv-proof .pg-pc:first-child h3 { font-size: clamp(19px, 1.9vw, 26px); }
+@media (max-width: 1024px) { .sv-proof { grid-template-columns: repeat(3, minmax(0, 1fr)); } .sv-proof .pg-pc:first-child { grid-row: span 1; } .sv-proof .pg-pc:first-child .pg-pcv { aspect-ratio: 16 / 9; min-height: 0; } }
+@media (max-width: 640px) { .sv-proof { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sv-proof .pg-pc:first-child { grid-column: span 2; } }
+@media (prefers-reduced-motion: reduce) { .sv-stat-bar { transition: none; transform: scaleX(1); } }
+

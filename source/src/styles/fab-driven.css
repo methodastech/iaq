@@ -1,0 +1,84 @@
+/* FabDriven (24 Sep): the 3D fab as a stage above the relationship map. Dark navy, the model's own ground. */
+.fv{position:relative;background:#070C18;color:#F0F0F0;overflow:hidden}
+.fv .fab-view{position:relative;inset:auto;aspect-ratio:16/9;max-height:560px;min-height:300px;width:100%}
+.fv .fab-view canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+.fv .fab-view canvas:active{cursor:grabbing}
+.fv-zoom{position:absolute;right:12px;bottom:12px;z-index:5;display:flex;gap:4px}
+.fv-zoom button{width:32px;height:32px;border:0;background:rgba(255,255,255,.1);color:#fff;font:600 16px/1 "Switzer",sans-serif;cursor:pointer;backdrop-filter:blur(6px)}
+.fv-zoom button:hover{background:rgba(255,255,255,.2)}
+.fv-legend{list-style:none;margin:0;padding:10px 12px;display:flex;flex-wrap:wrap;gap:4px 6px;background:#0B1220}
+.fv-legend li button{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border:0;background:transparent;color:rgba(255,255,255,.55);font:500 12px/1.2 "Switzer",sans-serif;cursor:pointer;transition:color .2s,background .2s}
+.fv-legend li button i{width:9px;height:9px;background:var(--c);flex:none;opacity:.55;transition:opacity .2s}
+.fv-legend li button b{font-weight:600;font-size:11px;color:rgba(255,255,255,.4)}
+.fv-legend li.on button{color:#fff;background:rgba(255,255,255,.08)}
+.fv-legend li.on button i{opacity:1}
+.fv-legend li.on button b{color:#fff}
+.fv-legend li.off button{color:rgba(255,255,255,.3)}
+.fv-legend li button:hover{color:#fff}
+.fv-legend li button:focus-visible{outline:2px solid #FF4D55;outline-offset:-2px}
+/* the labels the scene places (fab-assembly.css .fab-lab) read on this stage as they do at home */
+.fv .fab-lab{z-index:4}
+@media(max-width:720px){.fv .fab-view{max-height:none;aspect-ratio:4/3}.fv-legend li button span{display:none}.fv-legend li button b{color:#fff}}
+@media(prefers-reduced-motion:reduce){.fv-legend li button{transition:none}}
+
+/* 24 Sep · the studio look (Bazil: "find out how to do it beautifully"): white ground, ink type, hairlines */
+.fv{background:#F7F8FA;color:#0C1220}
+.fv .fab-view{background:#F7F8FA}
+.fv-zoom button{background:#fff;color:#0C1220;box-shadow:inset 0 0 0 1px rgba(12,18,32,.14);backdrop-filter:none;font-weight:500}
+.fv-zoom button:hover{background:#0C1220;color:#fff}
+.fv-legend{background:#fff;box-shadow:inset 0 1px 0 rgba(12,18,32,.08);padding:10px 12px}
+.fv-legend li button{color:rgba(12,18,32,.5)}
+.fv-legend li button i{opacity:.4}
+.fv-legend li button b{color:rgba(12,18,32,.35)}
+.fv-legend li.on button{color:#0C1220;background:#F3F6FB}
+.fv-legend li.on button i{opacity:1}
+.fv-legend li.on button b{color:#0C1220}
+.fv-legend li.off button{color:rgba(12,18,32,.32)}
+.fv-legend li button:hover{color:#0C1220}
+.fv-legend li button:focus-visible{outline:2px solid #EC2027}
+/* callouts on the model: an ink dot, a grey leader, a white chip with a hairline; Switzer, sentence case */
+.fv .fab-lab i{width:6px;height:6px;background:#0C1220;box-shadow:0 0 0 2px #fff}
+.fv .fab-lab i::after{width:16px;background:rgba(12,18,32,.4)}
+.fv .fab-lab b{font:600 11.5px/1.2 "Switzer",sans-serif;letter-spacing:-.004em;text-transform:none;color:#0C1220;background:#fff;padding:5px 8px;border:0;box-shadow:inset 0 0 0 1px rgba(12,18,32,.14);margin-left:12px}
+.fv .fab-pick i{background:#EC2027;box-shadow:0 0 0 2px #fff}
+.fv .fab-pick.on b{box-shadow:inset 0 0 0 1.5px #EC2027}
+/* the home page hides every callout but the pick (fab-assembly.css line 270, 15 Sep: the key replaced them). In the
+   studio the callouts ARE the detail: the part names of the lit systems, on leader lines */
+.fv .fab-lab:not(.fab-pick){display:inline-flex !important}
+
+/* ============================================================================
+   24 Sep, later · the dark card (Bazil's three references): charcoal ground, white clay model, colour only on the pick,
+   pins on stalks. Supersedes the white studio rules above.
+   ============================================================================ */
+.fv{background:#14181F;color:#F0F2F5}
+.fv .fab-view{background:#14181F}
+.fv-zoom button{background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.fv-zoom button:hover{background:rgba(255,255,255,.2);color:#fff}
+.fv-legend,.sm-map-duo .fv .fab-legend{background:#1A1F27;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.fv-legend li button{color:rgba(255,255,255,.5)}
+.fv-legend li button i{opacity:.35}
+.fv-legend li button b{color:rgba(255,255,255,.35)}
+.fv-legend li.on button{color:#fff;background:rgba(255,255,255,.07)}
+.fv-legend li.on button i{opacity:1}
+.fv-legend li.on button b{color:#fff}
+.fv-legend li.off button{color:rgba(255,255,255,.28)}
+.fv-legend li button:hover{color:#fff}
+/* callouts as pins on stalks: a dot on the part, a stalk up, the name in a white pill */
+.fv .fab-lab{align-items:flex-end;gap:0}
+.fv .fab-lab i{width:6px;height:6px;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.25);margin:0 0 -3px -3px}
+.fv .fab-lab i::after{content:"";position:absolute;left:50%;bottom:100%;top:auto;width:1px;height:26px;background:rgba(255,255,255,.55);transform:translateX(-.5px)}
+.fv .fab-lab b{position:relative;margin:0 0 30px -6px;font:600 11.5px/1.2 "Switzer",sans-serif;letter-spacing:-.004em;text-transform:none;color:#0C1220;background:#fff;padding:6px 9px;border:0;box-shadow:0 8px 18px -10px rgba(0,0,0,.6);border-radius:0}
+.fv .fab-pick i{background:#EC2027;box-shadow:0 0 0 2px rgba(236,32,39,.35)}
+.fv .fab-pick i::after{background:rgba(236,32,39,.7)}
+.fv .fab-pick.on b{box-shadow:inset 0 0 0 1.5px #EC2027,0 8px 18px -10px rgba(0,0,0,.6)}
+
+.fv .fab-view{overflow:hidden}   /* a pin never spills into the key */
+
+/* the twin's ground */
+.fv,.fv .fab-view{background:#0F1319}
+
+/* the pin (Bazil: "tag and point correctly, with icons"): dot on the part, a short stalk, the pill with its colour chip */
+.fv .fab-lab i::after{height:14px}
+.fv .fab-lab b{margin-bottom:18px;display:inline-flex;align-items:center;gap:7px}
+.fab-lab b s{display:none}
+.fv .fab-lab b s{display:inline-block;width:10px;height:10px;text-decoration:none;flex:none}

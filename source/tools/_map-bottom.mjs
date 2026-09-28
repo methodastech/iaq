@@ -1,0 +1,11 @@
+import puppeteer from 'puppeteer-core'
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', protocolTimeout: 120000, args: ['--no-sandbox', '--disable-gpu'] })
+const p = await b.newPage()
+await p.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 })
+await p.goto('http://localhost:52158/services', { waitUntil: 'networkidle0', timeout: 90000 })
+await new Promise(r => setTimeout(r, 3000))
+const m = await p.evaluate(() => { const s = document.querySelector('.sm-map-dark.sm-map-full'); const r = s.getBoundingClientRect(); const kids = [...s.querySelectorAll('*')].filter(e => e.getBoundingClientRect().height > 0); const maxBottom = Math.max(...kids.map(e => e.getBoundingClientRect().bottom)); return { padBottom: getComputedStyle(s).paddingBottom, bandBottom: Math.round(r.bottom + scrollY), lastContentBottom: Math.round(maxBottom + scrollY), gap: Math.round(r.bottom - maxBottom) } })
+console.log(JSON.stringify(m))
+await p.evaluate(() => { const s = document.querySelector('.sm-map-dark.sm-map-full'); scrollTo(0, s.getBoundingClientRect().bottom + scrollY - 700) }); await new Promise(r => setTimeout(r, 900))
+await p.screenshot({ path: process.argv[2] + '/map-bottom.png', clip: { x: 0, y: 0, width: 1440, height: 900 } })
+await b.close()

@@ -1,0 +1,261 @@
+/* 3 Sep (client: "currently too many lines" / "no line"): the newsroom was ruled on every
+   seam: under the front band, both sides of the lead column, above the latest list and under
+   its heading. Those five went then.
+
+   4 Sep: the comment above used to end "the only strokes left on the page are the story-type
+   marks themselves", and that was NOT true — five more rules survived the pass: one between
+   every row of the latest rail, a border-top seam on the side column at 1080px, another on the
+   latest column at 720px, a full box around every type chip under 900px (newsroom-index.css),
+   and the two rules that `.pg-sec.calm` wraps the archive in. All five are gone now, replaced
+   by row rhythm and a tone change, and this comment says what the file actually does. */
+/* ============ /news · the newsroom, portal layout ============
+   Rebuilt on the client review of 19 Aug 2026: lead story with art in the
+   centre, secondary stories left, latest-headlines rail right, and an
+   image-card grid under the tag filter. */
+
+/* ── the front page ─────────────────────────────────────────────────────── */
+.nw-front{padding:clamp(28px,4.5vh,52px) 0 clamp(34px,5vh,60px);}
+.nw-front-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr) minmax(0,1fr);
+  gap:clamp(18px,2.4vw,34px)}
+.nw-col-side{display:flex;flex-direction:column;gap:clamp(18px,2.4vw,30px);
+  padding-right:clamp(18px,2.4vw,34px)}
+.nw-col-latest{padding-left:clamp(18px,2.4vw,34px)}
+
+/* ── story cards (front page + grid) ────────────────────────────────────── */
+.nw-card{display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;min-width:0}
+.nw-cv{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--bg2)}
+.nw-card.big .nw-cv{aspect-ratio:16/11}
+.nw-cv img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.92);transition:transform .6s var(--e1),filter .4s}
+.nw-card:hover .nw-cv img{transform:scale(1.035);filter:saturate(1)}
+/* 4 Sep (client: "do a different animation rather than the lines"). Hover used to wipe a 3px
+   red bar across the bottom of every card. The image was ALREADY scaling and saturating on
+   hover, so the bar was a second, louder answer to the same question, and a row of them reading
+   left-to-right made the grid twitch. It is now a single soft sweep of light across the
+   photograph: the same amount of feedback, none of the hard edge. */
+.nw-cv::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 36%,rgba(255,255,255,.20) 50%,transparent 64%);
+  transform:translateX(-120%);transition:transform .9s var(--e1)}
+.nw-card:hover .nw-cv::after,.nw-card:focus-visible .nw-cv::after{transform:translateX(120%)}
+@media(prefers-reduced-motion:reduce){
+  .nw-cv::after{display:none}
+}
+.nw-cb{display:flex;flex-direction:column;gap:9px;min-width:0}
+.nw-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.nw-meta time{font-family: var(--label);font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--soft)}
+.nw-card h3{font-family:"Switzer",sans-serif;font-weight:600;font-size:15.5px;line-height:1.34;
+  letter-spacing:-.01em;color:var(--ink);transition:color .22s}
+.nw-card h2{font-family:"Switzer",sans-serif;font-weight:600;font-size:clamp(21px,2.5vw,31px);
+  line-height:1.16;letter-spacing:-.02em;color:var(--ink);transition:color .22s}
+.nw-card:hover h2,.nw-card:hover h3{color:var(--blue-bright)}
+.nw-card:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+.nw-go{display:inline-flex;align-items:center;gap:9px;margin-top:2px;
+  font-family: var(--label);font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;font-weight:600;color:var(--blue-bright)}
+.nw-go i{font-style:normal;transition:transform .3s var(--e1)}
+.nw-card:hover .nw-go i{transform:translateX(5px)}
+
+/* ── two text stories under the lead ────────────────────────────────────── */
+.nw-sub{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px);
+  margin-top:clamp(20px,2.6vw,30px);padding-top:0}
+.nw-sub a{display:flex;flex-direction:column;gap:7px;text-decoration:none;min-width:0}
+.nw-sub a:hover .nw-lt{color:var(--blue-bright)}
+.nw-sub a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+@media(max-width:720px){.nw-sub{grid-template-columns:1fr}}
+
+/* ── latest rail ────────────────────────────────────────────────────────── */
+.nw-lk{font-family: var(--label);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--blue);padding-bottom:12px}
+.nw-latest{list-style:none}
+/* no row rule: five stacked hairlines in one 340px column is exactly the pattern the client
+   called out, and the rail already separates rows with padding and a mono date line */
+.nw-latest a{display:flex;flex-direction:column;gap:7px;padding:15px 0;text-decoration:none}
+.nw-lt{font-family:"Switzer",sans-serif;font-weight:500;font-size:13.5px;line-height:1.38;
+  color:var(--ink);transition:color .22s}
+.nw-latest a:hover .nw-lt{color:var(--blue-bright)}
+.nw-latest a:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+.nw-lm{display:flex;align-items:center;gap:9px}
+.nw-lm time{font-family: var(--label);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--soft)}
+
+/* ── filter bar ─────────────────────────────────────────────────────────── */
+/* 3 Sep, two real defects in the sticky filter bar:
+   1. it parked at top:66px while the nav is 75px tall (84 rendered at the 1.12 desktop zoom),
+      so it slid UNDER the nav instead of resting below it;
+   2. its background only spanned the padded content column, so the section's own gutters stayed
+      transparent and cards scrolling past showed through on both sides, which read as the bar
+      slicing the card grid in half.
+   The band is now painted by a full-bleed pseudo-element, and a short fade under it lets cards
+   dissolve as they pass rather than being cut on a hard edge. */
+.nw-bar{position:sticky;top:var(--sticktop,75px);z-index:6;display:flex;align-items:center;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;margin-top:24px;background:var(--bg2);isolation:isolate;
+  /* the band is widened on the BAR itself rather than on a pseudo-element: it pushes out by the
+     section's own gutter and pays it back as padding, so the background covers the full section
+     width and the element's box can still be measured directly. */
+  margin-inline:calc(0px - var(--gut));padding:14px var(--gut)}
+/* extend by exactly the gutter, NOT -50vw: a viewport-width bleed here pushed 780px of
+   horizontal scroll onto the page, because this bar sits inside the padded content column
+   rather than in a full-bleed wrapper. The gutter is all the band actually needs to cover. */
+.nw-bar::after{content:"";position:absolute;top:100%;height:20px;
+  left:0;right:0;
+  background:linear-gradient(180deg,var(--bg2),rgba(255,255,255,0));z-index:-1;pointer-events:none}
+.nw-chips{display:flex;gap:6px;flex-wrap:wrap}
+.nw-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(23,33,58,.06);border:1px solid transparent;
+  color:var(--soft);padding:8px 13px;font-family: var(--label);font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;font-weight:600;cursor:pointer;
+  transition:border-color .2s,color .2s,background .2s}
+.nw-chip b{font-size:9px;color:var(--soft);font-weight:600}
+.nw-chip:hover{background:rgba(23,33,58,.1);color:var(--ink)}
+.nw-chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.nw-chip[aria-pressed="true"] b{color:rgba(255,255,255,.74)}
+.nw-chip:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+/* --faint (#828B9E) is 3.42:1 on white and banned for micro-type; --soft is 7.7:1 */
+.nw-count{font-family: var(--label);font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--soft);display:flex;align-items:center;gap:5px}
+.nw-clear{background:none;border:0;padding:0;font:inherit;color:var(--blue);cursor:pointer;
+  text-transform:uppercase;letter-spacing:.13em}
+.nw-clear:hover{color:var(--blue-bright);text-decoration:underline}
+.nw-clear:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* the year facet reads as a second axis, not a second set of topics: no mark, no count */
+.nw-chip-y{letter-spacing:.12em}
+/* the search shares the Projects/Careers treatment so all three consoles behave alike */
+.nw-search{max-width:280px;flex:1 1 190px}
+
+/* column labels on the front grid: the section used to open on a bare three-column card field
+   with only the right rail named */
+.nw-fh{font-family:"Switzer",sans-serif;font-weight:600;font-size:clamp(19px,2.1vw,26px);
+  line-height:1.16;letter-spacing:-.02em;color:var(--ink);grid-column:1/-1;margin-bottom:6px}
+
+/* the archive band: a tone change carries the section break, where `pg-sec calm`
+   used to wrap it in a top and a bottom rule */
+.nw-archive{background:var(--bg2)}
+
+/* ── the card grid ──────────────────────────────────────────────────────── */
+.nw-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));
+  gap:clamp(20px,2.6vw,32px) clamp(16px,2vw,26px);margin-top:30px}
+
+/* ── responsive ─────────────────────────────────────────────────────────── */
+@media(max-width:1080px){
+  .nw-front-grid{grid-template-columns:minmax(0,1.8fr) minmax(0,1fr)}
+  .nw-col-lead{order:-1}
+  .nw-col-side{flex-direction:row;padding-right:0;grid-column:1;padding-top:30px}
+  .nw-col-side .nw-card{flex:1}
+  .nw-col-latest{grid-row:1 / span 2}
+}
+@media(max-width:720px){
+  .nw-front-grid{grid-template-columns:minmax(0,1fr)}
+  .nw-col-side{flex-direction:column}
+  .nw-col-latest{grid-row:auto;padding-left:0;padding-top:30px}
+  /* NO top override here: the nav is 75px at every width, so a second offset only
+     parked the bar high and let content slide under it. --sticktop follows the nav. */
+}
+
+/* the story-type mark, inline with its label */
+.cp-tag{display:inline-flex;align-items:center;gap:6px}
+.cp-tag .nm{width:14px;height:14px;flex:none;--nm-accent:currentColor}
+.nw-chip{display:inline-flex;align-items:center;gap:7px}
+.nw-chip .nm{width:15px;height:15px;flex:none;--nm-accent:#B5121B;color:#96A1B6;transition:color .25s}
+.nw-chip[aria-pressed="true"] .nm{color:#fff;--nm-accent:#fff}
+.nw-chip:hover .nm{color:var(--ink)}
+
+/* 10 Sep: the earlier index, two columns of the same headline rows the latest rail uses */
+.nw-earlier-list{margin-top:18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(24px,4vw,56px)}
+.nw-earlier-list li:first-child{border-top:1px solid var(--line)}   /* 26 Sep, 06:10 (Bazil: "cannot have too many lines"): one line over the list */
+@media (max-width:720px){.nw-earlier-list{grid-template-columns:minmax(0,1fr)}}
+
+/* ============================================================================
+   15 Sep · THE ARTICLE PAGE, with the real bodies (pages/Article.jsx)
+   The article used to be a headline over a placeholder. It now carries IAQ's published text
+   and photographs, so it is set as reading: one column at a 65 to 75 character measure,
+   paragraphs spaced, photographs at the full column width in their own proportions.
+   Client rules held here: no rules or borders (the header's bottom rule, the previous/next top
+   rules and the project row rules are all taken off on this page), no left stripes, square
+   corners. Tone changes carry the section breaks. Every class is `ar-`.
+   ============================================================================ */
+.cp-art-head.ar-head{border-bottom:0;padding-bottom:clamp(10px,1.8vh,20px)}
+.ar-meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px 18px;margin-top:18px;
+  font-family:var(--label);font-size:13.5px;line-height:1.3}
+.ar-meta .nf-cat{font-size:13.5px}
+.ar-meta time{color:var(--soft);font-weight:500}
+.ar-white{background:var(--bg2)}
+.pg-sec.ar-sec{padding-top:clamp(18px,3vh,34px)}
+
+/* the reading column: 32 times the body size, about 70 characters a line (measured in Chrome at
+   1440). The header, the body and the previous/next pair share that width and sit centred, so the
+   article reads as one sheet instead of a narrow column pinned to the left of a wide screen. */
+.ar-head,.ar-sec,.ar-pnav{--ar-fs:clamp(17px,1.15vw,18.5px);--ar-measure:calc(var(--ar-fs) * 32)}
+.ar-head .pg-in,.ar-sec .pg-in,.ar-pnav .pg-in{max-width:var(--ar-measure);margin-inline:auto}
+.cp-art-head.ar-head .pg-in > h1{max-width:none;font-size:clamp(28px,3.1vw,42px)}
+.ar-col{font-size:var(--ar-fs)}
+.ar-pnav .ar-pn{grid-template-columns:minmax(0,1fr)}
+.ar-pnav .ar-pn .nx{grid-column:auto;text-align:left}
+.ar-fig{margin:0}
+.ar-fig img{display:block;width:100%;height:auto;background:#E7EBF3}
+.ar-fig figcaption{margin-top:10px;font-family:var(--label);font-size:13.5px;line-height:1.45;color:var(--soft)}
+.ar-lead{margin-bottom:clamp(26px,3.4vh,40px)}
+.ar-interim img{aspect-ratio:3/2;object-fit:cover}
+
+.ar-prose{font-family:"Switzer",sans-serif;font-size:1em;line-height:1.72;color:var(--soft);letter-spacing:-.003em}
+.ar-prose > *{margin:0}
+.ar-prose > * + *{margin-top:1.15em}
+.ar-prose .ar-h{font-family:"Switzer",sans-serif;font-weight:600;font-size:1.32em;line-height:1.25;letter-spacing:-.016em;
+  color:var(--ink);margin-top:1.9em;max-width:none}
+.ar-prose > .ar-h:first-child{margin-top:0}
+.ar-prose .ar-h + *{margin-top:.6em}
+.ar-list{list-style:none;padding:0}
+.ar-list li{position:relative;padding-left:1.35em}
+.ar-list li + li{margin-top:.6em}
+/* a small square marker, not a rule */
+.ar-list li::before{content:"";position:absolute;left:.1em;top:.66em;width:.38em;height:.38em;background:var(--blue)}
+.ar-list strong{color:var(--ink);font-weight:600}
+/* links: tinted, never underlined */
+.ar-link{color:var(--blue);font-weight:600;text-decoration:none;
+  background:color-mix(in srgb,var(--blue) 9%,transparent);padding:0 .18em;transition:background .2s,color .2s}
+.ar-link i{font-style:normal;margin-left:.22em}
+.ar-link:hover{color:var(--blue-bright);background:color-mix(in srgb,var(--blue) 16%,transparent)}
+.ar-link:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* the post's other photographs: two across, an odd first one runs the full column */
+.ar-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.2vw,16px);margin-top:clamp(28px,3.6vh,44px)}
+.ar-gallery .ar-fig img{aspect-ratio:4/3;object-fit:cover}
+.ar-gallery.odd > .ar-fig:first-child{grid-column:1/-1}
+.ar-gallery.odd > .ar-fig:first-child img{aspect-ratio:auto;object-fit:fill}
+
+/* previous / next: two tinted panels instead of two top rules */
+.ar-pn{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.4vw,18px)}
+.ar-pn a{display:flex;flex-direction:column;gap:8px;min-width:0;padding:18px 20px 20px;background:var(--bg);
+  text-decoration:none;color:inherit;transition:background .25s}
+.ar-pn a:hover{background:color-mix(in srgb,var(--blue) 5%,var(--bg))}
+.ar-pn a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.ar-pn .nx{grid-column:2;text-align:right}
+.ar-pn-k{font-family:var(--label);font-size:12.5px;font-weight:500;color:var(--soft)}
+.ar-pn-t{font-family:"Switzer",sans-serif;font-weight:600;font-size:16px;line-height:1.35;letter-spacing:-.01em;color:var(--ink);transition:color .25s}
+.ar-pn a:hover .ar-pn-t{color:var(--blue-bright)}
+
+/* related projects: tinted rows, no row rules */
+.ar-proj .cp-rows{border-top:0;display:grid;gap:8px}
+.ar-proj .cp-row{border-bottom:0;background:var(--bg);padding:16px 18px}
+.ar-proj a.cp-row:hover,.ar-proj a.cp-row:focus-visible{padding-left:26px}
+.ar-more .nf-grid{margin-top:clamp(20px,2.6vw,30px)}
+
+@media(max-width:640px){
+  .ar-meta{gap:4px 14px;font-size:13px}
+  .ar-gallery{grid-template-columns:minmax(0,1fr)}
+  .ar-gallery .ar-fig img{aspect-ratio:auto;object-fit:fill}
+  .ar-pn{grid-template-columns:minmax(0,1fr)}
+  .ar-pn .nx{grid-column:auto;text-align:left}
+}
+
+/* /news, earlier by topic: a long topic shows its newest six and opens in place */
+.nf-more{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:14px;padding:0 16px;border:0;border-radius:0;
+  background:var(--bg);color:var(--ink);font-family:"Switzer",sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:color .2s,background .2s}
+.nf-more:hover{color:var(--blue-bright);background:color-mix(in srgb,var(--blue) 5%,var(--bg))}
+.nf-more:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.nf-more i{font-style:normal;transition:transform .25s}
+.nf-more[aria-expanded="true"] i{transform:rotate(180deg)}
+
+/* 17 Sep: Latest carries the whole record now that "Earlier, by topic" is gone, so its button
+   opens the next page of stories in place. */
+.nf-more-all { display: flex; margin: 26px auto 0; }

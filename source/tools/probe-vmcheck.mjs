@@ -1,0 +1,10 @@
+import puppeteer from 'puppeteer-core'
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--no-sandbox'] })
+const p = await b.newPage(); const errs = []; p.on('pageerror', e => errs.push(String(e))); await p.setViewport({ width: 1440, height: 1000, deviceScaleFactor: 1 })
+await p.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }])
+await p.goto('http://localhost:5177/careers/culture', { waitUntil: 'networkidle0' })
+await p.evaluate(() => { document.querySelectorAll('.cu-rv').forEach(e => { e.classList.add('cu-in', 'in', 'is-in'); e.style.opacity = '1'; e.style.transform = 'none' }) })
+const g = await p.$('.cu-vgrid'); await g.evaluate(e => { e.scrollIntoView({ block: 'start' }); scrollBy(0, -260) }); await new Promise(r => setTimeout(r, 500))
+const lines = await p.$$eval('.cu-vc *', els => els.filter(e => { const c = getComputedStyle(e); return /gradient/.test(c.backgroundImage) || ['Top', 'Bottom', 'Left', 'Right'].some(s => parseFloat(c['border' + s + 'Width']) > 0) }).map(e => e.className.baseVal ?? e.className))
+console.log('elements with a border or gradient line inside value cards:', lines.length, lines.slice(0, 6))
+await g.screenshot({ path: process.argv[2] }); console.log('errors', errs.length); await b.close()

@@ -1,0 +1,320 @@
+/* ------------------------------------------------------------------ */
+/*  "Six values, held on every site." — 3 Sep                          */
+/*  Six isometric 3D renders laid straight onto the white page. No     */
+/*  plate, no panel, no border: the art and the type ARE the layout.   */
+/* ------------------------------------------------------------------ */
+
+/* 17 Sep colour pass (client: the page is "just too WHITE"): the values stand on the ink navy
+   used by the hero and the close, and the six cards now carry IAQ's own photographs (see
+   components/ValuesCarousel.jsx). The carousel's chrome follows the field: the veil that sets a
+   card back is navy, the ground glow is light, the arrows and numbers read on dark. Scoped to
+   .vg because the carousel stylesheet is not per route. */
+.vg { background: #0C1220; padding: clamp(60px, 10vh, 120px) 0 clamp(70px, 12vh, 140px); }
+.vg .wrap > .eyebrow { color: #FF8A90; }
+.vg h2 { color: #fff; }
+.vg .vc-stage::before { background: none; }   /* 26 Sep (IAQ graphic rules): no radial bloom */
+.vg .vc-veil { background: #0C1220; }
+.vg .vc-hit { border-color: transparent; box-shadow: 0 16px 40px -22px rgba(0, 0, 0, .6); }   /* 26 Sep: a block, no outline */
+.vg .vc-card.is-front .vc-hit { border-color: transparent; box-shadow: 0 44px 84px -30px rgba(0, 0, 0, .75); }
+.vg .vc-arw { background: rgba(255, 255, 255, .08); color: #fff; }
+.vg .vc-arw:hover { background: var(--blue); color: #fff; }
+.vg .vc-dots button { color: #7A87A2; }
+.vg .vc-dots button:hover { color: #fff; }
+.vg .vc-dots button.on { background: var(--blue); color: #fff; }
+/* 10 Sep (Bazil: "make it one line and at the centre"). max-width:18ch on a 30-character
+   sentence guaranteed the break, and the header sat hard left over a ring that is centred,
+   so the two halves of the section did not agree about where the middle was. The clamp is
+   pulled down a step so one line still fits a laptop without shrinking to nothing. */
+.vg .wrap > .eyebrow { display: block; text-align: center; }
+.vg h2 {
+  margin-top: 14px;
+  font-size: clamp(28px, 3.4vw, 52px);
+  letter-spacing: -.032em;
+  line-height: 1.04;
+  max-width: none;
+  text-align: center;
+  text-wrap: nowrap;
+}
+@media (max-width: 720px) { .vg h2 { text-wrap: balance; font-size: clamp(26px, 6.4vw, 34px); } }
+
+.vg-grid {
+  margin-top: clamp(34px, 5vh, 64px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(28px, 3.6vw, 60px);
+  row-gap: clamp(44px, 6vh, 78px);
+}
+
+/* visible by default, for the same reason as the vision rows: nothing on this page may
+   depend on a class arriving in order to be seen */
+.vg-item {
+  min-width: 0;
+  transition: opacity .75s var(--e1) var(--d, 0ms), transform .85s var(--e1) var(--d, 0ms);
+}
+
+/* the diagram sits on the page, nothing behind it: hairlines only, grey and black */
+.vg-art { display: block; margin-bottom: 18px; }
+.vg-dia {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: scale(1);
+  transition: transform .55s var(--e1);
+}
+.vg-item:hover .vg-dia { transform: scale(1.03); }
+/* the floor */
+.vg-dia .vg-g line { stroke: #E4EAF1; stroke-width: 1; vector-effect: non-scaling-stroke; }
+/* the object: white faces so overlaps read, hairline edges in ink */
+.vg-dia .vg-a polygon {
+  fill: #fff;
+  stroke: #0C1220;
+  stroke-width: 1.15;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.vg-dia .vg-a ellipse { fill: #fff; stroke: #0C1220; stroke-width: 1.15; vector-effect: non-scaling-stroke; }
+.vg-dia .vg-a line { stroke: #0C1220; stroke-width: 1.15; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.vg-dia .vg-a line.k { stroke: #55637A; }
+/* the drawing assembles itself as the tile enters */
+.vg-dia .vg-g { opacity: 1; }
+.vg-dia .vg-a { opacity: 1; transform-origin: 50% 70%;
+  transition: opacity .6s ease calc(var(--d, 0ms) + 160ms), transform .8s var(--e1) calc(var(--d, 0ms) + 160ms); }
+.vg-item.in .vg-dia .vg-g { opacity: 1; }
+.vg-item.in .vg-dia .vg-a { opacity: 1; transform: none; }
+
+/* ---- the measure rail -------------------------------------------------
+   One graduated line per row, assembled from equal segments so the tiles read as points on a
+   single instrument. The segment draws left to right as its tile enters, and the value's own
+   graduation goes red under the pointer. */
+.vg-rail {
+  position: relative;
+  display: block;
+  height: 26px;
+  margin-bottom: 16px;
+}
+.vg-rail::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 1px;
+  background: var(--line2);
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform .7s var(--e1) var(--d, 0ms);
+}
+.vg-item.in .vg-rail::before { transform: scaleX(1); }
+.vg-rail i {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 6px;
+  background: var(--line2);
+  opacity: 1;
+  transition: opacity .4s ease calc(var(--d, 0ms) + 320ms);
+}
+.vg-rail i.maj {
+  left: 0;
+  width: 2px;
+  height: 13px;
+  background: var(--ink);
+  transition: opacity .4s ease calc(var(--d, 0ms) + 260ms), background-color .3s var(--e1), height .3s var(--e1);
+}
+.vg-item.in .vg-rail i { opacity: 1; }
+.vg-item:hover .vg-rail i.maj { background: var(--blue); height: 18px; }
+.vg-rail em {
+  position: absolute;
+  right: 0; top: 7px;
+  font-style: normal;
+  font-family: var(--label);
+  font-size: 10.5px;
+  letter-spacing: .2em;
+  font-weight:600;
+  color: var(--faint);
+  opacity: 1;
+  transition: color .3s var(--e1);
+}
+.vg-item.in .vg-rail em { opacity: 1; }
+.vg-item:hover .vg-rail em { color: var(--blue-bright); }
+
+.vg-item h3 {
+  margin-top: 10px;
+  font-family: "Switzer", "Instrument Sans", system-ui, sans-serif;
+  font-size: clamp(21px, 1.9vw, 28px);
+  font-weight:600;
+  letter-spacing: -.024em;
+  line-height: 1.12;
+  color: var(--ink);
+}
+.vg-item p {
+  margin-top: 9px;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.5;
+  color: var(--soft);
+  max-width: 26ch;
+}
+/* a hairline that draws under each value on hover, the only decoration in the block */
+.vg-item h3::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  margin-top: 12px;
+  background: var(--blue);
+  transition: width .5s var(--e1);
+}
+.vg-item:hover h3::after { width: 56px; }
+
+@media (max-width: 980px) { .vg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) {
+  .vg-grid { grid-template-columns: 1fr; row-gap: 40px; }
+  .vg-item p { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vg-item { opacity: 1; transform: none; transition: none; }
+  .vg-art img, .vg-item h3::after { transition: none; }
+}
+
+/* the one red accent per scene (4 Sep): lifeline, level line, plumb bob, dimension, trend, flag */
+.vg-dia .vg-a .r { stroke: #EC2027; stroke-width: 1.3; }
+.vg-dia .vg-a ellipse.r { fill: rgba(236,32,39,.16); }
+.vg-dia .vg-a polygon.r { fill: rgba(236,32,39,.14); }
+
+/* ---------------------------------------------------------------------------
+   THE VALUES INDEX (4 Sep) — the typographic form. Used on its own under
+   reduced motion and below 900px, and as the fallback inside the ring.
+   --------------------------------------------------------------------------- */
+.vx { list-style: none; margin: clamp(26px, 4vh, 44px) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(28px, 4vw, 64px); }
+.vx-i { position: relative; padding: 18px 0 30px; }
+.vx-rule { display: block; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line);
+  transition: background .35s var(--e1); }
+.vx-i:hover .vx-rule { background: var(--blue); }
+.vx-top { display: flex; align-items: center; justify-content: space-between; }
+.vx-ix { font-family: var(--label); font-size: 10px; letter-spacing: .16em; color: var(--faint); }
+.vx-mark { width: 20px; height: 20px; color: var(--soft); transition: color .3s var(--e1), transform .35s var(--e1); }
+.vx-mark svg { width: 100%; height: 100%; display: block; }
+.vx-i:hover .vx-mark { color: var(--blue); transform: translateY(-2px); }
+.vx h3 { margin: 22px 0 0; font-family: "Switzer", "Instrument Sans", system-ui, sans-serif; font-size: clamp(19px, 1.6vw, 22px); font-weight: 600; letter-spacing: -.015em; line-height: 1.2; color: var(--ink); }
+.vx p { margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: var(--soft); max-width: 30ch; }
+@media (max-width: 900px) { .vx { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .vx { grid-template-columns: 1fr; } .vx-i { padding: 14px 0 22px; } }
+
+/* ---------------------------------------------------------------------------
+   THE VALUES RING (4 Sep) lived here. It was replaced on 16 Sep by the carousel in
+   components/ValuesCarousel.jsx and styles/values-carousel.css, and its rules are removed rather
+   than left to ship: nothing on the site carries a .vr class any more. The component stays on disk
+   as reference, unmounted, and this block is kept in src/_backups/values-0916/.
+   --------------------------------------------------------------------------- */
+
+/* ============================================================================================
+   The six values as isometric objects (10 Sep). Replaces the perspective ring: see
+   components/ValuesIso.jsx for why the ring went.
+
+   Three rules carry the whole layout, and each one is a fix for something the ring got wrong:
+     - a FIXED art slot, so six objects of different heights all hang off one line and every
+       caption starts at the same y. The objects already share a viewBox and a ground point,
+       so this only has to hold the box;
+     - a real grid, so nothing overlaps anything and no card has to be dragged into view;
+     - a hairline over each cell rather than a card around it. This client has rejected boxes
+       behind copy in every review, and the section reads as a set precisely because the six
+       are NOT six panels.
+   ============================================================================================ */
+.vi { list-style: none; margin: clamp(30px, 4.5vh, 56px) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(24px, 3.2vw, 56px); row-gap: clamp(34px, 4.6vh, 60px); }
+.vi-i { position: relative; min-width: 0; padding-top: 20px;
+  border-top: 1px solid var(--line);
+  opacity: 0; transform: translateY(14px);
+  animation: viIn .8s var(--e1) both var(--d, 0ms); }
+@keyframes viIn { to { opacity: 1; transform: none } }
+@media (prefers-reduced-motion: reduce) { .vi-i { animation: none; opacity: 1; transform: none } }
+
+/* the art slot: one height for all six, the object bottom-aligned so the ground lines agree */
+.vi-shot { display: flex; align-items: flex-end; justify-content: center;
+  height: clamp(118px, 13vw, 168px); margin-bottom: 16px; }
+.vi-shot .vi-art { width: auto; height: 100%; display: block;
+  transition: transform .6s var(--e1); transform-origin: 50% 88%; }
+.vi-i:hover .vi-shot .vi-art { transform: translateY(-4px) scale(1.035); }
+/* the one moving part per object, the same convention the discipline marks use */
+.vi-art .a-drive { transform-origin: 50% 50%; animation: viDrive 5.2s ease-in-out infinite; }
+@keyframes viDrive { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-1.6px) } }
+@media (prefers-reduced-motion: reduce) { .vi-art .a-drive { animation: none } }
+
+.vi-ix { display: block; font-family: var(--num); font-size: 10px; letter-spacing: .18em;
+  font-weight:600; color: var(--faint); }
+.vi-i h3 { margin-top: 9px; font-size: clamp(17px, 1.5vw, 21px); line-height: 1.18;
+  letter-spacing: -.018em; }
+.vi-i p { margin-top: 8px; font-size: 14px; line-height: 1.55; color: var(--soft); max-width: 30ch; }
+/* the hairline carries the red on hover: one moving part in the layout, no box anywhere */
+.vi-i::before { content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 0;
+  background: var(--blue); transition: width .55s var(--e1); }
+.vi-i:hover::before { width: 100%; }
+
+@media (max-width: 900px) { .vi { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .vi { grid-template-columns: minmax(0, 1fr); }
+  .vi-shot { height: 132px; } }
+
+/* ============================================================================================
+   The values as CARDS, in isometric, from above (10 Sep). Replaces the flat grid of objects.
+   See components/ValuesBoard.jsx for the two corrections that led here.
+
+   The board is a parallel projection: no `perspective` anywhere in its ancestry, so rotateX
+   and rotateZ give an orthographic tilt, which is what reads as isometric rather than as a
+   photograph of six cards. The object on each card is counter-rotated out of the board so it
+   stands as a sprite on the plate; the plate takes the plane, the object takes the camera.
+   ============================================================================================ */
+.vb{ position:relative; margin-top:clamp(30px,4.5vh,56px); }
+.vb-stage{ display:none; }
+.vb-flat{ display:block; }
+@media (min-width:900px) and (prefers-reduced-motion:no-preference){
+  .vb-stage{ display:block; position:relative; height:640px; }
+  .vb-flat{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+}
+/* 48deg X is "more from the top" than true isometric's 54.7. 30deg Z is the classic isometric
+   text angle: steep enough to read as a plane, shallow enough that a title still reads. */
+.vb-board{ list-style:none; margin:0; padding:0; position:absolute; left:50%; top:50%;
+  display:grid; grid-template-columns:repeat(3,300px); gap:26px; width:max-content;
+  transform:translate(-50%,-56%) rotateX(48deg) rotateZ(-30deg); transform-style:preserve-3d; }
+.vb-card{ position:relative; width:300px; height:198px; background:#fff; border:1px solid var(--line2);
+  padding:18px 20px; transform-style:preserve-3d;
+  box-shadow:26px 30px 44px -26px rgba(12,18,32,.42);
+  opacity:0; transform:translateZ(-24px);
+  animation:vbIn .9s var(--e1) both var(--d,0ms);
+  transition:transform .55s var(--e1), box-shadow .55s var(--e1); }
+@keyframes vbIn{ to{ opacity:1; transform:translateZ(0) } }
+.vb-card:hover{ transform:translateZ(22px); box-shadow:34px 40px 54px -26px rgba(12,18,32,.5); }
+.vb-ix{ position:absolute; left:20px; top:16px; font-family:var(--num); font-size:10px; letter-spacing:.18em; color:var(--faint); font-weight:600; }
+.vb-t{ position:absolute; left:20px; bottom:44px; font-family:"Switzer",sans-serif; font-size:19px; font-weight:600; letter-spacing:-.018em; line-height:1.15; color:var(--ink); max-width:62%; }
+.vb-l{ position:absolute; left:20px; bottom:18px; font-size:12.5px; line-height:1.4; color:var(--soft); max-width:64%; }
+/* the object stands on the card: foot at the plate, body counter-rotated to face the camera */
+.vb-obj{ position:absolute; right:8px; bottom:50%; width:156px; height:163px;
+  transform-origin:50% 100%; transform:rotateZ(30deg) rotateX(-48deg); pointer-events:none; }
+.vb-obj .vi-art{ width:100%; height:100%; display:block; }
+.vb-obj .a-drive{ transform-origin:50% 50%; animation:viDrive 5.2s ease-in-out infinite; }
+/* the red hairline draws along the card's top edge on hover, the same cue as the flat set */
+.vb-card::before{ content:""; position:absolute; left:0; top:-1px; height:1px; width:0; background:var(--blue); transition:width .5s var(--e1); }
+.vb-card:hover::before{ width:100%; }
+
+/* 22 Sep (Bazil: "red icons"; and the cards behind the front one read as grey card stock on the navy,
+   because a navy veil over a WHITE card is grey). The cards behind are navy now, so the veil takes them
+   deeper instead of greyer; only the card in front is white. Every value's mark is red, in a tile. */
+.vg .vc-hit { background: #141E33; border-color: transparent; transition: box-shadow .5s var(--e1), border-color .5s var(--e1), background .5s var(--e1); }
+.vg .vc-hit b { color: #fff; transition: color .5s var(--e1); }
+.vg .vc-line { color: rgba(214, 223, 238, .62); transition: color .5s var(--e1); }
+.vg .vc-card.is-front .vc-hit { background: #fff; }
+.vg .vc-card.is-front .vc-hit b { color: var(--ink); }
+.vg .vc-card.is-front .vc-line { color: var(--soft); }
+.vg .vc-mark { display: grid; place-items: center; width: 42px; height: 42px; padding: 10px; background: rgba(236, 32, 39, .14); color: #FF4D55; }
+.vg .vc-mark svg { stroke-width: 1.3; }
+.vg .vc-card.is-front .vc-mark { background: #FDECEA; color: var(--blue); }
+.vg .vc-dots button { color: rgba(214, 223, 238, .55); }
+.vg .vc-dots button:hover { color: #fff; }
+.vg .vc-dots button.on { color: #fff; }
+
+/* 25 Sep (Bazil: "don't put icons in a box"): the value's mark stands on the card, red on the front card */
+.vg .vc-mark{width:26px;height:26px;padding:0;background:transparent}
+.vg .vc-card.is-front .vc-mark{background:transparent;color:var(--blue)}
+
+/* 25 Sep (Bazil: "background colour should be the same as the footer, so it seamlessly combines"): the values band on the
+   closing band's navy (#17213A, base.css), its foot shortened so the two read as one ground */
+.vg{background:#17213A;padding-bottom:clamp(40px,6vh,72px)}

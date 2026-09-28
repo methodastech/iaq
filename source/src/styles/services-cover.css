@@ -1,0 +1,74 @@
+/* ServicesCover (components/ServicesCover.jsx), 24 Sep 2026. Copy left, the fab on the right on a drafting plate.
+   Work layers amber, the hookup layer azure, the same colours the Codex gives them. No lines, sharp corners. */
+.sc-head{--work:#231F20;--work-t:#231F20;--svc:#0B8FD8;--svc-t:#0772AE;padding-bottom:clamp(28px,4vh,44px);border-bottom:0}
+.sc-in{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(28px,4vw,64px);align-items:center}
+.sc-copy h1{margin-top:0}
+.sc-cover{position:relative}
+.sc-model{position:relative;background:#F3F5F9 radial-gradient(rgba(12,18,32,.12) .8px,transparent .9px) 0 0/14px 14px;padding:4% 6%}
+.sc-mo{position:relative;display:block;will-change:transform}
+.sc-mo img{display:block;width:100%;height:auto;mix-blend-mode:multiply;filter:saturate(.92)}
+.sc-pin{position:absolute;transform:translate(-50%,-50%) scale(0);width:26px;height:26px;border:0;padding:0;cursor:pointer;color:#fff;font:600 12px/1 "Switzer",sans-serif;background:var(--c);box-shadow:0 0 0 2px #fff;transition:transform .5s cubic-bezier(.2,.9,.3,1.2) calc(.3s + var(--i,0) * .07s),box-shadow .3s}
+.sc-head.in .sc-pin{transform:translate(-50%,-50%) scale(1)}
+.sc-pin.d-csa,.sc-pin.d-mep,.sc-pin.d-process{--c:var(--work)}
+.sc-pin.d-hookup{--c:var(--svc)}
+.sc-head.in .sc-pin.on{transform:translate(-50%,-50%) scale(1.3);box-shadow:0 0 0 2px #fff,0 0 0 7px color-mix(in srgb,var(--c) 30%,transparent);z-index:2;transition-delay:0s}
+.sc-pin:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+/* the lit layer's name, on the plate's top edge, changing with a small rise */
+.sc-tip{position:absolute;left:14px;top:12px;display:inline-flex;align-items:center;gap:8px;padding:7px 10px 7px 7px;background:#0C1220;color:#fff;font:600 13px/1.2 "Switzer",sans-serif;letter-spacing:-.01em;animation:scTip .45s var(--e1) both;z-index:3}
+.sc-tip i{display:grid;place-items:center;width:20px;height:20px;font-style:normal;font-size:11.5px;background:var(--c,var(--work))}
+.sc-tip.d-hookup{--c:var(--svc)}
+@keyframes scTip{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* the legend: four groups, all nine layers legible, the lit one bold and coloured */
+.sc-leg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px;margin-top:14px}
+.sc-grp{--c:var(--work);--ct:var(--work-t)}
+.sc-grp.d-hookup{--c:var(--svc);--ct:var(--svc-t)}
+.sc-grp-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.sc-grp-h b{font:600 13px/1.2 "Switzer",sans-serif;color:var(--ct)}
+.sc-grp-h small{font-size:11.5px;color:var(--faint)}
+.sc-grp ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:3px}
+.sc-grp li{display:flex;align-items:center;gap:8px;padding:4px 6px;margin-left:-6px;font-size:13px;line-height:1.3;color:var(--soft);cursor:default;transition:color .25s,background .25s}
+.sc-grp li i{display:grid;place-items:center;flex:none;width:18px;height:18px;font-style:normal;font:600 10.5px/1 "Switzer",sans-serif;color:var(--ct);background:color-mix(in srgb,var(--c) 14%,#fff);transition:background .25s,color .25s}
+.sc-grp li.on{color:var(--ink);font-weight:600;background:color-mix(in srgb,var(--c) 8%,#fff)}
+.sc-grp li.on i{background:var(--c);color:#fff}
+.sc-cap{margin:14px 0 0;font-size:13px;line-height:1.45;color:var(--faint);max-width:60ch}
+/* arrival */
+.sc-copy,.sc-cover{opacity:0;transform:translateY(14px);transition:opacity .8s var(--e1),transform .9s var(--e1)}
+.sc-cover{transition-delay:.12s}
+.sc-head.in .sc-copy,.sc-head.in .sc-cover{opacity:1;transform:none}
+@media(max-width:1100px){.sc-in{grid-template-columns:1fr;gap:26px}.sc-leg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.sc-leg{grid-template-columns:1fr}.sc-pin{width:22px;height:22px;font-size:11px}.sc-tip{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.sc-pin,.sc-copy,.sc-cover{transition:none;opacity:1}.sc-pin{transform:translate(-50%,-50%) scale(1)}.sc-tip{animation:none}}
+/* the head is two columns now, so the h1 is sized for its column: "One process, six stages," holds one line at 1440 */
+.sc-head .sc-copy h1{font-size:clamp(28px,3.2vw,48px);max-width:none}   /* outranks .pg-head h1 in pages.css */
+/* the six-service ring under the copy */
+.sc-ring{--r:160px;position:relative;width:min(100%,400px);aspect-ratio:1;margin:clamp(26px,3.6vh,44px) auto 0}
+.sc-ring-arc{position:absolute;inset:10%;width:80%;height:80%;transform:rotate(-90deg);overflow:visible}
+.sc-ring-arc circle{fill:none;stroke:rgba(12,18,32,.12);stroke-width:1}
+.sc-ring-arc .sc-ring-red{stroke:var(--blue);stroke-width:2.4;transition:stroke-dasharray .7s var(--e1)}
+.sc-st{position:absolute;left:50%;top:50%;width:64px;margin:-32px 0 0 -32px;transform:rotate(var(--a)) translate(40%) rotate(calc(-1 * var(--a)));transform:translate(calc(cos(var(--a)) * var(--r)),calc(sin(var(--a)) * var(--r)));border:0;padding:0;background:transparent;cursor:pointer;display:grid;justify-items:center;gap:4px;color:var(--soft);font:600 11.5px/1 "Switzer",sans-serif;opacity:0;transition:opacity .6s var(--e1) calc(.4s + var(--i,0) * .08s),color .25s}
+.sc-head.in .sc-st{opacity:1}
+.sc-st-mk{display:grid;place-items:center;width:56px;height:56px;background:#fff;box-shadow:0 10px 24px -14px rgba(12,18,32,.35);transition:transform .45s var(--e1),box-shadow .45s}
+.sc-st-mk svg{width:80%;height:80%;display:block;filter:saturate(.85) opacity(.9)}
+.sc-st-mk svg>ellipse:first-of-type{display:none}
+.sc-st.on .sc-st-mk{transform:scale(1.12);box-shadow:0 0 0 2px var(--blue),0 14px 28px -14px rgba(236,32,39,.45)}
+.sc-st.on .sc-st-mk svg{filter:none}
+.sc-st-l{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.sc-st-l i{font-style:normal;color:var(--faint);font-size:10px}
+.sc-st.on{color:var(--blue)}
+.sc-st.on .sc-st-l i{color:var(--blue)}
+.sc-st:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.sc-ring-c{position:absolute;left:50%;top:50%;translate:-50% -50%;width:150px;display:grid;justify-items:center;text-align:center;gap:4px;animation:scTip .45s var(--e1) both}
+.sc-ring-n{font:600 26px/1 "Switzer",sans-serif;letter-spacing:-.03em;color:var(--blue)}
+.sc-ring-n small{font-size:12px;color:var(--faint);letter-spacing:0;margin-left:4px}
+.sc-ring-c b{font:600 14px/1.25 "Switzer",sans-serif;letter-spacing:-.01em;color:var(--ink)}
+.sc-ring-c a{font:600 12.5px/1.2 "Switzer",sans-serif;color:var(--blue);text-decoration:none;display:inline-flex;gap:5px;align-items:center}
+.sc-ring-c a i{font-style:normal}
+@media(max-width:1100px){.sc-ring{margin-left:auto;margin-right:auto}}
+@media(max-width:480px){.sc-ring{--r:124px;width:100%}}
+@media(prefers-reduced-motion:reduce){.sc-st{transition:none;opacity:1}.sc-ring-c{animation:none}}
+
+/* the process on the cover ring */
+.sc-ring-arc .sc-ring-ret{stroke:var(--blue);stroke-width:1.6;opacity:.9}
+.sc-ring-arc .sc-ring-head{fill:var(--blue);stroke:none}
+.sc-ring-arc .sc-ring-chev{fill:none;stroke:rgba(12,18,32,.3);stroke-width:1.4;stroke-linecap:butt;stroke-linejoin:miter;transition:stroke .3s}
+.sc-ring-arc .sc-ring-chev.on{stroke:var(--blue)}

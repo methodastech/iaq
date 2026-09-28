@@ -1,0 +1,572 @@
+/* ------------------------------------------------------------------ */
+/*  The delivery cycle — ported from referenceprocess.html              */
+/*  Fixed 1005 x 368 art-directed canvas, scaled to fit. One SVG wire   */
+/*  masked out beneath the discs and label blocks.                      */
+/* ------------------------------------------------------------------ */
+
+/* the band the diagram sits on is pure white, not the page's off-white (2 Sep), and it takes
+   the room the diagram now needs: more air above and below, the canvas up to 1.5x */
+.cyc-band { background: #fff; padding-top: clamp(52px, 8vh, 96px); padding-bottom: clamp(52px, 8vh, 96px); }
+.cyc-band .cyc-fit { margin-top: clamp(34px, 5vh, 56px); margin-bottom: clamp(56px, 8vh, 104px); }
+
+/* ---- split header: title left, three-line lede right ----------------- */
+
+.cyc-hd {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.cyc-hd h2 {
+  max-width: 30ch;
+  letter-spacing: -.035em;
+}
+
+.cyc-stop { color: var(--blue); }
+
+.cyc-hd .cyc-lede {
+  flex: none;
+  width: 390px;
+  margin-top: 16px;
+  font-size: 15.3px;
+  line-height: 1.57;
+  color: #41536A;
+}
+
+.cyc-lede b {
+  color: var(--blue);
+  font-weight:600;
+}
+
+@media (max-width: 1050px) {
+  .cyc-hd { display: block; }
+  .cyc-hd h2 { max-width: none; }
+  .cyc-hd .cyc-lede { width: auto; max-width: 56ch; margin-top: 14px; }
+  .cyc-lede br { display: none; }
+}
+
+/* ---- the scaled canvas ------------------------------------------------ */
+
+/* the fixed canvas is centred in whatever width the section gives it; scaling
+   happens about the top centre so it stays centred at every size */
+/* the canvas inside is fixed at 1005px and does not shrink, so without a clamp this container
+   grows to fit it and drags the page sideways. Belt and braces alongside the measure fix. */
+.cyc-fit {
+  position: relative;
+  margin-top: 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* 17 Sep: 368 to 322. The bottom 46px were the caption's room, and the caption is now stage 6's
+   sub-label, so the canvas would have ended on a dead band. The wire keeps its own 368 box and its
+   viewBox with it: shrinking that would rescale the drawing off the nodes, and nothing of it is
+   drawn below 307 anyway. The container measures the canvas itself (see CycleFlow.jsx), so the
+   height it reserves follows this number without being told. */
+.cyc-canvas {
+  position: relative;
+  flex: none;
+  width: 1005px;
+  height: 322px;
+  transform-origin: top center;
+}
+
+.cyc-wire {
+  position: absolute;
+  inset: 0;
+  width: 1005px;
+  height: 368px;
+  overflow: visible;
+}
+
+.cyc-red { stroke: var(--blue); }
+.cyc-redhead { fill: var(--blue); }
+
+/* ---- stage: anchored at the disc's top-left corner -------------------- */
+
+.cyc-node {
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  text-decoration: none;
+}
+
+/* 9 Sep (Bazil: "put the numbers on top of the round instead"). The number floated in the space
+   above each disc, which is most of why the two rows needed so much air between them. It sits on
+   the disc's top edge now, on its own small plate, so it belongs to the mark it labels. */
+.cyc-num {
+  position: absolute;
+  top: -12px;
+  left: -9px;
+  width: 80px;
+  z-index: 3;
+  text-align: center;
+  font-family: var(--label);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: #8FA0B4;
+  transition: color .3s var(--e1);
+  pointer-events: none;
+}
+.cyc-num::before {
+  content: "";
+  position: absolute; left: 50%; top: 50%;
+  width: 28px; height: 19px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  z-index: -1;
+}
+
+/* 2 Sep (Bazil: "visual needs to be bigger"): the disc grows 62 -> 84px AROUND its centre, so the
+   art-directed canvas keeps every node, wire and mask position; only the disc, the mark inside it
+   and the label offset change. The wire mask radius below is widened to match. */
+/* 2 Sep premium pass (Bazil: "the circle doesn't look good"): the disc is a soft plate with a
+   radial fall-off and a hairline, sitting inside a thin ORBIT ring with a gap of white, and the
+   active stage draws a red arc round that orbit instead of a red border and a pink blob. */
+.cyc-disc {
+  position: absolute;
+  inset: -11px;
+  border-radius: 50%;
+  /* the -ic marks are NOT cutouts: each carries an opaque near-white body with only its top and
+     bottom strips transparent (verified by sampling alpha). Once the mark filled the disc that
+     body poked past the circle as a square, so the disc clips it (Bazil, 2 Sep). */
+  overflow: hidden;
+  /* 3 Sep (client: "i dont like there is a mix of bacground colour"): this was a grey radial
+     gradient (#fff to #EEF2F7) sitting UNDER a mark whose own body is opaque near-white, so
+     every disc showed two different whites meeting on a curve, and no two discs matched
+     because each mark's body covers a different area. One flat white, shared by all six. */
+  background: #fff;
+  border: 1px solid #E8EDF4;
+  box-shadow: 0 14px 26px -20px rgba(27, 42, 68, .34);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1B2A44;
+  transition: border-color .3s var(--e1), color .3s var(--e1), transform .4s var(--e1), box-shadow .4s var(--e1);
+}
+@property --cycArc { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+.cyc-arc {
+  position: absolute;
+  inset: -19px;
+  border-radius: 50%;
+  pointer-events: none;
+  --cycArc: 0deg;
+  background: conic-gradient(from -90deg, var(--blue) var(--cycArc), transparent 0);
+  /* 9 Sep (Bazil: "can you select it in a more premium manner"). The ring was 2.5px and closed
+     all the way round, which is the heaviest possible way to say "this one". It is a hairline
+     now, and it still draws itself round the disc rather than switching on. */
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 1.2px), #000 calc(100% - .2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 1.2px), #000 calc(100% - .2px));
+  opacity: 0;
+  transition: --cycArc 1s cubic-bezier(.32, 0, .16, 1), opacity .35s ease;
+}
+
+.cyc-disc svg {
+  width: 27px;
+  height: 27px;
+  display: block;
+}
+
+.cyc-txt {
+  position: absolute;
+  left: 92px;
+  top: 11px;
+  white-space: nowrap;
+}
+
+/* 4 Sep (client: "titttle shold be less thick"): 700 at 19px made six bold slabs across the
+   band, heavier than the page's own h2s. 600 keeps them clearly the label of each stage without
+   shouting over the diagram they sit in. */
+.cyc-txt b {
+  display: block;
+  font-family: "Switzer", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -.013em;
+  line-height: 1.15;
+  color: #0D131C;
+  transition: color .3s var(--e1);
+}
+
+.cyc-txt small {
+  display: block;
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 1.36;
+  color: #65788E;
+}
+
+/* hover and current were 1.04 and 1.06, close enough that neither read. Hover is a whisper
+   now and the ring is the thing that says current. */
+.cyc-node:hover .cyc-disc,
+.cyc-node:focus-visible .cyc-disc {
+  border-color: #DCE4EE;
+  color: var(--blue);
+  transform: scale(1.02);
+  box-shadow: 0 16px 28px -20px rgba(27, 42, 68, .4);
+}
+
+.cyc-node:hover .cyc-txt b,
+.cyc-node:focus-visible .cyc-txt b { color: var(--blue); }
+
+.cyc-node:hover .cyc-num,
+.cyc-node:focus-visible .cyc-num { color: var(--blue); }
+
+.cyc-node:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 6px;
+  border-radius: 50%;
+}
+
+/* ---- the ACTIVE stage (2 Sep): the one the panel below is describing ----
+   Driven by data-active on the canvas and .on on the node, so hover, auto-advance and the
+   arrow keys all land in the same look: disc lifts, mark grows, number and name go red. */
+/* Current, 9 Sep (Bazil: "why can't you highlight just the circle instead of another circle").
+   Every version so far added something AROUND the disc: a ring, then a halo, then both. The disc
+   is already a circle. So the disc itself carries the state now, and nothing new appears beside
+   it: its own hairline border goes red, the white lifts a shade above the page, it rises, and
+   the shadow deepens. The separate arc ring is retired. */
+.cyc-node.on .cyc-disc {
+  border-color: var(--blue);
+  background: #fff;
+  color: var(--blue);
+  transform: scale(1.045);
+  box-shadow: inset 0 1px 0 #fff, 0 20px 34px -24px rgba(27, 42, 68, .48);
+}
+.cyc-node.on .cyc-arc { opacity: 0; }
+.cyc-node.on .cyc-txt b { color: var(--blue); }
+.cyc-node.on .cyc-num { color: var(--blue); position: relative; }
+/* 9 Sep (Bazil: "don't underline the number"): the red border on the disc already says which
+   stage this is. The number just goes red. */
+.cyc-node.on .cyc-disc.has-mk img { transform: scale(1.1); }
+.play .cyc-node.on { transform: translateY(0); }
+
+/* the single runner that hops the loop (one hop every two seconds) */
+
+/* ---- inline arrow chips sitting on the line --------------------------- */
+
+/* 2 Sep (Bazil: "the arrow icon doesn't look premium"): the circled-button chip is gone. The
+   handover mark is a double chevron on a small white plate that knocks the wire out behind it,
+   square edged like the rest of the system. The one after the active stage turns red and
+   nudges forward. */
+.cyc-chip {
+  position: absolute;
+  width: 34px;
+  height: 22px;
+  margin: -11px 0 0 -17px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8A9BB2;
+  pointer-events: none;
+  transition: color .3s ease, transform .4s var(--e1);
+}
+.cyc-chip .cyc-chev2 { opacity: .42; }
+.cyc-chip.hot { color: var(--blue); }
+.cyc-chip.hot svg { transform: translateX(2px); }
+.cyc-chip.hot .cyc-chev2 { opacity: .7; }
+.cyc-chip svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  transition: transform .4s var(--e1);
+}
+
+/* ---- bottom caption --------------------------------------------------- */
+
+/* 4 Sep: row 2 moved from top 212 to 256 for the extra vertical distance, so the discs now run
+   to y 340. This caption was pinned at 326 and ended up printed straight through the Maintain
+   disc. It clears the row by 26px again. */
+/* 17 Sep: the .cyc-caption rules went with the element. The line it carried is stage 6's
+   sub-label now, in the node it describes, and it keeps the red so the loop still reads.
+   The old block is in src/_backups/cycle-0917/. */
+.cyc-txt small.is-loop { color: var(--blue); }
+
+/* ---- animation -------------------------------------------------------- */
+
+.cyc-blue { stroke-dasharray: 2400; stroke-dashoffset: 2400; }
+.cyc-red { stroke-dasharray: var(--cycRedLen, 293); stroke-dashoffset: var(--cycRedLen, 293); }
+.cyc-node, .cyc-chip { opacity: 0; transform: translateY(9px); }
+.cyc-chip { transform: translateY(9px) scale(.85); }
+
+.play .cyc-blue { transition: stroke-dashoffset 1750ms cubic-bezier(.45, .05, .25, 1); stroke-dashoffset: 0; }
+/* 3 Sep (client: "every 2 seconds do a whole loop and not just a dot travelling fast"):
+   this drew once and stopped. It is now a single segment that runs the whole return path on a
+   continuous 2s cycle. The dash pattern sums to the path length (520), so exactly one segment
+   is in flight at a time and the loop never doubles up. */
+/* 4 Sep: tried solid (client asked "there should be a line here"), then reverted on seeing it
+   — "revery back like before". So it is the travelling segment again: one 108-unit run chasing
+   the return route, which reads as flow rather than as a heavy red bracket around the corner.
+   IMPORTANT: the gap is `--cycRedLen - 108`, measured at runtime, NOT the old hardcoded `412`.
+   That original pair summed to 520 against a path of 293, so the pattern was nearly twice the
+   path and the segment stuttered with a dead gap. Same motion as before, correct arithmetic. */
+.play .cyc-red { stroke-dasharray: 108 calc(var(--cycRedLen, 293) - 108); stroke-dashoffset: 0;
+  animation: cycRun 2s linear 1.7s infinite; }
+@keyframes cycRun { from { stroke-dashoffset: var(--cycRedLen, 293) } to { stroke-dashoffset: 0 } }
+.play .cyc-redhead { transition: opacity 320ms ease 2450ms; opacity: 1; }
+
+.play .cyc-node {
+  transition: opacity 620ms ease var(--d, 0ms), transform 620ms cubic-bezier(.22, .7, .3, 1) var(--d, 0ms);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.play .cyc-chip {
+  transition: opacity 480ms ease var(--d, 0ms), transform 520ms cubic-bezier(.3, 1.35, .5, 1) var(--d, 0ms);
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* the hover transform must survive the reveal transform */
+.play .cyc-node:hover, .play .cyc-node:focus-visible { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cyc-arc { transition: none; }
+  .cyc-blue, .cyc-red { stroke-dashoffset: 0 !important; transition: none !important; animation: none !important; }
+  /* the bead selector used to lead this list; removing that line orphaned the block */
+  .cyc-redhead, .cyc-node, .cyc-chip {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* mobile-only vertical connectors, inert on the canvas layout */
+.cyc-mvert { display: none; }
+
+/* ---- mobile: the same cycle as one vertical timeline ------------------- */
+
+@media (max-width: 860px) {
+  .cyc-fit { height: auto !important; display: block; }
+
+  .cyc-canvas {
+    width: auto;
+    height: auto;
+    transform: none !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cyc-wire, .cyc-chip, .cyc-arc { display: none; }
+
+  /* the stage unpacks from its absolute frame into a plain row */
+  .cyc-node {
+    position: static;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .cyc-num {
+    position: static;
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: .15em;
+    font-weight: 600;
+    color: #8993A8;
+    margin-bottom: 2px;
+  }
+
+  .cyc-disc {
+    position: static;
+    flex: none;
+    width: 64px;
+    height: 64px;
+    inset: auto;
+  }
+
+  .cyc-disc svg { width: 24px; height: 24px; }
+
+  .cyc-txt {
+    position: static;
+    white-space: normal;
+  }
+
+  .cyc-txt b { font-size: 17px; }
+  .cyc-txt small br { display: none; }
+  /* 24 Sep: the white plate that knocks the wire out behind the number (.cyc-num::before, absolute at 50%)
+     was still drawn on the stack, where the number is a full-width static row, so it landed 181px in and
+     painted over the tail of "Commission". There is no wire on the stack, so there is nothing to knock out. */
+  .cyc-num::before { display: none; }
+
+  /* a plain vertical line with a small chevron between stages */
+  .cyc-mvert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 20px;
+    height: 34px;
+    margin: 6px 0 6px 18px;            /* centred under the 56px disc */
+    color: #97A1B5;
+  }
+
+  .cyc-mvert::before,
+  .cyc-mvert::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    height: 9px;
+    border-left: 1.5px solid #C3D1E0;
+  }
+
+  .cyc-mvert::before { top: 0; }
+  .cyc-mvert::after { bottom: 0; }
+
+  .cyc-mvert svg {
+    width: 13px;
+    height: 13px;
+    transform: rotate(90deg);
+  }
+
+}
+
+/* ===== photoreal stage marks in the discs (23 Aug) ===== */
+.cyc-disc.has-mk svg{display:none}
+/* 3 Sep (client: "i dont like it overlaping"): 92% ran the mark body into the ring. */
+.cyc-disc.has-mk img{width:80%;height:80%;object-fit:contain;display:block;
+  filter:saturate(.97) contrast(1.02);transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.cyc-node:hover .cyc-disc.has-mk img,
+.cyc-node:focus-visible .cyc-disc.has-mk img{transform:scale(1.07)}
+@media(max-width:900px){.cyc-disc.has-mk img{width:72%;height:72%}}
+
+/* 24 Sep · the vector marks in the serpentine's discs */
+.cyc-disc .cyc-mk{display:block;width:80%;height:80%}
+.cyc-disc .cyc-mk svg{display:block;width:100%;height:100%}
+@media(max-width:900px){.cyc-disc .cyc-mk{width:72%;height:72%}}
+
+/* ============================================================================
+   24 Sep (Bazil: "no need to put them in circle", "improve this flow", "have this flow once every 3 seconds").
+   The white discs, their borders and shadows are gone: each isometric mark stands on the page with its number
+   above it. The active stage is the red number and name and a lifted mark, nothing drawn round it. The return
+   from 6 to 1 is heavier, with a slow travelling dash, so the loop reads as a loop.
+   ============================================================================ */
+.cyc-disc,.cyc-node.on .cyc-disc,.cyc-node:hover .cyc-disc,.cyc-node:focus-visible .cyc-disc{background:transparent;border:0;box-shadow:none;overflow:visible;border-radius:0}
+.cyc-node.on .cyc-disc{transform:translateY(-3px) scale(1.06)}
+.cyc-node:hover .cyc-disc,.cyc-node:focus-visible .cyc-disc{transform:translateY(-3px) scale(1.04)}
+.cyc-arc{display:none}
+.cyc-disc .cyc-mk{width:100%;height:100%}
+.cyc-red{stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:10 7;animation:cycRun 1.6s linear infinite}
+@keyframes cycRun{to{stroke-dashoffset:-17}}
+@media(prefers-reduced-motion:reduce){.cyc-red{animation:none;stroke-dasharray:none}}
+
+/* 24 Sep (Bazil: "make sure the icons are not cut"): the stage clips nothing. 25 Sep: the marks and the line are the
+   24 Sep version again (Bazil: "these 3D icons look so bad, we had one before that was good, and the line is worse now,
+   please revert"); the isometric marks and the dotted return path of 25 Sep are in src/_backups/cycle-0925 */
+.cyc-fit,.cyc-stage{overflow:visible!important}
+
+/* ============================================================================
+   26 Sep (Bazil, on the serpentine: "this diagram concept is good, just need to improve the animation flow", "make the
+   number bigger and put it beside the icon", "can you not cut off the icon", "align properly", "no need 'feeds the
+   next Design'"). The rules below outrank everything above.
+   ============================================================================ */
+.cyc-run{fill:none;stroke:var(--blue,#EC2027);stroke-width:2.6;stroke-linecap:round;stroke-dasharray:90 2400;stroke-dashoffset:2490;opacity:0}
+.play .cyc-run{opacity:1;animation:cycRunWire 7.5s linear infinite}
+@keyframes cycRunWire{0%{stroke-dashoffset:2490}80%{stroke-dashoffset:0}80.01%{stroke-dashoffset:2490}100%{stroke-dashoffset:2490}}
+.cyc-red,.play .cyc-red{stroke:var(--blue,#EC2027);stroke-width:2.6!important;stroke-linecap:round;stroke-dasharray:90 400!important;stroke-dashoffset:490;opacity:1;animation:cycRunBack 7.5s linear infinite!important;transition:none!important}
+@keyframes cycRunBack{0%,80%{stroke-dashoffset:490}100%{stroke-dashoffset:90}}
+.cyc-redbase{opacity:1}
+.cyc-redhead,.play .cyc-redhead{opacity:1;transition:none}
+.cyc-chip svg{animation:cycChip 7.5s ease-in-out infinite}
+.cyc-chip:nth-child(1) svg{animation-delay:1.2s}.cyc-chip:nth-child(2) svg{animation-delay:3s}.cyc-chip:nth-child(3) svg{animation-delay:4.4s}.cyc-chip:nth-child(4) svg{animation-delay:5.6s}
+@keyframes cycChip{0%,100%{opacity:.55;transform:none}8%{opacity:1;transform:translateX(3px)}16%{opacity:.55;transform:none}}
+.cyc-num{position:absolute;top:50%;left:calc(100% + 14px);width:auto;transform:translateY(-50%);margin:0;padding:0;font:600 24px/1 "Switzer",sans-serif;letter-spacing:-.02em;color:#8A94A6;text-align:left;background:transparent;box-shadow:none}
+.cyc-num::before{display:none}
+.cyc-node.on .cyc-num,.cyc-node:hover .cyc-num{color:var(--blue,#EC2027)}
+.cyc-txt{left:122px;top:50%;transform:translateY(-50%)}
+.cyc-txt small.is-loop{display:none}
+.cyc-disc,.cyc-disc.has-mk{overflow:visible;border-radius:0;background:transparent;box-shadow:none;border:0;inset:-16px}
+.cyc-disc .cyc-mk,.cyc-disc.has-mk .cyc-mk{width:100%;height:100%;overflow:visible}
+.cyc-disc .cyc-mk svg,.cyc-disc.has-mk svg.iaq-mk{display:block;width:100%;height:100%;overflow:visible}
+.cyc-node.on .cyc-disc{transform:translateY(-4px) scale(1.08)}
+.cyc-node:hover .cyc-disc,.cyc-node:focus-visible .cyc-disc{transform:translateY(-3px) scale(1.04)}
+.cyc-fit,.cyc-stage,.cyc-canvas,.cyc-node{overflow:visible!important}
+@media(prefers-reduced-motion:reduce){.cyc-run,.cyc-red,.cyc-chip svg{animation:none!important}}
+
+/* the number clears the mark's edge (the disc runs 16px past the node), the name after it */
+.cyc-num{left:calc(100% + 26px)}
+.cyc-txt{left:136px}
+
+/* the number and the name fit between the mark and the next chevron at every station: number 20px right after the mark,
+   the name at 18px from 108px */
+.cyc-num{left:calc(100% + 20px);font-size:20px}
+.cyc-txt{left:108px}
+.cyc-txt b{font-size:18px}
+/* the number stands on a white plate like the name, so the wire and the red run pass behind it instead of striking through */
+.cyc-num{background:#fff;padding:0 5px;line-height:1;margin-left:-5px}
+/* the active station's number stays in place (the older .on rule set position:relative, which dropped it under the name);
+   its plate reaches the name's plate so the red run passes behind both without peeking through a gap */
+.cyc-node.on .cyc-num,.cyc-node:hover .cyc-num{position:absolute;top:50%;transform:translateY(-50%)}
+.cyc-num{padding:0 14px 0 5px;margin-right:-14px}
+
+/* 26 Sep (Bazil: "the loop arrow at the left side not moving and cut off"): the run's dash starts off the wire and leaves
+   it at Hookup (the wire is 1826 units; a dash held at offset 2490 sat visible at Design), then the return dash comes
+   in from Hookup and leaves into Design (the return is 247 units) and is off its path the rest of the loop; the
+   chevrons breathe as the dash passes them */
+.play .cyc-run{animation:cycRunWire2 7.5s linear infinite}
+@keyframes cycRunWire2{0%{stroke-dashoffset:2580}80%{stroke-dashoffset:660}80.01%,100%{stroke-dashoffset:2580}}
+.cyc-red,.play .cyc-red{stroke-dashoffset:90;animation:cycRunBack2 7.5s linear infinite!important}   /* no !important on the offset: it would outrank the keyframes */
+@keyframes cycRunBack2{0%,80%{stroke-dashoffset:90}94%,100%{stroke-dashoffset:-250}}
+.cyc-redbase{stroke:#C3D1E0;opacity:1}
+.cyc-chip:nth-child(1) svg{animation-delay:.7s}.cyc-chip:nth-child(2) svg{animation-delay:1.7s}.cyc-chip:nth-child(3) svg{animation-delay:4.1s}.cyc-chip:nth-child(4) svg{animation-delay:5.1s}
+@media(prefers-reduced-motion:reduce){.cyc-run,.cyc-red{animation:none!important}}
+/* every dash and chevron starts its clock when .play lands (the observer adds it as the section enters), so the run,
+   the return and the chevrons stay in phase; before that nothing runs */
+.cyc-red{animation:none!important}
+.play .cyc-red{animation:cycRunBack2 7.5s linear infinite!important}
+.cyc-chip svg{animation:none}
+.play .cyc-chip svg{animation:cycChip 7.5s ease-in-out infinite}
+.play .cyc-chip:nth-child(1) svg{animation-delay:.7s}.play .cyc-chip:nth-child(2) svg{animation-delay:1.7s}.play .cyc-chip:nth-child(3) svg{animation-delay:4.1s}.play .cyc-chip:nth-child(4) svg{animation-delay:5.1s}
+@media(prefers-reduced-motion:reduce){.play .cyc-run,.play .cyc-red,.play .cyc-chip svg{animation:none!important}}
+/* 26 Sep: the run and the return are driven by one JS clock in CycleFlow.jsx (CSS animations of stroke-dashoffset did not
+   repaint in every Chrome we tested); the CSS keyframes are retired and the paths rest off their wires */
+.cyc-run,.play .cyc-run{animation:none!important;opacity:1;stroke-dashoffset:2580}
+.cyc-red,.play .cyc-red{animation:none!important;stroke-dashoffset:90}
+/* the chevrons keep the same clock as the dash: one 6.94 s period */
+.play .cyc-chip svg{animation-duration:6.94s}
+
+/* 25 Sep (Bazil: "same size, not flat, not messy, reduce 15%"): the disc box is 15% smaller (inset 16 to 7), the marks
+   are fitted to one box by CycleFlow.jsx, and each carries a soft drop shadow for lift */
+.cyc-disc,.cyc-disc.has-mk{inset:-7px}
+.cyc-disc .cyc-mk svg,.cyc-disc.has-mk svg.iaq-mk{filter:drop-shadow(0 7px 9px rgba(12,18,32,.16))}
+.cyc-num{left:calc(100% + 14px)}
+.cyc-txt{left:102px}
+.play .cyc-chip svg{animation-duration:7.1s}
+
+/* 25 Sep (Bazil: "remove the weird box", "remove the shadows", "refine the icon edges"): no drop shadow and no ground
+   ellipse under the marks; the active disc lifts without scaling (a CSS scale rasterises the mark and softens its edges);
+   the vector is drawn at geometric precision */
+.cyc-disc .cyc-mk svg,.cyc-disc.has-mk svg.iaq-mk{filter:none;shape-rendering:geometricPrecision}
+.cyc-mk svg > ellipse[fill*="gnd"]{display:none}
+.cyc-node.on .cyc-disc{transform:translateY(-4px)}
+.cyc-node:hover .cyc-disc,.cyc-node:focus-visible .cyc-disc{transform:translateY(-3px)}
+.cyc-disc,.cyc-disc.has-mk,.cyc-mk,.cyc-mk svg{background:transparent;box-shadow:none;outline:0}
+
+/* 25 Sep, midday (Bazil: "icons supposed to be the same size and animate when hover"): the marks are fitted to their
+   drawings (lib/fitMarks.js), and a hovered mark lifts and floats until the pointer leaves; the active stage keeps its lift */
+.cyc-node:hover .cyc-disc,.cyc-node:focus-visible .cyc-disc{animation:cycHover 1.8s ease-in-out infinite;transform:translateY(-4px) scale(1.06)}
+@keyframes cycHover{0%,100%{transform:translateY(-4px) scale(1.06)}50%{transform:translateY(-9px) scale(1.08)}}
+@media(prefers-reduced-motion:reduce){.cyc-node:hover .cyc-disc,.cyc-node:focus-visible .cyc-disc{animation:none}}
+
+/* a station outside the unit's scope (EPC page): quiet, still readable */
+.cyc-node.is-dim{opacity:.32}
+.cyc-node.is-dim .cyc-num,.cyc-node.is-dim .cyc-txt b{color:#8A94A6}
+
+/* 26 Sep, later (Bazil's line rules: "no separated lines", one straight line, lines red; his answer on the cycle: "just go
+   proceed with all"): no short dash travels the wire. CycleFlow.jsx dashes each path as one piece and draws it as a
+   growing red line (the run, then the return), holds, fades and goes again. The track is light IAQ red, not grey; the
+   faint background mesh is gone; butt ends, like every IAQ line. The chevrons keep the loop's own period (--cycP) */
+.cyc-blue,.cyc-redbase{stroke:rgba(236,35,38,.28)}
+.cyc-mesh{display:none}
+.cyc-run,.play .cyc-run,.cyc-red,.play .cyc-red{stroke-linecap:butt}
+.play .cyc-chip svg{animation-duration:var(--cycP,7.62s)}

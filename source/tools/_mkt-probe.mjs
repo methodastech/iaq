@@ -1,0 +1,12 @@
+import puppeteer from 'puppeteer-core'
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', protocolTimeout: 120000, args: ['--use-angle=metal', '--enable-gpu', '--no-sandbox'] })
+const p = await b.newPage()
+await p.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 })
+await p.goto('http://localhost:52158/about', { waitUntil: 'networkidle0', timeout: 60000 })
+await new Promise(r => setTimeout(r, 2500))
+const mk = await p.$('.nav-has[data-hub="markets-hub"] > a')
+await mk.hover(); await new Promise(r => setTimeout(r, 2500))
+const info = await p.evaluate(() => { const h = document.querySelector('.nav-has[data-hub="markets-hub"]'); const cs=e=>{const c=getComputedStyle(e); return {op:c.opacity, vis:c.visibility, clip:c.clipPath, tr:c.transform, h:e.getBoundingClientRect().height, w:e.getBoundingClientRect().width, col:c.color, bg:c.backgroundColor}}; return { mega: cs(h.querySelector('.nav-mega')), cols: cs(h.querySelector('.nm-cols')), col: cs(h.querySelector('.nm-col')), rows: cs(h.querySelector('.nm-rows')), a: cs(h.querySelector('.nm-rows>a')), em: cs(h.querySelector('.nm-rows>a em')), txt: cs(h.querySelector('.nm-rows>a .nm-txt')), rect: h.querySelector('.nm-rows>a').getBoundingClientRect().toJSON() } })
+console.log(JSON.stringify(info, null, 1))
+await p.screenshot({ path: process.argv[2] + '/markets-menu-b.png', clip: { x: 300, y: 60, width: 1000, height: 520 } })
+await b.close()

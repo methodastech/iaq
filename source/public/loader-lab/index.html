@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>IAQ loading screen · variations</title>
+<!-- 26 Sep 2026: three variations of the IAQ loading screen for the Design tab (Motion, Loading screen). Internal only:
+     pruned from the launch build. lab.js has the notes. -->
+<style>
+  html,body{margin:0;height:100%;background:#FFFFFF;overflow:hidden}
+  #stage{position:absolute;inset:0;transition:none}
+  #stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  /* the logo as the live loader draws it: the IAQ mark as a mask, filled IAQ red from the bottom with the count */
+  #logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(240px,34vw);aspect-ratio:668/276;
+    -webkit-mask:url(/assets/iaq-logo.webp) center/contain no-repeat;mask:url(/assets/iaq-logo.webp) center/contain no-repeat;
+    background:linear-gradient(to top,#EC2326 var(--fill,0%),#DFE5EE var(--fill,0%));z-index:2}
+  /* v4 (26 Sep, Bazil: "that colour overlaps need to fix"): a white knockout the shape of the letters sits under the mark,
+     so no dot shows through its stripes or touches its edge. The same box as the mark, so it lines up exactly */
+  #knock{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(240px,34vw);aspect-ratio:668/276;
+    -webkit-mask:url(/assets/iaq-logo-knock.png) center/contain no-repeat;mask:url(/assets/iaq-logo-knock.png) center/contain no-repeat;
+    background:#FFFFFF;z-index:1}
+  [data-v="v4"] #knock{display:block}
+  /* the flat variation: the mark sits above the map, not over it */
+  [data-v="line"] #logo{top:15%;width:min(200px,28vw)}
+</style>
+<script src="land.js"></script>
+</head>
+<body>
+<div id="stage" aria-hidden="true"></div>
+<div id="knock" aria-hidden="true"></div>
+<div id="logo" role="img" aria-label="IAQ"></div>
+<script type="module" src="lab.js"></script>
+</body>
+</html>

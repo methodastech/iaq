@@ -1,0 +1,149 @@
+/* ---------------------------------------------------------------------------
+   THE NEWSROOM INDEX
+   Light, square, one red accent. No rules or boxes: the client has asked twice
+   for fewer lines, so structure here comes from alignment and space, and the
+   only drawn strokes are the marks themselves.
+   --------------------------------------------------------------------------- */
+
+.nx{ background:var(--bg2); padding:clamp(56px,8vh,96px) 0 clamp(48px,7vh,84px); }
+
+.nx-head h2{ font-size:clamp(26px,3vw,46px); letter-spacing:-.025em; line-height:1.05;
+  margin-top:12px; }
+.nx-head h2 em{ font-style:normal; color:var(--blue-bright); }
+.nx-lede{ margin-top:14px; max-width:58ch; font-size:15px; line-height:1.6; color:var(--soft); }
+
+.nx-body{ display:grid; grid-template-columns:minmax(170px,220px) minmax(0,1fr);
+  gap:clamp(26px,4vw,64px); margin-top:clamp(32px,4.6vh,56px); align-items:start; }
+
+/* ---- the type rail ----------------------------------------------------- */
+
+.nx-types{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px; }
+.nx-type{ position:relative; width:100%; display:grid; grid-template-columns:20px 1fr auto;
+  align-items:center; gap:11px; padding:10px 10px 14px 0; background:none; border:0; cursor:pointer;
+  color:var(--soft); text-align:left; font:inherit;
+  transition:color .25s var(--e1), background .25s var(--e1), padding-left .3s var(--e1); }
+.nx-type .nm{ --nm-accent:#B5121B; color:#9AA5BA; transition:color .25s, transform .4s var(--e1); }
+.nx-type-n{ font-size:14px; }
+.nx-type-c{ font-family: var(--num); font-size:10.5px; font-weight:600;
+  letter-spacing:.1em; color:var(--soft); font-variant-numeric:tabular-nums; }
+.nx-type:hover{ color:var(--ink); padding-left:8px; }
+.nx-type:hover .nm{ color:var(--ink); transform:translateX(1px); }
+.nx-type[data-on="1"]{ color:var(--ink); padding-left:8px; }
+.nx-type[data-on="1"] .nm{ color:var(--blue-bright); }
+.nx-type[data-on="1"] .nx-type-c{ color:var(--blue-bright); }
+.nx-type:focus-visible{ outline:2px solid var(--blue); outline-offset:2px; }
+
+/* ---- the cadence plot -------------------------------------------------- */
+
+.nx-plot{ min-width:0; }
+/* 3 Sep (client: "too naked and not structured"): the marks floated on white with no plot
+   furniture, so the eye had nothing to measure them against. Each month is now a soft tinted
+   column that grows with its count, sitting on a shared baseline, with the count stated above
+   the stack. No rules are used: the tint and the baseline do the structuring. */
+.nx-months{ list-style:none; margin:0; padding:0; display:grid;
+  grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); gap:clamp(4px,.7vw,10px);
+  /* --u is the height ONE story takes in a column. The tint used to hardcode 52px
+     while the mark size dropped to 30px and then 24px at the two breakpoints, so
+     the tint overshot its own column by ~68px at tablet and ~98px on a phone.
+     Both the stack and the tint now read this one value. */
+  --u:52px;
+  align-items:end; min-height:calc(var(--span) * var(--u) + 62px);
+  border-bottom:0; position:relative; }
+/* the baseline the columns stand on: a tint band, not a stroke */
+.nx-months::after{ content:""; position:absolute; left:0; right:0; bottom:34px; height:2px;
+  background:linear-gradient(90deg,rgba(12,18,32,.10),rgba(12,18,32,.04)); }
+.nx-mo{ position:relative; display:flex; flex-direction:column; justify-content:flex-end;
+  gap:10px; min-width:0; padding-bottom:0; }
+/* the column tint: height tracks the month's own count, so the plot reads at a glance */
+.nx-mo::before{ content:""; position:absolute; left:0; right:0; bottom:34px; z-index:0;
+  height:calc(var(--n,0) * var(--u) + 14px);
+  background:linear-gradient(180deg,rgba(12,18,32,.045),rgba(12,18,32,.012));
+  opacity:0; transform:scaleY(.7); transform-origin:bottom;
+  transition:opacity .7s var(--e1), transform .8s var(--e1); }
+.nx[data-in="1"] .nx-mo::before{ opacity:1; transform:none; }
+.nx-mo[data-empty="1"]::before{ height:14px; }
+.nx-mo:hover::before{ background:linear-gradient(180deg,rgba(236,32,39,.07),rgba(236,32,39,.015)); }
+
+/* the count, stated above each stack */
+.nx-mo-n{ position:relative; z-index:1; text-align:center;
+  font-family:"Switzer","Instrument Sans",sans-serif; font-weight:600; font-size:14px;
+  letter-spacing:-.01em; color:var(--ink); font-variant-numeric:tabular-nums;
+  opacity:0; transform:translateY(6px);
+  transition:opacity .5s var(--e1) .25s, transform .5s var(--e1) .25s; }
+.nx[data-in="1"] .nx-mo-n{ opacity:1; transform:none; }
+.nx-mo[data-empty="1"] .nx-mo-n{ color:var(--soft); }
+.nx-stack{ position:relative; z-index:1; list-style:none; margin:0; padding:0; display:flex;
+  flex-direction:column-reverse; gap:6px; align-items:center; }
+
+/* the marks are the plot's entire content, so their RESTING colour has to clear the
+   3:1 graphic floor: #B4BECF was 1.87:1 on white, invisible before hover */
+.nx-mk{ display:grid; place-items:center; width:38px; height:38px; color:#7B8698;
+  --nm-accent:#D2848A; text-decoration:none;
+  opacity:0; transform:translateY(10px) scale(.9);
+  transition:opacity .5s var(--e1), transform .55s var(--e1), color .25s ease; }
+/* the stack draws from the baseline up, one mark after another */
+.nx[data-in="1"] .nx-mk{ opacity:1; transform:none;
+  transition-delay:calc(var(--i,0) * 70ms); }
+.nx-mk:hover,.nx-mk:focus-visible{ color:var(--ink); --nm-accent:#EC2027; outline:none;
+  transform:translateY(-2px); }
+.nx-mk[data-live="1"]{ color:var(--ink); --nm-accent:#EC2027; }
+.nx-mk[data-dim="1"]{ opacity:.2; }
+.nx-mk:focus-visible{ box-shadow:0 0 0 2px var(--blue); }
+
+.nx-mo-l{ position:relative; z-index:1; height:34px; justify-content:center;
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+  font-family: var(--label); font-size:10px; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--soft); }
+.nx-mo-l i{ font-style:normal; color:var(--soft); }
+.nx-mo[data-empty="1"] .nx-mo-l{ color:var(--soft); opacity:.75; }
+/* an empty month keeps its column so a gap in publishing is visible, not closed up */
+.nx-mo[data-empty="1"] .nx-stack::before{ content:""; width:4px; height:4px;
+  background:#DDE3EC; margin-bottom:2px; }
+
+/* ---- the readout ------------------------------------------------------- */
+
+.nx-read{ margin-top:22px; min-height:44px; display:flex; align-items:flex-start; gap:14px;
+  flex-wrap:wrap; }
+.nx-read-k{ display:inline-flex; align-items:center; gap:7px; flex:none;
+  font-family: var(--label); font-size:10px; font-weight:600; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--blue-bright); --nm-accent:#B5121B; }
+.nx-read-k .nm{ width:15px; height:15px; }
+.nx-read-t{ font-size:15px; line-height:1.5; color:var(--ink); max-width:70ch; }
+.nx-read-idle{ font-family: var(--label); font-size:10.5px; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--soft); }
+
+/* ---- narrow ------------------------------------------------------------ */
+
+@media(max-width:900px){
+  .nx-body{ grid-template-columns:1fr; gap:24px; }
+  .nx-types{ flex-direction:row; flex-wrap:wrap; gap:4px; }
+  /* a tint, not a box: this file's own header says the plot uses no rules or boxes,
+     and a 1px outline around every type chip is the pattern the client called out */
+  .nx-type{ width:auto; grid-template-columns:18px auto auto; gap:8px;
+    padding:8px 12px 8px 10px; background:rgba(12,18,32,.04); }
+  .nx-type[data-on="1"]{ background:var(--blue); color:#fff; }
+  .nx-mk{ width:30px; height:30px; }
+  .nx-months{ --u:36px; min-height:calc(var(--span) * var(--u) + 24px); gap:4px; }
+}
+@media(max-width:560px){
+  .nx-mk{ width:24px; height:24px; }
+  .nx-mk svg{ width:15px; height:15px; }
+  .nx-months{ --u:30px; min-height:calc(var(--span) * var(--u) + 22px); }
+}
+
+/* ---- reduced motion ---------------------------------------------------- */
+
+@media(prefers-reduced-motion:reduce){
+  .nx-mk{ opacity:1 !important; transform:none !important; transition:color .2s !important; }
+}
+
+/* the share bar: each type's portion of the whole archive, so the rail reads as a distribution
+   rather than five labels that happen to carry numbers */
+.nx-type-bar{ position:absolute; left:31px; right:10px; bottom:7px; height:2px;
+  background:rgba(12,18,32,.07); overflow:hidden; }
+.nx-type-bar::after{ content:""; position:absolute; inset:0 auto 0 0; width:0;
+  background:#C3CBD9; transition:width .9s var(--e1), background .25s ease; }
+.nx[data-in="1"] .nx-type-bar::after{ width:var(--w); }
+.nx-type:hover .nx-type-bar::after,
+.nx-type[data-on="1"] .nx-type-bar::after{ background:var(--blue); }
+@media(max-width:900px){ .nx-type-bar{ display:none } }

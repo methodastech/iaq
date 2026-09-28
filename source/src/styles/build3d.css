@@ -1,0 +1,24 @@
+/* The Scroll to build 3D section (components/Build3D.jsx, scenes/build3d.js), 28 Sep 2026. The app's own styles are
+   public/build3d/assets/app.css, scoped under .b3d by tools/embed-3d.mjs; this file only places the app in the page.
+
+   The site zooms the root (base.css, 1.12 and up on desktops), which would stretch every vh and px the app
+   measures against the real window. The section takes the zoom back out, so inside it one px is one screen px and
+   100vh is the window, the same as the app's own page.
+
+   The stage is one window tall and sticky; the runway under it (the app sets its height) is what the page scrolls
+   through, so it starts under the stage rather than after it. The stage contains its layout: the app's layers are
+   position:fixed, and they fill the stage rather than the window. */
+.b3d{position:relative;display:block;background:#0a101f;zoom:calc(1 / var(--zoomf,1));min-height:100vh}
+.b3d>.b3d-stage{position:sticky;top:0;height:100vh;overflow:hidden;contain:layout paint;z-index:1}
+.b3d>#scroll-runway{display:block!important;margin-top:-100vh;pointer-events:none}
+/* phones and tablets build by tapping, not scrolling: one window, no runway, and a vertical swipe on the model
+   scrolls the page past it rather than holding the visitor inside the section */
+html.click-build .b3d>#scroll-runway{display:none!important}
+html.click-build body.assembly .b3d #app{touch-action:pan-y!important}   /* !important: app.css loads after this file */
+
+/* the walkthrough: the stage over the whole site, the page held still (the runtime also stops Lenis) */
+body.room .b3d>.b3d-stage{position:fixed;inset:0;height:auto;z-index:10000}
+html.b3d-room{overflow:hidden}
+
+/* the nav steps aside while the stage fills the window */
+html.b3d-pin .nav{transform:translateY(-105%)}

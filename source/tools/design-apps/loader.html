@@ -1,0 +1,45 @@
+    <div class="be-sub" id="mo-loader">
+      <!-- 26 Sep 2026 (Bazil: "is the loading screen ok, put the loading screen in the design tab so we can check it out,
+           put 3 variations"). Each frame is a live demo from public/loader-lab (the site's own land mask and shaders,
+           three.js 0.184), looping the load: 0 to 100 in 2.4 s, the finished world held, a short lift, then again.
+           Pruned from the launch build. -->
+      <h3>Loading screen</h3>
+      <p>The first thing every visitor sees: the dotted world on white, the IAQ mark filling red as the page loads. Four
+        ways to run it, each looping here at the speed it plays on the site. Number 4 is approved and live.</p>
+      <style>
+        .ldl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}
+        .ldl-grid figure{margin:0;background:#F4F6F9}
+        .ldl-grid iframe{display:block;width:100%;aspect-ratio:16/10;border:0;background:#fff}
+        .ldl-grid figcaption{padding:12px 14px 14px}
+        .ldl-open{display:inline-block;margin-top:8px;font:600 12.5px/1 "Switzer",sans-serif;color:#EC2326;text-decoration:none}
+        .ldl-open:hover{text-decoration:underline;text-underline-offset:3px}
+        .ldl-note{margin-top:18px;background:#F4F6F9;padding:16px 18px;max-width:82ch;font-size:14.5px;color:var(--soft)}
+        .ldl-note b{color:var(--ink)}
+        @media(max-width:980px){.ldl-grid{grid-template-columns:1fr}}
+        /* a jump here lands the heading under the sticky bars: the top bar, plus the chip bar under 1100px */
+        #mo-loader{scroll-margin-top:calc(var(--barh,46px) + 62px)}
+        @media(min-width:1100px){#mo-loader{scroll-margin-top:calc(var(--barh,46px) + 18px)}}
+      </style>
+      <div class="ldl-grid">
+        <figure>
+          <iframe src="/loader-lab/index.html?v=v4" title="Loading screen, variation 4, the globe fills, refined" loading="lazy"></iframe>
+          <figcaption class="be-cap"><b>4 · The globe fills, refined (approved 26 Sep, live)</b><small>Number 1 with your two notes: the land a light slate instead of dark grey, and a white knockout the shape of the letters under the mark, so no dot shows through its stripes. The soft round lens behind the logo is gone.</small><a class="ldl-open" href="/loader-lab/index.html?v=v4" target="_blank" rel="noopener">Open full screen</a></figcaption>
+        </figure>
+        <figure>
+          <iframe src="/loader-lab/index.html?v=fill" title="Loading screen, variation 1, the globe fills" loading="lazy"></iframe>
+          <figcaption class="be-cap"><b>1 · The globe fills (was live)</b><small>A level rises through the globe with the count: dark dots under it, pale dots waiting above, IAQ red at the level. The mark fills with it.</small><a class="ldl-open" href="/loader-lab/index.html?v=fill" target="_blank" rel="noopener">Open full screen</a></figcaption>
+        </figure>
+        <figure>
+          <iframe src="/loader-lab/index.html?v=hq" title="Loading screen, variation 2, the world grows from Shah Alam" loading="lazy"></iframe>
+          <figcaption class="be-cap"><b>2 · From Shah Alam</b><small>The same globe grows outward from IAQ's headquarters, a red front running ahead of the dark dots, and turns Malaysia to the centre as it fills.</small><a class="ldl-open" href="/loader-lab/index.html?v=hq" target="_blank" rel="noopener">Open full screen</a></figcaption>
+        </figure>
+        <figure>
+          <iframe src="/loader-lab/index.html?v=line" title="Loading screen, variation 3, the IAQ line" loading="lazy"></iframe>
+          <figcaption class="be-cap"><b>3 · The IAQ line</b><small>A flat world of square dots over one long red line. The line is the progress bar; the dots above it darken as it passes, with a red front column.</small><a class="ldl-open" href="/loader-lab/index.html?v=line" target="_blank" rel="noopener">Open full screen</a></figcaption>
+        </figure>
+      </div>
+      <div class="ldl-note"><b>The live one, checked on 26 Sep.</b> All dots, no sphere behind them, 60 frames a second; on a
+        first visit it reaches 100% at 2.4 s and lifts at 2.9 s on a phone, 2.8 s and 3.3 s on a laptop (measured on the
+        development server). From the first frame the page paints the loader&rsquo;s white and the pale mark, so the page frame
+        never shows before it. Number 4 went live on 26 Sep and was approved the same day; all four keep the mark filling red as the load runs.</div>
+    </div>

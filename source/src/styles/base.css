@@ -1,0 +1,1352 @@
+/* MOBILE READABILITY FLOOR (4 Sep, client: "make the mobile view more professional").
+   Prose was shrinking to 11-12.5px on phones across every page, which is the single
+   loudest cheap-looking signal on a small screen. Real sentences now hold a 13px floor
+   and supporting copy 13.5px. Mono LABELS are untouched: they are deliberately 9-10px
+   and carry letter-spacing, which is a different job from reading a sentence. */
+/* IAQ shared base: tokens, shell, nav, footer, search overlay, mobile pass. Extracted from the static concept. */
+:root{
+  /* 9 Sep: a site-wide neutralisation was tried and REVERTED. The red/white/black discipline
+     applies to the Design tab and to the 3D scene, not to the site chrome (Bazil: "revert back
+     previous design colour, it was only for design tab not the whole website"). */
+  --bg:#F7F9FC; --bg2:#FFFFFF; --panel:#FCFDFF;
+  --ink:#0C1220; --soft:#48536A; --faint:#66708A;
+  --line:rgba(236,35,38,.3); --line2:rgba(236,35,38,.46);   /* 26 Sep (Bazil: "it's supposed to be a red line, not a grey line"): every hairline is IAQ red; was ink .09 and .15 */
+  --blue:#EC2027; --blue-bright:#B5121B;
+  /* 25 Aug: the shell runs edge to edge with the smallest gutter that still keeps
+     type off the bezel (Bazil: "very little to no padding", "take the whole space
+     left and right"). The min() only bites on ultrawide monitors so a line of prose
+     never stretches past reading length. */
+  --maxw:min(100%,1900px); --gut:clamp(14px,1.5vw,26px);
+  --e1:cubic-bezier(.22,1,.36,1);
+  /* 9 Sep (Bazil: "I really need to remove this font type and replace with a better one
+     through the website"). Every small uppercase label on this site was set in JetBrains Mono,
+     a typewriter face doing a job it was never drawn for: at 9.5px with .16em of tracking it
+     read as a terminal, not as a label on a premium industrial site. Switzer is already loaded
+     for the headings, so the labels now share the headline voice one size down.
+     `--num` keeps a monospace, and ONLY where digits have to line up in a column. */
+  --label:"Switzer","Instrument Sans",system-ui,sans-serif;
+  --num:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+/* overflow-x:CLIP, never hidden: `hidden` turns body into a scroll container, which silently
+   breaks every position:sticky descendant (the pinned 3D showpiece scrolls away instead of
+   holding). `clip` contains sideways overflow with no scrollport. */
+body{font-family:"Instrument Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}/* 15px: the smaller body size, per the client review of 19 Aug 2026 */
+/* Desktop nudge (matches index): scale the whole UI ~12% on real desktops so type isn't small on
+   large monitors; zoom re-flows the responsive layout so nothing overflows. Mobile untouched. */
+@media(min-width:1025px){:root{zoom:1.12;--zoomf:1.12}}
+/* 28 Aug: the same nudge, tiered for 2K and 4K monitors. Each tier keeps the effective
+   layout width near the 1700-1900px the design was proofed at, so a 4K screen sees the
+   1080p composition scaled, never a 1900px strip floating in a 3840px void. Anything
+   reading the zoom from JS must use getComputedStyle, not the 1.12 constant. */
+@media(min-width:2240px){:root{zoom:1.5;--zoomf:1.5}}
+@media(min-width:3200px){:root{zoom:2.1;--zoomf:2.1}}
+h1,h2,h3{font-family:"Switzer",sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.06;text-wrap:pretty}
+/* 3 Sep (client: "aren't the titles of the pages a bit too small"): the rule above set the family
+   and nothing else, so any section heading that did not carry its own clamp fell back to the UA
+   default of 1.5em. On a 15px body that is 22px, which is why "Milestones that define us" and
+   "Signals from the group" sat at 22px beside siblings at 44px. These are DEFAULTS: every page
+   rule that already sets a size still wins, so nothing that was deliberately sized moves. */
+h2{font-size:clamp(27px,2.7vw,40px)}
+h3{font-size:clamp(18px,1.5vw,23px)}
+h1 em{font-style:normal;color:var(--blue-bright)}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
+.eyebrow{font-family: var(--label);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-bright);display:inline-flex;align-items:center;gap:10px;font-weight:600}
+
+
+.topbar{background:#0B1020;color:#EAF0FB;position:sticky;top:0;z-index:90;border-bottom:1px solid #1d2438;transition:transform .34s var(--e1)}
+.topbar.tb-hide{transform:translateY(-100%)}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;padding:9px var(--gut);max-width:var(--maxw);margin:0 auto;gap:12px;flex-wrap:wrap}
+.wscrumb{display:flex;flex-direction:column;line-height:1.3;white-space:nowrap}
+.wscrumb b{font-size:13px;font-weight:700;color:#fff;letter-spacing:.01em}
+.wscrumb span{font-family: var(--label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7C87A6}
+.wsw{display:flex;align-items:center;border:1px solid rgba(255,255,255,.22);border-radius:0;overflow:auto;max-width:100%;margin-left:auto;padding:3px;gap:3px;background:rgba(255,255,255,.04)}
+.wsw a{font-family: var(--label);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#C7D3EE;text-decoration:none;padding:7px 13px;border-radius:0;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;transition:background .25s,color .25s}
+.wsw a i{font-style:normal;color:#7C87A6;font-size:9px;font-weight:700}
+.wsw a:hover{background:rgba(255,255,255,.09);color:#fff}
+.wsw a.on{background:#E8232B;color:#fff;font-weight:700}
+.wsw a.on i{color:rgba(255,255,255,.72)}
+
+.nav{position:sticky;top:0;z-index:80;background:rgba(247,249,252,.88);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border-bottom:1px solid var(--line);transition:transform .32s var(--e1),box-shadow .32s}
+.nav.nav-hide{transform:translateY(-105%)}
+/* 3 Sep: the offset every in-page sticky bar pins to. The nav reserves its height while it is
+   on screen and none of it once it has slid away, so a filter bar can sit tight under the nav
+   without a strip of scrolling cards showing through above it. */
+:root{--sticktop:var(--navh,78px)}
+html.nav-off{--sticktop:0px}
+/* No transition on the bars' `top`: a sticky offset is only re-resolved on the next scroll
+   tick, so an animated one lags a frame behind the nav and can read stale. The switch is
+   instant and the nav's own .32s slide carries the motion. */
+.nav.nav-float{z-index:95;box-shadow:0 12px 32px rgba(12,18,32,.10)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:var(--maxw);margin:0 auto;padding:14px var(--gut)}
+.wordmark{display:flex;align-items:center;gap:10px;text-decoration:none}
+.wordmark img{height:46px;width:auto;display:block}
+.logo3d{height:46px;width:auto;perspective:600px;perspective-origin:50% 45%;flex:none}
+.logo3d-in{position:relative;height:100%;transform-style:preserve-3d;animation:logoIdle 10s ease-in-out infinite;will-change:transform}
+.logo3d:hover .logo3d-in{animation-play-state:paused;transform:rotateY(14deg) rotateX(-5deg)}
+.logo3d img{height:46px;width:auto;display:block}
+.logo3d .lface{position:relative;z-index:1}
+.logo3d .ldepth{display:none}
+/* the ® is baked black into the wordmark, so it disappeared over the dark hero.
+   A white-mark twin sits on top and cross-fades with the nav's clear state. */
+.logo3d .lface-dk{position:absolute;left:0;top:0;height:46px;width:auto;display:block;z-index:2;opacity:0;transition:opacity .25s ease;pointer-events:none}
+.nav.nav-clear .logo3d .lface-dk{opacity:1}
+@keyframes logoIdle{0%,74%{transform:rotateY(0deg) rotateX(0deg)}80%{transform:rotateY(16deg) rotateX(-5deg)}86%{transform:rotateY(-10deg) rotateX(3deg)}92%,100%{transform:rotateY(0deg) rotateX(0deg)}}
+@media(prefers-reduced-motion:reduce){.logo3d-in{animation:none;transform:rotateY(-6deg) rotateX(2deg)}.logo3d:hover .logo3d-in{transform:rotateY(-6deg) rotateX(2deg)}}
+.wordmark span{font-family: var(--label);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint)}
+/* 4 Sep (client: "aren't the tabs supposed to be to the right not the left"). .nav-in is
+   space-between, but .nav-act takes margin-left:auto, which absorbs all the free space and left
+   the tabs parked against the logo. The auto margin here claims that space first, so the tabs
+   travel to the right and sit as one cluster with the search, account and CTA. */
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav-links a{position:relative;font-size:13.5px;font-weight:500;color:var(--soft);text-decoration:none;padding:7px 11px 7px 13px;transition:color .2s;white-space:nowrap}
+/* 9 Sep (Bazil: "do not underline tab when selected, find a better way to represent"). A red
+   rule under a nav item is the most common thing on the web and it fights the red rule that
+   already means "current" on the eyebrow, the tabs and the fab rail.
+
+   Revised same day (Bazil: "highlight in red instead and have the dot when hovering"). The two
+   signals have swapped owners. The CURRENT page is red: it is the one permanent fact in the bar,
+   so it gets the brand's one loud colour and holds it whether or not a pointer is anywhere near.
+   The square is now the POINTER, appearing under whatever the cursor is over and travelling with
+   it. That reads correctly on a touch screen too, where a hover square would simply never appear
+   and the current page would have had no mark at all.
+
+   The square is absolutely positioned, so nothing on the row shifts as it appears. */
+.nav-links a::before{content:"";position:absolute;left:3px;top:50%;width:4px;height:4px;
+  background:var(--blue);opacity:0;transform:translateY(-50%) scale(.4);
+  transition:opacity .22s ease,transform .3s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::before{opacity:1;transform:translateY(-50%) scale(1)}
+.nav-links a.here{color:var(--blue);font-weight:600}
+.nav-links a.here:hover{color:var(--blue-bright)}
+.nav-dis{position:relative;display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:500;color:#AEB6C6;padding:7px 11px;white-space:nowrap;cursor:not-allowed;user-select:none}
+.nav-dis i{font-style:normal;font-family: var(--label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#98A2B6;border:1px solid rgba(12,18,32,.16);padding:2.5px 5px;background:rgba(12,18,32,.035)}
+
+/* grouped wings: hover reveals the pages inside Services and Markets */
+.nav-has{position:relative;display:inline-flex}
+/* The panel is centred on its trigger, which overflows the viewport whenever the trigger sits
+   near an edge. --nm-shift is the correction the nav measures at open time and again on resize:
+   the centring stays in CSS, and JS only nudges it back inside the gutter. */
+.nav-mega{position:absolute;left:calc(50% + var(--nm-shift,0px));top:calc(100% + 12px);transform:translate(-50%,14px) scale(.985);transform-origin:top center;width:min(780px,calc(100vw - 32px));max-width:calc(100vw - 32px);background:var(--bg2);border:1px solid var(--line2);box-shadow:0 34px 80px -32px rgba(12,18,32,.5),0 2px 6px rgba(12,18,32,.05);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .34s cubic-bezier(.16,1,.3,1),visibility 0s .34s;z-index:96}
+/* the hover bridge: the breathing gap between trigger and panel never drops the menu */
+.nav-mega::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}
+/* the notch that ties the panel to its trigger; counter-shifted so it stays under the label */
+.nav-mega::after{content:"";position:absolute;top:-6px;left:calc(50% - var(--nm-shift,0px));width:10px;height:10px;margin-left:-5px;background:var(--bg2);border-left:1px solid var(--line2);border-top:1px solid var(--line2);transform:rotate(45deg)}
+/* the panel sits inside .nav-links, whose links carry white-space:nowrap for the tab labels;
+   unwrapped one-line descriptions blow the grid past the panel's width, so re-allow wrapping */
+.nav-mega a{white-space:normal}
+.nav-mega.open,
+/* keyboard users never fire mouseenter: tabbing into the wing opens it too */
+.nav-has:focus-within .nav-mega{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0) scale(1);transition:opacity .2s ease,transform .38s cubic-bezier(.16,1,.3,1)}
+.nav-links .lock{display:inline-flex;align-items:center;gap:6px;color:var(--faint)}
+/* 28 Aug (client: the button font "does not look good and too small"): buttons leave the mono —
+   that voice stays for eyebrows and labels — and wear the display sans at a real size. */
+/* 4 Sep (client: "reduce the size of font and button size a bit, font for button"): 14px/600
+   at 14x22 padding made a heavy slab, most obvious on the nav where it sat beside 13.5px links.
+   13px type in a 12x19 box keeps the same shape and weight, just less of it. */
+/* Sizing a flex button: `display:flex` makes the label an anonymous flex item whose height comes
+   from the FONT'S content box, not from line-height, so trimming padding alone barely moved the
+   box (54 -> 49) and min-height never bound. An explicit height is the only thing that actually
+   sets it; align-items:center (below) centres the label. 44px is the smallest a primary action
+   should be and still be comfortable to tap. The mobile hero block re-opens it to auto, where
+   the full-width buttons are allowed to wrap.
+   (client: "reduce the size of font and button size a bit, font for button") */
+.cta{font-family:"Switzer","Instrument Sans",system-ui,sans-serif;font-size:13px;line-height:1.35;letter-spacing:.04em;text-transform:uppercase;font-weight:600;background:var(--blue);color:#fff;text-decoration:none;padding:0 19px;height:44px;transition:background .25s;white-space:nowrap}
+.cta:hover{background:var(--blue-bright)}
+/* 4 Sep (client: "not need arrow at the button"). The arrow was pinned to every .cta by CSS,
+   so "Start a project", "Download the pack" and "Sign in" all carried one. A filled button is
+   already the loudest affordance on the page and does not need a second one. The inline text
+   links (.pg-more, .sv-go, .nm-open) keep theirs: on those the arrow IS the affordance. */
+.cta{display:inline-flex;align-items:center;gap:9px}
+.cta:focus-visible,.cta-ghost:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+/* mobile + tablet nav: tabs fold into an isometric-cube burger on the right; dark drawer panel */
+.nav-burger{display:none;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:0;color:var(--ink);cursor:pointer;padding:0;transition:color .3s}
+.nav-burger svg{width:19px;height:19px;overflow:visible;transition:filter .4s ease,transform .5s var(--e1)}
+.nav-burger .bx-lid{transition:transform .55s cubic-bezier(.34,1.56,.64,1)}
+.nav-burger[aria-expanded="true"]{color:#EC2027}
+.nav-burger[aria-expanded="true"] svg{filter:drop-shadow(0 0 5px rgba(236,32,39,.55))}
+.nav-burger[aria-expanded="true"] .bx-lid{transform:translateY(-4.6px)}
+.nav-drawer{display:none}
+@media(max-width:960px){
+  .nav-links{display:none}
+  .nav-in>.cta{display:none}
+  .nav-burger{display:inline-flex}
+  .nav-act{margin-left:auto;gap:6px}
+  .nav-act .cta{display:none}
+  .nav-drawer{display:block;position:absolute;left:0;right:0;top:100%;z-index:94;background:#0A101F;border-bottom:1px solid #1d2438;box-shadow:0 30px 60px rgba(4,8,18,.45);padding:6px var(--gut) 18px;opacity:0;transform:translateY(-10px);visibility:hidden;pointer-events:none;transition:opacity .32s ease,transform .4s var(--e1),visibility 0s .4s}
+  .nav.menu-open .nav-drawer{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .32s ease,transform .4s var(--e1)}
+  .nav-drawer .nd-k{display:block;font-family: var(--label);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#7A87A2;font-weight:600;padding:14px 2px 6px}
+  .nav-drawer a{display:flex;align-items:center;gap:14px;padding:16px 2px;font-size:17.5px;font-weight:600;color:#C7D3EE;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);transition:color .25s,padding-left .3s var(--e1)}
+  .nav-drawer a .nn{font-family: var(--label);font-size:10.5px;letter-spacing:.14em;color:#FF6A70;font-weight:600}
+  .nav-drawer a:active{color:#fff}
+  .nav-drawer a.here{color:#fff;box-shadow:inset 2px 0 0 #EC2027;padding-left:12px}
+  /* 4 Sep (client: "standardize the button font"). This was the only BUTTON on the site set in
+     mono; .cta and .cta-ghost are both Switzer. Buttons are Switzer, inline arrow-links stay
+     mono: one rule, and the drawer's primary action now matches the bar's. */
+  .nav-drawer .nd-cta{margin-top:16px;border-bottom:0;background:#EC2027;color:#fff;justify-content:center;font-family:"Switzer","Instrument Sans",system-ui,sans-serif;font-size:13px;line-height:1.35;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:14px}
+  .nav-drawer .nd-dis{display:flex;align-items:center;gap:14px;padding:16px 2px;font-size:17.5px;font-weight:600;color:#5B6780;border-bottom:1px solid rgba(255,255,255,.08);cursor:not-allowed}
+  .nav-drawer .nd-dis .nn{color:#55617C}
+  .nav-drawer .nd-dis i{font-style:normal;font-family: var(--label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#7A87A2;border:1px solid rgba(255,255,255,.14);padding:3px 6px;margin-left:auto;margin-right:2px}
+}
+
+.head{padding:clamp(44px,7vh,80px) 0 10px}
+.head.wrap{padding-left:var(--gut);padding-right:var(--gut)}
+.head h1{font-size:clamp(32px,4.8vw,58px);max-width:18ch;margin-top:16px}
+.head .lede{font-size:clamp(15px,1.7vw,18px);color:var(--soft);max-width:58ch;margin-top:16px}
+/* visual between the title and the description */
+.head-viz{margin:26px 0 6px;max-width:820px;height:clamp(176px,32vw,320px);overflow:hidden;border:0;background:#eef1f6}
+.head-viz img{width:100%;height:100%;object-fit:cover;object-position:50% 46%;display:block}
+@media(max-width:640px){.head-viz{margin:20px 0 4px;height:clamp(168px,52vw,220px)}}
+/* 4 Sep (client: "give some spacing to what's needed", on the footer at ~2000px wide).
+   Nothing was misaligned: the sitemap, the legal row and the logo's visible ink all sat exactly
+   on the gutter. The gutter itself was the problem. --gut caps at 26px, which is 1.3% of a
+   2000px screen, so on any large monitor the whole site read as printed to the edge of the
+   paper. The cap now opens with the viewport, so wide screens get a real margin while every
+   layout below 1600px is left exactly as it was.
+   body.page-home redefines --gut at its own (higher) specificity, so :root alone would have
+   been ignored on the home page. Both are named here. */
+/* 4.4vw - 46px is continuous with the rule it takes over from: at exactly 1600px both
+   give 24px, so there is no step when a window is dragged across the breakpoint. */
+@media(min-width:1600px){ :root, body.page-home{--gut:clamp(24px,4.4vw - 46px,64px)} }
+@media(max-width:640px){:root{--gut:14px}.head h1{font-size:clamp(28px,8vw,38px)}}
+/* 4 Sep (client: "not enough spacing above the footer"): the sitemap sat 63px under the red CTA band */
+.sitefoot{position:relative;background:#070C18;color:#AAB6CE;padding:clamp(84px,10vh,128px) 0 40px;font-size:13.5px;overflow:hidden;margin-top:40px}
+.sitefoot::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,transparent,#000 55%);-webkit-mask-image:linear-gradient(180deg,transparent,#000 55%);pointer-events:none}
+/* 28 Aug rebuild (client: "all over the place... looks messy"): the old grid declared SIX
+   tracks for FOUR cells, so the third link column wrapped to a stray second row and the other
+   two floated mid-air. The premium pattern (Linear, Stripe): brand on the far left, the three
+   link columns pinned to the right edge on ONE row, even generous gaps, everything top-aligned.
+   Tracks now match the children exactly, so nothing can wrap or float again. */
+/* 28 Aug (client): the brand line and BOTH link columns sit on the LEFT.
+   The sitemap block is a SELF-CONTAINED unit: it renders inside the closing grid on most
+   pages and inside <footer> on the rest, and must lay out identically in both. It therefore
+   owns its own two-column grid rather than relying on `display:contents` to promote its
+   columns into an ancestor grid — that trick silently stacked the columns the moment the
+   block gained a wrapper, which is exactly what happened here. */
+footer.sitefoot .f-in{position:relative;max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+.f-nav{max-width:640px}
+.f-brand{max-width:44ch}
+/* 2 Sep premium pass (Bazil): each link column opens on a hairline with its mono label, the
+   links carry a red dash that slides in on hover, the brand block gets a mono meta line. The
+   grid itself is unchanged, so the closing sections that embed this block lay out as before. */
+.f-cols{display:grid;grid-template-columns:repeat(2,minmax(0,220px));
+  column-gap:clamp(24px,4vw,64px);row-gap:24px;align-items:start;
+  margin-top:clamp(26px,3.4vh,42px)}
+/* 2 Sep (client: remove the lines): the column headings carry themselves; the rules above
+   them were extra furniture in a footer already asked to shed boxes and lines. */
+.f-cols > div{min-width:0}
+.f-nav .f-cols a{position:relative;padding-left:0;transition:color .2s,padding-left .3s var(--e1)}
+.f-nav .f-cols a::before{content:"";position:absolute;left:0;top:50%;width:0;height:1px;background:var(--blue);transition:width .3s var(--e1)}
+.f-nav .f-cols a:hover{padding-left:16px}
+.f-nav .f-cols a:hover::before{width:10px}
+.f-brand p{font-size:15px;color:#D3DBE9}
+.f-brand .wm span{color:#FF8A90}
+
+/* Follow: sits under the sitemap in the space the two columns leave. Icon + word, because a
+   bare glyph row reads as decoration; the word is what makes it a link people click. */
+.f-social{margin-top:clamp(28px,3.6vh,46px)}
+.f-social ul{list-style:none;margin:12px 0 0;padding:0;display:flex;gap:10px;flex-wrap:wrap}
+/* `.f-nav .f-social a`, not `.f-social a`: the generic `.f-nav a{display:block;padding:4px 0}`
+   below has equal specificity and comes later, so it silently won and the chip rendered as a
+   bare bordered block with the icon and label on different baselines. */
+.f-nav .f-social a{display:inline-flex;align-items:center;gap:10px;min-height:40px;padding:0 16px 0 13px;
+  border:1px solid rgba(255,255,255,.16);color:#C9D2E4;text-decoration:none;line-height:1;
+  transition:border-color .25s,color .25s,background .25s}
+/* 24 Sep (Bazil, of the LinkedIn link: "no need to put in a box"): the icon and the word, nothing round them */
+.f-nav .f-social a{border:0;padding:0;min-height:0;background:none}
+.f-nav .f-social a:hover{background:none;border-color:transparent}
+.f-nav .f-social a svg{width:16px;height:16px;flex:none;display:block}
+.f-nav .f-social a span{font-size:13px;font-weight:500;letter-spacing:.01em}
+.f-nav .f-social a:hover{color:#fff;border-color:rgba(255,255,255,.42);background:rgba(255,255,255,.05)}
+.f-nav .f-social a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+/* the sitemap columns can run long: keep them readable and never let one push the row wide */
+.sitefoot .f-in>div{min-width:0}
+.sitefoot .f-in a{overflow-wrap:anywhere}
+@media(max-width:640px){.f-cols{grid-template-columns:1fr 1fr;column-gap:22px}
+  .f-brand{max-width:34ch}}
+/* the sitemap block is styled by CLASS, not by its ancestor: it renders inside the closing
+   grid on most pages and inside <footer> everywhere else, and must look identical in both. */
+.sitefoot .wm span,.f-nav .wm span{display:block;font-family: var(--label);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7A87A2;font-weight:600}
+.sitefoot p,.f-nav p{margin-top:12px;line-height:1.65;max-width:40ch}
+.ft-soon{display:block;font-family: var(--label);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#5A6580;opacity:.75;margin-top:6px;cursor:default}
+.sitefoot h4,.f-nav h4,.sitefoot .f-h4,.f-nav .f-h4,footer .f-h4{font-family: var(--label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7A87A2;font-weight:600;margin-bottom:12px}
+.sitefoot a,.f-nav a{color:#AAB6CE;text-decoration:none;display:block;padding:4px 0;transition:color .2s}
+.sitefoot a:hover,.f-nav a:hover{color:#fff}
+/* the legal strip signs off UNDER the wordmark (Palantir order, 28 Aug): slim, one hairline,
+   and tight to the logo band so the two read as one sign-off block. */
+.sitefoot .f-base{position:relative;max-width:var(--maxw);margin:0 auto;padding:18px var(--gut) 0;border-top:0;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family: var(--label);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5b6685}
+/* 2 Sep wide footer (standalone <footer> only): brand | company | what we do | conversation,
+   on one row across the full measure, each column opening on the same hairline. The Follow
+   chips take the fourth column's foot. The closing-section variant is untouched. */
+.f-nav-wide{max-width:none;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.15fr);column-gap:clamp(28px,4vw,72px);row-gap:30px;align-items:start}
+.f-nav-wide .f-brand{grid-column:1;grid-row:1 / span 2;max-width:36ch}
+.f-nav-wide .f-cols{display:contents}
+.f-nav-wide .f-cols > div:nth-child(1){grid-column:2;grid-row:1}
+.f-nav-wide .f-cols > div:nth-child(2){grid-column:3;grid-row:1}
+.f-nav-wide .f-reach{grid-column:4;grid-row:1;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}
+.f-nav-wide .f-social{grid-column:4;grid-row:2;margin-top:0}
+.f-nav-wide .f-brand .wm span{color:#FF8A90}
+.f-nav-wide .f-brand p{max-width:30ch}
+/* 4 Sep BUGFIX (client: "what happened to the footer, fix the bugs"). The standalone footer was
+   crushed into the left third of the band with its links wrapping mid-word ("Capabilitie s hub").
+   Cause: about.css carries an UNSCOPED `.f-in{display:grid;grid-template-columns:1.4fr 1fr 1fr}`
+   from an older three-column footer. `.f-in` here holds exactly ONE child, this grid, so once
+   about.css was loaded anywhere in the session that rule leaked site-wide and dropped the whole
+   footer into the first 1.4fr cell: 540px of a 1600px band, and these four columns then resolved
+   to 104/77/77/89px. It looked intermittent because the stylesheet only loads with About's chunk,
+   so the footer broke on every page only AFTER visiting About.
+   base.css's own `footer.sitefoot .f-in` never sets `display`, so it could not win the property.
+   Spanning every column fixes it whether .f-in is a grid or a block. */
+.f-in > .f-nav-wide{grid-column:1 / -1}
+.f-nav .f-reach a{position:relative;transition:color .2s,padding-left .3s var(--e1)}
+.f-nav .f-reach a::before{content:"";position:absolute;left:0;top:50%;width:0;height:1px;background:var(--blue);transition:width .3s var(--e1)}
+.f-nav .f-reach a:hover{padding-left:16px}
+.f-nav .f-reach a:hover::before{width:10px}
+.f-nav .f-reach a.f-reach-cta{display:inline-flex;align-items:center;gap:10px;color:#fff;font-weight:600;font-size:15px;padding:0 0 10px;margin-bottom:4px}
+.f-nav .f-reach a.f-reach-cta i{font-style:normal;display:inline-block;color:var(--blue);transition:transform .3s var(--e1)}
+.f-nav .f-reach a.f-reach-cta:hover{padding-left:0}
+.f-nav .f-reach a.f-reach-cta::before{display:none}
+.f-nav .f-reach a.f-reach-cta:hover i{transform:translateX(5px)}
+@media(max-width:980px){.f-nav-wide{grid-template-columns:1fr 1fr}
+  .f-nav-wide .f-brand{grid-column:1 / -1;grid-row:1}
+  .f-nav-wide .f-cols > div:nth-child(1){grid-column:1;grid-row:2}
+  .f-nav-wide .f-cols > div:nth-child(2){grid-column:2;grid-row:2}
+  .f-nav-wide .f-reach{grid-column:1;grid-row:3}
+  .f-nav-wide .f-social{grid-column:2;grid-row:3}}
+@media(max-width:640px){.f-nav-wide{grid-template-columns:1fr 1fr;column-gap:22px}}
+/* the closing band's own button (3 Sep): square, red, mono, the same shape as the nav CTA */
+.close-cta{display:inline-flex;align-items:center;gap:10px;margin-top:clamp(18px,2.4vh,26px);
+  background:var(--blue);color:#fff;text-decoration:none;padding:14px 20px;
+  font-family: var(--label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  transition:background-color .25s var(--e1),transform .3s var(--e1)}
+.close-cta i{font-style:normal;display:inline-block;transition:transform .3s var(--e1)}
+.close-cta:hover{background:var(--blue-bright)}
+.close-cta:hover i{transform:translateX(5px)}
+.close-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* ===== the closing block grid (moved here 3 Sep) =====
+   About, Careers, Projects, ProjectDetail and Home all render `.close-in.wrap.split` with the
+   sitemap on the LEFT and the call to action stacked above the contact rows on the RIGHT. The
+   rules used to live in about.css and home.css only, so a page that loaded neither (Careers,
+   Projects, a project opened directly) auto-placed the contact rows bottom-left under the
+   sitemap (Bazil: "why did you bring the information at the right down to bottom left").
+   One copy, global, so every page lays the block out the same way. */
+.close-in.split{display:grid;grid-template-columns:1fr 1fr;
+  /* 3 Sep (Bazil: "gap is too large"): the sitemap spans both rows and is taller than the
+     call to action plus the contact rows, so the browser was padding BOTH rows to fit it and
+     the slack landed between the lede and the email. Row 1 is now sized to its own content and
+     row 2 absorbs the remainder, with the rows pinned to the top of it. */
+  grid-template-rows:min-content 1fr;
+  column-gap:clamp(24px,4vw,64px);row-gap:clamp(14px,1.6vh,20px);align-items:start}
+.close-in > .f-nav{grid-column:1;grid-row:1 / span 2;margin:0}
+.close-in > *:not(.f-nav){grid-column:2}
+.close-in > *:not(.f-nav):first-of-type{grid-row:1}
+.close-in .lede{margin-top:12px;max-width:52ch}
+.close-in > .close-cards{margin-top:6px;align-self:start}
+@media(max-width:820px){
+  .close-in.split{grid-template-columns:1fr}
+  .close-in > .f-nav,.close-in > *:not(.f-nav){grid-column:1;grid-row:auto}
+  .close-in > .f-nav{order:2}
+}
+/* 2 Sep: a mono "back to top" at the right end of the legal strip */
+.f-top{font-family: var(--label);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7A87A2;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:color .2s;padding:0}
+.f-top i{font-style:normal;display:inline-block;transition:transform .3s var(--e1)}
+.f-top:hover{color:#fff}
+.f-top:hover i{transform:translateY(-3px)}
+/* the centred flex column needs no track rewrite at 820px (28 Aug) */
+
+/* ===== the big 3D wordmark (28 Aug): stacked-layer extrusion at display size, idle sway.
+   Fake depth: seven darkened copies behind a bright face inside a perspective wrapper. */
+/* the wordmark is the footer's full stop, so it gets the room to be one (client, 28 Aug: bigger,
+   with more space above and below). Top and bottom padding are now near-symmetric instead of the
+   old 72/22 split, which crowded the mark against the BM ribbon underneath it. */
+/* 2 Sep (client): the sign-off band is retired; the mark leads the brand block instead. */
+/* 3 Sep (client: "align the logo carefully"): the box was already flush at the gutter, but the
+   idle sway rotates the mark, and with a centre pivot the painted left edge swung in and out
+   by a few px against the type below it. Pivoting on the LEFT edge holds that edge still, so
+   the mark reads as aligned to the column while the rest of it still moves. */
+/* 3 Sep (Bazil: "push the logo so the I aligns with the text"): the dark-mark asset carries
+   67px of clear margin on its left out of 668, so the I sat ~10% of the mark's width in from
+   the column edge. The mark is pulled left by exactly that margin (width = height x 668/276,
+   margin = 0.1003 x width = 0.2428 x height), on every size the height clamp produces. */
+.f-mark{--fmh:clamp(72px,6.6vw,116px);display:block;height:var(--fmh);margin-left:calc(var(--fmh) * -0.2428);perspective:1300px;perspective-origin:0% 45%;margin-bottom:20px}
+.f-mark .flogo3d-in{transform-origin:left center}
+/* 2 Sep: a hairline opens the sign-off band and a soft red glow sits behind the mark, so the
+   wordmark reads as lit rather than pasted on the dark */
+.flogo3d-band::before{content:"";position:absolute;left:var(--gut);right:var(--gut);top:0;height:1px;background:rgba(255,255,255,.1)}
+.flogo3d-band::after{content:"";position:absolute;left:50%;top:55%;width:min(720px,70vw);height:60%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(236,32,39,.22),transparent 70%);filter:blur(10px);pointer-events:none;z-index:-1}
+/* 28 Aug (client: push this content up / closer): the sign-off was a 460px mark inside a
+   737px band, which pushed the legal row most of a screen below the sitemap. */
+
+.flogo3d-in{position:relative;height:100%;transform-style:preserve-3d;animation:flogoSway 12s ease-in-out infinite;will-change:transform}
+.flogo3d img{height:100%;width:auto;display:block}
+.flogo3d .fldepth{position:absolute;left:0;top:0;filter:brightness(.3) saturate(.75)}
+.flogo3d .flface{position:relative;transform:translateZ(0.01px)}
+.flogo3d:hover .flogo3d-in{animation-play-state:paused;transform:rotateY(16deg) rotateX(-6deg)}
+@keyframes flogoSway{0%,100%{transform:rotateY(-10deg) rotateX(3deg)}50%{transform:rotateY(10deg) rotateX(-3.5deg)}}
+@media(prefers-reduced-motion:reduce){.flogo3d-in{animation:none;transform:rotateY(-7deg) rotateX(2.5deg)}}
+@media(max-width:640px){.f-mark{--fmh:clamp(58px,15vw,82px)}}
+
+.bm-footrib-strip{position:relative;z-index:1;background:transparent;padding:0 0 clamp(18px,3vh,34px)}
+.bm-footrib{display:flex;justify-content:center;padding:clamp(22px,3.4vh,38px) 0 .4rem;pointer-events:none}
+.bm-footrib canvas{width:min(460px,88vw);height:auto;display:block}
+.bm-footrib-fb{font-family:var(--mono,monospace);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,#1421B8,#2536F5);padding:.5rem 1.4rem;clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,10px 100%,0 50%)}
+.bm-footrib-fb[hidden]{display:none}
+
+/* larger tap targets + no brandmark clip on touch / narrow screens (final QA pass) */
+@media (hover:none), (max-width:820px){
+  footer a, .sitefoot a{padding:10px 0}
+  .fchip{padding:11px 13px}
+  .sortseg .ss{padding:12px 12px}
+  .clearbtn{padding:11px 10px}
+}
+@media (max-width:380px){ .brandmark{font-size:10.3px;letter-spacing:.03em} }
+
+/* mobile: compact footer */
+@media(max-width:640px){
+  .sitefoot{padding:30px 0 22px;margin-top:24px}
+  .sitefoot .f-in{gap:14px 18px}
+  .sitefoot .f-in>div:first-child{grid-column:1/-1}
+  .sitefoot p{margin-top:8px;font-size:13.5px;line-height:1.55}
+  .sitefoot h4{margin-bottom:5px}
+  .sitefoot a{padding:9px 0;font-size:13.5px}
+  .sitefoot .f-base{margin-top:14px;padding-top:11px}
+  .bm-footrib-strip{padding-bottom:8px}
+  .bm-footrib{padding-top:10px}
+  .bm-footrib canvas{width:min(430px,94vw)}
+}
+/* the auto margin lives on .nav-links now (see above). Two auto margins in one flex row split
+   the free space between them, which parked the tabs mid-bar instead of beside the actions.
+   The mobile rule keeps its own margin-left:auto, because there .nav-links is display:none. */
+/* 9 Sep (Bazil: "icons should be same size"): search, member and the cube burger ran at
+   16 / 17 / 34px glyphs in 38 / 38 / 48px boxes, so the cube read as twice the others.
+   One size for all three: 19px glyph in a 40px box, 44px box at the tap-target width.
+   19px is the site icon size, the same as the fab rail marks. */
+.nav-act{display:flex;align-items:center;gap:10px}
+.nav-search{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border:0;background:none;color:var(--ink);cursor:pointer;transition:color .25s,transform .25s}
+.nav-search svg{width:21px;height:21px}
+.nav-search:hover{color:var(--blue-bright)}
+/* ---- member login (2 Sep): the same boxless icon as search, plus a small square panel ---- */
+.nav-member{position:relative;display:inline-flex}
+.nav-login{position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border:0;background:none;color:var(--ink);cursor:pointer;transition:color .25s}
+.nav-login svg{width:21px;height:21px}
+.nav-login:hover,.nav-member.open .nav-login{color:var(--blue-bright)}
+.nav-login:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.nl-dot{position:absolute;top:8px;right:8px;width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 2px var(--bg2)}
+.nl-pop{position:absolute;right:0;top:calc(100% + 12px);width:min(300px,calc(100vw - 32px));background:var(--bg2);border:0;
+  box-shadow:0 30px 70px -30px rgba(12,18,32,.45),0 2px 6px rgba(12,18,32,.05);padding:18px 18px 16px;z-index:97;
+  display:flex;flex-direction:column;gap:8px;transform:translateY(8px);opacity:0;transition:opacity .18s ease,transform .3s var(--e1)}
+.nl-pop[hidden]{display:none}
+.nav-member.open .nl-pop{opacity:1;transform:none}
+.nl-pop form{display:flex;flex-direction:column;gap:8px}
+.nl-k{font-family: var(--label);font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--blue)}
+.nl-pop b{font-family:"Switzer",sans-serif;font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.015em;line-height:1.2}
+.nl-pop p{font-size:12.5px;color:var(--soft);line-height:1.5}
+.nl-lb{font-family: var(--label);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:6px}
+.nl-pop input{border:1px solid var(--line2);background:var(--bg);padding:11px 12px;font:inherit;font-size:14px;color:var(--ink);width:100%}
+.nl-pop input:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+.nl-err{color:var(--blue-bright);font-size:12.5px}
+.nl-cta{justify-content:center;margin-top:6px;width:100%;border:0;cursor:pointer;display:inline-flex}
+.nl-out{align-self:flex-start;background:none;border:0;padding:6px 0 0;font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--soft);cursor:pointer;border-bottom:1px solid transparent}
+.nl-out:hover{color:var(--blue-bright);border-bottom-color:var(--blue)}
+.nl-tab{display:inline-flex;justify-content:center;width:100%;border:1px solid var(--line2);background:var(--bg);padding:11px 14px;font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .2s,color .2s}
+.nl-tab:hover{border-color:var(--blue);color:var(--blue-bright)}
+/* 18 Sep (Bazil): emergency access for testing, under the passcode field. A quiet bordered
+   square, not a second filled button, so the passcode stays the primary route in. */
+.nl-emerg{display:flex;flex-direction:column;align-items:center;gap:3px;width:100%;border:1px solid var(--line2);background:var(--bg);padding:9px 12px;cursor:pointer;color:var(--ink);transition:border-color .2s,color .2s;text-align:center}
+.nl-emerg span{font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.nl-emerg small{font-size:11px;color:var(--faint);line-height:1.35}
+.nl-emerg:hover{border-color:var(--blue);color:var(--blue-bright)}
+.nl-hint{font-size:12px;color:var(--faint);margin-top:2px}
+.nl-hint a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line2)}
+.nl-hint a:hover{color:var(--blue-bright);border-bottom-color:var(--blue)}
+.us-overlay{position:fixed;inset:0;z-index:400;background:rgba(7,12,24,.52);backdrop-filter:blur(9px) saturate(1.2);-webkit-backdrop-filter:blur(9px) saturate(1.2);opacity:0;pointer-events:none;transition:opacity .3s ease}
+.us-overlay.open{opacity:1;pointer-events:auto}
+.us-panel{max-width:680px;margin:10vh auto 0;background:#fff;border:1px solid var(--line2);box-shadow:0 40px 90px rgba(7,12,24,.35);transform:translateY(-14px) scale(.985);opacity:0;transition:transform .38s cubic-bezier(.22,1,.36,1),opacity .3s ease;width:calc(100% - 32px)}
+.us-overlay.open .us-panel{transform:none;opacity:1}
+.us-bar{display:flex;align-items:center;gap:13px;padding:17px 20px;border-bottom:1px solid var(--line)}
+.us-bar>svg{width:18px;height:18px;color:var(--blue);flex:none}
+.us-bar input{flex:1;border:0;outline:0;background:none;font:600 17px/1.3 inherit;font-family:inherit;color:var(--ink);min-width:0}
+.us-bar input::placeholder{color:var(--faintest);font-weight:500}
+.us-esc{font-family: var(--label);font-size:10.5px;letter-spacing:.1em;color:var(--faint);border:0;background:rgba(23,33,58,.07);padding:4px 7px;flex:none;cursor:pointer}
+.us-results{max-height:56vh;overflow-y:auto;overscroll-behavior:contain}
+.us-group{font-family: var(--label);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);padding:13px 20px 6px;font-weight:600}
+.us-row{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:10px 20px;border:0;background:none;cursor:pointer;text-decoration:none;transition:background .15s}
+.us-row.sel,.us-row:hover{background:rgba(236,35,38,.07)}   /* 26 Sep: a tint, never a left stripe (IAQ rules: no vertical line) */
+.us-row .us-tx{min-width:0;flex:1}
+.us-row .us-t{display:block;font-size:14px;font-weight:600;color:var(--ink);line-height:1.35}
+.us-row .us-t mark{background:none;color:var(--blue-bright);text-decoration:underline;text-underline-offset:2px}
+.us-row .us-d{display:block;font-size:13px;color:var(--soft);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.us-row .us-k{font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);border:0;background:rgba(23,33,58,.07);padding:3px 6px;flex:none;white-space:nowrap}
+.us-row .us-go{color:var(--faintest);flex:none;width:13px;height:13px;transition:transform .2s,color .2s}
+.us-row.sel .us-go,.us-row:hover .us-go{color:var(--blue-bright);transform:translateX(2px)}
+.us-none{padding:30px 20px;font-size:13.5px;color:var(--soft)}
+.us-none b{color:var(--ink)}
+.us-foot{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;border-top:0;background:#F4F6F9;font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.us-foot .us-n{color:var(--blue-bright);font-weight:600}
+html.us-lock,html.us-lock body{overflow:hidden}
+@media(max-width:640px){.us-panel{margin-top:14px}.us-results{max-height:62vh}.us-foot .us-keys{display:none}}
+
+/* ============ mobile pass ============ */
+@media(max-width:760px){
+  /* nothing may push the page sideways */
+  html,body{max-width:100%;overflow-x:clip}
+  /* the smallest mono labels were below comfortable reading size on a phone */
+  .eyebrow,.svc-tag,.lp-step,.lp-kick,.fm-k,.nd-k,.ph-cap,.note,.tag,.ref,.iso{font-size:10.5px!important}
+  .lp-tag .nm{font-size:10.5px!important}
+  .lp-tag .no{font-size:10px!important}
+  /* tap targets: nothing interactive under 40px */
+  .lp-tag{min-height:40px;padding:9px 8px!important}
+  .lp-steps button{min-height:44px}
+  .us-esc{min-height:34px;padding:8px 10px}
+  .nav-search,.nav-login,.nav-burger{width:44px;height:44px}
+  .fchip,.ss,.clearbtn{min-height:40px;display:inline-flex;align-items:center}
+  .vtile{cursor:pointer}
+  /* footer navigation and search rows need a full tap target */
+  footer a,.close3d footer a{min-height:40px;display:inline-flex;align-items:center}
+  .us-row{padding:14px 18px}
+  .us-group{padding:15px 18px 7px}
+  .us-bar{padding:15px 16px}
+  .us-bar input{font-size:16px}
+}
+
+/* ---- utilities ----
+   The one-off spacing and type tweaks that were scattered as inline style objects. Beyond the
+   tidiness argument in the handover contract, an inline style cannot be overridden by a media
+   query without !important, so scattering them is one of the ways this codebase accumulated its
+   !important count. Kept deliberately small: this is not a utility framework. */
+.u-mt0{margin-top:0}
+.u-pt0{padding-top:0}
+.u-mt14{margin-top:14px}
+.u-mt16{margin-top:16px}
+.u-mt18{margin-top:18px}
+.u-mw18{max-width:18ch}
+.u-mw22{max-width:22ch}
+.u-fs17{font-size:17px}
+.u-sig{color:var(--blue)}
+.u-panel-dark{--panel:rgba(15,23,40,.82)}
+
+/* ---- the wing menus (rebuilt 24 Aug to the exyte benchmark) ----
+   One tinted lead panel carries the wing's context exactly once; the rows are
+   clean icon + label, square edges, no repeated descriptions. */
+.nav-mega{display:grid;grid-template-columns:270px 1fr}
+.nav-mega.one{grid-template-columns:270px 1fr}
+/* 2 Sep (Bazil: "some visual at the left so people know they can click it"): the lead panel is
+   ONE anchor, a photograph under a dark scrim with white copy. Hover eases the photo in,
+   slides the arrow and draws a red bar along the foot. The old tinted-grey panel read as
+   a caption, not a card. */
+.nm-lead{position:relative;overflow:hidden;isolation:isolate;background:#0B1220;border-right:1px solid var(--line);
+  padding:22px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:0;min-height:100%;
+  text-decoration:none;cursor:pointer}
+.nm-lead-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
+  transform:scale(1.02);transition:transform 1.1s var(--e1);filter:saturate(.92) contrast(1.04)}
+.nm-lead-scrim{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(7,12,24,.12) 0%,rgba(7,12,24,.34) 42%,rgba(7,12,24,.9) 100%)}
+.nm-lead::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--blue);transition:width .5s var(--e1)}
+.nm-lead:hover .nm-lead-bg,.nm-lead:focus-visible .nm-lead-bg{transform:scale(1.07)}
+.nm-lead:hover::after,.nm-lead:focus-visible::after{width:100%}
+.nm-lead:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+/* the hub's mark, sitting above the eyebrow on the photograph. Line weight only, no plate or
+   ring behind it: the panel is already a photo under a scrim and a filled chip would be a third
+   surface. The drop shadow is what keeps it legible over a light patch of the image. */
+.nm-lead-ic{flex:none;width:28px;height:28px;color:#fff;opacity:.92;margin-bottom:14px;
+  filter:drop-shadow(0 2px 6px rgba(4,8,16,.6))}
+.nm-lead-ic svg{width:100%;height:100%;display:block}
+.nm-eyeb{font-family: var(--label);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:600;color:#FF8A90}
+/* 24 Sep (Bazil: "improve all the vertical visuals for each dropdown"): the panel's type is the site's, Switzer in
+   sentence case, no mono and no eyebrow; the photograph is IAQ's own (LEAD_BG in Nav.jsx) under a scrim that is
+   clear at the top and deep at the foot, so the picture reads and the words sit on ink */
+.nm-lead>b,.nm-lead .nm-lead-copy>b{font-family:"Switzer",sans-serif;font-size:20px;font-weight:600;color:#fff;
+  letter-spacing:-.02em;margin-top:0;line-height:1.15}
+.nm-pitch{font-size:13.5px;color:rgba(255,255,255,.76);line-height:1.5;margin-top:8px}
+.nm-open{margin-top:auto;padding-top:22px;font-family:"Switzer",sans-serif;font-size:14px;
+  letter-spacing:-.006em;text-transform:none;font-weight:600;color:#fff;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;transition:color .2s}
+.nm-open i{font-style:normal;transition:transform .3s var(--e1)}
+.nm-lead:hover .nm-open{color:#FF8A90}
+.nm-lead:hover .nm-open i{transform:translateX(5px)}
+/* the panel keeps its white type whatever the bar is doing (the clear-nav rule inks every link) */
+.nav-mega a.nm-lead,.nav.nav-clear .nav-mega a.nm-lead{color:#fff}
+@media(prefers-reduced-motion:reduce){.nm-lead-bg,.nm-lead::after,.nm-open i{transition:none}
+  .nm-lead:hover .nm-lead-bg{transform:scale(1.02)}}
+.nm-cols{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:10px}
+.nav-mega.one .nm-cols{grid-template-columns:1fr}
+.nm-col{min-width:0}
+/* 10 Sep: a titled column, so the six services and the three business units read as two lists */
+.nm-colh{display:block;font-family:var(--label);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-weight:600;padding:10px 12px 4px}
+.nm-col a{display:flex;gap:12px;align-items:center;padding:11px 12px;text-decoration:none;
+  transition:background .18s}
+.nm-col a:hover,.nm-col a:focus-visible{background:rgba(12,18,32,.045)}
+.nm-col a:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+.nm-col a i{flex:none;width:18px;height:18px;color:var(--faint);transition:color .18s}
+.nm-col a i svg{width:100%;height:100%;display:block}
+.nm-col a:hover i{color:var(--blue)}
+.nm-col a em{font-style:normal;font-size:14px;font-weight:600;color:var(--ink);letter-spacing:-.01em;
+  line-height:1.3;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nm-go{margin-left:auto;flex:none;color:var(--blue);opacity:0;transform:translateX(-5px);
+  transition:opacity .2s,transform .3s var(--e1);font-size:14px}
+.nm-col a:hover .nm-go{opacity:1;transform:translateX(0)}
+
+/* ---- 14 Sep: the Services wing as two SETS (Bazil: "make sure this looks better in segregation
+   in set", "more visual and animation and interactive"). Each list owns a header: its count large
+   in red, its name, and one line saying what kind of list it is. The six services sit on white as
+   an ordered cycle (numbered stage, icon plate, a six step track that fills to the stage under the
+   pointer). The three business units sit on their own tinted panel as photo cards, so the
+   difference between "what IAQ does" and "how it is bought" is carried by the surface, not a rule.
+   Hovering any row crossfades the lead panel to that row. Scoped to .sets, so About and Markets
+   keep their rows. ---- */
+.nav-mega.sets.wide,.nav-mega.sets.one{width:min(1060px,calc((100vw - 32px) / var(--zoomf,1)));grid-template-columns:258px 1fr}
+.nm-lead-bg{opacity:0;transition:opacity .5s ease,transform 1.1s var(--e1)}
+.nm-lead-bg.on{opacity:1}
+.nm-lead-copy{display:flex;flex-direction:column;align-items:flex-start;animation:nmCopy .42s var(--e1) both}
+@keyframes nmCopy{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.nm-lead .nm-open{transition:color .2s,opacity .3s}
+.nm-lead.peek .nm-open{opacity:.4}
+/* the tab bar's pointer square is for the tabs; inside the wing it landed beside every row */
+.nav-links .nav-mega a::before{display:none}
+/* on preview the photograph is the point, so the scrim thins at the top and holds at the foot */
+.nm-lead-scrim{transition:opacity .45s ease}
+.nm-lead.peek .nm-lead-scrim{background:linear-gradient(180deg,rgba(7,12,24,.62) 0%,rgba(7,12,24,.22) 38%,rgba(7,12,24,.3) 62%,rgba(7,12,24,.86) 100%)}
+.nm-cols.sets{grid-template-columns:.9fr 1.1fr;padding:0}
+.nm-cols.sets.solo{grid-template-columns:1fr}
+.nm-set{padding:20px 16px 16px;display:flex;flex-direction:column}
+.nm-units{background:#EDF0F5}
+.nm-seth{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:center;padding:0 8px 14px}
+.nm-setn{font:600 30px/1 "Switzer",sans-serif;letter-spacing:-.04em;color:var(--blue);font-variant-numeric:tabular-nums}
+.nm-sett{min-width:0}
+.nm-sett b{display:block;font:600 14.5px/1.2 "Switzer",sans-serif;color:var(--ink);letter-spacing:-.01em}
+.nm-sett small{display:block;font-size:12px;line-height:1.35;color:var(--soft);margin-top:3px}
+/* the rows: one grid, so icon, number and label align down the set */
+.nm-set .nm-rows{display:flex;flex-direction:column;flex:1}
+.nm-set .nm-rows>a{position:relative;display:grid;align-items:center;gap:12px;text-decoration:none;
+  transition:background .2s,box-shadow .35s var(--e1),transform .35s var(--e1)}
+.nm-cycle .nm-rows>a{grid-template-columns:34px 20px 1fr auto;padding:6px 8px;flex:1}
+.nm-cycle .nm-rows>a>i{width:34px;height:34px;display:grid;place-items:center;background:#EEF1F6;color:var(--ink);
+  transition:background .25s,color .25s,transform .35s var(--e1)}
+.nm-set .nm-rows>a>i svg{width:17px;height:17px;display:block}
+.nm-no{font:600 11.5px/1 "Switzer",sans-serif;font-variant-numeric:tabular-nums;color:var(--faint);letter-spacing:.02em;transition:color .2s}
+.nm-txt{display:flex;flex-direction:column;min-width:0}
+.nm-set .nm-rows>a em{font-style:normal;font-size:14px;font-weight:600;color:var(--ink);letter-spacing:-.01em;line-height:1.25;
+  transition:transform .35s var(--e1)}
+.nm-units .nm-rows>a em{white-space:normal}
+.nm-txt small{font-size:12px;line-height:1.35;color:var(--soft);margin-top:3px}
+.nm-set .nm-rows>a:hover,.nm-set .nm-rows>a.lit,.nm-set .nm-rows>a:focus-visible{background:rgba(12,18,32,.035)}
+.nm-cycle .nm-rows>a.lit>i{background:var(--blue);color:#fff;transform:translateY(-1px)}
+.nm-set .nm-rows>a.lit .nm-no{color:var(--blue)}
+.nm-set .nm-rows>a.lit em{transform:translateX(3px)}
+.nm-set .nm-rows>a.lit .nm-go,.nm-set .nm-rows>a:focus-visible .nm-go{opacity:1;transform:none}
+.nm-set .nm-rows>a:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+/* the units: white cards on the tinted panel, photograph first */
+/* the units: white cards on the tinted panel, a photograph that says what the unit is, the name,
+   then one plain line on what it does. 14 Sep: bigger photo, no badge on it, no red bar under the
+   card (Bazil: "not clear enough"); the hover is the lift, the zoom and the name turning red. */
+.nm-units .nm-rows{gap:10px}
+.nm-units .nm-rows>a{grid-template-columns:112px 1fr auto;gap:16px;padding:8px 14px 8px 8px;background:#fff;flex:1;
+  box-shadow:0 1px 2px rgba(12,18,32,.06)}
+.nm-units .nm-rows>a:hover,.nm-units .nm-rows>a.lit{background:#fff;box-shadow:0 18px 34px -20px rgba(12,18,32,.42);transform:translateY(-2px)}
+.nm-thumb{position:relative;display:block;width:112px;height:80px;overflow:hidden;background:#1A2233}
+.nm-thumb img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02);transition:transform .9s var(--e1)}
+.nm-units .nm-rows>a.lit .nm-thumb img{transform:scale(1.1)}
+.nm-units .nm-rows>a em{font-size:15px;transition:color .2s,transform .35s var(--e1)}
+.nm-units .nm-rows>a.lit em{color:var(--blue)}
+.nm-units .nm-txt small{font-size:12.5px;line-height:1.4;margin-top:4px}
+/* ---- 14 Sep: Markets as a structured list (Bazil: "list more structured", "and clear"). One row
+   per market under column heads: photograph, red mark and name, what the market is measured by,
+   its class or specification. The columns are one grid template shared by the head and the rows,
+   so everything lines up down the list. ---- */
+.nm-mlist{--mcols:72px minmax(0,1.25fr) minmax(0,1fr) 128px 14px}
+.nm-mhead{display:grid;grid-template-columns:var(--mcols);column-gap:16px;padding:0 10px 8px;
+  font-size:11.5px;font-weight:600;color:var(--faint);letter-spacing:.01em}
+.nm-mhead span:first-child{grid-column:1/3}
+.nm-mhead span:last-child{grid-column:4/6}
+.nm-mlist .nm-rows{gap:2px}
+.nm-mlist .nm-rows>a{grid-template-columns:var(--mcols);column-gap:16px;padding:6px 10px}
+.nm-mlist .nm-rows>a:nth-child(odd){background:#F6F8FB}
+.nm-mlist .nm-rows>a:hover,.nm-mlist .nm-rows>a.lit{background:#EDF0F5}
+.nm-mlist .nm-thumb{width:72px;height:48px}
+.nm-mlist .nm-rows>a.lit .nm-thumb img{transform:scale(1.1)}
+.nm-mlist .nm-rows>a em{font-size:14.5px}
+.nm-meas{font-size:13px;color:var(--soft);line-height:1.3;min-width:0}
+.nm-spec{font-size:13px;font-weight:600;color:var(--ink);line-height:1.3}
+.nm-spec.na{font-weight:500;color:var(--faint)}
+.nm-mlist .nm-go{justify-self:end}
+/* the mark beside the name, for the units and the markets: a red square, white line icon */
+.nm-set .nm-rows>a em{display:flex;align-items:center;gap:10px}
+.nm-set .nm-rows .nm-sq{flex:none;width:26px;height:26px;display:grid;place-items:center;background:var(--blue);color:#fff;
+  transition:transform .35s var(--e1)}
+.nm-set .nm-rows .nm-sq svg{width:15px;height:15px;display:block}
+.nm-set .nm-rows>a.lit .nm-sq{transform:translateY(-1px)}
+.nm-set .nm-rows>a.lit em{transform:none}
+.nm-units .nm-rows>a em{align-items:flex-start}
+/* 15 Sep · the Careers wing. Roles rows borrow the cycle row (icon square, label, sub line) without
+   the stage number and carry the live count on the right; Life at IAQ rows borrow the unit photo card. */
+.nm-roles .nm-rows>a{grid-template-columns:34px 1fr auto auto}
+.nm-roles .nm-txt small{margin-top:2px}
+.nm-cnt{font-family:"Switzer",sans-serif;font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-.01em;
+  min-width:26px;text-align:right;transition:color .2s}
+.nm-roles .nm-rows>a.lit .nm-cnt{color:var(--blue)}
+.nm-life .nm-rows>a em{white-space:normal}
+.nm-units .nm-rows>a em .nm-sq{margin-top:-2px}
+/* the wing opens as a sequence: headers, then each set's rows in order, the units after the services */
+@keyframes nmRow{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+.nav-mega.sets.open .nm-seth,.nav-has:focus-within .nav-mega.sets .nm-seth{animation:nmRow .5s var(--e1) backwards;animation-delay:calc(40ms + var(--si,0) * 110ms)}
+.nav-mega.sets.open .nm-rows>a,.nav-has:focus-within .nav-mega.sets .nm-rows>a{animation:nmRow .55s var(--e1) backwards;
+  animation-delay:calc(110ms + var(--si,0) * 110ms + var(--ri,0) * 45ms)}
+@media(prefers-reduced-motion:reduce){
+  .nm-lead-copy,.nav-mega.sets.open .nm-seth,.nav-mega.sets.open .nm-rows>a{animation:none}
+  .nm-set .nm-rows>a,.nm-thumb img{transition:none}}
+
+/* ---- 17 Sep: the level is said out loud (Bazil: "people need to know which is the main page and which
+   are sub pages", "sections are not pages"). The set count is a count of SUB PAGES with the word under
+   it; a set of filters or anchors has no count. Section rows carry a small grey tag in place of the
+   arrow and sit flat, so a filter or an anchor never reads as another page. ---- */
+.nm-setn{display:flex;flex-direction:column;align-items:center;line-height:1}
+.nm-setn small{font:600 9.5px/1.1 "Instrument Sans",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-top:5px;white-space:nowrap}
+.nm-seth.nosub{grid-template-columns:1fr}
+.nm-tag{margin-left:auto;flex:none;justify-self:end;font:600 10px/1 "Instrument Sans",sans-serif;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--faint);padding:5px 7px;background:rgba(12,18,32,.055);white-space:nowrap}
+.nm-set .nm-rows>a.lit .nm-tag{color:var(--ink)}
+.nm-set .nm-rows>a.sec em{font-weight:500}
+.nm-units .nm-rows>a.sec,.nm-life .nm-rows>a.sec{background:transparent;box-shadow:none;padding-top:8px;padding-bottom:8px}
+.nm-units .nm-rows>a.sec:hover,.nm-units .nm-rows>a.sec.lit,.nm-life .nm-rows>a.sec:hover,.nm-life .nm-rows>a.sec.lit{background:rgba(12,18,32,.04);box-shadow:none;transform:none}
+.nm-units .nm-rows>a.sec .nm-sq,.nm-life .nm-rows>a.sec .nm-sq{background:#EEF1F6;color:var(--ink)}
+.nm-units .nm-rows>a.sec.lit .nm-sq,.nm-life .nm-rows>a.sec.lit .nm-sq{background:var(--blue);color:#fff}
+
+@media(max-width:860px){.nav-mega,.nav-mega.one{grid-template-columns:1fr}
+  .nm-lead{border-right:0;border-bottom:0}
+  .nm-cols{grid-template-columns:1fr}
+  .nm-col{border-right:0;border-bottom:0}
+  .nm-col:last-child{border-bottom:0}}
+
+/* ===== transparent-over-hero nav (23 Aug): on the homepage the hero runs up behind
+   the bar, and the bar goes solid the moment the page scrolls ===== */
+html.nav-under .hero{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--navh,78px)}
+.nav.nav-clear{background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+.nav.nav-clear .nav-links a{color:rgba(255,255,255,.85)}
+.nav.nav-clear .nav-links a:hover{color:#fff}
+/* over the hero the brand red loses too much contrast against a dark photograph, so the current
+   page carries a lifted red instead of #EC2027. Same signal, still legible on the scrim. */
+.nav.nav-clear .nav-links a.here{color:#FF5157}
+.nav.nav-clear .nav-links a::before{background:#FF5157}
+.nav.nav-clear .nav-search,.nav.nav-clear .nav-burger,.nav.nav-clear .nav-login{color:#fff}
+.nav.nav-clear .nav-sl{color:rgba(255,255,255,.85)}
+/* the panel is a light surface whatever the bar is doing: its links stay ink */
+.nav.nav-clear .nav-mega a{color:var(--ink)}
+.nav.nav-clear .nm-lead:hover .nm-open{color:#FF8A90}
+
+/* single-column wings shrink to their content instead of a half-empty shell (24 Aug) */
+.nav-mega.one{width:min(600px,calc(100vw - 32px))}
+/* 10 Sep: a wing with TWO columns of links needs the room, or the longer labels clip to an ellipsis */
+.nav-mega.wide{width:min(900px,calc(100vw - 32px))}
+
+/* ===== one slick footer (24 Aug): the ambient visual is the BACKGROUND of the whole
+   closing section, behind the contact block and the footer columns, never its own band ===== */
+/* 14 Sep: z-index 7 so the closing section paints OVER a sticky filter bar (.console, z 6) whose
+   parent is the whole page on Careers and Projects: the bar used to slide across the footer. Below the nav (80). */
+.close3d{position:relative;overflow:hidden;z-index:7}
+/* 15 Sep (Bazil: "what went wrong with your footer"): the closing block's top padding was only ever set in
+   careers.css, about.css and home.css. Culture, Services and the business unit pages import none of them,
+   so on a direct visit the footer heading sat flush against the section above (0px, against 81px on
+   Careers). The padding lives here now, for every page. Second fault on the same block: the right column's
+   two rows stretched to the height of the link column beside it, opening a dead gap between the call to
+   action and the contact rows; the first row now takes only its content. */
+.close3d{padding-top:clamp(56px,9vh,104px)}
+@media(max-width:640px){.close3d{padding-top:clamp(28px,5vh,44px)}}
+/* the gap above the contact rows: another sheet set .close-cards to align-self:end, pinning the rows to the
+   bottom of a row stretched to the link column's height. Start-aligned here, with one margin, specific
+   enough that no page sheet overrides it */
+@media(min-width:821px){.close3d .close-in > .close-cards{margin-top:clamp(22px,3vh,34px);align-self:start}}
+.close3d .close-viz{position:absolute!important;inset:0!important;height:auto!important;min-height:0!important;
+  background:radial-gradient(62% 80% at 50% 40%,#101B30 0%,#0A1322 46%,#070C18 80%)!important;pointer-events:none}
+.close3d .close-stage{position:static}
+.close3d .close-in,.close3d .close-seam,.close3d .sitefoot{position:relative;z-index:2}
+.close3d .sitefoot{background:transparent}
+
+
+/* ---------------------------------------------------------------------------
+   THE CLOSING BLOCK (moved here 3 Sep)
+   These rules used to live in home.css, but the closing block now renders on
+   five pages (home, about, careers, projects, project detail) and only the home
+   page imports that stylesheet. The markup was unified first, which would have
+   shipped unstyled ledger rows on careers and projects: shared markup has to be
+   backed by shared CSS. base.css is loaded by every page, so this is its home.
+   --------------------------------------------------------------------------- */
+/* No rules in this block (3 Sep, Bazil): the white hairlines cut the dark band up. Spacing
+   and type do the separating instead. */
+/* 4 Sep (client: "height should be even and the same"). The sitemap spans both rows of the
+   closing grid while this block sat CENTRED in its own row, so the two halves of the footer
+   finished on different lines (542px against 534px at 1440, and the gap widens on a wide screen
+   where the lede and the address wrap to fewer lines). Sitting it to the bottom of the row makes
+   both columns end level whatever the copy does.
+   NOTE this rule, not the `.close-in > .close-cards` one further up: that one sets align-self
+   too, but this is the later and more specific selector and it is what the dark band actually
+   uses, so editing the earlier rule changes nothing. */
+.close3d .close-cards{display:grid;gap:0;align-self:end}
+.close3d .crow{position:relative;display:flex;flex-direction:column;gap:5px;padding:11px 40px 11px 0;text-decoration:none;transition:padding-left .35s var(--e1)}
+/* the rows carried a hairline top and bottom; the client wants them gone, so the rhythm is
+   held by the spacing alone (28 Aug). Padding is unchanged so nothing reflows. */
+.close3d .crow .ref{font-family: var(--label);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#7C8CAC}
+.close3d .crow b{font-family:"Switzer",sans-serif;font-weight:600;letter-spacing:-.015em;font-size:clamp(19px,1.6vw,25px);line-height:1.3;color:#fff;transition:color .3s}
+.close3d .crow b.adr{font-family:"Instrument Sans",system-ui,sans-serif;font-size:15px;font-weight:500;line-height:1.55;color:#C7D3EE;max-width:46ch}
+.close3d .crow i{position:absolute;right:8px;top:50%;transform:translate(-8px,-50%);font-style:normal;font-size:21px;color:var(--blue);opacity:0;transition:opacity .3s ease,transform .35s var(--e1)}
+.close3d a.crow:hover{padding-left:14px}
+.close3d a.crow:hover b{color:#FF8A90}
+.close3d a.crow:hover i{opacity:1;transform:translate(0,-50%)}
+@media(max-width:640px){.close3d .crow{padding:18px 34px 18px 2px}}
+/* 4 Sep BUG (client: "what happened to the footer"). The heading rendered in --ink — near-black
+   type on the band's near-black ground, i.e. invisible. It was only ever legible on the home page
+   by accident of that page's own stylesheet; the moment ClosingBand put this band on 23 more
+   pages, every one of them inherited the light-page heading colour.
+   A shared component cannot depend on its host page's colours, so the dark band now states its
+   own. */
+.close3d .close-h,
+.close3d h2{color:#F2F6FC}
+.close3d .lede,
+.close3d .nm-pitch{color:#B7C2D6}
+.close3d .eyebrow{color:#FF8A90}
+.close3d .close-h{max-width:22ch;text-wrap:balance}
+@media(min-width:1100px){.close3d .close-h{max-width:none;white-space:nowrap}}
+
+/* the fab model embedded in the Design tab: the parent page carries the workspace bar and the
+   site nav already, so the frame shows the model and its rail and nothing else. */
+.fab-embed .bmws,.fab-embed .nav,.fab-embed .topbar{display:none!important}
+.fab-embed body{padding-top:0!important}
+.fab-embed{scrollbar-width:none}
+.fab-embed::-webkit-scrollbar{width:0}
+
+/* 9 Sep (Bazil: "try not to have eyebrows on the title and make the title clear"). A small
+   uppercase label above every heading was doing the heading's job twice: by the time the eye
+   reached the title it had already read a quieter version of it. An eyebrow that sits directly
+   above a heading is hidden; one that labels something else (a card, a band, a form) stays,
+   because there it is the only label there is. */
+.eyebrow:has(+ h1), .eyebrow:has(+ h2), .eyebrow:has(+ h3),
+.eyebrow:has(+ .u-mt14), .eyebrow:has(+ .u-mt16),
+/* the same label wears a different class per section: pg-k, pb-k, fw-k, cr-k, ca-k, vm-k,
+   nl-k, cms-k, cyc-k. All of them are eyebrows, so all of them follow the same rule. */
+.pg-k:has(+ h1), .pg-k:has(+ h2), .pg-k:has(+ h3),
+.pb-k:has(+ h1), .pb-k:has(+ h2), .pb-k:has(+ h3),
+.fw-k:has(+ h1), .fw-k:has(+ h2), .fw-k:has(+ h3),
+.cr-k:has(+ h1), .cr-k:has(+ h2), .cr-k:has(+ h3),
+.ca-k:has(+ h1), .ca-k:has(+ h2), .ca-k:has(+ h3),
+.vm-k:has(+ h1), .vm-k:has(+ h2), .vm-k:has(+ h3),
+.cyc-k:has(+ h1), .cyc-k:has(+ h2), .cyc-k:has(+ h3) { display: none; }
+/* with the label gone the heading has to carry the section on its own, so it starts at the
+   top of its block rather than under a gap left for something that is not there */
+.eyebrow:has(+ h1) + h1, .eyebrow:has(+ h2) + h2, .eyebrow:has(+ h3) + h3,
+.pg-k:has(+ h2) + h2, .pb-k:has(+ h2) + h2, .fw-k:has(+ h2) + h2, .cr-k:has(+ h2) + h2,
+.ca-k:has(+ h2) + h2, .vm-k:has(+ h2) + h2, .cyc-k:has(+ h2) + h2 { margin-top: 0; }
+
+/* 10 Sep audit: skip link (visible only when focused) and the phone drawer's sub-pages */
+.skip-link{position:fixed;left:12px;top:-60px;z-index:400;background:var(--blue);color:#fff;font:600 13px/1 "Switzer","Instrument Sans",system-ui,sans-serif;padding:12px 16px;text-decoration:none;transition:top .2s}
+.skip-link:focus{top:12px;outline:2px solid #fff;outline-offset:2px}
+.nav-drawer .nd-sub{display:flex;flex-wrap:wrap;gap:2px 18px;padding:6px 2px 14px 26px;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-drawer .nd-sub a{display:inline-flex;padding:6px 0;font-size:14px;font-weight:500;color:#9FB0CF;border-bottom:0}
+
+/* 10 Sep audit: mono labels sat at 7.5px to 10.5px on phones. Nothing that carries words renders
+   under 11px below 640px. */
+@media(max-width:640px){
+  /* !important on purpose: this is a floor, and the page sheets set these sizes with more specific selectors */
+  .tag,.us-k,.pg-tag,.lab,.lpn-lb,.iso,.rg-route,.emp-alt,.sv-tag,.pg-no,.pg-chip,.pg-full,.hx-yr,.hx-gap-n,.nl-k,.ref,.pg-note,.pg-k,.eyebrow,.globe-cap,.sv-go,.pg-more,.cp-tag,.nw-lk,.nw-lm,.off-k,.off-rep,.gstat .lab,.stamp,.k,dt,dd,.pg-slot-tag,.gslot .pg-slot-tag,.f-h4,.f-base,.globe-tag,.ld-tag,.us-group,.hm-row span,.fab-lab b,.un-k,.gd-k,.pg-kick,.nl-lb,.rb-note,.lp-kick,.fab-st-ct,.meta span,.nm-eyeb,.nm-colh,.fchip .ct,.gd-foot i,.pg-cta-meta a,.pg-list b,li>b,label,.fbtn,.clearbtn,.readout,.rd-x,.note,.gd-sub,.gate-note,.lp-more,.close-cta,.us-esc{font-size:11px !important}
+}
+
+/* 15 Sep (Bazil: "remove pictures, icons only; left part can have picture and icon"): the wing rows lost their
+   thumbnails. Units and Life rows are name + line + arrow; the markets list drops its picture column; the roles
+   count sits in a tint chip and the all-roles row is the column's foot. The lead panel keeps its photograph. */
+.nm-units .nm-rows>a{grid-template-columns:1fr auto;gap:14px;padding:12px 14px}
+.nm-mlist{--mcols:minmax(0,1.25fr) minmax(0,1fr) 128px 14px}
+.nm-mhead span:first-child{grid-column:1/2}
+.nm-mhead span:last-child{grid-column:3/5}
+.nm-roles .nm-cnt{min-width:30px;height:26px;display:grid;place-items:center;padding:0 8px;background:#EEF1F6;font-size:13.5px;transition:background .2s,color .2s}
+.nm-roles .nm-rows>a.lit .nm-cnt{background:var(--blue);color:#fff}
+.nm-roles .nm-rows>a.nm-all{margin-top:6px;background:#F3F5F9}
+.nm-roles .nm-rows>a.nm-all .nm-cnt{background:var(--blue);color:#fff}
+
+/* 15 Sep (Bazil: "can we not put icons in boxes", "icon on the right too small or too thin"): no plate behind any
+   wing icon. The mark is drawn at 24px with a 1.6 stroke, red for the units, markets and life rows, ink for the
+   cycle and roles rows (red when lit). The roles count is a plain number again. */
+.nm-cycle .nm-rows>a{grid-template-columns:30px 20px 1fr auto}
+.nm-roles .nm-rows>a{grid-template-columns:30px 1fr auto auto}
+.nm-cycle .nm-rows>a>i{width:30px;height:30px;background:transparent;color:var(--ink)}
+.nm-cycle .nm-rows>a.lit>i{background:transparent;color:var(--blue);transform:none}
+.nm-set .nm-rows>a>i svg{width:24px;height:24px;stroke-width:1.6}
+.nm-set .nm-rows .nm-sq{width:28px;height:28px;background:transparent;color:var(--blue)}
+.nm-set .nm-rows .nm-sq svg{width:24px;height:24px;stroke-width:1.6}
+.nm-roles .nm-cnt{background:transparent;padding:0;min-width:26px;font-size:15px}
+.nm-roles .nm-rows>a.lit .nm-cnt,.nm-roles .nm-rows>a.nm-all .nm-cnt{background:transparent;color:var(--blue)}
+/* 15 Sep (Bazil: "no need the 2 other column"): the markets list is the mark and the name, then the arrow */
+.nm-mlist{--mcols:minmax(0,1fr) 14px}
+.nm-mlist .nm-rows>a{padding:9px 12px}
+/* 15 Sep (Bazil: "why so wide with empty space"): the markets wing was sized for its old three-column list
+   (1060px). With mark and name only it sits at 640px, the lead panel keeping its 258px. */
+.nav-mega.sets.one:has(.nm-mlist){width:min(640px,calc((100vw - 32px) / var(--zoomf,1)))}
+/* 15 Sep (Bazil: "revert", "no need arrow"): the cards stay; the row arrows are gone from every wing list */
+.nm-col a .nm-go,.nm-set .nm-rows>a .nm-go{display:none}
+/* 15 Sep: the About wing is a set now (three unit-style rows); sized to them, not to the services pair */
+.nav-mega.sets.one:has(.nm-units){width:min(720px,calc((100vw - 32px) / var(--zoomf,1)))}
+
+/* ============================================================================
+   15 Sep · LAUNCH GATE (lib/launch.js adds html.is-launch in the launch build, or with ?launchview).
+   Everything that only says what IAQ still owes is hidden on the public site; the review build keeps it.
+   ============================================================================ */
+.is-launch .pg-slot,
+.is-launch .pd-chip,
+.is-launch .pd-slotline,
+.is-launch .pd-rec,
+.is-launch .off-slot,
+.is-launch .off-ph-tag,
+/* 17 Sep: the slot wrappers too, or a hidden pair of slots leaves its 24px margin behind */
+.is-launch .gslots{display:none!important}
+
+/* 15 Sep · THE UNBROKEN EMPHASIS RULE, site-wide (standing client rule; skill unbroken-emphasis). The red phrase in a
+   title is one object: it never splits across two lines. Above 640px the phrase keeps together and, when it does not
+   fit after the words before it, the title breaks before it instead. Measured by tools/probe-emwrap-final-0915.mjs:
+   11 titles wrapped on 15 Sep (every PageHead h1 among them), 0 after.
+
+   23 Sep: the 640px floor was an ASSUMPTION, not a measurement, and it was wrong. Measured with
+   tools/emphasis-fit-0923.mjs, all thirteen phrases that were wrapping at 390 fit on one line with
+   38 to 174px of column to spare: "as much as building well." is the tightest at 324px of 362px.
+   tools/emphasis-floor-0923.mjs then walked 430, 390, 375, 360, 344 and 320: every phrase holds down
+   to 360px and the first failure is at 344 (/projects, "Findable in seconds.", +14px). So the floor
+   is 360, which covers every common phone (360 Android, 375 iPhone SE, 390 iPhone 12 to 15, 430 Pro Max),
+   and below it the phrase is allowed to wrap because the column genuinely cannot hold it. */
+@media (min-width: 360px){
+  h1 em, h2 em, h3 em{ white-space:nowrap; }
+}
+
+/* ============================================================================
+   18 Sep 2026 · the wings, third pass (Bazil: "no need this kind of info at the dropdown, remove
+   for all"; "put the 3 business unit in a group but segmentize them then at the bottom the 6
+   services as a group"; "make sure there is a separation and the icon is high end").
+
+   · the set header (count, title, note) is gone from every wing
+   · every row is its own white card on the tinted panel, 8px apart, section rows included
+   · the mark is a tile at the head of the row: soft red ground, red line icon, turning solid red
+     with a white icon when the row is lit. One tile everywhere: rows, segments, the strip.
+   · Services stacks two groups: the three units as segments, the six services as a strip
+   ============================================================================ */
+/* the selectors carry `.nm-col a i` on purpose: the 24 Aug rule `.nm-col a i{width:18px}` outranks a bare class */
+.nm-col a i.nm-ict,.nm-set .nm-rows>a>i.nm-ict{flex:none;display:grid;place-items:center;width:44px;height:44px;background:#FDECEA;color:var(--blue-bright);transition:background .25s,color .25s,transform .35s var(--e1)}
+.nm-col a i.nm-ict svg,.nm-set .nm-rows>a>i.nm-ict svg{width:22px;height:22px;display:block;stroke-width:1.5}
+.nm-col a i.nm-ict.s{width:32px;height:32px}
+.nm-col a i.nm-ict.s svg{width:17px;height:17px}
+.nm-gl{display:block;font:600 11.5px/1 "Switzer",sans-serif;color:var(--faint);padding:0 2px 10px}
+
+/* rows as separate cards (About, Careers and any unit-style set) */
+.nm-units,.nm-life{background:#EDF0F5}
+.nm-units .nm-rows,.nm-life .nm-rows{gap:8px}
+.nm-units .nm-rows>a,.nm-life .nm-rows>a,
+.nm-units .nm-rows>a.sec,.nm-life .nm-rows>a.sec{grid-template-columns:44px minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 16px;background:#fff;box-shadow:none;transform:none;flex:0 0 auto}
+.nm-units .nm-rows>a:hover,.nm-units .nm-rows>a.lit,.nm-life .nm-rows>a:hover,.nm-life .nm-rows>a.lit,
+.nm-units .nm-rows>a.sec:hover,.nm-units .nm-rows>a.sec.lit,.nm-life .nm-rows>a.sec:hover,.nm-life .nm-rows>a.sec.lit{background:#fff;box-shadow:inset 0 0 0 1px rgba(236,32,39,.45);transform:none}
+.nm-units .nm-rows>a:hover>i.nm-ict,.nm-units .nm-rows>a.lit>i.nm-ict,.nm-life .nm-rows>a:hover>i.nm-ict,.nm-life .nm-rows>a.lit>i.nm-ict{background:var(--blue);color:#fff}
+.nm-units .nm-rows>a em,.nm-life .nm-rows>a em,.nm-set .nm-rows>a.sec em{font-size:16px;font-weight:600;gap:0}
+.nm-units .nm-txt small,.nm-life .nm-txt small{font-size:13px;line-height:1.45;margin-top:4px}
+.nm-units .nm-rows>a.lit em,.nm-life .nm-rows>a.lit em{color:var(--blue-bright);transform:none}
+.nm-tag{background:#F2F4F8;color:var(--soft);padding:6px 9px}
+
+/* Services: two stacked groups */
+.nm-cols.sets.stack{grid-template-columns:1fr}
+.nm-segs{background:#EDF0F5;padding:18px 16px 16px}
+.nm-seg-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.nm-seg{display:flex;flex-direction:column;background:#fff;min-width:0;transition:box-shadow .25s}
+.nm-seg.lit,.nm-seg:hover{box-shadow:inset 0 0 0 1px rgba(236,32,39,.45)}
+.nm-col a.nm-seg-a{display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:16px 16px 12px;background:none;flex:1}
+.nm-col a.nm-seg-a:hover{background:none}
+.nm-col a.nm-seg-a em{white-space:normal;font-style:normal;font:600 16px/1.2 "Switzer",sans-serif;letter-spacing:-.015em;color:var(--ink);margin-top:14px;transition:color .2s}
+.nm-col a.nm-seg-a small{font-size:13px;line-height:1.45;color:var(--soft);margin-top:5px}
+.nm-col .nm-seg.lit a i.nm-ict,.nm-col .nm-seg:hover a i.nm-ict{background:var(--blue);color:#fff}
+.nm-seg.lit a.nm-seg-a em,.nm-seg:hover a.nm-seg-a em{color:var(--blue-bright)}
+.nm-seg-sub{display:flex;flex-wrap:wrap;gap:5px;padding:0 16px 16px}
+.nm-col .nm-seg-sub a,.nm-seg-sub span{display:inline-block;padding:6px 9px;font:600 11.5px/1.15 "Switzer",sans-serif;gap:0}
+.nm-col .nm-seg-sub a{background:#FDECEA;color:var(--blue-bright);text-decoration:none;transition:background .2s,color .2s}
+.nm-col .nm-seg-sub a:hover{background:var(--blue);color:#fff}
+.nm-seg-sub span{background:#F2F4F8;color:var(--soft)}
+.nm-strip{background:#fff;padding:16px 16px 18px}
+.nm-strip-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.nm-col a.nm-st{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:12px 12px 13px;background:#F6F8FB;min-width:0;transition:background .2s,box-shadow .25s}
+.nm-col a.nm-st:hover,.nm-col a.nm-st.lit{background:#fff;box-shadow:inset 0 0 0 1px rgba(236,32,39,.45)}
+.nm-st-t{display:flex;align-items:center;justify-content:space-between;width:100%}
+.nm-st-n{font:600 12px/1 "Switzer",sans-serif;color:var(--blue-bright);font-variant-numeric:tabular-nums}
+.nm-col a.nm-st em{font-style:normal;font:600 13px/1.22 "Switzer",sans-serif;letter-spacing:-.01em;color:var(--ink);white-space:normal;overflow:visible;text-overflow:clip;min-height:2.44em}
+.nm-col a.nm-st.lit i.nm-ict,.nm-col a.nm-st:hover i.nm-ict{background:var(--blue);color:#fff}
+.nav-mega.sets.wide:has(.nm-segs){width:min(1080px,calc((100vw - 32px) / var(--zoomf,1)))}
+@media(prefers-reduced-motion:reduce){.nm-ict,.nm-seg,.nm-col a.nm-st{transition:none}}
+
+/* ============================================================================
+   22 Sep 2026 · the wings, fourth pass (Bazil: "refine, too many boxes and not good animation";
+   on the About wing: "box in a box is too messy"; then, on the first cut of this pass, which took
+   every box away and left the rows floating: "why is this ugly", "have line separation and put them
+   nicely", "spacing etc"). Backup of the sheet before this pass: src/_backups/nav-0922/.
+
+   The 18 Sep pass was four boxes deep: a white card per row, on a tinted well, inside the panel,
+   with a red tile in the card and a grey chip at its end. There is ONE surface now, the panel, and
+   the structure is carried by HAIRLINES and one grid instead of boxes:
+     · rows: a bare line icon, the name, one line under it, the level or an arrow at the right end,
+       a hairline between rows. Nothing shifts sideways on hover; colour and the arrow say "this one"
+     · Services: the three units are three columns with a hairline between them. Every column is
+       the same four bands at the same heights (mark, name, what it does, its two routes), so the
+       names, the lines and the routes all sit level across the wing. The six services follow under
+       one hairline, as six equal columns: number and mark together, the name under them.
+   The opening was a pop (scale .985 and a 14px jump) and rows arriving for a full second. The panel
+   now unrolls from under the bar and the rows follow inside 0.6s.
+   ============================================================================ */
+.nm-units,.nm-life,.nm-segs,.nm-strip{background:transparent}
+.nm-set{padding:10px 30px 12px}
+.nm-gl{padding:0 0 14px;font-size:12.5px;color:var(--faint)}
+
+/* rows: About, Careers and every unit-style set */
+.nm-units .nm-rows,.nm-life .nm-rows{gap:0}
+.nm-units .nm-rows>a,.nm-life .nm-rows>a,
+.nm-units .nm-rows>a.sec,.nm-life .nm-rows>a.sec{grid-template-columns:30px minmax(0,1fr) auto;gap:20px;align-items:center;padding:20px 0;background:transparent;box-shadow:none;transform:none;flex:1 1 auto}
+.nm-units .nm-rows>a+a,.nm-life .nm-rows>a+a{border-top:0}   /* 26 Sep, 06:10 (Bazil: "cannot have too many lines"): menu rows on space */
+.nm-units .nm-rows>a:hover,.nm-units .nm-rows>a.lit,.nm-life .nm-rows>a:hover,.nm-life .nm-rows>a.lit,
+.nm-units .nm-rows>a.sec:hover,.nm-units .nm-rows>a.sec.lit,.nm-life .nm-rows>a.sec:hover,.nm-life .nm-rows>a.sec.lit,
+.nm-set .nm-rows>a:hover,.nm-set .nm-rows>a.lit,.nm-set .nm-rows>a:focus-visible{background:transparent;box-shadow:none;transform:none}
+
+/* the mark: a bare line icon, ink at rest, red in play. No tile anywhere. */
+.nm-col a i.nm-ict,.nm-set .nm-rows>a>i.nm-ict,.nm-cycle .nm-rows>a>i{width:30px;height:30px;background:transparent;color:var(--ink);transition:color .25s}
+.nm-col a i.nm-ict svg,.nm-set .nm-rows>a>i.nm-ict svg,.nm-cycle .nm-rows>a>i svg{width:26px;height:26px;stroke-width:1.2}
+.nm-col a i.nm-ict.s{width:22px;height:22px}
+.nm-col a i.nm-ict.s svg{width:20px;height:20px}
+.nm-units .nm-rows>a:hover>i.nm-ict,.nm-units .nm-rows>a.lit>i.nm-ict,.nm-life .nm-rows>a:hover>i.nm-ict,.nm-life .nm-rows>a.lit>i.nm-ict,
+.nm-cycle .nm-rows>a:hover>i,.nm-cycle .nm-rows>a.lit>i,
+.nm-col .nm-seg.lit a i.nm-ict,.nm-col .nm-seg:hover a i.nm-ict,
+.nm-col a.nm-st.lit i.nm-ict,.nm-col a.nm-st:hover i.nm-ict{background:transparent;color:var(--blue);transform:none}
+.nm-set .nm-rows .nm-sq,.nm-units .nm-rows>a.sec .nm-sq,.nm-life .nm-rows>a.sec .nm-sq,
+.nm-units .nm-rows>a.sec.lit .nm-sq,.nm-life .nm-rows>a.sec.lit .nm-sq{background:transparent;color:var(--blue)}
+
+.nm-units .nm-rows>a em,.nm-life .nm-rows>a em,.nm-set .nm-rows>a.sec em{font-size:16.5px;font-weight:600;transition:color .2s;transform:none}
+.nm-units .nm-txt small,.nm-life .nm-txt small{font-size:13.5px;margin-top:5px;max-width:44ch}
+.nm-set .nm-rows>a:hover em,.nm-set .nm-rows>a.lit em{color:var(--blue-bright);transform:none}
+.nm-set .nm-rows>a:hover .nm-go,.nm-set .nm-rows>a.lit .nm-go{opacity:1;transform:none}
+/* the level is said in words, not in a chip */
+.nm-tag{background:none;padding:0;font:500 12.5px/1 "Instrument Sans",sans-serif;letter-spacing:0;text-transform:none;color:var(--faint)}
+.nm-set .nm-rows>a.lit .nm-tag,.nm-set .nm-rows>a:hover .nm-tag{color:var(--ink)}
+/* the lead photograph carries words, so the preview keeps enough scrim under them to read */
+.nm-lead.peek .nm-lead-scrim{background:linear-gradient(180deg,rgba(7,12,24,.84) 0%,rgba(7,12,24,.62) 46%,rgba(7,12,24,.42) 66%,rgba(7,12,24,.88) 100%)}
+
+/* Services · 22 Sep, third cut (Bazil: "3 columns only, the picture, the 3 units and the 6 services",
+   "just 3 big buttons to click", "design it in such a way that they are cards", "even the service putting
+   like this confuses"). Photograph | three unit cards | six services, numbered, one under another.
+   The card is the ONE box in the wing: bare mark, the unit's short and full name, what it does, and its
+   own routes inside it, each a link. The list answers to the card under the pointer (the Codex: a unit
+   carries services): carried ones light, "when asked" ones say so, the rest go quiet. */
+.nm-cols.sets:has(.nm-segs){grid-template-columns:minmax(0,1.24fr) minmax(0,1fr)}
+.nm-segs{padding:22px 16px 22px 30px}
+.nm-seg-grid{grid-template-columns:1fr;gap:10px}
+.nm-seg{padding:0;background:#F3F5F8;transition:background .3s var(--e1),box-shadow .4s var(--e1),transform .5s var(--e1)}
+.nm-seg+.nm-seg{border-left:0}
+.nm-seg:first-child,.nm-seg:last-child{padding:0}
+.nm-seg.lit,.nm-seg:hover{background:#fff;box-shadow:0 0 0 1px rgba(236,32,39,.55),0 26px 44px -30px rgba(12,18,32,.5);transform:translateY(-1px)}
+.nm-col a.nm-seg-a{flex-direction:row;align-items:flex-start;gap:16px;padding:15px 18px 11px;flex:0 0 auto}
+/* short name and full name share the first line, so a card is three lines and its routes, not five */
+.nm-seg-t{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;min-width:0;flex:1}
+.nm-col a.nm-seg-a em{margin:0;min-height:0;display:block;font-size:17px;line-height:1.2}
+.nm-seg-t b{margin:0;font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:var(--faint)}
+.nm-col a.nm-seg-a small{flex:0 0 100%;min-height:0;margin-top:4px;font-size:13.5px}
+.nm-col a.nm-seg-a .nm-go{margin:4px 0 0 auto}
+.nm-seg.lit .nm-go,.nm-seg:hover .nm-seg-a .nm-go{opacity:1;transform:none}
+.nm-seg-sub{flex-direction:row;flex-wrap:wrap;gap:0 20px;margin:0 18px 0 64px;padding:7px 0 10px;border-top:0}
+.nm-col .nm-seg-sub a,.nm-seg-sub span{display:inline-flex;align-items:center;gap:6px;justify-content:flex-start;padding:4px 0;background:none;font:600 13px/1.25 "Instrument Sans",sans-serif;color:var(--ink)}
+.nm-col .nm-seg-sub a::after{content:"\2192";color:var(--blue);opacity:0;transform:translateX(-5px);transition:opacity .25s,transform .35s var(--e1)}
+.nm-col .nm-seg-sub a:hover{background:none;color:var(--blue-bright)}
+.nm-col .nm-seg-sub a:hover::after{opacity:1;transform:none}
+
+.nm-strip{margin:0;padding:22px 30px 22px 18px;border-top:0}
+.nm-strip-grid{grid-template-columns:1fr;gap:0}
+.nm-col a.nm-st,.nm-col a.nm-st:hover,.nm-col a.nm-st.lit{display:grid;grid-template-columns:14px 24px minmax(0,1fr) auto 16px;align-items:center;gap:14px;padding:12px 0;background:transparent;box-shadow:none;transition:opacity .35s var(--e1)}
+.nm-col a.nm-st:first-child{padding-left:0}
+.nm-col a.nm-st+a.nm-st{border-left:0;border-top:0}
+.nm-st-n{font:600 12.5px/1 "Switzer",sans-serif;color:var(--faint);font-variant-numeric:tabular-nums;transition:color .25s}
+.nm-col a.nm-st em{min-height:0;font-size:15px;line-height:1.25;transition:color .2s}
+.nm-col a.nm-st .nm-go{margin:0}
+.nm-col a.nm-st:hover .nm-go,.nm-col a.nm-st.lit .nm-go{opacity:1;transform:none}
+.nm-col a.nm-st:hover em,.nm-col a.nm-st.lit em{color:var(--blue-bright)}
+.nm-col a.nm-st:hover .nm-st-n,.nm-col a.nm-st.lit .nm-st-n{color:var(--blue)}
+.nm-st-k{font:500 12px/1 "Instrument Sans",sans-serif;color:var(--faint);white-space:nowrap}
+/* the list answering to a unit */
+.nm-col a.nm-st.carried .nm-st-n,.nm-col a.nm-st.carried i.nm-ict{color:var(--blue)}
+.nm-col a.nm-st.asked em{color:var(--soft)}
+/* on the children, not the row: the row's arrival animation owns its opacity while it runs */
+.nm-col a.nm-st.quiet>*{opacity:.28}
+.nm-col a.nm-st>*{transition:opacity .35s var(--e1),color .2s}
+.nm-strip .nm-gl{animation:nmRow4 .4s var(--e1) backwards}
+
+/* Markets: the list keeps its columns, loses its stripes, takes the same hairlines */
+.nm-mlist .nm-rows>a:nth-child(odd),.nm-mlist .nm-rows>a:hover,.nm-mlist .nm-rows>a.lit{background:transparent}
+.nm-mlist .nm-rows>a{padding:9px 0}
+.nm-mlist .nm-rows>a+a{border-top:0}
+.nm-mlist .nm-rows{gap:0}
+.nm-mhead{padding:14px 0 10px}
+
+/* ---- the opening: the panel unrolls from under the bar, the rows follow it in ---- */
+.nav-mega{transform:translate(-50%,0);clip-path:inset(0 0 100% 0);
+  transition:opacity .16s ease,clip-path .22s cubic-bezier(.55,.06,.68,.19),visibility 0s .24s}
+.nav-mega.open,.nav-has:focus-within .nav-mega{transform:translate(-50%,0);clip-path:inset(-24px -90px -120px -90px);
+  transition:opacity .2s ease,clip-path .55s var(--e1)}
+@keyframes nmRow4{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.nav-mega.sets.open .nm-rows>a,.nav-has:focus-within .nav-mega.sets .nm-rows>a,
+.nav-mega.sets.open .nm-seg,.nav-has:focus-within .nav-mega.sets .nm-seg,
+.nav-mega.sets.open a.nm-st,.nav-has:focus-within .nav-mega.sets a.nm-st{animation:nmRow4 .46s var(--e1) backwards;
+  animation-delay:calc(90ms + var(--si,0) * 70ms + var(--ri,0) * 32ms)}
+.nav-mega.sets.open .nm-gl,.nav-has:focus-within .nav-mega.sets .nm-gl{animation:nmRow4 .46s var(--e1) backwards;animation-delay:calc(60ms + var(--si,0) * 70ms)}
+.nav-mega.open .nm-lead-bg.on{animation:nmLead4 1.4s var(--e1) backwards}
+@keyframes nmLead4{from{transform:scale(1.09)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){
+  .nav-mega,.nav-mega.open,.nav-has:focus-within .nav-mega{clip-path:none;transition:opacity .15s ease,visibility 0s}
+  .nav-mega.sets.open .nm-rows>a,.nav-mega.sets.open .nm-seg,.nav-mega.sets.open a.nm-st,.nav-mega.sets.open .nm-gl,.nav-mega.open .nm-lead-bg.on{animation:none}
+  .nm-set .nm-rows>a em{transition:none}}
+@media(max-width:860px){.nm-set,.nm-segs{padding-left:16px;padding-right:16px}
+  .nm-cols.sets:has(.nm-segs){grid-template-columns:1fr}.nm-segs{padding-right:16px}.nm-strip{padding-left:16px;padding-right:16px}}
+
+
+/* 18 Sep: the meaning after a short form, added by lib/abbr.js */
+.ab-x{display:inline!important;padding:0!important;margin:0!important;border:0!important;background:none!important;box-shadow:none!important;font-weight:400;opacity:.78;font-size:.9em;letter-spacing:0}
+.ab-gl{font-size:13px;line-height:1.5;color:#66708A;margin-top:14px}
+
+/* ============================================================================
+   18 Sep · the primary button, "more professional button please" (Bazil, on the nav's START A PROJECT).
+   Uppercase with wide tracking read as a label stamped on a box. The button now sets its words in sentence
+   case at reading size with tight tracking. 26 Sep (IAQ graphic rules: "block per block and separated very nicely
+   and rigid", gradients only in rare cases): one flat block of the logo red, no two-stop fill, no top light, no
+   red glow; the hover is a deeper flat red. Still square, still no arrow. The ghost and the phone drawer button
+   follow the same type.
+   ============================================================================ */
+.cta{text-transform:none;font-size:14.5px;letter-spacing:-.006em;font-weight:600;padding:0 22px;
+  background:#EC2326;box-shadow:none;
+  transition:background .2s ease}
+.cta:hover{background:#C9161D;box-shadow:none}
+.cta:active{background:#B3131A;box-shadow:none}
+.nav-in>.cta,.nav-act .cta{height:40px;padding:0 18px;font-size:14px}
+.pg-cta-act .cta{box-shadow:0 1px 2px rgba(12,18,32,.2)}
+.pg-cta-act .cta:hover{background:#0C1220;box-shadow:0 12px 24px -12px rgba(12,18,32,.6)}
+.cta-ghost{text-transform:none;font-size:14.5px;letter-spacing:-.006em}
+@media(max-width:960px){.nav-drawer .nd-cta{text-transform:none;font-size:15px;letter-spacing:-.006em;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 10px 22px -12px rgba(236,32,39,.7)}}
+@media(prefers-reduced-motion:reduce){.cta,.cta:hover{transform:none;transition:none}}
+
+/* 22 Sep (Bazil: "background reduce darkness"): the closing band's ground lifts from near-black to IAQ's deep navy,
+   on every page (home.css sets #0A101F with !important, so this carries the extra specificity) */
+html body .close3d { background: #17213A !important; }
+
+/* 26 Sep (IAQ graphic rules: "rigid, strong, not heavy", nothing 700 or heavier): the browser draws b and strong "bolder",
+   which is 900 inside 600 type; they hold at 600 */
+b,strong{font-weight:600}
+/* every layer of the band resolved to #0A101F on purpose (home.css "one navy everywhere"), so the whole set moves together.
+   26 Sep (IAQ graphic rules: "block per block", gradients only in rare cases): the three layers are flat navy, and these
+   !important rules carry it over the older per-page layers (home.css, about.css, careers.css, projects.css) */
+html body .close3d .close-viz { background: #17213A !important; }
+html body .close3d .close-scrim { background: none !important; }
+html body .close3d footer { background: transparent !important; }   /* the footer overlaps the band's sitemap; the band is already flat navy, so no fill is needed and nothing is covered */
+
+/* 22 Sep (Bazil: "create a much more better visual", "why repeating icons"): the menu's photograph card reads as an
+   editorial card: the picture clear at the top, the words at the foot on a scrim that only darkens there, no mark
+   repeating the row beside it */
+.nm-lead-copy{margin-top:auto}
+.nm-lead .nm-open{margin-top:16px;padding-top:0}
+.nm-lead-scrim{background:linear-gradient(180deg,rgba(7,12,24,0) 0%,rgba(7,12,24,.08) 24%,rgba(7,12,24,.66) 50%,rgba(7,12,24,.9) 72%,rgba(7,12,24,.95) 100%)}
+.nm-lead-bg{filter:none}
+.nm-lead[data-hub="about"] .nm-lead-bg{object-position:30% 58%}
+.nm-lead>.nm-lead-copy>b,.nm-lead b{text-shadow:0 1px 12px rgba(4,8,16,.45)}
+
+/* 22 Sep (Bazil, on the three unit cards: "no need so long and make it clean"): each card is its name line, what it
+   does, and its routes in one quiet row, with no rule between them */
+.nm-col a.nm-seg-a{padding:14px 18px 6px}
+.nm-seg-sub{border-top:0;margin:0 18px 0 64px;padding:0 0 12px;gap:2px 16px}
+.nm-col .nm-seg-sub a,.nm-seg-sub span{padding:3px 0;font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:var(--soft)}
+.nm-col .nm-seg-sub a:hover{color:var(--blue-bright)}
+.nm-lead[data-hub="careers"] .nm-lead-bg{object-position:50% 88%}
+
+/* 22 Sep (Bazil, on the Services wing: "compartmentalise it more premium and minimalist"). Two compartments beside the
+   photograph: the units on a soft grey panel as three white tiles of one rhythm (name, full name, what it does, its
+   sections as small square tags), and the six services on white as spaced rows with no rules between them. */
+@media (min-width: 861px) {
+  .nm-segs { background: #F4F6F9; padding: 24px 22px 24px 24px; }
+  .nm-segs .nm-gl, .nm-strip .nm-gl { margin-bottom: 14px; }
+  .nm-seg-grid { gap: 10px; }
+  .nm-seg { background: #fff; box-shadow: 0 1px 2px rgba(12,18,32,.04); }
+  .nm-seg.lit, .nm-seg:hover { box-shadow: 0 0 0 1px rgba(236,32,39,.5), 0 20px 36px -26px rgba(12,18,32,.45); }
+  .nm-col a.nm-seg-a { padding: 16px 18px 8px; }
+  .nm-seg-t { display: block; }
+  .nm-col a.nm-seg-a em { display: block; font-size: 16.5px; }
+  .nm-seg-t b { display: block; margin-top: 3px; font-size: 12px; line-height: 1.35; }
+  .nm-col a.nm-seg-a small { display: block; margin-top: 8px; font-size: 13.5px; }
+  .nm-seg-sub { margin: 0 18px 0 64px; padding: 2px 0 16px; gap: 6px; }
+  .nm-col .nm-seg-sub a { padding: 5px 9px; background: #F1F3F7; font: 500 12px/1.2 "Instrument Sans", sans-serif; color: var(--soft); }
+  .nm-col .nm-seg-sub a::after { content: none; }
+  .nm-col .nm-seg-sub a:hover { background: #FDECEA; color: var(--blue-bright); }
+  .nm-strip { padding: 24px 30px 24px 26px; }
+  .nm-col a.nm-st + a.nm-st { border-top: 0; }
+  .nm-col a.nm-st, .nm-col a.nm-st:hover, .nm-col a.nm-st.lit { padding: 11px 0; }
+}
+@media (min-width: 861px) {
+  .nm-seg-sub { gap: 5px; margin-right: 12px; }
+  .nm-col .nm-seg-sub a { padding: 5px 8px; font-size: 11.5px; }
+}
+
+/* ============================================================================
+   23 Sep · the Services wing's columns end level (checklist br4, Bazil: "level columns").
+   They START level, which is why this was missed: all three columns open at the same top. The
+   measurement that found it (tools/_wingcols.mjs) reads where the INK ends, not where the box does:
+   Business units left 27px of slack, the Six services list left 198px, and that hole is the empty
+   white block on the right of the panel. Every other wing measured 13px.
+   The list is a grid inside a flex column, so it takes the leftover height and the six rows divide
+   it equally: same rhythm, same hairlines, and the last service lands on the panel's floor.
+   ============================================================================ */
+.nm-strip .nm-strip-grid { flex: 1; grid-auto-rows: 1fr; align-content: stretch; }
+@media (max-width: 1090px) { .nm-strip .nm-strip-grid { flex: 0 1 auto; grid-auto-rows: auto; } }
+
+/* ============================================================================
+   23 Sep · touch targets on a phone (polish sweep).
+
+   tools/tap-audit-0923.mjs scrolls each control into view and checks the element under its own
+   centre is itself, so a link in a closed drawer or behind a scrim is not counted. What it found
+   that genuinely matters is the ICON-ONLY controls: a text link inside a sentence cannot be 44px
+   tall without wrecking the line, but a 27px square with no text is simply hard to hit.
+
+     .sl-save  save-to-shortlist on every project card   27 x 27   (28 of them on /projects)
+     .vc-arw   values carousel arrows                    34 x 34
+     .vc-dot   values carousel dots                      28 x 28
+     .nb-rail-b  news banner rail                        60 x 16
+     .cx-copy  copy the email or the phone number        31 x 21
+     .cu-vc-go culture card link                         11 x 65
+
+   The visual size is not touched. Each control keeps its drawn box and gains a transparent
+   pseudo-element centred on it that carries the 44px Apple and WCAG 2.5.8 minimum, which is the
+   standard way to do this without moving the design a pixel. Pointer devices are unaffected.
+   ============================================================================ */
+/* A (pointer: coarse) query would be the textbook answer, but it cannot be emulated by the headless
+   harness this build is verified with, so it would ship unverified. The site's own phone breakpoint
+   is 720px, every other rule here uses it, and a 44px target is right on a small screen whatever is
+   pointing at it. */
+@media (max-width: 720px) {
+  .sl-save, .vc-arw, .vc-dot, .nb-rail-b, .cx-copy, .cu-vc-go, .fab-skip { position: relative; }
+  .sl-save::after, .vc-arw::after, .vc-dot::after, .nb-rail-b::after,
+  .cx-copy::after, .cu-vc-go::after, .fab-skip::after {
+    content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: max(100%, 44px); height: max(100%, 44px); z-index: 1;
+  }
+}
+
+/* ============================================================================
+   23 Sep (Bazil, with the Markets wing open: "this is considered tidy"; of the Services wing: "make
+   this more tidy and don't make boxy in the unit part"; and "maybe red icons").
+
+   The Markets wing is a list: a red mark, the name, a hairline between rows, nothing drawn round
+   anything. The Services wing was the opposite: a tinted panel holding three white cards, each with
+   a filled icon tile above the name and a row of filled chips under it. Four box shapes for one idea.
+
+   The units are a list now, on the Markets pattern. Nothing leaves the wing: the same three units,
+   the same full names, the same one-liners, the same models and routes.
+     · the tinted panel and the white cards go; a hairline separates the units
+     · the row runs mark, then name, full name and line, instead of stacking the mark on top
+     · the icon tile loses its filled square and becomes the red mark itself
+     · the models lose their pills and read as quiet text under the name
+   ============================================================================ */
+.nm-segs { background: transparent; padding: 14px 16px 12px; }
+.nm-seg-grid { grid-template-columns: 1fr; gap: 0; }
+.nm-seg, .nm-seg.lit, .nm-seg:hover { background: transparent; box-shadow: none; }
+.nm-seg + .nm-seg { border-top: 0; }
+.nm-col a.nm-seg-a {
+  display: grid; grid-template-columns: 30px minmax(0, 1fr); align-items: start;
+  gap: 14px; padding: 14px 2px 8px;
+}
+.nm-col a.nm-seg-a > i.nm-ict,
+.nm-col .nm-seg.lit a i.nm-ict, .nm-col .nm-seg:hover a i.nm-ict {
+  width: 30px; height: 30px; background: none; color: var(--blue-bright); grid-row: span 2;
+}
+.nm-col a.nm-seg-a > i.nm-ict svg { width: 24px; height: 24px; stroke-width: 1.35; }
+.nm-col a.nm-seg-a em { margin-top: 0; font-size: 15px; }
+.nm-col a.nm-seg-a small { margin-top: 3px; }
+/* the models: text under the name, in line with it, not pills on their own row */
+/* an earlier rule carries `margin: 0 18px 0 64px`, which is why the models sat 72px right of the
+   name. The margin is zeroed and the indent is the row's own: 30px mark + 14px gap + 2px. */
+.nm-seg-sub { margin: 0; padding: 0 2px 14px 46px; gap: 3px 14px; justify-content: flex-start; border-top: 0; }
+.nm-col .nm-seg-sub a, .nm-seg-sub span {
+  background: none; padding: 0; font: 500 12px/1.35 "Instrument Sans", sans-serif; color: var(--soft);
+}
+.nm-col .nm-seg-sub a { color: var(--soft); }
+.nm-col .nm-seg-sub a:hover { background: none; color: var(--blue-bright); }
+/* 23 Sep ("maybe red icons"): every wing row's mark is the client red, which is what the Markets
+   list already did and the reason it reads as the tidy one. */
+.nm-col a > i:not(.nm-ict), .nm-set .nm-rows > a > i:not(.nm-ict) { color: var(--blue-bright); }
+.nm-col a.nm-st i.nm-ict, .nm-col a.nm-st:hover i.nm-ict, .nm-col a.nm-st.lit i.nm-ict {
+  background: none; color: var(--blue-bright); width: 26px; height: 26px;
+}
+.nm-col a.nm-st i.nm-ict svg { width: 21px; height: 21px; stroke-width: 1.35; }
+
+/* 23 Sep (Bazil, on the Services wing: "make separation in between, or colour different, a background").
+   Taking the unit cards out of their tinted panel left the two groups reading as one field of white:
+   nothing said where Business units ends and Six services begins. The seam is drawn in the GRID GAP,
+   not as a border on either column, so neither group gains an edge of its own (the house rule against
+   left-edge stripes), and the services column takes a very light tint so the pair reads as two. */
+.nm-cols.sets:has(.nm-segs) { gap: 0; background: none; }   /* 26 Sep, 06:10 (Bazil: "cannot have too many lines"): no line between the columns */
+.nm-cols.sets:has(.nm-segs) > .nm-col { background: #fff; }
+.nm-cols.sets:has(.nm-segs) > .nm-strip { background: #F7F9FC; }
+
+/* 25 Sep: a heading kept for assistive tech only (the history page lost its visible head) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* 25 Sep, 06:05 (Bazil: "business unit is blue in colour remember, like in services page"): the three business units in
+   the Services dropdown carry the services page's unit blue (#0B8FD8 on the mark, #0772AE on the lit name), as the
+   facility map and the units board do; the six services keep the red. */
+.nm-col .nm-seg a i.nm-ict,.nm-col .nm-seg.lit a i.nm-ict,.nm-col .nm-seg:hover a i.nm-ict{color:#0B8FD8;background:transparent}
+.nm-seg.lit a.nm-seg-a em,.nm-seg:hover a.nm-seg-a em{color:#0772AE}
+/* 25 Sep (Bazil: "align the title of each section properly"): the unit column's top padding was 14px against the strip's
+   24px, so "Business units" sat 12px above "What EPC carries"; both heads share one line now */
+.nm-segs{padding-top:24px}
+
+/* 25 Sep, phone pass (Bazil: "fix bugs and make sure phone view awesome"). Measured at 390px with a headless sweep: every
+   text under 11px and every control under 32px on the public routes. The labels below were 9.5 to 10.5px; they read at 11
+   and 11.5 now. !important because the page sheets set them with more specific selectors (the 10 Sep floor's own note). */
+@media (max-width: 640px) {
+  .f-brand .wm span, .us-foot span, .gstat .lab, .hchip span, .hx-cap b, i.hx-kind, .cp-globe-legend span, .cp-chips .lbl,
+  .cp-row .c, .cp-row .v, .cp-pk, .sysm-stages .sysm-st span, .sysm-ret span, .pg-ref span, .pg-more-go, .nb-wire-k, .nb-wire-m,
+  .nb-wire-m time, .nb-wire-go, .nb-wire-next li span, .gcert span, .un-pick-k, .pg-note { font-size: 11px !important; }
+  .pg-loop, .fchip, .flabel, details.gdraft summary { font-size: 11.5px !important; }
+  /* tap targets: 32px is the floor, 40 where the control is the only way to act */
+  .pc-save, .sl-save.pc-save { padding: 12px !important; }
+  .nb-rail-b { height: 32px !important; }
+  .faq-more, .sm-uc-go, .hx-proj, .cc-cv-dl, .cx-v { padding-top: 8px; padding-bottom: 8px; }
+  .cx-copy { padding: 10px 8px !important; }
+}
+/* 25 Sep, phone pass: the market hero mark's caption (7.2 units on a 240 viewBox) rendered 5.5px tall on a phone, where
+   the headline beside it says the same thing; hidden under 640px, unchanged above */
+@media (max-width: 640px) { .mm.live svg text, .mm svg text { display: none; } }
+/* 25 Sep, phone pass, second cut: the last labels under 11px (careers department counts), and taller hit areas on the
+   inline links the sweep flagged at 16 to 22px: footer columns, contact lines, the policy files, the culture links.
+   Vertical padding on an inline link widens what a thumb can hit without moving the lines around it. */
+@media (max-width: 640px) {
+  .dept-h .n { font-size: 11px !important; }
+  .f-cols a, .f-brand a, .f-nav a, .cx-v, .cx-lines a, .cx-row a, .gcert-file, .cu-link, .nb-wire-next a, .hx-txt a, .cc-pol-a a { padding-top: 8px; padding-bottom: 8px; }
+}
+/* 25 Sep, phone pass, last: the breadcrumb links were 18px tall targets */
+@media (max-width: 640px) { .pg-crumbs a, .vb-crumbs a { padding-top: 7px; padding-bottom: 7px; } }
+
+/* 25 Sep, 07:40 (Bazil: "isn't market purple colour?"): the Markets menu carries the market violet of the Codex grammar
+   (#6E56E6, lit #5840C9), as business units carry blue and services red. The market rows carry their mark as .nm-sq inside the name. */
+.nav-has[data-hub="markets-hub"] .nm-set .nm-rows .nm-sq{color:#6E56E6;background:transparent}
+.nav-has[data-hub="markets-hub"] .nm-set .nm-rows>a:hover .nm-sq,.nav-has[data-hub="markets-hub"] .nm-set .nm-rows>a.lit .nm-sq{color:#5840C9;background:transparent}
+.nav-has[data-hub="markets-hub"] .nm-set .nm-rows>a:hover em,.nav-has[data-hub="markets-hub"] .nm-set .nm-rows>a.lit em{color:#5840C9}
+
+/* 25 Sep (Bazil: "appear as purple square here"): the Markets item's square marker is the market violet on every page */
+.nav-links a[href="/markets"]::before{background:#6E56E6}
+.nav.nav-clear .nav-links a[href="/markets"]::before{background:#9D8CF5}
+
+/* 25 Sep (Bazil: "a little bit thinner title for all"): headings one weight down, Switzer 500 (the file is on disk) */
+h1,h2,h3{font-weight:500!important}   /* every page's own heading rule (unit heroes, bands, codex) sat at 600 or 700 */
+
+/* 25 Sep: the registrations and recognitions in the footer, the marks drawn white on the navy */
+.sitefoot .f-certs{position:relative;max-width:var(--maxw);margin:0 auto 28px;padding:22px var(--gut) 0;border-top:1px solid #EC2027;display:flex;align-items:center;gap:clamp(18px,3vw,40px);flex-wrap:wrap}
+.sitefoot .f-certs-l{font:500 13px/1.3 "Instrument Sans",sans-serif;color:rgba(255,255,255,.62)}
+.sitefoot .f-certs-row{display:flex;align-items:center;gap:clamp(22px,3.4vw,48px);flex-wrap:wrap}
+/* 26 Sep (Bazil: "why isn't the certificate visible here"): three of the four marks are opaque files on white, so the white
+   filter turned them into solid blocks; certification marks also belong in their issued colours. Each stands on its own
+   white tile, all four the same height */
+.sitefoot .f-certs-row img{height:50px;width:auto;display:block;background:none;padding:0;object-fit:contain}
+.sitefoot .f-certs-row{gap:clamp(24px,3vw,40px)}
+.sitefoot .f-certs-a{margin-left:auto;color:#fff;font:500 13.5px/1.3 "Instrument Sans",sans-serif;text-decoration:none;display:inline;padding:0}
+.sitefoot .f-certs-a:hover{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:720px){.sitefoot .f-certs-a{margin-left:0}.sitefoot .f-certs-row img{height:42px}}

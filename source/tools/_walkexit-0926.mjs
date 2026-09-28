@@ -1,0 +1,17 @@
+import puppeteer from 'puppeteer-core'
+/* 26 Sep: the walk look is put back on exit (machines return to the Tools hue, fire items to red). */
+const sleep = ms => new Promise(r => setTimeout(r, ms))
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', protocolTimeout: 400000, args: ['--use-angle=metal', '--enable-gpu', '--ignore-gpu-blocklist'] })
+const p = await b.newPage(); await p.setViewport({ width: 1200, height: 750 }); await p.setCacheEnabled(false)
+p.evaluateOnNewDocument(() => { const WS = window.WebSocket; window.WebSocket = function (u, pr) { if (String(pr).includes('vite')) return { addEventListener () {}, removeEventListener () {}, send () {}, close () {}, readyState: 0 }; return new WS(u, pr) } })
+const errs = []; p.on('pageerror', e => errs.push(String(e.message || e).slice(0, 200)))
+await p.goto('http://localhost:57375/?nointro=1', { waitUntil: 'domcontentloaded', timeout: 90000 }); await sleep(3000)
+await p.evaluate(() => document.querySelector('#build3d').scrollIntoView({ block: 'start', behavior: 'instant' }))
+await p.waitForFunction(() => { const f = document.querySelector('.db3-frame'); return f && f.contentDocument && f.contentDocument.querySelector('#overlay.hidden') }, { timeout: 120000, polling: 500 }); await sleep(4000)
+const read = () => p.evaluate(() => { const w = document.querySelector('.db3-frame').contentWindow, c = {}; w.__iaqScene.traverse(o => { if (!o.isMesh) return; let g = o; while (g && !/detail-(tools|sprinklers)/.test(g.name || '')) g = g.parent; if (!g) return; const k = /tools/.test(g.name) ? 'tools' : 'spr'; const m = [].concat(o.material)[0]; const h = m.color.getHexString(); c[k + ':' + h] = (c[k + ':' + h] || 0) + 1 }); return { room: w.document.body.classList.contains('room'), c: Object.entries(c).sort((a, b) => b[1] - a[1]).slice(0, 5) } })
+console.log('before', JSON.stringify(await read()))
+await p.evaluate(() => document.querySelector('.db3-frame').contentDocument.querySelector('#hud2 .h-cta').click()); await sleep(11000)
+console.log('walking', JSON.stringify(await read()))
+await p.evaluate(() => { const d = document.querySelector('.db3-frame').contentDocument; const x = d.getElementById('exit-room'); x && x.click() }); await sleep(8000)
+console.log('after exit', JSON.stringify(await read()))
+console.log('errors', JSON.stringify(errs.slice(0, 4))); await b.close()

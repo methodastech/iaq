@@ -1,0 +1,214 @@
+/* The filter console (band, labels, chips, counts, search, reset, readout, empty state
+   and the page footnote) is NOT defined here any more. It lives in styles/console.css,
+   one canonical copy shared with the careers page. Only the controls unique to this page
+   — the sort segment, the collapsible facet panel and its badge — stay below. */
+/* Projects registry page styles, ported from _source/projects.html.
+   base.css owns tokens, resets, nav/topbar, cta, head base, sitefoot, ribbon, search overlay.
+   The .headband overrides that used to sit here are GONE: this page renders
+   RegistryBanner, not a .headband, so every one of them was dead here and only leaked
+   into the careers page, which carries its own copy. */
+
+/* keep the page gutters: this two-class selector outranks base's `.head.wrap`, so the
+   shorthand must carry the horizontal padding itself or the copy goes flush to the edge */
+
+/* 3 Sep (client: "what happened to the banner words"): the words were there, but this photo
+   is bright and busy exactly where the headline sits, and the old scrim faded to .12 by the
+   midpoint, so white type ran over a near-white ceiling. The image sits back a little and the
+   left-to-right scrim holds much longer across the text column before it clears. */
+
+/* ============ filter console ============ */
+/* light-grey filter/sort band so the controls read as a distinct toolbar separated from the white
+   page + content, while chips and text stay fully legible */
+.fbtn{display:inline-flex;align-items:center;gap:8px;font-family: var(--label);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--soft);background:rgba(23,33,58,.06);border:0;padding:9px 13px;cursor:pointer;transition:background .25s,color .25s;user-select:none}
+.fbtn:hover{background:rgba(236,35,38,.08);color:var(--blue-bright)}
+.fbtn>svg:first-child{width:14px;height:14px;color:var(--blue)}
+.fbtn .fcar{width:12px;height:12px;color:var(--faint);transition:transform .4s var(--e1)}
+.console.fopen .fbtn{border-color:var(--blue);color:var(--blue-bright)}
+.console.fopen .fbtn .fcar{transform:rotate(180deg)}
+/* the badge honours the hidden attribute (it showed a red 0 before) */
+.fcount[hidden]{display:none}
+/* --blue-bright, and square: #EC2027 under white 9.5px fails contrast, and the 9px radius
+   was the only rounded corner on the page */
+.fcount{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:0;background:var(--blue-bright);color:#fff;font-size:9.5px;font-weight:600;letter-spacing:0}
+/* max-height:0 + overflow:hidden CLIP the panel but leave its 18 chips and 4 sort buttons
+   focusable, so tabbing out of the search box dropped into 22 controls that were off screen
+   and that the Filter button had just declared closed. visibility (plus the `inert`
+   attribute the scene toggles) takes them out of the tab order. */
+.fpanel{overflow:hidden;max-height:0;opacity:0;visibility:hidden;transition:max-height .55s var(--e1),opacity .38s ease,margin-top .4s var(--e1),visibility 0s linear .38s;margin-top:0}
+.console.fopen .fpanel{max-height:520px;opacity:1;visibility:visible;margin-top:11px;transition:max-height .55s var(--e1),opacity .38s ease,margin-top .4s var(--e1)}
+.fpanel .row + .row{margin-top:9px}
+.sortseg{display:inline-flex;align-items:center;border:1px solid var(--line2);background:var(--bg2)}
+.sortseg .ss-lab{display:inline-flex;align-items:center;gap:6px;font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);font-weight:600;padding:0 10px;border-right:1px solid var(--line)}
+.sortseg .ss-lab svg{width:13px;height:13px;color:var(--blue)}
+.sortseg .ss{font-family: var(--label);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:9px 11px;border:0;background:none;color:var(--soft);cursor:pointer;transition:background .2s,color .2s}
+.sortseg .ss:hover{color:var(--blue-bright)}
+.sortseg .ss.on{background:var(--blue-bright);color:#fff;font-weight:600}
+.sortseg .ss:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+@media(max-width:640px){
+  .chips::-webkit-scrollbar{display:none}
+}
+
+/* ============ registry grid ============ */
+.pc{cursor:pointer}
+.reg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;padding:30px 0 10px}
+/* the card is a real anchor now, so it needs the house focus ring (base.css) */
+.pc{border:0;background:var(--panel);display:flex;flex-direction:column;overflow:hidden;color:inherit;text-decoration:none;transition:border-color .35s,transform .45s var(--e1)}
+.pc:hover{transform:translateY(-4px)}   /* 26 Sep (IAQ graphic rules): a block, no frame; it lifts on hover */
+.pc:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.pc-in{padding:26px 20px 20px;display:flex;flex-direction:column;gap:9px;flex:1}
+/* no seam between the photo and the text: the card already has its own border, inside a
+   band that has two more */
+.pcv{position:relative;aspect-ratio:16/8.4;background:#17213A}   /* 26 Sep (IAQ graphic rules): a flat navy block */
+.pcv .clip{position:absolute;inset:0;overflow:hidden}
+.pcv .clip img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--e1)}
+.pc:hover .pcv .clip img{transform:scale(1.045)}
+.pcv .grid-bg{position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:26px 26px;mask-image:radial-gradient(90% 90% at 50% 40%,#000 30%,transparent 100%);-webkit-mask-image:radial-gradient(90% 90% at 50% 40%,#000 30%,transparent 100%)}
+.pcv .ph-ico{position:absolute;top:50%;left:50%;transform:translate(-50%,-56%);width:44px;height:44px;color:#FF4D55;opacity:.9}
+.pcv .ph-ico svg{width:100%;height:100%}
+.pcv .ph-cap{font-weight:600;position:absolute;left:50%;transform:translateX(-50%);bottom:9px;font-family: var(--label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7A87A2;white-space:nowrap}
+.pcv .brand{position:absolute;left:14px;bottom:0;transform:translateY(50%);z-index:3;background:#fff;border:1px solid var(--line2);box-shadow:0 6px 18px rgba(12,18,32,.14);padding:7px 12px;display:inline-flex;align-items:center;font-family:"Switzer",sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);line-height:1}
+.pcv .brand.blogo img{height:20px;width:auto;max-width:110px;object-fit:contain;display:block}
+/* "Photo · iaqtechnology.com.my" stamped on 17 of 18 cards and "Site photo · IAQ" on the
+   eighteenth: provenance the visitor did not ask for, on every card in the grid. It is
+   recorded in data/projects.js where it belongs and hidden here. */
+.pcv.photo .ph-cap{display:none}
+.pcv.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(7,12,24,.38));pointer-events:none}
+.pc .ref{font-family: var(--label);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);display:flex;justify-content:space-between;gap:8px}
+.pc .ref .iso{color:var(--blue-bright);font-weight:600}
+.pc h3{font-size:18.5px;line-height:1.22}
+.pc .cl{font-size:13.5px;color:var(--soft);min-height:24px;display:flex;align-items:center}
+/* CLOGOS is {} and stays empty: client names are not published, by policy. The image
+   branch in the renderer can therefore never fire, so this rule styled nothing. Kept as a
+   one-line note rather than dead CSS in case the policy ever changes. */
+.pc .meta{display:flex;gap:14px;font-family: var(--label);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--soft);flex-wrap:wrap}
+.pc .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:10px}
+/* a tint, not an outline: three tags on each of 18 cards was 54 boxes, each nested inside a
+   card that already has its own border, inside a band that has two more */
+.tag{font-family: var(--label);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;color:var(--soft);background:rgba(12,18,32,.05)}
+.tag.b{color:var(--blue-bright);background:rgba(236,32,39,.07)}
+@media(max-width:640px){.reg{grid-template-columns:1fr 1fr;gap:8px}.pc-in{padding:20px 12px 12px}.pc h3{font-size:14.5px}.pc .cl{font-size:13px}.pc .meta{gap:8px}.pc .ref{flex-direction:column;gap:2px}.pcv .ph-ico{width:30px;height:30px}.pcv .brand{font-size:9.5px;padding:5px 9px;letter-spacing:.1em}.pcv .brand.blogo img{height:15px}.pcv .ph-cap{font-weight:600;display:none}}
+
+
+
+@media(max-width:640px){
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.05ms!important}}
+
+/* ==== shared 3D campus footer (transplanted from home) ==== */
+.dark-band{
+  --bg:#070C18; --bg2:#0A101F; --panel:#0F1728;
+  --ink:#EDF2FC; --soft:#AAB6CE; --faint:#7A87A2; --faintest:#39435C;
+  --line:rgba(236,35,38,.42); --line2:rgba(236,35,38,.6);   /* 26 Sep: red hairlines on the dark band too (was white .08 and .16) */
+  --blue:#FF4D55; --blue-bright:#FF8A90; --cyan:#35E0C8;
+  background:var(--bg2); color:var(--ink);
+}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+.fpc{border:1px solid var(--line);background:var(--panel);padding:22px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:border-color .35s,transform .45s var(--e1)}
+.fpc:hover{border-color:rgba(236,32,39,.45);transform:translateY(-4px)}
+.fp3d{position:relative;aspect-ratio:16/9;margin:-22px -22px 6px;background:linear-gradient(165deg,#101B36,#0A101F);cursor:grab}
+.fp3d:active{cursor:grabbing}
+.fp3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fpc-ic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(236,32,39,.22);background:rgba(236,32,39,.05);color:var(--blue);transition:background .35s,color .35s}
+.fpc:hover .fpc-ic{background:var(--blue);color:#fff}
+.fpc-ic svg{width:19px;height:19px}
+.fpc .ref{font-family: var(--label);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.fpc h3{font-size:18px;line-height:1.2}
+.fpc .cl2{font-size:13px;color:var(--soft)}
+.fpc .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:10px}
+.close3d{position:relative;overflow:hidden;background:#070C18;padding-top:clamp(56px,9vh,104px)}
+/* three stacked zones, nothing overlaps: contact content on solid dark, the 3D campus in its OWN
+   contained strip, then the footer (the shared Footer component, restyled to the source look) */
+.close-in{position:relative;z-index:1;padding-bottom:clamp(36px,6vh,72px)}
+.close-viz{position:relative;height:clamp(420px,54vh,620px);overflow:hidden;background:radial-gradient(62% 80% at 50% 64%,#101B30 0%,#0A1322 46%,#070C18 80%)}
+.close-viz canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.close-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#070C18 0%,rgba(7,12,24,.28) 13%,rgba(7,12,24,0) 34%,rgba(7,12,24,.14) 56%,rgba(7,12,24,.5) 78%,rgba(7,12,24,.86) 91%,#070C18 99%)}
+.close3d footer{position:relative;z-index:1;background:#070C18;color:#AAB6CE;padding:clamp(32px,5vh,60px) 0 40px;font-size:13.5px;margin-top:0}
+@media(max-width:760px){
+  .close3d{padding-top:clamp(28px,5vh,44px)}
+  .close-in{padding-bottom:24px}
+  .close-viz{height:46vh;min-height:300px}
+  .close3d footer{padding-top:clamp(20px,4vh,36px)}
+}
+.close3d footer::before{content:"";position:absolute;inset:auto 0 0 0;height:78%;background:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px;transform:perspective(560px) rotateX(58deg) scale(2.1);transform-origin:50% 100%;mask-image:linear-gradient(180deg,transparent,#000 60%);-webkit-mask-image:linear-gradient(180deg,transparent,#000 60%);pointer-events:none}
+.close3d .f-in{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px}
+.close3d footer .wm{perspective:600px}
+.close3d footer .wm img{height:44px;width:auto;display:block;filter:drop-shadow(0 12px 26px rgba(0,0,0,.6));transform:rotateX(9deg) rotateY(-7deg);transform-style:preserve-3d;transition:transform .7s var(--e1),filter .7s}
+.close3d footer .wm:hover img{transform:rotateX(0) rotateY(0) scale(1.04)}
+.close3d footer .wm span{display:block;font-family: var(--label);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#7A87A2;margin-top:12px}
+.close3d footer p{margin-top:14px;line-height:1.65;max-width:40ch}
+.close3d footer h4{font-family: var(--label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7A87A2;font-weight:600;margin-bottom:12px}
+.close3d footer a{color:#AAB6CE;text-decoration:none;display:block;padding:4px 0}
+.close3d footer a:hover{color:#fff}
+.close3d .f-base{position:relative;z-index:1;max-width:var(--maxw);margin:38px auto 0;padding:20px var(--gut) 0;border-top:0;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family: var(--label);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5b6685}
+@media(max-width:820px){.close3d .f-in{grid-template-columns:1fr 1fr}}
+
+@keyframes hbKen{from{transform:scale(1) translateY(0)}to{transform:scale(1.09) translateY(-2%)}}
+@keyframes bandUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* mobile: compress the whole closing section — 3D band, contact cards, columns, base line */
+@media(max-width:640px){
+  .close-viz{height:32vh;min-height:220px}
+  .close-in .split{gap:16px}
+  .close-in .fpc{padding:13px 14px;gap:5px}
+  .close-in .fpc h3{font-size:15px}
+  .close3d footer{padding-bottom:20px}
+  .close3d .f-in{grid-template-columns:1fr 1fr;gap:14px 18px}
+  .close3d .f-in>div:first-child{grid-column:1/-1}
+  .close3d footer .wm img{height:34px}
+  .close3d footer p{margin-top:8px;font-size:12.5px;line-height:1.5}
+  .close3d footer h4{margin-bottom:5px}
+  .close3d footer a{padding:7px 0;font-size:12.5px}
+  .close3d .f-base{margin-top:14px;padding-top:11px}
+}
+
+
+/* ---- empty-state recovery ------------------------------------------------
+   One control per ACTIVE facet that clears it by name, then the two largest
+   industries left in the record as a way onward. The copy used to promise a
+   feature that does not exist ("this state suggests the nearest matches"). */
+.emp-acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+.emp-clear,.emp-alt{font-family: var(--label);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:8px 12px;cursor:pointer;transition:all .2s}
+.emp-clear{border:1px solid var(--line2);background:var(--bg);color:var(--soft)}
+.emp-clear:hover{border-color:var(--blue);color:var(--blue-bright)}
+.emp-alt{border:1px solid var(--blue-bright);background:var(--blue-bright);color:#fff}
+.emp-alt:hover{background:var(--blue);border-color:var(--blue)}
+.emp-clear:focus-visible,.emp-alt:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* the readout now states the order and the active facets, not just the count */
+.readout .rd-x{font-weight:600;color:var(--soft);letter-spacing:.08em}
+
+/* screen-reader-only heading for the grid */
+.u-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* the shortlist control on a registry card: top-right of the visual, above the photo
+   scrim, so it never collides with the reference line or the tags */
+.pc-save{position:absolute;top:10px;right:10px;z-index:3;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(4px);padding:7px;line-height:0}
+.pc-save.on{background:var(--blue-bright);border-color:var(--blue-bright);color:#fff}
+.pc-save:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.pc{position:relative}
+@media(max-width:640px){.pc-save{top:7px;right:7px;padding:6px}}
+
+/* ---- the closing block after the grid --------------------------------------
+   The page used to run from the last card straight into the dark contact band,
+   so a visitor who had just filtered the record was told nothing about what
+   they were looking at and offered no route onward. */
+.rg-close{padding:clamp(34px,5vw,58px) 0 clamp(10px,2vw,20px)}
+.rg-splits{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));
+  gap:clamp(20px,3vw,34px);margin-top:22px}
+.rg-split h3{font-family: var(--label);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--soft);font-weight:600}
+.rg-rows{display:grid;gap:7px;margin-top:12px;list-style:none}
+.rg-rows li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;gap:10px;
+  font-size:13.5px;color:var(--soft);padding-bottom:6px}
+.rg-rows li b{font-family: var(--num);font-size:12px;color:var(--ink);
+  font-variant-numeric:tabular-nums}
+.rg-routes{display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(26px,3.4vw,38px)}
+.rg-route{display:inline-flex;align-items:center;gap:9px;font-family: var(--label);
+  font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+  text-decoration:none;color:var(--soft);border:1px solid var(--line2);padding:11px 15px;
+  transition:border-color .25s,color .25s}
+.rg-route:hover{border-color:var(--blue);color:var(--blue-bright)}
+.rg-route.is-key{background:var(--blue-bright);border-color:var(--blue-bright);color:#fff}
+.rg-route.is-key:hover{background:var(--blue);border-color:var(--blue);color:#fff}

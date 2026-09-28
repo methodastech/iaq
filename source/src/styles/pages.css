@@ -1,0 +1,562 @@
+/* ============================================================================
+   PHASE 2 SHARED PAGE STYLES
+
+   Every page built in phase 2 imports this one file. It is namespaced `.pg-*`
+   so it can never collide with the built pages (home.css, about.css,
+   projects.css, careers.css) and so a later agent can extend it safely.
+
+   Rules this file holds to, all of them learned the hard way:
+
+   1. Tokens only. --bg --bg2 --panel --ink --soft --faint --line --line2
+      --blue --blue-bright --maxw --gut --e1 come from base.css. Never hardcode
+      a hex a token already covers.
+   2. Every full-width band carries its horizontal gutter INSIDE its own
+      `padding` shorthand (`padding: X var(--gut) Y`). A two-class selector can
+      outrank `.head.wrap` and flatten a page against the screen edge. That bug
+      already happened once, so no band here depends on `.wrap`.
+   3. Every grid track is `minmax(0, …)`. An implicit `auto` minimum is what
+      makes a long word push a page sideways.
+   4. Short content stays multi-column on phones (stats, tiles, project cards,
+      the cycle rail). Prose and the primary action go single column.
+   5. Tap targets 40px minimum.
+
+   DO NOT put page-specific one-offs in here. Keep every selector generic.
+   ============================================================================ */
+
+/* the inner column shared by every band: the band owns the gutter, this owns the width */
+.pg-in { max-width: var(--maxw); margin: 0 auto; }
+
+/* ---------------------------------------------------------------- page head */
+.pg-head { padding: clamp(40px, 6.5vh, 78px) var(--gut) clamp(20px, 3.2vh, 34px); background: var(--bg2); border-bottom: 0; }   /* 26 Sep, 06:10 (Bazil: "cannot have too many lines"): the white band is the edge */
+.pg-head h1 { font-size: clamp(30px, 4.6vw, 56px); max-width: 30ch; margin-top: 15px; }
+.pg-head-lede { font-size: clamp(15px, 1.7vw, 18px); color: var(--soft); max-width: 60ch; margin-top: 16px; }
+
+.pg-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; list-style: none; }
+/* 9 Sep (Bazil: "icons for each"): the chip is a row now, mark then label. The mark is sized to
+   the cap height of the label so the two sit on one optical line, and it inherits the chip's
+   colour, which is what makes the hero variant and the .b variant work without their own rules. */
+.pg-chip { font-family: var(--label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--soft); border: 0; background: rgba(23,33,58,.06); padding: 7px 10px; display: inline-flex; align-items: center; gap: 7px; }
+.pg-chip svg { flex: none; width: 14px; height: 14px; opacity: .85; }
+.pg-chip.b { color: var(--blue-bright); background: rgba(236, 32, 39, .08); }
+
+.pg-head-copy { will-change: transform; }
+.pg-head-fig { margin: 26px 0 2px; max-width: 880px; will-change: transform; }
+.pg-head-fig img { display: block; width: 100%; height: clamp(180px, 30vw, 320px); object-fit: cover; object-position: 50% 46%; border: 0; background: #eef1f6; }
+/* the service loops (2 Sep): generated from the isometric stage renders, so they sit on white like
+   the renders do, taller than the placeholder stills and with NO frame — a border around a white
+   field reads as an empty box. The filter is the same lift the homepage ring uses: the clip's
+   "white" decodes at 231-236, and lifting it to 255 is what stops a grey rectangle showing. */
+.pg-head-fig video { display: block; width: 100%; height: clamp(220px, 34vw, 400px); object-fit: cover; object-position: 50% 50%; background: #fff; filter: contrast(1.04) brightness(1.1); }
+.pg-head-fig figcaption { font-family: var(--label); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-top: 9px; }
+
+/* ---- HERO head (2 Sep): the banner IS the band ----
+   Full bleed image behind the copy, dark scrim heavier on the left where the type sits, white
+   type. min-height gives it the room of a hero; the copy sits at the bottom like a title card.
+   The image box overshoots the band so the parallax drift never exposes an edge. */
+/* 3 Sep (Bazil): the hero banners were too tall and the copy sat on the floor. ~30% shorter,
+   copy centred in the band. */
+.pg-head-hero { position: relative; overflow: hidden; background: #070C18; color: #fff; border-bottom: 0;
+  min-height: clamp(340px, 44vh, 520px); display: flex; align-items: center;
+  padding-top: clamp(64px, 9vh, 110px); padding-bottom: clamp(40px, 6vh, 72px); }
+.pg-head-hero .pg-in { position: relative; z-index: 2; width: 100%; }
+.pg-hero-bg { position: absolute; left: 0; right: 0; top: -12%; bottom: -12%; z-index: 0; }
+.pg-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; display: block; }
+.pg-hero-scrim { position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(90deg, rgba(7, 12, 24, .86) 0%, rgba(7, 12, 24, .55) 46%, rgba(7, 12, 24, .12) 100%),
+              linear-gradient(180deg, rgba(7, 12, 24, .10) 0%, rgba(7, 12, 24, .28) 55%, rgba(7, 12, 24, .72) 100%); }
+.pg-head-hero h1 { color: #fff; }
+.pg-head-hero h1 em { color: #FF4D55; }
+.pg-head-hero .eyebrow { color: #FF8A90; }
+.pg-head-hero .pg-head-lede { color: #D3DBE9; }
+.pg-head-hero .pg-chip { color: #E6ECF7; border-color: rgba(255, 255, 255, .28); background: rgba(255, 255, 255, .07); }
+.pg-head-hero .pg-chip.b { color: #FF8A90; border-color: rgba(255, 77, 85, .5); background: rgba(236, 32, 39, .18); }
+.u-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 640px) { .pg-head-hero { min-height: clamp(300px, 46vh, 400px); padding-top: 56px; } }
+
+/* ----------------------------------------------------------- section rhythm */
+/* a dense band, then a calm one. Hairlines and space, not boxes around everything. */
+.pg-sec { padding: clamp(38px, 6vh, 74px) var(--gut); }
+.pg-sec.calm { background: var(--bg2); border-top: 0; border-bottom: 0; }
+.pg-sec.tight { padding-top: clamp(24px, 3.4vh, 40px); }
+.pg-sec.flush { padding-bottom: clamp(22px, 3.2vh, 38px); }
+
+/* --soft (7.7:1), not --faint (3.42:1): every one of these is 9.5px or under */
+.pg-k { display: block; font-family: var(--label); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; font-weight:600; color: var(--soft); }
+/* 2 Sep (Bazil): headings run on ONE line wherever they fit. The old 24ch cap broke every
+   section title into two lines with a one-word orphan; the cap now only bites on genuinely long
+   titles, and `text-wrap: pretty` (base.css) stops the orphan when a wrap is unavoidable. */
+.pg-sec h2 { font-size: clamp(23px, 3.1vw, 36px); margin-top: 12px; max-width: 44ch; }
+.pg-lede { font-size: clamp(14.5px, 1.6vw, 17px); color: var(--soft); max-width: 62ch; margin-top: 14px; }
+.pg-body { font-size: clamp(14.5px, 1.6vw, 16.5px); color: var(--soft); max-width: 64ch; margin-top: 16px; }
+.pg-body + .pg-body { margin-top: 14px; }
+.pg-note { font-family: var(--label); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); line-height: 1.95; margin-top: 20px; max-width: 82ch; }
+
+.pg-split { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr); gap: clamp(22px, 4vw, 58px); align-items: start; margin-top: 26px; }
+.pg-pull { border-left: 2px solid var(--blue); padding: 3px 0 3px 18px; font-family: "Switzer", sans-serif; font-weight: 600; letter-spacing: -.01em; font-size: clamp(17px, 2.3vw, 23px); line-height: 1.28; max-width: 30ch; }
+.pg-pull small { display: block; font-family: var(--label); font-weight:600; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 12px; }
+
+/* ------------------------------------------------------------------- cards */
+.pg-cards { display: grid; gap: 12px; margin-top: 26px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
+.pg-cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pg-cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.pg-card { position: relative; border: 1px solid transparent; background: var(--bg2); padding: 22px 20px; display: flex; flex-direction: column; gap: 9px; color: inherit; text-decoration: none; transition: border-color .35s, transform .45s var(--e1); }
+a.pg-card:hover, a.pg-card:focus-visible { transform: translateY(-4px); }
+/* a card's visual (2 Sep): the isometric render sits on white like the cycle marks, so the box
+   is white with one hairline under it, not a framed picture; it bleeds to the card's edges */
+.pg-cardv { margin: -22px -20px 6px; aspect-ratio: 3 / 2; background: #fff; border-bottom: 0; overflow: hidden; }
+.pg-cardv img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; display: block; transform: scale(1.02); transition: transform .9s var(--e1); }
+.pg-card:hover .pg-cardv img { transform: scale(1.06); }
+.pg-card .pg-no { font-family: var(--label); font-size: 10px; letter-spacing: .16em; font-weight:600; color: var(--blue-bright); }
+.pg-card .pg-kick { font-family: var(--label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+.pg-card h3 { font-size: 19px; line-height: 1.2; }
+.pg-card h3 .pg-full { display: block; font-family: var(--label); font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin-top: 7px; line-height: 1.6; }
+.pg-card p { font-size: 14px; color: var(--soft); line-height: 1.6; }
+/* 9 Sep (Bazil: "remove the lines and dashes"). The rule above every list and a red dash on
+   every item were two decorations doing what indentation already does. */
+.pg-list { list-style: none; display: grid; gap: 8px; margin-top: 16px; }
+.pg-list li { position: relative; padding-left: 0; font-size: 13px; color: var(--soft); line-height: 1.5; }
+.pg-card .pg-go { margin-top: auto; padding-top: 14px; font-family: var(--label); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); display: inline-flex; align-items: center; gap: 8px; }
+.pg-card .pg-go::after { content: "\2192"; transition: transform .3s var(--e1); }
+a.pg-card:hover .pg-go::after { transform: translateX(4px); }
+
+/* --------------------------------------------------------------- stat tiles */
+.pg-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 14px); background: none; border: 0; margin-top: 26px; }
+.pg-stat { background: var(--bg2); padding: 20px 16px; }
+.pg-stat b { display: block; font-family: "Switzer", sans-serif; font-weight: 600; letter-spacing: -.025em; line-height: 1; font-size: clamp(21px, 3.1vw, 33px); }
+.pg-stat span { display: block; font-family: var(--label); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); margin-top: 10px; line-height: 1.6; }
+
+/* -------------------------------------------------------------- scope lists */
+.pg-scope { list-style: none; margin-top: 24px; border-top: 1px solid var(--line); }
+.pg-scope li { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 14px; align-items: baseline; padding: 17px 2px; border-bottom: 0; position: relative; transition: padding-left .4s var(--e1); }
+/* the row answers the pointer: the index goes red, the text steps right, and a red hairline draws
+   in along the bottom edge. No box, no fill — the line is the whole gesture. */
+.pg-scope li::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 0; background: var(--blue); transition: width .55s var(--e1); }
+.pg-scope li:hover { padding-left: 10px; }
+.pg-scope li:hover::after { width: 100%; }
+.pg-scope li:hover span { color: var(--ink); }
+.pg-scope li i { font-style: normal; font-family: var(--label); font-size: 10.5px; letter-spacing: .14em; font-weight:600; color: var(--blue-bright); }
+.pg-scope li span { font-size: clamp(15px, 1.7vw, 17.5px); line-height: 1.42; }
+.pg-scope li span em { font-style: normal; display: block; font-size: 13px; color: var(--soft); margin-top: 6px; line-height: 1.55; }
+
+/* three short beats, used for "how it runs" and any other 3 step read */
+.pg-beats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 26px; }
+.pg-beat { border-top: 2px solid var(--blue); padding: 13px 2px 0; transition: transform .45s var(--e1); }
+.pg-beat:hover { transform: translateY(-4px); }
+.pg-beat i { font-style: normal; font-family: var(--label); font-size: 10px; letter-spacing: .16em; font-weight:600; color: var(--blue-bright); }
+.pg-beat p { font-size: 14.5px; line-height: 1.45; margin-top: 9px; }
+
+/* ------------------------------------------- the cycle rail (5 stage strip) */
+/* six tracks: the cycle has six stages (hookup joined on 7 Aug) and five tracks wrapped the last
+   one onto a lonely second row on every service page */
+.pg-rail { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; margin-top: 26px; }
+.pg-rail-n { position: relative; border: 1px solid transparent; background: var(--bg2); padding: 15px 13px 16px; display: flex; flex-direction: column; gap: 7px; color: inherit; text-decoration: none; min-height: 40px; transition: border-color .35s, transform .45s var(--e1), background .35s; }
+.pg-rail-n::after { content: ""; position: absolute; top: 50%; right: -8px; width: 8px; height: 1px; background: var(--line2); }
+.pg-rail-n:last-child::after { display: none; }
+a.pg-rail-n:hover, a.pg-rail-n:focus-visible { transform: translateY(-3px); }
+/* each stage carries its house icon (2 Sep): the disc goes red on the active stage and on hover */
+.pg-rail-ic { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line2); background: #fff; color: var(--ink); display: flex; align-items: center; justify-content: center; margin-bottom: 4px; transition: color .3s, border-color .3s, transform .45s var(--e1); }
+.pg-rail-ic svg { width: 19px; height: 19px; display: block; }
+a.pg-rail-n:hover .pg-rail-ic, .pg-rail-n.on .pg-rail-ic { color: var(--blue); }
+a.pg-rail-n:hover .pg-rail-ic { transform: translateY(-2px); }
+.pg-rail-n .n { font-family: var(--label); font-size: 10px; letter-spacing: .16em; font-weight:600; color: var(--faint); }
+.pg-rail-n b { font-family: "Switzer", sans-serif; font-weight: 600; font-size: 15px; line-height: 1.15; letter-spacing: -.01em; }
+.pg-rail-n small { font-size: 13px; color: var(--soft); line-height: 1.5; }
+.pg-rail-n.on { border-color: var(--blue); background: rgba(236, 32, 39, .04); }
+.pg-rail-n.on .n { color: var(--blue-bright); }
+.pg-loop { display: flex; align-items: center; gap: 11px; margin-top: 16px; font-family: var(--label); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--blue-bright); }
+.pg-loop i { flex: none; width: 26px; height: 1px; background: var(--blue); }
+
+/* --------------------------------------------------------- reference proof */
+/* auto-fill resolved to FIVE tracks at desktop widths, so a seven-card strip ended on a
+   ragged half-row. An explicit four above 1100px lands 4 over 4 with the record link
+   filling the eighth cell; auto-fill still handles everything narrower. */
+.pg-proof { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; margin-top: 26px; }
+@media (min-width: 1100px) { .pg-proof { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* the record link, sitting in the grid as the eighth card rather than hanging below it */
+.pg-pc-more { display: flex; flex-direction: column; gap: 9px; justify-content: center; padding: 24px; background: var(--bg2); text-decoration: none; }
+.pg-pc-more .pg-nextic { width: 30px; height: 30px; color: var(--blue); }
+.pg-pc-more .pg-nextic svg { width: 100%; height: 100%; }
+.pg-pc-more b { font-family: "Switzer", sans-serif; font-weight: 600; font-size: 16px; line-height: 1.25; color: var(--ink); }
+.pg-pc-more small { font-size: 13.5px; line-height: 1.55; color: var(--soft); }
+.pg-pc-more .pg-more-go { margin-top: 4px; font-family: var(--label); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); }
+.pg-pc-more:hover b { color: var(--blue-bright); }
+.pg-pc { border: 0; background: var(--panel); display: flex; flex-direction: column; overflow: hidden; color: inherit; text-decoration: none; transition: border-color .35s, transform .45s var(--e1); }
+.pg-pc:hover, .pg-pc:focus-visible { transform: translateY(-4px); }   /* 26 Sep: a block, no frame */
+.pg-pcv { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #17213A; }   /* 26 Sep (IAQ graphic rules): a flat navy block, no grey rule under it */
+.pg-pcv img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s var(--e1); }
+.pg-pc:hover .pg-pcv img { transform: scale(1.045); }
+/* the hover cue (2 Sep): a red strip with "Open project" rises from the bottom of the image, on
+   every card that uses this vocabulary — hub, service pages, market pages, capability pages */
+.pg-pcv::after { content: "Open project \2192"; position: absolute; left: 0; right: 0; bottom: 0; padding: 9px 13px; background: var(--blue); color: #fff; font-family: var(--label); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight:600; transform: translateY(100%); transition: transform .45s var(--e1); pointer-events: none; }
+.pg-pc:hover .pg-pcv::after, .pg-pc:focus-visible .pg-pcv::after { transform: none; }
+.pg-pc-in { padding: 15px 15px 17px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+.pg-pc .pg-ref { display: flex; justify-content: space-between; gap: 8px; font-family: var(--label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); }
+.pg-pc .pg-ref .iso { color: var(--blue-bright); font-weight:600; text-align: right; }
+.pg-pc h3 { font-size: 16px; line-height: 1.22; }
+.pg-pc .pg-cl { font-size: 12.5px; color: var(--soft); }
+.pg-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 11px; }
+.pg-tag { font-family: var(--label); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 8px; border: 0; color: var(--soft); background: rgba(23,33,58,.06); }   /* 26 Sep: slim filled boxes */
+.pg-tag.b { color: var(--blue-bright); background: rgba(236, 32, 39, .08); }
+
+/* a quiet inline link: never competes with the page's one primary action */
+.pg-more { display: inline-flex; align-items: center; gap: 9px; margin-top: 20px; padding: 10px 0; font-family: var(--label); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); text-decoration: none; }
+.pg-more::after { content: "\2192"; transition: transform .3s var(--e1); }
+.pg-more:hover::after { transform: translateX(4px); }
+.pg-mores { display: flex; flex-wrap: wrap; gap: 12px 26px; }
+
+/* ------------------------------------------------- labelled placeholder slot
+   Content IAQ still owes. A bordered panel with a dashed inner frame and a mono
+   tag naming exactly what belongs there and who supplies it, so the gap reads as
+   intentional rather than as an empty section. */
+/* 3 Sep (client: "too many lines"): a solid box wrapping a dashed box is two frames around
+   one idea. The outer frame goes; the dashed inner one still marks it as a placeholder. */
+.pg-slot { background: var(--bg2); padding: 0; margin-top: 20px; }
+.pg-slot-in { border: 0; padding: 22px 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 11px; }   /* 26 Sep: no grey outline; the filled slot and its red tag mark the placeholder */
+.pg-slot-tag { font-family: var(--label); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); border: 0; background: rgba(236, 32, 39, .07); padding: 6px 9px; }
+.pg-slot b { font-family: "Switzer", sans-serif; font-weight: 600; font-size: clamp(15px, 1.9vw, 18px); line-height: 1.25; letter-spacing: -.01em; }
+.pg-slot p { font-size: 13.5px; color: var(--soft); line-height: 1.6; max-width: 60ch; }
+.pg-slot ul { list-style: none; display: grid; gap: 6px; }
+.pg-slot li { position: relative; padding-left: 15px; font-size: 13px; color: var(--soft); line-height: 1.5; }
+.pg-slot li::before { content: ""; position: absolute; left: 0; top: .5em; width: 5px; height: 5px; background: #EC2326; }   /* 26 Sep: a square, never a dash */
+.pg-slot.mini { margin-top: 14px; padding: 8px; }
+.pg-slot.mini .pg-slot-in { padding: 14px 13px; gap: 9px; }
+.pg-slot.mini p { font-size: 13.5px; }
+
+/* ------------------------------------------------------------- next in line */
+.pg-nextcard { display: flex; align-items: center; gap: 16px; border: 1px solid transparent; background: var(--bg2); padding: 20px; margin-top: 22px; color: inherit; text-decoration: none; transition: border-color .35s, transform .45s var(--e1); }
+.pg-nextcard:hover, .pg-nextcard:focus-visible { transform: translateY(-3px); }
+.pg-nextic { flex: none; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(236, 32, 39, .22); background: rgba(236, 32, 39, .05); color: var(--blue); }
+.pg-nextic svg { width: 21px; height: 21px; }
+.pg-nextcard b { display: block; font-family: "Switzer", sans-serif; font-weight: 600; letter-spacing: -.015em; font-size: clamp(17px, 2.2vw, 22px); line-height: 1.15; }
+.pg-nextcard small { display: block; font-size: 13.5px; color: var(--soft); margin-top: 6px; line-height: 1.5; }
+.pg-nextarrow { margin-left: auto; flex: none; color: var(--blue); }
+.pg-nextarrow svg { width: 22px; height: 22px; }
+
+/* ---------------------------------------------- the one primary action band
+   RED, not navy (2 Sep, Bazil: "make this a red section layout"): the band is the brand red
+   edge to edge, type in white, and the button inverts to white so it still reads as the one
+   action. It sits flush on the footer: no margin below, and the footer carries no top gap. */
+.pg-cta { padding: clamp(40px, 6.5vh, 74px) var(--gut); background: var(--blue); color: #fff; margin-bottom: 0; }
+.pg-cta .pg-in { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(22px, 4vw, 56px); align-items: center; }
+.pg-cta .eyebrow { color: rgba(255, 255, 255, .78); }
+.pg-cta h2 { font-size: clamp(24px, 3.3vw, 38px); margin-top: 13px; max-width: 34ch; color: #fff; }
+.pg-cta p { font-size: clamp(14px, 1.6vw, 16px); color: rgba(255, 255, 255, .86); margin-top: 15px; max-width: 48ch; line-height: 1.65; }
+.pg-cta-act { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.pg-cta-act .cta { font-size: 12px; padding: 15px 22px; background: #fff; color: var(--blue); }
+.pg-cta-act .cta:hover { background: #0C1220; color: #fff; }
+.pg-cta-meta { font-family: var(--label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 255, 255, .72); line-height: 1.9; }
+.pg-cta-meta a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, .4); }
+.pg-cta-meta a:hover { border-bottom-color: #fff; }
+
+/* the footer carries margin-top:40px (24px on phones) for pages that end on a light band; under
+   the red action band that margin painted a strip of page ground between the two (Bazil, 2 Sep:
+   "without the gap between the footer"). Zeroed only where the CTA is the last band. */
+.pg-cta + .sitefoot { margin-top: 0; }
+
+/* ------------------------- where this goes next: satisfies interlinking R05 */
+.pg-rel { padding: clamp(30px, 5vh, 56px) var(--gut); background: var(--bg); border-top: 0; }
+.pg-rel-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 232px), 1fr)); gap: 10px; margin-top: 16px; }
+.pg-rel-a { display: flex; align-items: flex-start; gap: 12px; min-height: 64px; border: 1px solid transparent; background: var(--bg2); padding: 14px; color: inherit; text-decoration: none; transition: border-color .3s, transform .4s var(--e1); }
+.pg-rel-a:hover, .pg-rel-a:focus-visible { transform: translateY(-3px); }
+.pg-rel-ic { flex: none; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border: 0; background: rgba(23, 33, 58, .06); color: var(--blue); }
+.pg-rel-ic svg { width: 17px; height: 17px; }
+.pg-rel-tx { min-width: 0; }
+.pg-rel-tx b { display: block; font-family: "Switzer", sans-serif; font-weight: 600; font-size: 14.5px; line-height: 1.2; letter-spacing: -.01em; }
+.pg-rel-tx small { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 6px; font-size: 13px; color: var(--soft); line-height: 1.5; }
+.pg-rel-go { margin-left: auto; flex: none; color: var(--faint); }
+.pg-rel-go svg { width: 15px; height: 15px; }
+
+/* ------------------------------------------------- overflow safety net
+   Two things push a page sideways at 320px: an unbreakable token inside a
+   fixed-width chip, and a flex item that will not shrink below its content
+   because `min-width` defaults to `auto`. Both are closed here rather than
+   per page, so a later agent inherits the fix. */
+.pg-chip, .pg-tag, .pg-slot-tag, .pg-note, .pg-cta-meta { max-width: 100%; overflow-wrap: anywhere; }
+.pg-nextcard span, .pg-card, .pg-pc-in, .pg-beat, .pg-rel-tx, .pg-scope li span { min-width: 0; }
+.pg-card h3, .pg-pc h3, .pg-nextcard b, .pg-rail-n b, .pg-rail-n small, .pg-slot b { overflow-wrap: break-word; }
+
+/* -------------------------------------------------------------- responsive */
+@media (max-width: 1024px) {
+  .pg-split { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .pg-pull { max-width: 46ch; }
+}
+@media (max-width: 900px) {
+  .pg-rail { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pg-rail-n::after { display: none; }
+  .pg-head-fig video { height: clamp(180px, 40vw, 300px); }
+  .pg-cta .pg-in { grid-template-columns: minmax(0, 1fr); }
+  .pg-cards.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .pg-head { padding: 28px var(--gut) 22px; }
+  .pg-head h1 { font-size: clamp(26px, 7.6vw, 36px); max-width: none; }
+  .pg-head-lede { font-size: 14px; margin-top: 13px; }
+  .pg-head-fig { margin-top: 20px; }
+  .pg-head-fig img { height: clamp(150px, 46vw, 210px); }
+
+  .pg-sec { padding: 30px var(--gut); }
+  .pg-sec h2 { font-size: clamp(20px, 6vw, 27px); }
+  .pg-lede, .pg-body { font-size: 13.5px; line-height: 1.55; }
+
+  /* prose cards go single column, short tiles stay multi column */
+  .pg-cards, .pg-cards.two, .pg-cards.three { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .pg-card { padding: 18px 16px; }
+  .pg-cardv { margin: -18px -16px 6px; }
+  .pg-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pg-stat { padding: 15px 13px; }
+  .pg-beats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .pg-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+  .pg-proof { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pg-pc-in { padding: 12px 11px 13px; }
+  .pg-pc h3 { font-size: 13.5px; }
+  .pg-pc .pg-cl { font-size: 13px; }
+  .pg-pc .pg-ref { flex-direction: column; gap: 3px; }
+  .pg-pc .pg-ref .iso { text-align: left; }
+  .pg-tag { font-size: 7.5px; letter-spacing: .06em; padding: 4px 6px; }
+  .pg-scope li { grid-template-columns: 34px minmax(0, 1fr); gap: 10px; padding: 14px 2px; }
+  .pg-scope li span { font-size: 14.5px; }
+  .pg-slot-in { padding: 16px 14px; }
+  .pg-nextcard { padding: 16px; gap: 13px; }
+  .pg-cta { padding: 32px var(--gut); }
+  .pg-cta-act .cta { width: 100%; justify-content: center; }
+  .pg-rel { padding: 26px var(--gut); }
+  .pg-rel-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* iOS must never zoom a field on focus, and touch targets stay honest */
+@media (hover: none) {
+  .pg-rel-a, .pg-rail-n, .pg-card, .pg-pc { -webkit-tap-highlight-color: rgba(236, 32, 39, .08); }
+  .pg-more { padding: 12px 0; }
+  input, select, textarea { font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pg-card, .pg-pc, .pg-rail-n, .pg-rel-a, .pg-nextcard, .pg-pcv img, .pg-pcv::after, .pg-scope li, .pg-scope li::after, .pg-beat { transition: none; }
+  .pg-beat:hover { transform: none; }
+  a.pg-card:hover, .pg-pc:hover, a.pg-rail-n:hover, .pg-rel-a:hover, .pg-nextcard:hover { transform: none; }
+  .pg-pc:hover .pg-pcv img { transform: none; }
+}
+
+/* -------- interactive stage detail beneath the cycle diagram (merged per
+   client review 16:16 / 16:18: the diagram replaces the stage card grid) -------- */
+/* 9 Sep (Bazil, screenshot of the stage panel: "put a box around this content, symbolising it is
+   part of the two info"). The copy and the photograph sat side by side on the open page with a
+   40px gap and no frame at all, so they read as two unrelated things that happened to be level
+   with each other: a paragraph, and a picture. They are one object, two panes of it.
+
+   So the gap is gone and the frame is real. One hairline box holds both, and one hairline divides
+   them, which is the same grammar the spec rows and the registry already use on this site. The
+   photograph now runs to the box edge instead of floating, and both panes stretch to the same
+   height, so switching stage cannot change the shape of the panel. */
+.cyc-detail { background: #fff; padding: 0; margin-top: 24px; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 0; align-items: stretch; border: 1px solid var(--line); }
+.cyc-detail-t { display: flex; flex-direction: column; gap: 9px; padding: clamp(18px, 2.2vw, 28px); animation: cycIn .5s var(--e1) both; }
+/* the stage's own loop, on white like everywhere else it appears, with the same white lift */
+/* 2 Sep: the stage visual is a photograph (16:9) with an optional loop layered over it; the
+   white-lift filter that the isometric renders needed is gone, photographs keep their colour */
+/* 3 Sep (client: "it can be vertically shorter"): a 16/10 still set the height of the whole
+   panel, and the copy column never needed that much room. A wider crop takes roughly a third
+   off the block without losing anything from the frame that matters. */
+.cyc-detail-v { position: relative; min-height: 268px; background: #0B1220; overflow: hidden; border-left: 1px solid var(--line); animation: cycIn .6s var(--e1) both; }
+/* 4 Sep (client: "dont cut the visual"): the 2:1 panel with cover cropped 11% off the top and
+   bottom of every 16:9 stage render. contain shows the whole render; the panel's own dark
+   ground fills the sliver either side, so nothing reads as letterboxing. */
+/* 4 Sep (client: "why is there weird black sides on the video"). The panel is 2/1 and the
+   stage media is 16/9, so `contain` letterboxed every clip against the #0B1220 ground and
+   printed dark pillars down both sides. `cover` fills the panel and crops a little off the
+   top and bottom instead, which is what a decorative panel should do. */
+.cyc-detail-v img, .cyc-detail-v video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
+.cyc-detail-v img { animation: cycKen 9s var(--e1) both; transform-origin: 50% 50%; }
+@keyframes cycKen { from { transform: scale(1.04); } to { transform: scale(1); } }
+.cyc-detail-v::after { content: ""; position: absolute; inset: auto 0 0 0; height: 30%; background: linear-gradient(180deg, transparent, rgba(7, 12, 24, .28)); pointer-events: none; }
+@keyframes cycIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (max-width: 900px) { .cyc-detail { grid-template-columns: minmax(0, 1fr); } .cyc-detail-v { order: -1; min-height: 0; aspect-ratio: 2 / 1; border-left: 0; border-bottom: 1px solid var(--line); } }
+@media (prefers-reduced-motion: reduce) { .cyc-detail-t, .cyc-detail-v, .cyc-detail-v img { animation: none; } }
+.cyc-detail .pg-no { font-family: var(--label); font-size: 10px; letter-spacing: .16em; font-weight:600; color: var(--blue-bright); }
+.cyc-detail .pg-kick { font-family: var(--label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+.cyc-detail h3 { font-size: 19px; line-height: 1.2; }
+.cyc-detail p { font-size: 14px; color: var(--soft); line-height: 1.6; max-width: 72ch; }
+.cyc-detail .pg-more { margin-top: 6px; }
+.cyc-lede b { display: block; margin-top: 8px; font-family: var(--label); font-weight:600; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-bright); }
+
+/* ===== History: year breadcrumbs (18 Aug minutes: avoid the long vertical scroll) ===== */
+.cp-years{position:sticky;top:calc(var(--sticktop,78px) + 8px);z-index:12;display:flex;flex-wrap:wrap;gap:6px;
+  margin:22px 0 26px;padding:9px 10px;border:0;
+  background:rgba(247,249,252,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.cp-years a{font-family: var(--label);font-size:11px;letter-spacing:.08em;font-weight:600;
+  color:var(--faint);text-decoration:none;padding:6px 11px;transition:.2s}
+.cp-years a:hover{color:var(--ink);background:rgba(12,18,32,.06)}
+.cp-years a.on{color:var(--blue)}
+.cp-years a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.cp-mile{scroll-margin-top:calc(var(--navh,78px) + 76px)}
+@media(max-width:640px){.cp-years{gap:4px;padding:8px}.cp-years a{padding:5px 8px;font-size:10px}}
+
+/* 3 Sep (client: "number the markets"): the index was a mono tag reading "MKT · 001", which
+   scanned as a code rather than a position in a set. It is now the numeral itself, at a size
+   you can count down the row, with the word carried quietly beneath it. */
+.mk-card .no{ display:flex; flex-direction:column; gap:2px; line-height:1; }
+.mk-card .no b{ font-family:"Switzer","Instrument Sans",sans-serif; font-weight:600;
+  font-size:clamp(19px,1.7vw,26px); letter-spacing:-.02em; color:var(--ink);
+  font-variant-numeric:tabular-nums; }
+.mk-card .no i{ font-style:normal; font-family: var(--label); font-size:10.5px;
+  font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--soft); }
+
+/* the deep band (4 Sep, client: "too wordy, too white"): the hub banner behind the measures,
+   text and tiles inverted, so the middle of the page carries an image instead of a wall of white */
+.pg-sec.deep { position: relative; color: #fff; background: #0A1020; border-top: 0; border-bottom: 0; isolation: isolate; }
+.pg-sec.deep::before { content: ""; position: absolute; inset: 0; z-index: -1; background: url(/assets/banners/mkt-hub.jpg) center/cover; opacity: .22; filter: saturate(.7); }
+.pg-sec.deep::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10,16,32,.92) 0%, rgba(10,16,32,.6) 60%, rgba(10,16,32,.85) 100%); }
+.pg-sec.deep h2 { color: #fff; }
+.pg-sec.deep .pg-k { color: rgba(255,255,255,.62); }
+.pg-sec.deep .pg-lede { color: rgba(255,255,255,.78); }
+.pg-sec.deep .dd, .pg-sec.deep .dd-grid { color: #fff; }
+.pg-sec.deep .dd-grid > * { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16); color: #fff; }
+.pg-sec.deep .dd-lb, .pg-sec.deep .dd-n { color: #fff; }
+.pg-sec.deep .dd-ln, .pg-sec.deep .dd-no { color: rgba(255,255,255,.62); }
+.pg-sec.deep .dd-ic { color: #FF6B6B; }
+.pg-sec.deep .pg-stats { background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.16); }
+.pg-sec.deep .pg-stat { background: rgba(10,16,32,.72); }
+.pg-sec.deep .pg-stat b { color: #fff; }
+.pg-sec.deep .pg-stat span { color: rgba(255,255,255,.62); }
+.pg-sec.deep .pg-slot { background: transparent; }
+.pg-sec.deep .pg-slot-in { border-color: rgba(255,255,255,.28); color: #fff; padding: 14px 16px; gap: 6px; }
+.pg-sec.deep .pg-slot-in p { color: rgba(255,255,255,.7); margin: 0; }
+.pg-sec.deep .pg-slot-tag, .pg-sec.deep .pg-slot-in .pg-k { color: rgba(255,255,255,.62); }
+
+/* ============================================================================
+   The three business units (9 Sep, Bazil: "level and structure the content correctly while
+   ensuring you fill in gaps and content, also add the right icons for each").
+
+   All the levelling that CSS can do is here; the rest was a data problem and is fixed in
+   ServicesHub's MODELS. The three cards now hold the same five parts in the same order, and
+   these rules pin the two that would otherwise drift: the spec rows all start at the same
+   height because the paragraph above them is capped, and the links all sit on the same line
+   because .pg-mores takes the leftover space.
+   ============================================================================ */
+.un-card { gap: 10px; }
+/* mark and unit number on one row. The mark is the same one the cycle uses for that kind of
+   work, not a new set: crane for the unit that builds, hookup link for the unit that re-equips. */
+.un-hd { display: flex; align-items: center; gap: 9px; }
+.un-mark { flex: none; width: 26px; height: 26px; display: grid; place-items: center; border: 1px solid var(--line); background: var(--bg2); color: var(--blue-bright); transition: border-color .35s, background .35s; }
+.un-mark svg { width: 15px; height: 15px; }
+.un-card:hover .un-mark { border-color: rgba(236, 32, 39, .32); background: rgba(236, 32, 39, .05); }
+/* LEVELLED FOR REAL, with subgrid. A min-height on the paragraph was the first attempt and it
+   only ever approximates: EPC's sentence set to five lines, hookup's to four, so the spec rows
+   under them started at three different heights and the cards were "levelled" everywhere except
+   where a reader compares them.
+
+   The three cards each span the same ten rows of the section grid and adopt those tracks, so
+   every part of every card shares a row with the same part of its neighbours: the mark row, the
+   name, the paragraph, each of the three spec rows individually, the list and the links. One
+   card's longer sentence now grows the row for all three, which is what levelling means.
+
+   Below 1024px the cards stop sitting side by side, so there is nothing to align and the plain
+   flex card comes back. */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 1025px) {
+    .un-cards { grid-template-rows: repeat(10, auto); row-gap: 10px; align-items: stretch; }
+    .un-card { display: grid; grid-row: span 10; grid-template-rows: subgrid; gap: 0; }
+    .un-spec { display: grid; grid-row: span 3; grid-template-rows: subgrid; }
+    .un-row { display: grid; grid-row: span 1; }
+  }
+}
+/* fallback for anything without subgrid: cap the paragraph so the rows below it at least start
+   close to level, rather than wherever the copy happens to end */
+@supports not (grid-template-rows: subgrid) {
+  .un-card > p { min-height: 4.8em; }
+}
+
+/* the spec rows: label left, value right, one hairline each. Same grammar as the registry and
+   the spec sheets elsewhere on the site, so a procurement reader can scan the three cards down
+   a column rather than reading each one end to end. */
+.un-spec { margin: 3px 0 2px; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.un-row { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.un-row dt { font-family: var(--label); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; font-weight:600; color: var(--faint); line-height: 1.7; }
+.un-row dd { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--soft); }
+
+.un-k { font-family: var(--label); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; font-weight:600; color: var(--faint); margin-top: 6px; }
+.un-card .pg-list { margin-top: 4px; }
+.un-card .pg-list li { padding-left: 13px; font-size: 12.5px; color: var(--soft); }
+.un-card .pg-list li::before { content: ""; position: absolute; left: 0; top: .55em; width: 4px; height: 1px; background: var(--line2); transition: background .35s; }
+.un-card:hover .pg-list li::before { background: var(--blue); }
+/* the links land on the same line across all three cards, whatever the copy above them did */
+.un-card .pg-mores { margin-top: auto; padding-top: 16px; }
+/* 17 Sep: with the spec rows and the scope list gone from these cards, the links carry their own
+   20px top margin as well as the row's gap, which on a phone left a hole between the two. The gap
+   is the only spacing they need here. */
+.un-card .pg-mores .pg-more { margin-top: 0; }
+
+@media (max-width: 1024px) { .un-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; } .un-card > p { min-height: 0; } }
+@media (max-width: 720px) { .un-cards { grid-template-columns: minmax(0, 1fr); } .un-row { grid-template-columns: 80px minmax(0, 1fr); } }
+
+/* 10 Sep: abbreviations and the glossary strip */
+abbr[title]{text-decoration:underline dotted;text-underline-offset:3px;cursor:help}
+.glossary-wrap{margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
+.glossary{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px 28px;margin:14px 0 0}
+.glossary div{display:grid;grid-template-columns:58px minmax(0,1fr);gap:10px;font-size:13px;line-height:1.5}
+.glossary dt{font-family:var(--label);font-size:11px;letter-spacing:.12em;font-weight:600;color:var(--ink);padding-top:2px}
+.glossary dd{margin:0;color:var(--soft)}
+
+/* 10 Sep: breadcrumb trail above the page head */
+.pg-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px;font-family:var(--label);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.pg-crumbs a{color:var(--soft);text-decoration:none}.pg-crumbs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.pg-head-hero .pg-crumbs a,.pg-head-hero .pg-crumbs{color:rgba(255,255,255,.72)}.pg-head-hero .pg-crumbs a:hover{color:#fff}
+.prj-head .pg-crumbs,.prj-head .pg-crumbs a{color:rgba(255,255,255,.75)}.prj-head .pg-crumbs a:hover{color:#fff}
+
+/* 17 Sep: the certificate line at the top of each ISO item on Corporate Commitment */
+.cmt-cert { margin: 0 0 10px; font-size: 14px; line-height: 1.5; color: var(--soft); }
+.cmt-cert b { color: var(--ink); font-weight: 600; }
+.cmt-cert a { color: var(--blue); font-weight: 600; text-decoration: none; }
+.cmt-cert a:hover { color: var(--blue-bright); }
+
+/* ============================================================================
+   25 Sep · VideoBanner (components/VideoBanner.jsx): a full-bleed clip head
+   ============================================================================ */
+.vb{position:relative;min-height:clamp(420px,56vh,600px);   /* 25 Sep (Bazil: "not need the banner to be too tall"): was 74vh */display:flex;align-items:flex-end;background:#0F1319;color:#fff;overflow:hidden}
+.vb-media{position:absolute;inset:0;z-index:0}
+.vb-media video,.vb-media img{width:100%;height:100%;object-fit:cover;object-position:60% 40%;display:block;filter:saturate(.8) brightness(.9)}
+.vb-scrim{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(7,12,24,.18) 0%,rgba(7,12,24,.42) 45%,rgba(7,12,24,.9) 100%),linear-gradient(90deg,rgba(7,12,24,.55) 0%,rgba(7,12,24,.15) 60%,rgba(7,12,24,0) 100%)}
+.vb-in{position:relative;z-index:1;width:100%;max-width:var(--maxw);margin:0 auto;padding:clamp(56px,10vh,120px) var(--gut) clamp(40px,6vh,72px)}
+.vb-crumbs{display:flex;align-items:center;gap:8px;font-size:12.5px;color:rgba(255,255,255,.62)}
+.vb-crumbs a{color:inherit;text-decoration:none}.vb-crumbs a:hover{color:#fff}
+.vb-crumbs i{font-style:normal;opacity:.6}
+.vb-years{display:flex;align-items:center;gap:14px;margin-top:clamp(22px,4vh,40px);font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;color:rgba(255,255,255,.75)}
+.vb-years i{display:block;height:1px;width:clamp(120px,22vw,320px);background:rgba(236,35,38,.4);position:relative;overflow:hidden}   /* 26 Sep: the line is red, it draws in full red */
+.vb-years i::after{content:"";position:absolute;left:0;top:0;height:100%;width:100%;background:#FF4D55;transform:translateX(-100%);animation:vbDraw 2.4s cubic-bezier(.16,1,.3,1) .5s forwards}
+@keyframes vbDraw{to{transform:none}}
+.vb h1{margin:12px 0 0;max-width:22ch;font-size:clamp(34px,5.4vw,72px);line-height:1.02;letter-spacing:-.03em;color:#fff}
+.vb h1 em{font-style:normal;color:#FF4D55}
+.vb-lede{margin:18px 0 0;max-width:58ch;font-size:clamp(16px,1.6vw,20px);line-height:1.5;color:rgba(255,255,255,.86)}
+.vb-body{margin:14px 0 0;max-width:66ch;font-size:clamp(14.5px,1.2vw,16.5px);line-height:1.6;color:rgba(255,255,255,.68)}
+@media(max-width:700px){.vb{min-height:0}.vb-in{padding-top:clamp(120px,32vh,240px)}.vb-media video,.vb-media img{object-position:70% 40%}}
+@media(prefers-reduced-motion:reduce){.vb-years i::after{animation:none;transform:none}}
+
+/* 25 Sep, night: a head with an aside (the market heroes): the copy and the aside share one row, the aside right after
+   the copy and level with it; below 900px the aside drops under the copy */
+/* (Bazil, later: "I said put it at the left side of title and description"): the aside stands FIRST, the copy after it */
+.pg-in-aside { display: grid; grid-template-columns: auto minmax(0, max-content); column-gap: clamp(28px, 4vw, 72px); align-items: center; justify-content: start; }
+.pg-in-aside .pg-head-copy { min-width: 0; order: 2; }
+.pg-head-aside { display: flex; align-items: center; justify-content: center; order: 1; }
+@media (max-width: 900px) { .pg-in-aside { grid-template-columns: 1fr; row-gap: 22px; } .pg-head-aside { justify-content: flex-start; } }
+
+/* 25 Sep, night (Bazil: "no vertical line in IAQ"): the pull quote stands without its left rule; its source line in sentence case */
+.pg-pull { border-left: 0; padding-left: 0; }
+.pg-pull small { font-family: "Switzer", "Instrument Sans", system-ui, sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: 0; text-transform: none; }
+
+/* 25 Sep (Bazil: "the titles for 3 business units, 4 works and 6 services should be the same size and each have an icon
+   at its left"): the three kind titles share the page's h2 size and carry their kind's flat mark in its colour */
+.pg-sec h2.kind-h,.cyb-head h2.kind-h,.cyb h2.kind-h,h2.kind-h{display:flex;align-items:center;gap:.38em;font-size:clamp(23px,3.1vw,36px);line-height:1.1;margin:0 0 0}
+h2.kind-h .kind-ic{width:1em;height:1em;flex:none}
+h2.kind-h.k-s,h2.kind-h.k-s em{color:#EC2027;font-style:normal}
+h2.kind-h.k-u{color:#0B8FD8}
+h2.kind-h.k-w{color:#231F20}
+
+/* 25 Sep (Bazil: "don't put icons in circle", "if not clickable don't interact, and not supposed to be red"): the demand
+   marks stand bare, no ring, no hover state, no colour change; the list is not a control */
+.dd-ic,.dd-li .dd-ic{width:auto;height:auto;border:0;background:transparent;border-radius:0;box-shadow:none;padding:0;display:inline-flex}
+.dd-ic svg{width:24px;height:24px}
+.dd-li,.dd-li:hover,.dd-li:focus-visible{cursor:default;background:inherit;outline:0;transform:none}
+.dd-li:hover .dd-ic,.dd-li:focus-visible .dd-ic,.dd-li:hover .dd-no,.dd-li:hover .dd-ln{color:inherit;border-color:transparent;box-shadow:none;transform:none}
+.mkb ~ * .dd-ic,.mkb ~ * .dd-li:hover .dd-ic{color:var(--mk-t)}
+.mkb ~ * .dd-no,.mkb ~ * .dd-li:hover .dd-no{color:var(--mk-t)}

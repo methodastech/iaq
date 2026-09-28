@@ -1,0 +1,108 @@
+/* ---------------------------------------------------------------------------
+   THE VALUES CAROUSEL (16 Sep) — six cards in perspective, one held at the front.
+   See components/ValuesCarousel.jsx for the geometry and the timing.
+
+   The card's place comes from three custom properties the component sets per card:
+     --x  translation along the row, as a percentage of the card's OWN width, so the
+          spacing holds at every width the card clamps to
+     --z  depth, which is what shrinks it, through the stage perspective
+     --r  the turn, always away from the viewer
+   The front card is the only one at --z 0, so it is the largest, the brightest and,
+   by z-index, in front of every other. Nothing can land on top of it.
+   --------------------------------------------------------------------------- */
+.vc { margin-top: clamp(16px, 2.4vh, 30px); }
+
+.vc-stage { position: relative; height: clamp(372px, 33vw, 436px);
+  perspective: 1600px; perspective-origin: 50% 48%;
+  cursor: grab; user-select: none; touch-action: pan-y; overflow: hidden;
+  /* the cards at the back run off the sides: dissolve them there instead of cutting them */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%); }
+.vc-stage:active { cursor: grabbing; }
+
+/* a soft ground under the stack, so six white cards are not floating on white paper */
+.vc-stage::before { content: ""; position: absolute; left: 50%; top: 62%; width: 84%; height: 46%;
+  transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(203, 214, 232, .6), rgba(203, 214, 232, 0) 74%); }
+
+.vc-deck { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; transform-style: preserve-3d; }
+
+.vc-card { position: absolute; left: 50%; top: 50%; width: clamp(268px, 27vw, 356px);
+  /* --xk and --zk are the breakpoint's knobs on the same geometry: a narrow stage needs the
+     shoulders pushed further out and further back to keep the front card obviously in front */
+  transform: translate(-50%, -50%) translateX(calc(var(--x) * var(--xk, 1)))
+             translateZ(calc(var(--z) * var(--zk, 1))) rotateY(var(--r));
+  opacity: var(--op); will-change: transform, opacity;
+  transition: transform .82s var(--e1), opacity .45s var(--e1); }
+.vc-card.is-out { pointer-events: none; }
+
+.vc-hit { display: block; position: relative; width: 100%; text-align: left; padding: 0;
+  border: 1px solid rgba(12, 18, 32, .08); background: #fff; color: inherit; font: inherit; cursor: pointer;
+  box-shadow: 0 16px 40px -26px rgba(12, 18, 32, .3);
+  transition: box-shadow .5s var(--e1), border-color .5s var(--e1); }
+.vc-card.is-front .vc-hit { border-color: rgba(12, 18, 32, .14);
+  box-shadow: 0 44px 84px -34px rgba(12, 18, 32, .55); cursor: default; }
+
+/* a card standing behind is not faded, it is veiled: the card keeps its own white, so nothing
+   further back can be read through it */
+.vc-veil { position: absolute; inset: 0; pointer-events: none;
+  background: #fff; opacity: min(1, calc(var(--veil) * var(--vk, 1)));
+  transition: opacity .6s var(--e1); }
+.vc-hit:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+.vc-photo { display: block; position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #E7EBF3; }
+.vc-photo img { width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: none; transform: scale(1.04);   /* 26 Sep (Bazil: "it needs to have colour"): every card in full colour */
+  transition: filter .7s var(--e1), transform 1.2s var(--e1); }
+.vc-card.is-front .vc-photo img { filter: none; transform: scale(1); }
+
+/* the number sits on the photograph, large and quiet, so the card needs no label row */
+.vc-n { position: absolute; left: 18px; bottom: 10px;
+  font: 600 clamp(30px, 2.6vw, 40px)/1 "Switzer", "Instrument Sans", system-ui, sans-serif;
+  letter-spacing: -.03em; color: #fff; opacity: .92; text-shadow: 0 2px 14px rgba(0, 0, 0, .4); }
+
+.vc-body { display: block; padding: 18px 22px 22px; }
+.vc-mark { display: block; width: 22px; height: 22px; color: var(--soft); transition: color .4s var(--e1); }
+.vc-mark svg { width: 100%; height: 100%; display: block; }
+.vc-card.is-front .vc-mark { color: var(--blue); }
+.vc-hit b { display: block; margin-top: 12px;
+  font-family: "Switzer", "Instrument Sans", system-ui, sans-serif;
+  font-size: clamp(19px, 1.5vw, 21px); font-weight: 600; letter-spacing: -.018em; line-height: 1.18; color: var(--ink); }
+.vc-line { display: block; margin-top: 7px; font-size: 14px; line-height: 1.45; color: var(--soft); }
+
+/* the controls: two arrows and the six numbers, with the one in front carried in red */
+.vc-foot { display: flex; align-items: center; justify-content: center; gap: clamp(10px, 1.6vw, 20px);
+  margin-top: clamp(14px, 2vh, 22px); }
+.vc-arw { width: 38px; height: 38px; display: grid; place-items: center; padding: 0;
+  border: 0; background: rgba(12, 18, 32, .05); color: var(--ink); cursor: pointer;
+  transition: background .3s var(--e1), color .3s var(--e1); }
+.vc-arw svg { width: 20px; height: 20px; display: block; }
+.vc-arw:hover { background: var(--blue); color: #fff; }
+.vc-arw:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.vc-dots { list-style: none; display: flex; align-items: center; gap: 6px; margin: 0; padding: 0; }
+.vc-dots button { width: 32px; height: 32px; padding: 0; border: 0; background: transparent; cursor: pointer;
+  font: 600 13px/1 "Switzer", "Instrument Sans", system-ui, sans-serif; color: var(--faint);
+  transition: color .3s var(--e1), background .3s var(--e1); }
+.vc-dots button:hover { color: var(--ink); }
+.vc-dots button.on { background: var(--blue); color: #fff; }
+.vc-dots button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+@media (max-width: 860px) {
+  .vc-stage { height: clamp(352px, 86vw, 412px); perspective: 1050px; }
+  .vc-card { width: min(76vw, 330px); --xk: 1.12; --zk: 1.4; --vk: 1.2; }
+}
+@media (max-width: 560px) {
+  /* the card is a share of the screen here, so the stage that holds it has to be one too:
+     photo (10/16 of the card) plus the copy under it, plus room for the shadow */
+  .vc-stage { height: calc(48.8vw + 176px); }
+  .vc-card { width: 78vw; }
+  .vc-n { left: 14px; bottom: 8px; }
+  .vc-body { padding: 15px 17px 18px; }
+  .vc-arw { width: 34px; height: 34px; }
+  .vc-dots button { width: 28px; height: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vc-card, .vc-hit, .vc-photo img { transition: none; }
+}
+/* 25 Sep, phone pass: the dots were 28px targets on phones; 36px hit area, the dot itself unchanged */
+@media (max-width: 640px) { .vc-dots button { width: 36px; height: 36px; } }

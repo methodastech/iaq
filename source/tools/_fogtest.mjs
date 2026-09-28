@@ -1,0 +1,16 @@
+import puppeteer from 'puppeteer-core'
+const out = process.argv[2], sleep = ms => new Promise(r => setTimeout(r, ms))
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--use-angle=metal','--enable-gpu'] })
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 900 }); await p.setCacheEnabled(false)
+p.evaluateOnNewDocument(() => { const WS = window.WebSocket; window.WebSocket = function (u, pr) { if (String(pr).includes('vite')) return { addEventListener() {}, removeEventListener() {}, send() {}, close() {}, readyState: 0 }; return new WS(u, pr) } })
+await p.goto('http://localhost:49996/?nointro=1', { waitUntil: 'domcontentloaded', timeout: 90000 }); await sleep(3500)
+await p.evaluate(() => document.querySelector('#build3d').scrollIntoView({ block: 'start' }))
+await p.waitForFunction(() => { const f = document.querySelector('.db3-frame'); return f && f.contentDocument && f.contentDocument.querySelector('#overlay.hidden') }, { timeout: 90000, polling: 500 }); await sleep(2500)
+await p.evaluate(() => document.querySelector('.db3-frame').contentDocument.getElementById('skin-v3').click()); await sleep(7000)
+await p.mouse.move(900, 400); for (let i = 0; i < 3; i++) { await p.mouse.wheel({ deltaY: 100 }); await sleep(4400) }
+const info = await p.evaluate(() => { const W = document.querySelector('.db3-frame').contentWindow, B = W.__iaqBoss; let g = null; let best = 0; B.traverse(n => { if (n.isMesh && n.visible && n.parent && n.parent.name === 'boss-site') { const gg = n.geometry; gg.boundingSphere || gg.computeBoundingSphere(); if (gg.boundingSphere.radius > best) { best = gg.boundingSphere.radius; g = n } } }); W.__g = g; const c = W.__iaqCam; return { cam: [c.position.x, c.position.y, c.position.z].map(Math.round), near: c.near, far: c.far, gpar: g && [g.geometry.type, JSON.stringify(g.geometry.parameters || {}).slice(0, 120)], gpos: g && [g.position.x, g.position.y, g.position.z].map(Math.round), grot: g && [g.rotation.x, g.rotation.y, g.rotation.z].map(x => +x.toFixed(2)), mat: g && { fog: g.material.fog, type: g.material.type, tm: g.material.toneMapped, trans: g.material.transparent, dw: g.material.depthWrite, obc: String(g.material.onBeforeCompile).slice(0, 200), prog: g.material.version, cpk: g.material.customProgramCacheKey && g.material.customProgramCacheKey() }, fog: [B.fog.near, B.fog.far, B.fog.isFog, B.fog.isFogExp2] } })
+console.log(JSON.stringify(info))
+await p.screenshot({ path: `${out}/ft-a.png` })
+await p.evaluate(() => { const W = document.querySelector('.db3-frame').contentWindow; W.__iaqBoss.fog.near = 20; W.__iaqBoss.fog.far = 300 }); await sleep(800); await p.screenshot({ path: `${out}/ft-b.png` })
+await p.evaluate(() => { const W = document.querySelector('.db3-frame').contentWindow; W.__iaqBoss.fog.near = 210; W.__iaqBoss.fog.far = 900; W.__g.material.color.set(0xff0000) }); await sleep(800); await p.screenshot({ path: `${out}/ft-c.png` })
+await b.close()

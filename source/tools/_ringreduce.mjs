@@ -1,0 +1,10 @@
+import puppeteer from 'puppeteer-core'
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', protocolTimeout: 180000, args: ['--no-sandbox','--use-angle=metal','--enable-gpu'] })
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 950 })
+await p.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }])
+await p.goto('http://localhost:5177/services', { waitUntil: 'networkidle0', timeout: 90000 })
+await new Promise(r => setTimeout(r, 2200))
+await p.evaluate(() => document.querySelector('[class*="cring"]')?.scrollIntoView({ block: 'center' }))
+await new Promise(r => setTimeout(r, 900))
+console.log('reduced motion · animations:', JSON.stringify(await p.evaluate(() => [...document.querySelectorAll('.cring-node .mk-mv')].map(g => getComputedStyle(g).animationName))))
+await b.close()

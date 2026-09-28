@@ -1,0 +1,1442 @@
+/* ServicesMap (components/ServicesMap.jsx), 24 Sep 2026. The Codex colours, one per kind of thing, the same on the
+   Codex, the slides and here. Flat tiles on the page ground, no lines, sharp corners. */
+.sm-units,.sm-qs,.sm-work,.sm-faq{--unit:#0B8FD8;--unit-t:#0772AE;--svc:#EC2027;--svc-t:#C8141D;--work:#231F20;--work-t:#231F20;--sys:#0FA968;--sys-t:#0B8452}
+.sm-map{--unit:#0B8FD8;--unit-t:#0772AE;--svc:#EC2027;--svc-t:#C8141D;--work:#231F20;--work-t:#231F20;--sys:#0FA968;--sys-t:#0B8452}
+.sm-units h2 em,.sm-map h2 em,.sm-qs h2 em,.sm-work h2 em,.sm-faq h2 em{font-style:normal;color:var(--blue);white-space:nowrap}
+.sm-note{margin-top:14px;font-size:13px;color:var(--faint)}
+/* chips */
+.sm-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;font:600 12.5px/1.15 "Switzer","Instrument Sans",sans-serif;letter-spacing:-.005em;white-space:nowrap}
+.sm-chip i{font-style:normal;display:grid;place-items:center;width:16px;height:16px;font-size:10.5px;background:rgba(255,255,255,.55)}
+.sm-chip.u{background:var(--unit);color:#fff}
+.sm-chip.m{background:#fff;color:#0C1220;box-shadow:inset 0 0 0 1.5px #0C1220}
+.sm-chip.s{background:color-mix(in srgb,var(--svc) 14%,#fff);color:var(--svc-t)}
+.sm-chip.s.ask{box-shadow:inset 0 0 0 1.5px var(--svc);background:transparent;border:0;outline:1.5px dashed var(--svc);outline-offset:-1.5px;box-shadow:none}
+.sm-chip.w{background:color-mix(in srgb,var(--work) 16%,#fff);color:var(--work-t)}
+.sm-chip.y{background:color-mix(in srgb,var(--sys) 14%,#fff);color:var(--sys-t)}
+.sm-chip.big{font-size:15px;padding:7px 12px}
+.sm-dot{display:inline-block;width:8px;height:8px;margin-right:10px;background:var(--sys);vertical-align:middle}
+/* units */
+.sm-ucards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(24px,3.4vh,40px)}
+.sm-uc{display:flex;flex-direction:column;background:#fff;transition:transform .45s var(--e1),box-shadow .45s var(--e1)}
+.sm-uc:hover{transform:translateY(-4px);box-shadow:0 30px 50px -36px rgba(12,18,32,.35)}
+.sm-uc-pic{position:relative;aspect-ratio:16/9;overflow:hidden;background:#E9EDF3}
+.sm-uc-pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--e1)}
+.sm-uc:hover .sm-uc-pic img{transform:scale(1.05)}
+.sm-uc-no{position:absolute;left:12px;top:12px;padding:5px 9px;background:var(--unit);color:#fff;font:600 12px/1 "Switzer",sans-serif}
+.sm-uc-body{display:flex;flex-direction:column;flex:1;padding:20px 22px 22px}
+.sm-uc h3{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center;margin:0;font:600 22px/1.1 "Switzer",sans-serif;letter-spacing:-.025em}
+.sm-uc h3 small{grid-column:2;font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:var(--soft);letter-spacing:0;margin-top:3px}
+.sm-uc-mark{grid-row:span 2;display:grid;place-items:center;width:40px;height:40px;background:var(--unit);color:#fff}
+.sm-uc-mark svg{width:20px;height:20px}
+.sm-uc-line{margin:14px 0 0;font:600 15.5px/1.3 "Switzer",sans-serif;color:var(--ink)}
+.sm-uc-what{margin:8px 0 0;font-size:14px;line-height:1.55;color:var(--soft)}
+.sm-uc-spec{display:grid;gap:10px;margin:18px 0 0;padding:0}
+.sm-uc-spec>div{display:grid;grid-template-columns:70px minmax(0,1fr);gap:8px;align-items:start}
+.sm-uc-spec dt{font:600 12px/1.6 "Switzer",sans-serif;color:var(--faint)}
+.sm-uc-spec dd{margin:0;display:flex;flex-wrap:wrap;gap:6px}
+.sm-uc-term{font:600 14px/1.6 "Switzer",sans-serif;color:var(--ink)}
+.sm-uc-go{margin-top:auto;padding-top:20px;font:600 14.5px/1.2 "Switzer",sans-serif;color:var(--ink);text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.sm-uc-go i{font-style:normal;transition:transform .3s var(--e1)}
+.sm-uc-go:hover{color:var(--blue)}.sm-uc-go:hover i{transform:translateX(4px)}
+/* map */
+.sm-map{background:#fff}
+.sm-key{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:18px;font:600 13px/1.2 "Switzer",sans-serif;color:var(--soft)}
+.sm-key span{display:inline-flex;align-items:center;gap:8px}
+.sm-key i{width:12px;height:12px;background:var(--c,#ccc)}
+.sm-key .k-u{--c:var(--unit)}.sm-key .k-m{--c:#fff;--b:#0C1220}.sm-key .k-m i{box-shadow:inset 0 0 0 2px #0C1220}.sm-key .k-s{--c:var(--svc)}.sm-key .k-w{--c:var(--work)}.sm-key .k-y{--c:var(--sys)}
+.sm-map-in{margin-top:22px}
+.sm-map-in.cx-page{padding:0;background:transparent}
+/* questions */
+.sm-q3{list-style:none;margin:clamp(24px,3.4vh,40px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sm-q{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"n q" "n l" "n p";column-gap:16px;row-gap:4px;padding:22px;background:#fff;transition:transform .45s var(--e1)}
+.sm-q:hover{transform:translateY(-3px)}
+.sm-q-n{grid-area:n;font:600 40px/.9 "Switzer",sans-serif;letter-spacing:-.04em;color:var(--blue)}
+.sm-q b{grid-area:q;font:600 clamp(19px,1.8vw,24px)/1.1 "Switzer",sans-serif;letter-spacing:-.02em}
+.sm-q-l{grid-area:l;font:600 12px/1.4 "Switzer",sans-serif}
+.sm-q.k-m .sm-q-l{color:#0C1220}.sm-q.k-s .sm-q-l{color:var(--svc-t)}.sm-q.k-w .sm-q-l{color:var(--work-t)}
+.sm-q p{grid-area:p;margin:6px 0 0;font-size:14px;line-height:1.55;color:var(--soft)}
+.sm-h3{margin:clamp(36px,5vh,56px) 0 0;font:600 clamp(20px,1.9vw,28px)/1.15 "Switzer",sans-serif;letter-spacing:-.02em}
+/* work */
+.sm-wcols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:clamp(24px,3.4vh,40px)}
+.sm-wc{background:#fff;padding:22px}
+.sm-wc h3{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:0}
+.sm-wc h3 small{font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:var(--soft)}
+.sm-wc ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px;font-size:14px;line-height:1.4;color:var(--ink)}
+.sm-cmp{margin-top:14px;background:#fff;padding:6px 6px 8px}
+.sm-cmp-h,.sm-cmp-r{display:grid;grid-template-columns:minmax(0,2fr) repeat(5,minmax(0,1fr));align-items:center;gap:6px;padding:10px 14px}
+.sm-cmp-h{font:600 12px/1.2 "Switzer",sans-serif;color:var(--faint)}
+.sm-cmp-h span:not(:first-child),.sm-cmp-r span:not(:first-child){text-align:center}
+.sm-cmp-r{background:var(--bg)}.sm-cmp-r+.sm-cmp-r{margin-top:4px}
+.sm-cmp-r.me{background:rgba(236,32,39,.07)}
+.sm-cmp-r b{font:600 14.5px/1.2 "Switzer",sans-serif}.sm-cmp-r small{display:block;font-size:12px;color:var(--faint);margin-top:2px}
+.sm-cmp-r span i{display:inline-block;width:12px;height:12px}
+.sm-cmp-r .on i{background:var(--unit)}.sm-cmp-r.me .on i{background:var(--unit)}.sm-cmp-r .off i{background:rgba(12,18,32,.12)}
+/* faq */
+.sm-faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:clamp(24px,3.4vh,40px)}
+.sm-faq-i{background:#fff;padding:0 22px}
+.sm-faq-i summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;font:600 16px/1.3 "Switzer",sans-serif;letter-spacing:-.015em}
+.sm-faq-i summary::-webkit-details-marker{display:none}
+.sm-faq-i summary i{flex:none;width:12px;height:12px;position:relative}
+.sm-faq-i summary i::before,.sm-faq-i summary i::after{content:"";position:absolute;background:var(--blue);left:0;top:5px;width:12px;height:2px;transition:transform .3s var(--e1)}
+.sm-faq-i summary i::after{transform:rotate(90deg)}
+.sm-faq-i[open] summary i::after{transform:rotate(0)}
+.sm-faq-i p{margin:0;padding:0 0 20px;font-size:14.5px;line-height:1.6;color:var(--soft);max-width:60ch}
+/* reveal stagger */
+.sm-uc[data-reveal],.sm-q[data-reveal],.sm-ask[data-reveal],.sm-wc[data-reveal],.sm-faq-i[data-reveal]{transition-delay:calc(var(--i,0) * 70ms)}
+@media(max-width:1100px){.sm-ucards,.sm-q3,.sm-wcols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.sm-ucards,.sm-q3,.sm-wcols,.sm-faq-grid{grid-template-columns:1fr}.sm-cmp-h,.sm-cmp-r{grid-template-columns:minmax(0,1.6fr) repeat(5,minmax(0,1fr));padding:8px 10px;font-size:12px}}
+
+/* ===== 24 Sep, the flow pass (Bazil: "animation, amazing flow, perfect diagrams, premium flow") ===== */
+/* the life of a facility: three stages on one rail that fills left to right when the band arrives */
+.sm-life{list-style:none;margin:clamp(24px,3.4vh,40px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.sm-life li{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"bar bar" "chip k" "chip t" "p p";column-gap:12px;row-gap:2px;padding:0 4px}
+.sm-life-bar{grid-area:bar;display:block;height:4px;background:rgba(236,32,39,.14);margin-bottom:14px;overflow:hidden}
+.sm-life-bar i{display:block;height:100%;width:100%;background:var(--unit);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.1s var(--e1) calc(var(--i,0) * .32s)}
+.sm-units.in .sm-life-bar i{transform:scaleX(1)}
+.sm-life .sm-chip{grid-area:chip;align-self:start}
+.sm-life b{grid-area:k;font:600 16px/1.2 "Switzer",sans-serif;letter-spacing:-.015em}
+.sm-life small{grid-area:t;font:600 12.5px/1.3 "Switzer",sans-serif;color:var(--unit-t)}
+.sm-life p{grid-area:p;margin:8px 0 0;font-size:13.5px;line-height:1.5;color:var(--soft)}
+.sm-life li>*:not(.sm-life-bar){opacity:0;transform:translateY(8px);transition:opacity .6s var(--e1) calc(.35s + var(--i,0) * .32s),transform .7s var(--e1) calc(.35s + var(--i,0) * .32s)}
+.sm-units.in .sm-life li>*:not(.sm-life-bar){opacity:1;transform:none}
+.sm-ucards{margin-top:clamp(28px,4vh,48px)}
+.sm-mo{position:absolute;inset:0;display:block;will-change:transform}
+.sm-uc-pic .sm-mo img{width:100%;height:100%;object-fit:cover}
+/* unit cards rise in turn */
+.sm-uc{opacity:0;transform:translateY(22px);transition:opacity .8s var(--e1) calc(.5s + var(--i,0) * .12s),transform .9s var(--e1) calc(.5s + var(--i,0) * .12s),box-shadow .45s var(--e1)}
+.sm-units.in .sm-uc{opacity:1;transform:none}
+.sm-units.in .sm-uc:hover{transform:translateY(-4px)}
+/* the six asks as one diagram: fixed columns, a header row, chips lighting left to right */
+.sm-asks{display:grid;gap:6px;margin-top:18px}
+.sm-ask{display:grid;grid-template-columns:minmax(200px,.95fr) 92px 210px minmax(0,1.7fr) minmax(0,1.05fr) minmax(0,1.3fr);gap:8px 14px;align-items:center;padding:12px 18px;background:#fff;transition:background .3s}
+.sm-ask:hover{background:#FBFCFE}
+.sm-ask-h{background:transparent;padding-top:0;padding-bottom:2px;font:600 12px/1.2 "Switzer",sans-serif}
+.sm-ask-h .k-u{color:var(--unit-t)}.sm-ask-h .k-m{color:#0C1220}.sm-ask-h .k-s{color:var(--svc-t)}.sm-ask-h .k-w{color:var(--work-t)}.sm-ask-h .k-y{color:var(--sys-t)}
+.sm-ask-q{margin:0;font:600 15px/1.3 "Switzer",sans-serif;letter-spacing:-.015em}
+.sm-cell{position:relative;display:flex;flex-wrap:wrap;gap:4px;align-items:center;min-width:0}
+.sm-cell::before{content:"\2192";position:absolute;left:-12px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--faint)}
+.sm-cell.sm-pgroup{gap:4px}
+.sm-cell .sm-chip{white-space:normal}
+.sm-cell>*{opacity:0;transform:translateX(-6px);transition:opacity .45s var(--e1) calc(.2s + var(--i,0) * .12s + var(--k,0) * .11s),transform .5s var(--e1) calc(.2s + var(--i,0) * .12s + var(--k,0) * .11s)}
+.sm-qs.in .sm-cell>*{opacity:1;transform:none}
+.sm-ask:hover .sm-chip{filter:saturate(1.15)}
+/* questions: the numbers grow in */
+.sm-q-n{display:inline-block;transform:scale(.6);opacity:0;transition:transform .8s var(--e1) calc(var(--i,0) * .12s),opacity .5s ease calc(var(--i,0) * .12s)}
+.sm-qs.in .sm-q-n{transform:none;opacity:1}
+/* work: systems rise in turn, grid dots pop across the row */
+.sm-wc li{opacity:0;transform:translateY(6px);transition:opacity .5s var(--e1) calc(.15s + var(--i,0) * .1s + var(--j,0) * .06s),transform .6s var(--e1) calc(.15s + var(--i,0) * .1s + var(--j,0) * .06s)}
+.sm-work.in .sm-wc li{opacity:1;transform:none}
+.sm-cmp-r span i{transform:scale(0);transition:transform .5s cubic-bezier(.2,.9,.3,1.2) calc(.5s + var(--j,0) * .08s)}
+.sm-work.in .sm-cmp-r span i{transform:none}
+@media(max-width:1100px){.sm-life{grid-template-columns:1fr}.sm-ask{grid-template-columns:minmax(0,1fr)}.sm-ask-h{display:none}.sm-cell::before{position:static;transform:none;margin-right:6px}.sm-cell:first-of-type::before{content:none}}
+@media(prefers-reduced-motion:reduce){.sm-life-bar i,.sm-life li>*,.sm-uc,.sm-cell>*,.sm-q-n,.sm-wc li,.sm-cmp-r span i{transition:none;opacity:1;transform:none}}
+
+/* ===== 24 Sep, the unit showcase (Bazil: "a better view and presentation for the business units, at the top") =====
+   A selector of three on the left, in the life-of-a-facility order, and one stage on the right. The stage swaps
+   photograph and facts; the selector's rail fills for the unit on stage. */
+.sm-show{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(0,2fr);gap:14px;margin-top:clamp(24px,3.4vh,40px);align-items:stretch}
+.sm-sel{list-style:none;margin:0;padding:0;display:grid;grid-template-rows:repeat(3,1fr);gap:8px}
+.sm-sel li{opacity:0;transform:translateX(-10px);transition:opacity .6s var(--e1) calc(.15s + var(--i,0) * .12s),transform .7s var(--e1) calc(.15s + var(--i,0) * .12s)}
+.sm-units.in .sm-sel li{opacity:1;transform:none}
+.sm-sel-b{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-areas:"rail rail" "top top" "k k" "line line" "term term";row-gap:4px;width:100%;height:100%;padding:16px 18px 18px;text-align:left;background:#fff;border:0;cursor:pointer;color:var(--ink);font-family:inherit;transition:background .3s,transform .4s var(--e1)}
+.sm-sel-b:hover{background:#FBFCFE;transform:translateX(3px)}
+.sm-sel-b.on{background:#fff;box-shadow:0 22px 44px -32px rgba(236,32,39,.45)}
+.sm-sel-b:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.sm-sel-rail{grid-area:rail;display:block;height:4px;background:rgba(12,18,32,.08);margin-bottom:12px;overflow:hidden}
+.sm-sel-rail i{display:block;height:100%;width:100%;background:var(--unit);transform:scaleX(0);transform-origin:0 50%}
+.sm-sel-b.on .sm-sel-rail i{animation:smRail 6.5s linear forwards}
+.sm-units:hover .sm-sel-b.on .sm-sel-rail i{animation-play-state:paused}
+@keyframes smRail{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.sm-sel-top{grid-area:top;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sm-sel-top small{font:600 12px/1 "Switzer",sans-serif;color:var(--faint)}
+.sm-sel-b b{grid-area:k;margin-top:8px;font:600 17px/1.2 "Switzer",sans-serif;letter-spacing:-.015em}
+.sm-sel-line{grid-area:line;font-size:13.5px;line-height:1.45;color:var(--soft)}
+.sm-sel-term{grid-area:term;margin-top:6px;font:600 12.5px/1.3 "Switzer",sans-serif;color:var(--unit-t)}
+.sm-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,1fr);background:#fff;overflow:hidden;opacity:0;transform:translateY(16px);transition:opacity .8s var(--e1) .3s,transform .9s var(--e1) .3s}
+.sm-units.in .sm-stage{opacity:1;transform:none}
+.sm-stage-pic{position:relative;min-height:420px;background:#E9EDF3;overflow:hidden}
+.sm-stage-pic .sm-mo{opacity:0;transition:opacity .9s var(--e1)}
+.sm-stage-pic .sm-mo.on{opacity:1}
+.sm-stage-pic img{width:100%;height:100%;object-fit:cover}
+.sm-stage-no{position:absolute;left:14px;top:14px;padding:6px 10px;background:var(--unit);color:#fff;font:600 12.5px/1 "Switzer",sans-serif;z-index:1}
+.sm-stage-body{display:flex;flex-direction:column;padding:clamp(22px,2.4vw,34px);animation:smIn .6s var(--e1) both}
+@keyframes smIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.sm-stage-body h3{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center;margin:0;font:600 clamp(24px,2.2vw,32px)/1.05 "Switzer",sans-serif;letter-spacing:-.025em}
+.sm-stage-body h3 small{grid-column:2;font:500 13px/1.3 "Instrument Sans",sans-serif;color:var(--soft);letter-spacing:0;margin-top:4px}
+.sm-stage-body .sm-uc-what{margin-top:14px}
+.sm-stage-body .sm-uc-spec{margin-top:20px}
+.sm-stage-body .sm-uc-spec>div{grid-template-columns:78px minmax(0,1fr)}
+.sm-stage-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:auto;padding-top:22px}
+.sm-stage-foot .sm-note{margin:0}
+@media(max-width:1100px){.sm-show{grid-template-columns:1fr}.sm-sel{grid-template-rows:none;grid-template-columns:repeat(3,minmax(0,1fr))}.sm-stage{grid-template-columns:1fr}.sm-stage-pic{min-height:0;aspect-ratio:16/9}}
+@media(max-width:720px){.sm-sel{grid-template-columns:1fr}.sm-sel-b{grid-template-areas:"rail rail" "top top" "k k" "line line" "term term"}}
+@media(prefers-reduced-motion:reduce){.sm-sel li,.sm-stage{transition:none;opacity:1;transform:none}.sm-sel-b.on .sm-sel-rail i{animation:none;transform:scaleX(1)}.sm-stage-body{animation:none}}
+
+/* 24 Sep, second cut (Bazil: "the three columns were ok, represent them in a prettier way"): no rails, the unit's mark
+   on every card, the one on stage a solid red block with white type, and the timer a soft wash filling across it. */
+.sm-sel-rail{display:none}
+.sm-sel-b{grid-template-columns:44px 1fr;grid-template-areas:"ic top" "ic k" "ic line" "ic term";column-gap:14px;row-gap:3px;padding:18px 18px 20px;overflow:hidden;transition:background .35s var(--e1),color .35s var(--e1),transform .4s var(--e1)}
+.sm-sel-b::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,18,32,.14),rgba(12,18,32,.14)) no-repeat 0 0/0% 100%;pointer-events:none}
+.sm-sel-b:hover{background:#FDF3F3;transform:none}
+.sm-sel-b.on,.sm-sel-b.on:hover{background:var(--unit);color:#fff;box-shadow:none}
+.sm-sel-b.on::before{animation:smFill 6.5s linear forwards}
+.sm-units:hover .sm-sel-b.on::before{animation-play-state:paused}
+@keyframes smFill{from{background-size:0% 100%}to{background-size:100% 100%}}
+.sm-sel-ic{grid-area:ic;display:grid;place-items:center;width:44px;height:44px;background:rgba(236,32,39,.08);color:var(--unit);transition:background .35s,color .35s}
+.sm-sel-ic svg{width:22px;height:22px}
+.sm-sel-b.on .sm-sel-ic{background:rgba(255,255,255,.18);color:#fff}
+.sm-sel-b.on .sm-chip.u{background:#fff;color:var(--unit)}
+.sm-sel-b.on .sm-sel-top small{color:rgba(255,255,255,.72)}
+.sm-sel-b.on .sm-sel-line{color:rgba(255,255,255,.84)}
+.sm-sel-b.on .sm-sel-term{color:#fff}
+.sm-sel-b b{margin-top:6px}
+.sm-sel-b>*:not(::before){position:relative}
+.sm-sel-ic,.sm-sel-top,.sm-sel-b b,.sm-sel-line,.sm-sel-term{position:relative;z-index:1}
+.sm-stage-body h3 .sm-uc-mark{width:48px;height:48px}
+@media(max-width:720px){.sm-sel-b{grid-template-columns:44px 1fr}}
+@media(prefers-reduced-motion:reduce){.sm-sel-b.on::before{animation:none;background-size:0% 100%}}
+
+/* ===== 24 Sep, third cut (Bazil: "three columns, each unit"): one card per unit, every row level on a subgrid ===== */
+.sm-ucards.sm-level{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(10,auto);gap:0 14px;margin-top:clamp(24px,3.4vh,40px)}
+.sm-level .sm-uc{display:grid;grid-row:span 10;grid-template-rows:subgrid;background:#fff;padding:0 0 22px}
+.sm-level .sm-uc>*:not(.sm-uc-pic){margin-left:22px;margin-right:22px}
+.sm-level .sm-uc-pic{aspect-ratio:16/9;margin-bottom:20px}
+.sm-level .sm-uc-no{display:inline-flex;align-items:center;gap:8px}
+.sm-level .sm-uc-no i{font-style:normal;font-weight:500;opacity:.85}
+.sm-level .sm-uc h3{align-self:start}
+.sm-level .sm-uc-line{margin-top:14px}
+.sm-level .sm-uc-what{margin-top:8px;padding-bottom:18px}
+.sm-level .sm-uc-spec{display:grid;grid-row:span 5;grid-template-rows:subgrid;margin-top:0}
+.sm-level .sm-uc-spec>div{padding:10px 0;align-items:start}
+.sm-level .sm-uc-spec>div:first-child{padding-top:0}
+.sm-svc6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.sm-svc6 .sm-chip{justify-content:flex-start;padding:5px 7px}
+.sm-svc6 .sm-chip.off{background:#F1F3F7;color:var(--faint)}
+.sm-svc6 .sm-chip.off i{background:rgba(12,18,32,.06)}
+.sm-svc6 .sm-chip.ask{background:transparent;outline:1.5px dashed var(--svc);outline-offset:-1.5px;color:var(--svc-t)}
+.sm-level .sm-uc-go{margin-top:8px;padding-top:14px;align-self:end}
+.sm-level .sm-uc:hover{transform:none;box-shadow:none;background:#FBFCFE}
+.sm-level .sm-uc:hover .sm-uc-mark{background:var(--unit-t)}
+@media(max-width:1100px){.sm-ucards.sm-level{grid-template-columns:1fr;grid-template-rows:none;gap:12px}.sm-level .sm-uc{grid-row:auto;grid-template-rows:none}.sm-level .sm-uc-spec{grid-row:auto;grid-template-rows:none}}
+
+/* phones: the red phrase takes its own line, unbroken; the heading is sized so the longest phrase fits at 360px */
+@media(max-width:720px){
+  .sm-units h2 em,.sm-map h2 em,.sm-qs h2 em,.sm-work h2 em,.sm-faq h2 em{display:block;white-space:nowrap}
+  .sm-units h2,.sm-map h2,.sm-qs h2,.sm-work h2,.sm-faq h2{font-size:clamp(20px,6.2vw,26px)!important;letter-spacing:-.025em}
+}
+
+/* 24 Sep · the unit card rows that explain themselves */
+.sm-uc-when{font:500 14.5px/1.45 "Instrument Sans",sans-serif;color:var(--ink);text-wrap:pretty}
+.sm-uc-models,.sm-uc-work{display:grid;gap:8px}
+.sm-model{display:block}
+.sm-model>.sm-chip{display:inline-flex}
+.sm-model small{display:block;margin-top:5px}
+.sm-model small{font:400 12.5px/1.4 "Instrument Sans",sans-serif;color:var(--soft)}
+.sm-svc6-key{grid-column:1/-1;flex-basis:100%;width:100%;margin-top:4px;font:400 12.5px/1.4 "Instrument Sans",sans-serif;color:var(--soft)}
+
+/* 24 Sep (Bazil: "make the background grey light to differentiate this section") */
+.sm-faq{background:#EDF0F4}
+
+/* step 5 (24 Sep): the work band is the fab with its layers beside the three kinds of work, then who does what */
+.sm-wgrid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:clamp(20px,3vw,44px);align-items:start;margin-top:clamp(24px,3.4vh,40px)}
+.sm-wgrid .sm-wcols.sm-wstack{grid-template-columns:1fr;gap:10px;margin-top:0}
+.sm-wc{transition:box-shadow .25s,opacity .25s}
+.sm-wc.lit{box-shadow:inset 0 0 0 1.5px var(--work)}
+.sm-wc.dim{opacity:.55}
+.fl.sc-head{padding:0;border:0}
+.fl .sc-model{margin:0}
+.fl.has-hot .sc-pin.dim{opacity:.35}
+.fl.in .sc-pin.lit{transform:translate(-50%,-50%) scale(1.3);box-shadow:0 0 0 2px #fff,0 0 0 7px color-mix(in srgb,var(--c) 30%,transparent);z-index:2}
+@media(max-width:1100px){.sm-wgrid{grid-template-columns:1fr}.sm-wgrid .sm-wcols.sm-wstack{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){.sm-wgrid .sm-wcols.sm-wstack{grid-template-columns:1fr}}
+/* the fab keeps pace with the three cards beside it, so the pins are always in view while a card is read */
+@media(min-width:1101px){.sm-wgrid>.fl{position:sticky;top:calc(var(--tbv,0px) + 96px)}}
+.sm-map-h3{margin-top:clamp(28px,4vh,44px)}
+
+/* 24 Sep: the building above the map, driven by the map's pick */
+.sm-map-stage{max-width:880px;margin:clamp(18px,3vh,28px) auto 0}
+.sm-map-stage .fx-view{--u:#0B8FD8;--ut:#0772AE;--s:#EC2027;--st:#C8141D;--w:#231F20;--wt:#231F20;--y:#0FA968;--yt:#0B8452}
+.sm-map-stage .fx-pin{pointer-events:auto;cursor:pointer}
+.sm-map-stage .fx-pin:focus-visible{outline:2px solid var(--work,#231F20);outline-offset:2px}
+.sm-map-stage-cap{margin:10px 0 0;text-align:center;font-size:13px;line-height:1.45;color:var(--soft,#66708A)}
+.sm-map .sm-key{margin-top:clamp(18px,3vh,28px)}
+@media print{.sm-map-stage{display:none}}
+
+.sm-map-stage{max-width:1100px}
+.sm-map-stage .fv{box-shadow:0 30px 60px -40px rgba(7,12,24,.6)}
+
+/* 24 Sep: the 3D and the map side by side from 1280 up; the 3D pinned beside the scrolling map */
+.sm-map-duo{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start;margin-top:clamp(16px,2.6vh,26px)}   /* minmax(0): the canvas has an intrinsic width */
+@media(min-width:1280px){
+  .sm-map-duo{grid-template-columns:minmax(0,.5fr) minmax(0,.5fr);gap:clamp(18px,2vw,30px)}
+  .sm-map-duo .sm-map-stage{position:sticky;top:calc(var(--tbv,0px) + 80px);max-width:none;margin:0}
+  .sm-map-duo .fv .fab-view{aspect-ratio:4/3;max-height:none;min-height:0}
+  .sm-map-stage-cap{text-align:left}
+  /* the map in a narrower column: tighter gaps, smaller cards, the same lines */
+  .rx-compact .rx{padding:clamp(12px,1.2vw,18px)}
+  .rx-compact .rx-heads,.rx-compact .rx-cols{column-gap:clamp(16px,1.6vw,26px);grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr) minmax(0,.9fr) minmax(0,1.05fr)}
+  .rx-compact .rx-heads span{font-size:12px}
+  .rx-compact .rx-n{padding:7px 9px;gap:7px}
+  .rx-compact .rx-s .rx-n span{font-size:12.5px}
+  .rx-compact .rx-n .rx-mk{width:30px;height:30px}.rx-compact .rx-n .rx-mk svg{width:24px;height:24px}
+  .rx-compact .rx-u .rx-n{padding:10px 12px;gap:4px}
+  .rx-compact .rx-u .rx-n b{font-size:13.5px}
+  .rx-compact .rx-u-line,.rx-compact .rx-u-full{font-size:11.5px}
+  .rx-compact .rx-models em{font-size:10.5px;padding:4px 6px}
+  .rx-compact .rx-w .rx-n b{font-size:13.5px}.rx-compact .rx-w .rx-n small{font-size:11px}
+  .rx-compact .rx-y .rx-n{padding:5px 8px;font-size:11.5px}
+  .rx-compact .rx-read{padding:12px 14px}.rx-compact .rx-read p{font-size:13.5px}
+  .rx-compact .rx-vis{width:170px}.rx-compact .rx-vis img,.rx-compact .rx-vis-mk{height:96px}
+}
+
+/* ============================================================================
+   24 Sep · units: the short card, the iconised models, and the detail panel with its diagram
+   ============================================================================ */
+.sm-uc-body .sm-uc-spec{margin-top:16px}
+.sm-mi{display:inline-flex;align-items:center;gap:8px;padding:7px 10px 7px 8px;background:#fff;color:var(--ink);font:600 12.5px/1.2 "Switzer",sans-serif;letter-spacing:-.005em;box-shadow:inset 0 0 0 1.5px #0C1220}
+.sm-mi .mdl-ic{width:18px;height:18px;flex:none;color:var(--unit-t)}
+.sm-uc-acts{margin-top:auto;padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px}
+.sm-uc-acts .sm-uc-go{margin-top:0;padding-top:0}
+.sm-uc-more{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:0;cursor:pointer;background:var(--unit);color:#fff;font:600 14px/1 "Switzer",sans-serif;letter-spacing:-.006em;transition:background .2s}
+.sm-uc-more:hover{background:#C4141B}
+.sm-uc-more i{font-style:normal;font-weight:400;font-size:16px}
+.sm-uc.is-open{box-shadow:inset 0 0 0 2px var(--unit)}
+.sm-ud{grid-column:1/-1;background:#fff;padding:clamp(20px,2.6vw,34px);box-shadow:inset 0 0 0 2px var(--unit);animation:udIn .4s var(--e1) both}
+@keyframes udIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.sm-ud-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center}
+.sm-ud-head b{display:block;font:600 22px/1.1 "Switzer",sans-serif;letter-spacing:-.025em;color:var(--ink)}
+.sm-ud-head small{display:block;margin-top:3px;font:500 13px/1.3 "Instrument Sans",sans-serif;color:var(--soft)}
+.sm-ud-close{padding:9px 14px;border:0;cursor:pointer;background:#F3F6FB;color:var(--ink);font:600 13.5px/1 "Switzer",sans-serif}
+.sm-ud-close:hover{background:#E6EBF3}
+.sm-ud-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(20px,3vw,44px);margin-top:clamp(18px,2.6vh,28px);align-items:start}
+.sm-ud-dg h4{margin:0 0 10px;font:600 14px/1.2 "Switzer",sans-serif;color:var(--soft)}
+.ud-svg{width:100%;height:auto;display:block;background:#fff}
+.ud-svg .ud-t{font:600 13px "Switzer",sans-serif}
+.ud-svg .ud-s{font:500 10.5px "Instrument Sans",sans-serif}
+.ud-svg .ud-h{font:600 14px "Switzer",sans-serif}
+.sm-ud-what{margin:0;font-size:15px;line-height:1.55;color:var(--ink)}
+.sm-ud-spec{display:grid;gap:14px;margin:18px 0 0;padding:0}
+.sm-ud-spec>div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;align-items:start}
+.sm-ud-spec dt{font:600 12px/1.6 "Switzer",sans-serif;color:var(--faint)}
+.sm-ud-spec dd{margin:0;font-size:14px;line-height:1.5;color:var(--ink);display:flex;flex-wrap:wrap;gap:6px}
+.sm-ud-when{font:600 15px/1.4 "Switzer",sans-serif}
+.sm-ud-models{display:grid!important;gap:10px}
+.sm-ud-model{display:grid;gap:5px;justify-items:start}
+.sm-ud-model small{font-size:13px;line-height:1.45;color:var(--soft)}
+.sm-ud-note{flex-basis:100%;font-size:12.5px;color:var(--soft);margin-top:2px}
+.sm-ud-work{display:grid!important;gap:10px}
+.sm-ud-w{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;align-items:baseline}
+.sm-ud-w small{font-size:12.5px;color:var(--soft)}
+.sm-ud-sys{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px}
+.sm-ud-sys i{font-style:normal;font:500 11.5px/1.2 "Switzer",sans-serif;padding:4px 7px;background:color-mix(in srgb,var(--sys) 12%,#fff);color:var(--sys-t)}
+.sm-ud-asks{display:grid!important;gap:8px}
+.sm-ud-asks span{display:grid;gap:2px}
+.sm-ud-asks q{font:600 14px/1.4 "Switzer",sans-serif;quotes:"“" "”"}
+.sm-ud-asks small{font-size:12.5px;color:var(--soft)}
+.sm-ud .sm-uc-go{margin-top:22px;padding-top:0}
+@media(max-width:1100px){.sm-ud-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.sm-ud-spec>div{grid-template-columns:1fr;gap:4px}.sm-uc-acts{flex-direction:column;align-items:stretch}.sm-uc-more{justify-content:center}}
+@media(prefers-reduced-motion:reduce){.sm-ud{animation:none}}
+
+/* 24 Sep: the duo as one surface (Bazil: "must look great side by side, premium, part of the same view") */
+.sm-map-duo{background:#fff;padding:clamp(12px,1.4vw,20px);box-shadow:0 1px 2px rgba(12,18,32,.05),0 30px 60px -36px rgba(12,18,32,.35)}
+.rx-compact .rx{margin-top:0;padding:0;box-shadow:none;background:transparent}
+.sm-map-duo .fv{box-shadow:inset 0 0 0 1px rgba(12,18,32,.12)}
+/* the model's key: a list under the model, never a card over it */
+.sm-map-duo .fv .fab-legend{position:static;inset:auto;transform:none;width:auto;max-width:none;margin:0;padding:10px 12px;background:#fff;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px 6px;border-radius:0;box-shadow:inset 0 1px 0 rgba(12,18,32,.08);backdrop-filter:none}
+.sm-map-duo .fv .fab-legend li{padding:0;margin:0;background:none;box-shadow:none;border:0}
+.sm-map-duo .fv .fab-legend li button{width:100%;padding:6px 6px;font-size:11.5px}
+.sm-map-duo .fv .fab-legend li button span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sm-map-read{margin-top:12px;padding:14px 16px;background:#F3F6FB;display:flex;gap:14px;align-items:flex-start;min-height:96px}
+.sm-map-read .rx-vis{width:150px}
+.sm-map-read .rx-vis img,.sm-map-read .rx-vis-mk{height:90px}
+.sm-map-read p{margin:0;font-size:14px;line-height:1.55;color:var(--soft)}
+.sm-map-read p b{font-family:"Switzer",sans-serif;font-weight:600}
+.sm-map-read .c-u{color:var(--unit-t)}.sm-map-read .c-s{color:var(--svc-t)}.sm-map-read .c-w{color:var(--work-t)}.sm-map-read .c-y{color:var(--sys-t)}.sm-map-read .c-m{color:#0C1220}
+.sm-map-read .ab-x{display:none}
+.sm-map-hint{color:var(--soft)}
+@media(min-width:1280px){.sm-map-duo .sm-map-stage{top:calc(var(--tbv,0px) + 76px)}}
+@media(max-width:1279px){.sm-map-duo .fv .fab-legend{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:640px){.sm-map-duo .fv .fab-legend{grid-template-columns:repeat(2,minmax(0,1fr))}.sm-map-read{flex-direction:column}.sm-map-read .rx-vis{width:100%}}
+
+/* the model's key: two columns, full names */
+.sm-map-duo .fv .fab-legend{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sm-map-duo .fv .fab-legend li button{font-size:12.5px;padding:7px 8px}
+.sm-map-duo .fv .fab-legend li button span{white-space:normal;overflow:visible;text-overflow:clip}
+.sm-map-stage,.sm-map-read,.sm-map-duo .fv{min-width:0;max-width:100%}
+
+/* 24 Sep · the duo, quieter: no dotted grid beside the studio, thinner lines, the 3D framed by a hairline only */
+.rx-compact .rx,.rx-compact .rx-cols{background-image:none}
+.rx-compact .rx-e path{stroke-width:1.6}
+.sm-map-duo .fv{box-shadow:inset 0 0 0 1px rgba(12,18,32,.1)}
+.sm-map-read{background:#F7F8FA;box-shadow:inset 0 0 0 1px rgba(12,18,32,.08)}
+
+/* ============================================================================
+   24 Sep · the map in the studio grammar (Bazil: "please improve this, you have Pinterest"). From the boards: white node
+   cards on hairlines, grey type, thin grey connectors, and colour only on the lit chain. One surface with the 3D.
+   ============================================================================ */
+.sm-map-duo{padding:clamp(14px,1.6vw,24px);box-shadow:inset 0 0 0 1px rgba(12,18,32,.1);background:#fff}
+.sm-map-duo .fv{box-shadow:inset 0 0 0 1px rgba(12,18,32,.1)}
+.sm-map-read{margin-top:12px;padding:14px 16px;background:#fff;box-shadow:inset 0 0 0 1px rgba(12,18,32,.1);min-height:0;align-items:flex-start}
+.sm-map-mk{display:grid;place-items:center;flex:none;width:56px;height:56px}
+.sm-map-mk svg{width:52px;height:52px;display:block}
+.sm-map-read p{font-size:13.5px;line-height:1.55;color:#48536A}
+/* heads */
+.rx-compact .rx-heads span{font:600 11.5px/1 "Switzer",sans-serif;color:#66708A;padding-bottom:12px}
+.rx-compact .rx-heads i{width:7px;height:7px}
+/* nodes: white, hairline, ink; lit: a coloured hairline; picked: filled */
+.rx-compact .rx-n,.rx-compact .rx-n.on{background:#fff;box-shadow:inset 0 0 0 1px #E3E8F0;transition:opacity .25s,box-shadow .25s,background .25s,color .25s}
+.rx-compact .rx-n:hover{box-shadow:inset 0 0 0 1px #0C1220;transform:none}
+.rx-compact .rx-n.on{box-shadow:inset 0 0 0 1.5px var(--c)}
+.rx-compact .rx-n.me{background:var(--c);color:#fff;box-shadow:none}
+.rx-compact .rx.has .rx-n.off{opacity:.38}
+.rx-compact .rx-n svg{color:#66708A}
+.rx-compact .rx-n.on svg{color:var(--c-t)}
+.rx-compact .rx-no{color:#66708A}
+.rx-compact .rx-n.on .rx-no{color:var(--c-t)}
+.rx-compact .rx-n .rx-mk{box-shadow:none;background:transparent;width:32px;height:32px}
+.rx-compact .rx-n .rx-mk svg{width:28px;height:28px}
+.rx-compact .rx-u-top i{color:#66708A}.rx-compact .rx-n.on .rx-u-top i{color:var(--c-t)}
+.rx-compact .rx-models em{background:#fff;color:#0C1220;box-shadow:inset 0 0 0 1px #C9D2DE;border-radius:0;font-weight:500}
+.rx-compact .rx-n.me .rx-models em{color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}
+.rx-compact .rx-y .rx-n svg{color:#8A94A6}.rx-compact .rx-y .rx-n.on svg{color:var(--sys-t)}
+/* connectors: thin, grey at rest, colour when lit; small hollow dots */
+.rx-compact .rx-e path{stroke-width:1.3}
+.rx-compact .rx-e circle{r:2.4;stroke-width:1.3;fill:#fff}
+.rx-compact .rx-e.k-s path{stroke:var(--svc)}.rx-compact .rx-e.k-s circle{stroke:var(--svc)}
+.rx-compact .rx-e.k-w path{stroke:var(--work)}.rx-compact .rx-e.k-w circle{stroke:var(--work)}
+.rx-compact .rx-e.k-y path{stroke:var(--sys)}.rx-compact .rx-e.k-y circle{stroke:var(--sys)}
+.rx-compact .rx-e.ask path{stroke-dasharray:4 4;opacity:.9}
+.rx-compact .rx-cols{row-gap:0}
+.rx-compact .rx-col{gap:6px}
+.rx-compact .rx-y{gap:4px}
+@media(prefers-reduced-motion:reduce){.rx-compact .rx-n{transition:none}}
+
+.sm-map-duo .fv{box-shadow:none}
+
+/* the model's key inside the dark card (this file outranks fab-driven.css for the same selector) */
+.sm-map-duo .fv .fab-legend{background:#1A1F27;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+
+/* ============================================================================
+   24 Sep, late · the dark banner (3D + map), the flow band, the units compared, the map's fit
+   ============================================================================ */
+/* the banner: the whole section is the dark ground; the 3D and the map sit inside it as one interface */
+.sm-map-dark{background:#0F1319;color:#E6EAF0;padding-top:clamp(36px,5vh,64px);padding-bottom:clamp(40px,6vh,72px)}
+.sm-map-dark .sm-map-head{max-width:860px;margin-bottom:clamp(18px,2.6vh,28px)}
+.sm-map-dark h1{margin:0;font:600 clamp(36px,4.6vw,62px)/1.02 "Switzer",sans-serif;letter-spacing:-.035em;color:#fff}
+.sm-map-dark h1 em{font-style:normal;color:#FF4D55;white-space:nowrap}
+.sm-map-dark .pg-lede{color:rgba(255,255,255,.72);max-width:60ch}
+.sm-map-dark .sm-key{margin-top:0}
+.sm-map-dark .sm-key span{color:rgba(255,255,255,.7)}
+.sm-map-dark .sm-map-duo{background:transparent;padding:0;box-shadow:none;margin-top:clamp(14px,2vh,22px)}
+.sm-map-dark .fv{box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.sm-map-dark .sm-map-read{background:#1A1F27;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);gap:12px}
+.sm-map-dark .sm-map-read p{color:rgba(255,255,255,.78)}
+.sm-map-dark .sm-map-read p b{color:#fff}
+.sm-map-dark .sm-map-read .c-u{color:#FF6A70}.sm-map-dark .sm-map-read .c-s{color:#5CBCF5}.sm-map-dark .sm-map-read .c-w{color:#FFFFFF}.sm-map-dark .sm-map-read .c-y{color:#4DDB93}.sm-map-dark .sm-map-read .c-m{color:#fff}
+.sm-map-dark .sm-map-hint{color:rgba(255,255,255,.6)}
+.sm-map-more{margin-top:6px!important;font-size:12.5px!important;color:rgba(255,255,255,.55)!important}
+.sm-map-ic{display:grid;place-items:center;flex:none;width:40px;height:40px;background:#242A34;color:#5CBCF5}
+.sm-map-ic svg{width:20px;height:20px}
+/* the map on the dark ground: dark cards, light type, the same coloured lines, brighter tints of the key colours */
+.sm-map-dark .sm-map-in{--unit:#3AA9EC;--unit-t:#5CBCF5;--svc:#FF4D55;--svc-t:#FF6A70;--work:#FFFFFF;--work-t:#FFFFFF;--sys:#2ECC7F;--sys-t:#4DDB93}
+.sm-map-dark .rx-compact .rx-heads span{color:rgba(255,255,255,.6)}
+.sm-map-dark .rx-compact .rx-n,.sm-map-dark .rx-compact .rx-n.on{background:#1A1F27;color:#E6EAF0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.sm-map-dark .rx-compact .rx-n:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
+.sm-map-dark .rx-compact .rx-n.on{background:color-mix(in srgb,var(--c) 16%,#1A1F27);box-shadow:inset 0 0 0 1.5px var(--c)}
+.sm-map-dark .rx-compact .rx-n.me{background:var(--c);color:#fff;box-shadow:none}
+.sm-map-dark .rx-compact .rx.has .rx-n.off{opacity:.3}
+.sm-map-dark .rx-compact .rx-n svg{color:rgba(255,255,255,.6)}
+.sm-map-dark .rx-compact .rx-n.on svg{color:var(--c-t)}
+.sm-map-dark .rx-compact .rx-no,.sm-map-dark .rx-compact .rx-u-top i{color:rgba(255,255,255,.5)}
+.sm-map-dark .rx-compact .rx-n.on .rx-no,.sm-map-dark .rx-compact .rx-n.on .rx-u-top i{color:var(--c-t)}
+.sm-map-dark .rx-compact .rx-u-full,.sm-map-dark .rx-compact .rx-u-line,.sm-map-dark .rx-compact .rx-w .rx-n small{color:rgba(255,255,255,.6)}
+.sm-map-dark .rx-compact .rx-n.me .rx-u-full,.sm-map-dark .rx-compact .rx-n.me .rx-u-line,.sm-map-dark .rx-compact .rx-n.me small{color:rgba(255,255,255,.85)!important}
+.sm-map-dark .rx-compact .rx-models em{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.sm-map-dark .rx-compact .rx-e circle{fill:#0F1319}
+.sm-map-dark .rx-compact .rx-y .rx-n svg{color:rgba(255,255,255,.45)}.sm-map-dark .rx-compact .rx-y .rx-n.on svg{color:var(--sys-t)}
+/* the map's cards: the text wraps inside the card at every width (Bazil: "overlapping looks horrible") */
+.rx-n>span,.rx-n b,.rx-n small{min-width:0;overflow-wrap:anywhere}
+.rx-compact .rx-s .rx-n{padding:7px 8px;gap:7px}
+.rx-compact .rx-s .rx-n svg{width:15px;height:15px}
+.rx-compact .rx-s .rx-n span{font-size:12px}
+@media(min-width:1280px){.sm-map-dark .sm-map-duo{grid-template-columns:minmax(0,.46fr) minmax(0,.54fr)}}
+/* the flow band */
+.sm-flow{background:#fff}
+.sm-flow h2 em{font-style:normal;color:var(--blue);white-space:nowrap}
+/* the units compared */
+.sm-uc-more3-row{display:flex;justify-content:center;margin-top:18px}
+.sm-uc3{margin-top:18px;background:#fff;padding:clamp(20px,2.6vw,34px);box-shadow:inset 0 0 0 2px var(--unit);animation:udIn .4s var(--e1) both}
+.sm-uc3-head{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.sm-uc3-head h3{margin:0;font:600 clamp(22px,2.2vw,30px)/1.1 "Switzer",sans-serif;letter-spacing:-.025em;color:var(--ink)}
+.sm-uc3-head h3 em{font-style:normal;color:var(--blue)}
+.sm-uc3-dg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:clamp(18px,2.6vh,28px)}
+.sm-uc3-dg figure{margin:0;padding:12px;background:#F7F9FC}
+.sm-uc3-dg figcaption{display:flex;align-items:center;gap:10px;margin-bottom:10px;font:600 15px/1.2 "Switzer",sans-serif;color:var(--ink)}
+.sm-uc3-dg figcaption .sm-uc-mark{width:30px;height:30px}.sm-uc3-dg figcaption .sm-uc-mark svg{width:16px;height:16px}
+.sm-uc3-dg figcaption small{font:500 12px/1.2 "Instrument Sans",sans-serif;color:var(--soft)}
+.sm-uc3-wrap{overflow-x:auto;margin-top:clamp(18px,2.6vh,28px)}
+.sm-uc3-t{width:100%;min-width:820px;border-collapse:separate;border-spacing:0;font-size:13.5px;line-height:1.5}
+.sm-uc3-t th,.sm-uc3-t td{padding:12px 14px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line,#E3E8F0)}
+.sm-uc3-t thead th{background:#F7F9FC;vertical-align:middle}
+.sm-uc3-t thead th b{display:block;font:600 17px/1.15 "Switzer",sans-serif;letter-spacing:-.015em;color:var(--ink);margin-top:8px}
+.sm-uc3-t thead th small{display:block;font:500 12px/1.3 "Instrument Sans",sans-serif;color:var(--soft);margin-top:2px}
+.sm-uc3-t thead th .sm-uc-mark{width:34px;height:34px}.sm-uc3-t thead th .sm-uc-mark svg{width:18px;height:18px}
+.sm-uc3-corner{font:500 12.5px/1.2 "Switzer",sans-serif;color:var(--soft)}
+.sm-uc3-t tbody th{width:132px;font:600 12.5px/1.5 "Switzer",sans-serif;color:var(--faint);background:#F7F9FC;white-space:nowrap}
+.sm-uc3-t td{color:var(--ink)}
+.sm-uc3-t td .sm-svc6,.sm-uc3-t td .sm-ud-work,.sm-uc3-t td .sm-ud-asks,.sm-uc3-t td .sm-uc3-models{display:grid;gap:6px}
+.sm-uc3-t td .sm-svc6{display:flex;flex-wrap:wrap}
+.sm-uc3-when{font:600 14.5px/1.45 "Switzer",sans-serif}
+.sm-uc3-go{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:20px}
+.sm-uc3-go .sm-uc-go{margin:0;padding:0}
+@media(max-width:1100px){.sm-uc3-dg{grid-template-columns:1fr}}
+
+/* 24 Sep · the isometric family (components/IsoIcon.jsx) */
+.rx-iso{width:34px;height:34px;flex:none}
+.rx-iso-u{width:40px;height:40px}
+.rx-iso-y{width:24px;height:24px}
+.rx-compact .rx-iso{width:30px;height:30px}.rx-compact .rx-iso-u{width:36px;height:36px}.rx-compact .rx-iso-y{width:22px;height:22px}
+.sm-uc-mark.sm-uc-iso{background:#F3F6FB;color:inherit}
+.sm-uc-mark.sm-uc-iso svg{width:34px;height:34px}
+.sm-uc h3 .sm-uc-mark.sm-uc-iso{width:48px;height:48px}
+.sm-map-ic{width:52px;height:52px;background:rgba(255,255,255,.06)}
+.sm-map-ic svg{width:44px;height:44px}
+.of-iso{width:36px;height:36px;grid-row:2}
+.of-tabs button.on .of-iso polygon,.of-tabs button.on .of-iso ellipse{filter:brightness(1.05)}
+
+/* ============================================================================
+   24 Sep, later · the banner is IAQ's own model on the dark ground (no box), the interface named, the reading under
+   the map, bigger isometric icons
+   ============================================================================ */
+.sm-map-dark h1{font:600 clamp(24px,2.4vw,32px)/1.15 "Switzer",sans-serif;letter-spacing:-.02em;color:#fff;margin:0}
+.sm-map-sub{margin:8px 0 0;font-size:15px;line-height:1.5;color:rgba(255,255,255,.66);max-width:64ch}
+.sm-map-dark .sm-map-head{margin-bottom:clamp(14px,2vh,22px)}
+.sm-map-dark .sm-map-head .sm-key{margin-top:14px}
+/* 25 Sep (Bazil's capture at a tablet width: the model riding over the map cards): the stage is sticky ONLY when the map
+   stands beside it (1280 up). Stacked, it is a plain block above the map. */
+@media(min-width:1280px){.sm-map-dark .sm-map-stage{position:sticky;top:calc(var(--tbv,0px) + 76px)}}
+@media(max-width:1279px){.sm-map-dark .sm-map-stage,.sm-map-duo .sm-map-stage{position:static!important;top:auto}}
+/* 25 Sep: the box is squarer than the frame and the frame covers it, so the empty sides go and the model fills the
+   column (FabStage remaps the pins by the same crop) */
+.sm-map-dark .fx-view.fx-dark{background:transparent;aspect-ratio:1.35;overflow:visible}
+.sm-map-dark .fx-view.fx-dark img{object-fit:cover;object-position:50% 50%}
+.sm-map-dark .fx-dark .fx-frame{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)}
+.sm-map-dark .fx-dark .fx-pin i{box-shadow:0 0 0 2px rgba(15,19,25,.9)}
+.sm-map-dark .fx-dark .fx-pin b{background:#fff;color:#0C1220}
+.sm-map-dark .fx-dark .fx-pin.dim{opacity:.35}
+.sm-map-side{display:grid;gap:14px;min-width:0}
+.sm-map-dark .sm-map-read{margin-top:0}
+@media(min-width:1280px){.sm-map-dark .sm-map-duo{grid-template-columns:minmax(0,.5fr) minmax(0,.5fr);align-items:start}}
+.rx-iso{width:40px;height:40px}
+.rx-iso-u{width:46px;height:46px}
+.rx-iso-y{width:26px;height:26px}
+.rx-compact .rx-iso{width:38px;height:38px}.rx-compact .rx-iso-u{width:44px;height:44px}.rx-compact .rx-iso-y{width:26px;height:26px}
+.rx-compact .rx-s .rx-n{padding:8px 10px;gap:9px}
+.rx-compact .rx-s .rx-n span{font-size:12.5px}
+
+/* ============================================================================
+   24 Sep · the units as one board (components/UnitsBoard.jsx); 25 Sep: no label column, each cell captioned, calm
+   ============================================================================ */
+.sm-ub{margin-top:clamp(24px,3.4vh,40px);background:#fff;box-shadow:inset 0 0 0 1px rgba(12,18,32,.08)}
+.sm-ub-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line,#E3E8F0)}
+.sm-ub-top{border-top:0}
+.sm-ub-cell{padding:18px 22px;min-width:0;font-size:14.5px;line-height:1.55;color:var(--ink)}
+.sm-ub-cell+.sm-ub-cell{border-left:1px solid var(--line,#E3E8F0)}
+.sm-ub-k{display:block;font:600 12px/1.3 "Switzer",sans-serif;color:var(--faint);margin-bottom:6px}
+.sm-ub-head{padding:0 0 22px}
+.sm-ub-head .sm-uc-pic{aspect-ratio:16/9;margin:0}
+.sm-ub-head .sm-uc-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.sm-ub-head>.sm-ub-k{margin:16px 22px 6px}
+.sm-ub-head h3{margin:0 22px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center;font:600 22px/1.1 "Switzer",sans-serif;letter-spacing:-.025em}
+.sm-ub-head h3 small{grid-column:2;font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:var(--soft);letter-spacing:0;margin-top:3px}
+.sm-ub-head .sm-uc-line{margin:12px 22px 0}
+.sm-ub .sm-uc3-when{font-weight:600}
+.sm-ub-models{display:flex;flex-wrap:wrap;gap:8px}
+.sm-ub .sm-mi{display:inline-flex;align-items:center;gap:7px;padding:7px 11px 7px 9px;background:#F1F4F8;font:600 13px/1 "Switzer",sans-serif;color:var(--ink);border:0;box-shadow:none}
+.sm-ub .sm-mi svg{width:15px;height:15px}
+.sm-ub .sm-ud-model{display:grid;gap:6px;width:100%}
+.sm-ub .sm-ud-model small{font-size:13px;line-height:1.5;color:var(--soft)}
+.sm-ub-dg{background:#F7F9FC;padding:12px}
+.sm-ub .ud-svg{width:100%;height:auto;display:block}
+.sm-ub .sm-svc6{display:flex;flex-wrap:wrap;gap:6px}
+.sm-ub .sm-ud-note{display:block;width:100%;margin-top:6px;font-size:12.5px;color:var(--soft)}
+.sm-ub .sm-ud-work,.sm-ub .sm-ud-asks{display:grid;gap:10px}
+.sm-ub .sm-ud-asks q{quotes:"\201C" "\201D";display:block;font-weight:600}
+.sm-ub .sm-ud-asks small{color:var(--soft);font-size:12.5px}
+.sm-ub-foot .sm-ub-cell{padding:14px 22px}
+.sm-ub-foot .sm-uc-go{margin:0;padding:0}
+.sm-ub-more{display:flex;justify-content:center;padding:16px;border-top:1px solid var(--line,#E3E8F0);background:#F7F9FC}
+.sm-ub-more .sm-uc-more{padding:11px 16px;font-size:13.5px}
+/* 25 Sep: under 720 the board shows ONE unit (the tab row picks it), so nothing scrolls sideways */
+.sm-ub-tabs{display:none}
+@media(max-width:719px){
+  .sm-ub-tabs{display:grid;grid-template-columns:repeat(3,1fr);background:#F1F4F8}
+  .sm-ub-tabs button{border:0;background:transparent;padding:12px 6px;font:600 13.5px/1.2 "Switzer",sans-serif;color:var(--soft);cursor:pointer}
+  .sm-ub-tabs button.on{color:#fff;background:#EC2027}
+  .sm-ub-row{grid-template-columns:minmax(0,1fr)}
+  .sm-ub-cell:not(.on){display:none}
+  .sm-ub-cell+.sm-ub-cell{border-left:0}
+  .sm-ub-cell{padding:14px 16px}
+  .sm-ub-head{padding:0 0 16px}
+  .sm-ub-head>.sm-ub-k,.sm-ub-head h3,.sm-ub-head .sm-uc-line{margin-left:16px;margin-right:16px}
+}
+
+
+/* the isometric icons in the map: bigger (Bazil: "icons should be bigger"); these outrank the 15px/18px rules above */
+.rx-compact .rx-s .rx-n svg.rx-iso,.rx-compact .rx-n svg.rx-iso{width:38px;height:38px}
+.rx-compact .rx-u .rx-n svg.rx-iso-u,.rx-compact .rx-n svg.rx-iso-u{width:44px;height:44px}
+.rx-compact .rx-y .rx-n svg.rx-iso-y,.rx-compact .rx-n svg.rx-iso-y{width:26px;height:26px}
+.rx-n svg.rx-iso{width:40px;height:40px}.rx-n svg.rx-iso-u{width:46px;height:46px}.rx-y .rx-n svg.rx-iso-y{width:26px;height:26px}
+
+/* the model's stage on the dark ground: no auto margins (in a grid they shrank it to its content, which is absolutely
+   positioned, so the stage was 0 wide under 1280); the model takes more of the row from 1280 up */
+.sm-map-dark .sm-map-stage{margin:0;max-width:none;width:100%}
+@media(min-width:1280px){.sm-map-dark .sm-map-duo{grid-template-columns:minmax(0,.56fr) minmax(0,.44fr)}}
+@media(min-width:1600px){.sm-map-dark .sm-map-duo{grid-template-columns:minmax(0,4fr) minmax(0,3fr)}}
+/* service cards in the compact map: number and icon on one line, the name on its own line at full width; words
+   never break mid-word */
+.rx-compact .rx-s .rx-n{flex-wrap:wrap;gap:6px 8px;padding:9px 10px}
+.rx-compact .rx-s .rx-n>span{flex:1 0 100%;overflow-wrap:normal;hyphens:manual}
+.rx-compact .rx-u .rx-n>span,.rx-compact .rx-u .rx-n b{overflow-wrap:normal}
+
+/* the work cards in the compact map: icon on its own line, the name and bracket at full width, no mid-word breaks */
+.rx-compact .rx-w .rx-n{flex-wrap:wrap;gap:6px 8px;padding:9px 10px}
+.rx-compact .rx-w .rx-n>*:not(svg){flex:1 0 100%;min-width:0}
+.rx-compact .rx-w .rx-n *{overflow-wrap:normal;hyphens:manual}
+.rx-compact .rx-y .rx-n *{overflow-wrap:normal}
+
+/* 24 Sep, late (Bazil: "don't put the 3D in a box, take the whole space, leave space for the info around it"): from 1280 the
+   model has six tenths of the row and runs to the left edge of the page; the map and the reading sit to its right */
+/* 25 Sep (Bazil: "the map half, the 3D the other half, or maybe 3/7"): the model has four sevenths, the map three */
+@media(min-width:1280px){
+  .sm-map-dark .sm-map-duo{grid-template-columns:minmax(0,4fr) minmax(0,3fr);gap:clamp(18px,2vw,32px)}
+  .sm-map-dark .sm-map-stage{margin-left:calc(0px - var(--gut,24px));width:calc(100% + var(--gut,24px))}
+}
+
+/* 25 Sep · the compact map on a tablet (under 980): services top left, units on the right across two rows, work under
+   the services, systems as a two-column list across the full width. The old 2 x 2 auto grid stretched the three work
+   cards over the height of the systems column (Bazil's capture: the Work column full of gaps). */
+@media(max-width:980px){
+  .rx-compact .rx-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"s u" "w u" "y y";row-gap:18px;align-items:start}
+  .rx-compact .rx-col{justify-content:flex-start}
+  .rx-compact .rx-s{grid-area:s}.rx-compact .rx-u{grid-area:u}.rx-compact .rx-w{grid-area:w}
+  .rx-compact .rx-y{grid-area:y;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .rx-compact .rx-y::before{grid-column:1/-1}
+}
+@media(max-width:560px){
+  .rx-compact .rx-cols{grid-template-columns:minmax(0,1fr);grid-template-areas:"s" "u" "w" "y"}
+  .rx-compact .rx-y{grid-template-columns:minmax(0,1fr)}
+}
+
+/* 25 Sep (Bazil: "didn't I say use flat icon here"): the map's icons are the flat line set, in the kind's colour */
+.rx-fi{width:22px;height:22px;flex:none;color:var(--c-t)}
+.rx-fi-u{width:26px;height:26px}
+.rx-fi-y{width:18px;height:18px}
+.rx-compact .rx-n svg.rx-fi{width:22px;height:22px;color:var(--c-t)}
+.rx-compact .rx-n svg.rx-fi-u{width:26px;height:26px}
+.rx-compact .rx-y .rx-n svg.rx-fi-y{width:18px;height:18px;color:var(--sys-t)}
+.sm-map-dark .rx-compact .rx-n svg.rx-fi{color:var(--c-t)}
+.sm-map-dark .rx-compact .rx-y .rx-n svg.rx-fi-y{color:var(--sys-t)}
+.sm-map-dark .sm-map-ic svg{width:28px;height:28px}
+.sm-map-ic.k-s{color:var(--svc-t)}.sm-map-ic.k-u{color:var(--unit-t)}.sm-map-ic.k-w{color:var(--work-t)}.sm-map-ic.k-y{color:var(--sys-t)}
+.fr-lab-ic{width:15px;height:15px;color:var(--c)}
+
+/* ============================================================================
+   25 Sep, night (Bazil: "icons not in a box, just blue icons", "make sure the vertical alignment is correct", "represent
+   the info in a more premium way"): the unit number sits on the photograph, the icon stands blue with no box, the
+   three heads share one grid so name, line and rows sit level, the type has room
+   ============================================================================ */
+.sm-ub-head{display:flex;flex-direction:column;padding:0 0 26px}
+.sm-ub-head .sm-uc-pic{position:relative;aspect-ratio:16/9;margin:0}
+.sm-ub-head .sm-uc-pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,18,32,0) 45%,rgba(12,18,32,.55) 100%)}
+.sm-ub-no{position:absolute;left:22px;bottom:16px;z-index:1;display:flex;align-items:baseline;gap:10px;font:600 13px/1 "Switzer",sans-serif;color:#fff}
+.sm-ub-no i{font-style:normal;font-weight:500;color:rgba(255,255,255,.72)}
+.sm-ub-head h3{margin:22px 22px 0;display:grid;grid-template-columns:44px 1fr;grid-template-rows:auto;column-gap:14px;align-items:start;min-height:64px;font:600 24px/1.05 "Switzer",sans-serif;letter-spacing:-.025em}
+.sm-ub-head h3 .sm-uc-mark{grid-row:auto;width:44px;height:44px;background:transparent;color:var(--unit,#0B8FD8)}
+.sm-ub-head h3 .sm-uc-mark svg{width:40px;height:40px;stroke-width:1.05}
+.sm-ub-nm{display:grid;gap:5px}
+.sm-ub-head h3 small{grid-column:auto;display:block;font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:var(--soft);letter-spacing:0;margin:0;min-height:2.6em}
+.sm-ub-head .sm-uc-line{margin:14px 22px 0;font:600 19px/1.3 "Switzer",sans-serif;letter-spacing:-.015em;color:var(--ink)}
+.sm-ub-cell{padding:22px 22px 24px}
+.sm-ub-k{font:600 12px/1.3 "Switzer",sans-serif;color:var(--faint);margin-bottom:10px}
+.sm-ub .sm-uc3-when{font:500 16px/1.5 "Instrument Sans",sans-serif;color:var(--ink)}
+.sm-ub .sm-mi{background:transparent;box-shadow:inset 0 0 0 1px rgba(12,18,32,.14);color:var(--ink);padding:8px 12px 8px 10px}
+.sm-ub .sm-mi svg{color:var(--unit,#0B8FD8)}
+.sm-ub-top .sm-ub-cell{padding:0 0 26px}
+.sm-ub-foot .sm-uc-go{font-size:15px}
+
+/* ============================================================================
+   25 Sep, night (Bazil: "something dynamic maybe?", a reference of coloured cards with a cut corner, "dark blue, blue,
+   light blue"): the three heads are coloured cards, the photograph on top, a corner cut top left and bottom right, a
+   lift and a slow zoom on hover; the rows below keep the three columns with the same gap
+   ============================================================================ */
+.sm-ub{background:transparent;box-shadow:none}
+.sm-ub-row{gap:clamp(14px,1.6vw,22px);border-top:0}
+.sm-ub-cell{background:#fff;border-left:0}
+.sm-ub-cell+.sm-ub-cell{border-left:0}
+.sm-ub-row+.sm-ub-row .sm-ub-cell{border-top:1px solid var(--line,#E3E8F0)}
+.sm-ub-top .sm-ub-cell{border-top:0}
+/* 25 Sep, night (Bazil: "not too dark blue and not too light blue"): three mid blues, white type on all three */
+.sm-ub-head{--uc:#1F4F9E;--ut:#fff;--um:rgba(255,255,255,.72);background:var(--uc);color:var(--ut);clip-path:polygon(11% 0,100% 0,100% 91%,89% 100%,0 100%,0 9%);transition:transform .5s var(--e1),box-shadow .5s var(--e1)}
+.sm-ub-head:nth-child(2){--uc:#2364C2}
+.sm-ub-head:nth-child(3){--uc:#2A7BDA}
+.sm-ub-head:hover{transform:translateY(-4px)}
+.sm-ub-head .sm-uc-pic{background:#0C1220}
+.sm-ub-head .sm-uc-pic::after{background:linear-gradient(180deg,rgba(12,18,32,0) 55%,rgba(12,18,32,.45) 100%)}
+.sm-ub-head .sm-uc-pic img{transition:transform 1.6s var(--e1)}
+.sm-ub-head:hover .sm-uc-pic img{transform:scale(1.06)}
+.sm-ub-head h3{color:var(--ut)}
+.sm-ub-head h3 .sm-uc-mark{color:var(--ut)}
+.sm-ub-head h3 small{color:var(--um)}
+.sm-ub-head .sm-uc-line{color:var(--ut);margin-bottom:8px}
+.sm-ub-more{border-top:0;background:transparent;padding-top:22px}
+@media(max-width:719px){.sm-ub-row{gap:0}.sm-ub-row+.sm-ub-row .sm-ub-cell{border-top:1px solid var(--line,#E3E8F0)}}
+
+/* the flows (components/UnitFlows.jsx): boxes of text that wrap, arrows by CSS, the unit's colour on the active steps */
+.uf{display:grid;gap:18px}
+.uf-t{margin:0 0 8px;font:600 13.5px/1.35 "Switzer",sans-serif;color:var(--ink)}
+.uf-t span{display:block;font:400 12.5px/1.4 "Instrument Sans",sans-serif;color:var(--soft);margin-top:2px}
+.uf-steps{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:stretch;gap:8px 22px}
+.uf-step{position:relative;display:grid;gap:3px;padding:8px 10px;background:#F1F4F8;min-width:0;max-width:100%}
+.uf-step b{font:600 12.5px/1.25 "Switzer",sans-serif;color:var(--ink)}
+.uf-step small{font:400 11.5px/1.35 "Instrument Sans",sans-serif;color:var(--soft)}
+.uf-step.on{background:var(--unit,#0B8FD8);color:#fff}
+.uf-step.on b,.uf-step.on small{color:#fff}.uf-step.on small{color:rgba(255,255,255,.78)}
+.uf-step.dashed{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(12,18,32,.18);outline:1.5px dashed rgba(12,18,32,.3);outline-offset:-1.5px}
+.uf-step+.uf-step::before,.uf-group+.uf-step::before,.uf-step+.uf-group::before{content:"";position:absolute;left:-16px;top:50%;width:10px;height:1.5px;background:#9AA3AF}
+.uf-step+.uf-step::after,.uf-group+.uf-step::after,.uf-step+.uf-group::after{content:"";position:absolute;left:-9px;top:50%;width:5px;height:5px;border-right:1.5px solid #9AA3AF;border-top:1.5px solid #9AA3AF;transform:translateY(-50%) rotate(45deg)}
+.uf-group{position:relative;display:grid;gap:4px;padding:16px 8px 8px;box-shadow:inset 0 0 0 1.5px var(--unit,#0B8FD8)}
+.uf-group-l{position:absolute;left:8px;top:2px;font:600 10.5px/1.2 "Switzer",sans-serif;color:var(--unit-t,#0772AE)}
+.uf-inner{gap:8px 18px}
+.uf-inner .uf-step+.uf-step::before{left:-13px;width:8px}.uf-inner .uf-step+.uf-step::after{left:-8px}
+.uf-gains{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.uf-gains li{padding:6px 10px;font:500 12.5px/1.2 "Instrument Sans",sans-serif;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(12,18,32,.14)}
+.sm-ub .uf{--unit:#0B8FD8;--unit-t:#0772AE}
+
+/* 25 Sep, night (Bazil: "don't put icon in a box", "should have icon for each", "refine all the icons") */
+.sm-map-dark .sm-map-ic,.sm-map-ic{background:transparent;width:44px;height:44px}
+.sm-map-dark .sm-map-ic svg{width:40px;height:40px;stroke-width:1.05}
+.sm-key svg,.rx-heads svg{width:18px;height:18px;flex:none;color:currentColor;opacity:.85}
+.sm-key .k-u svg{color:var(--unit-t)}.sm-key .k-s svg{color:var(--svc-t)}.sm-key .k-w svg{color:var(--work-t)}.sm-key .k-y svg{color:var(--sys-t)}.sm-key .k-m svg{color:#fff}
+.sm-map-dark .sm-key{color:rgba(255,255,255,.7)}
+.rx-heads span{gap:7px}
+.rx-compact .rx-n svg.rx-fi{width:26px;height:26px;stroke-width:1.1}
+.rx-compact .rx-n svg.rx-fi-u{width:30px;height:30px}
+.rx-compact .rx-y .rx-n svg.rx-fi-y{width:22px;height:22px;stroke-width:1.15}
+
+/* 25 Sep (Bazil, on the model while the map scrolled away: "this should move when scrolling"): the stage is sticky
+   under the nav for the height of the map column. The duo aligns start so the stage keeps its own height, which is
+   what lets sticky work in a grid; the reading moved above the map the same day, so the model faces the reading. */
+.sm-map-duo{align-items:start}
+.sm-map-stage{position:sticky;top:calc(var(--tbv,0px) + 96px)}
+.sm-map-dark .sm-map-read{margin-top:0}
+@media(max-width:1100px){.sm-map-stage{position:static}}
+/* 25 Sep (Bazil: "this should move when scrolling"): the stage was 748px tall in a 995px column, so the sticky range was
+   250px and the model left with the page. A wider frame (1.75, the model is a long box) halves the dead ground under it
+   and gives the stage about 400px of hold beside the map. */
+.sm-map-dark .sm-map-stage .fr{aspect-ratio:1.75;min-height:300px}
+/* 25 Sep (Bazil: "make the box lines more refined"): hairlines at rest a shade fainter, the lit card a single 1px line
+   in its kind's colour instead of 1.5px, the model chips on a quieter hairline, the reading box the same. */
+.sm-map-dark .rx-compact .rx-n{box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.sm-map-dark .rx-compact .rx-n:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.26)}
+.sm-map-dark .rx-compact .rx-n.on{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 72%,transparent)}
+.sm-map-dark .rx-compact .rx-n.me{box-shadow:none}
+.sm-map-dark .rx-compact .rx-models em{box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.sm-map-dark .sm-map-read{box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+
+/* 25 Sep, night (Bazil: "aligned same level", twice): the head row is the name and line left, the reading right, from
+   one top; the model's box is wide, so the model's top sits level with the map's first row */
+.sm-map-dark .sm-map-head-row{max-width:none;display:grid;grid-template-columns:minmax(0,1fr);gap:18px;align-items:start;margin-bottom:clamp(18px,2.6vh,28px)}
+.sm-map-dark .sm-map-head-row .sm-map-read{margin-top:0;min-height:0}
+.sm-map-dark .sm-map-head-l{max-width:64ch}
+@media(min-width:1280px){
+  .sm-map-dark .sm-map-head-row{grid-template-columns:minmax(0,4fr) minmax(0,3fr);gap:clamp(18px,2vw,32px)}
+  .sm-map-dark .sm-map-head-row .sm-map-read{align-self:start}
+}
+.fr{aspect-ratio:1.7;min-height:280px}
+@media(max-width:560px){.fr{aspect-ratio:1.3}}
+
+/* 25 Sep, night (Bazil: "instead of having the tagging have an outline, just add a certain transparent background;
+   lines too much, looks messy"): no outlines in the map. A card is a translucent fill at rest, a fuller tint of its
+   kind when related, the kind's solid when picked; the model chips are tints; the hairlines are gone */
+.sm-map-dark .rx-compact .rx-n,.sm-map-dark .rx-compact .rx-n.on,.sm-map-dark .rx-compact .rx-n.me{box-shadow:none;outline:0}
+.sm-map-dark .rx-compact .rx-n{background:rgba(255,255,255,.05)}
+.sm-map-dark .rx-compact .rx-n:hover{background:rgba(255,255,255,.1);box-shadow:none}
+.sm-map-dark .rx-compact .rx-n.on{background:color-mix(in srgb,var(--c) 22%,transparent)}
+.sm-map-dark .rx-compact .rx-n.me{background:var(--c)}
+.sm-map-dark .rx-compact .rx-models em{background:rgba(255,255,255,.1);box-shadow:none;border:0;color:#fff}
+.sm-map-dark .rx-compact .rx-n.me .rx-models em{background:rgba(255,255,255,.22)}
+.sm-map-dark .rx-compact .rx-n.on .rx-models em{background:rgba(255,255,255,.12)}
+.sm-map-dark .sm-map-read{box-shadow:none;background:rgba(255,255,255,.06)}
+
+/* 25 Sep, night: the facility map banner relaid (Bazil: "title to the right and info to the bottom left, solid placement") */
+.sm-map-dark .sm-map-head-r{max-width:none;margin:0 0 clamp(16px,2.4vh,26px)}
+.sm-map-dark .sm-map-head-r h1{font-size:clamp(30px,3.4vw,46px)}
+.sm-map-dark .sm-map-head-r .sm-map-sub{margin:10px 0 0;max-width:52ch;color:rgba(255,255,255,.72);font-size:15px;line-height:1.55}
+.sm-map-read-b{margin-top:14px;box-sizing:border-box;height:var(--read-h,auto);min-height:0;align-items:center;overflow:hidden}   /* centred: a shorter reading sits in the middle of the fixed panel, the space split above and below */   /* border-box: the measured height already holds the padding */
+@media(max-width:1023px){.sm-map-read-b{min-height:0}}
+
+/* 25 Sep, night (Bazil: "no need to cut the top left corner and bottom right corner and make these look like premium cards",
+   "slick, but no round corners"): the head is a card in the unit's blue with the photograph inset, the unit chip on the
+   photograph, the mark on a white tile sitting over the photograph's foot beside the name, the claim under it. Square
+   corners, no chamfer, no zoom on the photograph; the card still lifts on hover. */
+.sm-ub-top .sm-ub-cell.sm-ub-head{clip-path:none;border-radius:0;padding:12px 12px 26px;box-shadow:0 1px 0 rgba(12,18,32,.06)}   /* three classes: it has to beat .sm-ub-top .sm-ub-cell{padding:0 0 26px} */
+.sm-ub-head:hover{transform:translateY(-4px);box-shadow:0 30px 50px -34px rgba(12,18,32,.55)}
+.sm-ub-head .sm-uc-pic{position:relative;margin:0;aspect-ratio:16/10;overflow:hidden;background:#0C1220}
+.sm-ub-head .sm-uc-pic::after{background:linear-gradient(180deg,rgba(12,18,32,0) 62%,rgba(12,18,32,.32) 100%)}
+.sm-ub-head .sm-uc-pic img{transform:none;transition:none}
+.sm-ub-head:hover .sm-uc-pic img{transform:none}
+.sm-ub-head .sm-ub-no{position:absolute;left:auto;right:12px;top:auto;bottom:12px;z-index:2;display:inline-flex;align-items:center;gap:8px;margin:0;padding:8px 11px;background:#fff;color:var(--ink,#0C1220);font:600 12.5px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none;border-radius:0;box-shadow:none}
+.sm-ub-head .sm-ub-no i{font-style:normal;font-weight:500;color:var(--soft,#48536A)}
+.sm-ub-head h3{margin:0 10px 0;display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:14px;align-items:start;min-height:0;padding-top:10px}
+.sm-ub-head h3 .sm-uc-mark{grid-row:auto;width:64px;height:64px;margin-top:-42px;background:#fff;color:var(--uc);display:grid;place-items:center;box-shadow:0 0 0 4px var(--uc);position:relative;z-index:3}
+.sm-ub-head h3 .sm-uc-mark svg{width:34px;height:34px;stroke-width:1.15}
+.sm-ub-head h3 .sm-ub-nm{display:block;padding-top:2px}
+.sm-ub-head h3 small{min-height:0;margin-top:4px}
+.sm-ub-head .sm-uc-line{margin:16px 10px 0;font-size:18px}
+@media(max-width:900px){.sm-ub-top .sm-ub-cell.sm-ub-head{padding:10px 10px 22px}.sm-ub-head h3 .sm-uc-mark{width:56px;height:56px;margin-top:-36px}}
+
+/* 25 Sep, night (Bazil, with a neon automation-flow reference: "make it more modern looking, maybe like pic 1"): the
+   relation map on the dark banner glows. The connectors are light, not lines: a wide soft pass under a bright core,
+   each in its kind's colour; the lit nodes carry a halo in their colour and the picked node a stronger one; a faint red
+   glow sits in the ground behind the map. Square corners throughout, the kind colours kept (they are the legend). */
+.sm-map-dark{position:relative;isolation:isolate}
+.sm-map-dark::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(52% 46% at 74% 22%,rgba(236,32,39,.18) 0%,rgba(236,32,39,.06) 45%,rgba(236,32,39,0) 72%),radial-gradient(40% 40% at 18% 78%,rgba(58,169,236,.10) 0%,rgba(58,169,236,0) 70%)}
+.sm-map-dark .rx-e path{stroke-width:2.4;stroke-linecap:round;filter:drop-shadow(0 0 6px currentColor) drop-shadow(0 0 14px color-mix(in srgb,currentColor 55%,transparent))}
+.sm-map-dark .rx-e.k-s{color:var(--svc-t)}.sm-map-dark .rx-e.k-w{color:var(--work-t)}.sm-map-dark .rx-e.k-y{color:var(--sys-t)}
+.sm-map-dark .rx-e.k-s path{stroke:var(--svc-t)}.sm-map-dark .rx-e.k-w path{stroke:var(--work-t)}.sm-map-dark .rx-e.k-y path{stroke:var(--sys-t)}
+.sm-map-dark .rx-e circle{stroke:#0F1319;stroke-width:2;filter:drop-shadow(0 0 6px currentColor)}
+.sm-map-dark .rx-e.k-s circle{fill:var(--svc-t)}.sm-map-dark .rx-e.k-w circle{fill:var(--work-t)}.sm-map-dark .rx-e.k-y circle{fill:var(--sys-t)}
+.sm-map-dark .rx-compact .rx-n{background:#141922;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:box-shadow .35s var(--e1),background .35s var(--e1),opacity .35s var(--e1),transform .35s var(--e1)}
+.sm-map-dark .rx-compact .rx-n:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),0 0 18px -6px rgba(255,255,255,.35)}
+.sm-map-dark .rx-compact .rx-n.on{background:color-mix(in srgb,var(--c) 18%,#141922);box-shadow:inset 0 0 0 1.5px var(--c),0 0 22px -4px color-mix(in srgb,var(--c) 70%,transparent),0 0 44px -10px color-mix(in srgb,var(--c) 45%,transparent)}
+.sm-map-dark .rx-compact .rx-n.me{background:var(--c);color:#fff;box-shadow:0 0 0 1px color-mix(in srgb,var(--c) 60%,#fff),0 0 26px -2px color-mix(in srgb,var(--c) 85%,transparent),0 0 60px -8px color-mix(in srgb,var(--c) 60%,transparent);transform:translateY(-1px)}
+.sm-map-dark .rx-compact .rx.has .rx-n.off{opacity:.26}
+.sm-map-dark .rx-heads i{box-shadow:0 0 10px var(--c)}
+@media (prefers-reduced-motion: reduce){.sm-map-dark .rx-compact .rx-n{transition:none}}
+
+/* ============================================================================
+   26 Sep (Bazil: "make this look more modern and sleek"): each unit is one tall photograph with the words on it: the
+   number top left, the mark top right in white with no box, the name, full name and line at the foot over a deep
+   gradient. The rows below sit on the page with one hairline between them, tinted chips, no boxes. No chamfer.
+   ============================================================================ */
+.sm-ub{margin-top:clamp(28px,4vh,48px)}
+.sm-ub-row{gap:clamp(20px,2.4vw,36px)}
+.sm-ub-head{clip-path:none;background:#0C1220;color:#fff;display:block;padding:0;overflow:hidden;transition:none}
+.sm-ub-head:hover{transform:none}
+.sm-ub-head .sm-uc-pic{aspect-ratio:4/4.4;margin:0}
+.sm-ub-head .sm-uc-pic::after{background:linear-gradient(180deg,rgba(12,18,32,.32) 0%,rgba(12,18,32,.05) 30%,rgba(12,18,32,.1) 50%,rgba(12,18,32,.9) 100%)}
+.sm-ub-head .sm-uc-pic img{transition:transform 2.2s var(--e1)}
+.sm-ub-head:hover .sm-uc-pic img{transform:scale(1.05)}
+.sm-ub-no{top:20px;left:22px;bottom:auto;font:600 12.5px/1 "Switzer",sans-serif;letter-spacing:.02em;color:#fff}
+.sm-ub-no i{color:rgba(255,255,255,.7)}
+.sm-ub-head h3{position:absolute;left:22px;right:22px;bottom:22px;z-index:1;margin:0;display:block;min-height:0;color:#fff;font:600 30px/1 "Switzer",sans-serif;letter-spacing:-.03em}
+.sm-ub-head h3 .sm-uc-mark{position:absolute;right:0;bottom:calc(100% + 44px);width:36px;height:36px;color:#fff;background:transparent}
+.sm-ub-head h3 .sm-uc-mark svg{width:34px;height:34px;stroke-width:1.05}
+.sm-ub-nm{display:grid;gap:8px}
+.sm-ub-head h3 small{min-height:0;font:500 13px/1.35 "Instrument Sans",sans-serif;color:rgba(255,255,255,.72);margin:0}
+.sm-ub-head .sm-uc-line{position:absolute;left:22px;right:22px;bottom:-2px;z-index:1;margin:0;font:500 16.5px/1.35 "Instrument Sans",sans-serif;letter-spacing:0;color:rgba(255,255,255,.92);transform:translateY(100%)}
+.sm-ub-head{--line-room:0}
+.sm-ub-top .sm-ub-cell{padding:0}
+/* the line sits under the name: give the foot of the photograph room for name, full name and line */
+.sm-ub-head h3{bottom:64px}
+.sm-ub-head .sm-uc-line{bottom:22px;transform:none}
+.sm-ub-cell{background:transparent;padding:20px 0 22px}
+.sm-ub-row+.sm-ub-row .sm-ub-cell{border-top:1px solid rgba(12,18,32,.1)}
+.sm-ub-top .sm-ub-cell{border-top:0}
+.sm-ub-k{font:500 12px/1.3 "Instrument Sans",sans-serif;color:var(--faint);margin-bottom:8px;letter-spacing:0}
+.sm-ub .sm-uc3-when{font:400 16px/1.5 "Instrument Sans",sans-serif;color:var(--ink)}
+.sm-ub .sm-mi{box-shadow:none;background:#EEF3FA;color:#0F2D57;padding:8px 12px 8px 10px;font-weight:600}
+.sm-ub .sm-mi svg{color:#0B8FD8}
+.sm-ub-foot .sm-ub-cell{padding:18px 0 0;border-top:1px solid rgba(12,18,32,.1)}
+.sm-ub-foot .sm-uc-go{font:600 15px/1.2 "Switzer",sans-serif;color:var(--ink)}
+.sm-ub-foot .sm-uc-go:hover{color:#0B8FD8}
+.sm-ub-more{padding:clamp(22px,3vh,34px) 0 0;justify-content:flex-start}
+.sm-ub-more .sm-uc-more{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);padding:12px 18px}
+.sm-ub-more .sm-uc-more:hover{background:var(--ink);color:#fff}
+@media(max-width:719px){
+  .sm-ub-head .sm-uc-pic{aspect-ratio:4/3.6}
+  .sm-ub-head h3{font-size:26px;bottom:58px}
+  .sm-ub-cell{padding:16px 0 18px}
+  .sm-ub-foot .sm-ub-cell{padding-top:16px}
+}
+
+/* ============================================================================
+   26 Sep · after Bazil's four notes on the Services page
+   "no need too much gradient": the neon block above is off: no ground glow, no halos, plain connectors.
+   "this look should be modern a bit more" (the reading): no box, a larger light sentence, the mark in the kind's colour.
+   "the previous flow was correct": the drawn diagrams are back in one full-width row.
+   "make this look more modern and sleek" (the board): the head block above (white mark box, chip bottom right) is
+   overridden here; the head is one photograph with the words on it.
+   ============================================================================ */
+.sm-map-dark::before{display:none}
+.sm-map-dark .rx-e path{stroke-width:1.5;filter:none;opacity:.9}
+.sm-map-dark .rx-e circle{filter:none;stroke-width:1.5}
+.sm-map-dark .rx-compact .rx-n,.sm-map-dark .rx-compact .rx-n:hover,.sm-map-dark .rx-compact .rx-n.on,.sm-map-dark .rx-compact .rx-n.me{box-shadow:none;transform:none}
+.sm-map-dark .rx-compact .rx-n{background:rgba(255,255,255,.05)}
+.sm-map-dark .rx-compact .rx-n:hover{background:rgba(255,255,255,.1)}
+.sm-map-dark .rx-compact .rx-n.on{background:color-mix(in srgb,var(--c) 22%,transparent)}
+.sm-map-dark .rx-compact .rx-n.me{background:var(--c)}
+.sm-map-dark .sm-map-read{background:rgba(255,255,255,.04);box-shadow:none;padding:22px 26px;gap:20px;align-items:flex-start}
+.sm-map-dark .sm-map-read p{font:400 17px/1.55 "Instrument Sans",sans-serif;color:rgba(255,255,255,.88);margin:0}
+.sm-map-dark .sm-map-read p b{font-family:"Switzer",sans-serif;font-weight:600}
+.sm-map-dark .sm-map-read .ab-x{font-size:.8em;opacity:.55}
+.sm-map-dark .sm-map-read .sm-map-more{margin-top:10px;font-size:14px;line-height:1.5;color:rgba(255,255,255,.55)}
+.sm-map-dark .sm-map-read .sm-map-hint{font-size:16px;color:rgba(255,255,255,.6)}
+.sm-map-dark .sm-map-ic{width:44px;height:44px;margin-top:2px}
+.sm-map-dark .sm-map-ic svg{width:40px;height:40px;stroke-width:1.05}
+
+.sm-ub-head{position:relative}
+.sm-ub-head .sm-ub-no{left:22px;right:auto;top:20px;bottom:auto;padding:0;background:transparent;color:#fff;box-shadow:none;font:600 12.5px/1 "Switzer",sans-serif}
+.sm-ub-head .sm-ub-no i{color:rgba(255,255,255,.7)}
+.sm-ub-head h3 .sm-uc-mark{box-shadow:none;margin:0;background:transparent;color:#fff}
+.sm-ub-head .sm-uc-pic{aspect-ratio:4/4.4}
+.sm-ub-head .sm-uc-pic::after{background:linear-gradient(180deg,rgba(12,18,32,.3) 0%,rgba(12,18,32,.05) 30%,rgba(12,18,32,.1) 50%,rgba(12,18,32,.88) 100%)}
+.sm-ub-head .sm-uc-line{font-size:16.5px}
+@media(max-width:900px){.sm-ub-top .sm-ub-cell.sm-ub-head{padding:0}}
+/* the diagrams row: one column, each diagram at a readable size, the phone scrolls it */
+.sm-ub-dgrow{grid-template-columns:minmax(0,1fr)!important;gap:0!important}
+.sm-ub-dgcell{padding:22px 0 8px;border-top:1px solid rgba(12,18,32,.1)}
+.sm-ub-dgcell+.sm-ub-dgcell{border-top:0;padding-top:8px}
+.sm-ub-dg{max-width:820px;overflow-x:auto;background:transparent;padding:0}
+.sm-ub-dg .ud-svg{width:100%;min-width:520px;height:auto;display:block}
+@media(max-width:719px){.sm-ub-dgcell:not(.on){display:none}}
+
+/* 25 Sep, night (Bazil: "do not cut the 3D, the whole section banner is its space"): the stage is taller and the model
+   is refitted to its box on every resize (scenes/fabreal.js), so it always sits whole inside the banner */
+.sm-map-dark .sm-map-stage .fr{aspect-ratio:1.42;min-height:380px}
+@media(min-width:1600px){.sm-map-dark .sm-map-stage .fr{aspect-ratio:1.5}}
+
+/* 26 Sep: the head keeps no padding at any width (a 26px foot pushed the line off the photograph); name and line get room */
+.sm-ub-top .sm-ub-cell.sm-ub-head,.sm-ub-head{padding:0}
+.sm-ub-head h3{bottom:74px}
+.sm-ub-head .sm-uc-line{bottom:28px}
+@media(max-width:719px){.sm-ub-head h3{bottom:66px}.sm-ub-head .sm-uc-line{bottom:24px}}
+
+/* ============================================================================
+   26 Sep (Bazil: "this is worse, make them into cards back"): each unit is a CARD again: the photograph with the words
+   on it at the top, then Call when, Bought as and the Open link inside one light card; the rows stay level across
+   the three because they are one grid. The diagrams follow the cards as a block of their own.
+   ============================================================================ */
+.sm-ub-row{gap:clamp(18px,2vw,28px)}
+.sm-ub-cell{background:#F4F6F9;padding:20px 22px 22px}
+.sm-ub-top .sm-ub-cell.sm-ub-head,.sm-ub-head{padding:0;background:#0C1220}
+.sm-ub-row+.sm-ub-row .sm-ub-cell{border-top:1px solid rgba(12,18,32,.07)}
+.sm-ub-top+.sm-ub-row .sm-ub-cell{border-top:0}
+.sm-ub-foot .sm-ub-cell{padding:18px 22px 24px;border-top:1px solid rgba(12,18,32,.07)}
+.sm-ub .sm-mi{background:#fff}
+.sm-ub-dgrow{margin-top:clamp(20px,2.6vh,32px)}
+.sm-ub-dgcell{border-top:0;background:#F4F6F9;padding:22px 24px 12px}
+.sm-ub-dgcell+.sm-ub-dgcell{margin-top:12px;padding-top:22px}
+.sm-ub-dg{background:#fff;padding:16px 18px}
+@media(max-width:719px){.sm-ub-cell{padding:16px 16px 18px}.sm-ub-foot .sm-ub-cell{padding:16px 16px 20px}.sm-ub-dgcell{padding:16px 12px 8px}}
+/* the hidden measurer: every reading laid out at the panel's width, invisible, out of the flow */
+.sm-map-dark .sm-map-read-measure{position:absolute;left:0;right:0;top:0;visibility:hidden;pointer-events:none;margin:0;padding:0;background:none;box-shadow:none;min-height:0;height:auto;display:block}
+/* a measured block is the panel itself, minus its box: same icon, same type, same wrapping */
+.sm-map-dark .sm-map-read.sm-map-read-m{margin:0;min-height:0;height:auto;background:none;box-shadow:none;overflow:visible}
+
+/* 26 Sep (Bazil: "visuals should only be 1920 x 1080"): the unit photographs are 16:9; the words sit at the foot with
+   the name and line closer together */
+.sm-ub-head .sm-uc-pic{aspect-ratio:16/9}
+.sm-ub-head h3{bottom:62px;font-size:28px}
+.sm-ub-head .sm-uc-line{bottom:22px;font-size:16px}
+.sm-ub-head h3 .sm-uc-mark{bottom:calc(100% + 30px)}
+@media(max-width:719px){.sm-ub-head .sm-uc-pic{aspect-ratio:16/9}.sm-ub-head h3{bottom:56px;font-size:24px}.sm-ub-head .sm-uc-line{bottom:18px;font-size:15px}}
+
+/* ============================================================================
+   26 Sep (Bazil: "put icon beside the title", "make blue art direction for each: lighter blue, blue, darker blue",
+   "reflect through here" of the map): each unit has its own blue, unit 1 light, unit 2 blue, unit 3 dark. On the
+   cards the photograph is graded in that blue (a colour blend keeps the picture's light, a foot gradient in the blue
+   carries the words) and the mark sits beside the name. In the map the three unit cards carry the same three blues.
+   ============================================================================ */
+.sm-ub-head{--ub:#0B8FD8;--ubd:#0A5C8F}
+.sm-ub-head:nth-child(1){--ub:#5CBCF5;--ubd:#1F6FAE}
+.sm-ub-head:nth-child(2){--ub:#0B8FD8;--ubd:#084F7C}
+.sm-ub-head:nth-child(3){--ub:#1C4F9C;--ubd:#0F2D57}
+.sm-ub-head .sm-uc-pic::before{content:"";position:absolute;inset:0;z-index:1;background:var(--ub);mix-blend-mode:color;opacity:.9;pointer-events:none}
+.sm-ub-head .sm-uc-pic::after{z-index:1;background:linear-gradient(180deg,color-mix(in srgb,var(--ubd) 28%,transparent) 0%,color-mix(in srgb,var(--ubd) 6%,transparent) 32%,color-mix(in srgb,var(--ubd) 18%,transparent) 55%,color-mix(in srgb,var(--ubd) 94%,#000) 100%)}
+.sm-ub-head .sm-ub-no{z-index:2}
+.sm-ub-head h3{z-index:2;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-items:center}
+.sm-ub-head h3 .sm-uc-mark{position:static;width:36px;height:36px;align-self:start;margin-top:-2px}
+.sm-ub-head h3 .sm-uc-mark svg{width:34px;height:34px}
+.sm-ub-head h3 .sm-ub-nm{gap:4px}
+.sm-ub-head .sm-uc-line{z-index:2}
+.sm-ub-cell{background:#F4F6F9}
+/* the map: the three unit cards in the same three blues (their own --c, picked solid, related as a tint) */
+.sm-map-dark .rx-compact .rx-u .rx-n:nth-child(1){--c:#5CBCF5;--c-t:#9ADCFF}
+.sm-map-dark .rx-compact .rx-u .rx-n:nth-child(2){--c:#0B8FD8;--c-t:#5CBCF5}
+.sm-map-dark .rx-compact .rx-u .rx-n:nth-child(3){--c:#1C4F9C;--c-t:#6FA0DC}
+.sm-map-dark .rx-compact .rx-u .rx-n.me{color:#fff}
+.sm-map-dark .rx-compact .rx-u .rx-n:nth-child(1).me{color:#062036}
+.sm-map-dark .rx-compact .rx-u .rx-n:nth-child(1).me .rx-u-full,.sm-map-dark .rx-compact .rx-u .rx-n:nth-child(1).me .rx-u-line,.sm-map-dark .rx-compact .rx-u .rx-n:nth-child(1).me small,.sm-map-dark .rx-compact .rx-u .rx-n:nth-child(1).me .rx-u-top i,.sm-map-dark .rx-compact .rx-u .rx-n:nth-child(1).me svg{color:#0B3A5C!important}
+.sm-map-dark .rx-compact .rx-u .rx-n:nth-child(1).me .rx-models em{background:rgba(6,32,54,.16);color:#062036}
+
+/* the names sit level across the three cards: the name block is anchored from its TOP, so a full name that wraps to two
+   lines (PCU & TTI) grows down towards the line instead of lifting the name */
+.sm-ub-head h3{bottom:auto;top:calc(100% - 130px)}
+.sm-ub-head h3 small{line-height:1.3}
+@media(max-width:719px){.sm-ub-head h3{bottom:auto;top:calc(100% - 118px)}}
+/* the reading's type, a touch tighter, so the tallest reading (and with it the panel) is shorter; the measurer inherits it */
+.sm-map-dark .sm-map-read p{font-size:13.5px;line-height:1.5}
+.sm-map-dark .sm-map-read .sm-map-more{margin-top:6px}
+
+/* ============================================================================
+   26 Sep (Bazil, showing the neon capture: "wasn't it supposed to look modern like this"): the modern look is back with
+   his two notes kept. The connectors are light (a bright core with a soft pass round it), the lit cards carry a halo
+   in their colour, the picked card a stronger one. No outlines on the cards (tints only) and no red ground gradient
+   ("no need too much gradient").
+   ============================================================================ */
+.sm-map-dark::before{display:none}
+.sm-map-dark .rx-e path{stroke-width:2.2;stroke-linecap:round;opacity:1;filter:drop-shadow(0 0 5px currentColor) drop-shadow(0 0 12px color-mix(in srgb,currentColor 50%,transparent))}
+.sm-map-dark .rx-e circle{stroke-width:2;filter:drop-shadow(0 0 5px currentColor)}
+.sm-map-dark .rx-compact .rx-n{transition:box-shadow .35s var(--e1),background .35s var(--e1),opacity .35s var(--e1)}
+.sm-map-dark .rx-compact .rx-n.on{background:color-mix(in srgb,var(--c) 24%,transparent);box-shadow:0 0 22px -6px color-mix(in srgb,var(--c) 75%,transparent)}
+.sm-map-dark .rx-compact .rx-n.me{background:var(--c);box-shadow:0 0 30px -4px color-mix(in srgb,var(--c) 85%,transparent),0 0 60px -10px color-mix(in srgb,var(--c) 50%,transparent)}
+.sm-map-dark .rx-compact .rx-n:hover{box-shadow:0 0 18px -6px rgba(255,255,255,.35)}
+
+/* 25 Sep, night, last word on the unit cards (Bazil: "don't make the picture blue, what I mean is like a line or colour
+   depicting each card", "and card is white colour", "layout"): a WHITE card, the photograph in its own colours with no
+   tint and no wash, and the unit's colour as a bar along the top of the card, the unit chip on the photograph and the
+   tile the mark sits on. The head is in the flow again (nothing absolute), the mark tile over the photograph's foot,
+   the name and its line in ink, the claim under them. Square corners, no zoom. This block sits last so it wins over
+   the earlier card passes above; keep it last. */
+.sm-ub-head{--ub:#5CBCF5}
+.sm-ub-head:nth-child(1){--ub:#5CBCF5}
+.sm-ub-head:nth-child(2){--ub:#0B8FD8}
+.sm-ub-head:nth-child(3){--ub:#1C4F9C}
+.sm-ub-top .sm-ub-cell.sm-ub-head,.sm-ub-head{position:relative;display:flex;flex-direction:column;padding:5px 0 26px;background:#fff;color:var(--ink,#0C1220);clip-path:none;border-radius:0;box-shadow:0 1px 0 rgba(12,18,32,.06);overflow:visible}
+.sm-ub-head::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--ub);z-index:3}
+.sm-ub-head:hover{transform:translateY(-4px);box-shadow:0 30px 50px -34px rgba(12,18,32,.45)}
+.sm-ub-head .sm-uc-pic{position:relative;margin:0;aspect-ratio:16/10;overflow:hidden;background:#E9EDF3}
+.sm-ub-head .sm-uc-pic::before{display:none}
+.sm-ub-head .sm-uc-pic::after{display:none}
+.sm-ub-head .sm-uc-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:none;transform:none;transition:none;mix-blend-mode:normal}
+.sm-ub-head:hover .sm-uc-pic img{transform:none}
+.sm-ub-head .sm-ub-no{position:absolute;left:auto;right:14px;top:auto;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;margin:0;padding:8px 11px;background:var(--ub);color:#fff;font:600 12.5px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none;border-radius:0;box-shadow:none}
+.sm-ub-head .sm-ub-no i{font-style:normal;font-weight:500;color:rgba(255,255,255,.78)}
+.sm-ub-head h3{position:static;top:auto;bottom:auto;left:auto;right:auto;z-index:auto;margin:0 22px;padding:0;display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:14px;align-items:start;min-height:0;font:600 24px/1.05 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:-.025em;color:var(--ink,#0C1220);transform:none}
+.sm-ub-head h3 .sm-uc-mark{position:relative;top:auto;bottom:auto;left:auto;right:auto;grid-row:auto;width:56px;height:56px;margin:-30px 0 0;align-self:start;background:var(--ub);color:#fff;display:grid;place-items:center;box-shadow:0 0 0 4px #fff;z-index:3;transform:none}
+.sm-ub-head h3 .sm-uc-mark svg{width:30px;height:30px;stroke-width:1.15;color:#fff}
+.sm-ub-head h3 .sm-ub-nm{display:block;padding-top:10px;gap:0;color:var(--ink,#0C1220)}
+.sm-ub-head h3 small{display:block;min-height:0;margin:4px 0 0;font:500 12.5px/1.35 "Instrument Sans",sans-serif;letter-spacing:0;color:var(--soft,#48536A)}
+.sm-ub-head .sm-uc-line{position:static;top:auto;bottom:auto;left:auto;right:auto;z-index:auto;margin:14px 22px 0;padding:0;font:600 17px/1.3 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:-.015em;color:var(--ink,#0C1220);transform:none}
+@media(max-width:900px){.sm-ub-top .sm-ub-cell.sm-ub-head,.sm-ub-head{padding:5px 0 22px}.sm-ub-head h3{margin:0 16px;font-size:22px}.sm-ub-head .sm-uc-line{margin:12px 16px 0}}
+@media(max-width:719px){.sm-ub-head .sm-uc-pic{aspect-ratio:16/9}.sm-ub-head h3{font-size:22px}}
+
+/* the map reading panel: centred in its fixed height (this beats .sm-map-dark .sm-map-read{align-items:flex-start}) */
+.sm-map-dark .sm-map-read-b{align-items:center}
+
+/* 26 Sep (Bazil: "but not too much lighting"): the same look at half the light. One soft pass on the connectors, a
+   short halo on the lit cards, a little more on the picked one */
+.sm-map-dark .rx-e path{stroke-width:2;filter:drop-shadow(0 0 4px color-mix(in srgb,currentColor 55%,transparent))}
+.sm-map-dark .rx-e circle{filter:drop-shadow(0 0 3px color-mix(in srgb,currentColor 55%,transparent))}
+.sm-map-dark .rx-compact .rx-n.on{box-shadow:0 0 14px -6px color-mix(in srgb,var(--c) 55%,transparent)}
+.sm-map-dark .rx-compact .rx-n.me{box-shadow:0 0 20px -6px color-mix(in srgb,var(--c) 65%,transparent)}
+.sm-map-dark .rx-compact .rx-n:hover{box-shadow:0 0 12px -6px rgba(255,255,255,.25)}
+
+/* ============================================================================
+   26 Sep (Bazil: "it shouldn't be able to resize like this", "fix the vertical and horizontal balance like this"): from
+   1280 up the banner is two columns that keep their balance at any width. Left: the model, its top level with the map's
+   column heads (the head's measured height as --head-h), and the reading at the foot, level with the map's foot.
+   Right: the name over the map. Nothing in either column can grow past its column, and the section clips sideways.
+   ============================================================================ */
+.sm-map-dark{overflow-x:clip}
+.sm-map-duo-b>*{min-width:0}
+.sm-map-duo-b .rx-cols,.sm-map-duo-b .rx-col,.sm-map-duo-b .rx-n{min-width:0}
+@media(min-width:1280px){
+  .sm-map-duo-b{align-items:stretch}
+  .sm-map-duo-b .sm-map-stage{position:static;display:flex;flex-direction:column;padding-top:var(--head-h,0px)}
+  .sm-map-duo-b .fr{flex:none;margin-bottom:14px}
+  .sm-map-duo-b .sm-map-read-b{margin-top:auto}
+  .sm-map-duo-b .sm-map-read-measure{position:absolute;visibility:hidden;pointer-events:none;height:0;overflow:hidden}
+}
+
+/* 26 Sep: the balance, outranking the earlier start-aligned row and the sticky stage. The left column stretches to the
+   row; the model shrinks when the column would be taller than the map, and the reading rides at the foot otherwise */
+@media(min-width:1280px){
+  .sm-map-dark .sm-map-duo-b{align-items:stretch}
+  .sm-map-dark .sm-map-duo-b .sm-map-stage{position:static;align-self:stretch;display:flex;flex-direction:column;top:auto;padding-top:var(--head-h,0px)}
+  .sm-map-dark .sm-map-duo-b .fr{flex:0 1 auto;min-height:260px;margin-bottom:14px}
+  .sm-map-dark .sm-map-duo-b .sm-map-read-b{margin-top:auto;flex:none}
+}
+
+/* 26 Sep (Bazil, at 2000 wide: "why so many empty space at the right side"): the row's height came from the LEFT column
+   (a wide screen makes the model tall), so the map ended and left a hole under it. The left column no longer sets the
+   row's height (contain: size); the map does, and the model fills whatever stands between the head line and the
+   reading, at any width. The 3D fits itself to its box, so the fab stays whole. */
+@media(min-width:1280px){
+  .sm-map-dark .sm-map-duo-b .sm-map-stage{contain:size}
+  .sm-map-dark .sm-map-duo-b .fr{flex:1 1 auto;aspect-ratio:auto;min-height:220px;height:auto}
+}
+
+/* ============================================================================
+   26 Sep (Bazil: "remove the light dots, instead make the icons coloured", "can you make the UI look more modern",
+   "card should be white colour overall")
+   ============================================================================ */
+.sm-map-dark .rx-heads i,.sm-key i{display:none}
+.sm-map-dark .rx-heads span{gap:8px;font-size:12.5px;letter-spacing:.01em;color:rgba(255,255,255,.72)}
+.sm-map-dark .rx-heads svg{width:20px;height:20px;opacity:1}
+.sm-map-dark .rx-heads .c-s svg{color:var(--svc-t)}.sm-map-dark .rx-heads .c-u svg{color:var(--unit-t)}.sm-map-dark .rx-heads .c-w svg{color:var(--work-t)}.sm-map-dark .rx-heads .c-y svg{color:var(--sys-t)}
+/* the map's rest icons in their kind's colour, the picked card's in white */
+.sm-map-dark .rx-compact .rx-s .rx-n svg.rx-fi{color:var(--svc-t)}
+.sm-map-dark .rx-compact .rx-u .rx-n svg.rx-fi{color:var(--c-t)}
+.sm-map-dark .rx-compact .rx-w .rx-n svg.rx-fi{color:var(--work-t)}
+.sm-map-dark .rx-compact .rx-y .rx-n svg.rx-fi{color:var(--sys-t)}
+.sm-map-dark .rx-compact .rx-n.me svg.rx-fi{color:#fff}
+.sm-map-dark .rx-compact .rx.has .rx-n.off svg.rx-fi{color:rgba(255,255,255,.35)}
+/* a more modern surface: cards with a hair of radius off, a quieter number, tighter type; the reading with a hairline
+   top and the mark larger; the zoom buttons as one quiet group */
+.sm-map-dark .rx-compact .rx-n{padding:10px 12px}
+.sm-map-dark .rx-compact .rx-no{font-size:11px;opacity:.6}
+.sm-map-dark .sm-map-read-b{background:rgba(255,255,255,.035);border-top:1px solid rgba(255,255,255,.08)}
+.fr-tools{gap:1px;background:rgba(255,255,255,.06);padding:1px}
+.fr-tools button{background:transparent;width:36px;height:34px}
+.fr-tools button:hover{background:rgba(255,255,255,.12)}
+.fr-hint{background:transparent;color:rgba(255,255,255,.42);padding:0}
+/* the unit cards white overall */
+.sm-ub-cell{background:#fff}
+.sm-ub .sm-mi{background:#F1F4F8}
+.sm-ub-dgcell{background:#fff}
+.sm-ub-dg{background:#F7F9FC}
+
+/* 26 Sep (Bazil: "remember to follow the colour code"): a delivery model is INK on white (the key), so the Bought as
+   chips carry ink icons; the unit's blue stays on the unit itself. The card diagrams: a hair of ground, no box */
+.sm-ub .sm-mi{background:#fff;box-shadow:inset 0 0 0 1px rgba(12,18,32,.14);color:var(--ink)}
+.sm-ub .sm-mi svg{color:var(--ink)}
+.sm-ub-dg{background:#F7F9FC;padding:14px 14px 10px;overflow:visible}
+.sm-ub-dg .ud-svg-v{width:100%;min-width:0;height:auto;display:block}
+.ud-svg-v .ud-t{font:600 13px "Switzer",sans-serif}
+.ud-svg-v .ud-s{font:400 11px "Instrument Sans",sans-serif}
+.ud-svg-v .ud-h{font:600 14px "Switzer",sans-serif;letter-spacing:-.01em}
+
+/* 25 Sep, night, the banner as the canvas (Bazil: "the canvas should be the whole banner", "don't cut the building") */
+.sm-map-full{position:relative;overflow:hidden;min-height:min(94vh,940px)}
+.sm-map-full .sm-map-stage-bg{position:absolute;inset:0;margin:0;width:auto;max-width:none;z-index:0;top:0;pointer-events:auto}
+.sm-map-full .sm-map-stage-bg .fr{position:absolute;inset:0;aspect-ratio:auto;min-height:0;height:100%;--fr-left:.56}
+.sm-map-full .pg-in{position:relative;z-index:1;pointer-events:none}
+.sm-map-full .sm-map-side,.sm-map-full .sm-map-read-b{pointer-events:auto}
+.sm-map-full .sm-map-duo{align-items:stretch}
+.sm-map-full .sm-map-left{display:flex;flex-direction:column;justify-content:flex-end;min-height:100%;position:relative}
+.sm-map-full .sm-map-spacer{flex:1 1 auto;min-height:clamp(340px,54vh,600px)}
+.sm-map-full .sm-map-read-b{margin-top:0}
+.sm-map-full .fr-tools{right:auto;left:var(--gut);top:16px;bottom:auto;pointer-events:auto}
+.sm-map-full .fr-lab{pointer-events:auto}
+.sm-map-full .fr-hint{left:var(--gut);top:60px;bottom:auto}
+.fr-tools .fr-play{font-size:12px}
+.fr-tools .fr-play.on{background:var(--svc,#EC2027);color:#fff}
+.sm-map-dark .sm-map-head-r h1 em{font-style:normal;color:#FF4D55}
+@media(max-width:1279px){
+  .sm-map-full{min-height:0}
+  .sm-map-full .sm-map-stage-bg{position:relative;inset:auto;margin:0 0 18px;width:100%}
+  .sm-map-full .sm-map-stage-bg .fr{position:relative;aspect-ratio:1.42;height:auto;--fr-left:1}
+  .sm-map-full .sm-map-spacer{display:none}
+  .sm-map-full .pg-in{pointer-events:auto}
+  .sm-map-full .fr-tools{left:auto;right:10px;top:auto;bottom:10px}
+}
+
+/* 25 Sep, small hours (Bazil: "can you align it nicely and not messy", "I don't think this section is supposed to be this
+   tall"): one lattice. Every node in a column has the same height; the three units and the three kinds of work sit on the
+   same three rows; the six services keep an even rhythm; the systems list is tight. All four columns start on one line and
+   end on one line, and the banner comes down to about a screen. */
+.sm-map-dark .rx-compact .rx-col{justify-content:space-between;gap:6px}
+.sm-map-dark .rx-compact .rx-s .rx-n{height:62px;min-height:0;padding:8px 12px;box-sizing:border-box;align-items:center}
+.sm-map-dark .rx-compact .rx-s .rx-n span{font-size:13px;line-height:1.2}
+.sm-map-dark .rx-compact .rx-u .rx-n{height:172px;min-height:0;padding:12px 14px;gap:5px;box-sizing:border-box;justify-content:flex-start;overflow:hidden}
+.sm-map-dark .rx-compact .rx-u .rx-n b{font-size:15px;line-height:1.15}
+.sm-map-dark .rx-compact .rx-u-full{font-size:11.5px;line-height:1.25;margin-top:-2px}
+.sm-map-dark .rx-compact .rx-u-line{font-size:12.5px;line-height:1.3}
+.sm-map-dark .rx-compact .rx-models{margin-top:auto}
+.sm-map-dark .rx-compact .rx-w .rx-n{height:172px;min-height:0;box-sizing:border-box;align-items:flex-start;padding:14px 14px}
+.sm-map-dark .rx-compact .rx-y{gap:4px}
+.sm-map-dark .rx-compact .rx-y .rx-n{height:34px;min-height:0;padding:0 9px;box-sizing:border-box;font-size:12px;line-height:1.15;align-items:center}
+.sm-map-dark .rx-compact .rx-y .rx-n span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sm-map-full{min-height:0}
+.sm-map-full .sm-map-spacer{min-height:clamp(240px,38vh,400px)}
+/* 25 Sep, 08:40 (Bazil: "give more spacing at the bottom"): the band breathes under the lists */
+.sm-map-dark.sm-map-full{padding-bottom:clamp(64px,8vh,104px)}
+.sm-map-dark .rx-compact .rx-u .rx-n,.sm-map-dark .rx-compact .rx-w .rx-n{height:198px}   /* the two long unit names need the room */
+
+/* 25 Sep, small hours, unit cards (Bazil: "white border around the picture instead of the blue line", "put the icons
+   beside the title and subtitle instead of between the pictures", "unit one etc tag put top left"): the coloured bar is
+   gone, the photograph sits in the card's white frame, the mark stands beside the name in the flow, the unit chip at the
+   photograph's top left in the unit colour. Keep this block last. */
+.sm-ub-head::before{display:none}
+.sm-ub-top .sm-ub-cell.sm-ub-head,.sm-ub-head{padding:12px 12px 26px}
+.sm-ub-head .sm-ub-no{left:12px;right:auto;top:12px;bottom:auto}
+.sm-ub-head h3{margin:18px 22px 0;grid-template-columns:52px minmax(0,1fr);column-gap:14px;align-items:center}
+.sm-ub-head h3 .sm-uc-mark{width:52px;height:52px;margin:0;box-shadow:none;align-self:center}
+.sm-ub-head h3 .sm-uc-mark svg{width:28px;height:28px}
+.sm-ub-head h3 .sm-ub-nm{padding-top:0}
+@media(max-width:900px){.sm-ub-top .sm-ub-cell.sm-ub-head,.sm-ub-head{padding:10px 10px 22px}.sm-ub-head h3 .sm-uc-mark{width:46px;height:46px;margin:0}}
+.sm-map-dark .rx-compact .rx-u .rx-n,.sm-map-dark .rx-compact .rx-w .rx-n{height:222px}   /* room for the chips under the two long unit names */
+/* 25 Sep, small hours (Bazil, on the Read more button: "should be one long bar left to right, because it represents the 3 cards") */
+.sm-ub-more{justify-content:stretch;padding-top:14px}
+.sm-ub-more .sm-uc-more{flex:1 1 100%;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 18px;background:#fff;color:var(--ink);box-shadow:none;font-size:14px}
+.sm-ub-more .sm-uc-more:hover{background:var(--ink);color:#fff}
+
+/* 26 Sep (Bazil: "why overlapping", "give more vertical space to unit 2 than unit 1"): the three unit cards were held to
+   one fixed height (172px), so unit 2's longer name and two chips spilled out over unit 3. Each card takes the height
+   of its own words now; the column keeps its gaps and the connectors still land on the cards' centres. */
+.sm-map-dark .rx-compact .rx-u .rx-n{height:auto;min-height:0;overflow:visible;flex:0 0 auto}
+.sm-map-dark .rx-compact .rx-u{justify-content:space-between;gap:12px}
+
+/* 26 Sep: a system's name is never cut short (the one-screen fit above clipped them to "Piling and f…"); it wraps, and the
+   column takes the height it needs */
+.sm-map-dark .rx-compact .rx-y .rx-n,.sm-map-dark .rx-compact .rx-y .rx-n span{white-space:normal;text-overflow:clip;overflow:visible;height:auto;min-height:0}
+.sm-map-dark .rx-compact .rx-y .rx-n{padding:8px 10px;align-items:center}
+
+/* 26 Sep, small hours: the title over the model, top left; the model framed into the band between the title and the
+   reading panel (Bazil: "push the 3D a bit more to the bottom"); the map alone on the right, from the top. Service nodes
+   tall enough for a two-line name (Bazil: "no overlapping"). */
+.sm-map-full .sm-map-stage-bg .fr{--fr-left:.56}
+.sm-map-full .sm-map-head-tl{margin:0;max-width:none;pointer-events:auto}
+.sm-map-full .sm-map-head-tl h1{font-size:clamp(32px,3.6vw,50px)}
+.sm-map-full .sm-map-head-tl .sm-map-sub{max-width:52ch}
+.sm-map-full .sm-map-spacer{min-height:clamp(300px,46vh,520px)}
+.sm-map-full .sm-map-side .sm-map-in{margin-top:0}
+.sm-map-dark .rx-compact .rx-s .rx-n{height:auto;min-height:84px;align-items:flex-start;padding:10px 12px 12px}
+.sm-map-dark .rx-compact .rx-s .rx-n span{overflow:visible;white-space:normal}
+/* 26 Sep (Bazil: "so have more space for the diagrams at the right"): the map takes the wider column; the model is framed
+   into the left share that is left; the left column is no taller than the map, so the lattice keeps its rhythm */
+@media(min-width:1280px){.sm-map-dark.sm-map-full .sm-map-duo{grid-template-columns:minmax(0,.44fr) minmax(0,.56fr);gap:clamp(24px,3vw,56px)}}
+@media(min-width:1600px){.sm-map-dark.sm-map-full .sm-map-duo{grid-template-columns:minmax(0,.42fr) minmax(0,.58fr)}}
+.sm-map-full .sm-map-stage-bg .fr{--fr-left:.44}
+@media(min-width:1600px){.sm-map-full .sm-map-stage-bg .fr{--fr-left:.42}}
+.sm-map-full .sm-map-spacer{min-height:clamp(260px,36vh,400px)}
+.sm-map-full .sm-map-duo{align-items:start}
+.sm-map-full .sm-map-left{min-height:0;height:100%}
+.sm-map-dark .rx-compact .rx-col{justify-content:flex-start;gap:8px}
+.sm-map-dark .rx-compact .rx-u,.sm-map-dark .rx-compact .rx-w{justify-content:space-between}
+.sm-map-dark .rx-compact .rx-s{justify-content:space-between}
+/* 26 Sep (Bazil: "where's the zoom in zoom out button"): the view tools sit on the model's foot, at the right edge of the
+   band the model is framed into, just above the reading panel; the band starts under the title and ends above the panel */
+.sm-map-full .fr-tools{left:auto;top:auto;right:calc((1 - var(--fr-left)) * 100% + 6px);bottom:calc((1 - var(--fr-bottom)) * 100% + 4px);gap:5px}
+.sm-map-full .fr-tools button{width:38px;height:38px;background:rgba(255,255,255,.12)}
+.sm-map-full .fr-tools button:hover{background:rgba(255,255,255,.26)}
+@media(max-width:1279px){.sm-map-full .fr-tools{left:auto;right:10px;top:auto;bottom:10px}}
+/* 26 Sep: the view tools as a row of the left column (Bazil: "where's the zoom in zoom out button and play button"), right
+   aligned under the model, above the reading panel; the band the model sits in is measured from the page (ServicesMap.jsx) */
+.sm-map-tools{display:flex;justify-content:flex-end;gap:5px;margin:0 0 12px;pointer-events:auto}
+.sm-map-tools button{height:38px;min-width:38px;padding:0 12px;border:0;background:rgba(255,255,255,.12);color:#fff;font:600 14px/1 "Switzer","Instrument Sans",system-ui,sans-serif;cursor:pointer;transition:background .25s var(--e1)}
+.sm-map-tools button:hover{background:rgba(255,255,255,.26)}
+.sm-map-tools button.fr-play{padding:0 14px;font-size:13px}
+.sm-map-tools button.fr-play.on{background:var(--svc,#EC2027)}
+.sm-map-tools button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.sm-map-full .fr-tools{display:none}
+@media(max-width:1279px){.sm-map-tools{justify-content:flex-start;margin:0 0 14px}}
+/* 26 Sep: room under the title for the model's pin tags (the engine seats the model's top under the title's box) */
+.sm-map-full .sm-map-head-tl{padding-bottom:26px}
+
+/* 26 Sep (Bazil, drawing on the banner: "align properly", "align"): one row of view tools, right-aligned to the reading
+   panel at every width (the old floating group is off); the panel's top is level with the last unit card's top
+   (ServicesMap.jsx fit() sets --read-h from the map), its type a little tighter so the tallest reading fits */
+.sm-map-full .fr-tools,.fr-tools{display:none!important}
+.sm-map-tools,.sm-map-full .sm-map-tools{justify-content:flex-end}
+@media(max-width:1279px){.sm-map-tools{justify-content:flex-end}}
+.sm-map-dark .sm-map-read-b{padding:18px 22px;gap:16px}
+.sm-map-dark .sm-map-read-b p{font-size:16px;line-height:1.5}
+.sm-map-dark .sm-map-read-b .sm-map-more{font-size:13.5px;margin-top:8px}
+.sm-map-dark .sm-map-read-b .sm-map-ic{width:40px;height:40px}
+.sm-map-dark .sm-map-read-b .sm-map-ic svg{width:36px;height:36px}
+
+/* 26 Sep: the left column never outgrows the map: the spacer under the model yields, so the reading panel's foot stays
+   level with the map's foot and its top lands on the map line fit() chose */
+.sm-map-full .sm-map-spacer{min-height:0!important;flex:1 1 0;height:auto}
+.sm-map-full .sm-map-left{height:100%;min-height:0;overflow:visible}
+
+/* the panel's height follows the reading on show, eased so a longer reading grows it instead of jumping */
+.sm-map-full .sm-map-read-b{transition:height .38s cubic-bezier(.2,.7,.2,1)}
+/* 26 Sep, Bazil "need to make the wording smaller?": the reading at 15px, and the hidden copies the box is measured on
+   carry the same type and padding as the live panel, so the box is always tall enough for the reading on show */
+.sm-map-dark .sm-map-read-b,.sm-map-dark .sm-map-read.sm-map-read-m{padding:16px 20px;gap:16px}
+.sm-map-dark .sm-map-read-b p,.sm-map-dark .sm-map-read.sm-map-read-m p{font-size:15px;line-height:1.5}
+.sm-map-dark .sm-map-read-b .sm-map-more,.sm-map-dark .sm-map-read.sm-map-read-m .sm-map-more{font-size:13px;margin-top:8px}
+.sm-map-dark .sm-map-read-b .sm-map-ic,.sm-map-dark .sm-map-read.sm-map-read-m .sm-map-ic{width:40px;height:40px;flex:0 0 40px}
+.sm-map-dark .sm-map-read-b .sm-map-ic svg,.sm-map-dark .sm-map-read.sm-map-read-m .sm-map-ic svg{width:36px;height:36px}
+.sm-map-dark .sm-map-read.sm-map-read-m{display:flex;align-items:center;box-sizing:border-box}
+/* 26 Sep: the banner fits one 1440x900 screen. The system column takes a little more width so fewer names wrap, its
+   rows sit closer (padding 6, gap 5), and the section's own top and foot lose the slack they carried */
+@media(min-width:1280px){
+  .sm-map-dark .rx-compact .rx-heads,.sm-map-dark .rx-compact .rx-cols{grid-template-columns:minmax(0,.9fr) minmax(0,1.08fr) minmax(0,.86fr) minmax(0,1.16fr)}
+  .sm-map-dark .rx-compact .rx-y .rx-n{padding:6px 10px}
+  .sm-map-dark .rx-compact .rx-col.rx-y{gap:5px}
+  /* 25 Sep, 08:40 (Bazil: "give more spacing at the bottom"): the foot keeps real air at every height; this outranks the
+     26 Sep "fits one 1440x900 screen" trim by about 20px */
+  .sm-map-dark.sm-map-full{padding-top:44px;padding-bottom:clamp(60px,7vh,84px)}
+}
+@media(min-width:1280px){
+  .sm-map-dark .rx-compact .rx-y .rx-n{padding:5px 10px}
+  .sm-map-dark.sm-map-full{padding-top:40px;padding-bottom:clamp(60px,7vh,84px)}
+}
+
+/* 25 Sep, phone pass: the desktop framing share (--fr-left .44) had the model in the left 44% of a 347px stage, a thumbnail
+   in a dark field; on phones the model takes the whole stage. The four lists ran 2,551px as full-width cards; systems and
+   services go two-up, the reading box loses its desktop minimum height, the connecting lines are not drawn. */
+@media (max-width: 760px) {
+  .sm-map-full .sm-map-stage-bg .fr, .sm-map-dark .sm-map-stage .fr { --fr-left: 1; --fr-bottom: 1; }
+  .sm-map-dark .sm-map-stage .fr { aspect-ratio: 1.3; min-height: 260px; }
+  .sm-map-dark .sm-map-read { min-height: 0; }
+  .sm-map-dark .rx-compact .rx-col.rx-s, .sm-map-dark .rx-compact .rx-col.rx-y { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .sm-map-dark .rx-compact .rx-col.rx-s .rx-n, .sm-map-dark .rx-compact .rx-col.rx-y .rx-n { margin: 0; min-height: 0; }
+  .sm-map-dark .rx-gl { display: none; }
+}
+/* 25 Sep, phone pass, second cut: the reading box still stood 291px tall for 96px of text; the box and whatever is
+   inside it take the height of their content on phones */
+@media (max-width: 760px) { .sm-map-dark .sm-map-read, .sm-map-dark .sm-map-read > * { min-height: 0 !important; height: auto !important; } }
+/* (the column head sits outside the grid, so nothing spans; six cards make three even rows) */
+/* the column head is the list's ::before, which becomes the first grid item of the two-up lists: it spans both columns */
+@media (max-width: 760px) { .sm-map-dark .rx-compact .rx-col.rx-s::before, .sm-map-dark .rx-compact .rx-col.rx-y::before { grid-column: 1 / -1; } }
+/* 26 Sep (Bazil: "reduce horizontal distance between cards"): the units board's three cards sit 14px apart */
+.sm-ub-row{column-gap:14px}
+
+/* 26 Sep: the kind titles in their colours ("3 business units" blue), and the quote section's head in its own short
+   navy band across the page */
+.sm-units h2.sm-h2-u{color:var(--unit)}
+.sm-qs{padding-top:0}
+.sm-qs-band{background:#17213A;margin:0 calc(-1 * var(--gut)) clamp(26px,3.6vh,40px);padding:clamp(26px,3.6vh,38px) var(--gut) clamp(24px,3.2vh,34px)}
+.sm-qs-band h2{margin-top:0;color:#fff}
+.sm-qs-band h2 em{color:#FF4B52}
+.sm-qs-band .pg-lede{color:rgba(255,255,255,.72);margin-top:8px}
+
+/* 25 Sep (Bazil: "check the font size, make sure most consistent and structure"): the three heads share one structure,
+   the full name keeps two lines' room in every card, so the marks, names and lines sit level across the board */
+.sm-ub-head h3 .sm-ub-nm small{display:block;min-height:34px}
+/* (Bazil: "you can add icons for each tag"): a flat mark on every service, work and system tag */
+.sm-chip .sm-ti,.sm-ud-sys i .sm-ti{width:14px;height:14px;flex:none}
+.sm-ud-sys i{display:inline-flex;align-items:center;gap:5px}
+/* (Bazil: "remove the grey border"): the How-it-works diagram sits straight on the white card */
+.sm-ub-dg,.sm-ub-dgcell .sm-ub-dg{background:#fff;padding:0}
+/* (Bazil: "background should be same colour"): the FAQ shares the quote section's ground */
+.sm-faq{background:transparent}
+/* (Bazil: "create a visual banner for this"): the quote head on IAQ's own cleanroom build, under a navy scrim that keeps
+   the words on solid ground and lets the photograph show on the right */
+.sm-qs-band{min-height:212px;display:flex;align-items:center;background-color:#17213A;background-image:linear-gradient(90deg,#17213A 0%,#17213A 38%,rgba(23,33,58,.72) 62%,rgba(23,33,58,.22) 100%),url(/assets/iaq/cr-build-2024.webp);background-size:auto,cover;background-position:0 0,72% 50%;background-repeat:no-repeat}
+.sm-qs-band .pg-in{width:100%}
+@media(max-width:720px){.sm-qs-band{min-height:0;background-image:linear-gradient(90deg,#17213A 0%,#17213A 60%,rgba(23,33,58,.55) 100%),url(/assets/iaq/cr-build-2024.webp)}}
+
+/* 25 Sep (Bazil: "make the background like the light grey theme of the layout", "make the banner a bit taller"): the quote
+   banner on the layout's light ground, ink title, the photograph on the right under a light scrim, 300px */
+.sm-qs-band{min-height:300px;background-color:#EDF0F4;background-image:linear-gradient(90deg,#EDF0F4 0%,#EDF0F4 40%,rgba(237,240,244,.78) 60%,rgba(237,240,244,.18) 100%),url(/assets/iaq/cr-build-2024.webp)}
+.sm-qs-band h2{color:#0C1220}
+.sm-qs-band h2 em{color:var(--svc,#EC2027)}
+.sm-qs-band .pg-lede{color:rgba(12,18,32,.66)}
+@media(max-width:720px){.sm-qs-band{min-height:0;background-image:linear-gradient(90deg,#EDF0F4 0%,#EDF0F4 62%,rgba(237,240,244,.6) 100%),url(/assets/iaq/cr-build-2024.webp)}}
+/* (Bazil: "make the spacing structured and aligned well", the map): the service, unit and work columns fill the map's
+   height with one 8px gap, so the six service cards, the three unit cards and the three work cards share the same
+   column height and their edges line up (two service cards to every unit card); the system column sets the height */
+@media(min-width:1280px){
+  .sm-map-dark .rx-compact .rx-col.rx-s,.sm-map-dark .rx-compact .rx-col.rx-u,.sm-map-dark .rx-compact .rx-col.rx-w{display:flex;flex-direction:column;justify-content:stretch;gap:8px;height:100%}
+  .sm-map-dark .rx-compact .rx-col.rx-s .rx-n,.sm-map-dark .rx-compact .rx-col.rx-u .rx-n,.sm-map-dark .rx-compact .rx-col.rx-w .rx-n{flex:1 1 0;min-height:0;height:auto;box-sizing:border-box}
+  .sm-map-dark .rx-compact .rx-cols{align-items:stretch}
+}
+/* (Bazil: "the boxes should be the same colour, the top boxes are not transparent enough, like the bottom"): the view
+   tools share the reading panel's glass */
+.sm-map-dark .sm-map-tools button,.sm-map-dark .sm-map-tools .fr-play{background:rgba(255,255,255,.05);border:0}   /* 26 Sep (IAQ graphic rules): filled, no outline; the same glass as the reading panel (.04, no outline) */
+.sm-map-dark .sm-map-tools button:hover,.sm-map-dark .sm-map-tools .fr-play:hover{background:rgba(255,255,255,.09)}
+/* the services banner runs up behind the clear nav, like the home hero (html.nav-under is set by Nav.jsx) */
+html.nav-under .sm-map-dark.sm-map-full{margin-top:calc(-1 * var(--navh,78px));padding-top:calc(54px + var(--navh,78px))}
+@media(min-width:1280px){html.nav-under .sm-map-dark.sm-map-full{padding-top:calc(40px + var(--navh,78px))}}
+@media(min-width:1280px){
+  .sm-map-dark .rx-compact .rx-col.rx-s .rx-n,.sm-map-dark .rx-compact .rx-col.rx-u .rx-n,.sm-map-dark .rx-compact .rx-col.rx-w .rx-n{flex:1 1 auto}
+  .sm-map-dark .rx-compact .rx-col.rx-y{display:flex;flex-direction:column;justify-content:space-between;height:100%;gap:5px}
+}
+@media(min-width:1280px){
+  .sm-map-dark .rx-compact .rx-col.rx-s{display:grid;grid-template-rows:repeat(6,minmax(0,1fr));gap:8px}
+  .sm-map-dark .rx-compact .rx-col.rx-u,.sm-map-dark .rx-compact .rx-col.rx-w{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:8px}   /* the system column sets the height; the other columns divide it evenly */
+  .sm-map-dark .rx-compact .rx-col.rx-s .rx-n,.sm-map-dark .rx-compact .rx-col.rx-u .rx-n,.sm-map-dark .rx-compact .rx-col.rx-w .rx-n{height:auto;min-height:0}
+}
+@media(min-width:1280px){
+  /* the three card columns take no part in the row's height (contain:size), so the system column alone sets it and the
+     others divide that height evenly */
+  .sm-map-dark .rx-compact .rx-col.rx-s,.sm-map-dark .rx-compact .rx-col.rx-w{contain:size;height:100%;align-self:stretch}
+  /* the unit column drives the row: three equal rows at the tallest unit card (1fr rows in an auto-height grid resolve to
+     the tallest item), and it stretches when the system column is taller */
+  .sm-map-dark .rx-compact .rx-col.rx-u{contain:none;grid-template-rows:repeat(3,1fr);height:auto;align-self:stretch}
+}
+@media(min-width:1280px){
+  /* the unit column a little wider so the long unit names wrap less and the equal rows stay short */
+  .sm-map-dark .rx-compact .rx-heads,.sm-map-dark .rx-compact .rx-cols{grid-template-columns:minmax(0,.86fr) minmax(0,1.22fr) minmax(0,.82fr) minmax(0,1.1fr)}
+  .sm-map-dark .rx-compact .rx-u .rx-n{padding:11px 13px;gap:4px}
+}
+
+/* 25 Sep (Bazil: "make the visual part of the layout", "again it's like a separate section"): the band is the layout's
+   light ground, text left, the illustration right, blended in (multiply turns its white ground into the band's grey) */
+.sm-qs-band{min-height:0;background-image:none;background-color:#EDF0F4;padding:clamp(28px,4vh,44px) var(--gut)}
+.sm-qs-band .pg-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:clamp(24px,4vw,56px)}
+.sm-qs-band .sm-qs-visual{display:block;width:100%;height:auto;max-height:300px;object-fit:contain;mix-blend-mode:multiply;justify-self:end}
+@media(max-width:900px){.sm-qs-band .pg-in{grid-template-columns:1fr;gap:18px}.sm-qs-band .sm-qs-visual{max-height:200px;justify-self:start}}
+/* 25 Sep (Bazil: "same background colour please"): the quote band sits on the section's own ground, no band colour of
+   its own; the illustration's white still multiplies into that ground */
+.sm-qs-band{background-color:transparent}
+
+/* 25 Sep (Bazil: "find a way to make the card look more premium"): quieter cards. No row lines (air separates the rows),
+   the model chips as unit-blue tints instead of outlined boxes, the unit mark as a blue mark with no box, a tinted foot
+   carrying the way in, the Read-more bar as a quiet bar with no outline, and one soft lift under each column */
+.sm-ub-row+.sm-ub-row .sm-ub-cell,.sm-ub-foot .sm-ub-cell,.sm-ub-dgcell{border-top:0}
+.sm-ub-cell{padding:18px 24px 6px}
+.sm-ub-top+.sm-ub-row .sm-ub-cell{padding-top:22px}
+.sm-ub-k{font:500 12px/1.2 "Instrument Sans",sans-serif;color:rgba(12,18,32,.5);letter-spacing:.01em}
+.sm-ub-v{font-size:15.5px;line-height:1.5}
+.sm-ub .sm-mi,.sm-ub .sm-mi:hover{background:color-mix(in srgb,var(--unit) 9%,#fff);color:var(--unit-t);box-shadow:none;border:0}
+.sm-ub-head h3 .sm-uc-mark{background:transparent;color:var(--ub,var(--unit));width:48px;height:48px;box-shadow:none}
+.sm-ub-head h3 .sm-uc-mark svg{width:40px;height:40px}
+.sm-ub-foot .sm-ub-cell{padding:14px 24px 16px;margin-top:12px;background:color-mix(in srgb,var(--unit) 5%,#fff)}
+.sm-ub-foot .sm-uc-go{color:var(--unit-t);font:600 15px/1.2 "Switzer",sans-serif;display:inline-flex;align-items:center;gap:8px}
+.sm-ub-foot .sm-uc-go i{font-style:normal;transition:transform .35s var(--e1)}
+.sm-ub-foot .sm-uc-go:hover i{transform:translateX(4px)}
+.sm-ub-more .sm-uc-more{background:#fff;color:rgba(12,18,32,.72);box-shadow:none;border:0;padding:14px 18px}
+.sm-ub-more .sm-uc-more:hover{background:#fff;color:var(--ink)}
+.sm-ub-top .sm-ub-cell.sm-ub-head,.sm-ub-head{box-shadow:none}
+.sm-ub-row .sm-ub-cell{box-shadow:none;outline:0}
+
+/* 25 Sep: the unit mark draws in the unit's blue (an older rule forced the svg white for the solid box that is gone);
+   the board's three blues follow the locked code, unit 1 light, unit 2 blue, unit 3 dark */
+.sm-ub-head h3 .sm-uc-mark svg{color:inherit;stroke:currentColor}
+.sm-ub-head h3 .sm-uc-mark{color:var(--ub,var(--unit))}
+
+/* 25 Sep, 08:45 (Bazil: "apply the icons"): the marks inside the request chips */
+.sm-chip .sm-ci{width:15px;height:15px;flex:none}
+.sm-chip.u .sm-ci{color:#fff}
+.sm-chip .sm-cm{display:block;width:22px;height:22px;flex:none;margin:-3px 0}
+.sm-chip .sm-cm svg{display:block;width:100%;height:100%}
+
+/* 25 Sep (Bazil: thin ribbons, "not this thick"): the connector is a ribbon from the leaving card's colour to the arriving
+   card's colour (gradient in --rg), a soft 9px pass at low opacity under a 2.6px core, the same soft light as before */
+/* 25 Sep, midday (Bazil: "the line got worse with dual colours"): one colour per ribbon, its relation kind */
+.sm-map-dark .rx-e.rx-rib path{stroke:var(--rk);filter:none;stroke-linecap:round;fill:none}
+.sm-map-dark .rx-e.rx-rib.k-s{--rk:var(--svc)}.sm-map-dark .rx-e.rx-rib.k-w{--rk:var(--work)}.sm-map-dark .rx-e.rx-rib.k-y{--rk:var(--sys)}
+.sm-map-dark .rx-e.rx-rib .rx-rib-soft{stroke-width:9;opacity:.16}
+.sm-map-dark .rx-e.rx-rib .rx-rib-core{stroke-width:2.6;opacity:.95;filter:drop-shadow(0 0 3px rgba(255,255,255,.12))}
+.sm-map-dark .rx-e.rx-rib.ask .rx-rib-core{stroke-dasharray:6 5}
+.sm-map-dark .rx-e.rx-rib.ask .rx-rib-soft{opacity:.08}
+.sm-map-dark .rx-e.rx-rib circle{stroke:#0F1319;stroke-width:1.5;filter:none}
+
+/* 25 Sep, midday (Bazil: "why this show 3 work though, cause hook up", "make sure everything structured well"): the Work
+   column carries the fourth kind, tools hookup, in the service red it has everywhere else (service 6, the tools
+   themselves); four work cards stand level with the three unit cards, and its three systems close the System column */
+.rx-n.n-w-s{--c:var(--svc);--c-t:var(--svc-t)}
+.rx-compact .rx-w .rx-n.n-w-s svg{color:var(--svc-t)}
+.sm-map-dark .rx-compact .rx-w .rx-n.n-w-s svg{color:var(--svc)}
+.sm-map-dark .rx-compact .rx-w .rx-n{height:165px}   /* 4 x 165 + 3 gaps = 3 x 222 + 2 gaps, the unit column */
+
+/* 25 Sep, afternoon (Bazil: "make the arrow better"): the arrows between the request columns are drawn, not typed: a
+   16px shaft with an open head, one soft grey, centred on the row; the same drawing inline under 1100px */
+.sm-cell::before{content:"";width:16px;height:12px;left:-19px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12' fill='none' stroke='%23A9B3C2' stroke-width='1.5' stroke-linecap='butt' stroke-linejoin='miter'><path d='M1 6h13M10 1.5L14.5 6 10 10.5'/></svg>") center/contain no-repeat;font-size:0}
+@media(max-width:1100px){.sm-cell::before{display:inline-block;position:static;transform:none;margin-right:8px;vertical-align:middle}}
+
+/* 25 Sep, version 2 of the banner (Bazil: "no bottom left info", "no business units", "remove services as well"): the map
+   is work and system; two columns, the model gets the wider share of the banner */
+@media(min-width:1280px){
+  .sm-map-dark.sm-map-full .sm-map-duo{grid-template-columns:minmax(0,.56fr) minmax(0,.44fr)}
+  .sm-map-dark .rx-compact .rx-only .rx-heads,.sm-map-dark .rx-compact .rx-only .rx-cols{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr)}
+  .sm-map-dark .rx-compact .rx-only .rx-col.rx-w{contain:size;height:100%;display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:8px}
+  .sm-map-dark .rx-compact .rx-only .rx-col.rx-y{display:flex;flex-direction:column;justify-content:space-between;gap:6px}
+  .sm-map-dark .rx-compact .rx-only .rx-y .rx-n{padding:8px 12px}
+}
+@media(min-width:1280px){.sm-map-dark .rx-compact .rx-only .rx-y .rx-n{padding:5px 12px;min-height:0}.sm-map-dark .rx-compact .rx-only .rx-col.rx-y{gap:5px}}
+
+/* 26 Sep: three of the six requests stand open */
+.sm-asks-more{display:inline-flex;align-items:center;gap:10px;margin-top:14px;padding:11px 16px;border:0;background:#fff;box-shadow:inset 0 0 0 1px rgba(12,18,32,.12);color:#0C1220;font:600 14px/1.2 "Switzer",sans-serif;cursor:pointer;transition:box-shadow .25s}
+.sm-asks-more i{font-style:normal;font:500 18px/1 "Switzer",sans-serif;color:#EC2027}
+.sm-asks-more:hover{box-shadow:inset 0 0 0 1px #0C1220}

@@ -1,0 +1,255 @@
+/* ============ the CMS portal ============
+   Admin surface, deliberately quieter than the public pages: one accent, flat
+   cards, dense forms. Shares the site tokens. */
+
+.cms-wrap{max-width:1060px;margin:0 auto;padding:110px 22px 80px}
+.cms-login{max-width:420px;margin:140px auto 120px;border:1px solid rgba(12,18,32,.12);border-radius:0;padding:34px 32px;background:#fff;box-shadow:0 18px 50px rgba(12,18,32,.08)}
+.cms-login h1{font-size:24px;margin:10px 0 6px}
+.cms-login p{font-size:14px;color:#48536A;line-height:1.55}
+.cms-k{font-family: var(--label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#B5121B;font-weight:600}
+.cms-login form{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.cms-login input{border:1px solid rgba(12,18,32,.18);border-radius:0;padding:11px 13px;font-size:14px;font-family: var(--label)}
+.cms-login button{background:#EC2027;color:#fff;border:0;border-radius:0;padding:12px;font-weight:600;font-size:14px;cursor:pointer}
+.cms-login button:hover{background:#B5121B}
+.cms-err{color:#B5121B;font-size:13px}
+.cms-hint{margin-top:14px;padding-top:12px;border-top:1px dashed rgba(12,18,32,.15);font-size:12.5px;color:#828B9E}
+.cms-hint code{font-family: var(--label);background:#F2F4F8;border-radius:0;padding:1px 6px;color:#0C1220}
+
+.cms-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.cms-head h1{font-size:30px;line-height:1.1}
+.cms-head p{font-size:14px;color:#48536A;max-width:64ch;margin-top:6px}
+.cms-out{background:none;border:1px solid rgba(12,18,32,.18);border-radius:0;padding:8px 14px;font-size:12.5px;font-weight:600;cursor:pointer;color:#48536A}
+.cms-out:hover{border-color:#B5121B;color:#B5121B}
+
+.cms-tabs{display:flex;gap:4px;border:1px solid rgba(12,18,32,.12);background:#F2F4F8;border-radius:0;padding:4px;width:max-content;margin-bottom:22px}
+.cms-tabs button,.cms-tabs a{border:0;background:none;border-radius:0;padding:9px 16px;font-size:13px;font-weight:600;color:#48536A;cursor:pointer;text-decoration:none;display:inline-block}
+.cms-tabs button.on,.cms-tabs a.on{background:#0C1220;color:#fff}
+.cms-tabs a.codex{color:#B5121B}
+.cms-tabs a.codex:hover{background:#FDECEA}
+
+/* 18 Sep: no left stripe (house rule); the note is a tint */
+.cms-note{background:rgba(236,32,39,.06);padding:12px 16px;border-radius:0;font-size:13.5px;color:#48536A;margin-bottom:18px}
+.cms-note b{color:#0C1220}
+
+.cms-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.cms-add{background:#0C1220;color:#fff;border:0;border-radius:0;padding:9px 15px;font-size:13px;font-weight:600;cursor:pointer}
+.cms-add:hover{background:#1F2940}
+.cms-reset{background:none;border:1px solid rgba(12,18,32,.18);border-radius:0;padding:8px 13px;font-size:12.5px;cursor:pointer;color:#48536A}
+.cms-reset:hover{border-color:#B5121B;color:#B5121B}
+.cms-state{margin-left:auto;font-family: var(--label);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#828B9E}
+.cms-state.dirty{color:#B5121B}
+
+.cms-list{display:flex;flex-direction:column;gap:10px}
+.cms-item{border:1px solid rgba(12,18,32,.12);border-radius:0;background:#fff;overflow:hidden}
+.cms-item-h{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer}
+.cms-item-h:hover{background:#FAFBFD}
+.cms-item-h b{font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cms-chip{font-family: var(--label);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#48536A;background:#F2F4F8;border-radius:0;padding:3px 8px;white-space:nowrap}
+.cms-del{background:none;border:0;color:#828B9E;cursor:pointer;font-size:16px;line-height:1;padding:4px}
+.cms-del:hover{color:#B5121B}
+.cms-form{padding:4px 16px 16px;border-top:1px dashed rgba(12,18,32,.12);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.cms-form label{display:flex;flex-direction:column;gap:4px;font-family: var(--label);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#828B9E}
+.cms-form input,.cms-form select,.cms-form textarea{border:1px solid rgba(12,18,32,.16);border-radius:0;padding:9px 11px;font-size:13.5px;font-family:Inter,system-ui,sans-serif;background:#fff;color:#0C1220}
+.cms-form textarea{min-height:120px;resize:vertical;grid-column:1/-1;line-height:1.6}
+.cms-form .full{grid-column:1/-1}
+.cms-save{position:sticky;bottom:18px;display:flex;justify-content:flex-end;margin-top:20px}
+.cms-save button{background:#EC2027;color:#fff;border:0;border-radius:0;padding:13px 26px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 10px 26px rgba(236,32,39,.35)}
+.cms-save button:disabled{background:#C9CFDA;box-shadow:none;cursor:default}
+.cms-saved-flash{font-size:13px;color:#0E7A3C;font-weight:600;align-self:center;margin-right:12px}
+@media(max-width:640px){.cms-wrap{padding-top:96px}}
+
+/* 18 Sep (Bazil: the capability pack "in the portal page instead, as a section to download"): the
+   Downloads tab. The document mock is the one the public gate used (gate.css); the action is a
+   download, not a form, because a member is already inside. */
+.cms-dl{display:grid;grid-template-columns:minmax(200px,260px) minmax(0,1fr);gap:clamp(22px,3.5vw,44px);align-items:center;background:#fff;border:1px solid rgba(12,18,32,.12);padding:clamp(20px,3vw,34px)}
+.cms-dl .gate-doc{max-width:240px}
+.cms-dl h2{font-size:clamp(20px,2.3vw,26px);letter-spacing:-.02em;max-width:22ch}
+.cms-dl p{margin-top:10px;color:#48536A;font-size:14.5px;line-height:1.6;max-width:52ch}
+.cms-dl .gd-list{margin-top:16px}
+.cms-dl-act{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:20px}
+.cms-dl-act .cta[aria-disabled="true"]{opacity:.55;cursor:not-allowed;pointer-events:none}
+.cms-dl-note{font-family:"Switzer","Instrument Sans",sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#66708A;line-height:1.6}
+.cms-files{list-style:none;margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.cms-file{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid rgba(12,18,32,.12);background:#fff;padding:14px 16px;text-decoration:none;color:inherit;transition:border-color .2s}
+.cms-file:hover{border-color:#EC2027}
+.cms-file b{display:block;font-family:"Switzer",sans-serif;font-weight:600;font-size:14.5px;letter-spacing:-.01em}
+.cms-file small{display:block;margin-top:3px;font-size:12.5px;color:#66708A}
+.cms-file span.dl{font-family:"Switzer","Instrument Sans",sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#B5121B;white-space:nowrap}
+@media(max-width:760px){.cms-dl{grid-template-columns:1fr}.cms-dl .gate-doc{display:none}}
+
+/* ============================================================================
+   18 Sep, evening · the portal as its own area (Bazil: "portal should have its own tabs and pages, right
+   inside there is the Codex"). One tab bar pinned under the site nav, a page per tab.
+   ============================================================================ */
+.pt{background:var(--bg,#F7F9FC);min-height:60vh}
+.pt-bar{position:sticky;top:var(--sticktop,78px);z-index:40;background:#0C1220;color:#fff}
+.pt-bar-in{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;gap:24px;min-height:58px}
+.pt-name{display:flex;flex-direction:column;line-height:1.15;white-space:nowrap}
+.pt-name b{font:600 15px/1.15 "Switzer",sans-serif;letter-spacing:-.01em}
+.pt-name small{font-size:12px;color:#9AA6BF;margin-top:2px}
+.pt-tabs{display:flex;align-items:stretch;gap:2px;overflow-x:auto;flex:1;min-width:0;align-self:stretch}
+.pt-tabs::-webkit-scrollbar{height:0}
+.pt-tabs a{display:flex;align-items:center;padding:0 16px;font:600 14px/1 "Switzer",sans-serif;color:#C9D2E3;text-decoration:none;white-space:nowrap;box-shadow:inset 0 -3px 0 transparent;transition:color .2s,box-shadow .2s,background .2s}
+.pt-tabs a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.pt-tabs a.on{color:#fff;box-shadow:inset 0 -3px 0 #EC2027;background:rgba(255,255,255,.07)}
+/* 22 Sep: an icon on every tab in place of the red square that marked the Codex; it turns red on the tab in use */
+.pt-tabs a{gap:9px}
+.pt-ic{display:grid;place-items:center;width:18px;height:18px;flex:none;color:#8E9BB4;transition:color .2s}
+.pt-ic svg{width:18px;height:18px;stroke-width:1.5}
+.pt-tabs a:hover .pt-ic{color:#fff}
+.pt-tabs a.on .pt-ic{color:#FF4D55}
+.pt-out{flex:none;border:1px solid rgba(255,255,255,.28);background:none;color:#fff;padding:9px 14px;font:600 12.5px/1 "Switzer",sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.pt-out:hover{background:#EC2027;border-color:#EC2027}
+.pt .cms-wrap{padding-top:clamp(34px,5vh,56px)}
+.pt .cms-head h1{font-size:clamp(26px,3vw,38px)}
+.pt .cms-head h1 em,.cms-login h1 em{font-style:normal;color:#B5121B}
+.cms-h3{margin:30px 0 0;font:600 18px/1.2 "Switzer",sans-serif;letter-spacing:-.015em}
+/* the infographic set in Downloads */
+.cms-set{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);gap:clamp(20px,3vw,40px);align-items:start;background:#fff;padding:clamp(20px,3vw,32px);margin-bottom:22px;box-shadow:0 1px 2px rgba(12,18,32,.06)}
+.cms-set h2{font:600 clamp(20px,2.2vw,26px)/1.15 "Switzer",sans-serif;letter-spacing:-.02em}
+.cms-set p{margin-top:10px;color:#48536A;font-size:14.5px;line-height:1.6}
+.cms-set-grid{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.cms-set-grid a{display:grid;gap:6px;text-decoration:none;color:#0C1220}
+.cms-set-grid img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#EEF2F8;transition:box-shadow .25s}
+.cms-set-grid a:hover img{box-shadow:0 0 0 2px #EC2027}
+.cms-set-grid.pdf img{aspect-ratio:297/210;object-fit:contain;background:#fff;box-shadow:inset 0 0 0 1px rgba(12,18,32,.1)}
+.cms-set-grid span{display:flex;justify-content:space-between;font:600 12px/1 "Switzer",sans-serif}
+.cms-set-grid i{font-style:normal;color:#B5121B}
+@media(max-width:900px){.pt-name small{display:none}.cms-set{grid-template-columns:1fr}.cms-set-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:640px){.pt-bar-in{gap:10px}.pt-name{display:none}.pt-tabs a{padding:0 12px;font-size:13px}.cms-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ============================================================================
+   23 Sep · the 3D tab (checklist d6). Two fixes the first render showed:
+   the two links stacked as full-width red blocks, and a row with nothing owed left the right
+   half of the set empty. A row with an owed slot keeps the two-column set; a row that ships
+   runs full width and says where to see it in a line, not in an empty column.
+   ============================================================================ */
+.pt-md .cms-dl-act { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
+.pt-md .cms-dl-act .cta { width: auto; }
+.pt-md.pt-md-live { grid-template-columns: minmax(0, 1fr); }
+.pt-md.pt-md-live .pt-md-where { margin-top: 14px; color: #48536A; font-size: 13.5px; }
+.pt-md .pg-slot { background: #F4F6FA; padding: 18px 20px; }
+.pt-md .pg-slot p { margin-top: 8px; font-size: 14px; line-height: 1.55; color: #48536A; }
+
+/* ============================================================================
+   23 Sep · the portal bar is three jobs, not seven tabs (Bazil: "separate to 1. edit website,
+   2. exhibition, 3. documents", "when click 1 the info expands to the right").
+   The three buttons sit at the left; the chosen one's pages open in the panel beside them, on the
+   same line, divided by a hairline. The page you are on keeps the red underline it always had.
+   ============================================================================ */
+.pt-groups { display: flex; align-items: stretch; gap: 0; flex: 1; min-width: 0; align-self: stretch; overflow-x: auto; }
+.pt-groups::-webkit-scrollbar { height: 0; }
+.pt-g { display: flex; align-items: center; gap: 9px; padding: 0 16px; border: 0; background: none; cursor: pointer;
+  font: 600 14px/1 "Switzer", sans-serif; color: #8E9AB3; white-space: nowrap;
+  box-shadow: inset 0 -3px 0 transparent; transition: color .2s, background .2s, box-shadow .2s; }
+.pt-g:hover { color: #fff; background: rgba(255, 255, 255, .06); }
+.pt-g.open { color: #fff; background: rgba(255, 255, 255, .07); }
+.pt-g.here { box-shadow: inset 0 -3px 0 #EC2027; }
+.pt-g .pt-ic { color: currentColor; }
+.pt-panel { display: flex; align-items: stretch; gap: 0; margin-left: 14px; padding-left: 14px;
+  border-left: 1px solid rgba(255, 255, 255, .14); animation: ptPanel .34s cubic-bezier(.22, 1, .36, 1) both; }
+@keyframes ptPanel { from { opacity: 0; transform: translateX(-10px) } to { opacity: 1; transform: none } }
+.pt-p { display: flex; align-items: center; gap: 8px; padding: 0 14px; text-decoration: none;
+  color: #C9D2E3; white-space: nowrap; box-shadow: inset 0 -3px 0 transparent;
+  transition: color .2s, background .2s, box-shadow .2s; }
+.pt-p b { font: 500 13.5px/1 "Instrument Sans", sans-serif; }
+.pt-p:hover { color: #fff; background: rgba(255, 255, 255, .06); }
+.pt-p.on { color: #fff; background: rgba(255, 255, 255, .07); box-shadow: inset 0 -3px 0 #EC2027; }
+.pt-p.on b { font-weight: 600; }
+@media (max-width: 1100px) {
+  .pt-g, .pt-p { padding: 0 11px; }
+  .pt-g { font-size: 13px; }
+  .pt-p b { font-size: 12.5px; }
+  .pt-panel { margin-left: 8px; padding-left: 8px; }
+}
+@media (max-width: 760px) { .pt-g .pt-ic { display: none; } .pt-p .pt-ic { display: none; } }
+@media (prefers-reduced-motion: reduce) { .pt-panel { animation: none; } }
+
+/* ============================================================================
+   25 Sep (Bazil: "very hard to navigate, maybe should have a dropdown"): the bar is three group buttons, each with a
+   menu under it. The current page shows beside its group. The booth page's own tab row is hidden inside the portal.
+   ============================================================================ */
+.pt-menus{overflow:visible;position:relative;z-index:30}
+.pt-m{position:relative;display:flex;align-items:stretch}
+.pt-m .pt-g{gap:9px}
+.pt-cur{font:500 12.5px/1 "Instrument Sans",sans-serif;color:rgba(255,255,255,.55);margin-left:2px}
+.pt-cur::before{content:"\00b7";margin-right:8px}
+.pt-car{font-style:normal;font-size:10px;opacity:.6;margin-left:2px}
+.pt-g.open .pt-car{transform:rotate(180deg)}
+.pt-menu{position:absolute;left:0;top:100%;min-width:280px;background:#fff;color:var(--ink);box-shadow:0 1px 0 rgba(12,18,32,.08),0 24px 60px -24px rgba(12,18,32,.4);padding:8px;z-index:40;display:grid;gap:2px}
+.pt-menu-note{display:block;padding:8px 12px 6px;font:500 12px/1.3 "Instrument Sans",sans-serif;color:var(--faint)}
+.pt-menu .pt-p{display:flex;align-items:center;gap:12px;padding:9px 12px;text-decoration:none;color:var(--ink);background:transparent;box-shadow:none}
+.pt-menu .pt-p:hover{background:#F1F4F8;color:var(--ink)}
+.pt-menu .pt-p.on{background:#0C1220;color:#fff}
+.pt-menu .pt-p .pt-ic{color:currentColor;opacity:.8}
+.pt-menu .pt-p span{display:grid;gap:2px}
+.pt-menu .pt-p b{font:600 13.5px/1.2 "Switzer",sans-serif}
+.pt-menu .pt-p em{font:400 12px/1.3 "Instrument Sans",sans-serif;font-style:normal;color:var(--soft);max-width:34ch}
+.pt-menu .pt-p.on em{color:rgba(255,255,255,.65)}
+.pt .bt-tabs{display:none}
+@media(max-width:640px){.pt-cur{display:none}.pt-menu{min-width:240px}}
+
+/* 25 Sep (Bazil: "a left navigation bar, not this kind of dropdown"): the portal shell is a sidebar and a page */
+.pt-shell{display:grid;grid-template-columns:272px minmax(0,1fr);align-items:start}
+.pt-side{position:sticky;top:var(--sticktop,78px);height:calc(100vh - var(--sticktop,78px));overflow:auto;background:#0C1220;color:#fff}
+.pt-side-in{padding:22px 14px 26px;display:flex;flex-direction:column;min-height:100%}
+.pt-side .pt-name{display:grid;gap:2px;padding:4px 12px 16px}
+.pt-side .pt-name b{font:600 15px/1.2 "Switzer",sans-serif}
+.pt-side .pt-name small{font:400 12px/1.3 "Instrument Sans",sans-serif;color:rgba(255,255,255,.55)}
+.pt-sg{margin-top:12px}
+.pt-sg-h{display:flex;align-items:center;gap:8px;padding:8px 12px 2px;font:600 13.5px/1.2 "Switzer",sans-serif;color:rgba(255,255,255,.92)}
+.pt-sg-n{display:block;padding:0 12px 6px;font:400 12px/1.3 "Instrument Sans",sans-serif;font-style:normal;color:rgba(255,255,255,.5)}
+.pt-side .pt-p{display:flex;align-items:center;gap:10px;padding:9px 12px;color:rgba(255,255,255,.8);text-decoration:none;background:transparent;box-shadow:none;border-radius:0}
+.pt-side .pt-p:hover{background:rgba(255,255,255,.06);color:#fff}
+.pt-side .pt-p.on{background:rgba(255,255,255,.1);color:#fff;box-shadow:none}
+.pt-side .pt-p span{display:grid;gap:2px}
+.pt-side .pt-p b{font:500 13.5px/1.2 "Switzer",sans-serif}
+.pt-side .pt-p.on b{font-weight:600}
+.pt-side .pt-p em{font:400 11.5px/1.3 "Instrument Sans",sans-serif;font-style:normal;color:rgba(255,255,255,.5)}
+.pt-side .pt-ic{width:18px;height:18px;flex:none;opacity:.85;color:currentColor}
+.pt-side .pt-out{margin:22px 0 0 12px;align-self:flex-start;background:transparent;color:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.22);padding:8px 12px;font:500 13px/1 "Instrument Sans",sans-serif;cursor:pointer}
+.pt-side .pt-out:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+.pt-main{min-width:0}
+@media(max-width:900px){.pt-shell{grid-template-columns:1fr}.pt-side{position:static;height:auto}.pt-side-in{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px 18px}.pt-side .pt-name,.pt-side .pt-out{grid-column:1/-1}}
+/* the item notes wrap inside the sidebar instead of running past its edge */
+.pt-side .pt-p{align-items:flex-start}
+.pt-side .pt-p .pt-ic{margin-top:1px}
+.pt-side .pt-p span{min-width:0}
+.pt-side .pt-p em{white-space:normal;overflow-wrap:anywhere}
+
+/* 25 Sep (Bazil: "design the sidebar more properly: main titles and subtitles, structured; only when you click the main
+   title the bottom one expands"): an accordion. Title rows with a caret; the open group's items sit indented beneath,
+   names only (the note rides on the title). The current page is tinted */
+.pt-sg{margin-top:4px}
+.pt-sg-b{display:flex;align-items:center;gap:10px;width:100%;padding:11px 12px;background:transparent;border:0;color:rgba(255,255,255,.92);font:600 14px/1.2 "Switzer",sans-serif;text-align:left;cursor:pointer;border-radius:0}
+.pt-sg-b:hover{background:rgba(255,255,255,.05)}
+.pt-sg.open .pt-sg-b{color:#fff}
+.pt-sg.here .pt-sg-b .pt-sg-l{color:#fff}
+.pt-sg-b .pt-ic{width:18px;height:18px;flex:none;opacity:.9}
+.pt-sg-l{flex:1 1 auto;min-width:0}
+.pt-car{width:8px;height:8px;border-right:1.5px solid rgba(255,255,255,.55);border-bottom:1.5px solid rgba(255,255,255,.55);transform:rotate(-45deg);transition:transform .25s var(--e1,ease);margin-right:4px;flex:none}
+.pt-sg.open .pt-car{transform:rotate(45deg)}
+.pt-sg-items{padding:2px 0 8px}
+.pt-sg-items[hidden]{display:none}
+.pt-sg-n{padding:0 12px 6px 40px;font:400 12px/1.35 "Instrument Sans",sans-serif;color:rgba(255,255,255,.48)}
+.pt-side .pt-p{padding:8px 12px 8px 40px;gap:9px;align-items:center;color:rgba(255,255,255,.78)}
+.pt-side .pt-p .pt-ic{width:16px;height:16px;opacity:.75;margin:0}
+.pt-side .pt-p b{font:500 13.5px/1.25 "Switzer",sans-serif}
+.pt-side .pt-p.on{background:rgba(255,255,255,.1);color:#fff}
+.pt-side .pt-p.on b{font-weight:600}
+.pt-side .pt-p.on .pt-ic{opacity:1}
+.pt-side .pt-out{margin-top:26px}
+@media(max-width:900px){.pt-side-in{display:block}.pt-sg-items{padding-bottom:4px}}
+/* a standalone title in the sidebar (Design direction): one link, no caret */
+.pt-solo .pt-sg-b{text-decoration:none}
+.pt-solo .pt-sg-b.on{background:rgba(255,255,255,.1);color:#fff}
+.bt-solo .bt-part{padding-top:8px;content-visibility:visible}
+
+/* the Codex's three parts under its link (25 Sep) */
+.pt-subs{display:grid;gap:1px;margin:2px 0 6px}
+.pt-side .pt-sub{display:flex;align-items:center;gap:10px;padding:6px 12px 6px 66px;color:rgba(255,255,255,.62);text-decoration:none;font:500 13px/1.25 "Switzer",sans-serif}
+.pt-side .pt-sub i{font-style:normal;font:600 11px/1 "Switzer",sans-serif;color:rgba(255,255,255,.45);width:12px}
+.pt-side .pt-sub:hover{color:#fff;background:rgba(255,255,255,.05)}
+.pt-side .pt-sub.on{color:#fff}
+.pt-side .pt-sub.on i{color:#EC2027}
+.cx-in-dir{margin-top:clamp(32px,5vh,64px)}

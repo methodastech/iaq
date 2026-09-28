@@ -1,0 +1,61 @@
+{
+  "layer": "detail-louvres",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -61.64870967046892,
+      8.34000015258789,
+      -34.13620245588274
+    ],
+    "max": [
+      66.78057347162093,
+      26,
+      18.02363335954695
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      94.58881378173828,
+      8.34000015258789,
+      -37.6948356628418
+    ],
+    "max": [
+      223.01809692382812,
+      26,
+      14.46500015258789
+    ]
+  },
+  "storeys": [
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-louvres-1-gf.glb",
+      "triangles": 916,
+      "sizeKB": 9
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-louvres-2-1f.glb",
+      "triangles": 712,
+      "sizeKB": 8
+    },
+    {
+      "index": 4,
+      "key": "3f",
+      "name": "3F",
+      "elevation": 21.05,
+      "file": "detail-louvres-4-3f.glb",
+      "triangles": 22460,
+      "sizeKB": 177
+    }
+  ]
+}

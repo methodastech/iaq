@@ -1,0 +1,138 @@
+/* ------------------------------------------------------------------------
+   THE SPAN: history to scale.
+   Light, square, one red accent. #EC2027 is 4.37:1 on white so it is used for
+   MARKS only; red glyphs take --blue-bright (6.86:1) and readable micro-type
+   takes --soft, never --faint (3.3:1).
+   15 Sep: no hairlines. The section top rule, the rule above the read head and
+   the rule above the specification strip are gone (client: "i hate the lines");
+   space separates them instead. The rail and its year ticks stay: they are the scale.
+   ------------------------------------------------------------------------ */
+
+.hx{ background:var(--bg2);
+     padding:clamp(70px,9vh,116px) 0 clamp(60px,8vh,100px); }
+
+.hx-head h2{ font-size:clamp(30px,3.4vw,54px); letter-spacing:-.025em; line-height:1.04;
+             max-width:18ch; margin-top:14px; }
+.hx-head h2 em{ font-style:normal; color:var(--blue-bright); }
+.hx-lede{ margin-top:16px; max-width:62ch; font-size:15px; line-height:1.6; color:var(--soft); }
+
+.hx-body{ position:relative; display:grid;
+          grid-template-columns:minmax(150px,210px) minmax(0,1fr);
+          gap:clamp(24px,4vw,72px); margin-top:clamp(34px,5vh,60px); }
+
+/* ---- the read head: sticky, names the era under the eye ----------------- */
+
+.hx-read{ position:sticky; top:clamp(96px,14vh,150px); align-self:start; }
+.hx-read-k{ display:block; font-family: var(--label); font-size:10px;
+            font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--soft); }
+.hx-read-y{ display:block; margin-top:10px; font-family:"Switzer","Instrument Sans",sans-serif;
+            font-weight:600; font-size:clamp(30px,3.2vw,46px); letter-spacing:-.03em;
+            line-height:1; color:var(--ink); font-variant-numeric:tabular-nums; }
+.hx-read-t{ display:block; margin-top:8px; font-size:13px; line-height:1.4; color:var(--soft); }
+
+/* ---- the list ---------------------------------------------------------- */
+
+.hx-list{ list-style:none; margin:0; padding:0; position:relative; }
+
+.hx-item{ position:relative; padding:0 0 var(--gap) 34px; }
+.hx-item:last-child{ padding-bottom:0; }
+/* the spine. 26 Sep (IAQ graphic rules: "no vertical line, ever"): off; the square marks and the space between entries
+   carry the sequence */
+.hx-item::before{ content:none; display:none; }
+.hx-item:last-child::before{ display:none; }
+
+/* the milestone mark: hollow by default, filled for the turning points */
+.hx-mark{ position:absolute; left:0; top:5px; width:11px; height:11px;
+          border:1px solid var(--blue); background:var(--bg2); }
+.hx-item[data-k="1"] .hx-mark{ background:var(--blue); }
+
+/* the entry itself, revealed as it arrives */
+.hx-txt{ opacity:0; transform:translateY(12px);
+         transition:opacity .6s var(--e1), transform .7s var(--e1); }
+.hx-item[data-in="1"] .hx-txt{ opacity:1; transform:none; }
+
+.hx-yr{ display:block; font-family: var(--num); font-size:10.5px; font-weight:600;
+        letter-spacing:.2em; color:var(--blue-bright); font-variant-numeric:tabular-nums; }
+.hx-ttl{ margin-top:8px; font-size:clamp(20px,2.1vw,30px); letter-spacing:-.02em;
+         line-height:1.1; color:var(--ink); }
+.hx-body-t{ margin-top:11px; max-width:60ch; font-size:14.5px; line-height:1.6; color:var(--soft); }
+
+/* the specification strip: the metadata the flat list never carried. No rule
+   above it; the space after the figure is the separation. */
+.hx-meta{ display:flex; flex-wrap:wrap; gap:12px 0; margin:20px 0 0; }
+.hx-meta > div{ padding:0 26px 0 0; }
+.hx-meta dt{ font-family: var(--label); font-size:10px; font-weight:600;
+             letter-spacing:.18em; text-transform:uppercase; color:var(--soft); }
+.hx-meta dd{ margin:5px 0 0; font-size:13.5px; color:var(--ink); }
+
+/* ---- the measured gap: one tick per year that passed -------------------- */
+
+.hx-gap{ position:absolute; left:0; bottom:0; height:var(--gap); width:100%;
+         pointer-events:none; }
+/* background-size is a FRACTION of the gap, so the tick COUNT stays exactly --gy
+   whatever height the gap resolves to */
+/* 26 Sep (IAQ graphic rules: no short dash): the stack of year ticks is off; the gap reads in words ("5 years") */
+.hx-ticks{ display:none; position:absolute; left:2px; top:0; bottom:14px; width:7px;
+           background-image:linear-gradient(to bottom,var(--line2) 1px,transparent 1px);
+           background-size:100% calc(100% / var(--gy));
+           background-repeat:repeat-y; opacity:.9; }
+.hx-gap-n{ position:absolute; left:26px; bottom:14px;
+           font-family: var(--label); font-size:10px; font-weight:600;
+           letter-spacing:.18em; text-transform:uppercase; color:var(--soft);
+           opacity:0; transform:translateY(4px);
+           transition:opacity .5s var(--e1), transform .5s var(--e1); }
+.hx-item[data-in="1"] .hx-gap-n{ opacity:.85; transform:none; }
+
+/* ---- narrow ------------------------------------------------------------ */
+
+@media(max-width:900px){
+  .hx-body{ grid-template-columns:1fr; gap:26px; }
+  .hx-read{ position:static;
+            display:flex; align-items:baseline; gap:12px; }
+  .hx-read-k{ display:none; }
+  .hx-read-y{ margin-top:0; font-size:26px; }
+  .hx-read-t{ margin-top:0; }
+  .hx-item{ padding-left:28px; }
+  .hx-meta > div{ padding-right:20px; }
+}
+@media(max-width:560px){
+  .hx-gap-n{ left:22px; }
+  .hx-body-t{ font-size:14px; }
+}
+
+/* ---- reduced motion ---------------------------------------------------- */
+
+@media(prefers-reduced-motion:reduce){
+  .hx-txt,.hx-gap-n{ opacity:1 !important; transform:none !important; transition:none !important; }
+}
+
+/* 17 Sep: the year's way into the registry (client: "interlink our project reference in each
+   year"). It sits under the figure, reads as an action rather than a caption, and only the
+   milestones the registry actually holds carry one. */
+.hx-proj { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+  font: 600 13px/1.2 "Switzer", "Instrument Sans", system-ui, sans-serif; letter-spacing: .01em;
+  color: var(--blue); text-decoration: none; }
+.hx-proj i { font-style: normal; transition: transform .3s var(--e1); }
+.hx-proj:hover i { transform: translateX(4px); }
+.hx-proj:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* ============================================================================
+   25 Sep · the reading view moves (Bazil: "make this view more dynamic")
+   ============================================================================ */
+@keyframes hxRise{from{opacity:0;transform:translateY(.4em)}to{opacity:1;transform:none}}
+.hx-read-y{animation:hxRise .55s var(--e1) both}
+.hx-read-t{animation:hxRise .55s var(--e1) .08s both}
+.hx-read-bar{display:block;margin-top:16px;height:3px;width:min(100%,150px);background:var(--line2);overflow:hidden}
+.hx-read-bar i{display:block;height:100%;background:#EC2027;transition:width .6s var(--e1)}
+.hx-read-n{display:block;margin-top:8px;font-size:11.5px;color:var(--soft);font-variant-numeric:tabular-nums}
+.hx-item[data-past="1"]::before{display:none}   /* 26 Sep: no spine, so no red past segment either */
+.hx-item[data-live="1"] .hx-mark{background:#EC2027;border-color:#EC2027;box-shadow:0 0 0 5px rgba(236,32,39,.16);animation:hxRing 2.4s ease-in-out infinite}
+@keyframes hxRing{0%,100%{box-shadow:0 0 0 4px rgba(236,32,39,.14)}50%{box-shadow:0 0 0 8px rgba(236,32,39,.08)}}
+.hx-item[data-live="1"] .hx-ttl{color:#EC2027;transition:color .4s}
+.hx-item .hx-ttl{transition:color .4s}
+.hx-fig-box img,.hx-fig-box video{transform:scale(1.06);transition:transform 1.2s var(--e1)}
+.hx-item[data-in="1"] .hx-fig-box img,.hx-item[data-in="1"] .hx-fig-box video{animation:hxBurns 14s ease-out both}
+@keyframes hxBurns{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hx-item[data-in="1"] .hx-meta>div{animation:hxRise .5s var(--e1) both}
+.hx-item[data-in="1"] .hx-meta>div:nth-child(2){animation-delay:.08s}.hx-item[data-in="1"] .hx-meta>div:nth-child(3){animation-delay:.16s}
+@media(prefers-reduced-motion:reduce){.hx-read-y,.hx-read-t,.hx-item .hx-mark,.hx-fig-box img,.hx-fig-box video,.hx-meta>div{animation:none!important;transform:none!important}}

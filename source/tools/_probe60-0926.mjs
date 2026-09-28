@@ -1,0 +1,10 @@
+import puppeteer from 'puppeteer-core'
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--use-angle=metal', '--ignore-gpu-blocklist'] })
+setTimeout(() => { console.log('TIMEOUT'); process.exit(1) }, 90000)
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 900 })
+const errs = []; p.on('pageerror', e => errs.push(e.message.slice(0, 140)))
+await p.goto('http://localhost:5177/services/epc-construction?launchview', { waitUntil: 'load' }); await new Promise(r => setTimeout(r, 3500))
+const r = await p.evaluate(() => ({ check: getComputedStyle(document.querySelector('.un-model li'), '::before').borderLeftColor, photo: getComputedStyle(document.querySelector('.un-pc-fig img')).filter }))
+await p.goto('http://localhost:5177/services/energy-management?launchview', { waitUntil: 'load' }); await new Promise(r => setTimeout(r, 2500))
+r.spin = await p.evaluate(() => { const s = document.querySelector('.dcs3-spin'); const cs = getComputedStyle(s); return [cs.borderRadius, cs.borderTopColor] })
+console.log(JSON.stringify({ r, errs })); await b.close(); process.exit(0)

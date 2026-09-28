@@ -1,0 +1,11 @@
+import puppeteer from 'puppeteer-core'
+const out = process.argv[2], sleep = ms => new Promise(r => setTimeout(r, ms))
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--use-angle=metal', '--enable-gpu', '--autoplay-policy=no-user-gesture-required'] })
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 900 }); await p.setCacheEnabled(false)
+await p.evaluateOnNewDocument(() => { const WS = window.WebSocket; window.WebSocket = function (u, pr) { if (String(pr).includes('vite')) return { addEventListener() {}, removeEventListener() {}, send() {}, close() {}, readyState: 0 }; return new WS(u, pr) } })
+const errs = []; p.on('pageerror', e => errs.push(String(e.message).slice(0, 160)))
+await p.goto('http://localhost:57375/?nointro=1', { waitUntil: "networkidle2", timeout: 60000 }); await sleep(2600)
+const st = await p.evaluate(() => { const c = document.getElementById('heroCanvas'); const cs = getComputedStyle(c); const fx = window.__heroFx; const bar = [...document.querySelectorAll('.hero-scenes .hs-c')].map(b => b.getAttribute('aria-label') || b.title || b.textContent); return { disp: cs.display, op: cs.opacity, parts: fx ? fx.count() : null, w: c.width, bar, now: (document.querySelector('.hs-now') || {}).textContent, src: [...document.querySelectorAll('.hero video')].map(v => (v.currentSrc || v.src).split('/').pop()) } })
+await p.screenshot({ path: `${out}/hero.png` })
+await p.screenshot({ path: `${out}/hero-zoom.png`, clip: { x: 760, y: 120, width: 560, height: 380 } })
+console.log(JSON.stringify(st)); console.log('errors', JSON.stringify(errs)); await b.close()

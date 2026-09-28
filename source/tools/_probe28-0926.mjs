@@ -1,0 +1,16 @@
+import puppeteer from 'puppeteer-core'
+const OUT = process.argv[2]
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--use-angle=metal', '--ignore-gpu-blocklist', '--enable-gpu'] })
+setTimeout(() => { console.log('TIMEOUT'); process.exit(1) }, 150000)
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 900 })
+const errs = []; p.on('pageerror', e => errs.push(e.message.slice(0, 160))); p.on('console', m => { if (m.type() === 'error') errs.push(m.text().slice(0, 160)) })
+await p.goto('http://localhost:5177/services/energy-management?launchview', { waitUntil: 'load' }); await new Promise(r => setTimeout(r, 2500))
+await p.evaluate(() => { const e = document.querySelector('.dcs3-stage'); window.scrollTo(0, e.getBoundingClientRect().top + scrollY - 140) }); await new Promise(r => setTimeout(r, 6500))
+const a = await p.evaluate(() => ({ view: !!document.querySelector('.dcs3-view'), anim: !!document.querySelector('.dcs3-anim'), nums: [...document.querySelectorAll('.dcs3-num')].map(n => [n.textContent, n.style.visibility || 'vis']), steps: [...document.querySelectorAll('.dcs3-steps li')].map(l => l.innerText.replace(/\n/g, ' | ')) }))
+const wrap = await p.$('.dcs3-wrap'); await wrap.screenshot({ path: `${OUT}/dcs-all.png` })
+await p.evaluate(() => document.querySelector('.dcs3-num[data-k="tes"]').click()); await new Promise(r => setTimeout(r, 2600))
+const bb = await p.evaluate(() => ({ on: (document.querySelector('.dcs3-steps li.on') || {}).innerText, numOn: (document.querySelector('.dcs3-num.on') || {}).textContent }))
+await wrap.screenshot({ path: `${OUT}/dcs-tes.png` })
+const fps = await p.evaluate(async () => { let n = 0; const t0 = performance.now(); await new Promise(r => { const f = () => { n++; if (performance.now() - t0 < 2000) requestAnimationFrame(f); else r() }; requestAnimationFrame(f) }); return Math.round(n / 2) })
+console.log(JSON.stringify({ a, bb, fps, errs }, null, 1))
+await b.close(); process.exit(0)

@@ -1,0 +1,25 @@
+/* the six services as one cycle (components/ServiceRing.jsx) */
+.sr{position:relative;max-width:1000px;margin:clamp(20px,3.6vh,40px) auto 0}
+.sr-svg{display:block;width:100%;height:auto;overflow:visible}
+.sr-ring{fill:none;stroke:#D5DCE6;stroke-width:2}
+.sr-flow{fill:none;stroke:var(--blue,#EC2027);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:3 17;opacity:.9}
+.is-live .sr-flow{animation:srFlow 1.6s linear infinite}
+@keyframes srFlow{to{stroke-dashoffset:-20}}
+.sr-lit{fill:none;stroke:var(--blue,#EC2027);stroke-width:6;stroke-linecap:round;opacity:.95;transition:d .5s var(--e1,ease)}
+.sr-dot{fill:#fff;stroke:#B9C2CF;stroke-width:2;transition:stroke .3s}
+.sr-st.on .sr-dot{stroke:var(--blue,#EC2027)}
+.sr-mk-box{overflow:visible;pointer-events:none}
+.sr-mk{display:block;width:116px;height:116px;transform-origin:50% 50%;transition:transform .5s var(--e1,ease);filter:drop-shadow(0 10px 14px rgba(12,18,32,.14))}
+.sr-mk svg{display:block;width:100%;height:100%}
+.sr-st.on .sr-mk{transform:translateY(-6px) scale(1.12)}
+.is-live .sr-st.on .sr-mk{animation:srBreathe 3s var(--e1,ease) infinite}
+@keyframes srBreathe{0%,100%{transform:translateY(-6px) scale(1.12)}50%{transform:translateY(-10px) scale(1.16)}}
+.sr-no{font:600 20px "Switzer",sans-serif;fill:#8A94A6;letter-spacing:.02em}
+.sr-nm{font:600 30px/1 "Switzer",sans-serif;fill:#0C1220;letter-spacing:-.02em;transition:fill .3s}
+.sr-st.on .sr-no,.sr-st.on .sr-nm{fill:var(--blue,#EC2027)}
+.sr-links{list-style:none;margin:0;padding:0;position:absolute;inset:0;pointer-events:none}
+.sr-links li{position:absolute;width:11.6%;aspect-ratio:1;transform:translate(-50%,-50%)}
+.sr-links a{display:block;width:100%;height:100%;border-radius:50%;pointer-events:auto;font-size:0;color:transparent}
+.sr-links a:focus-visible{outline:2px solid var(--blue,#EC2027);outline-offset:4px}
+@media(max-width:720px){.sr-nm{font-size:38px}.sr-no{font-size:26px}.sr-mk{width:100px;height:100px;margin:8px}}
+@media(prefers-reduced-motion:reduce){.sr-flow,.sr-st.on .sr-mk{animation:none}}
