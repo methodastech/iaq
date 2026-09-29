@@ -21,7 +21,7 @@
 .sg-out{position:sticky;top:calc(var(--sticktop,78px) + 20px);display:grid;gap:14px}
 .sg-stage{background:#fff;box-shadow:0 18px 40px -30px rgba(12,18,32,.4);padding:clamp(22px,3vw,36px)}
 .sg-mail{margin-bottom:16px}
-.sg-mail-l{font:400 14px/1.4 Arial,Helvetica,sans-serif;color:#0C1220}
+.sg-mail-l{font:400 14px/1.4 Aptos,"Segoe UI",Arial,Helvetica,sans-serif;color:#0C1220}   /* 29 Sep: the mail around the signature in the house body face too */
 .sg-prev{overflow-x:auto}
 .sg-need{margin:0;font:500 13px/1.4 "Instrument Sans",sans-serif;color:#231F20}
 .sg-acts{display:flex;flex-wrap:wrap;gap:8px}

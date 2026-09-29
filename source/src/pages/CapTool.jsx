@@ -18,7 +18,8 @@ export default function CapTool() {
       name="PCU & TTI"
       full="Process Critical Utilities & Total Tool Installation Solutions"
       title={<>The last hundred metres, where a facility <em>becomes a fab.</em></>}
-      lede="Tool hook-up connects production equipment into the facility it sits in. Here is what the work involves, step by step."
+      /* 29 Sep (client, Website Update: the hero's line "should be under below section", "you missing out the PCU
+         description"): the line moved under "What PCU & TTI is." as the TTI half, beside a PCU half (whatParts) */
       chips={['Tool installation · hook-up', 'Semiconductor fabs']}
       /* the sixth service opens on its own banner (2 Sep): the tool being connected in a live bay */
       image={{
@@ -74,6 +75,12 @@ export default function CapTool() {
           pts: ['Power, gases, chemicals, UPW, exhaust and drainage connected', 'Pressure-tested, purged and verified', 'Interlocked into the facility, released with its documentation'] },
       ]}
       /* 24 Sep (client: "To remove below section, repetitive from its top description"): the At a glance ledger is gone */
+      /* 29 Sep (client): both halves of the unit, PCU then TTI. The PCU line is the page's own (the utilities section's
+         lede and the first `what` paragraph); the TTI line is the hero's, moved here as the client asked. */
+      whatParts={[
+        { k: 'Process Critical Utilities (PCU)', t: 'The specialty gases, chemicals, ultrapure water and exhaust that a production tool consumes. IAQ designs, installs and commissions them as one system, then brings each of them to the tool.' },
+        { k: 'Total Tool Installation (TTI)', t: 'Tool hook-up connects production equipment into the facility it sits in. Here is what the work involves, step by step.' },
+      ]}
       what={[
         'Total Tool Installation connects production equipment fully and precisely into the facility it sits in. IAQ designs, installs and commissions the process critical utilities, then brings each of them to the tool.',
         /* SL questionnaire, section D, in IAQ's own terms */

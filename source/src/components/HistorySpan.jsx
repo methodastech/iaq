@@ -98,6 +98,13 @@ function HxFigure({ fig }) {
   const style = {}
   if (fig.ar) style['--ar'] = fig.ar
   if (fig.pos) style['--pos'] = fig.pos
+  /* 29 Sep ("image placeholder first"): a picture still to come holds its place, named */
+  if (fig.ph) return (
+    <figure className="hx-fig hx-fig-ph">
+      <div className="hx-fig-box" style={style}><span className="hx-ph">{fig.cap}</span></div>
+      <figcaption className="hx-cap"><b>{fig.kind}</b>{fig.cap}</figcaption>
+    </figure>
+  )
   return (
     <figure className="hx-fig" data-rep={fig.rep ? '1' : '0'}>
       <div className="hx-fig-box" style={style}>
@@ -196,6 +203,8 @@ export default function HistorySpan() {
                     </span>
                     <h3 className="hx-ttl">{m.title}</h3>
                     <p className="hx-body-t">{m.text}</p>
+                    {/* 29 Sep: IAQ's milestone document gives each year its technical highlights */}
+                    {m.tech && <p className="hx-tech"><b>Technical highlights:</b> {m.tech}</p>}
                     <HxFigure fig={m.fig} />
                     {/* 17 Sep (client: "interlink our project reference in each year"): where the
                         registry holds the project this milestone is about, the year links to it.

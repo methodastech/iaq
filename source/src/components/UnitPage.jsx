@@ -102,7 +102,7 @@ const bentoVars = (n, max = 3) => ({ '--cols': bentoCols(n, max) })
 export default function UnitPage(props) {
   const {
     id, no, of = 3, name, full, title, lede, image, art, band, pull,
-    facts = [], what = [], hard, pains = [], painsHead, services, servicesHead, servicesLede, intro, bim, models, modelsHead, compare, bandRep,
+    facts = [], what = [], whatParts = null, hard, pains = [], painsHead, services, servicesHead, servicesLede, intro, bim, models, modelsHead, compare, bandRep,
     steps = [], items = [], why = [], cycleHead, cycleLede,
     filter, proofNote, proofLink, cta, rep, cycle, works = true, scope, introEnd, servicesFlow = false, modelsJoin = 'or',
   } = props
@@ -180,7 +180,7 @@ export default function UnitPage(props) {
                   unit line above the headline; the nav carries the way here, the crumb data stays for search engines */}
               <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
               <h1 className="un-h1" data-rv="">{title}</h1>
-              <p className="un-lede" data-rv="" style={{ '--d': '.1s' }}>{lede}</p>
+              {lede && <p className="un-lede" data-rv="" style={{ '--d': '.1s' }}>{lede}</p>}
               {/* 24 Sep: when to call this unit, in the client's words (codex.js UNITS.when, also on the Services page cards) */}
               {UNIT_WHEN[id] && <p className="un-when" data-rv="" style={{ '--d': '.14s' }}><span>Call {name} when</span>{UNIT_WHEN[id]}</p>}
             </div>
@@ -213,7 +213,16 @@ export default function UnitPage(props) {
             <div className={'un-intro2' + (band ? ' has-fig' : '')}>
               <div className="un-intro2-copy">
                 <h2 id="un-what-h" className="un-h2" data-rv="">What <em>{name} is.</em></h2>
-                {what[0] && <p className="un-state" data-rv="" style={{ '--d': '.06s' }}>{jargon(what[0])}</p>}
+                {/* 29 Sep (client, Website Update: PCU & TTI "you missing out the PCU description", EFM "first describe what
+                    EFM is"): a page may give several statements, each with an optional label, in place of the one */}
+                {whatParts
+                  ? whatParts.map((x, i) => (
+                      <div className="un-state-part" key={i} data-rv="" style={{ '--d': `${.06 + i * .05}s` }}>
+                        {x.k && <b className="un-state-k">{x.k}</b>}
+                        <p className="un-state">{typeof x.t === 'string' ? jargon(x.t) : x.t}</p>
+                      </div>
+                    ))
+                  : what[0] && <p className="un-state" data-rv="" style={{ '--d': '.06s' }}>{jargon(what[0])}</p>}
                 {pains.length > 0 && (<>
                   <h3 className="un-pains-h" data-rv="" style={{ '--d': '.1s' }}>{painsHead || <>The problems <em>it solves.</em></>}</h3>
                   <ul className="un-pains2">

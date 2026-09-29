@@ -599,3 +599,11 @@
    project photographs in full colour, no desaturation */
 .un-page .un-model li::before, .un-model.is-result li::before{ border-color:#EC2027; }
 .un-pc-fig img, .un-pc:hover .un-pc-fig img{ filter:none; }
+
+/* 29 Sep (client, Website Update): "What … is." may carry several statements (UnitPage whatParts), each with an
+   optional label in the heading's accent: PCU and TTI on the PCU & TTI page, the two EFM paragraphs on the EFM page */
+.un-state-part{margin-top:clamp(18px,2.6vh,30px)}
+.un-state-part+.un-state-part{margin-top:clamp(14px,2vh,22px)}
+.un-state-part .un-state{margin-top:0}
+.un-state-k{display:block;margin-bottom:6px;font:600 13.5px/1.3 "Switzer",sans-serif;letter-spacing:.01em;color:var(--blue)}
+.un-state b{font-weight:600}

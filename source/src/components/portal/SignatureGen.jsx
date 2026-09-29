@@ -5,7 +5,8 @@ import '../../styles/signature.css'
    SignatureGen · 25 Sep 2026. Bazil: "create an email signature generator in the website", "portal".
    A member fills in their details, sees the signature at true size, and copies it into Outlook, Gmail or Apple Mail.
 
-   What an inbox accepts decides the build: one table, inline styles, Arial (web fonts do not load in mail), PNG and JPG
+   What an inbox accepts decides the build: one table, inline styles, the house faces that Microsoft 365 and Windows
+   already carry (web fonts do not load in mail; see build), PNG and JPG
    images at twice their display size (WebP and SVG fail in Outlook) served from an absolute address, and colour blocks
    as table cells with bgcolor (Outlook ignores CSS backgrounds). Only offices with a published street address are
    offered; the rest of the seven are still "supplied by IAQ" on the Contact page, so a member there types their own
@@ -70,7 +71,13 @@ const bare = s => String(s || '').replace(/^https?:\/\//, '').replace(/\/$/, '')
 /* the signature itself, as an email client needs it */
 function build (f) {
   const ink = '#0C1220', soft = '#48536A', faint = '#6B7588', red = '#EC2027'
-  const font = 'font-family:Arial,Helvetica,sans-serif;'
+  /* 29 Sep ("email signature need to use this font", Brand OS v4.1): the house faces, all three in Microsoft 365 and
+     Windows with no install, so Outlook shows them: Aptos Display for the name and the slogan, Aptos for the text,
+     Bahnschrift for the labels and the registration line. Each stack falls back to Segoe UI, then Arial, where they
+     are not on the reader's machine. */
+  const font = "font-family:Aptos,'Segoe UI',Arial,Helvetica,sans-serif;"
+  const display = "font-family:'Aptos Display',Aptos,'Segoe UI',Arial,Helvetica,sans-serif;"
+  const spec = "font-family:Bahnschrift,'Segoe UI',Arial,Helvetica,sans-serif;"
   const img = n => esc(f.host.replace(/\/$/, '')) + '/assets/email/' + n
   const W = SIG_W
   /* every cell carries its own line height, or the client's leading (and the portal's) opens the lines up */
@@ -80,7 +87,7 @@ function build (f) {
 
   /* 1 · who, and the logo; the red rule under both */
   const who = [
-    `<div style="font-size:20px;line-height:26px;font-weight:bold;color:${ink};">${esc(f.name || 'Your name')}</div>`,
+    `<div style="${display}font-size:21px;line-height:26px;font-weight:bold;color:${ink};">${esc(f.name || 'Your name')}</div>`,
     `<div style="font-size:14px;line-height:20px;color:${soft};padding-top:2px;">${esc(f.title || 'Job title')}${f.dept ? ' &middot; ' + esc(f.dept) : ''}</div>`,
     f.company ? `<div style="font-size:13px;line-height:18px;font-weight:bold;color:${ink};padding-top:6px;">${esc(f.company)}</div>` : '',
   ].join('')
@@ -92,7 +99,7 @@ function build (f) {
   /* 2 · reach: Mobile and Email on the left, Office and Web on the right, each label in red */
   /* two equal halves, so Office and Web start at the middle whatever the length of the email address */
   const LBL = 62, VAL = W / 2 - LBL
-  const pair = (k, v) => k ? td(`font-size:12.5px;line-height:22px;font-weight:bold;color:${red};white-space:nowrap;`, k, `width="${LBL}" `) + td(`font-size:13px;line-height:22px;color:${ink};padding-right:12px;`, v, `width="${VAL}" `)
+  const pair = (k, v) => k ? td(`${spec}font-size:12.5px;line-height:22px;font-weight:bold;color:${red};white-space:nowrap;`, k, `width="${LBL}" `) + td(`font-size:13px;line-height:22px;color:${ink};padding-right:12px;`, v, `width="${VAL}" `)
     : td('', '', `width="${LBL}" `) + td('', '', `width="${VAL}" `)
   const left = [f.mobile && ['Mobile', `<a href="${telHref(f.mobile)}" style="color:${ink};text-decoration:none;">${esc(f.mobile)}</a>`],
     f.email && ['Email', `<a href="mailto:${esc(f.email)}" style="color:${ink};text-decoration:none;">${esc(f.email)}</a>`]].filter(Boolean)
@@ -110,7 +117,7 @@ function build (f) {
   if (f.banner) {
     const half = (W - 10) / 2
     rows.push(td('padding:18px 0 0 0;', table(`<tr>`
-      + td(`background-color:${red};padding:0 26px;height:90px;font-size:17px;line-height:22px;font-weight:bold;color:#ffffff;vertical-align:middle;`, SLOGAN.map(esc).join('<br>'), `width="${half}" height="90" bgcolor="${red}" valign="middle" `)
+      + td(`${display}background-color:${red};padding:0 26px;height:90px;font-size:17px;line-height:22px;font-weight:bold;color:#ffffff;vertical-align:middle;`, SLOGAN.map(esc).join('<br>'), `width="${half}" height="90" bgcolor="${red}" valign="middle" `)
       + td('font-size:0;line-height:0;', '&nbsp;', 'width="10" ')
       + td('font-size:0;line-height:0;', `<img src="${img('sig-cleanroom.jpg')}" width="${half}" height="90" alt="A cleanroom IAQ builds" style="display:block;border:0;outline:none;width:${half}px;height:90px;">`, `width="${half}" `)
       + `</tr>`, `width="${W}" `, `width:${W}px;`)))
@@ -125,7 +132,7 @@ function build (f) {
   }
 
   /* 5 · the entity and its registration, then the confidentiality line */
-  const legal = f.company ? `<b style="color:${soft};">${esc(f.company)}${f.reg ? ' &middot; ' + esc(f.reg) : ''}.</b>` : ''
+  const legal = f.company ? `<b style="${spec}color:${soft};">${esc(f.company)}${f.reg ? ' &middot; ' + esc(f.reg) : ''}.</b>` : ''
   if (legal || f.note) rows.push(td(`padding:16px 0 0 0;font-size:11.5px;line-height:17px;color:${faint};`, [legal, f.note ? esc(NOTE) : ''].filter(Boolean).join(' ')))
 
   return table(rows.map(r => `<tr>${r}</tr>`).join(''), `width="${W}" `, `${font}color:${ink};width:${W}px;`)

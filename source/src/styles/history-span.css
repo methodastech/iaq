@@ -136,3 +136,10 @@
 .hx-item[data-in="1"] .hx-meta>div{animation:hxRise .5s var(--e1) both}
 .hx-item[data-in="1"] .hx-meta>div:nth-child(2){animation-delay:.08s}.hx-item[data-in="1"] .hx-meta>div:nth-child(3){animation-delay:.16s}
 @media(prefers-reduced-motion:reduce){.hx-read-y,.hx-read-t,.hx-item .hx-mark,.hx-fig-box img,.hx-fig-box video,.hx-meta>div{animation:none!important;transform:none!important}}
+
+/* 29 Sep: IAQ's milestone document. The technical highlights under each description, and the placeholder that holds a
+   photograph's place until it arrives (data/history.js `fig.ph`) */
+.hx-tech{margin-top:8px;max-width:60ch;font-size:14px;line-height:1.55;color:var(--ink)}
+.hx-tech b{font-weight:600}
+.hx-fig-ph .hx-fig-box{background:#EEF1F5;display:grid;place-items:center}
+.hx-ph{padding:0 18px;text-align:center;font:500 13px/1.4 "Instrument Sans",sans-serif;color:#8A93A5}

@@ -78,6 +78,13 @@ export default function CapEnergy() {
         { t: 'Maintenance & Reliability', icon: 'gear', d: 'Comprehensive and non-comprehensive maintenance packages with skilled manpower for daily operations and emergency response.' },
         { t: 'Cogeneration System', icon: 'power', d: 'Efficient on-site power and thermal energy generation that reduces energy costs, improves reliability and supports sustainable facility operations.' },
       ]}
+      /* 29 Sep (client, Website Update: "You should first describe what EFM is first", "Only then continue with The
+         problems EFM solved"): the client's two paragraphs, as given, open "What EFM is."; the dash after "IAQ Group"
+         is a comma on the site (house style, no dashes as pauses) */
+      whatParts={[
+        { t: 'IAQ Energy Facility Management (EFM) is part of the IAQ Group, a Total Facility Solutions Provider with 30 years of global experience in designing, building, upgrading, and maintaining critical facility systems.' },
+        { t: <>As a registered <b>Energy Service Company (ESCO)</b> under Suruhanjaya Tenaga, we specialize in energy efficiency and sustainable cooling solutions for high-performance cleanroom systems, district cooling infrastructure, and advanced HVAC optimization.</> },
+      ]}
       painsHead={<>The problems <em>EFM solves.</em></>}
       /* 24 Sep (client: "This section can replace with brief introduction of district cooling system"): stands where the
          six-services list stood. First line is what a district cooling system is; the rest is IAQ's own wording from the
