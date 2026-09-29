@@ -12,10 +12,13 @@ import '../../styles/qr-refs.css'
 /* 29 Sep ("https://iaqtechnology.com.my/"): codes are printed and kept, so site pages point at the company's own domain,
    wherever the portal runs */
 const LIVE = 'https://iaqtechnology.com.my'
+/* 29 Sep ("give notice these two placeholder"): `soon` marks a code whose page is not on iaqtechnology.com.my yet (it
+   opens once the new site is published there); the card says so, and the code is not to be printed or shared until then.
+   Drop `soon` from an entry when its page is live. */
 const CODES = [
   { id: 'website', label: 'Website', note: 'The home page', path: '/' },
-  { id: 'lead', label: 'Start a project', note: 'The lead form page, for ads, print and the booth', path: '/lp/project' },
-  { id: 'contact', label: 'Contact', note: 'Offices, phone and the enquiry form', path: '/contact' },
+  { id: 'lead', label: 'Start a project', note: 'The lead form page, for ads, print and the booth', path: '/lp/project', soon: true },
+  { id: 'contact', label: 'Contact', note: 'Offices, phone and the enquiry form', path: '/contact', soon: true },
   { id: 'linkedin', label: 'LinkedIn', note: 'IAQ Group of Companies', url: 'https://www.linkedin.com/company/iaq-group-of-companies/' },
 ]
 const INK = '#0C1220'
@@ -37,12 +40,13 @@ function Code ({ c }) {
     save(href, `iaq-qr-${c.id}.svg`); setTimeout(() => URL.revokeObjectURL(href), 2000)
   }
   return (
-    <article className="qr-card">
-      <div className="qr-img">{png ? <img src={png} alt={'QR code for ' + c.label} width="220" height="220" /> : <span className="qr-wait" />}</div>
+    <article className={'qr-card' + (c.soon ? ' is-soon' : '')}>
+      <div className="qr-img">{c.soon && <span className="qr-flag">Placeholder</span>}{png ? <img src={png} alt={'QR code for ' + c.label} width="220" height="220" /> : <span className="qr-wait" />}</div>
       <div className="qr-tx">
         <h3>{c.label}</h3>
         <p>{c.note}</p>
         <a className="qr-url" href={url} target="_blank" rel="noopener noreferrer">{url.replace(/^https?:\/\//, '')}</a>
+        {c.soon && <p className="qr-soon"><b>Not live yet.</b> This page opens once the new website is published on iaqtechnology.com.my. Do not print or share this code until then.</p>}
       </div>
       <div className="qr-acts">
         <button type="button" onClick={() => png && save(png, `iaq-qr-${c.id}.png`)} disabled={!png}>PNG</button>

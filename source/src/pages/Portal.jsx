@@ -20,6 +20,7 @@ import '../styles/booth.css'
 import Icon from '../components/FlowIcon.jsx'
 import SignatureGen from '../components/portal/SignatureGen.jsx'
 import QrRefs from '../components/portal/QrRefs.jsx'
+import SigCatalogue from '../components/portal/SigCatalogue.jsx'
 
 /* ============ the CMS portal ============
    The self-managed layer the proposal promises: IAQ's team signs in and edits
@@ -37,7 +38,7 @@ import QrRefs from '../components/portal/QrRefs.jsx'
      /portal/booth      SEMICON Europa 2026: the plan, the stand drafts, the screen (full screen at /booth/screen)
    One member session covers every tab (lib/cms.js); signing out anywhere gates them all. */
 /* 22 Sep (Bazil: "icons for each"): every tab carries its line icon, from the site's one icon set */
-const TAB_ICON = { codex: 'layers', newsroom: 'press', careers: 'people', projects: 'building', downloads: 'folder', booth: 'cube', models: 'cube', direction: 'layers', qr: 'grid' }
+const TAB_ICON = { codex: 'layers', newsroom: 'press', careers: 'people', projects: 'building', downloads: 'folder', booth: 'cube', models: 'cube', direction: 'layers', qr: 'grid', signature: 'mail', 'signature-designs': 'layers' }
 const TABS = [
   ['codex', 'Codex', 'The IAQ structure, the infographic set and the cross-check'],
   ['newsroom', 'Newsroom', 'Articles on the site'],
@@ -50,7 +51,9 @@ const TABS = [
   ['direction', 'Design direction', 'The rules every piece is drawn with: colour, type, the mark, lines, spacing, and what to do and not do'],
   /* 23 Sep (checklist d6: "a 3D modelling tab for Azwan's files, so IAQ reviews both demos in one place").
      Brand Method's half is the place and the honest slots; the files come from Azwan and Haydar. */
-  ['signature', 'Email signature', 'Your signature in the house style, ready to paste into Outlook, Gmail or Apple Mail'],
+  /* 29 Sep: under the Email signature group, the Generator (this page) and Designs, the catalogue */
+  ['signature-designs', 'Designs', 'The house signature designs, each with your own details, ready to copy'],
+  ['signature', 'Generator', 'Your signature in the house style, ready to paste into Outlook, Gmail or Apple Mail'],
   /* 29 Sep ("add marketing and sub QR code", "just that we put QR code for reference") */
   ['qr', 'QR code', 'The QR codes the team uses, to look up and download'],
   ['models', '3D', 'Both 3D demos in one place: the facility model that ships, and the walkthrough in progress'],
@@ -89,7 +92,9 @@ const GROUPS = [
   { k: 'documents', label: 'Documents', icon: 'folder', note: 'To read and to send',
     items: ['downloads', 'codex'] },
   /* 25 Sep (Bazil: "create an email signature generator in the website", "portal"): its own title in the sidebar */
-  { k: 'signature', label: 'Email signature', icon: 'mail', note: '', items: ['signature'], solo: true },
+  /* 29 Sep ("make sub design under email signature, for catalogue email design, but this portal changeable email signature
+     stay"): a group now, the Generator unchanged and the Designs catalogue beside it */
+  { k: 'email', label: 'Email signature', icon: 'mail', note: 'Your signature, in the house style', items: ['signature', 'signature-designs'] },
 ]
 const TAB_META = Object.fromEntries(TABS.map(t => [t[0], { label: t[1], note: t[2] }]))
 const itemKey = it => (typeof it === 'string' ? it : it.k)
@@ -193,6 +198,7 @@ function Shell ({ onOut }) {
         <Route path="direction" element={<DirectionPage />} />
         <Route path="signature" element={<Page k="signature" title={<>Email signatures, <em>one house style.</em></>} lede="Fill in your details, check the preview, then copy the signature into your mail app. Every member’s signature comes out the same."><SignatureGen /></Page>} />
         <Route path="qr" element={<Page k="qr" title={<>QR codes, <em>for reference.</em></>} lede="The codes the team uses, each with the link it opens. Download PNG for screens and documents, SVG for print."><QrRefs /></Page>} />
+        <Route path="signature-designs" element={<Page k="signature-designs" title={<>Signature designs, <em>one catalogue.</em></>} lede="The house signature and its variants, each shown with your own details. Pick the one the moment needs and copy it into your mail app."><SigCatalogue /></Page>} />
         <Route path="models" element={<Page k="models" title={<>The 3D, <em>both demos in one place.</em></>} lede="What is on the site today, and what is still being modelled. Nothing here is a render of a real IAQ project unless it says so."><Models /></Page>} />
         <Route path="*" element={<Navigate to="/portal/codex" replace />} />
       </Routes>

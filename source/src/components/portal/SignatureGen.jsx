@@ -30,9 +30,10 @@ const OFFICES = [
 ]
 /* the legal entity a member signs for, with its registration number (SSM, new and old format). IAQ Solutions is the
    reference signature's; IAQ Technology International is the one the site's footer carries. */
+/* 29 Sep ("IAQ Technology International Sdn Bhd"): the default entity, first in the list */
 const ENTITIES = [
-  { id: 'solutions', name: 'IAQ Solutions Sdn. Bhd.', reg: '200501013167 (690214-V)' },
   { id: 'technology', name: 'IAQ Technology International Sdn. Bhd.', reg: '200001031412 (534019-T)' },
+  { id: 'solutions', name: 'IAQ Solutions Sdn. Bhd.', reg: '200501013167 (690214-V)' },
   { id: 'group', name: 'IAQ Group', reg: '' },
   { id: 'other', name: '', reg: '' },
 ]
@@ -48,25 +49,36 @@ const CERTS = [
 ]
 const NOTE = 'The information in this e-mail is confidential and may be legally privileged. It is solely for the use of the intended recipient(s).'
 /* v2 with the 29 Sep layout: the entity and the new lines start at their defaults, the member's own details carry over */
-const KEY = 'iaq.signature.v2', OLD = 'iaq.signature.v1'
+/* v3 (29 Sep, the entity default changed): a signature saved before starts again from the new default entity and lines,
+   keeping the member's own details */
+const KEY = 'iaq.signature.v3', OLDS = ['iaq.signature.v2', 'iaq.signature.v1']
 const MINE = ['name', 'title', 'dept', 'email', 'mobile', 'office', 'addr', 'tel', 'host']
 const DEF = {
   name: '', title: '', dept: '', email: '', mobile: '', office: 'hq', addr: OFFICES[0].addr, tel: OFFICES[0].tel,
-  entity: 'solutions', company: ENTITIES[0].name, reg: ENTITIES[0].reg, site: 'iaqtechnology.com.my',
+  entity: 'technology', company: ENTITIES[0].name, reg: ENTITIES[0].reg, site: 'iaqtechnology.com.my',
   tagline: true, banner: true, certs: true, note: true,
   host: typeof location !== 'undefined' ? location.origin : '',
 }
 function load () {
   try {
-    const v2 = localStorage.getItem(KEY)
-    if (v2) return { ...DEF, ...JSON.parse(v2) }
-    const v1 = JSON.parse(localStorage.getItem(OLD) || '{}')
-    return { ...DEF, ...Object.fromEntries(MINE.filter(k => v1[k] !== undefined).map(k => [k, v1[k]])) }
+    const now = localStorage.getItem(KEY)
+    if (now) return { ...DEF, ...JSON.parse(now) }
+    const old = JSON.parse(OLDS.map(k => localStorage.getItem(k)).find(Boolean) || '{}')
+    return { ...DEF, ...Object.fromEntries(MINE.filter(k => old[k] !== undefined).map(k => [k, old[k]])) }
   } catch { return DEF }
 }
 const esc = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 const telHref = s => 'tel:' + String(s || '').replace(/[^\d+]/g, '')
 const bare = s => String(s || '').replace(/^https?:\/\//, '').replace(/\/$/, '')
+/* an address in two lines of about equal length: a typed line break wins; otherwise the comma nearest the middle */
+const addrLines = s => {
+  const t = String(s || '').trim()
+  if (/\n/.test(t)) return t.split(/\s*\n\s*/).filter(Boolean)
+  const cuts = [...t.matchAll(/,\s*/g)].map(m => m.index + 1)
+  if (!cuts.length) return [t]
+  const at = cuts.reduce((b, c) => Math.abs(c - t.length / 2) < Math.abs(b - t.length / 2) ? c : b)
+  return [t.slice(0, at), t.slice(at).trim()].filter(Boolean)
+}
 
 /* the signature itself, as an email client needs it */
 function build (f) {
@@ -96,44 +108,49 @@ function build (f) {
   rows.push(td(`padding:0 0 14px 0;border-bottom:2px solid ${red};`,
     table(`<tr>${td('vertical-align:top;line-height:18px;', who, 'valign="top" ')}${td('vertical-align:top;text-align:right;line-height:13px;', logo, 'valign="top" align="right" width="190" ')}</tr>`, `width="${W}" `, `width:${W}px;`)))
 
-  /* 2 · reach: Mobile and Email on the left, Office and Web on the right, each label in red */
-  /* two equal halves, so Office and Web start at the middle whatever the length of the email address */
-  const LBL = 62, VAL = W / 2 - LBL
-  const pair = (k, v) => k ? td(`${spec}font-size:12.5px;line-height:22px;font-weight:bold;color:${red};white-space:nowrap;`, k, `width="${LBL}" `) + td(`font-size:13px;line-height:22px;color:${ink};padding-right:12px;`, v, `width="${VAL}" `)
-    : td('', '', `width="${LBL}" `) + td('', '', `width="${VAL}" `)
-  const left = [f.mobile && ['Mobile', `<a href="${telHref(f.mobile)}" style="color:${ink};text-decoration:none;">${esc(f.mobile)}</a>`],
-    f.email && ['Email', `<a href="mailto:${esc(f.email)}" style="color:${ink};text-decoration:none;">${esc(f.email)}</a>`]].filter(Boolean)
-  const right = [f.tel && ['Office', `<a href="${telHref(f.tel)}" style="color:${ink};text-decoration:none;">${esc(f.tel)}</a>`],
-    f.site && ['Web', `<a href="https://${esc(bare(f.site))}" style="color:${ink};text-decoration:none;">${esc(bare(f.site))}</a>`]].filter(Boolean)
+  /* 2 · reach, 29 Sep ("use this icon on the email signature"): each line leads with the site's own line icon in red
+     (components/FlowIcon.jsx, drawn as 16px PNGs in assets/email/sig-ic-*.png, since Outlook and Gmail do not show SVG):
+     mobile and email on the left, the office phone and the website on the right, two equal halves. The icon's alt text is
+     the old label, so a reader with images held back still sees Mobile, Email, Office and Web. */
+  const IC = 24, VAL = W / 2 - IC
+  const icon = (n, alt) => '<img src="' + img('sig-ic-' + n + '.png') + '" width="16" height="16" alt="' + alt + '" style="display:block;border:0;width:16px;height:16px;">'
+  const pair = (k, v) => k ? td('vertical-align:middle;padding:0;height:26px;', icon(...k), 'width="' + IC + '" valign="middle" ') + td('font-size:13px;line-height:26px;color:' + ink + ';padding-right:12px;vertical-align:middle;', v, 'width="' + VAL + '" valign="middle" ')
+    : td('', '', 'width="' + IC + '" ') + td('', '', 'width="' + VAL + '" ')
+  const link = (href, text) => '<a href="' + href + '" style="color:' + ink + ';text-decoration:none;">' + esc(text) + '</a>'
+  const left = [f.mobile && [['mobile', 'Mobile'], link(telHref(f.mobile), f.mobile)], f.email && [['mail', 'Email'], link('mailto:' + esc(f.email), f.email)]].filter(Boolean)
+  const right = [f.tel && [['phone', 'Office'], link(telHref(f.tel), f.tel)], f.site && [['globe', 'Web'], link('https://' + esc(bare(f.site)), bare(f.site))]].filter(Boolean)
   const n = Math.max(left.length, right.length)
   if (n) {
     let grid = ''
-    for (let i = 0; i < n; i++) grid += `<tr>${pair(...(left[i] || []))}${pair(...(right[i] || []))}</tr>`
-    rows.push(td('padding:14px 0 0 0;', table(grid, `width="${W}" `, `width:${W}px;`)))
+    for (let i = 0; i < n; i++) grid += '<tr>' + pair(...(left[i] || [])) + pair(...(right[i] || [])) + '</tr>'
+    rows.push(td('padding:12px 0 0 0;', table(grid, 'width="' + W + '" ', 'width:' + W + 'px;')))
   }
-  if (f.addr) rows.push(td(`padding:8px 0 0 0;font-size:12.5px;line-height:18px;color:${soft};`, esc(f.addr)))
+  /* the address, 29 Sep ("the same font size but make it equally two lines", "make same spacing"): 13px on the same 26px
+     rhythm as the contact rows, no extra gap before it, in two lines
+     of about equal length, broken at the comma nearest the middle (addrLines). A line break typed in the Address box wins. */
+  if (f.addr) rows.push(td('padding:0;', table('<tr>' + td('vertical-align:top;padding-top:5px;', icon('pin', 'Address'), 'width="' + IC + '" valign="top" ') + td('font-size:13px;line-height:19px;padding-top:4px;color:' + ink + ';vertical-align:top;', addrLines(f.addr).map(esc).join('<br>'), 'valign="top" ') + '</tr>', 'width="' + W + '" ', 'width:' + W + 'px;')))
 
-  /* 3 · the red block and the cleanroom, the same height side by side */
+  /* 3 · the banner (29 Sep: "i want this design banner", "remove the line", and the boss: "i mentioned engineers in the
+     visuals", "no red graident should exist"). One image: a solid red panel with a hard edge (no gradient) beside a
+     cleanroom where two gowned engineers check a valve and a tablet by the
+     stainless process piping, the slogan in white Aptos Display Bold (29 Sep: "use this font"), centred (assets/email/
+     sig-banner.jpg, 1280 x 168 for a 640 x 84 slot,
+     composed over a generated photograph so the text is exact). The slogan is its alt text. */
   if (f.banner) {
-    const half = (W - 10) / 2
-    rows.push(td('padding:18px 0 0 0;', table(`<tr>`
-      + td(`${display}background-color:${red};padding:0 26px;height:90px;font-size:17px;line-height:22px;font-weight:bold;color:#ffffff;vertical-align:middle;`, SLOGAN.map(esc).join('<br>'), `width="${half}" height="90" bgcolor="${red}" valign="middle" `)
-      + td('font-size:0;line-height:0;', '&nbsp;', 'width="10" ')
-      + td('font-size:0;line-height:0;', `<img src="${img('sig-cleanroom.jpg')}" width="${half}" height="90" alt="A cleanroom IAQ builds" style="display:block;border:0;outline:none;width:${half}px;height:90px;">`, `width="${half}" `)
-      + `</tr>`, `width="${W}" `, `width:${W}px;`)))
+    rows.push(td('padding:18px 0 0 0;font-size:0;line-height:0;', '<img src="' + img('sig-banner.jpg') + '" width="' + W + '" height="84" alt="' + esc(SLOGAN.join(' ')) + '" style="display:block;border:0;outline:none;width:' + W + 'px;height:84px;background:' + red + ';color:#ffffff;' + display + 'font-size:15px;font-weight:bold;">'))
   }
 
-  /* 4 · the certification marks, the footer's four in the footer's order (29 Sep: "four these logo"), one height. The
-     ISO line that followed them is gone (29 Sep: "remove ISO 9001 · ISO 14001 · ISO 45001"); the Intertek mark carries
-     the three standards itself. */
-  if (f.certs) {
-    const mark = ([file, w, alt]) => td('vertical-align:middle;padding-right:16px;', `<img src="${img(file)}" width="${w}" height="40" alt="${alt}" style="display:block;border:0;width:${w}px;height:40px;">`, 'valign="middle" ')
-    rows.push(td('padding:16px 0 0 0;', table(`<tr>${CERTS.map(mark).join('')}</tr>`)))
-  }
-
-  /* 5 · the entity and its registration, then the confidentiality line */
-  const legal = f.company ? `<b style="${spec}color:${soft};">${esc(f.company)}${f.reg ? ' &middot; ' + esc(f.reg) : ''}.</b>` : ''
-  if (legal || f.note) rows.push(td(`padding:16px 0 0 0;font-size:11.5px;line-height:17px;color:${faint};`, [legal, f.note ? esc(NOTE) : ''].filter(Boolean).join(' ')))
+  /* 4 · the foot, 29 Sep ("maybe the logo can move there"): under the banner, the entity and its registration on the
+     left and the footer's four marks on the right, in one row (one height, the footer's order; the Intertek mark carries
+     the ISO standards itself). The confidentiality line, when on, runs under the row. */
+  const legal = f.company ? '<b style="' + spec + 'color:' + soft + ';">' + esc(f.company) + (f.reg ? ' &middot; ' + esc(f.reg) : '') + '.</b>' : ''
+  const mark = ([file, w, alt], i) => td('vertical-align:middle;padding-left:' + (i ? 12 : 0) + 'px;', '<img src="' + img(file) + '" width="' + w + '" height="34" alt="' + alt + '" style="display:block;border:0;width:' + w + 'px;height:34px;">', 'valign="middle" ')
+  const marks = f.certs ? table('<tr>' + CERTS.map(([file, w, alt], i) => mark([file, Math.round(w * 34 / 40), alt], i)).join('') + '</tr>', 'align="right" ', 'margin-left:auto;') : ''
+  if (legal || marks) rows.push(td('padding:14px 0 0 0;', table('<tr>'
+    + td('vertical-align:middle;font-size:11.5px;line-height:17px;color:' + faint + ';padding-right:16px;', legal, 'valign="middle" ')
+    + (marks ? td('vertical-align:middle;text-align:right;', marks, 'valign="middle" align="right" ') : '')
+    + '</tr>', 'width="' + W + '" ', 'width:' + W + 'px;')))
+  if (f.note) rows.push(td('padding:10px 0 0 0;font-size:11.5px;line-height:17px;color:' + faint + ';', esc(NOTE)))
 
   return table(rows.map(r => `<tr>${r}</tr>`).join(''), `width="${W}" `, `${font}color:${ink};width:${W}px;`)
 }
@@ -211,14 +228,14 @@ export default function SignatureGen () {
         <fieldset>
           <legend>Lines</legend>
           <label className="sg-check"><input type="checkbox" checked={f.tagline} onChange={set('tagline')} /><span>Tagline under the logo, Your Total Facility Solutions Provider</span></label>
-          <label className="sg-check"><input type="checkbox" checked={f.banner} onChange={set('banner')} /><span>Banner, Engineered environments. Trusted outcomes.</span></label>
+          <label className="sg-check"><input type="checkbox" checked={f.banner} onChange={set('banner')} /><span>Banner, Engineered environments. Trusted outcomes. (the cleanroom image)</span></label>
           <label className="sg-check"><input type="checkbox" checked={f.certs} onChange={set('certs')} /><span>Certification marks, CIDB, Intertek, UKAS and Highwire</span></label>
           <label className="sg-check"><input type="checkbox" checked={f.note} onChange={set('note')} /><span>Confidentiality note</span></label>
         </fieldset>
         <details className="sg-more">
           <summary>Company name, registration, website and image address</summary>
           <label><span>Company name</span><input value={f.company} onChange={set('company')} /></label>
-          <label><span>Registration no. <em>optional</em></span><input value={f.reg} onChange={set('reg')} placeholder="200501013167 (690214-V)" /></label>
+          <label><span>Registration no. <em>optional</em></span><input value={f.reg} onChange={set('reg')} placeholder="200001031412 (534019-T)" /></label>
           <label><span>Website</span><input value={f.site} onChange={set('site')} /></label>
           <label className="sg-wide"><span>Image address</span><input value={f.host} onChange={set('host')} />
             <small>The logo, the photograph and the marks load from this address in every inbox. Point it at the live site once it is published.</small></label>
@@ -247,3 +264,7 @@ export default function SignatureGen () {
     </div>
   )
 }
+
+/* 29 Sep: shared with the Designs catalogue (portal/SigCatalogue.jsx), which renders other layouts from the same saved
+   details, faces and images; the generator above is unchanged */
+export { build as buildHouse, load as loadSig, esc as sigEsc, telHref as sigTel, bare as sigBare, SIG_W }

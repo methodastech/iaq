@@ -16,3 +16,9 @@
 .qr-acts button{flex:1;padding:9px 12px;border:1px solid #DCE1E9;background:#fff;color:#0C1220;font:600 13px/1.2 "Switzer",sans-serif;cursor:pointer;border-radius:0;transition:border-color .2s}
 .qr-acts button:hover{border-color:#0C1220}
 .qr-acts button[disabled]{opacity:.5;cursor:default}
+/* 29 Sep: a code whose page is not live on the company domain yet (QrRefs `soon`): flagged on the code, explained below it */
+.qr-img{position:relative}
+.qr-flag{position:absolute;top:12px;left:12px;z-index:1;padding:4px 8px;background:#EC2027;color:#fff;font:600 11px/1.2 "Switzer",sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.qr-card.is-soon .qr-img img{opacity:.35}
+.qr-soon{margin:12px 0 0!important;padding:10px 12px;background:rgba(236,32,39,.07);font:400 12.5px/1.45 "Instrument Sans",sans-serif!important;color:#48536A}
+.qr-soon b{color:#C8141D;font-weight:600}
