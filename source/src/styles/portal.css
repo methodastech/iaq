@@ -253,3 +253,10 @@
 .pt-side .pt-sub.on{color:#fff}
 .pt-side .pt-sub.on i{color:#EC2027}
 .cx-in-dir{margin-top:clamp(32px,5vh,64px)}
+/* 29 Sep ("why got line there fix that", then "big ass gap"): the sidebar (#0C1220) ran straight into the closing band
+   (#17213A), two darks meeting in a hard seam; a light band between them was too much gap. The sidebar takes the
+   band's navy instead, so it runs into the band with no seam and no gap. */
+.pt-side{background:#17213A;box-shadow:0 2px 0 #17213A}   /* 29 Sep ("tighting so i cant see the white line"): the two edges land on a fraction of a pixel at most zooms and the light ground bled through between them; the sidebar's navy reaches 2px under the band so that row is always covered */
+/* 29 Sep: and the closing band tucks 2px under the portal instead of meeting it edge to edge, so no zoom level leaves a
+   sliver of light ground between them (only the white column's empty foot sits under the overlap) */
+.pt-shell{margin-bottom:-2px}

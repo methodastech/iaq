@@ -1,7 +1,6 @@
 import FabLayers from './FabLayers.jsx'
 import OneFlow from './OneFlow.jsx'
 import FabReal from './FabReal.jsx'
-import ModelIcon from './ModelIcon.jsx'
 import UnitsBoard from './UnitsBoard.jsx'
 import IsoIcon from './IsoIcon.jsx'
 const ISO_U = { epc: 'epc', hookup: 'hookupUnit', efm: 'efm' }
@@ -10,8 +9,7 @@ import { Link } from 'react-router-dom'
 import Icon from './FlowIcon.jsx'
 import RelExplorer, { visFor } from './codex/RelExplorer.jsx'
 import { sentence, workOf, sysOf } from '../lib/relations.jsx'
-import { CYCLE_SVG } from '../data/cycleMarks.js'
-import { UNITS, SERVICES, WORK, QUESTIONS, SCENARIOS, CONTRACTORS, LIFE, FAQ } from '../data/codex.js'
+import { UNITS, SERVICES, WORK, QUESTIONS, CONTRACTORS, LIFE, FAQ } from '../data/codex.js'
 import '../styles/codex-parts.css'
 /* the number of systems the map carries, read from the same data the explorer draws (the three kinds of work, each with its systems) */
 const SYS_N = WORK.reduce((n, w) => n + ((w.systems && w.systems.length) || 0), 0)
@@ -48,8 +46,6 @@ function useInView(threshold = 0.18) {
      faq        the questions clients put to IAQ, answered from the questionnaires
    ============================================================================ */
 
-const svcById = id => SERVICES.find(s => s.id === id)
-const workById = id => WORK.find(w => w.id === id)
 /* the unit photographs that say what each unit is (a site under cranes, a valve manifold, a chiller plant); the cap-* banners are
    company-profile stills and read wrong here */
 /* 24 Sep (Bazil: "perfect visuals that represent each"): unit 2 shows the tools in, from IAQ's own model */
@@ -189,7 +185,7 @@ export function MapBand() {
                 the Codex and in src/_versions/facility-map-v1-2026-09-25 */}
           </div>
           <div className="sm-map-side">
-            <div className="sm-map-in cx-page rx-compact"><RelExplorer value={ext} onSelect={setSel} read={false} tour={tour} onTouch={() => setTour(false)} only={['w', 'y']} />   {/* version 2: work and system only (no services, no units, tools hookup has its own section) */}</div>
+            <div className="sm-map-in cx-page rx-compact"><RelExplorer value={ext} onSelect={setSel} read={false} tour={tour} onTouch={() => setTour(false)} only={['w', 'y']} lines />   {/* version 2: work and system only (no services, no units, tools hookup has its own section); 28 Sep (client): each Work card carries its one line, which the removed 4 works section held */}</div>
           </div>
         </div>
       </div>
@@ -219,13 +215,9 @@ export function FlowBand() {
   )
 }
 
-/* the six stage marks, keyed as data/cycleMarks.js keys them; the system chip's mark is read off the system's own words */
-const ASK_MARK = { design: 'des', procure: 'prc', construct: 'con', commission: 'com', maintain: 'mnt', hookup: 'hok' }
-const sysIcon = t => /whole facility/i.test(t) ? 'factory' : /cooling water|PCW/i.test(t) ? 'sysPcw' : /chiller/i.test(t) ? 'sysChiller' : /gases|chemical/i.test(t) ? 'sysGas' : 'cube'
 export function QuestionsBand() {
   const [ref, inView] = useInView()
   /* 26 Sep (Bazil: "easy to understand"): three of the six requests stand open, the rest one click away */
-  const [allAsks, setAllAsks] = useState(false)
   return (
     <section ref={ref} className={'pg-sec sm-qs' + (inView ? ' in' : '')} aria-labelledby="sm-qs-h">
       {/* 26 Sep (Bazil: "make a whole banner for this title, not tall but short, so we can separate this section"):
@@ -254,35 +246,9 @@ export function QuestionsBand() {
             </li>
           ))}
         </ol>
-        <h3 className="sm-h3" data-reveal="">Six requests, and what each one needs</h3>
-        {/* one column per layer, so every row lines up and the page reads as one diagram: the ask, then unit,
-            model, services, work and system. Each row lights left to right as the band arrives. */}
-        <div className="sm-asks">
-          <div className="sm-ask sm-ask-h" aria-hidden="true">
-            <span />
-            <span className="k-u">Business unit</span><span className="k-m">Model</span><span className="k-s">Services</span><span className="k-w">Work</span><span className="k-y">System</span>
-          </div>
-          {SCENARIOS.slice(0, allAsks ? SCENARIOS.length : 3).map((s, i) => {
-            const u = UNITS.find(x => x.id === s.unit)
-            return (
-              <div className="sm-ask" key={i} style={{ '--i': i }}>
-                <p className="sm-ask-q">&ldquo;{s.ask}&rdquo;</p>
-                {/* 25 Sep, 08:45 (Bazil: "apply the icons"): every chip carries its mark, the same marks the chart above uses:
-                    the unit's line mark, the model's drawn mark, the service's isometric stage mark, the work's mark, the system's */}
-                <span className="sm-cell" style={{ '--k': 0 }}><span className="sm-chip u"><Icon name={u.icon} className="sm-ci" />{u.short || u.name}</span></span>
-                <span className="sm-cell" style={{ '--k': 1 }}><span className="sm-chip m"><ModelIcon name={s.model} className="sm-ci" />{s.model}</span></span>
-                <span className="sm-cell sm-pgroup" style={{ '--k': 2 }}>{s.services.map(id => <span key={id} className="sm-chip s"><span className="sm-cm" aria-hidden="true" dangerouslySetInnerHTML={{ __html: CYCLE_SVG[ASK_MARK[id]] }} /><i>{svcById(id).n}</i>{svcById(id).short}</span>)}</span>
-                <span className="sm-cell sm-pgroup" style={{ '--k': 3 }}>{s.work.map(id => <span key={id} className="sm-chip w"><Icon name={workById(id).icon} className="sm-ci" />{workById(id).name}</span>)}</span>
-                <span className="sm-cell" style={{ '--k': 4 }}><span className="sm-chip y"><Icon name={sysIcon(s.system)} className="sm-ci" />{s.system}</span></span>
-              </div>
-            )
-          })}
-        </div>
-        {SCENARIOS.length > 3 && (
-          <button type="button" className="sm-asks-more" aria-expanded={allAsks} onClick={() => setAllAsks(v => !v)}>
-            <span>{allAsks ? 'Show three requests' : `Show all ${SCENARIOS.length === 6 ? 'six' : SCENARIOS.length} requests`}</span><i aria-hidden="true">{allAsks ? '\u2212' : '+'}</i>
-          </button>
-        )}
+        {/* 28 Sep (client, Website Update 28.09.2026: "Remove below section"): the "Six requests, and what each one needs"
+            table (SCENARIOS, one row per request across unit, model, services, work and system) is off the page. The
+            requests still show on each unit's detail (UnitDetail, UnitsBoard) and in the Codex. */}
       </div>
     </section>
   )

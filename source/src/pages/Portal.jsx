@@ -19,6 +19,7 @@ import { useBrandFonts } from '../lib/brandFonts.js'
 import '../styles/booth.css'
 import Icon from '../components/FlowIcon.jsx'
 import SignatureGen from '../components/portal/SignatureGen.jsx'
+import QrRefs from '../components/portal/QrRefs.jsx'
 
 /* ============ the CMS portal ============
    The self-managed layer the proposal promises: IAQ's team signs in and edits
@@ -36,7 +37,7 @@ import SignatureGen from '../components/portal/SignatureGen.jsx'
      /portal/booth      SEMICON Europa 2026: the plan, the stand drafts, the screen (full screen at /booth/screen)
    One member session covers every tab (lib/cms.js); signing out anywhere gates them all. */
 /* 22 Sep (Bazil: "icons for each"): every tab carries its line icon, from the site's one icon set */
-const TAB_ICON = { codex: 'layers', newsroom: 'press', careers: 'people', projects: 'building', downloads: 'folder', booth: 'cube', models: 'cube', direction: 'layers' }
+const TAB_ICON = { codex: 'layers', newsroom: 'press', careers: 'people', projects: 'building', downloads: 'folder', booth: 'cube', models: 'cube', direction: 'layers', qr: 'grid' }
 const TABS = [
   ['codex', 'Codex', 'The IAQ structure, the infographic set and the cross-check'],
   ['newsroom', 'Newsroom', 'Articles on the site'],
@@ -50,6 +51,8 @@ const TABS = [
   /* 23 Sep (checklist d6: "a 3D modelling tab for Azwan's files, so IAQ reviews both demos in one place").
      Brand Method's half is the place and the honest slots; the files come from Azwan and Haydar. */
   ['signature', 'Email signature', 'Your signature in the house style, ready to paste into Outlook, Gmail or Apple Mail'],
+  /* 29 Sep ("add marketing and sub QR code", "just that we put QR code for reference") */
+  ['qr', 'QR code', 'The QR codes the team uses, to look up and download'],
   ['models', '3D', 'Both 3D demos in one place: the facility model that ships, and the walkthrough in progress'],
 ]
 
@@ -80,6 +83,9 @@ const GROUPS = [
       { k: 'booth', view: 'files', label: 'Booth files', icon: 'folder' },
       'models',
     ] },
+  /* 29 Sep ("add marketing and sub QR code"): a Marketing group after Exhibition, the QR code reference page under it */
+  { k: 'marketing', label: 'Marketing', icon: 'target', note: 'For campaigns and print',
+    items: ['qr'] },
   { k: 'documents', label: 'Documents', icon: 'folder', note: 'To read and to send',
     items: ['downloads', 'codex'] },
   /* 25 Sep (Bazil: "create an email signature generator in the website", "portal"): its own title in the sidebar */
@@ -186,6 +192,7 @@ function Shell ({ onOut }) {
         <Route path="booth/:view?" element={<PortalBooth />} />
         <Route path="direction" element={<DirectionPage />} />
         <Route path="signature" element={<Page k="signature" title={<>Email signatures, <em>one house style.</em></>} lede="Fill in your details, check the preview, then copy the signature into your mail app. Every member’s signature comes out the same."><SignatureGen /></Page>} />
+        <Route path="qr" element={<Page k="qr" title={<>QR codes, <em>for reference.</em></>} lede="The codes the team uses, each with the link it opens. Download PNG for screens and documents, SVG for print."><QrRefs /></Page>} />
         <Route path="models" element={<Page k="models" title={<>The 3D, <em>both demos in one place.</em></>} lede="What is on the site today, and what is still being modelled. Nothing here is a render of a real IAQ project unless it says so."><Models /></Page>} />
         <Route path="*" element={<Navigate to="/portal/codex" replace />} />
       </Routes>

@@ -52,7 +52,8 @@ import { SYS, related, sentence, MODELS, BOUGHT, list, isShort, unitShort, TOUR,
 /* read: false leaves the reading panel to the caller (the Services page draws it beside the 3D) */
 /* only: the kinds shown, e.g. ['w', 'y'] (25 Sep, version 2 of the Services banner: "no need the business unit",
    "remove services as well", "tools hookup will have a dedicated section"); the Codex keeps all four */
-export default function RelExplorer({ value, onSelect, read = true, tour = false, onTouch, only = null } = {}) {
+/* lines: each Work card also carries its one line from data/business.js (the Services map, 28 Sep client feedback) */
+export default function RelExplorer({ value, onSelect, read = true, tour = false, onTouch, only = null, lines = false } = {}) {
   const show = k => !only || only.includes(k)
   const WL = only ? WORK : WORK4, YL = only ? SYS : SYS_ALL
   const box = useRef(null)
@@ -198,7 +199,7 @@ export default function RelExplorer({ value, onSelect, read = true, tour = false
         {show('w') && <div className="rx-col rx-w" role="group" aria-label="Work">
           {WL.map(w => (
             <button type="button" key={w.id} ref={ref('w|' + w.id)} className={'rx-n n-w' + (w.k === 's' ? ' n-w-s' : '') + st('w', w.id)} aria-pressed={!!(sel && sel[0] === 'w' && sel[1] === w.id)} onClick={pick('w', w.id)} onMouseEnter={hover('w', w.id)}>
-              <Icon name={w.icon} className="rx-fi" /><span><b>{w.name}</b><small>{isShort(w.name) ? '(' + w.full + ')' : w.full}</small></span>
+              <Icon name={w.icon} className="rx-fi" /><span><b>{w.name}</b><small>{isShort(w.name) ? '(' + w.full + ')' : w.full}</small>{lines && w.line && <em className="rx-w-line">{w.line}</em>}</span>
             </button>
           ))}
         </div>}

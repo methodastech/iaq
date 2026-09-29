@@ -5,9 +5,37 @@
    and /lp/<slug> exists.
 
    `proof` is a predicate over the project registry rather than a hand-picked list, so a campaign
-   page cannot go stale when the registry grows. */
+   page cannot go stale when the registry grows.
+
+   `form` picks the form at the foot: 'pack' (the default) asks for three fields and sends the capability pack;
+   'project' is the full lead form (contact, market, what is needed, timing, a message) for a project enquiry. Every
+   campaign form posts to Netlify Forms as "lead" (lib/enquiry.js). `back` names the page the footer link opens. */
 
 export const CAMPAIGNS = {
+  /* 29 Sep ("make me lead form page", a campaign landing page with leads to Netlify Forms): the general one, for
+     ads and outbound that are about a facility project rather than one market */
+  project: {
+    slug: 'project',
+    eyebrow: 'Cleanroom and facility projects',
+    title: 'Tell us what you are building. One team delivers it.',
+    lede: 'Cleanrooms, dry rooms and the systems that hold them in spec, designed, built and maintained by one accountable team since 1995. Send the brief and an engineer replies within a working day.',
+    points: [
+      'Design, procurement and construction under one contract',
+      'ISO 3 to 7 cleanrooms and dry rooms to a specified dew point',
+      'Process critical utilities and tool hook-up',
+      'Testing, commissioning and maintenance after handover',
+    ],
+    stat: [
+      { v: '1,050,000', k: 'm² cleanroom built-up' },
+      { v: '250+', k: 'projects delivered' },
+      { v: '7', k: 'countries' },
+    ],
+    image: '/assets/contact-cleanroom.webp',
+    proof: p => ['semiconductor', 'ev-battery', 'data-centre'].includes(p.ind),
+    market: '/services',
+    back: 'services',
+    form: 'project',
+  },
   semiconductor: {
     slug: 'semiconductor',
     eyebrow: 'Semiconductor facilities',

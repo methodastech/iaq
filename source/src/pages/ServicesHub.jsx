@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import ClosingBand from '../components/ClosingBand.jsx'
 import CycleBand from '../components/CycleBand.jsx'
-import WorksBand from '../components/WorksBand.jsx'
-import ToolsHookupBand from '../components/ToolsHookupBand.jsx'
 import ServicesSectionBar from '../components/ServicesSectionBar.jsx'
 import Related from '../components/Related.jsx'
 import CycleFlow from '../components/CycleFlow.jsx'
@@ -322,11 +320,12 @@ export default function ServicesHub() {
           (the client asked for the units on top on 17 Sep); the one-view chart then summarises what the reader has met */}
       <UnitsBand />
       <CycleBand id="services-cycle" />
-      {/* 26 Sep (Bazil: "after this should be four works, and detail them") */}
-      <WorksBand />
-      {/* 25 Sep (Bazil: "tools hookup will have a dedicated section, like the diagram the client gave") */}
-      {/* 26 Sep: the Main Tool schematic opens on demand here; it stands open on the PCU & TTI page and on /services/all */}
-      <ToolsHookupBand fold />
+      {/* 28 Sep (client, Website Update 28.09.2026: "To remove this section and add the description highlighted in red to
+          section below"): the 4 works section (components/WorksBand.jsx, added 26 Sep) is off the page. Each work's one line
+          now sits in its Work card on the facility map (ServicesMap, RelExplorer `lines`). The Codex keeps its copy. */}
+      {/* 28 Sep (client, Website Update 28.09.2026: "Remove below section"): the Tools hookup section (ToolsHookupBand, the
+          four phases and the Main Tool schematic, added 25 Sep) is off this page. It stays on /services/all and the
+          PCU & TTI page carries the schematic. */}
       {/* 25 Sep (Bazil: "remove this section"): the one-flow band (OneFlow) is off the page; the component stays */}
       <SystemMap />
       {/* 24 Sep (Bazil: "in between put the old services looping view"): the ring sits between the units and the map */}

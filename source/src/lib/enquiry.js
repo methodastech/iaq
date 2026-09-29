@@ -60,6 +60,24 @@ export function trail () {
   try { return JSON.parse(sessionStorage.getItem(TRAIL_KEY) || '[]') } catch { return [] }
 }
 
+/* 29 Sep: Netlify Forms, for the campaign pages (/lp/). The site is hosted on Netlify, which stores each submission
+   (the site's Forms tab) and emails it to the addresses set there, with no server of our own. Netlify learns a form
+   from static HTML at deploy time, so each form posted here is also declared, hidden, in index.html with every field
+   it sends; a field that is not declared there is dropped. Only the published site can receive: on this computer
+   (the dev server, a local preview) nothing is sent and the caller says so. */
+export const LOCAL = typeof location !== 'undefined' && /^(localhost|127\.|192\.168\.|10\.|\[::1\])/.test(location.hostname)
+export async function toNetlify (form, fields) {
+  if (LOCAL) return { delivered: false, reason: 'local' }
+  const body = new URLSearchParams({ 'form-name': form })
+  for (const [k, v] of Object.entries(fields)) if (v !== undefined && v !== null && v !== '') body.append(k, String(v))
+  try {
+    const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() })
+    return res.ok ? { delivered: true } : { delivered: false, reason: 'http-' + res.status }
+  } catch {
+    return { delivered: false, reason: 'network' }
+  }
+}
+
 /**
  * @returns {Promise<{delivered:boolean, reason?:string, owner?:object}>}
  *   delivered:false is a real, expected outcome while no endpoint is configured. Callers must
@@ -73,6 +91,13 @@ export async function submit (payload) {
     trail: trail(),
     sentAt: new Date().toISOString(),
     page: typeof location !== 'undefined' ? location.href : '',
+  }
+
+  /* a form that names its Netlify form goes there (the campaign pages); the rest keep the endpoint or the fallback */
+  if (payload.netlifyForm) {
+    const { netlifyForm, intent, shortlist, ...fields } = payload
+    const r = await toNetlify(netlifyForm, { ...fields, owner: owner.team, page: body.page })
+    return { ...r, owner }
   }
 
   if (!ENDPOINT) {

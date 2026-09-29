@@ -433,13 +433,13 @@
 .sm-map-dark .sm-map-read{background:#1A1F27;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);gap:12px}
 .sm-map-dark .sm-map-read p{color:rgba(255,255,255,.78)}
 .sm-map-dark .sm-map-read p b{color:#fff}
-.sm-map-dark .sm-map-read .c-u{color:#FF6A70}.sm-map-dark .sm-map-read .c-s{color:#5CBCF5}.sm-map-dark .sm-map-read .c-w{color:#FFFFFF}.sm-map-dark .sm-map-read .c-y{color:#4DDB93}.sm-map-dark .sm-map-read .c-m{color:#fff}
+.sm-map-dark .sm-map-read .c-u{color:#FF6A70}.sm-map-dark .sm-map-read .c-s{color:#5CBCF5}.sm-map-dark .sm-map-read .c-w{color:#F2B705}.sm-map-dark .sm-map-read .c-y{color:#4DDB93}.sm-map-dark .sm-map-read .c-m{color:#fff}
 .sm-map-dark .sm-map-hint{color:rgba(255,255,255,.6)}
 .sm-map-more{margin-top:6px!important;font-size:12.5px!important;color:rgba(255,255,255,.55)!important}
 .sm-map-ic{display:grid;place-items:center;flex:none;width:40px;height:40px;background:#242A34;color:#5CBCF5}
 .sm-map-ic svg{width:20px;height:20px}
 /* the map on the dark ground: dark cards, light type, the same coloured lines, brighter tints of the key colours */
-.sm-map-dark .sm-map-in{--unit:#3AA9EC;--unit-t:#5CBCF5;--svc:#FF4D55;--svc-t:#FF6A70;--work:#FFFFFF;--work-t:#FFFFFF;--sys:#2ECC7F;--sys-t:#4DDB93}
+.sm-map-dark .sm-map-in{--unit:#3AA9EC;--unit-t:#5CBCF5;--svc:#FF4D55;--svc-t:#FF6A70;--work:#F2B705;--work-t:#F2B705;--sys:#2ECC7F;--sys-t:#4DDB93}
 .sm-map-dark .rx-compact .rx-heads span{color:rgba(255,255,255,.6)}
 .sm-map-dark .rx-compact .rx-n,.sm-map-dark .rx-compact .rx-n.on{background:#1A1F27;color:#E6EAF0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
 .sm-map-dark .rx-compact .rx-n:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
@@ -1440,3 +1440,15 @@ html.nav-under .sm-map-dark.sm-map-full{margin-top:calc(-1 * var(--navh,78px));p
 .sm-asks-more{display:inline-flex;align-items:center;gap:10px;margin-top:14px;padding:11px 16px;border:0;background:#fff;box-shadow:inset 0 0 0 1px rgba(12,18,32,.12);color:#0C1220;font:600 14px/1.2 "Switzer",sans-serif;cursor:pointer;transition:box-shadow .25s}
 .sm-asks-more i{font-style:normal;font:500 18px/1 "Switzer",sans-serif;color:#EC2027}
 .sm-asks-more:hover{box-shadow:inset 0 0 0 1px #0C1220}
+/* 28 Sep: a picked Work card on the dark map was a blank white box: Work was white on the dark ground, and a picked
+   card fills with its own colour and sets white type. Work is work amber now (--work above, the house colour), and a
+   picked Work card keeps ink type and mark, which read on amber where white does not. Tools hookup (n-w-s) fills red
+   and keeps its white type. */
+.sm-map-dark .rx-compact .rx-w .rx-n.me:not(.n-w-s),.sm-map-dark .rx-compact .rx-w .rx-n.me:not(.n-w-s) b{color:#0C1220}
+.sm-map-dark .rx-compact .rx-w .rx-n.me:not(.n-w-s) small{color:rgba(12,18,32,.78)!important}
+.sm-map-dark .rx-compact .rx-w .rx-n.me:not(.n-w-s) svg.rx-fi{color:#0C1220!important}   /* !important: codex-parts.css sets .rx-n.me svg white with !important */
+/* 28 Sep (client, Website Update 28.09.2026): each Work card carries its one line, from the 4 works section that left
+   the page (RelExplorer `lines`), in the empty lower half of the card the client pointed at */
+.rx-compact .rx-w .rx-n .rx-w-line{display:block;margin-top:10px;font:600 13px/1.35 "Instrument Sans",sans-serif;font-style:normal;color:#0C1220}
+.sm-map-dark .rx-compact .rx-w .rx-n .rx-w-line{color:rgba(255,255,255,.88)}
+.sm-map-dark .rx-compact .rx-w .rx-n.me:not(.n-w-s) .rx-w-line{color:#0C1220}

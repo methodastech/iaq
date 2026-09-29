@@ -5,12 +5,20 @@ import '../../styles/signature.css'
    SignatureGen · 25 Sep 2026. Bazil: "create an email signature generator in the website", "portal".
    A member fills in their details, sees the signature at true size, and copies it into Outlook, Gmail or Apple Mail.
 
-   What an inbox accepts decides the build: one table, inline styles, Arial (web fonts do not load in mail), a PNG logo
-   at twice its display size (WebP and SVG fail in Outlook) served from an absolute address, and no divider rule (the
-   house has no left lines). The company line is "IAQ Group": subsidiary entity names stay off anything sent outside
-   (client, DV3 A2.1). Only offices with a published street address are offered; the rest of the seven are still
-   "supplied by IAQ" on the Contact page, so a member there types their own address under Other.
-   The form is remembered in this browser only.
+   What an inbox accepts decides the build: one table, inline styles, Arial (web fonts do not load in mail), PNG and JPG
+   images at twice their display size (WebP and SVG fail in Outlook) served from an absolute address, and colour blocks
+   as table cells with bgcolor (Outlook ignores CSS backgrounds). Only offices with a published street address are
+   offered; the rest of the seven are still "supplied by IAQ" on the Contact page, so a member there types their own
+   address under Other. The form is remembered in this browser only.
+
+   29 Sep 2026 ("use that design on email signature portal", with the house signature as the reference): the layout is
+   the reference's. Name, title and the legal entity on the left, the logo and tagline on the right, a red rule; Mobile,
+   Email, Office and Web in two columns with red labels; the address; the red "Engineered environments. Trusted outcomes."
+   block beside the cleanroom photograph (assets/email/sig-cleanroom.jpg, cut from assets/contact-cleanroom.webp); the
+   Intertek and UKAS marks with the ISO line; and the entity's name and registration number with the confidentiality
+   line. The company line was "IAQ Group" until now (entity names off anything sent outside, client DV3 A2.1); the
+   reference signs with the member's legal entity and its registration number, so the entity is chosen here, with
+   IAQ Group still one of the choices. 640px wide: the reference's proportions, inside what mail clients lay out without scaling.
    ============================================================================ */
 const OFFICES = [
   { id: 'hq', label: 'Headquarters, Shah Alam', addr: 'No. 12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor, Malaysia', tel: '+603 5124 8319' },
@@ -19,52 +27,139 @@ const OFFICES = [
   { id: 'in', label: 'Ahmedabad, India', addr: '906, Satymev Eminence, Science City Road, Sola, Ahmedabad 380060, India', tel: '' },
   { id: 'other', label: 'Other (type the address)', addr: '', tel: '' },
 ]
-const KEY = 'iaq.signature.v1'
+/* the legal entity a member signs for, with its registration number (SSM, new and old format). IAQ Solutions is the
+   reference signature's; IAQ Technology International is the one the site's footer carries. */
+const ENTITIES = [
+  { id: 'solutions', name: 'IAQ Solutions Sdn. Bhd.', reg: '200501013167 (690214-V)' },
+  { id: 'technology', name: 'IAQ Technology International Sdn. Bhd.', reg: '200001031412 (534019-T)' },
+  { id: 'group', name: 'IAQ Group', reg: '' },
+  { id: 'other', name: '', reg: '' },
+]
+const SIG_W = 640   /* the signature's width in the inbox */
+const SLOGAN = ['Engineered environments.', 'Trusted outcomes.']
+/* the four registrations and recognitions the site's footer carries (assets/certs), as PNGs in assets/email: file,
+   width at 40px high, alt */
+const CERTS = [
+  ['sig-cidb.png', 66, 'CIDB registered contractor'],
+  ['sig-intertek.png', 32, 'Intertek ISO 9001, 14001 and 45001 certification'],
+  ['sig-ukas.png', 29, 'UKAS management systems accreditation'],
+  ['sig-highwire.png', 32, 'Highwire Safety Gold 2024'],
+]
+const NOTE = 'The information in this e-mail is confidential and may be legally privileged. It is solely for the use of the intended recipient(s).'
+/* v2 with the 29 Sep layout: the entity and the new lines start at their defaults, the member's own details carry over */
+const KEY = 'iaq.signature.v2', OLD = 'iaq.signature.v1'
+const MINE = ['name', 'title', 'dept', 'email', 'mobile', 'office', 'addr', 'tel', 'host']
 const DEF = {
   name: '', title: '', dept: '', email: '', mobile: '', office: 'hq', addr: OFFICES[0].addr, tel: OFFICES[0].tel,
-  company: 'IAQ Group', site: 'www.iaqtechnology.com.my', tagline: true, certs: true, note: false,
+  entity: 'solutions', company: ENTITIES[0].name, reg: ENTITIES[0].reg, site: 'iaqtechnology.com.my',
+  tagline: true, banner: true, certs: true, note: true,
   host: typeof location !== 'undefined' ? location.origin : '',
+}
+function load () {
+  try {
+    const v2 = localStorage.getItem(KEY)
+    if (v2) return { ...DEF, ...JSON.parse(v2) }
+    const v1 = JSON.parse(localStorage.getItem(OLD) || '{}')
+    return { ...DEF, ...Object.fromEntries(MINE.filter(k => v1[k] !== undefined).map(k => [k, v1[k]])) }
+  } catch { return DEF }
 }
 const esc = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 const telHref = s => 'tel:' + String(s || '').replace(/[^\d+]/g, '')
+const bare = s => String(s || '').replace(/^https?:\/\//, '').replace(/\/$/, '')
 
 /* the signature itself, as an email client needs it */
 function build (f) {
   const ink = '#0C1220', soft = '#48536A', faint = '#6B7588', red = '#EC2027'
   const font = 'font-family:Arial,Helvetica,sans-serif;'
-  /* the cell carries the line height too, or the client's own (and the portal's) leading opens the lines up */
-  const row = (html, pad = '0', lh = 18) => `<tr><td style="${font}padding:${pad};line-height:${lh}px;mso-line-height-rule:exactly;">${html}</td></tr>`
-  const lines = []
-  lines.push(row(`<img src="${esc(f.host.replace(/\/$/, ''))}/assets/email/iaq-signature-logo.png" width="100" height="42" alt="IAQ" style="display:block;border:0;outline:none;width:100px;height:42px;">`, '0 0 12px 0'))
-  lines.push(row(`<span style="font-size:15px;line-height:20px;font-weight:bold;color:${ink};">${esc(f.name || 'Your name')}</span>`, '0', 20))
-  lines.push(row(`<span style="font-size:13px;line-height:18px;color:${soft};">${esc(f.title || 'Job title')}${f.dept ? ' &middot; ' + esc(f.dept) : ''}</span>`))
-  lines.push(row(`<span style="font-size:13px;line-height:18px;font-weight:bold;color:${ink};">${esc(f.company)}</span>`, '2px 0 0 0'))
-  const bits = []
-  if (f.mobile) bits.push(`<span style="color:${red};font-weight:bold;">M</span>&nbsp;<a href="${telHref(f.mobile)}" style="color:${ink};text-decoration:none;">${esc(f.mobile)}</a>`)
-  if (f.tel) bits.push(`<span style="color:${red};font-weight:bold;">T</span>&nbsp;<a href="${telHref(f.tel)}" style="color:${ink};text-decoration:none;">${esc(f.tel)}</a>`)
-  if (f.email) bits.push(`<span style="color:${red};font-weight:bold;">E</span>&nbsp;<a href="mailto:${esc(f.email)}" style="color:${ink};text-decoration:none;">${esc(f.email)}</a>`)
-  if (bits.length) lines.push(row(`<span style="font-size:12.5px;line-height:19px;color:${soft};">${bits.join('&nbsp;&nbsp;&nbsp;')}</span>`, '10px 0 0 0'))
-  if (f.addr) lines.push(row(`<span style="font-size:12px;line-height:17px;color:${faint};">${esc(f.addr)}</span>`, '2px 0 0 0', 17))
-  if (f.site) lines.push(row(`<a href="https://${esc(f.site.replace(/^https?:\/\//, ''))}" style="font-size:12.5px;line-height:18px;font-weight:bold;color:${red};text-decoration:none;">${esc(f.site.replace(/^https?:\/\//, ''))}</a>`, '8px 0 0 0'))
-  if (f.tagline) lines.push(row(`<span style="font-size:11.5px;line-height:16px;color:${faint};">Your Total Facility Solutions Provider</span>`, '2px 0 0 0'))
-  if (f.certs) lines.push(row(`<span style="font-size:11px;line-height:16px;color:${faint};">ISO 9001 &middot; ISO 14001 &middot; ISO 45001 certified</span>`, '2px 0 0 0'))
-  if (f.note) lines.push(row(`<span style="font-size:10.5px;line-height:15px;color:${faint};">This email and its attachments are confidential and meant for the addressee only. If it reached you by mistake, please tell the sender and delete it.</span>`, '12px 0 0 0'))
-  return `<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;${font}color:${ink};max-width:520px;">${lines.join('')}</table>`
+  const img = n => esc(f.host.replace(/\/$/, '')) + '/assets/email/' + n
+  const W = SIG_W
+  /* every cell carries its own line height, or the client's leading (and the portal's) opens the lines up */
+  const td = (style, html, attrs = '') => `<td ${attrs}style="${font}mso-line-height-rule:exactly;${style}">${html}</td>`
+  const table = (inner, attrs = '', style = '') => `<table cellpadding="0" cellspacing="0" border="0" role="presentation" ${attrs}style="border-collapse:collapse;${style}">${inner}</table>`
+  const rows = []
+
+  /* 1 · who, and the logo; the red rule under both */
+  const who = [
+    `<div style="font-size:20px;line-height:26px;font-weight:bold;color:${ink};">${esc(f.name || 'Your name')}</div>`,
+    `<div style="font-size:14px;line-height:20px;color:${soft};padding-top:2px;">${esc(f.title || 'Job title')}${f.dept ? ' &middot; ' + esc(f.dept) : ''}</div>`,
+    f.company ? `<div style="font-size:13px;line-height:18px;font-weight:bold;color:${ink};padding-top:6px;">${esc(f.company)}</div>` : '',
+  ].join('')
+  const logo = `<img src="${img('iaq-signature-logo.png')}" width="120" height="50" alt="IAQ" style="display:block;border:0;outline:none;width:120px;height:50px;margin-left:auto;">`
+    + (f.tagline ? `<div style="font-size:9.5px;line-height:13px;color:${ink};padding-top:3px;text-align:right;white-space:nowrap;">Your Total Facility Solutions Provider</div>` : '')
+  rows.push(td(`padding:0 0 14px 0;border-bottom:2px solid ${red};`,
+    table(`<tr>${td('vertical-align:top;line-height:18px;', who, 'valign="top" ')}${td('vertical-align:top;text-align:right;line-height:13px;', logo, 'valign="top" align="right" width="190" ')}</tr>`, `width="${W}" `, `width:${W}px;`)))
+
+  /* 2 · reach: Mobile and Email on the left, Office and Web on the right, each label in red */
+  /* two equal halves, so Office and Web start at the middle whatever the length of the email address */
+  const LBL = 62, VAL = W / 2 - LBL
+  const pair = (k, v) => k ? td(`font-size:12.5px;line-height:22px;font-weight:bold;color:${red};white-space:nowrap;`, k, `width="${LBL}" `) + td(`font-size:13px;line-height:22px;color:${ink};padding-right:12px;`, v, `width="${VAL}" `)
+    : td('', '', `width="${LBL}" `) + td('', '', `width="${VAL}" `)
+  const left = [f.mobile && ['Mobile', `<a href="${telHref(f.mobile)}" style="color:${ink};text-decoration:none;">${esc(f.mobile)}</a>`],
+    f.email && ['Email', `<a href="mailto:${esc(f.email)}" style="color:${ink};text-decoration:none;">${esc(f.email)}</a>`]].filter(Boolean)
+  const right = [f.tel && ['Office', `<a href="${telHref(f.tel)}" style="color:${ink};text-decoration:none;">${esc(f.tel)}</a>`],
+    f.site && ['Web', `<a href="https://${esc(bare(f.site))}" style="color:${ink};text-decoration:none;">${esc(bare(f.site))}</a>`]].filter(Boolean)
+  const n = Math.max(left.length, right.length)
+  if (n) {
+    let grid = ''
+    for (let i = 0; i < n; i++) grid += `<tr>${pair(...(left[i] || []))}${pair(...(right[i] || []))}</tr>`
+    rows.push(td('padding:14px 0 0 0;', table(grid, `width="${W}" `, `width:${W}px;`)))
+  }
+  if (f.addr) rows.push(td(`padding:8px 0 0 0;font-size:12.5px;line-height:18px;color:${soft};`, esc(f.addr)))
+
+  /* 3 · the red block and the cleanroom, the same height side by side */
+  if (f.banner) {
+    const half = (W - 10) / 2
+    rows.push(td('padding:18px 0 0 0;', table(`<tr>`
+      + td(`background-color:${red};padding:0 26px;height:90px;font-size:17px;line-height:22px;font-weight:bold;color:#ffffff;vertical-align:middle;`, SLOGAN.map(esc).join('<br>'), `width="${half}" height="90" bgcolor="${red}" valign="middle" `)
+      + td('font-size:0;line-height:0;', '&nbsp;', 'width="10" ')
+      + td('font-size:0;line-height:0;', `<img src="${img('sig-cleanroom.jpg')}" width="${half}" height="90" alt="A cleanroom IAQ builds" style="display:block;border:0;outline:none;width:${half}px;height:90px;">`, `width="${half}" `)
+      + `</tr>`, `width="${W}" `, `width:${W}px;`)))
+  }
+
+  /* 4 · the certification marks, the footer's four in the footer's order (29 Sep: "four these logo"), one height. The
+     ISO line that followed them is gone (29 Sep: "remove ISO 9001 · ISO 14001 · ISO 45001"); the Intertek mark carries
+     the three standards itself. */
+  if (f.certs) {
+    const mark = ([file, w, alt]) => td('vertical-align:middle;padding-right:16px;', `<img src="${img(file)}" width="${w}" height="40" alt="${alt}" style="display:block;border:0;width:${w}px;height:40px;">`, 'valign="middle" ')
+    rows.push(td('padding:16px 0 0 0;', table(`<tr>${CERTS.map(mark).join('')}</tr>`)))
+  }
+
+  /* 5 · the entity and its registration, then the confidentiality line */
+  const legal = f.company ? `<b style="color:${soft};">${esc(f.company)}${f.reg ? ' &middot; ' + esc(f.reg) : ''}.</b>` : ''
+  if (legal || f.note) rows.push(td(`padding:16px 0 0 0;font-size:11.5px;line-height:17px;color:${faint};`, [legal, f.note ? esc(NOTE) : ''].filter(Boolean).join(' ')))
+
+  return table(rows.map(r => `<tr>${r}</tr>`).join(''), `width="${W}" `, `${font}color:${ink};width:${W}px;`)
 }
 function plain (f) {
-  return [f.name, [f.title, f.dept].filter(Boolean).join(' · '), f.company,
-    [f.mobile && 'M ' + f.mobile, f.tel && 'T ' + f.tel, f.email && 'E ' + f.email].filter(Boolean).join('   '),
-    f.addr, f.site, f.tagline && 'Your Total Facility Solutions Provider'].filter(Boolean).join('\n')
+  return [f.name, [f.title, f.dept].filter(Boolean).join(' · '), f.company, '',
+    f.mobile && 'Mobile  ' + f.mobile, f.email && 'Email   ' + f.email, f.tel && 'Office  ' + f.tel, f.site && 'Web     ' + bare(f.site),
+    f.addr, '', f.banner && SLOGAN.join(' '),
+    [f.company && f.company + (f.reg ? ' · ' + f.reg : '') + '.', f.note && NOTE].filter(Boolean).join(' ')].filter(v => v !== false && v !== undefined && v !== null).join('\n').replace(/\n{3,}/g, '\n\n').trim()
 }
 
 export default function SignatureGen () {
-  const [f, setF] = useState(() => { try { return { ...DEF, ...JSON.parse(localStorage.getItem(KEY) || '{}') } } catch { return DEF } })
+  const [f, setF] = useState(load)
   const [done, setDone] = useState('')
   const prev = useRef(null)
   useEffect(() => { try { localStorage.setItem(KEY, JSON.stringify(f)) } catch {} }, [f])
   const html = useMemo(() => build(f), [f])
+  /* the preview shows the whole signature: narrower than the signature, the panel scales it down to fit (the preview
+     only; what is copied keeps its true size). The panel and the signature share the page's zoom, so the widths compare
+     directly. */
+  useEffect(() => {
+    const el = prev.current; if (!el) return
+    const box = el.parentElement
+    const fit = () => {
+      const cs = getComputedStyle(box)
+      const w = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)
+      el.style.zoom = w > 0 && w < SIG_W ? String(w / SIG_W) : ''
+    }
+    const ro = new ResizeObserver(fit); ro.observe(box); fit()
+    return () => ro.disconnect()
+  }, [])
   const set = k => e => { const v = e.target.type === 'checkbox' ? e.target.checked : e.target.value; setF(o => ({ ...o, [k]: v })) }
   const pickOffice = e => { const o = OFFICES.find(x => x.id === e.target.value) || OFFICES[0]; setF(p => ({ ...p, office: o.id, addr: o.id === 'other' ? '' : o.addr, tel: o.tel })) }
+  const pickEntity = e => { const x = ENTITIES.find(y => y.id === e.target.value) || ENTITIES[0]; setF(p => ({ ...p, entity: x.id, company: x.name, reg: x.reg })) }
   const flash = t => { setDone(t); clearTimeout(flash.t); flash.t = setTimeout(() => setDone(''), 2600) }
   const missing = ['name', 'title', 'email'].filter(k => !String(f[k] || '').trim())
 
@@ -92,6 +187,9 @@ export default function SignatureGen () {
           <label><span>Full name</span><input value={f.name} onChange={set('name')} autoComplete="name" placeholder="Nur Aisyah binti Rahman" /></label>
           <label><span>Job title</span><input value={f.title} onChange={set('title')} autoComplete="organization-title" placeholder="Senior Project Engineer" /></label>
           <label><span>Department <em>optional</em></span><input value={f.dept} onChange={set('dept')} placeholder="EPC" /></label>
+          <label><span>Company</span>
+            <select value={f.entity} onChange={pickEntity}>{ENTITIES.map(x => <option key={x.id} value={x.id}>{x.id === 'other' ? 'Other (type it below)' : x.name}</option>)}</select>
+          </label>
         </fieldset>
         <fieldset>
           <legend>Reach you</legend>
@@ -105,16 +203,18 @@ export default function SignatureGen () {
         </fieldset>
         <fieldset>
           <legend>Lines</legend>
-          <label className="sg-check"><input type="checkbox" checked={f.tagline} onChange={set('tagline')} /><span>Tagline, Your Total Facility Solutions Provider</span></label>
-          <label className="sg-check"><input type="checkbox" checked={f.certs} onChange={set('certs')} /><span>ISO 9001, 14001 and 45001 line</span></label>
+          <label className="sg-check"><input type="checkbox" checked={f.tagline} onChange={set('tagline')} /><span>Tagline under the logo, Your Total Facility Solutions Provider</span></label>
+          <label className="sg-check"><input type="checkbox" checked={f.banner} onChange={set('banner')} /><span>Banner, Engineered environments. Trusted outcomes.</span></label>
+          <label className="sg-check"><input type="checkbox" checked={f.certs} onChange={set('certs')} /><span>Certification marks, CIDB, Intertek, UKAS and Highwire</span></label>
           <label className="sg-check"><input type="checkbox" checked={f.note} onChange={set('note')} /><span>Confidentiality note</span></label>
         </fieldset>
         <details className="sg-more">
-          <summary>Company, website and image address</summary>
-          <label><span>Company line</span><input value={f.company} onChange={set('company')} /></label>
+          <summary>Company name, registration, website and image address</summary>
+          <label><span>Company name</span><input value={f.company} onChange={set('company')} /></label>
+          <label><span>Registration no. <em>optional</em></span><input value={f.reg} onChange={set('reg')} placeholder="200501013167 (690214-V)" /></label>
           <label><span>Website</span><input value={f.site} onChange={set('site')} /></label>
           <label className="sg-wide"><span>Image address</span><input value={f.host} onChange={set('host')} />
-            <small>The logo loads from this address in every inbox. Point it at the live site once it is published.</small></label>
+            <small>The logo, the photograph and the marks load from this address in every inbox. Point it at the live site once it is published.</small></label>
         </details>
       </form>
 
@@ -124,6 +224,7 @@ export default function SignatureGen () {
           <div ref={prev} className="sg-prev" dangerouslySetInnerHTML={{ __html: html }} />
         </div>
         {missing.length > 0 && <p className="sg-need">Still to fill in: {missing.map(k => ({ name: 'full name', title: 'job title', email: 'email' }[k])).join(', ')}.</p>}
+        {/localhost|127\.0\.0\.1|192\.168\./.test(f.host) && <p className="sg-need">The images load from {f.host}, which only this computer can reach: in anyone else’s inbox they will not show. Set the image address to the live site (Company name, registration, website and image address, below the form) before copying.</p>}
         <div className="sg-acts">
           <button type="button" className="sg-go" onClick={copyRich}>Copy signature</button>
           <button type="button" onClick={copyHtml}>Copy HTML</button>

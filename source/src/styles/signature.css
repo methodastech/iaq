@@ -33,5 +33,10 @@
 .sg-how{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:10px;counter-reset:sg}
 .sg-how li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;font:400 13.5px/1.5 "Instrument Sans",sans-serif;color:#48536A}
 .sg-how b{font:600 13.5px/1.5 "Switzer",sans-serif;color:#0C1220}
-@media(max-width:900px){.sg{grid-template-columns:minmax(0,1fr)}.sg-out{position:static}}
+@media(max-width:1180px){.sg{grid-template-columns:minmax(0,1fr)}.sg-out{position:static}}   /* 29 Sep: stacked below 1180px (was 900), so the preview stays large enough to check */
 @media(max-width:520px){.sg-form fieldset{grid-template-columns:minmax(0,1fr)}.sg-how li{grid-template-columns:minmax(0,1fr);gap:2px}}
+/* 29 Sep: the preview column keeps to its track. A grid item's automatic minimum is its content, so the 640px signature
+   widened the column past the page edge, where it was cut off; with a zero minimum the stage stays in the column and
+   the preview scales the signature down to fit it (SignatureGen). */
+.sg-out{grid-template-columns:minmax(0,1fr);min-width:0}
+.sg-out>*,.sg-stage{min-width:0}

@@ -5,15 +5,14 @@ import '../styles/services-bar.css'
    ServicesSectionBar · 26 Sep 2026. Bazil: "make the services page better, the content is correct but more
    interesting, easy to understand and looks good"; "go research online if needed". Long B2B pages keep the reader
    oriented with a section bar that stays in view, and leading fab contractors (Exyte) keep each service to a short
-   line with the detail one step away. This is the first half: the page's seven parts in one row under the nav, each
+   line with the detail one step away. This is the first half: the page's parts in one row under the nav, each
    in its own colour, the part in view lit, a click scrolls there. It reads the sections the page already has, so no
    section had to change to be listed. It steps out of the way above the banner's foot and after the FAQ.
    ============================================================================ */
 const PARTS = [
   { k: 'units', n: '3', label: 'business units', sel: '.sm-units', id: 'business-units', c: '#0B8FD8' },
   { k: 'services', n: '6', label: 'services', sel: '#services-cycle', c: '#EC2027' },
-  { k: 'works', n: '4', label: 'works', sel: '.sm-works', id: 'works', c: '#231F20' },
-  { k: 'hookup', n: '', label: 'Tools hookup', sel: '#tools-hookup', c: '#EC2027' },
+  /* 28 Sep (client): the 4 works and Tools hookup sections left the page, and their tabs with them */
   { k: 'who', n: '', label: 'Who does what', sel: '.sysm', id: 'who-does-what', c: '#1C4F9C' },
   { k: 'quote', n: '', label: 'Your quote', sel: '.sm-qs', id: 'your-quote', c: '#0C1220' },
   { k: 'faq', n: '', label: 'Questions', sel: '.sm-faq', id: 'questions', c: '#0C1220' },

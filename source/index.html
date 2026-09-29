@@ -62,6 +62,14 @@
 })()
 </script>
 <div id="root"></div>
+<!-- 29 Sep: the campaign pages' lead form, declared for Netlify Forms (src/lib/enquiry.js toNetlify). Netlify reads this
+     at deploy time to create the "lead" form; the page itself posts from React. Every field sent must be listed here. -->
+<form name="lead" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="lead">
+  <input name="bot-field"><input name="source"><input name="kind"><input name="owner"><input name="page">
+  <input name="name"><input name="company"><input type="email" name="email"><input name="phone">
+  <input name="market"><input name="need"><input name="timing"><textarea name="message"></textarea>
+</form>
 <script>
 /* CLEAN PATHS INTO THE HASH ROUTER, before the app boots.
    The router is a HashRouter on purpose: the second build target is one self-contained file opened

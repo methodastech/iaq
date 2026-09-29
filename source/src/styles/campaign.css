@@ -75,3 +75,31 @@ html.lp-page{overflow-x:clip}
   .lp-proof-g{grid-template-columns:1fr}
   .lp-stats{grid-template-columns:1fr;gap:10px}
 }
+
+/* 29 Sep: the project lead form (campaigns.js form: 'project'). The message box takes the inputs' look. */
+.lp-form-in textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);
+  color:#fff;padding:13px 14px;font:inherit;font-size:15px;border-radius:0;width:100%;box-sizing:border-box;
+  resize:vertical;min-height:110px;line-height:1.5}
+.lp-form-in textarea::placeholder{color:#6F80A0}
+.lp-form-in textarea:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+.lp-form-in label em{font-style:normal;text-transform:none;letter-spacing:0;color:#6F80A0;margin-left:6px}
+.lp-fine{margin-top:12px;font-size:12.5px;color:#8A9BB8;text-align:center}
+/* the menus (LpSelect in pages/Campaign.jsx): closed, a field like the others; open, a sharp list on the form's navy */
+.lp-sel{position:relative}
+.lp-sel-b{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;box-sizing:border-box;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:0;color:#fff;
+  padding:13px 14px;font:inherit;font-size:15px;text-align:left;cursor:pointer}
+.lp-sel-b.is-empty span{color:#8A9BB8}
+.lp-sel-b i{flex:none;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;
+  border-top:6px solid #9FB0CC;transition:transform .2s}
+.lp-sel.is-open .lp-sel-b i{transform:rotate(180deg)}
+.lp-sel-b:focus-visible,.lp-sel.is-open .lp-sel-b{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+.lp-sel-l{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:20;margin:0;padding:4px 0;list-style:none;
+  background:#141C30;border:1px solid rgba(255,255,255,.2);border-radius:0;max-height:300px;overflow-y:auto;
+  box-shadow:0 18px 40px -18px rgba(0,0,0,.7)}
+.lp-sel-l li{padding:11px 14px;color:#DCE4F2;font-size:15px;line-height:1.35;cursor:pointer}
+.lp-sel-l li.is-act{background:rgba(255,255,255,.08);color:#fff}
+.lp-sel-l li.is-on{color:#fff;font-weight:600}
+.lp-sel-l li.is-on::after{content:"";display:inline-block;width:6px;height:6px;margin-left:10px;vertical-align:middle;background:#EC2027}
+/* the honeypot: kept in the page for bots, out of sight and reach for people */
+.lp-hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
