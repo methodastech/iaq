@@ -7,9 +7,11 @@ import '../../styles/qr-refs.css'
    reference". The Marketing group's QR code page: the codes the team uses, kept in one place to look up and download.
    Each code is one entry in CODES below; add a line and the page shows it. Site pages are written as a path and point
    at the address the portal runs on (the review site on Netlify), or at the live site when the portal runs on this
-   computer, since a code that opens localhost works for nobody who scans it.
+   computer. 29 Sep: now always at iaqtechnology.com.my (LIVE).
    ============================================================================ */
-const LIVE = 'https://iaq.netlify.app'
+/* 29 Sep ("https://iaqtechnology.com.my/"): codes are printed and kept, so site pages point at the company's own domain,
+   wherever the portal runs */
+const LIVE = 'https://iaqtechnology.com.my'
 const CODES = [
   { id: 'website', label: 'Website', note: 'The home page', path: '/' },
   { id: 'lead', label: 'Start a project', note: 'The lead form page, for ads, print and the booth', path: '/lp/project' },
@@ -17,8 +19,7 @@ const CODES = [
   { id: 'linkedin', label: 'LinkedIn', note: 'IAQ Group of Companies', url: 'https://www.linkedin.com/company/iaq-group-of-companies/' },
 ]
 const INK = '#0C1220'
-const local = typeof location !== 'undefined' && /^(localhost|127\.|192\.168\.|10\.)/.test(location.hostname)
-const BASE = typeof location === 'undefined' || local ? LIVE : location.origin
+const BASE = LIVE
 const urlOf = c => c.url || BASE.replace(/\/$/, '') + c.path
 const opts = { errorCorrectionLevel: 'M', margin: 2, color: { dark: INK, light: '#FFFFFF' } }
 
