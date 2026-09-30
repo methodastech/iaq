@@ -64,42 +64,6 @@ function room () {
   wake()
 }
 
-/* 30 Sep (client, on the speed row cut off under "Replay build"): the facilities panel has to fit the stage. The app
-   shrinks its list to fit (--rail-k, 1 down to .45), but only a few times after load and on resize, and against the
-   window: run while the section is still below the fold it squeezes the list to its smallest, and when the build
-   finishes the panel grows (the count, the X-ray switch) with no refit, so the speed row fell out of the bottom of the
-   stage. Here the same fit runs whenever the panel or the stage changes size, measured against the stage. */
-let fitting = 0
-function fit () {
-  fitting = 0
-  const v = stage.querySelector('#hud2 .h-left')
-  if (!v || innerWidth < 900 || inRoom()) return
-  const s = stage.getBoundingClientRect()
-  const floor = s.height - Math.min(34, Math.max(16, innerWidth * 0.022)) + 1
-  let k = 1
-  v.style.setProperty('--rail-k', '1')
-  while (k > 0.45 && v.getBoundingClientRect().bottom - s.top > floor) {
-    k = +(k - 0.05).toFixed(2)
-    v.style.setProperty('--rail-k', String(k))
-  }
-}
-function watchFit () {
-  const refit = () => { if (!fitting) fitting = requestAnimationFrame(fit) }
-  const ro = new ResizeObserver(refit)
-  ro.observe(stage)
-  const seek = () => {
-    const v = stage.querySelector('#hud2 .h-left')
-    if (!v) return false
-    ro.observe(v)
-    return true
-  }
-  /* the app adds its panel (#hud2) to the stage once it has started */
-  if (!seek()) {
-    const m = new MutationObserver(() => { if (seek()) m.disconnect() })
-    m.observe(stage, { childList: true })
-  }
-}
-
 function build () {
   stage = document.createElement('div')
   stage.className = 'b3d-stage'
@@ -114,7 +78,6 @@ function build () {
   document.head.append(link)
   mo = new MutationObserver(room)
   mo.observe(document.body, { attributes: true, attributeFilter: ['class'] })
-  watchFit()
 }
 
 /* puts the stage into the section; returns the undo */
