@@ -32,9 +32,13 @@ const MENUS = [
         /* 17 Sep (Bazil: "people need to know which is the main page and which are sub pages"):
            rows that are not their own page carry `section` and a tag instead of an arrow. Overview IS the
            About page, so it is tagged as the main page. */
+        /* 30 Sep (client: "these should be different picture"): each row previews its own photograph. Overview keeps
+           the headquarters (the panel's own photo, so no `img`), History the plant at dusk its page opens on, and
+           Corporate Commitment the team on stage at MCIEA 2024 (events/mciea-2024-stage; not ev-mciea-award-6260, whose
+           screen names a subsidiary and sits in the caption). */
         { label: 'Overview', hash: '', icon: 'building', sub: 'Who IAQ is, at a glance', section: true, tag: 'Main page', pitch: 'The group in one page: what it builds, where, and the scale behind the claim.' },
-        { label: 'History of IAQ', hash: '', route: '/about/history', icon: 'clock', sub: 'The record since 1995', pitch: 'Thirty years to scale, from an indoor air quality specialist to a total facility solutions provider.' },
-        { label: 'Corporate Commitment', hash: '', route: '/about/commitment', icon: 'file', sub: 'Policies, certificates, ISO and the awards', pitch: 'The policies IAQ signs its name to, and the certificates and awards that back them.' },
+        { label: 'History of IAQ', hash: '', route: '/about/history', icon: 'clock', img: 'about-history', sub: 'The record since 1995', pitch: 'Thirty years to scale, from an indoor air quality specialist to a total facility solutions provider.' },
+        { label: 'Corporate Commitment', hash: '', route: '/about/commitment', icon: 'file', img: 'about-commitment', sub: 'Policies, certificates, ISO and the awards', pitch: 'The policies IAQ signs its name to, and the certificates and awards that back them.' },
       ] },
     ],
   },

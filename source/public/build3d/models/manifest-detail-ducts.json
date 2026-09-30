@@ -37,7 +37,7 @@
       "elevation": 4.2,
       "file": "detail-ducts-0-apron.glb",
       "triangles": 5644,
-      "sizeKB": 66
+      "sizeKB": 59
     },
     {
       "index": 1,
@@ -45,8 +45,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-ducts-1-gf.glb",
-      "triangles": 122954,
-      "sizeKB": 881
+      "triangles": 112968,
+      "sizeKB": 925
     },
     {
       "index": 2,
@@ -54,8 +54,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-ducts-2-1f.glb",
-      "triangles": 490118,
-      "sizeKB": 4117
+      "triangles": 453339,
+      "sizeKB": 3765
     },
     {
       "index": 3,
@@ -63,8 +63,8 @@
       "name": "2F",
       "elevation": 14.6,
       "file": "detail-ducts-3-2f.glb",
-      "triangles": 25870,
-      "sizeKB": 223
+      "triangles": 25119,
+      "sizeKB": 205
     },
     {
       "index": 4,
@@ -72,8 +72,8 @@
       "name": "3F",
       "elevation": 21.05,
       "file": "detail-ducts-4-3f.glb",
-      "triangles": 113666,
-      "sizeKB": 875
+      "triangles": 103773,
+      "sizeKB": 871
     },
     {
       "index": 5,
@@ -81,8 +81,8 @@
       "name": "RF",
       "elevation": 27.71,
       "file": "detail-ducts-5-rf.glb",
-      "triangles": 7224,
-      "sizeKB": 60
+      "triangles": 7181,
+      "sizeKB": 58
     }
   ]
 }

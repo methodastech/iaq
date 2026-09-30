@@ -36,8 +36,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-processwater-1-gf.glb",
-      "triangles": 6886,
-      "sizeKB": 75
+      "triangles": 6865,
+      "sizeKB": 79
     },
     {
       "index": 2,
@@ -45,8 +45,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-processwater-2-1f.glb",
-      "triangles": 102466,
-      "sizeKB": 973
+      "triangles": 102440,
+      "sizeKB": 954
     }
   ]
 }

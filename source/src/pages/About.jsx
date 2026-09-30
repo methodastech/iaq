@@ -96,6 +96,24 @@ export default function About() {
 
 <ValuesGrid />
 
+{/* 30 Sep (client, on the footer's "Registered, certified and recognised" row: "this should be under this about us page",
+    with their old site's "What We've Achieved" band as the reference): the four marks leave the footer and stand here, below
+    the values, in their issued colours on white, all four at one height. */}
+<section className="ab-awards" id="recognition">
+  <div className="wrap">
+    <span className="eyebrow">Awards &amp; recognition</span>
+    <h2>What we&rsquo;ve <em>achieved</em></h2>
+    <ul className="ab-awards-row">
+      <li><img src="/assets/certs/iso.webp" alt="Intertek ISO 9001, 14001 and 45001 certification" loading="lazy" decoding="async" /></li>
+      <li><img src="/assets/certs/ukas.webp" alt="UKAS management systems accreditation" loading="lazy" decoding="async" /></li>
+      <li><img src="/assets/certs/cidb.webp" alt="CIDB Malaysia registered contractor" loading="lazy" decoding="async" /></li>
+      <li><img src="/assets/certs/highwire-gold-2024.webp" alt="Highwire Safety Gold 2024" loading="lazy" decoding="async" /></li>
+    </ul>
+    <p className="ab-awards-p">We are proud to be recognised by important organisations for our contribution towards the community and, more importantly, our clients.</p>
+    <Link className="ab-awards-a" to="/policies">Policies and certificates <i aria-hidden="true">&rarr;</i></Link>
+  </div>
+</section>
+
 {/* 25 Sep (Bazil: "remove this"): the four-photograph proof strip (headquarters, ISO 3, on site, the team) is gone */}
 
 {/* the standalone Safety & ESH band left the page on the Prototype 3 rule (23 Aug):

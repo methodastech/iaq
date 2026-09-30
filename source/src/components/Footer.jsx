@@ -111,15 +111,6 @@ const FOOT_NOTE = 'Prototype · Brand Method'
 /* 10 Sep audit: the prototype label, the ribbon and the per-page notes belong to the review build */
 /* 15 Sep: the shared flag, so ?launchview shows the footer exactly as it publishes */
 import { LAUNCH } from '../lib/launch.js'
-/* 26 Sep (Bazil: "don't put a white background and make the badges the same size"): reverse copies for the navy footer
-   (public/assets/certs/*-rev: the outside white removed, the Intertek line art and the UKAS number drawn white), each
-   trimmed to its mark and shown at one height; the originals in public/assets stay as issued */
-const CERTS = [
-  { src: '/assets/certs/cidb-rev.webp', alt: 'CIDB registered contractor' },
-  { src: '/assets/certs/iso-rev.webp', alt: 'Intertek ISO 9001, 14001 and 45001 certification' },
-  { src: '/assets/certs/ukas-rev.webp', alt: 'UKAS management systems accreditation' },
-  { src: '/assets/certs/highwire-gold-2024-rev.webp', alt: 'Highwire Safety Gold 2024' },
-]
 export default function Footer({ note = FOOT_NOTE, nav = true }) {
   const cvRef = useRef(null)
   const fbRef = useRef(null)
@@ -131,15 +122,9 @@ export default function Footer({ note = FOOT_NOTE, nav = true }) {
           legal strip at the very bottom — the © line now signs off BELOW the logo, not above. */}
       {/* shortened on the client review of 19 Aug 2026: the dead ISO anchor list and the
           compliance column are gone; certifications read as one line in the base row */}
-      {/* 25 Sep (Bazil, on "Registered, certified and recognised": "put this one in the footer instead"): the four marks on
-          every page, drawn white on the footer's navy so they sit as one row */}
-      <div className="f-certs">
-        <span className="f-certs-l">Registered, certified and recognised</span>
-        <div className="f-certs-row">
-          {CERTS.map(b => <img key={b.src} src={b.src} alt={b.alt} loading="lazy" decoding="async" />)}
-        </div>
-        <a className="f-certs-a" href="/policies">Policies and certificates</a>
-      </div>
+      {/* 25 Sep (Bazil, on "Registered, certified and recognised": "put this one in the footer instead"): the four marks sat
+          here on every page. 30 Sep (client: "this should be under this about us page"): they moved to the About overview,
+          below the values (pages/About.jsx, .ab-awards); the white -rev copies stay in public/assets/certs */}
       <div className="f-base">
         <span>&copy; 2026 IAQ Group &middot; IAQ Technology International Sdn. Bhd. 200001031412 (534019-T) &middot; ISO 9001 / 14001 / 45001 &middot; CIDB G7</span>
         {!LAUNCH && <span>{FOOT_NOTE}</span>}

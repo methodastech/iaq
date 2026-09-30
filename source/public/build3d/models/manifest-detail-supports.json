@@ -36,8 +36,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-supports-1-gf.glb",
-      "triangles": 35996,
-      "sizeKB": 262
+      "triangles": 35954,
+      "sizeKB": 296
     },
     {
       "index": 2,
@@ -45,8 +45,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-supports-2-1f.glb",
-      "triangles": 399040,
-      "sizeKB": 2249
+      "triangles": 365094,
+      "sizeKB": 2165
     }
   ]
 }

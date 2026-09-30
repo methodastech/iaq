@@ -36,8 +36,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-pipes-1-gf.glb",
-      "triangles": 102722,
-      "sizeKB": 793
+      "triangles": 82363,
+      "sizeKB": 792
     },
     {
       "index": 2,
@@ -45,8 +45,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-pipes-2-1f.glb",
-      "triangles": 1315330,
-      "sizeKB": 10239
+      "triangles": 1152713,
+      "sizeKB": 10022
     },
     {
       "index": 3,
@@ -54,8 +54,8 @@
       "name": "2F",
       "elevation": 14.6,
       "file": "detail-pipes-3-2f.glb",
-      "triangles": 408380,
-      "sizeKB": 3158
+      "triangles": 354933,
+      "sizeKB": 3131
     },
     {
       "index": 4,
@@ -63,8 +63,8 @@
       "name": "3F",
       "elevation": 21.05,
       "file": "detail-pipes-4-3f.glb",
-      "triangles": 487739,
-      "sizeKB": 4006
+      "triangles": 406915,
+      "sizeKB": 3862
     }
   ]
 }

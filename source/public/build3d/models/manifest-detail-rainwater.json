@@ -36,8 +36,8 @@
       "name": "APRON",
       "elevation": 4.2,
       "file": "detail-rainwater-0-apron.glb",
-      "triangles": 5752,
-      "sizeKB": 63
+      "triangles": 5747,
+      "sizeKB": 71
     },
     {
       "index": 1,
@@ -45,8 +45,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-rainwater-1-gf.glb",
-      "triangles": 4504,
-      "sizeKB": 50
+      "triangles": 4496,
+      "sizeKB": 53
     },
     {
       "index": 2,
@@ -55,7 +55,7 @@
       "elevation": 10.25,
       "file": "detail-rainwater-2-1f.glb",
       "triangles": 1776,
-      "sizeKB": 25
+      "sizeKB": 22
     },
     {
       "index": 3,
@@ -63,8 +63,8 @@
       "name": "2F",
       "elevation": 14.6,
       "file": "detail-rainwater-3-2f.glb",
-      "triangles": 4402,
-      "sizeKB": 48
+      "triangles": 3788,
+      "sizeKB": 53
     },
     {
       "index": 4,
@@ -72,8 +72,8 @@
       "name": "3F",
       "elevation": 21.05,
       "file": "detail-rainwater-4-3f.glb",
-      "triangles": 37654,
-      "sizeKB": 365
+      "triangles": 33785,
+      "sizeKB": 391
     },
     {
       "index": 5,
@@ -81,8 +81,8 @@
       "name": "RF",
       "elevation": 27.71,
       "file": "detail-rainwater-5-rf.glb",
-      "triangles": 7536,
-      "sizeKB": 78
+      "triangles": 7474,
+      "sizeKB": 86
     }
   ]
 }

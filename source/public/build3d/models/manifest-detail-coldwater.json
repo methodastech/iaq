@@ -45,8 +45,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-coldwater-1-gf.glb",
-      "triangles": 24896,
-      "sizeKB": 167
+      "triangles": 65,
+      "sizeKB": 3
     },
     {
       "index": 2,
@@ -54,8 +54,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-coldwater-2-1f.glb",
-      "triangles": 1223,
-      "sizeKB": 12
+      "triangles": 1583,
+      "sizeKB": 24
     },
     {
       "index": 3,
@@ -63,8 +63,8 @@
       "name": "2F",
       "elevation": 14.6,
       "file": "detail-coldwater-3-2f.glb",
-      "triangles": 4786,
-      "sizeKB": 62
+      "triangles": 8159,
+      "sizeKB": 78
     },
     {
       "index": 4,

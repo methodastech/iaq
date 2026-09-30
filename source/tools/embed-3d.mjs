@@ -19,7 +19,7 @@
              the render loop waits while the section is off screen or the home page is not showing
              panels the app adds to <body> go into the section instead
              page-wide keyboard shortcuts ignore typing and act only while the section is in use
-             model and sign paths are absolute (/build3d/...); check a new delivery on the BUILT site (npm run
+             model, sign and icon paths are absolute (/build3d/...); check a new delivery on the BUILT site (npm run
              build:launch), since the dev server answers a missed relative path with the home page, not a 404
      styles  every rule scoped under .b3d; html and body rules land on the section's stage (.b3d-stage);
              html.section-scroll rules and @font-face dropped (the site already serves both fonts)
@@ -49,6 +49,11 @@ if (!body) die('index.html has no <body>')
 body = body.replace(/<!--[\s\S]*?-->/g, '').replace(/<script[\s\S]*?<\/script>/g, '')
   .replace(/(src|srcset)="(fallback|signs)\//g, `$1="${BASE}$2/`)
   .replace(/\n\s*\n+/g, '\n').trim() + '\n'
+/* 30 Sep delivery: the loader draws the IAQ mark through inline CSS masks, url(signs/...), two marks each with the
+   -webkit- twin */
+const masks = (body.match(/url\((signs|fallback|icons)\//g) || []).length
+if (masks !== 4) die(`markup: expected 4 url(signs/...) masks, found ${masks}. The delivery changed; update this tool.`)
+body = body.replace(/url\((signs|fallback|icons)\//g, `url(${BASE}$1/`)
 
 /* ---- the script ---- */
 let js = fs.readFileSync(path.join(SRC, 'assets', jsName), 'utf8')
@@ -65,12 +70,17 @@ patch('no jump to the top', new RegExp(`(${ID})\\|\\|scrollTo\\(0,0\\)`), '$1||0
 const loop = (js.match(new RegExp(`;(${ID})\\(\\);?\\s*$`)) || [])[1]
 if (!loop) die('the script no longer ends by starting its render loop')
 patch('render loop', new RegExp(`requestAnimationFrame\\(${loop.replace(/\$/g, '\\$')}\\)`), `__b3d.raf(${loop})`, 2)
-patch('panels into the section', /document\.body\.append(Child)?\(/, '__b3d.root.append$1(', 3)
+/* 30 Sep delivery ("3D ONLY uplatest"): six panels, up from three (the rail HUD, two hover cards with their
+   leader lines, the slow-frame notice, the floor loader, the x-ray pins) */
+patch('panels into the section', /document\.body\.append(Child)?\(/, '__b3d.root.append$1(', 6)
 patch('keyboard', /(^|[;,{}()])addEventListener\("keydown",/, '$1__b3d.onKey(', 6)
 patch('model paths', /(["`])(?:\.\/)?models\//, `$1${BASE}models/`, 11)
 patch('sign paths', /"\.\/signs\//, `"${BASE}signs/`, 2)
-/* the sign painters take the page's base as an argument, "./", and add signs/... to it */
-patch('sign base', /\("\.\/"([,)])/, `("${BASE}"$1`, 2)
+/* the sign painters take the page's base as an argument, "./", and add signs/... to it. From the 30 Sep delivery
+   the fire kit and the scope cards take it too, and fetch models/... from it: seven calls, all a base */
+patch('sign base', /\("\.\/"([,)])/, `("${BASE}"$1`, 7)
+/* 30 Sep delivery: the rail's isometric trade icons (icons/iso/*.svg) */
+patch('icon paths', /"\.\/icons\//, `"${BASE}icons/`, 1)
 
 /* ---- the stylesheet ---- */
 const css = fs.readFileSync(path.join(SRC, 'assets', cssName), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '')

@@ -36,8 +36,8 @@
       "name": "APRON",
       "elevation": 4.2,
       "file": "detail-sprinklers-0-apron.glb",
-      "triangles": 9284,
-      "sizeKB": 127
+      "triangles": 9208,
+      "sizeKB": 111
     },
     {
       "index": 1,
@@ -45,8 +45,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-sprinklers-1-gf.glb",
-      "triangles": 712419,
-      "sizeKB": 5473
+      "triangles": 574931,
+      "sizeKB": 4912
     },
     {
       "index": 2,
@@ -54,8 +54,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-sprinklers-2-1f.glb",
-      "triangles": 1253610,
-      "sizeKB": 7079
+      "triangles": 594003,
+      "sizeKB": 4675
     },
     {
       "index": 3,
@@ -63,8 +63,8 @@
       "name": "2F",
       "elevation": 14.6,
       "file": "detail-sprinklers-3-2f.glb",
-      "triangles": 1264675,
-      "sizeKB": 8505
+      "triangles": 814370,
+      "sizeKB": 6607
     },
     {
       "index": 4,
@@ -72,8 +72,8 @@
       "name": "3F",
       "elevation": 21.05,
       "file": "detail-sprinklers-4-3f.glb",
-      "triangles": 488568,
-      "sizeKB": 3838
+      "triangles": 380774,
+      "sizeKB": 3325
     },
     {
       "index": 5,
@@ -81,8 +81,8 @@
       "name": "RF",
       "elevation": 27.71,
       "file": "detail-sprinklers-5-rf.glb",
-      "triangles": 360795,
-      "sizeKB": 1960
+      "triangles": 173880,
+      "sizeKB": 1254
     }
   ]
 }

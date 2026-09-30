@@ -52,11 +52,11 @@ const NOTE = 'The information in this e-mail is confidential and may be legally 
 /* v3 (29 Sep, the entity default changed): a signature saved before starts again from the new default entity and lines,
    keeping the member's own details */
 const KEY = 'iaq.signature.v3', OLDS = ['iaq.signature.v2', 'iaq.signature.v1']
-const MINE = ['name', 'title', 'dept', 'email', 'mobile', 'office', 'addr', 'tel', 'host']
+const MINE = ['name', 'title', 'dept', 'email', 'mobile', 'office', 'addr', 'tel', 'host', 'photo', 'photoUrl']
 const DEF = {
   name: '', title: '', dept: '', email: '', mobile: '', office: 'hq', addr: OFFICES[0].addr, tel: OFFICES[0].tel,
   entity: 'technology', company: ENTITIES[0].name, reg: ENTITIES[0].reg, site: 'iaqtechnology.com.my',
-  tagline: true, banner: true, certs: true, note: true,
+  tagline: true, banner: true, certs: true, note: true, photo: false, photoUrl: '',
   host: typeof location !== 'undefined' ? location.origin : '',
 }
 function load () {
@@ -105,8 +105,13 @@ function build (f) {
   ].join('')
   const logo = `<img src="${img('iaq-signature-logo.png')}" width="120" height="50" alt="IAQ" style="display:block;border:0;outline:none;width:120px;height:50px;margin-left:auto;">`
     + (f.tagline ? `<div style="font-size:9.5px;line-height:13px;color:${ink};padding-top:3px;text-align:right;white-space:nowrap;">Your Total Facility Solutions Provider</div>` : '')
+  /* 29 Sep ("add profile picture. so can check or uncheck"): the member's photo, square (no round corners), beside the name.
+     It loads from the Photo link; an uploaded file shows in the preview only (photoPreview), since inboxes block images
+     carried inside the message */
+  const photoSrc = f.photo ? (String(f.photoUrl || '').trim() || f.photoPreview || '') : ''
+  const photo = photoSrc ? td('vertical-align:top;padding-right:16px;', `<img src="${esc(photoSrc)}" width="76" height="76" alt="${esc(f.name || 'Photo')}" style="display:block;border:0;outline:none;width:76px;height:76px;object-fit:cover;">`, 'valign="top" width="92" ') : ''
   rows.push(td(`padding:0 0 14px 0;border-bottom:2px solid ${red};`,
-    table(`<tr>${td('vertical-align:top;line-height:18px;', who, 'valign="top" ')}${td('vertical-align:top;text-align:right;line-height:13px;', logo, 'valign="top" align="right" width="190" ')}</tr>`, `width="${W}" `, `width:${W}px;`)))
+    table(`<tr>${photo}${td('vertical-align:top;line-height:18px;', who, 'valign="top" ')}${td('vertical-align:top;text-align:right;line-height:13px;', logo, 'valign="top" align="right" width="190" ')}</tr>`, `width="${W}" `, `width:${W}px;`)))
 
   /* 2 · reach, 29 Sep ("use this icon on the email signature"): each line leads with the site's own line icon in red
      (components/FlowIcon.jsx, drawn as 16px PNGs in assets/email/sig-ic-*.png, since Outlook and Gmail do not show SVG):
@@ -166,7 +171,8 @@ export default function SignatureGen () {
   const [done, setDone] = useState('')
   const prev = useRef(null)
   useEffect(() => { try { localStorage.setItem(KEY, JSON.stringify(f)) } catch {} }, [f])
-  const html = useMemo(() => build(f), [f])
+  const [photoPreview, setPhotoPreview] = useState('')
+  const html = useMemo(() => build({ ...f, photoPreview }), [f, photoPreview])
   /* the preview shows the whole signature: narrower than the signature, the panel scales it down to fit (the preview
      only; what is copied keeps its true size). The panel and the signature share the page's zoom, so the widths compare
      directly. */
@@ -183,6 +189,8 @@ export default function SignatureGen () {
   }, [])
   const set = k => e => { const v = e.target.type === 'checkbox' ? e.target.checked : e.target.value; setF(o => ({ ...o, [k]: v })) }
   const pickOffice = e => { const o = OFFICES.find(x => x.id === e.target.value) || OFFICES[0]; setF(p => ({ ...p, office: o.id, addr: o.id === 'other' ? '' : o.addr, tel: o.tel })) }
+  /* an uploaded photo shows in the preview only; it is not saved, and recipients need the Photo link */
+  const pickPhoto = e => { const file = e.target.files && e.target.files[0]; if (!file) return; const r = new FileReader(); r.onload = () => setPhotoPreview(String(r.result)); r.readAsDataURL(file) }
   const pickEntity = e => { const x = ENTITIES.find(y => y.id === e.target.value) || ENTITIES[0]; setF(p => ({ ...p, entity: x.id, company: x.name, reg: x.reg })) }
   const flash = t => { setDone(t); clearTimeout(flash.t); flash.t = setTimeout(() => setDone(''), 2600) }
   const missing = ['name', 'title', 'email'].filter(k => !String(f[k] || '').trim())
@@ -226,6 +234,15 @@ export default function SignatureGen () {
           <label className="sg-wide"><span>Address</span><textarea rows={3} value={f.addr} onChange={set('addr')} /></label>
         </fieldset>
         <fieldset>
+          <legend>Profile picture</legend>
+          <label className="sg-check"><input type="checkbox" checked={!!f.photo} onChange={set('photo')} /><span>Show my photo beside my name</span></label>
+          {f.photo && <>
+            <label className="sg-wide"><span>Photo link</span><input type="url" value={f.photoUrl} onChange={set('photoUrl')} placeholder="https://… a square photo, at least 152 × 152" />
+              <small className="sg-hint">The web address of your photo (the company site, SharePoint shared as public, or LinkedIn). Inboxes load it from there.</small></label>
+            <label className="sg-wide"><span>Or upload to preview <em>this computer only</em></span><input type="file" accept="image/*" onChange={pickPhoto} /></label>
+          </>}
+        </fieldset>
+        <fieldset>
           <legend>Lines</legend>
           <label className="sg-check"><input type="checkbox" checked={f.tagline} onChange={set('tagline')} /><span>Tagline under the logo, Your Total Facility Solutions Provider</span></label>
           <label className="sg-check"><input type="checkbox" checked={f.banner} onChange={set('banner')} /><span>Banner, Engineered environments. Trusted outcomes. (the cleanroom image)</span></label>
@@ -248,6 +265,7 @@ export default function SignatureGen () {
           <div ref={prev} className="sg-prev" dangerouslySetInnerHTML={{ __html: html }} />
         </div>
         {missing.length > 0 && <p className="sg-need">Still to fill in: {missing.map(k => ({ name: 'full name', title: 'job title', email: 'email' }[k])).join(', ')}.</p>}
+        {f.photo && !String(f.photoUrl || "").trim() && <p className="sg-need">{photoPreview ? "The photo shows here from this computer only. Add a Photo link so it shows in other people's inboxes." : "Profile picture is on: add a Photo link (or upload one to preview)."}</p>}
         {/localhost|127\.0\.0\.1|192\.168\./.test(f.host) && <p className="sg-need">The images load from {f.host}, which only this computer can reach: in anyone else’s inbox they will not show. Set the image address to the live site (Company name, registration, website and image address, below the form) before copying.</p>}
         <div className="sg-acts">
           <button type="button" className="sg-go" onClick={copyRich}>Copy signature</button>

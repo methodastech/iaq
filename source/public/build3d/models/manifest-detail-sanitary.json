@@ -36,8 +36,8 @@
       "name": "APRON",
       "elevation": 4.2,
       "file": "detail-sanitary-0-apron.glb",
-      "triangles": 29600,
-      "sizeKB": 290
+      "triangles": 29462,
+      "sizeKB": 320
     },
     {
       "index": 1,
@@ -45,8 +45,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-sanitary-1-gf.glb",
-      "triangles": 14058,
-      "sizeKB": 140
+      "triangles": 14015,
+      "sizeKB": 158
     },
     {
       "index": 2,
@@ -54,8 +54,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-sanitary-2-1f.glb",
-      "triangles": 10794,
-      "sizeKB": 109
+      "triangles": 10750,
+      "sizeKB": 127
     },
     {
       "index": 3,
@@ -63,8 +63,8 @@
       "name": "2F",
       "elevation": 14.6,
       "file": "detail-sanitary-3-2f.glb",
-      "triangles": 7702,
-      "sizeKB": 77
+      "triangles": 7684,
+      "sizeKB": 89
     },
     {
       "index": 4,
@@ -73,7 +73,7 @@
       "elevation": 21.05,
       "file": "detail-sanitary-4-3f.glb",
       "triangles": 1092,
-      "sizeKB": 14
+      "sizeKB": 15
     }
   ]
 }

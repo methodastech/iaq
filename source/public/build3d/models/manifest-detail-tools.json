@@ -34,8 +34,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-tools-1-gf.glb",
-      "triangles": 32196824,
-      "sizeKB": 68253
+      "triangles": 21426136,
+      "sizeKB": 61540
     },
     {
       "index": 2,
@@ -43,8 +43,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-tools-2-1f.glb",
-      "triangles": 19376274,
-      "sizeKB": 42908
+      "triangles": 14216860,
+      "sizeKB": 40707
     },
     {
       "index": 3,
