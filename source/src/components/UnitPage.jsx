@@ -223,17 +223,6 @@ export default function UnitPage(props) {
                       </div>
                     ))
                   : what[0] && <p className="un-state" data-rv="" style={{ '--d': '.06s' }}>{jargon(what[0])}</p>}
-                {pains.length > 0 && (<>
-                  <h3 className="un-pains-h" data-rv="" style={{ '--d': '.1s' }}>{painsHead || <>The problems <em>it solves.</em></>}</h3>
-                  <ul className="un-pains2">
-                    {pains.map((x, i) => (
-                      <li key={x.k} data-rv="" style={{ '--d': `${.12 + i * .05}s` }}>
-                        <Icon name={x.icon || iconFor(x.k + ' ' + x.t)} className="un-pains2-ic" />
-                        <b>{x.k}</b><span>{x.t}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </>)}
               </div>
               {band && (
                 <figure className="un-intro2-fig" data-rv="" style={{ '--d': '.12s' }}>
@@ -244,6 +233,25 @@ export default function UnitPage(props) {
             </div>
           </div>
         </section>
+
+        {/* 30 Sep (client, on EFM's "The problems EFM solves": "client want this separate section"): the problems leave the
+            "what it is" column beside the photograph and stand as a section of their own, straight after it, the four
+            cards across the full width */}
+        {pains.length > 0 && (
+          <section className="un-sec un-probs" aria-labelledby="un-probs-h">
+            <div className="pg-in">
+              <h2 id="un-probs-h" className="un-h2" data-rv="">{painsHead || <>The problems <em>it solves.</em></>}</h2>
+              <ul className="un-pains2">
+                {pains.map((x, i) => (
+                  <li key={x.k} data-rv="" style={{ '--d': `${.06 + i * .05}s` }}>
+                    <Icon name={x.icon || iconFor(x.k + ' ' + x.t)} className="un-pains2-ic" />
+                    <b>{x.k}</b><span>{x.t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         {/* 5 · why owners choose it.
              25 Sep (Bazil: "why owners choose would be before the process", then "all 3 business unit pages, why choose

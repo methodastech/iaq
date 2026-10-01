@@ -174,11 +174,12 @@ const PLACES = [
     photo: '/assets/culture/offices/de.webp', rep: true, cap: REP_CAP },
   { city: 'Ahmedabad', country: 'India', note: 'IAQ Solutions India Private Limited', tz: 'Asia/Kolkata',
     photo: '/assets/culture/india-office-opening-2026.webp', alt: 'IAQ colleagues celebrating in a meeting room at the new India office', cap: 'Office opening, September 2026' },
-  { city: 'Sweden', country: 'Nordic office', note: 'IAQ Group', tz: 'Europe/Stockholm',
+  /* 30 Sep: the client named the Sweden and Ireland cities (Skellefteå, Dublin); Contact carries their addresses */
+  { city: 'Skellefteå', country: 'Sweden', note: 'IAQ Group · Nordic office', tz: 'Europe/Stockholm',
     photo: '/assets/culture/offices/se.webp', rep: true, cap: REP_CAP },
   { city: 'United States', country: 'US office', note: 'IAQ Group',
     photo: '/assets/culture/offices/us.webp', rep: true, cap: REP_CAP },
-  { city: 'Ireland', country: 'Ireland', note: 'IAQ Group', tz: 'Europe/Dublin',
+  { city: 'Dublin', country: 'Ireland', note: 'IAQ Group', tz: 'Europe/Dublin',
     photo: '/assets/culture/offices/ie.webp', rep: true, cap: REP_CAP },
 ]
 

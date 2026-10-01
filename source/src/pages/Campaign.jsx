@@ -163,7 +163,9 @@ export default function Campaign() {
         ))}
       </section>
 
-      {proof.length > 0 && (
+      {/* 30 Sep ("remove this", on /lp/project): the "Delivered, not proposed." cards are gone from the project page, so
+          the stats lead straight into the form. The market campaigns (semiconductor, data-centre, ev-battery) keep theirs */}
+      {!project && proof.length > 0 && (
         <section className="lp-proof" aria-labelledby="lp-proof-h">
           <h2 id="lp-proof-h">Delivered, not proposed.</h2>
           <div className="lp-proof-g">
@@ -186,74 +188,124 @@ export default function Campaign() {
       )}
 
       <section className="lp-form-wrap" id="lp-form">
-        <div className="lp-form-in">
-          <h2>{project ? 'Tell us about the project' : 'Request the capability pack'}</h2>
-          <p>
-            {project
-              ? 'A few lines are enough to start. An engineer reads every brief and replies within a working day.'
-              : 'The capability statement and certification pack, sent to your inbox. One email, no follow-up sequence.'}
-          </p>
+        {/* 30 Sep ("bit dull. make some design to this form"): the form sits in its own panel with a red rule on top,
+            the short fields pair up two across, and on the project page a column beside it says what happens after
+            Send and how to reach the team directly. Same fields, names, checks and submit as before */}
+        <div className={'lp-form-in' + (project ? ' lpf-two' : '')}>
+          <div className="lpf-intro">
+            <h2>{project ? 'Tell us about the project' : 'Request the capability pack'}</h2>
+            <p>
+              {project
+                ? 'A few lines are enough to start. An engineer reads every brief and replies within a working day.'
+                : 'The capability statement and certification pack, sent to your inbox. One email, no follow-up sequence.'}
+            </p>
+          </div>
 
-          {state.status === 'sent' ? (
-            <div className="lp-done" role="status">
-              <b>{project ? 'Thank you. Your brief is with our team.' : 'Request received.'}</b>
-              <p>{project
-                ? <>An engineer replies within a working day{state.email ? <> at <strong>{state.email}</strong></> : null}. For anything urgent, call +603 5124 8319.</>
-                : <>{state.owner?.note}. The pack follows shortly.</>}</p>
-            </div>
-          ) : state.status === 'local' ? (
-            <div className="lp-done warn" role="status">
-              <b>Preview only: nothing was sent.</b>
-              <p>
-                This page is running on this computer. Leads are collected by Netlify Forms on the published site, so
-                the same form sends from there.
-              </p>
-            </div>
-          ) : state.status === 'mailto' ? (
-            <div className="lp-done" role="status">
-              <b>Your email app has opened.</b>
-              <p>The request is written out for you. Send it and the pack follows from business@iaqtechnology.com.my.</p>
-            </div>
-          ) : state.status === 'undelivered' ? (
-            <div className="lp-done warn" role="status">
-              <b>The form could not be sent.</b>
-              <p>
-                Nothing reached us, and your details stay with you. Please email{' '}
-                <a href="mailto:business@iaqtechnology.com.my">business@iaqtechnology.com.my</a> or call
-                +603 5124 8319, and {project ? 'an engineer picks it up from there' : 'the pack is sent by hand'}.
-              </p>
-            </div>
-          ) : (
-            <form name="lead" onSubmit={onSubmit} onInput={() => state.status === 'invalid' && setState({ status: 'idle' })} noValidate>
-              {/* the honeypot, out of sight and out of the tab order (see onSubmit) */}
-              <p className="lp-hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
-              <label htmlFor="lp-name">Name</label>
-              <input id="lp-name" name="name" type="text" autoComplete="name" required />
-              <label htmlFor="lp-company">Company</label>
-              <input id="lp-company" name="company" type="text" autoComplete="organization" />
-              <label htmlFor="lp-email">Work email</label>
-              <input id="lp-email" name="email" type="email" autoComplete="email" required />
-              {project && <>
-                <label htmlFor="lp-phone">Phone</label>
-                <input id="lp-phone" name="phone" type="tel" autoComplete="tel" required />
-                <label htmlFor="lp-market" id="lp-market-lbl">Market</label>
-                <LpSelect id="lp-market" name="market" options={[...INDUSTRIES.map(([, l]) => l), 'Other']} />
-                <label htmlFor="lp-need" id="lp-need-lbl">What you need</label>
-                <LpSelect id="lp-need" name="need" options={NEEDS} />
-                <label htmlFor="lp-timing" id="lp-timing-lbl">Timing</label>
-                <LpSelect id="lp-timing" name="timing" options={TIMINGS} />
-                <label htmlFor="lp-message">The project <em>optional</em></label>
-                <textarea id="lp-message" name="message" rows={4} placeholder="Location, size, cleanroom class, anything you know so far" />
-              </>}
-              {state.status === 'invalid' && (
-                <p className="lp-err" role="alert">{project ? 'A name, a valid work email and a phone number are needed so an engineer can reply.' : 'A name and a valid work email are needed to send the pack.'}</p>
-              )}
-              <button className="cta" type="submit" disabled={state.status === 'sending'}>
-                {state.status === 'sending' ? 'Sending' : project ? 'Send the brief' : 'Send me the pack'}
-              </button>
-              {project && <p className="lp-fine">Your details are used only to reply to this enquiry.</p>}
-            </form>
+          {project && (
+            <aside className="lpf-aside" aria-label="What happens next">
+              <span className="lpf-k">What happens next</span>
+              <ol className="lpf-steps">
+                <li><strong>You send the brief</strong><span>A few lines are enough to start.</span></li>
+                <li><strong>It goes to an engineer</strong><span>An engineer reads every brief.</span></li>
+                <li><strong>A reply within a working day</strong><span>To the email or phone you give.</span></li>
+              </ol>
+              <div className="lpf-direct">
+                <span className="lpf-k">Prefer to talk</span>
+                <a href="mailto:business@iaqtechnology.com.my">business@iaqtechnology.com.my</a>
+                <a href="tel:+60351248319">+603 5124 8319</a>
+              </div>
+            </aside>
           )}
+
+          <div className="lpf-panel">
+            {state.status === 'sent' ? (
+              <div className="lp-done" role="status">
+                <b>{project ? 'Thank you. Your brief is with our team.' : 'Request received.'}</b>
+                <p>{project
+                  ? <>An engineer replies within a working day{state.email ? <> at <strong>{state.email}</strong></> : null}. For anything urgent, call +603 5124 8319.</>
+                  : <>{state.owner?.note}. The pack follows shortly.</>}</p>
+              </div>
+            ) : state.status === 'local' ? (
+              <div className="lp-done warn" role="status">
+                <b>Preview only: nothing was sent.</b>
+                <p>
+                  This page is running on this computer. Leads are collected by Netlify Forms on the published site, so
+                  the same form sends from there.
+                </p>
+              </div>
+            ) : state.status === 'mailto' ? (
+              <div className="lp-done" role="status">
+                <b>Your email app has opened.</b>
+                <p>The request is written out for you. Send it and the pack follows from business@iaqtechnology.com.my.</p>
+              </div>
+            ) : state.status === 'undelivered' ? (
+              <div className="lp-done warn" role="status">
+                <b>The form could not be sent.</b>
+                <p>
+                  Nothing reached us, and your details stay with you. Please email{' '}
+                  <a href="mailto:business@iaqtechnology.com.my">business@iaqtechnology.com.my</a> or call
+                  +603 5124 8319, and {project ? 'an engineer picks it up from there' : 'the pack is sent by hand'}.
+                </p>
+              </div>
+            ) : (
+              <form name="lead" onSubmit={onSubmit} onInput={() => state.status === 'invalid' && setState({ status: 'idle' })} noValidate>
+                {/* the honeypot, out of sight and out of the tab order (see onSubmit) */}
+                <p className="lp-hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
+                {/* 30 Sep ("bit dull"): each label and its field share a box (lpf-f) so they pair up two across; the
+                    project form falls into two numbered groups. placeholder=" " only lets the CSS tell a filled field */}
+                <fieldset className="lpf-grp">
+                  {project && <legend className="lpf-lg"><i>01</i>Contact</legend>}
+                  <div className="lpf-f">
+                    <label htmlFor="lp-name">Name</label>
+                    <input id="lp-name" name="name" type="text" autoComplete="name" placeholder=" " required />
+                  </div>
+                  <div className="lpf-f">
+                    <label htmlFor="lp-company">Company</label>
+                    <input id="lp-company" name="company" type="text" autoComplete="organization" placeholder=" " />
+                  </div>
+                  <div className={'lpf-f' + (project ? '' : ' lpf-wide')}>
+                    <label htmlFor="lp-email">Work email</label>
+                    <input id="lp-email" name="email" type="email" autoComplete="email" placeholder=" " required />
+                  </div>
+                  {project && (
+                    <div className="lpf-f">
+                      <label htmlFor="lp-phone">Phone</label>
+                      <input id="lp-phone" name="phone" type="tel" autoComplete="tel" placeholder=" " required />
+                    </div>
+                  )}
+                </fieldset>
+                {project && (
+                  <fieldset className="lpf-grp">
+                    <legend className="lpf-lg"><i>02</i>Project</legend>
+                    {/* Market and Timing are short and pair up; What you need has the long answers, so it takes the row */}
+                    <div className="lpf-f">
+                      <label htmlFor="lp-market" id="lp-market-lbl">Market</label>
+                      <LpSelect id="lp-market" name="market" options={[...INDUSTRIES.map(([, l]) => l), 'Other']} />
+                    </div>
+                    <div className="lpf-f">
+                      <label htmlFor="lp-timing" id="lp-timing-lbl">Timing</label>
+                      <LpSelect id="lp-timing" name="timing" options={TIMINGS} />
+                    </div>
+                    <div className="lpf-f lpf-wide">
+                      <label htmlFor="lp-need" id="lp-need-lbl">What you need</label>
+                      <LpSelect id="lp-need" name="need" options={NEEDS} />
+                    </div>
+                    <div className="lpf-f lpf-wide">
+                      <label htmlFor="lp-message">The project <em>optional</em></label>
+                      <textarea id="lp-message" name="message" rows={4} placeholder="Location, size, cleanroom class, anything you know so far" />
+                    </div>
+                  </fieldset>
+                )}
+                {state.status === 'invalid' && (
+                  <p className="lp-err" role="alert">{project ? 'A name, a valid work email and a phone number are needed so an engineer can reply.' : 'A name and a valid work email are needed to send the pack.'}</p>
+                )}
+                <button className="cta" type="submit" disabled={state.status === 'sending'}>
+                  {state.status === 'sending' ? 'Sending' : project ? 'Send the brief' : 'Send me the pack'}
+                </button>
+                {project && <p className="lp-fine">Your details are used only to reply to this enquiry.</p>}
+              </form>
+            )}
+          </div>
         </div>
       </section>
 

@@ -20,12 +20,28 @@ const Box = ({ x, y, w, h, k = 'bb', t, s = 12.5, lines }) => (
     ))}
   </g>
 )
-const L = ({ d, c = RED, w = 2.2, dash = true, end = true, start = false, i = 0 }) => (
+/* 30 Sep ("fix the arrow", Firefox): the heads were SVG markers, and Firefox places markers wrongly under the page's root
+   zoom (1.12 on desktops): each head drifted off its line's end, further the further the line sat from the drawing's
+   corner. Each head is now its own triangle at the line's end, turned along its last segment: the marker's geometry
+   (a 10-unit head at 7 stroke widths, its tip 1 unit past the end), in every browser. */
+const lastLeg = d => {
+  const pts = []; let x = 0, y = 0
+  for (const [, c, a, b] of d.matchAll(/([MLHV])\s*(-?[\d.]+)(?:[ ,](-?[\d.]+))?/g)) {
+    if (c === 'H') x = +a; else if (c === 'V') y = +a; else { x = +a; y = +b }
+    pts.push([x, y])
+  }
+  return pts.slice(-2)
+}
+const Head = ({ d, c, w }) => {
+  const [[x0, y0], [x1, y1]] = lastLeg(d), k = (w * 7) / 10
+  const deg = Math.atan2(y1 - y0, x1 - x0) * 180 / Math.PI
+  return <path d={`M${-9 * k} ${-5 * k}L${k} 0L${-9 * k} ${5 * k}Z`} fill={c} transform={`translate(${x1} ${y1}) rotate(${deg})`} />
+}
+const L = ({ d, c = RED, w = 2.2, dash = true, end = true, i = 0 }) => (<>
   <path d={d} fill="none" stroke={c} strokeWidth={w} strokeLinejoin="round" strokeLinecap="round"
-        className={dash ? 'tid-flow' : ''} style={{ '--i': i }}
-        markerEnd={end ? `url(#tid-${c === RED ? 'r' : c === GRN ? 'g' : 'b'})` : undefined}
-        markerStart={start ? `url(#tid-${c === RED ? 'r' : c === GRN ? 'g' : 'b'}s)` : undefined} />
-)
+        className={dash ? 'tid-flow' : ''} style={{ '--i': i }} />
+  {end && <Head d={d} c={c} w={w} />}
+</>)
 const Dot = ({ x, y, c = BLU }) => <circle cx={x} cy={y} r="4" fill={c} />
 const T = ({ x, y, s = 12, w = 600, a = 'middle', c = INK, children }) => <text x={x} y={y} fontSize={s} fontWeight={w} textAnchor={a} fill={c}>{children}</text>
 
@@ -33,12 +49,6 @@ export default function ToolInstallDiagram() {
   return (
     <svg className="un-art tid" viewBox="0 0 1280 912" role="img" aria-label="IAQ's tool hookup schematic: the main tool on the fab floor, the raised metal floor, and the sub-fab equipment, with the facility tool install lines in red, the facility base build in green and the interconnection lines in blue">
       <defs>
-        {[['r', RED], ['g', GRN], ['b', BLU]].map(([k, c]) => (
-          <React.Fragment key={k}>
-            <marker id={'tid-' + k} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill={c} /></marker>
-            <marker id={'tid-' + k + 's'} viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6"><circle cx="5" cy="5" r="4" fill={c} /></marker>
-          </React.Fragment>
-        ))}
         <pattern id="tid-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#DCE3EC" /><rect width="3" height="8" fill="#B9C4D3" /></pattern>
       </defs>
 

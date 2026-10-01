@@ -8,12 +8,14 @@
 import { NEWS } from '../data/news.js'
 import { ROLES } from '../data/roles.js'
 import { PROJECTS } from '../data/projects.js'
+import { SPAN } from '../data/history.js'
 
 const K = {
   session: 'iaq.cms.session.v1',
   news: 'iaq.cms.news.v1',
   roles: 'iaq.cms.roles.v1',
   projects: 'iaq.cms.projects.v1',
+  history: 'iaq.cms.history.v1',
 }
 
 /* prototype passcode, shown on the login card. The real portal gets SSO. */
@@ -96,5 +98,50 @@ export const cmsProjects = () => cached('projects', () => {
 export const cmsProjectsEdited = () => !!read(K.projects)
 export const saveProjects = list => { write(K.projects, list.map(p => ({ name: p.name, client: p.client, loc: p.loc, iso: p.iso }))); bump() }
 export const resetProjects = () => { clear(K.projects); bump() }
+
+/* ---- history (1 Oct: "make like editable for this page") ----
+   The milestones of /about/history. Their text and their picture are editable; the years, their order and the
+   scale between them stay canonical. An edit is filed under the milestone's id, its year and its place among that
+   year's milestones (2024#0, 2024#1), not its place in the list, so a milestone added to data/history.js later
+   does not shift the edits onto its neighbours. */
+const HISTORY_ID = SPAN.map((m, i) => m.label + '#' + SPAN.slice(0, i).filter(x => x.label === m.label).length)
+const HIST_FIELDS = ['title', 'text', 'tech']
+const FIG_FIELDS = ['img', 'kind', 'cap', 'alt']
+export const cmsHistory = () => cached('history', () => {
+  const stored = read(K.history)
+  if (!stored) return SPAN
+  const by = new Map(stored.map(s => [s.id, s]))
+  return SPAN.map((m, i) => {
+    const s = by.get(HISTORY_ID[i])
+    if (!s) return m
+    const out = { ...m }
+    for (const f of HIST_FIELDS) if (typeof s[f] === 'string') out[f] = s[f]
+    if (m.fig && s.fig) {
+      out.fig = { ...m.fig }
+      for (const f of FIG_FIELDS) if (typeof s.fig[f] === 'string' && s.fig[f]) out.fig[f] = s.fig[f]
+      /* a new picture is not the shipped one: drop the shipped frame ratio and crop, so it shows whole, and any clip
+         or placeholder the milestone carried, so the picture is what shows */
+      if (s.fig.img && s.fig.img !== m.fig.img) {
+        for (const f of ['ar', 'pos', 'clip', 'poster', 'ph']) delete out.fig[f]
+        /* its own shape, measured by the editor when the picture loaded there */
+        if (typeof s.fig.ar === 'string' && /^\d+ \/ \d+$/.test(s.fig.ar)) out.fig.ar = s.fig.ar
+      }
+    }
+    if (m.proj && typeof s.projLabel === 'string' && s.projLabel) out.proj = { ...m.proj, label: s.projLabel }
+    return out
+  })
+})
+export const historyId = i => HISTORY_ID[i]
+export const cmsHistoryEdited = () => !!read(K.history)
+export const saveHistory = list => {
+  write(K.history, list.map((m, i) => ({
+    id: HISTORY_ID[i],
+    title: m.title, text: m.text, tech: m.tech || '',
+    ...(m.fig ? { fig: { img: m.fig.img, kind: m.fig.kind || '', cap: m.fig.cap || '', alt: m.fig.alt || '', ...(m.fig.ar ? { ar: m.fig.ar } : {}) } } : {}),
+    ...(m.proj ? { projLabel: m.proj.label } : {}),
+  })))
+  bump()
+}
+export const resetHistory = () => { clear(K.history); bump() }
 
 export const slugify = t => String(t).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60)

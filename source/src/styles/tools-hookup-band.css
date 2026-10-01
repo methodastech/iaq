@@ -1,12 +1,17 @@
 /* ToolsHookupBand (25 Sep) */
 .thb{background:#fff}
-.thb-embed{padding-left:0;padding-right:0;background:transparent}
+/* 30 Sep ("this page padding not follow", services/all): the embed kept no side padding, so stage 6 ran to the window edge
+   while stages 1 to 5 and the stage bar sit on the gutter; it keeps the section's gutter now (.pg-sec) */
+.thb-embed{background:transparent}
 .thb-ph{list-style:none;margin:clamp(20px,3vh,32px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .thb-ph li{background:#F5F7FA;padding:20px 20px 22px;display:flex;flex-direction:column;gap:8px}
 .thb-n{font:600 22px/1 "Switzer",sans-serif;color:#EC2027}
 .thb-ph b{font:600 17px/1.25 "Switzer",sans-serif;color:#0C1220}
 .thb-ph p{margin:0;font:400 14.5px/1.55 "Instrument Sans",sans-serif;color:var(--soft,#48536A)}
 .thb-fig{margin:clamp(20px,3vh,32px) 0 0;background:#fff;box-shadow:0 18px 40px -32px rgba(12,18,32,.4);padding:clamp(12px,2vw,24px)}
+/* 1 Oct (services/all, on the schematic: "make this bit bigger"): here it may stand a full window tall, not the window less
+   190px that tool-install.css allows, about a quarter larger on a laptop; the unit page and the Codex keep the tighter fit */
+.thb-fig svg.tid{width:min(100%,calc(100vh / var(--zoomf,1) * 1280 / 912))}
 .thb-fig figcaption{margin-top:10px;font:400 13.5px/1.5 "Instrument Sans",sans-serif;color:var(--soft,#48536A)}
 .thb-by{margin-top:16px;font:500 14.5px/1.4 "Instrument Sans",sans-serif;color:var(--soft,#48536A)}
 .thb-by a{display:inline-flex;align-items:center;gap:6px;color:#0772AE;font-weight:600;text-decoration:none}

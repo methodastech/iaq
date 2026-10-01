@@ -58,10 +58,8 @@
   width: 100%;
   height: auto;
   display: block;
-  transform: scale(1);
-  transition: transform .55s var(--e1);
 }
-.vg-item:hover .vg-dia { transform: scale(1.03); }
+/* 29 Sep (Bazil: "zoom in zoom out animation haram"): no scale */
 /* the floor */
 .vg-dia .vg-g line { stroke: #E4EAF1; stroke-width: 1; vector-effect: non-scaling-stroke; }
 /* the object: white faces so overlaps read, hairline edges in ink */
@@ -234,7 +232,7 @@
   height: clamp(118px, 13vw, 168px); margin-bottom: 16px; }
 .vi-shot .vi-art { width: auto; height: 100%; display: block;
   transition: transform .6s var(--e1); transform-origin: 50% 88%; }
-.vi-i:hover .vi-shot .vi-art { transform: translateY(-4px) scale(1.035); }
+.vi-i:hover .vi-shot .vi-art { transform: translateY(-4px); }
 /* the one moving part per object, the same convention the discipline marks use */
 .vi-art .a-drive { transform-origin: 50% 50%; animation: viDrive 5.2s ease-in-out infinite; }
 @keyframes viDrive { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-1.6px) } }
@@ -278,11 +276,12 @@
 .vb-card{ position:relative; width:300px; height:198px; background:#fff; border:1px solid var(--line2);
   padding:18px 20px; transform-style:preserve-3d;
   box-shadow:26px 30px 44px -26px rgba(12,18,32,.42);
-  opacity:0; transform:translateZ(-24px);
+  opacity:0;
   animation:vbIn .9s var(--e1) both var(--d,0ms);
-  transition:transform .55s var(--e1), box-shadow .55s var(--e1); }
-@keyframes vbIn{ to{ opacity:1; transform:translateZ(0) } }
-.vb-card:hover{ transform:translateZ(22px); box-shadow:34px 40px 54px -26px rgba(12,18,32,.5); }
+  transition:box-shadow .55s var(--e1); }
+/* 29 Sep (Bazil: "zoom in zoom out animation haram"): no depth push; the card fades in and its shadow deepens on hover */
+@keyframes vbIn{ to{ opacity:1 } }
+.vb-card:hover{ box-shadow:34px 40px 54px -26px rgba(12,18,32,.5); }
 .vb-ix{ position:absolute; left:20px; top:16px; font-family:var(--num); font-size:10px; letter-spacing:.18em; color:var(--faint); font-weight:600; }
 .vb-t{ position:absolute; left:20px; bottom:44px; font-family:"Switzer",sans-serif; font-size:19px; font-weight:600; letter-spacing:-.018em; line-height:1.15; color:var(--ink); max-width:62%; }
 .vb-l{ position:absolute; left:20px; bottom:18px; font-size:12.5px; line-height:1.4; color:var(--soft); max-width:64%; }

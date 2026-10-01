@@ -9,6 +9,8 @@ import IndustryGrid from '../components/IndustryGrid.jsx'
 import { CYCLE_SVG } from '../data/cycleMarks.js'
 import initHome from '../scenes/home.js'
 import Build3D from '../components/Build3D.jsx'
+/* 1 Oct: the Scroll to build 3D is hidden for now; true brings it back */
+const SHOW_BUILD3D = false
 import ClosingBand from '../components/ClosingBand.jsx'
 import GroupRecord from '../components/GroupRecord.jsx'
 import HeroMarkets from '../components/HeroMarkets.jsx'
@@ -202,7 +204,9 @@ export default function Home() {
 
     {/* 28 Sep: the developer's Scroll to build 3D, the latest delivery, runs in the page itself (components/Build3D.jsx).
         It replaced DevBuild3D, which framed the previous delivery (public/3d) in an iframe. */}
-    <Build3D />
+    {/* 1 Oct ("hide first the 3d section on home page"): off for now; set SHOW_BUILD3D (top of this file) to true to bring
+        it back. While off, the section is not mounted and none of its 150 MB of models load. */}
+    {SHOW_BUILD3D && <Build3D />}
 
     {/* Selected Work removed on client feedback (16:02) · KIV: returns with real
         project images once IAQ supplies them. The section lives in git history. */}

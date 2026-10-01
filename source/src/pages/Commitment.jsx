@@ -19,7 +19,7 @@ import '../styles/commitment.css'
    house design language (white base, flat tint tiles, Switzer headings, no lines, no boxes):
 
      1  Sustainability and responsibility          a living Earth beside the three pillars, each with its mark
-     2  Environment and sustainability             the CSR events
+     2  Environment and sustainability             the CSR events (30 Sep: moved to the end of the page, after 4)
      3  Quality, environment, health and safety    the EHS statement + both policies as PDFs
      4  The three ISO certificates                 one viewer: pick a standard, the certificate and its facts
      5  EHS metrics for the past three years       the six counters the live site publishes
@@ -393,17 +393,6 @@ export default function Commitment () {
           </div>
         </section>
 
-        {/* 2 · environment and sustainability responsibility */}
-        <section className="cc-sec tint" id="environment">
-          <div className="cc-in">
-            <h2 className="cc-h2" data-cc>Environment and sustainability <em>responsibility.</em></h2>
-            <p className="cc-lede" data-cc>IAQ is dedicated to minimising its environmental impact through sustainable design, procurement and construction practices. It continuously seeks energy-efficient solutions and prioritises eco-friendly technologies.</p>
-            <div className="cc-news">
-              {CSR.map(s => <NewsCard slug={s} key={s} />)}
-            </div>
-          </div>
-        </section>
-
         {/* 3 · quality, environment, health and safety, with both policies attached as PDFs */}
         <section className="cc-sec" id="qehs">
           <div className="cc-in">
@@ -441,6 +430,19 @@ export default function Commitment () {
             <h2 className="cc-h2" data-cc>Certified to <em>three ISO standards.</em></h2>
             <p className="cc-lede" data-cc>Each certificate is issued by Intertek under UKAS accreditation and is shown here as issued.</p>
             <CertViewer />
+          </div>
+        </section>
+
+        {/* 2 · environment and sustainability responsibility, the CSR events. 30 Sep (client: "this one should be at the
+            bottom"): moved from second to last. White, not tint, so the page still alternates after the certificates;
+            the news cards take the tint on a white section. */}
+        <section className="cc-sec" id="environment">
+          <div className="cc-in">
+            <h2 className="cc-h2" data-cc>Environment and sustainability <em>responsibility.</em></h2>
+            <p className="cc-lede" data-cc>IAQ is dedicated to minimising its environmental impact through sustainable design, procurement and construction practices. It continuously seeks energy-efficient solutions and prioritises eco-friendly technologies.</p>
+            <div className="cc-news">
+              {CSR.map(s => <NewsCard slug={s} key={s} />)}
+            </div>
           </div>
         </section>
 

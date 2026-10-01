@@ -260,3 +260,6 @@
 /* 29 Sep: and the closing band tucks 2px under the portal instead of meeting it edge to edge, so no zoom level leaves a
    sliver of light ground between them (only the white column's empty foot sits under the overlap) */
 .pt-shell{margin-bottom:-2px}
+
+/* 1 Oct: the History editor's picture preview, under the picture's address */
+.cms-hx-pv{grid-column:1/-1;display:block;width:100%;max-width:420px;height:auto;max-height:240px;object-fit:contain;background:#F3F5F9}

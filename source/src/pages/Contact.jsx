@@ -34,6 +34,11 @@ import '../styles/contact.css'
        https://iaqtechnology.com.my/contact-us/
    Dresden, Sweden, USA and Ireland have no IAQ-published photograph. They show the lead's representation
    interiors (public/assets/culture/offices/SOURCES.md), captioned as representations until IAQ sends photographs. */
+/* 30 Sep (client, office list: "Penang Address: 9, Lorong Valdor Jaya 2 ...", "Singapore Second Office Change to IAQ Utility
+   Solutions (SG) Pte Ltd", "Sweden Skellefteå Company Address: Trädgårdsgatan 13-15 ...", "Ireland Dublin Company Address:
+   Block A, Georges Quay Plaza ..."): the Penang, Sweden and Ireland street addresses are in, Sweden and Ireland name their
+   cities, and the second Singapore office carries its company's name in place of "Second office" (ent2). The client's
+   "Pulang Pinang" is written Pulau Pinang. */
 const REP_CAP = LAUNCH ? 'Representation image' : 'Representation image. Photograph of this office supplied by IAQ.'
 const OFFICES = [
   /* 17 Sep: IAQ's own photograph of the headquarters (SharePoint, HQ Offices, TianChad 4595) */
@@ -41,23 +46,22 @@ const OFFICES = [
     addr: 'No. 12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor, Malaysia',
     tel: '+603 5124 8319', hours: 'Mon to Fri · 9:00 to 18:00 · GMT +8' },
   { id: 'my-penang', img: '/assets/newsroom/penang-branch-grand-opening-2025.webp', cap: 'Penang branch opening, July 2025', cc: 'MY', country: 'Malaysia', city: 'Penang', entity: 'IAQ Technology International Sdn. Bhd. · northern branch, opened July 2025',
-    addr: 'Street address · supplied by IAQ', hours: 'Mon to Fri · 9:00 to 18:00 · GMT +8' },
+    addr: '9, Lorong Valdor Jaya 2, Kawasan Perindustrian Valdor, 14200 Jawi, Pulau Pinang, Malaysia', hours: 'Mon to Fri · 9:00 to 18:00 · GMT +8' },
   { id: 'sg', img: '/assets/culture/sg-office-boardroom-2026.webp', cap: 'IAQ Engineering (SG) office, August 2026', cc: 'SG', country: 'Singapore', city: 'Singapore', entity: 'IAQ Engineering (SG) Pte. Ltd.',
     addr: '1 Tai Seng Avenue #04-03, Tai Seng Exchange, Singapore 536464',
     /* 25 Sep: the second Singapore office keeps its address; the entity name came off (client, DV3 A2.1: subsidiary names are not disclosed) */
-    addr2: '4338 Alexandra Technopark, Tower B, #06-12, Singapore 119968',
+    addr2: '4338 Alexandra Technopark, Tower B, #06-12, Singapore 119968', ent2: 'IAQ Utility Solutions (SG) Pte. Ltd.',
     tel: '+65 6277 5240', hours: 'Mon to Fri · 9:00 to 18:00 · GMT +8' },
   { id: 'de', img: '/assets/culture/offices/de.webp', rep: true, cap: REP_CAP, cc: 'DE', country: 'Germany', city: 'Dresden', entity: 'IAQ Engineering (DE) GmbH',
     addr: '8. OG, Budapester Straße 5, 01069 Dresden, Germany', tel: '+49 351 4387 9529', hours: 'Mon to Fri · 9:00 to 17:00 · CET' },
   { id: 'in', img: '/assets/culture/india-office-reception-2026.webp', cap: 'Reception, India office, September 2026', cc: 'IN', country: 'India', city: 'Ahmedabad', entity: 'IAQ Solutions India Private Limited',
     addr: '906, Satymev Eminence, Science City Road, Sola, Ahmedabad 380060, India', hours: 'Mon to Fri · 9:30 to 18:00 · IST' },
-  { id: 'se', img: '/assets/culture/offices/se.webp', rep: true, cap: REP_CAP, cc: 'SE', country: 'Sweden', city: 'Sweden', entity: 'IAQ Group · Nordic office',
-    addr: 'Street address · supplied by IAQ', hours: 'Mon to Fri · 9:00 to 17:00 · CET' },
-  { id: 'us', img: '/assets/culture/offices/us.webp', rep: true, cap: REP_CAP, cc: 'US', country: 'United States', city: 'USA', entity: 'IAQ Group · US office',
-    addr: 'Street address · supplied by IAQ', hours: 'Mon to Fri · 9:00 to 17:00 · local time' },
+  { id: 'se', img: '/assets/culture/offices/se.webp', rep: true, cap: REP_CAP, cc: 'SE', country: 'Sweden', city: 'Skellefteå', entity: 'IAQ Group · Nordic office',
+    addr: 'Trädgårdsgatan 13-15, 931 31 Skellefteå, Sweden', hours: 'Mon to Fri · 9:00 to 17:00 · CET' },
+  /* 30 Sep ("remove usa on this page"): the US office card is off the Contact page; other pages keep their mentions */
   /* announced on the 10 Sep 2026 review (Nabilah: seven offices including Ireland); details to follow */
-  { id: 'ie', img: '/assets/culture/offices/ie.webp', rep: true, cap: REP_CAP, cc: 'IE', country: 'Ireland', city: 'Ireland', entity: 'IAQ Group · Ireland office',
-    addr: 'Street address · supplied by IAQ', hours: 'Mon to Fri · 9:00 to 17:00 · GMT' },
+  { id: 'ie', img: '/assets/culture/offices/ie.webp', rep: true, cap: REP_CAP, cc: 'IE', country: 'Ireland', city: 'Dublin', entity: 'IAQ Group · Ireland office',
+    addr: 'Block A, Georges Quay Plaza, George’s Quay, Dublin 2, Ireland', hours: 'Mon to Fri · 9:00 to 17:00 · GMT' },
 ]
 
 /* 22 Sep (Bazil: "put the country flags", "or you know, the sub country"): the list is by country
@@ -221,7 +225,10 @@ export default function Contact() {
               <div className="field"><label htmlFor="f-service">Service needed</label>
                 {/* 21 Sep: the closing band asks what is being built and hands the answer here, so the
                     form opens with that decision already made. */}
-                <select id="f-service" name="service" defaultValue={preService || undefined}>
+                {/* 30 Sep ("dont make it choose blank first"): both menus open on a blank "Choose one" instead of their first
+                    option, so nothing is picked for the visitor; a blank is left out of the brief (enquiry.js) */}
+                <select id="f-service" name="service" defaultValue={preService || ''}>
+                  <option value="" disabled>Choose one</option>
                   <option>Engineering Design &amp; Consultation</option>
                   <option>Procurement</option>
                   <option>Construction &middot; EPCC / EPCM</option>
@@ -233,7 +240,8 @@ export default function Contact() {
                 </select>
               </div>
               <div className="field"><label htmlFor="f-industry">Industry</label>
-                <select id="f-industry" name="industry">
+                <select id="f-industry" name="industry" defaultValue="">
+                  <option value="" disabled>Choose one</option>
                   <option>Semiconductor</option><option>Data Centre</option><option>EV Battery</option>
                   <option>Photovoltaics</option><option>District Cooling &amp; Heating</option><option>Bio LifeScience</option>
                   <option>Food &amp; Beverage</option><option>Other</option>
@@ -335,7 +343,7 @@ export default function Contact() {
                         {o.city !== g.country && o.city !== 'USA' && <h4>{o.city}</h4>}
                         <p className="off-ent">{o.entity}</p>
                         {owed(o.addr) && <p className="off-addr">{o.addr}</p>}
-                        {o.addr2 && (<><p className="off-ent of-ent2">Second office</p><p className="off-addr">{o.addr2}</p></>)}
+                        {o.addr2 && (<><p className="off-ent of-ent2">{o.ent2 || 'Second office'}</p><p className="off-addr">{o.addr2}</p></>)}
                         <ul className="of-meta">
                           <li><Icon name="phone" />{o.tel ? <a href={'tel:' + o.tel.replace(/[^+\d]/g, '')}>{o.tel}</a> : (LAUNCH ? <span>Via headquarters, <a href="tel:+60351248319">+603 5124 8319</a></span> : <span className="off-slot">Direct line supplied by IAQ &middot; until then via HQ <a href="tel:+60351248319">+603 5124 8319</a></span>)}</li>
                           <li><Icon name="clock" /><span>{o.hours.replace(/ · /g, ', ')}</span></li>

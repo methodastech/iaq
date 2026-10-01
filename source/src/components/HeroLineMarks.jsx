@@ -49,8 +49,11 @@ export const LINE_SHAPES = {
      esgEnv      energy use, three bars stepping down: the last bar is the red
      esgSocial   three people, the one in front in a helmet: the helmet is the red
      esgGov      the policy sheet, its lines, the seal: the seal is the red */
-  vision: ['M3.5 20V9h9v11', 'M5.5 9V7h2v2M9.5 9V7h2v2', 'M6.5 20v-4h3v4', 'M5.5 12h5M5.5 14.5h5', 'M12.5 20v-6h5v6', 'M14 16.5h2', 'M17.5 14V4', 'F:M17.5 4h3v2.4h-3z'],
-  mission: ['M4.5 20v-7h15v7', 'M7 20v-3.5h3v3.5', 'M13 15.5h4', 'M5.5 13V4.5M18.5 13V4.5', 'M4 4.5h16', 'M12 4.5v3.5', 'F:M10 8h4v3h-4z'],
+  /* 30 Sep (Bazil: "make icon more meaningful to the meaning of vision and mission"): Vision, where IAQ is going: the summit,
+     and the red flag planted on it. Mission, what IAQ does every day: the
+     engineering (a gear) with the sustainable part in red (a leaf at its heart). */
+  vision: ['M2.5 20h19', 'M3.5 20 9.5 10.5l3.2 4.7 2.4-3.3 5.4 8.1', 'M9.5 10.5V3.8', 'F:M9.5 3.8h4.3l-1.3 1.6 1.3 1.6H9.5z'],
+  mission: ['M6.2 12a5.8 5.8 0 1 0 11.6 0a5.8 5.8 0 1 0-11.6 0', 'M12 3.5v2.7M12 17.8v2.7M3.5 12h2.7M17.8 12h2.7M6 6l1.9 1.9M16.1 16.1 18 18M6 18l1.9-1.9M16.1 7.9 18 6', 'M9.7 14.3l2.4-2.4', 'F:M9.7 14.3c0-3 1.7-4.9 4.9-4.9 0 3-1.7 4.9-4.9 4.9z'],
   /* 25 Sep, second cut (Bazil: "make icon better"): the leaf on its stem over the ground, the sun the red; three people
      with round shoulders, the helmet the red; the policy sheet with its seal ring, the seal's centre the red */
   esgEnv: ['M12 20V8', 'M12 16c-5 0-7-4-7-8 5 0 7 3 7 8z', 'M12 12c5 0 7-4 7-8-5 0-7 3-7 8z', 'M6 20h12', 'F:M4.5 5.5a1.6 1.6 0 1 0 3.2 0a1.6 1.6 0 1 0-3.2 0'],

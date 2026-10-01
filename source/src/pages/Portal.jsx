@@ -38,12 +38,13 @@ import SigCatalogue from '../components/portal/SigCatalogue.jsx'
      /portal/booth      SEMICON Europa 2026: the plan, the stand drafts, the screen (full screen at /booth/screen)
    One member session covers every tab (lib/cms.js); signing out anywhere gates them all. */
 /* 22 Sep (Bazil: "icons for each"): every tab carries its line icon, from the site's one icon set */
-const TAB_ICON = { codex: 'layers', newsroom: 'press', careers: 'people', projects: 'building', downloads: 'folder', booth: 'cube', models: 'cube', direction: 'layers', qr: 'grid', signature: 'mail', 'signature-designs': 'layers' }
+const TAB_ICON = { codex: 'layers', newsroom: 'press', careers: 'people', projects: 'building', history: 'clock', downloads: 'folder', booth: 'cube', models: 'cube', direction: 'layers', qr: 'grid', signature: 'mail', 'signature-designs': 'layers' }
 const TABS = [
   ['codex', 'Codex', 'The IAQ structure, the infographic set and the cross-check'],
   ['newsroom', 'Newsroom', 'Articles on the site'],
   ['careers', 'Careers', 'Open roles'],
   ['projects', 'Projects', 'The project registry text'],
+  ['history', 'History', 'The milestones of History of IAQ'],   /* 1 Oct ("make like editable for this page") */
   ['downloads', 'All files', 'The capability pack, the certificates, the infographic set, to send'],   /* 25 Sep (Bazil: "Documents and Files to send are supposed to be the same"): the Documents group IS this page; its menu names it All files */
   /* 22 Sep (Bazil: "a detailed proposal plan for the IAQ booth ... and the portal section that has all this") */
   ['booth', 'Booth', 'SEMICON Europa 2026: the plan, the stand, the screen, print and online'],
@@ -71,7 +72,7 @@ const TABS = [
    ============================================================================ */
 const GROUPS = [
   { k: 'edit', label: 'Edit website', icon: 'press', note: 'Everything the site reads',
-    items: ['newsroom', 'careers', 'projects'] },
+    items: ['newsroom', 'careers', 'projects', 'history'] },
   /* 24 Sep (Bazil: "exhibition should have all the exhibition plans"): the booth page's own views sit in the
      panel, so every part of the SEMICON plan is one click from the bar */
   /* 25 Sep (Bazil: "design direction should be in another tab, standalone"): its own title in the sidebar, no group */
@@ -193,6 +194,7 @@ function Shell ({ onOut }) {
         <Route path="newsroom" element={<Page k="newsroom" title={<>The newsroom, <em>edited here.</em></>} lede="Add, edit or remove articles. Saved changes are live on the site in this browser at once; at production they publish for everyone through the CMS."><NewsEditor /></Page>} />
         <Route path="careers" element={<Page k="careers" title={<>Open roles, <em>kept current.</em></>} lede="A role saved here appears in the Careers list and its filters immediately. Applications route to the HR inbox."><RolesEditor /></Page>} />
         <Route path="projects" element={<Page k="projects" title={<>The project registry, <em>by scope and location.</em></>} lede="Edit the text of the published references. Photography and detail pages stay canonical."><ProjectsEditor /></Page>} />
+        <Route path="history" element={<Page k="history" title={<>The history of IAQ, <em>milestone by milestone.</em></>} lede="Edit the words and the picture of each milestone on History of IAQ. The years and their order stay as published."><HistoryEditor /></Page>} />
         <Route path="downloads" element={<Page k="downloads" title={<>Files for members, <em>ready to send.</em></>} lede="The infographic set for the company profile, the capability pack and the certificates behind it."><Downloads /></Page>} />
         <Route path="booth/:view?" element={<PortalBooth />} />
         <Route path="direction" element={<DirectionPage />} />
@@ -561,6 +563,60 @@ function RolesEditor () {
         ))}
       </div>
       <SaveBar dirty={ed.dirty} onSave={ed.doSave} />
+    </>
+  )
+}
+
+/* ---------- history (1 Oct: "make like editable for this page", on /about/history) ----------
+   Every milestone's title, description, technical highlights, picture, picture label and caption, and the words of
+   its project link. The years, their order and the spacing between them stay canonical, so the span still draws to
+   scale. A picture is any image already on the site, by its address; the shipped ones are offered in the list. */
+const HISTORY_IMAGES = [...new Set(CMS.cmsHistory().map(m => m.fig && m.fig.img).filter(Boolean))]
+function HistoryEditor () {
+  const ed = useEditor(CMS.cmsHistory, CMS.saveHistory, CMS.resetHistory, CMS.cmsHistoryEdited)
+  const fig = (i, m, patch) => ed.update(i, { fig: { ...m.fig, ...patch } })
+  return (
+    <>
+      <div className="cms-note"><b>House rules apply:</b> no client names in the words (by sector and location only), no exclamation marks, no hype. A picture that is a rendering or an illustration says so in its label. To use a new picture, its file goes into <code>public/assets/history/</code> first; then pick or type its address here.</div>
+      <EditorBar onAdd={() => {}} addLabel={`All ${ed.items.length} milestones are editable here`} onReset={ed.doReset} dirty={ed.dirty} edited={ed.edited} flash={ed.flash} />
+      <datalist id="cms-hx-imgs">{HISTORY_IMAGES.map(src => <option key={src} value={src} />)}</datalist>
+      <div className="cms-list">
+        {ed.items.map((m, i) => (
+          <div className="cms-item" key={CMS.historyId(i)}>
+            <div className="cms-item-h" onClick={() => ed.setOpen(ed.open === i ? -1 : i)}>
+              <b>{m.title || 'Untitled'}</b>
+              <span className="cms-chip">{m.label}</span>
+              {m.kind === 'achievement' && <span className="cms-chip">Achievement</span>}
+            </div>
+            {ed.open === i && (
+              <div className="cms-form">
+                <label className="full">Title<input value={m.title} onChange={e => ed.update(i, { title: e.target.value })} /></label>
+                <label className="full">Description
+                  <textarea value={m.text || ''} onChange={e => ed.update(i, { text: e.target.value })} />
+                </label>
+                <label className="full">Technical highlights · leave empty to hide the line
+                  <textarea value={m.tech || ''} onChange={e => ed.update(i, { tech: e.target.value })} />
+                </label>
+                {m.fig && (
+                  <>
+                    <label className="full">Picture (its address on the site)
+                      <input list="cms-hx-imgs" value={m.fig.img || ''} placeholder="/assets/history/2026-name.webp" onChange={e => fig(i, m, { img: e.target.value.trim(), measure: true })} />
+                    </label>
+                    {/* a newly chosen picture is measured as it loads here, so the page frames it at its own shape, whole */}
+                    {m.fig.img && <img className="cms-hx-pv" src={m.fig.img} alt="" onLoad={e => { if (m.fig.measure) fig(i, m, { measure: false, ar: e.currentTarget.naturalWidth + ' / ' + e.currentTarget.naturalHeight }) }} />}
+                    <label>Picture label (Rendering, Representation, a place)<input value={m.fig.kind || ''} onChange={e => fig(i, m, { kind: e.target.value })} /></label>
+                    <label>Caption<input value={m.fig.cap || ''} onChange={e => fig(i, m, { cap: e.target.value })} /></label>
+                    <label className="full">Picture description, for screen readers<input value={m.fig.alt || ''} onChange={e => fig(i, m, { alt: e.target.value })} /></label>
+                  </>
+                )}
+                {m.proj && <label className="full">Project link words · opens {m.proj.to}<input value={m.proj.label} onChange={e => ed.update(i, { proj: { ...m.proj, label: e.target.value } })} /></label>}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <SaveBar dirty={ed.dirty} onSave={ed.doSave} />
+      <p style={{ marginTop: 14, fontSize: 13, color: '#828B9E' }}>A milestone added or a year changed alters the span itself, its scale and its count, so it goes through <code>src/data/history.js</code>. <Link to="/about/history">View the live page</Link>.</p>
     </>
   )
 }

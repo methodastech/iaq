@@ -185,7 +185,6 @@ export default function DistrictCooling3D({ intro }) {
     return () => clearInterval(t)
   }, [playing, step])
   pickRef.current = k => pick(k)
-  const show = k => { pick(k); const r = stage.current.getBoundingClientRect(); if (r.top < 60 || r.bottom > innerHeight) stage.current.scrollIntoView({ behavior: 'smooth', block: 'center' }) }
   const cur = STEPS.find(s => s.k === step)
   const mod = MODELS.find(m => m.k === step)
   return (
@@ -253,7 +252,7 @@ export default function DistrictCooling3D({ intro }) {
                   {m.k === 'bot' && <BotDiagram />}
                   {m.k === 'om' && <Packages />}
                 </figure>
-                <button type="button" className="dcs3-see" onClick={() => show(m.k)}>See it on the model</button>
+                {/* 30 Sep ("remove see it on model"): the "See it on the model" link under each delivery model is gone */}
               </article>
             ))}
           </div>

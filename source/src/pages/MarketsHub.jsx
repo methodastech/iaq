@@ -97,20 +97,18 @@ export default function MarketsHub() {
               the market's own line mark in front, the class as a plate, the registry count as a red chip. */}
           {/* 25 Sep (Bazil: "isn't it supposed to be in table view instead, so easier to compare"): the seven as one table
               on wide screens, one row per market, the same four measures side by side; the cards below serve phones */}
+          {/* 30 Sep ("remove class or spec and in registry"): both columns are gone, and the same two lines from the phone cards */}
           <div className="mk-tbl-wrap">
             <table className="mk-tbl">
-              <thead><tr><th scope="col">Market</th><th scope="col">Measured by</th><th scope="col">Class or spec</th><th scope="col">Largest delivered</th><th scope="col">In registry</th><th scope="col"><span className="sr-only">Open</span></th></tr></thead>
+              <thead><tr><th scope="col">Market</th><th scope="col">Measured by</th><th scope="col">Largest delivered</th><th scope="col"><span className="sr-only">Open</span></th></tr></thead>
               <tbody>
                 {MARKETS.map(m => {
-                  const n = PROJECTS.filter(p => p.ind === m.ind).length
                   const Ln = HERO_LINE[m.id]
                   return (
                     <tr key={m.id}>
                       <th scope="row"><Link to={m.to} className="mk-tbl-name">{Ln && <Ln />}<b>{m.name}</b></Link></th>
                       <td>{m.measure}</td>
-                      <td><i className="mk-spec">{m.spec}</i></td>
                       <td>{m.flag}</td>
-                      <td><span className="mk-cd-sq" aria-hidden="true">{Array.from({ length: Math.max(1, n) }, (_, k) => <i key={k} />)}</span><span className="mk-tbl-n">{n} {n === 1 ? 'project' : 'projects'}</span></td>
                       <td><Link to={m.to} className="mk-cd-go">Open the market &rarr;</Link></td>
                     </tr>
                   )
@@ -118,9 +116,8 @@ export default function MarketsHub() {
               </tbody>
             </table>
           </div>
-          <div className="mk-cards" role="list" aria-label="What each market is measured by, its class or specification, its largest delivered project and how many rows it holds in the sample registry">
+          <div className="mk-cards" role="list" aria-label="What each market is measured by and its largest delivered project">
             {MARKETS.map(m => {
-              const n = PROJECTS.filter(p => p.ind === m.ind).length
               const Ln = HERO_LINE[m.id]
               return (
                 <Link className="mk-cd" role="listitem" key={m.id} to={m.to}>
@@ -128,9 +125,7 @@ export default function MarketsHub() {
                   {/* 25 Sep, 22:05 (Bazil: equal widths and fewer labels): four labels per card became one; the measure reads
                       as a sentence beside the class plate, the registry count as squares with its words */}
                   <span className="mk-cd-lead">Measured by {/^[A-Z][a-z]/.test(m.measure) ? m.measure.charAt(0).toLowerCase() + m.measure.slice(1) : m.measure}</span>
-                  <i className="mk-spec">{m.spec}</i>
                   <span className="mk-cd-row"><small>Largest delivered</small><span className="mk-cd-v">{m.flag}</span></span>
-                  <span className="mk-cd-n2"><span className="mk-cd-sq" aria-hidden="true">{Array.from({ length: Math.max(1, n) }, (_, k) => <i key={k} />)}</span><span>{n} {n === 1 ? 'project' : 'projects'} in the registry</span></span>
                   <span className="mk-cd-go" aria-hidden="true">Open the market &rarr;</span>
                 </Link>
               )

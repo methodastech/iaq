@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { SPAN } from '../data/history.js'
+/* 1 Oct: the milestones as the portal last saved them (Edit website, History), the shipped data/history.js when nothing
+   has been edited */
+import { live, cmsHistory } from '../lib/cms.js'
 import '../styles/history-span.css'
 import '../styles/history-media.css'
+const SPAN = live(cmsHistory)
 
 /* ------------------------------------------------------------------------
    THE SPAN: the history of IAQ, drawn to scale.

@@ -1,5 +1,10 @@
 /* ToolInstallDiagram · the flows run as dashes in their direction (25 Sep) */
 .tid{width:100%;height:auto;display:block;background:#fff}
+/* 30 Sep ("make it this section fit in screen"): on a wide window the full-width drawing ran taller than the screen.
+   Its width is capped so its height (912 of 1280) fits under the nav with room for the figure padding and caption;
+   vh is divided by the root zoom, as elsewhere in base.css, so the cap is the real window;
+   svg.tid so it outranks .un-art{width:100%} in unit.css, which loads after this file */
+svg.tid{width:min(100%,calc((100vh / var(--zoomf,1) - 190px) * 1280 / 912));margin-inline:auto}
 .tid text{font-family:"Instrument Sans","Switzer",system-ui,sans-serif;letter-spacing:-.005em}
 .tid .tid-flow{stroke-dasharray:9 6;animation:tidFlow 1.6s linear infinite;animation-delay:calc(var(--i,0) * -.13s)}
 @keyframes tidFlow{to{stroke-dashoffset:-15}}

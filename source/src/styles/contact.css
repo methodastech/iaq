@@ -272,3 +272,9 @@ a.cx-v:hover{color:var(--blue-bright)}
 .cx-ic svg{width:24px;height:24px}
 .cx-intent.on .cx-ic{background:transparent!important;color:#EC2027}
 .cx-lines li:hover .cx-ic{color:#EC2027}
+/* 30 Sep ("remove usa on this page"): with the US card gone, the last row of three is Ireland and "Choosing an office"; the
+   route card takes the two slots so the row ends level. Under 1100px the grid is two across and that row is already full */
+@media(min-width:1101px){.of-grid>.of-route{grid-column:span 2}.of-grid>.of-route .cx-ic{align-self:flex-start}}
+/* 30 Sep: a menu still on its blank "Choose one" reads as a placeholder, like the empty text fields; its list keeps the ink */
+.field select:has(> option[value=""]:checked){color:var(--faint)}
+.field select option{color:var(--ink)}

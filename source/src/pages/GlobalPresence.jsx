@@ -222,8 +222,9 @@ export default function GlobalPresence() {
                 Still needed from IAQ before launch:
               </p>
               <ul>
-                <li>Street addresses for the Singapore, India, Sweden and USA offices</li>
-                <li>The Ireland office: entity name, street address and phone</li>
+                {/* 30 Sep: Singapore, India, Penang, Sweden and Ireland addresses are in (Contact); what is still owed */}
+                <li>The street address for the USA office</li>
+                <li>The Ireland office: entity name and phone</li>
                 <li>The HQ street number: the profile prints 9, every other source prints 12</li>
               </ul>
             </div>

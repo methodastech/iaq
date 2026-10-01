@@ -56,9 +56,12 @@ export const SPAN = [
     /* 29 Sep: supplied as "Cleanroom Facility, Selangor.png", kept as assets/history/2006-cleanroom-facility-selangor.webp.
        An aerial photograph. It shows the occupier's signage (a pharmaceutical company) while the text above says a
        semiconductor client; asked, the instruction was to use it as supplied */
-    fig: { img: '/assets/history/2006-cleanroom-facility-selangor.webp', kind: 'Selangor', ar: '1808 / 870',
-           alt: 'An aerial photograph of a cleanroom manufacturing facility in Selangor with blue roofs and a white office block',
-           cap: 'The cleanroom facility, from the air.' },
+    /* 1 Oct ("replace"): supplied as "Texas Instruments industrial building exterior.png", kept as
+       assets/history/2006-texas-instruments-building.webp: the semiconductor plant from the street, its own name on the
+       facade. Used as supplied, as the photograph before it was; the earlier file stays in the folder */
+    fig: { img: '/assets/history/2006-texas-instruments-building.webp', kind: 'Selangor', ar: '1600 / 983',
+           alt: 'A white semiconductor plant building in Selangor under a blue sky, with a covered walkway in front',
+           cap: 'The semiconductor plant, from the street.' },
   },
   {
     yr: 2007, label: '2007', title: 'Expansion into Europe: Poland',
@@ -104,9 +107,12 @@ export const SPAN = [
     text: "IAQ completes Phase 0 of Malaysia's largest district cooling plant as main contractor, marking its entry into the energy industry.",
     tech: 'Demolition, civil and structural, mechanical and electrical works.',
     /* 29 Sep ("filled in the images. use suitable image"): the site's own */
-    fig: { img: '/assets/markets/band-district-cooling.jpg', rep: true, kind: 'Representation', ar: '16 / 9',
-           alt: 'A district cooling plant room with chillers and chilled water headers',
-           cap: 'A district cooling plant room, as an illustration.' },
+    /* 1 Oct ("replcae"): a row of primary chilled water pumps (PCHWP) under their insulated risers, in place of the market
+       band's chiller hall (band-district-cooling.jpg stays the Markets page's own). Saved as assets/history/2013-dcs-pump-row.webp; not shown
+       to be KLCC itself, so it keeps the Representation label; the motor's labels are illegible, no maker's name. */
+    fig: { img: '/assets/history/2013-dcs-pump-row.webp', rep: true, kind: 'Representation', ar: '1453 / 1083',
+           alt: 'A row of chilled water pumps under insulated pipe risers in a district cooling plant',
+           cap: 'The primary chilled water pumps of a district cooling plant, as an illustration.' },
   },
   {
     yr: 2014, label: '2014', title: 'Electronics Manufacturing Plant, Johor',
@@ -172,9 +178,13 @@ export const SPAN = [
     tech: 'Architectural, structural and dry room systems for battery cell manufacturing.',
     proj: { to: '/projects/6', label: 'The gigafactory in the registry' },
     /* 29 Sep ("filled in the images. use suitable image"): the site's own */
-    fig: { img: '/assets/projects/prj-007.webp', kind: 'Project registry', ar: '16 / 10',
-           alt: 'The EV battery gigafactory at dusk',
-           cap: 'The gigafactory, phase 1.' },
+    /* 1 Oct ("replace the image"): an aerial rendering of a battery gigafactory, solar on its roofs, in the forest, in place
+       of the registry's dusk photograph (prj-007.webp stays the registry's own). Saved as assets/history/2020-ev-gigafactory-aerial.webp,
+       labelled a rendering, framed at its own ratio. Its two facade signs are the renderer's own invented marks, no
+       legible name. */
+    fig: { img: '/assets/history/2020-ev-gigafactory-aerial.webp', kind: 'Rendering', ar: '1639 / 960',
+           alt: 'An aerial rendering of a battery gigafactory with solar panels on its roofs, set in forest',
+           cap: 'A battery gigafactory from the air, shown for illustration.' },
   },
   {
     yr: 2021, label: '2021', title: 'KVMRT2 Construction Management',
@@ -199,9 +209,12 @@ export const SPAN = [
     text: 'IAQ completes its first data centre project for a hyperscale client, delivering the HVAC wet system as a PCC contractor.',
     tech: '9.6 MW Phase 1; HVAC wet (chilled water) system; 60,000 sqm facility; LOD 350 BIM.',
     /* 29 Sep ("filled in the images. use suitable image"): the site's own */
-    fig: { img: '/assets/projects/prj-017.webp', rep: true, kind: 'Representation', ar: '16 / 10',
-           alt: 'A rendering of the data centre campus',
-           cap: 'The data centre campus, as an illustration.' },
+    /* 1 Oct ("rename and replace"): a chilled water plant room, the HVAC wet system this milestone delivered, in place of
+       the campus rendering (prj-017.webp stays the registry's own). Saved as assets/history/2023-dc-chilled-water-plant.webp; a restored
+       photograph, so it keeps the Representation label; no company marks on it. Framed at its own ratio. */
+    fig: { img: '/assets/history/2023-dc-chilled-water-plant.webp', rep: true, kind: 'Representation', ar: '1673 / 940',
+           alt: 'A chilled water plant room: insulated pipework, pumps and valves',
+           cap: 'A chilled water plant room, the HVAC wet system, as an illustration.' },
   },
   {
     yr: 2024, label: '2024', kind: 'achievement', title: 'MCIEA Builder of the year 2024',
@@ -227,17 +240,23 @@ export const SPAN = [
     tech: '35,000 sqm; Class 10 to 10K cleanrooms; 65,000 sqm facility; mechanical and cleanroom general contractor for WP06; LOD 500 BIM.',
     proj: { to: '/projects/1', label: 'The wafer fab in the registry' },
     /* 29 Sep ("filled in the images. use suitable image"): the site's own */
-    fig: { img: '/assets/projects/prj-002.webp', kind: 'Project registry', ar: '16 / 10',
-           alt: 'The wafer fab facility in Kulim, Kedah',
-           cap: 'The wafer fab in Kulim.' },
+    /* 1 Oct ("replace"): an aerial rendering of the wafer fab complex in place of the registry's street photograph
+       (prj-002.webp stays the registry's own). Saved as assets/history/2025-fab-aerial-render.webp, labelled a rendering, framed at its own
+       ratio, uncropped; no company marks on it. */
+    fig: { img: '/assets/history/2025-fab-aerial-render.webp', kind: 'Rendering', ar: '1836 / 856',
+           alt: 'An aerial rendering of a wafer fab complex, with its offices, car park and utility buildings',
+           cap: 'The wafer fab complex from the air, shown for illustration.' },
   },
   {
     yr: 2026, label: '2026', title: "India's First Wafer Fab",
     text: "IAQ begins turnkey design and build works for India's first wafer fab, alongside new entities in Ireland and the United States.",
     tech: '40,000 sqm; Class 10 to 10K cleanrooms; design, supply, installation, testing and commissioning; LOD 500 as-built BIM.',
     /* 29 Sep ("filled in the images. use suitable image"): the site's own */
-    fig: { img: '/assets/iaq/bim-process.webp', kind: 'BIM model', ar: '16 / 9',
-           alt: 'A process utilities model in BIM',
-           cap: 'A process utilities model in BIM, shown for illustration.' },
+    /* 1 Oct ("replace the image and rename"): the whole facility in BIM, the cleanroom block with its rooftop systems, in
+       place of the process pipe rack. Saved as assets/history/2026-bim-facility-rooftop.webp; the client's mark on the facade is painted out
+       with the wall's own panels (other companies' marks stay off IAQ's pages). Framed at its own ratio, uncropped. */
+    fig: { img: '/assets/history/2026-bim-facility-rooftop.webp', kind: 'BIM model', ar: '1875 / 839',
+           alt: 'A wafer fab facility modelled in BIM, with its rooftop systems',
+           cap: 'A wafer fab facility and its rooftop systems in BIM, shown for illustration.' },
   },
 ]

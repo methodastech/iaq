@@ -29,8 +29,14 @@ const CARDS = [
   {
     k: 'Vision', icon: 'compass', iso: 'vision', id: 'vmVision', kick: 'Where IAQ is going', facts: [['7', 'Countries with an IAQ office'], ['31', 'Years building hi-tech facilities']],
     /* 22 Sep: IAQ's own drone photograph of a plant it delivered, at dusk (was a generated campus) */
-    img: '/assets/iaq/plant-dusk-03.webp', pos: '50% 58%',
-    alt: 'A hi-tech plant delivered by IAQ, photographed from the air at dusk',
+    /* 30 Sep, later (Bazil: "the visual looks fake and not like real and IAQ, please research carefully", "IAQ factory must
+       have red line"): the generated pictures are gone. IAQ's own headquarters, photographed from the air (HQ Offices,
+       TCDrone-0001): the real building, the red lines across its side wall, the IAQ sign at the gate */
+    /* 1 Oct (Bazil: "the vision is so lame, before was better, must look good though and have that line, IAQ logo"): the
+       sunrise plant again, made natural, with IAQ's wordmark on the facade and one red line along the roof edge, as IAQ's
+       own buildings carry. Generated from IAQ's drone photograph of the plant, so it is labelled Representation */
+    img: '/assets/iaq/vm-vision-iaq-plant.webp?v=4k', pos: '50% 50%', rep: true,
+    alt: 'A hi-tech plant with the IAQ wordmark on its facade, from the air at sunrise',
     lead: <>To be a <b>regional facility solutions provider with engineering excellence</b>, facilitating technological innovation and advancement in quality of life.</>,
     note: 'Seven countries, and still expanding.',
     to: '/global-presence', cta: 'Where IAQ operates',
@@ -41,8 +47,10 @@ const CARDS = [
        lithography bay IAQ built, under its yellow light (Cleanroom Photos/IMG_8566), the strongest picture in the share */
     /* 25 Sep, 04:50 (Bazil: "mission picture should be people working"): IAQ's own workforce on site, helmets on, at
        the World OSH Day briefing (Photos from past event, OSH Day) */
-    img: '/assets/iaq/ev-osh-crowd.webp', pos: '50% 42%',
-    alt: 'IAQ workers in helmets and vests gathered on site',
+    /* 30 Sep, later: IAQ's own team on site, in IAQ vests, reviewing the drawing together (Site Photos IMG_9354); the chilled
+       water plant pair (IMG_9476) is kept as vm-mission-plant-real */
+    img: '/assets/iaq/vm-mission-team-real.webp', pos: '50% 55%',
+    alt: 'IAQ engineers on site reviewing a drawing together',
     lead: <>Providing <b>innovative and sustainable facility and engineering solutions</b> that benefit our clients and stakeholders, driven by our leadership, employees, and partners globally.</>,
     note: 'One accountable team, from the first drawing to the life of the facility.',
     to: '/about/commitment', cta: 'How it is held',
@@ -64,7 +72,7 @@ export default function VisionMission() {
               name, the statement and two fact tiles. Square corners throughout. */}
           {CARDS.map(c => (
             <article className="vm-card vm-glass" id={c.id} key={c.k}>
-              <span className="vm-photo" aria-hidden="true"><img src={c.img} alt="" style={{ objectPosition: c.pos }} loading="lazy" decoding="async" /></span>
+              <span className="vm-photo" aria-hidden="true"><img src={c.img} alt="" style={{ objectPosition: c.pos }} loading="lazy" decoding="async" />{c.rep && <span className="vm-rep">Representation</span>}</span>
               <span className="vm-shade" aria-hidden="true" />
               <span className="vm-panel">
                 <span className="vm-top">
@@ -77,8 +85,8 @@ export default function VisionMission() {
                   <span className="vm-kick">{c.kick}</span>
                 </span>
                 <blockquote>{c.lead}</blockquote>
-                <span className="vm-note">{c.note}</span>
-                {/* 25 Sep, night (Bazil: "no need this numbers"): the two fact tiles are gone */}
+                {/* 25 Sep, night (Bazil: "no need this numbers"): the two fact tiles are gone. 30 Sep (Bazil: "remove these part",
+                    "remove this as well"): the note under the statement and the link under it are gone; the card ends on the statement */}
               </span>
             </article>
           ))}

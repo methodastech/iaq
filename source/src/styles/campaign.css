@@ -103,3 +103,116 @@ html.lp-page{overflow-x:clip}
 .lp-sel-l li.is-on::after{content:"";display:inline-block;width:6px;height:6px;margin-left:10px;vertical-align:middle;background:#EC2027}
 /* the honeypot: kept in the page for bots, out of sight and reach for people */
 .lp-hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ============================================================================
+   30 Sep ("bit dull. make some design to this form"): the lead form was one column of identical dark boxes under
+   small caps labels. Now: the form sits in a panel a step lighter than the band, with a thin red rule along its top;
+   the short fields pair up two across (one across on phones); the project form falls into two numbered groups;
+   fields sit recessed in the panel, lift a pixel and take a red border and underline on focus, and hold a brighter
+   edge once filled; the menus carry a red chevron; Send is a full width red block. On the project page a column
+   beside the form says what happens after Send and how to reach the team directly (lpf-aside, the facts already
+   on this page). Square corners, flat colour, no glow. New classes are lpf- so no other page's rules reach them.
+   ============================================================================ */
+.lp-form-wrap{padding:clamp(48px,7vw,96px) clamp(20px,5vw,56px)}
+/* 30 Sep ("remove this", the project cards on /lp/project): with no cards between them, the stats would sit flush on
+   the form's navy band; they keep the room the cards' section used to give them */
+.lp-stats:has(+ .lp-form-wrap){margin-bottom:clamp(40px,6vw,76px)}
+.lp-form-in{max-width:600px}
+.lp-form-in.lpf-two{max-width:1120px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+  grid-template-areas:"intro panel" "aside panel";grid-template-rows:auto 1fr;column-gap:clamp(40px,6vw,96px)}
+.lpf-two .lpf-intro{grid-area:intro}
+.lpf-two .lpf-aside{grid-area:aside}
+.lpf-two .lpf-panel{grid-area:panel;align-self:start}
+.lpf-intro h2{font-size:clamp(28px,3.4vw,44px);line-height:1.04;color:#fff}
+.lpf-intro p{margin-top:14px;color:#9FB0CC;font-size:16px;line-height:1.6;max-width:44ch}
+
+/* the side column: three numbered steps joined by a hairline, then the direct lines */
+.lpf-k{display:block;font-family:var(--label);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:#8A9BB8;font-weight:600}
+.lpf-aside{margin-top:clamp(28px,3vw,40px);padding-top:26px;border-top:1px solid rgba(255,255,255,.12)}
+.lpf-steps{list-style:none;margin:18px 0 0;padding:0;counter-reset:lpf}
+.lpf-steps li{position:relative;counter-increment:lpf;padding:0 0 22px 48px;display:grid;gap:3px}
+.lpf-steps li::before{content:counter(lpf,decimal-leading-zero);position:absolute;left:0;top:0;width:30px;height:30px;
+  display:grid;place-items:center;box-sizing:border-box;border:1px solid rgba(255,255,255,.22);color:#fff;
+  font-family:var(--label);font-size:11.5px;font-weight:600;letter-spacing:.04em;background:#0B1020}
+.lpf-steps li:first-child::before{background:#EC2027;border-color:#EC2027}
+.lpf-steps li:not(:last-child)::after{content:"";position:absolute;left:15px;top:30px;bottom:0;width:1px;
+  background:rgba(255,255,255,.14)}
+.lpf-steps li:last-child{padding-bottom:0}
+.lpf-steps strong{font-family:"Switzer",sans-serif;font-weight:600;font-size:16px;color:#fff;line-height:1.3;padding-top:4px}
+.lpf-steps span{font-size:14px;color:#9FB0CC;line-height:1.5}
+.lpf-direct{margin-top:30px;padding:18px 20px;border:1px solid rgba(255,255,255,.12);display:grid;gap:8px;justify-items:start}
+.lpf-direct .lpf-k{margin-bottom:2px}
+.lpf-direct a{font-family:"Switzer",sans-serif;font-weight:500;font-size:16px;color:#fff;text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:1px;transition:border-color .2s;overflow-wrap:anywhere}
+.lpf-direct a:hover{border-bottom-color:#EC2027}
+.lpf-direct a:focus-visible{outline:2px solid #EC2027;outline-offset:3px}
+
+/* the panel */
+.lpf-panel{position:relative;margin-top:28px;background:#121A2E;border:1px solid rgba(255,255,255,.1);
+  padding:clamp(22px,3vw,40px);box-shadow:0 40px 80px -48px rgba(0,0,0,.8)}
+.lpf-panel::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:3px;background:#EC2027}
+.lpf-two .lpf-panel{margin-top:0}
+.lp-form-in .lpf-panel form{margin-top:0;display:block}
+.lpf-panel .lp-done{margin-top:0}
+
+/* the groups: a numbered legend over a two-across grid (the float lets the legend sit in the grid as a full row) */
+.lpf-grp{border:0;margin:0;padding:0;min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}
+.lpf-grp+.lpf-grp{margin-top:32px}
+.lpf-lg{float:left;width:100%;grid-column:1/-1;padding:0 0 12px;margin:0 0 2px;display:flex;align-items:center;gap:12px;
+  border-bottom:1px solid rgba(255,255,255,.1);font-family:var(--label);font-size:11px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:#fff}
+.lpf-lg i{font-style:normal;letter-spacing:.04em;color:#fff;background:#EC2027;padding:3px 6px;line-height:1.2}
+.lpf-f{display:grid;gap:8px;min-width:0;align-content:start}
+.lpf-wide{grid-column:1/-1}
+.lp-form-in .lpf-f label{margin-top:0;font-family:"Switzer",sans-serif;font-size:13px;font-weight:500;
+  letter-spacing:.01em;text-transform:none;color:#C6D0E2}
+.lp-form-in .lpf-f label em{font-size:12px;color:#8A9BB8}
+
+/* the fields: recessed in the panel; hover firms the edge, focus lifts a pixel with a red border and underline,
+   filled keeps a brighter edge */
+.lp-form-in .lpf-f input,.lp-form-in .lpf-f textarea,.lp-form-in .lpf-f .lp-sel-b{background:#0B1020;
+  border:1px solid rgba(255,255,255,.16);border-radius:0;color:#fff;font-size:15px;width:100%;box-sizing:border-box;
+  transition:border-color .2s,background .2s,box-shadow .2s,transform .2s}
+.lp-form-in .lpf-f input,.lp-form-in .lpf-f .lp-sel-b{height:50px;padding:0 15px}
+.lp-form-in .lpf-f textarea{padding:13px 15px;min-height:120px}
+.lp-form-in .lpf-f input:hover,.lp-form-in .lpf-f textarea:hover,.lp-form-in .lpf-f .lp-sel-b:hover{border-color:rgba(255,255,255,.32)}
+.lp-form-in .lpf-f input:not(:placeholder-shown),.lp-form-in .lpf-f textarea:not(:placeholder-shown),
+.lp-form-in .lpf-f .lp-sel-b:not(.is-empty){border-color:rgba(255,255,255,.34);background:#0E1527}
+.lp-form-in .lpf-f input:focus,.lp-form-in .lpf-f textarea:focus,
+.lp-form-in .lpf-f .lp-sel-b:focus-visible,.lp-form-in .lpf-f .lp-sel.is-open .lp-sel-b{outline:0;border-color:#EC2027;
+  background:#0E1527;box-shadow:inset 0 -2px 0 #EC2027,0 12px 22px -14px rgba(0,0,0,.9);transform:translateY(-1px)}
+.lp-form-in .lpf-f .lp-sel-b span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* the menu chevron, drawn in red */
+.lp-form-in .lpf-f .lp-sel-b i{width:8px;height:8px;border:0;border-right:2px solid #EC2027;border-bottom:2px solid #EC2027;
+  margin:-4px 3px 0 0;transform:rotate(45deg)}
+.lp-form-in .lpf-f .lp-sel.is-open .lp-sel-b i{margin-top:4px;transform:rotate(225deg)}
+.lp-form-in .lpf-f .lp-sel-l{top:calc(100% + 6px);background:#141D33;border-color:rgba(255,255,255,.18);border-top:2px solid #EC2027}
+/* after an empty or wrong send, the fields the check stopped on take a red edge */
+.lp-form-in form:has(.lp-err) .lpf-f input:invalid{border-color:#EC2027}
+.lp-form-in .lp-err{margin-top:24px;padding:12px 14px;border-left:3px solid #EC2027;background:rgba(236,32,39,.1);
+  color:#FFC2C4;font-size:13.5px;line-height:1.5}
+
+/* Send: a full width block of the red, taller than the fields */
+.lp-form-in .lpf-panel .cta{display:flex;width:100%;height:56px;margin-top:28px;justify-content:center;font-size:16px;letter-spacing:0;
+  border:0;border-radius:0;cursor:pointer}
+.lp-form-in .lpf-panel .cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.lpf-panel .lp-fine{margin-top:14px}
+
+@media(max-width:880px){
+  .lp-form-in.lpf-two{grid-template-columns:minmax(0,1fr);grid-template-areas:"intro" "panel" "aside";grid-template-rows:auto}
+  .lpf-two .lpf-panel{margin-top:26px}
+}
+@media(max-width:600px){
+  .lpf-grp{grid-template-columns:minmax(0,1fr);gap:16px}
+  .lpf-panel{padding:22px 18px 24px}
+}
+/* base.css holds every label at 11px !important under 640px, as a floor; these labels are set above the floor, so
+   they keep their size, and the small caps lines here come up to it */
+@media(max-width:640px){
+  .lp-form-in .lpf-f label{font-size:13.5px !important}
+  .lpf-k{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .lp-form-in .lpf-f input,.lp-form-in .lpf-f textarea,.lp-form-in .lpf-f .lp-sel-b{transition:none;transform:none!important}
+}

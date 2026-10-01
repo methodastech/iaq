@@ -52,9 +52,9 @@
 
 .vc-photo { display: block; position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #E7EBF3; }
 .vc-photo img { width: 100%; height: 100%; object-fit: cover; display: block;
-  filter: none; transform: scale(1.04);   /* 26 Sep (Bazil: "it needs to have colour"): every card in full colour */
-  transition: filter .7s var(--e1), transform 1.2s var(--e1); }
-.vc-card.is-front .vc-photo img { filter: none; transform: scale(1); }
+  filter: none;   /* 26 Sep (Bazil: "it needs to have colour"): every card in full colour */
+  transition: filter .7s var(--e1); }   /* 29 Sep (Bazil: "zoom in zoom out animation haram"): no scale */
+.vc-card.is-front .vc-photo img { filter: none; }
 
 /* the number sits on the photograph, large and quiet, so the card needs no label row */
 .vc-n { position: absolute; left: 18px; bottom: 10px;
@@ -106,3 +106,7 @@
 }
 /* 25 Sep, phone pass: the dots were 28px targets on phones; 36px hit area, the dot itself unchanged */
 @media (max-width: 640px) { .vc-dots button { width: 36px; height: 36px; } }
+
+/* 30 Sep: the Representation label, flush in the picture's top left corner, on a solid block */
+.vc-rep { position: absolute; left: 0; top: 0; z-index: 2; padding: 5px 8px; background: #0A1020; color: rgba(255,255,255,.9);
+  font: 600 11px/1.2 "Switzer", sans-serif; letter-spacing: .02em; }

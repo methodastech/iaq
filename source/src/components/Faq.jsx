@@ -9,10 +9,12 @@ import '../styles/faq.css'
    its height animated; a link to the page that says more where there is one. Data: codex.js FAQ. */
 export default function Faq({ embed = false }) {
   const root = useRef(null)
-  const [open, setOpen] = useState(FAQ[0].items[0].q)
+  /* 30 Sep ("close all drop down on faq"): every group and every answer starts closed; a click on a group, or on
+     the index beside it, opens it */
+  const [open, setOpen] = useState(null)
   const [cur, setCur] = useState(FAQ[0].id)
-  /* 24 Sep (Bazil: "make a dropdown as well"): each group folds; the first is open, the index opens the rest */
-  const [openG, setOpenG] = useState(() => new Set([FAQ[0].id]))
+  /* 24 Sep (Bazil: "make a dropdown as well"): each group folds; the index opens the one it names */
+  const [openG, setOpenG] = useState(() => new Set())
   const toggleG = id => setOpenG(s => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
   const [inView, setIn] = useState(false)
   /* 25 Sep (Bazil: "for SEO purposes"): every question and answer as FAQPage structured data, on the site only (the

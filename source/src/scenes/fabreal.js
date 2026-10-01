@@ -64,6 +64,12 @@ export default function initFabReal(root, opts = {}) {
   window.__frClip = which => { renderer.clippingPlanes = which === 0 ? [] : which === 1 ? [CLIP[0]] : which === 2 ? [CLIP[1]] : CLIP }
   window.__frClipSet_off = (spec, mode) => { const ps = spec.map(([x, y, z, c]) => new THREE.Plane(new THREE.Vector3(x, y, z).normalize(), c)); if (mode === 'local') { renderer.clippingPlanes = []; renderer.localClippingEnabled = true; for (const m of mats.values()) { m.clippingPlanes = ps; m.needsUpdate = true } } else { renderer.localClippingEnabled = false; for (const m of mats.values()) { m.clippingPlanes = null; m.needsUpdate = true } renderer.clippingPlanes = ps } }
 
+  /* 30 Sep ("this one make me laggy bit"): the map drew the whole scene, with the contact-shading pass, sixty times a
+     second for as long as it was on screen, although nothing moved. It now draws only when something changed: the
+     camera (a drag, the damping after it, a zoom, a refit), a pick, a layer arriving, a resize. Between those the
+     canvas keeps its last picture. */
+  let dirty = true
+  const mark = () => { dirty = true }
   const scene = new THREE.Scene()
   scene.fog = new THREE.Fog(BG, 320, 900)
   const camera = new THREE.PerspectiveCamera(26, 1, 1, 4000)
@@ -125,7 +131,7 @@ export default function initFabReal(root, opts = {}) {
         const i = o.geometry.index, t = (i ? i.count : o.geometry.attributes.position.count) / 3
         if (key === 'shell' && t < 200 && Math.max(sz.x, sz.z) > 60 && sz.y < 3) o.visible = false })
       const b = new THREE.Box3().setFromObject(g); b.min.max(KEEP.min); b.max.min(KEEP.max)
-      boxes.set(key, b); groups.set(key, g); scene.add(g)
+      boxes.set(key, b); groups.set(key, g); scene.add(g); mark()
       if (REST.includes(key)) { world.union(b); frame() }
       loading.delete(key)
       paint()
@@ -267,6 +273,7 @@ export default function initFabReal(root, opts = {}) {
     }
     /* at rest every loaded layer shows, in its colour (the app's Overall); with a pick, the building and the lit layers */
     for (const [key, g] of groups) g.visible = !anyLit || REST.includes(key) || lit.has(key)
+    mark()
   }
   /* pass one: the building AND the lit layers with true depth, so every lit part in view is solid and correctly
      occluded; pass two: the lit layers again over a cleared depth buffer in a see-through tint, so the parts behind
@@ -312,7 +319,7 @@ export default function initFabReal(root, opts = {}) {
 
   function resize() {
     const w = root.clientWidth || 300, h = root.clientHeight || 200
-    renderer.setSize(w, h, false)
+    renderer.setSize(w, h, false); mark()
     /* --fr-left (CSS, on .fr): the share of the canvas width the model is framed into, 1 = the whole canvas */
     /* --fr-left (CSS, on .fr): the share of the canvas width the model is framed into, 1 = the whole canvas. The vertical
        placement is lift()'s (the model's top under the banner's head), on the full canvas height. */
@@ -337,12 +344,15 @@ export default function initFabReal(root, opts = {}) {
   const ro = new ResizeObserver(resize); ro.observe(root); resize()
 
   let raf = 0, alive = true, vis = true, frameMs = 0
-  const io = new IntersectionObserver(([e]) => { vis = e.isIntersecting }, { rootMargin: '120px' }); io.observe(root)
+  const io = new IntersectionObserver(([e]) => { vis = e.isIntersecting; if (vis) mark() }, { rootMargin: '120px' }); io.observe(root)
+  const seenView = new THREE.Matrix4(), seenProj = new THREE.Matrix4()
   function tick() {
     if (!alive) return
     raf = requestAnimationFrame(tick)
     if (!vis) return
-    controls.update()
+    controls.update(); camera.updateMatrixWorld()
+    if (!dirty && camera.matrixWorld.equals(seenView) && camera.projectionMatrix.equals(seenProj)) return
+    dirty = false; seenView.copy(camera.matrixWorld); seenProj.copy(camera.projectionMatrix)
     const t0 = performance.now(); renderPasses(); frameMs = frameMs * .9 + (performance.now() - t0) * .1
     if (opts.onFrame) opts.onFrame()
   }
@@ -366,7 +376,7 @@ export default function initFabReal(root, opts = {}) {
   /* a QA hook, as __globeQA elsewhere: what is loaded and where the model stands */
   /* QA: every mesh with its box and triangle count, largest box per triangle first (to find stray geometry) */
   window.__frMeshes = () => { const out = []; for (const [k, g] of groups) g.traverse(o => { if (!o.isMesh) return; const b = new THREE.Box3().setFromObject(o), sz = b.getSize(new THREE.Vector3()); const i = o.geometry.index; const t = (i ? i.count : o.geometry.attributes.position.count) / 3; out.push({ layer: k, name: o.name, tris: Math.round(t), size: sz.toArray().map(v => +v.toFixed(1)), min: b.min.toArray().map(v => +v.toFixed(1)), ratio: +(sz.length() / Math.sqrt(t)).toFixed(2), uuid: o.uuid }) }); return out.sort((a, b) => b.ratio - a.ratio) }
-  window.__frHide = uuids => { for (const g of groups.values()) g.traverse(o => { if (o.isMesh && uuids.includes(o.uuid)) o.visible = false }) }
+  window.__frHide = uuids => { for (const g of groups.values()) g.traverse(o => { if (o.isMesh && uuids.includes(o.uuid)) o.visible = false }); mark() }
   /* the model's box projected onto the canvas with the live camera and view offset, in CSS px of the canvas: the probes read it */
   window.__frBounds = () => {
     if (world.isEmpty()) return null

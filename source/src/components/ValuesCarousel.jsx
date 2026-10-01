@@ -43,14 +43,14 @@ const O = [1, 1, 1, 0]            /* opacity is only ever used to take a card ou
    ring carried mixed the old site's stills with generated stage art; these six are all from the
    17 Sep SharePoint share, see public/assets/iaq/SOURCES.md) */
 const PHOTO = {
-  'V·01': ['/assets/iaq/ev-osh-crowd.webp', '50% 45%'],           /* World OSH Day, the crews at dawn */
-  'V·02': ['/assets/iaq/cr-ballroom-8575.webp', '50% 50%'],       /* a finished cleanroom, every line true */
-  'V·03': ['/assets/iaq/ev-mciea-team.webp', '50% 62%'],          /* the team on the MCIEA night */
-  'V·04': ['/assets/iaq/hq-office-4740.webp', '50% 55%'],         /* the engineering floor at HQ */
-  'V·05': ['/assets/iaq/cr-utilities-p1010229.webp', '50% 55%'],  /* a utilities corridor, the route marked */
+  'V·01': ['/assets/iaq/val-safety.webp', '50% 50%'],            /* 30 Sep (Bazil: "recreate better picture that makes sense for each"): the toolbox talk at sunrise, harnesses on the scaffold */
+  'V·02': ['/assets/iaq/val-quality.webp', '50% 50%'],           /* a particle count test in a finished cleanroom */
+  'V·03': ['/assets/iaq/val-honesty.webp', '62% 40%'],           /* the programme walked through with the client, openly */
+  'V·04': ['/assets/iaq/val-engineering.webp', '50% 45%'],       /* the multidisciplinary team at the facility's BIM model ("dont show chairs") */
+  'V·05': ['/assets/iaq/val-efficiency.webp', '50% 50%'],        /* crews laying a cleanroom raised floor in organised zones */
   /* 25 Sep (Bazil: "make sure content correct"): the award photograph carried a subsidiary's name on the screen, which stays
      off public pages (client, DV3 A2.1); the finished ballroom stands for excellence delivered */
-  'V·06': ['/assets/iaq/cr-ballroom-8578.webp', '50% 50%'],
+  'V·06': ['/assets/iaq/val-excellence.webp', '50% 50%'],        /* a finished cleanroom bay at handover, the final walk */
 }
 const MARKS = ['shield', 'check', 'people', 'drawing', 'gauge', 'chart']
 
@@ -144,6 +144,8 @@ export default function ValuesCarousel() {
                   <span className="vc-photo">
                     <img src={PHOTO[v.ix][0]} alt="" loading="lazy" decoding="async" style={{ objectPosition: PHOTO[v.ix][1] }} />
                     <span className="vc-n">{n + 1}</span>
+                    {/* 30 Sep: the six pictures are drawn representations of each value, labelled as the site labels them */}
+                    <span className="vc-rep">Representation</span>
                   </span>
                   <span className="vc-body">
                     <span className="vc-mark" aria-hidden="true"><Icon name={MARKS[n]} /></span>

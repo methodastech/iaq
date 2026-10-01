@@ -1,7 +1,10 @@
 /* ToolScope (25 Sep): IAQ's Services Scope slide on the PCU & TTI page */
 .tsc-lede{ margin:12px 0 0; font-size:15px; line-height:1.55; color:var(--soft); max-width:62ch; }
 .tsc-fig{ margin:clamp(22px,3vh,36px) 0 0; background:#fff; box-shadow:0 18px 40px -32px rgba(12,18,32,.4); padding:clamp(12px,2vw,24px); }
-.tsc-fig svg{ display:block; width:100%; height:auto; }
+.tsc-fig svg{ display:block; height:auto; }   /* width: tool-install.css (.tid), capped to the window height */
+/* 1 Oct (tool-installation, on the schematic: "this one also make bit bigger"): a full window tall, as on services/all
+   (tools-hookup-band.css), not the window less 190px; about a quarter larger on a laptop */
+.tsc-fig svg.tid{ width:min(100%,calc(100vh / var(--zoomf,1) * 1280 / 912)); }
 .tsc-fig figcaption{ margin-top:10px; font-size:13.5px; line-height:1.5; color:var(--soft); }
 .tsc-cols{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:14px; }
 .tsc-col{ padding:clamp(20px,2.2vw,28px); background:var(--bg); box-shadow:inset 0 1px 0 #EC2027; }   /* 26 Sep: the IAQ line, one red hairline (lines are never blue) */
