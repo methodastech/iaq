@@ -74,7 +74,8 @@ patch('render loop', new RegExp(`requestAnimationFrame\\(${loop.replace(/\$/g, '
    leader lines, the slow-frame notice, the floor loader, the x-ray pins) */
 patch('panels into the section', /document\.body\.append(Child)?\(/, '__b3d.root.append$1(', 6)
 patch('keyboard', /(^|[;,{}()])addEventListener\("keydown",/, '$1__b3d.onKey(', 6)
-patch('model paths', /(["`])(?:\.\/)?models\//, `$1${BASE}models/`, 11)
+/* 2 Oct delivery ("3D ONLY update 10-2"): thirteen, up from eleven (the props folder, a second machines list) */
+patch('model paths', /(["`])(?:\.\/)?models\//, `$1${BASE}models/`, 13)
 patch('sign paths', /"\.\/signs\//, `"${BASE}signs/`, 2)
 /* the sign painters take the page's base as an argument, "./", and add signs/... to it. From the 30 Sep delivery
    the fire kit and the scope cards take it too, and fetch models/... from it: seven calls, all a base */
@@ -119,7 +120,7 @@ const scoped = scope(css)
 
 /* ---- write ---- */
 fs.rmSync(OUT, { recursive: true, force: true })
-const SKIP = new Set(['index.html', 'v3.html', 'README.txt', 'serve.ps1', 'Open 3D (local).bat', '_headers', 'fonts'])
+const SKIP = new Set(['index.html', 'v3.html', 'README.txt', 'FILES.txt', 'serve.ps1', 'Open 3D (local).bat', '_headers', 'fonts'])
 for (const f of fs.readdirSync(SRC)) if (!SKIP.has(f)) fs.cpSync(path.join(SRC, f), path.join(OUT, f), { recursive: true })
 fs.rmSync(path.join(OUT, 'assets', jsName)); fs.rmSync(path.join(OUT, 'assets', cssName))
 fs.writeFileSync(path.join(OUT, 'assets', 'app.js'), js)

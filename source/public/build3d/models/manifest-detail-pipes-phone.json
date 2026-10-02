@@ -36,8 +36,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-pipes-phone-1-gf.glb",
-      "triangles": 16546,
-      "sizeKB": 55
+      "triangles": 27181,
+      "sizeKB": 116
     },
     {
       "index": 2,
@@ -45,8 +45,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-pipes-phone-2-1f.glb",
-      "triangles": 265156,
-      "sizeKB": 675
+      "triangles": 285914,
+      "sizeKB": 946
     },
     {
       "index": 3,
@@ -54,8 +54,8 @@
       "name": "2F",
       "elevation": 14.6,
       "file": "detail-pipes-phone-3-2f.glb",
-      "triangles": 91000,
-      "sizeKB": 236
+      "triangles": 83256,
+      "sizeKB": 297
     },
     {
       "index": 4,
@@ -63,10 +63,10 @@
       "name": "3F",
       "elevation": 21.05,
       "file": "detail-pipes-phone-4-3f.glb",
-      "triangles": 116383,
-      "sizeKB": 329
+      "triangles": 163674,
+      "sizeKB": 546
     }
   ],
-  "source": "detail-pipes-phone from detail-pipes: make-lite --error 0.02 --prune --normals flat",
+  "source": "detail-pipes-phone from detail-pipes: make-lite --error 0.01 --normals flat",
   "flatShading": true
 }

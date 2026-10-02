@@ -73,8 +73,10 @@ html.is-loading{overflow:hidden}
    there IS a page under it. Capped at 86svh AND at 880px painted, whichever is smaller, so a
    tall monitor shows the top of the next section instead of a taller photograph. The /1.12
    still divides the zoom back out; 786 is 880 painted. */
+/* 2 Oct ("this hero section should be fit in to screen"): exactly the window again, under the workspace bar when it shows,
+   so the hero fills the screen and the next section starts at the fold; the 86svh / 786px cap above is lifted */
 @media(min-width:1025px){
-  .hero{min-height:min(calc((86svh - var(--tbh,0px)) / var(--zoomf,1.12)), 786px)}
+  .hero{min-height:calc(100svh / var(--zoomf,1.12) - var(--tbh,0px))}   /* --tbh is in the page's zoomed pixels already */
 }
 @media(min-width:641px){
   .hero .hero-inner{display:flex;flex-direction:column;align-items:flex-start;padding-top:clamp(8px,1.2vh,16px);padding-bottom:clamp(30px,4.5vh,52px)}

@@ -1,6 +1,6 @@
 {
   "layer": "detail-electrical-phone",
-  "source": "detail-electrical-phone from detail-electrical: make-lite --error 0.02 --prune --normals flat",
+  "source": "detail-electrical-phone from detail-electrical: make-lite --error 0.01 --normals flat",
   "needsNormals": false,
   "origin": {
     "x": 156.2375234522072,
@@ -34,8 +34,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-electrical-phone-1-gf.glb",
-      "triangles": 35430,
-      "sizeKB": 98
+      "triangles": 47305,
+      "sizeKB": 130
     },
     {
       "index": 2,
@@ -43,8 +43,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-electrical-phone-2-1f.glb",
-      "triangles": 116621,
-      "sizeKB": 302
+      "triangles": 148329,
+      "sizeKB": 385
     },
     {
       "index": 3,
@@ -52,8 +52,8 @@
       "name": "2F",
       "elevation": 14.6,
       "file": "detail-electrical-phone-3-2f.glb",
-      "triangles": 82360,
-      "sizeKB": 218
+      "triangles": 107609,
+      "sizeKB": 283
     },
     {
       "index": 4,
@@ -61,8 +61,8 @@
       "name": "3F",
       "elevation": 21.05,
       "file": "detail-electrical-phone-4-3f.glb",
-      "triangles": 110470,
-      "sizeKB": 316
+      "triangles": 159922,
+      "sizeKB": 436
     }
   ],
   "flatShading": true

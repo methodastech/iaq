@@ -36,7 +36,7 @@
       "name": "APRON",
       "elevation": 4.2,
       "file": "detail-ducts-lite-0-apron.glb",
-      "triangles": 2864,
+      "triangles": 2840,
       "sizeKB": 14
     },
     {
@@ -45,8 +45,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-ducts-lite-1-gf.glb",
-      "triangles": 67320,
-      "sizeKB": 181
+      "triangles": 41959,
+      "sizeKB": 175
     },
     {
       "index": 2,
@@ -54,8 +54,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-ducts-lite-2-1f.glb",
-      "triangles": 215875,
-      "sizeKB": 554
+      "triangles": 117389,
+      "sizeKB": 394
     },
     {
       "index": 3,
@@ -63,8 +63,8 @@
       "name": "2F",
       "elevation": 14.6,
       "file": "detail-ducts-lite-3-2f.glb",
-      "triangles": 12140,
-      "sizeKB": 40
+      "triangles": 10178,
+      "sizeKB": 42
     },
     {
       "index": 4,
@@ -72,8 +72,8 @@
       "name": "3F",
       "elevation": 21.05,
       "file": "detail-ducts-lite-4-3f.glb",
-      "triangles": 62682,
-      "sizeKB": 183
+      "triangles": 48492,
+      "sizeKB": 190
     },
     {
       "index": 5,
@@ -81,10 +81,10 @@
       "name": "RF",
       "elevation": 27.71,
       "file": "detail-ducts-lite-5-rf.glb",
-      "triangles": 2252,
-      "sizeKB": 9
+      "triangles": 1036,
+      "sizeKB": 7
     }
   ],
-  "source": "lite of detail-ducts: make-lite --error 0.005 --normals flat",
+  "source": "detail-ducts-lite from detail-ducts: make-lite --error 0.005 --normals flat",
   "flatShading": true
 }

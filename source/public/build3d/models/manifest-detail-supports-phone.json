@@ -36,8 +36,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-supports-phone-1-gf.glb",
-      "triangles": 8612,
-      "sizeKB": 27
+      "triangles": 12428,
+      "sizeKB": 55
     },
     {
       "index": 2,
@@ -45,10 +45,10 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-supports-phone-2-1f.glb",
-      "triangles": 118068,
-      "sizeKB": 264
+      "triangles": 39667,
+      "sizeKB": 126
     }
   ],
-  "source": "detail-supports-phone from detail-supports: make-lite --error 0.02 --prune --normals flat",
+  "source": "detail-supports-phone from detail-supports: make-lite --error 0.01 --normals flat",
   "flatShading": true
 }

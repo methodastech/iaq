@@ -36,8 +36,8 @@
       "name": "APRON",
       "elevation": 4.2,
       "file": "detail-sprinklers-lite-0-apron.glb",
-      "triangles": 2460,
-      "sizeKB": 11
+      "triangles": 2358,
+      "sizeKB": 10
     },
     {
       "index": 1,
@@ -45,8 +45,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-sprinklers-lite-1-gf.glb",
-      "triangles": 333858,
-      "sizeKB": 806
+      "triangles": 179839,
+      "sizeKB": 585
     },
     {
       "index": 2,
@@ -54,8 +54,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-sprinklers-lite-2-1f.glb",
-      "triangles": 233212,
-      "sizeKB": 539
+      "triangles": 143727,
+      "sizeKB": 439
     },
     {
       "index": 3,
@@ -63,8 +63,8 @@
       "name": "2F",
       "elevation": 14.6,
       "file": "detail-sprinklers-lite-3-2f.glb",
-      "triangles": 368748,
-      "sizeKB": 880
+      "triangles": 215624,
+      "sizeKB": 687
     },
     {
       "index": 4,
@@ -72,8 +72,8 @@
       "name": "3F",
       "elevation": 21.05,
       "file": "detail-sprinklers-lite-4-3f.glb",
-      "triangles": 206635,
-      "sizeKB": 527
+      "triangles": 146354,
+      "sizeKB": 448
     },
     {
       "index": 5,
@@ -81,10 +81,10 @@
       "name": "RF",
       "elevation": 27.71,
       "file": "detail-sprinklers-lite-5-rf.glb",
-      "triangles": 43138,
-      "sizeKB": 93
+      "triangles": 12216,
+      "sizeKB": 41
     }
   ],
-  "source": "lite of detail-sprinklers: make-lite --error 0.005 --normals flat",
+  "source": "detail-sprinklers-lite from detail-sprinklers: make-lite --error 0.005 --normals flat",
   "flatShading": true
 }

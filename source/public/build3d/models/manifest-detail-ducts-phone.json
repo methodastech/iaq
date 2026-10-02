@@ -36,8 +36,8 @@
       "name": "APRON",
       "elevation": 4.2,
       "file": "detail-ducts-phone-0-apron.glb",
-      "triangles": 857,
-      "sizeKB": 8
+      "triangles": 1596,
+      "sizeKB": 10
     },
     {
       "index": 1,
@@ -45,8 +45,8 @@
       "name": "GF",
       "elevation": 5.9,
       "file": "detail-ducts-phone-1-gf.glb",
-      "triangles": 46189,
-      "sizeKB": 132
+      "triangles": 31215,
+      "sizeKB": 142
     },
     {
       "index": 2,
@@ -54,8 +54,8 @@
       "name": "1F",
       "elevation": 10.25,
       "file": "detail-ducts-phone-2-1f.glb",
-      "triangles": 95336,
-      "sizeKB": 266
+      "triangles": 53578,
+      "sizeKB": 206
     },
     {
       "index": 3,
@@ -63,8 +63,8 @@
       "name": "2F",
       "elevation": 14.6,
       "file": "detail-ducts-phone-3-2f.glb",
-      "triangles": 6656,
-      "sizeKB": 25
+      "triangles": 7734,
+      "sizeKB": 34
     },
     {
       "index": 4,
@@ -72,8 +72,8 @@
       "name": "3F",
       "elevation": 21.05,
       "file": "detail-ducts-phone-4-3f.glb",
-      "triangles": 42729,
-      "sizeKB": 131
+      "triangles": 37053,
+      "sizeKB": 154
     },
     {
       "index": 5,
@@ -81,10 +81,10 @@
       "name": "RF",
       "elevation": 27.71,
       "file": "detail-ducts-phone-5-rf.glb",
-      "triangles": 1828,
+      "triangles": 780,
       "sizeKB": 7
     }
   ],
-  "source": "detail-ducts-phone from detail-ducts: make-lite --error 0.02 --prune --normals flat",
+  "source": "detail-ducts-phone from detail-ducts: make-lite --error 0.01 --normals flat",
   "flatShading": true
 }
