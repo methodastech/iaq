@@ -208,3 +208,17 @@
    desktop arcs are never cut; on a phone the band is a tall column and the globe was drawn 992px tall behind the copy,
    its tags floating in white. The host is positioned again under 900px, so the globe is the 340px square it is meant to be. */
 @media (max-width: 900px) { .gr .globe-host { position: relative; } }
+
+/* 8 Oct (client: every map pins each office with its country's flag and names it in a callout on the map): the tag is a
+   callout again, the same as the Global Presence map's: a white box, the drawn flag, the country over the city. It
+   replaces the 25 Sep bare flag-and-name tag; the picked office takes the red bar on its left edge. */
+.gr .globe-tag,.gr .globe-tag:hover,.gr .globe-tag.far,.gr .globe-tag.far:hover{display:flex;align-items:center;gap:8px;padding:5px 10px 5px 6px;
+  background:#fff;border:0;box-shadow:0 8px 20px -12px rgba(12,18,32,.45);text-transform:none;letter-spacing:normal;color:#0C1220}
+.gr .globe-tag .fl{display:block;margin:0;line-height:0}
+.gr .globe-tag .gt-flag{display:block;width:22px;height:15px;box-shadow:0 0 0 1px rgba(12,18,32,.12)}
+.gr .globe-tag .gt-t{display:flex;flex-direction:column;gap:1px}
+.gr .globe-tag .gt-t b{font:600 12px/1.15 "Switzer","Instrument Sans",system-ui,sans-serif}
+.gr .globe-tag .gt-t small{font:500 10.5px/1.2 "Instrument Sans",system-ui,sans-serif;color:#5A6478}
+.gr .globe-tag.sel{background:#fff;color:#0C1220;box-shadow:inset 3px 0 0 #EC2027,0 8px 20px -12px rgba(12,18,32,.45)}
+.gr .globe-tag.sel .gt-t b{color:#EC2027}
+.gr .globe-tag.far,.gr .globe-tag.far:hover{background:rgba(255,255,255,.75)}

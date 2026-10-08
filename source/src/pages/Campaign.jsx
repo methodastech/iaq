@@ -157,11 +157,15 @@ export default function Campaign() {
         </div>
       </section>
 
-      <section className="lp-stats" aria-label="The record">
-        {c.stat.map((s, i) => (
-          <div className="lp-stat" key={i}><b>{s.v}</b><span>{s.k}</span></div>
-        ))}
-      </section>
+      {/* 2 Oct ("remove that", the three figures under the hero on /lp/project): the stats are off the project page, so the
+          hero leads straight into the form; the market campaigns keep theirs */}
+      {!project && (
+        <section className="lp-stats" aria-label="The record">
+          {c.stat.map((s, i) => (
+            <div className="lp-stat" key={i}><b>{s.v}</b><span>{s.k}</span></div>
+          ))}
+        </section>
+      )}
 
       {/* 30 Sep ("remove this", on /lp/project): the "Delivered, not proposed." cards are gone from the project page, so
           the stats lead straight into the form. The market campaigns (semiconductor, data-centre, ev-battery) keep theirs */}

@@ -10,6 +10,9 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
+/* 8 Oct: the offices and their flags, shared with every map on the site */
+import { OFFICE_COUNTRIES } from '../data/offices.js'
+import { flagSvg } from '../components/Flag.jsx'
 
 export default function initHome(){
 var dead=false;
@@ -583,11 +586,16 @@ window.__revealOnPlay=function(iframe,wrap){
   var GW=192,GH=96,R=1.62;
   /* 21 Sep: Germany and India moved onto the cities the Contact registry names (Dresden, Ahmedabad);
      they sat on Frankfurt and Bangalore, which IAQ has never listed. */
-  var OFFICES=[[3.1,101.7],[1.35,103.82],[51.05,13.74],[23.03,72.58],[59.33,18.07],[33.45,-112.07],[53.35,-6.26]]; /* Ireland added 10 Sep 2026 */
+  /* 8 Oct (client: a pin with the country's flag, named on the map): the offices come from data/offices.js, one mark a
+     country, in the order this scene always had (Malaysia, Singapore, Germany, India, Sweden, USA, Ireland), so the tour
+     below is unchanged. Sweden is now Skelleftea and the HQ Shah Alam, the Contact page's addresses. */
+  var OFFICES=OFFICE_COUNTRIES.map(function(o){ return [o.lat,o.lon]; });
   /* the tour runs the short way round the world: east to west, then one swing home */
   var TOUR=[0,1,3,2,4,6,5];
-  var NAMES=['Malaysia','Singapore','Germany','India','Sweden','USA','Ireland'];
-  var FLAGS=['🇲🇾','🇸🇬','🇩🇪','🇮🇳','🇸🇪','🇺🇸','🇮🇪'];
+  var NAMES=OFFICE_COUNTRIES.map(function(o){ return o.cc==='US'?'USA':o.country; });
+  var CITIES=OFFICE_COUNTRIES.map(function(o){ return o.city; });
+  /* the flags as drawn SVG: the emoji these replaced showed as two letters on Windows */
+  var FLAGS=OFFICE_COUNTRIES.map(function(o){ return flagSvg(o.cc,'gt-flag'); });
   var HOME_X=10*Math.PI/180, HOME_Y=-Math.PI/2-100*Math.PI/180;
   function bit(y,x){ return (parseInt(LAND[y].charAt(x>>2),16)>>(3-(x&3)))&1; }
   function ll(lat,lon,r){var la=lat*Math.PI/180,lo=lon*Math.PI/180;
@@ -718,7 +726,8 @@ window.__revealOnPlay=function(iframe,wrap){
     OFFICES.forEach(function(of,oi){
       var el=document.createElement('div');
       el.className='globe-tag'+(oi===0?' hq':'');
-      el.innerHTML='<span class="fl">'+FLAGS[oi]+'</span>'+NAMES[oi]+(oi===0?' &middot; HQ':'');
+      /* 8 Oct: a callout like the Global Presence map's: the flag, the country, the city */
+      el.innerHTML='<span class="fl">'+FLAGS[oi]+'</span><span class="gt-t"><b>'+NAMES[oi]+'</b><small>'+CITIES[oi]+(oi===0?' &middot; HQ':'')+'</small></span>';
       /* 21 Sep: a tag is a control now. Picking one turns the world to that office. */
       el.setAttribute('role','button'); el.setAttribute('tabindex','0'); el.setAttribute('aria-label','Show the '+NAMES[oi]+' office');
       (function(k){ el.addEventListener('click',function(ev){ ev.stopPropagation(); focus(k); });

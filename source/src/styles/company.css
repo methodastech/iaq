@@ -298,3 +298,8 @@ a.cp-row:hover, a.cp-row:focus-visible { padding-left: 8px; color: var(--blue-br
    names every office and every country delivered in. */
 .cp-globe svg text{font-size:10px}
 @media (max-width:640px){ .cp-globe svg text{display:none} }
+
+/* 8 Oct: the map band. The copy sits above, the map runs the band's full width under it (components/OfficeMap.jsx) */
+.cp-map-copy { max-width: 760px; }
+.cp-map-copy h2 { max-width: none; }
+.cp-map { margin-top: clamp(22px, 3.4vh, 40px); }

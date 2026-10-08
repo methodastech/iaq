@@ -1339,3 +1339,16 @@ html body .close3d footer { background: transparent !important; }   /* the foote
 h1,h2,h3{font-weight:500!important}   /* every page's own heading rule (unit heroes, bands, codex) sat at 600 or 700 */
 
 /* 30 Sep: the footer's certification row (.f-certs) moved to the About overview; its rules are gone with it */
+
+/* 7 Oct ("this still need services overview button"; asked where, "bar along the bottom"): one slim bar under both
+   columns, the main Services page. Its own pale ground instead of a rule (26 Sep: "cannot have too many lines"); the
+   title, one quiet line, the arrow at the far end; red on hover like every other row in the wing. */
+.nm-ovbar{grid-column:1/-1;display:flex;align-items:baseline;gap:14px;padding:15px 30px 16px;background:#EEF1F6;color:var(--ink);text-decoration:none;transition:background .25s}
+.nm-ovbar b{flex:none;font:600 15px/1.2 "Switzer",sans-serif;letter-spacing:-.01em;transition:color .2s}
+.nm-ovbar span{min-width:0;font:400 13.5px/1.35 "Instrument Sans",sans-serif;color:var(--soft,#48536A)}
+.nm-ovbar i{margin-left:auto;font-style:normal;font:600 15px/1 "Switzer",sans-serif;color:var(--blue-bright);transition:transform .3s var(--e1)}
+.nm-ovbar:hover{background:#E6EAF1}
+.nm-ovbar:hover b,.nm-ovbar:focus-visible b{color:var(--blue-bright)}
+.nm-ovbar:hover i{transform:translateX(4px)}
+.nm-ovbar:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+@media(max-width:860px){.nm-ovbar{padding:14px 16px}.nm-ovbar span{display:none}}

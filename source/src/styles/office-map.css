@@ -1,0 +1,31 @@
+/* OfficeMap (8 Oct 2026): the flat world with every office pinned and named on it. Made for the dark bands it sits in.
+   Square corners, no outlines on the callouts, the site's red for the pins. Below 760px the map keeps its size and the
+   band scrolls sideways, so the callouts stay readable instead of shrinking to nothing. */
+.om { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.om-in { position: relative; min-width: 760px; }
+.om-svg { display: block; width: 100%; height: auto; }
+.om-land circle { fill: rgba(150, 176, 222, .26); }
+.om-dl-dot { fill: #8796B3; }
+.om-lead { stroke: rgba(255, 255, 255, .55); stroke-width: 1; }
+
+.om-pin path { fill: #EC2027; }
+.om-pin .om-eye { fill: #fff; }
+.om-pulse { fill: #EC2027; opacity: .35; transform-box: fill-box; transform-origin: center; animation: omPulse 2.6s ease-out infinite; }
+.om-pin.hq .om-pulse { animation-duration: 2s; }
+@keyframes omPulse { 0% { transform: scale(.6); opacity: .45 } 100% { transform: scale(3.2); opacity: 0 } }
+@media (prefers-reduced-motion: reduce) { .om-pulse { animation: none; opacity: .25 } }
+
+/* the callout: flag, country, city; its left or right edge on the anchor */
+.om-call { position: absolute; display: flex; align-items: center; gap: 9px; padding: 7px 11px 7px 8px; background: #fff;
+  box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .6); white-space: nowrap; transform: translateY(-50%); pointer-events: none; }
+.om-call.l { transform: translate(-100%, -50%); }
+.om-call.hq { box-shadow: inset 3px 0 0 #EC2027, 0 10px 24px -14px rgba(0, 0, 0, .6); padding-left: 11px; }
+.om-flag { display: block; flex: none; width: 24px; height: 16px; box-shadow: 0 0 0 1px rgba(12, 18, 32, .12); }
+.om-t { display: flex; flex-direction: column; gap: 1px; }
+.om-t b { font: 600 13px/1.15 "Switzer", "Instrument Sans", system-ui, sans-serif; color: #0C1220; letter-spacing: -.005em; }
+.om-t small { font: 500 11.5px/1.2 "Instrument Sans", system-ui, sans-serif; color: #5A6478; }
+
+/* a delivered-in country: its name beside its grey dot, no box */
+.om-dl { position: absolute; transform: translate(8px, -50%); font: 500 11.5px/1 "Instrument Sans", system-ui, sans-serif;
+  color: #93A1BC; white-space: nowrap; pointer-events: none; }
+.om-dl.l { transform: translate(calc(-100% - 8px), -50%); }

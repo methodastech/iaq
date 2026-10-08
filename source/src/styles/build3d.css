@@ -22,3 +22,10 @@ html.b3d-room{overflow:hidden}
 
 /* the nav steps aside while the stage fills the window */
 html.b3d-pin .nav{transform:translateY(-105%)}
+
+/* 8 Oct ("i need text 3d rendering so the user know that section is 3d"): the label under the IAQ mark on the 3D's loading
+   screen, shown only while it loads (the app hides the mark and lifts the screen when the model is ready). The selectors
+   carry .b3d-stage so they outrank app.css, which loads after this file. */
+.b3d .b3d-stage .b3d-ld-label{display:none}
+.b3d .b3d-stage #overlay:has(#enter:disabled) .b3d-ld-label{display:block;position:absolute;left:50%;top:calc(50% + min(62px,9vw));transform:translateX(-50%);z-index:3;
+  font:600 12px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5A6478;white-space:nowrap}

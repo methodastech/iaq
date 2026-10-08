@@ -7,6 +7,8 @@ import Icon from '../components/FlowIcon.jsx'
 import { LINE_MARKS } from '../components/HeroLineMarks.jsx'
 import { MarkEnv, MarkSocial, MarkGov } from '../components/CommitMarks.jsx'
 import { bySlug, longDate } from '../data/news.js'
+import { OFFICES as OFFICE_LIST, OFFICE_COUNTRIES } from '../data/offices.js'
+import { flagSvg } from '../components/Flag.jsx'
 import '../styles/pages.css'
 import '../styles/commitment.css'
 
@@ -88,11 +90,14 @@ const BADGES = [
   { src: '/assets/badge-highwire-gold-2024.webp', alt: 'Highwire Safety Gold 2024' },
 ]
 
-/* IAQ's offices, HQ first: the red points on the globe and the routes out of Shah Alam */
-const OFFICES = [
-  [3.07, 101.52], [5.41, 100.33], [1.35, 103.82], [51.05, 13.74],
-  [28.61, 77.21], [59.33, 18.07], [33.45, -112.07], [53.35, -6.26],
-]
+/* IAQ's offices, HQ first: the red points on the globe and the routes out of Shah Alam. 8 Oct: from data/offices.js,
+   the list every map shares (India was Delhi here, Sweden Stockholm; the Contact page has them in Ahmedabad and
+   Skelleftea). */
+const OFFICES = OFFICE_LIST.map(o => [o.lat, o.lon])
+/* 8 Oct (client: each office pinned with its country's flag and named on the map itself): one callout a country, which
+   side of its point it sits on, and a nudge up or down, so the neighbours (Malaysia and Singapore, the three in Europe)
+   never cover each other */
+const TAG_AT = { MY: ['l', 0], SG: ['r', 16], DE: ['r', 12], SE: ['r', -12], IE: ['l', -4], IN: ['l', 0], US: ['r', 0] }
 
 const ll = (lat, lon, r = 1) => {
   const p = (90 - lat) * Math.PI / 180, t = (lon + 180) * Math.PI / 180
@@ -206,6 +211,30 @@ function EarthGlobe () {
         return { pts, dot }
       })
 
+      /* the callouts: HTML over the canvas, placed on their office's point every frame, hidden round the back */
+      const tags = OFFICE_COUNTRIES.map(o => {
+        const el = document.createElement('div')
+        const [side, dy] = TAG_AT[o.cc] || ['r', 0]
+        el.className = 'cc-tag ' + side + (o.hq ? ' hq' : '')
+        el.innerHTML = flagSvg(o.cc, 'cc-tag-flag') + '<span><b>' + o.country + '</b><small>' + o.city + (o.hq ? ' · HQ' : '') + '</small></span>'
+        box.appendChild(el)
+        return { el, dy, p: new THREE.Vector3(...ll(o.lat, o.lon, 1.008)) }
+      })
+      const tv = new THREE.Vector3(), tn = new THREE.Vector3(), camDir = new THREE.Vector3()
+      const placeTags = () => {
+        world.updateMatrixWorld()
+        cam.getWorldDirection(camDir)
+        tags.forEach(t => {
+          tv.copy(t.p).applyMatrix4(world.matrixWorld)
+          tn.copy(tv).normalize()
+          const facing = -tn.dot(camDir)
+          tv.project(cam)
+          /* in the box's own CSS pixels: W and H are screen pixels, which the desktop zoom (1.12) makes larger */
+          const x = (tv.x + 1) / 2 * box.clientWidth, y = (1 - tv.y) / 2 * box.clientHeight
+          t.el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + (y + t.dy).toFixed(1) + 'px)'
+          t.el.style.opacity = facing > 0.28 ? '1' : facing > 0.12 ? String(((facing - 0.12) / 0.16).toFixed(2)) : '0'
+        })
+      }
       let raf = 0, live = false, dragging = false, lastX = 0, lastY = 0, vel = 0, W = 1, H = 1, swing = 0
       const t0 = performance.now()
       const size = () => {
@@ -224,6 +253,7 @@ function EarthGlobe () {
         rings.forEach((r, i) => { const ph = ((tm / 2.4) + i * 0.19) % 1; const sc = 1 + ph * 3.4; r.scale.set(sc, sc, sc); r.material.opacity = (1 - ph) * 0.75 })
         arcs.forEach((a, i) => { const ph = ((tm * 0.13) + i * 0.14) % 1; a.dot.position.copy(a.pts[Math.round(ph * 72)]) })
         renderer.render(scene, cam)
+        placeTags()
       }
       const loop = now => { if (!live) return; frame(now); raf = requestAnimationFrame(loop) }
       size(); frame(performance.now()); box.classList.add('is-on')
@@ -252,6 +282,7 @@ function EarthGlobe () {
         cv.removeEventListener('pointerdown', down); cv.removeEventListener('pointermove', move)
         cv.removeEventListener('pointerup', up); cv.removeEventListener('pointercancel', up); cv.removeEventListener('pointerleave', up)
         renderer.dispose(); if (cv.parentNode) cv.parentNode.removeChild(cv)
+        tags.forEach(t => t.el.remove())
       }
     })()
     return () => { alive = false; dispose() }

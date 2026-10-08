@@ -55,6 +55,31 @@ const masks = (body.match(/url\((signs|fallback|icons)\//g) || []).length
 if (masks !== 4) die(`markup: expected 4 url(signs/...) masks, found ${masks}. The delivery changed; update this tool.`)
 body = body.replace(/url\((signs|fallback|icons)\//g, `url(${BASE}$1/`)
 
+/* ---- the loading screen's own script (8 Oct) ----
+   The delivery's index.html carries one inline script beside the bundle: the loading screen's globe, which also fills
+   the IAQ mark red with the real progress (it reads --lp, which the bundle writes on #overlay, and writes --fill on
+   .ov-logo). The markup above drops every script, so on the site the loader had no engine: a pale grey mark, nothing
+   moving, no progress, for as long as the models took. It is kept now, as assets/loader.js, and scenes/build3d.js
+   runs it just before the bundle. Its frames go through __b3d.raf like the bundle's, so its globe (96 000 points)
+   waits while the section is off screen instead of drawing behind the hero. */
+const inline = [...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g)].map(m => m[1].trim()).filter(Boolean)
+if (inline.length !== 1 || !/ov-world/.test(inline[0])) die(`expected the one inline loader script (the .ov-world globe), found ${inline.length}. The delivery changed; update this tool.`)
+let loader = inline[0]
+const rafs = (loader.match(/requestAnimationFrame\(/g) || []).length
+if (rafs !== 4) die(`loader script: expected 4 requestAnimationFrame calls, found ${rafs}. The delivery changed; update this tool.`)
+loader = loader.replace(/requestAnimationFrame\(/g, '__b3d.raf(')
+/* the fill tallies with the load: it eased at 8% a frame, so when the bundle reported 100% and lifted the screen the
+   mark stood about four fifths full. At 100% it now closes in a third of the way each frame, and the globe keeps
+   drawing through the overlay's fade (.35s) so the mark is seen to fill before it goes. */
+function lpatch (label, from, to) {
+  const n = loader.split(from).length - 1
+  if (n !== 1) die(`loader patch "${label}": expected 1 match, found ${n}. The delivery changed; update this tool.`)
+  loader = loader.replace(from, to)
+}
+lpatch('fill catch-up', 'shown += (want - shown) * 0.08', 'shown += (want - shown) * (want >= 1 ? 0.34 : 0.08)')
+lpatch('finish the fill', "if (done()) { var lose = gl.getExtension('WEBGL_lose_context'); if (lose) lose.loseContext(); return }",
+  "if (done()) { ov.style.setProperty('--lp', '1'); if (!frame.end) frame.end = ts; if (ts - frame.end > 450) { var lose = gl.getExtension('WEBGL_lose_context'); if (lose) lose.loseContext(); return } }")
+
 /* ---- the script ---- */
 let js = fs.readFileSync(path.join(SRC, 'assets', jsName), 'utf8')
 const ID = '[A-Za-z_$][\\w$]*'
@@ -125,6 +150,7 @@ for (const f of fs.readdirSync(SRC)) if (!SKIP.has(f)) fs.cpSync(path.join(SRC, 
 fs.rmSync(path.join(OUT, 'assets', jsName)); fs.rmSync(path.join(OUT, 'assets', cssName))
 fs.writeFileSync(path.join(OUT, 'assets', 'app.js'), js)
 fs.writeFileSync(path.join(OUT, 'assets', 'app.css'), scoped)
+fs.writeFileSync(path.join(OUT, 'assets', 'loader.js'), loader + '\n')
 fs.writeFileSync(MARKUP, body)
 const mb = p => { const st = fs.statSync(p); return st.isDirectory() ? fs.readdirSync(p).reduce((a, f) => a + mb(path.join(p, f)), 0) : st.size }
 console.log(`embed-3d: ${path.basename(SRC)} -> public/build3d (${(mb(OUT) / 1048576).toFixed(1)} MB), script ${jsName}, styles ${cssName}, markup src/scenes/build3d-markup.html`)

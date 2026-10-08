@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import ClosingBand from '../components/ClosingBand.jsx'
 import PageHead from '../components/PageHead.jsx'
+import OfficeMap from '../components/OfficeMap.jsx'
 import { cmsProjects, live } from '../lib/cms.js'
 const PROJECTS = live(cmsProjects)
 import '../styles/pages.css'
@@ -25,113 +26,9 @@ import '../styles/company.css'
    cannot be published.
    ============================================================================ */
 
-const OFFICES = [
-  { lat: 3.08, lon: 101.53, label: 'Shah Alam' },
-  { lat: 5.18, lon: 100.49, label: 'Penang' },
-  { lat: 1.35, lon: 103.82, label: 'Singapore' },
-  { lat: 51.05, lon: 13.74, label: 'Dresden' },
-  { lat: 21.0, lon: 78.0, label: 'India' },
-  { lat: 63.8, lon: 20.3, label: 'Sweden' },
-  { lat: 33.4, lon: -112.1, label: 'USA' },
-  { lat: 53.35, lon: -6.26, label: 'Ireland' },
-]
-const DELIVERED = [
-  { lat: 31.2, lon: 121.5, label: 'China' },
-  { lat: 52.2, lon: 21.0, label: 'Poland' },
-  { lat: 46.6, lon: 2.4, label: 'France' },
-  { lat: 33.6, lon: -7.6, label: 'Morocco' },
-]
-
-const C = 160, R = 116, TILT = 0.35, RAD = Math.PI / 180
-
-/* orthographic projection with a fixed x-tilt. z > 0 is the near face. */
-function project(lat, lon, rot) {
-  const la = lat * RAD, lo = (lon + rot) * RAD
-  const x = Math.cos(la) * Math.sin(lo)
-  const y0 = Math.sin(la)
-  const z0 = Math.cos(la) * Math.cos(lo)
-  return {
-    x: C + x * R,
-    y: C - (y0 * Math.cos(TILT) - z0 * Math.sin(TILT)) * R,
-    z: y0 * Math.sin(TILT) + z0 * Math.cos(TILT),
-  }
-}
-
-/* sample a graticule line and cut it wherever it passes round the back */
-function segments(points, rot) {
-  const out = []
-  let run = []
-  points.forEach(([la, lo]) => {
-    const p = project(la, lo, rot)
-    if (p.z > 0) run.push(`${p.x.toFixed(1)},${p.y.toFixed(1)}`)
-    else { if (run.length > 1) out.push(run.join(' ')); run = [] }
-  })
-  if (run.length > 1) out.push(run.join(' '))
-  return out
-}
-
-function Globe() {
-  const [rot, setRot] = useState(0)
-
-  useEffect(() => {
-    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduce) return undefined
-    let raf = 0, last = 0
-    const tick = t => {
-      if (t - last > 40) { last = t; setRot(r => (r + 0.4) % 360) }
-      raf = requestAnimationFrame(tick)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [])
-
-  const grat = useMemo(() => {
-    const paths = []
-    for (let lo = 0; lo < 360; lo += 30) {
-      const pts = []
-      for (let la = -90; la <= 90; la += 5) pts.push([la, lo])
-      segments(pts, rot).forEach(d => paths.push(d))
-    }
-    for (let la = -60; la <= 60; la += 30) {
-      const pts = []
-      for (let lo = 0; lo <= 360; lo += 5) pts.push([la, lo])
-      segments(pts, rot).forEach(d => paths.push(d))
-    }
-    return paths
-  }, [rot])
-
-  const pins = useMemo(() => {
-    const mark = (arr, kind) => arr.map(o => ({ ...project(o.lat, o.lon, rot), label: o.label, kind }))
-    return [...mark(DELIVERED, 'dl'), ...mark(OFFICES, 'of')].filter(p => p.z > 0.03)
-  }, [rot])
-
-  return (
-    <div className="cp-globe">
-      <svg viewBox="0 0 320 320" role="img"
-        aria-label="Globe marking the IAQ offices in Shah Alam, Penang, Singapore, Dresden, India, Sweden, the USA and Ireland, and the countries IAQ has delivered in: China, Poland, France and Morocco.">
-        <circle cx={C} cy={C} r={R} fill="#0B1526" stroke="rgba(255,255,255,.16)" strokeWidth="1" />
-        <g fill="none" stroke="rgba(140,170,225,.24)" strokeWidth=".7">
-          {grat.map((d, i) => <polyline key={i} points={d} />)}
-        </g>
-        {pins.map((p, i) => (
-          <g key={`${p.kind}-${p.label}-${i}`}>
-            <circle cx={p.x} cy={p.y} r={p.kind === 'of' ? 3.4 : 2.6}
-              fill={p.kind === 'of' ? '#FF3B44' : '#7C8CAA'}
-              opacity={p.kind === 'of' ? 1 : 0.8} />
-            {p.kind === 'of' && (
-              <text x={p.x + 7} y={p.y + 3.4} fill="#D7E2F5" fontSize="8.5"
-                fontFamily="JetBrains Mono, monospace">{p.label}</text>
-            )}
-          </g>
-        ))}
-      </svg>
-      <div className="cp-globe-legend">
-        <span><i className="of" />Offices</span>
-        <span><i className="dl" />Delivered in</span>
-      </div>
-    </div>
-  )
-}
+/* 8 Oct (client: pins with the country's flag and a callout on the map itself, never a list beside it): the rotating
+   SVG globe, its legend, the address cards and the two country lists are gone. The offices and the delivered-in
+   countries are data/offices.js, drawn by components/OfficeMap.jsx; the addresses are on the Contact page. */
 
 /* the 18 publishable projects, grouped the way the registry groups them */
 const REGIONS = [
@@ -157,26 +54,22 @@ export default function GlobalPresence() {
       <PageHead crumbs={[{ label: 'About', to: '/about' }]}
         eyebrow="Where we are"
         title={<>Rooted in Malaysia, <em>building across borders.</em></>}
-        lede="Founded in Malaysia in 1995. Today a total facility solutions provider with offices in six countries, measured in the programmes those offices run and the projects handed over."
+        lede="Founded in Malaysia in 1995. Today a total facility solutions provider with offices in seven countries, measured in the programmes those offices run and the projects handed over."
       />
 
-      {/* ── Globe ───────────────────────────────────────────────────────── */}
-      <section className="cp-globe-band">
-        <div className="pg-in cp-globe-wrap">
-          <Globe />
-          <div className="cp-globe-copy">
+      {/* ── The map ─────────────────────────────────────────────────────── */}
+      {/* 8 Oct: the copy above, the map the full width of the band under it, every office pinned and named on it */}
+      <section className="cp-globe-band cp-map-band">
+        <div className="pg-in">
+          <div className="cp-globe-copy cp-map-copy">
             <span className="eyebrow">The footprint</span>
-            <h2>The pin map, <em>and the work behind it.</em></h2>
+            <h2>Seven countries, <em>pinned where they are.</em></h2>
             <p>
-              Red marks an office: Shah Alam, Penang, Singapore, Dresden, India, Sweden, the USA and,
-              from September 2026, Ireland: seven countries. Pale marks a country IAQ has built in: China,
-              Poland, France and Morocco.
-            </p>
-            <p>
-              Each office supports clients locally and draws on the group&rsquo;s full regional engineering
-              capability.
+              Each flag marks an IAQ office, and each office supports clients locally while drawing on the group&rsquo;s full
+              regional engineering capability. The grey marks are countries IAQ has built in.
             </p>
           </div>
+          <OfficeMap className="cp-map" />
         </div>
       </section>
 
@@ -186,32 +79,7 @@ export default function GlobalPresence() {
           <span className="eyebrow">Offices</span>
           <h2>The addresses <em>that answer.</em></h2>
 
-          <div className="cp-offices">
-            <div className="cp-office">
-              <span className="k">Headquarters</span>
-              <h3>Shah Alam, Malaysia</h3>
-              <p>12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor.</p>
-            </div>
-            <div className="cp-office">
-              <span className="k">Branch · 2025</span>
-              <h3>Penang, Malaysia</h3>
-              <p>9, Lorong Valdor Jaya 2, Kawasan Perindustrian Valdor, 14200 Jawi, Penang.</p>
-            </div>
-            <div className="cp-office">
-              <span className="k">Europe</span>
-              <h3>Dresden, Germany</h3>
-              <p>IAQ Engineering (DE) GmbH, 8.OG, Budapester Strasse 5, 01069 Dresden.</p>
-            </div>
-          </div>
-
-          <div className="cp-chips">
-            <span className="lbl">Offices</span>
-            <em>Singapore</em><em>India</em><em>Sweden</em><em>USA</em><em>Ireland</em>
-          </div>
-          <div className="cp-chips">
-            <span className="lbl">Delivered in</span>
-            <em>China</em><em>Poland</em><em>France</em><em>Morocco</em>
-          </div>
+          <p className="pg-lede">Every office&rsquo;s address, phone and hours are on the <Link to="/contact#offices">Contact page</Link>.</p>
 
           <div className="pg-slot">
             <div className="pg-slot-in">

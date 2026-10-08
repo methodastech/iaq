@@ -18,9 +18,13 @@ import MARKUP from './build3d-markup.html?raw'
 
 const APP = '/build3d/assets/app.js'
 const CSS = '/build3d/assets/app.css'
+/* 8 Oct: the loading screen's globe and its red fill, the delivery's own inline script (tools/embed-3d.mjs) */
+const LOADER = '/build3d/assets/loader.js'
 
 let stage = null, runway = null, host = null, io = null, mo = null
-let started = false, visible = false, pending = null, asked = false
+/* 8 Oct: `pending` holds every frame waiting for the section, not one: the loading screen's globe and the app's render
+   loop both wait there now, and with a single slot the second to arrive pushed the first out for good */
+let started = false, visible = false, pending = new Set(), asked = false
 
 const inRoom = () => document.body.classList.contains('room')
 const inUse = () => !!host && (visible || inRoom())
@@ -41,14 +45,14 @@ const api = {
     if (window.__lenis) window.__lenis.scrollTo(to, { immediate: behavior !== 'smooth', force: true })
     else window.scrollTo({ top: to, behavior })
   },
-  raf (fn) { if (inUse()) requestAnimationFrame(fn); else pending = fn },
+  raf (fn) { if (inUse()) requestAnimationFrame(fn); else pending.add(fn) },
   onKey (fn, opts) { addEventListener('keydown', e => { if (inUse() && !typing(e.target)) fn(e) }, opts) },
 }
 
 function wake () {
-  if (!pending || !inUse()) return
-  const fn = pending; pending = null
-  requestAnimationFrame(fn)
+  if (!pending.size || !inUse()) return
+  const fns = [...pending]; pending.clear()
+  fns.forEach(fn => requestAnimationFrame(fn))
 }
 
 /* the nav slides away while the stage fills the window, and the page holds still during the walkthrough */
@@ -68,6 +72,9 @@ function build () {
   stage = document.createElement('div')
   stage.className = 'b3d-stage'
   stage.innerHTML = MARKUP
+  /* 8 Oct ("i need text 3d rendering so the user know that section is 3d"): a label under the IAQ mark on the loading
+     screen; build3d.css shows it only while the 3D loads */
+  stage.querySelector('#overlay')?.insertAdjacentHTML('beforeend', '<span class="b3d-ld-label" aria-hidden="true">3D rendering</span>')
   runway = stage.querySelector('#scroll-runway')
   runway.remove()
   for (const t of ['pointerdown', 'keydown']) stage.addEventListener(t, () => { asked = true }, { capture: true, passive: true })
@@ -105,6 +112,11 @@ export function mount (el) {
 export function load () {
   if (started || !host) return
   started = true
+  /* the loading screen first: a plain script, it finds #overlay in the markup already mounted and draws until the app
+     hides the overlay (or offers Enter) */
+  const l = document.createElement('script')
+  l.src = LOADER; l.async = false
+  document.head.append(l)
   const s = document.createElement('script')
   s.type = 'module'; s.src = APP
   document.head.append(s)

@@ -44,6 +44,9 @@ const MENUS = [
   },
   {
     hub: 'services-hub', label: 'Services',
+    /* 7 Oct (on the live wing: "this still need services overview button"; a row across the top "looks unclean"; asked
+       where, the answer was a bar along the bottom): the main Services page as one slim bar under both columns. */
+    overview: { label: 'Services overview', sub: 'All three business units and the six services, on one page' },
     /* 2 Sep (Bazil): ONE main services page and a page per service. The wing therefore
        lists the six services of the delivery cycle in order, the same six the homepage ring
        and the hub diagram show, and the hub itself sits in the lead panel. The three
@@ -464,6 +467,14 @@ export default function Nav() {
                       </div>
                     </div>
                   )})}
+                  {/* 7 Oct: the hub as a slim bar under both columns; pointing at it shows the hub in the lead panel */}
+                  {m.overview && (
+                    <Link className="nm-ovbar" to={byId(m.hub).route} onMouseEnter={() => setPeek(null)} onFocus={() => setPeek(null)} onClick={() => setOpenMenu(null)}>
+                      <b>{m.overview.label}</b>
+                      <span>{m.overview.sub}</span>
+                      <i aria-hidden="true">&rarr;</i>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

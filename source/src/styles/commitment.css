@@ -205,3 +205,20 @@
 .cc-tile{ grid-template-columns:auto minmax(0,1fr); }
 .cc-tile-mk{ grid-column:1; grid-row:1 / span 2; width:88px; height:88px; margin:0; }
 .cc-tile h3, .cc-tile p{ grid-column:2; }
+
+/* 8 Oct (client: each office pinned with its country's flag and named on the map itself): the globe's callouts, the same
+   as the Global Presence map's and the home globe's. Placed on their office's point by the scene every frame (the
+   transform), to its right (.r) or its left (.l), faded out round the back. */
+.cc-tag{ position:absolute; left:0; top:0; display:flex; align-items:center; gap:8px; padding:5px 10px 5px 6px; background:#fff;
+  box-shadow:0 8px 20px -12px rgba(12,18,32,.5); white-space:nowrap; pointer-events:none; transition:opacity .25s; z-index:2; }
+.cc-tag::before{ content:""; position:absolute; top:50%; width:10px; height:1px; background:rgba(12,18,32,.4); }
+.cc-tag.r{ margin-left:14px; translate:0 -50%; }
+.cc-tag.r::before{ right:100%; }
+.cc-tag.l{ margin-left:-14px; translate:-100% -50%; }
+.cc-tag.l::before{ left:100%; }
+.cc-tag.hq{ box-shadow:inset 3px 0 0 #EC2027, 0 8px 20px -12px rgba(12,18,32,.5); padding-left:10px; }
+.cc-tag-flag{ display:block; flex:none; width:22px; height:15px; box-shadow:0 0 0 1px rgba(12,18,32,.12); }
+.cc-tag span{ display:flex; flex-direction:column; gap:1px; }
+.cc-tag b{ font:600 12px/1.15 "Switzer","Instrument Sans",system-ui,sans-serif; color:#0C1220; }
+.cc-tag small{ font:500 10.5px/1.2 "Instrument Sans",system-ui,sans-serif; color:#5A6478; }
+@media(max-width:640px){ .cc-tag small{ display:none; } }
