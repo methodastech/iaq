@@ -115,6 +115,8 @@ const CodexSlidesView = import.meta.env.MODE !== 'launch' ? lazy(() => import('.
 const CodexSitePreview = import.meta.env.MODE !== 'launch' ? lazy(() => import('./pages/CodexSitePreview.jsx')) : () => null
 /* 22 Sep: the booth screen for SEMICON Europa 2026, full screen and outside the portal shell, gated by the member session */
 const BoothScreen = import.meta.env.MODE !== 'launch' ? lazy(() => import('./pages/BoothScreen.jsx')) : () => null
+/* 8 Oct: the looping digital screen of the units, the chart, the fab and the facility map (review builds only) */
+const BoothLoop = import.meta.env.MODE !== 'launch' ? lazy(() => import('./pages/BoothLoop.jsx')) : () => null
 const Semicon = import.meta.env.MODE !== 'launch' ? lazy(() => import('./pages/Semicon.jsx')) : () => null
 const BoothArt = import.meta.env.MODE !== 'launch' ? lazy(() => import('./pages/BoothArt.jsx')) : () => null
 const NotFound = lazy(() => import('./pages/NotFound.jsx'))
@@ -262,10 +264,14 @@ root.render(
           {/* 15 Sep: owed content only; out of the launch build (lib/launch.js) */}
           {!LAUNCH && <Route path="/exhibition" element={<Exhibition />} />}
           <Route path="/shortlist" element={<Shortlist />} />
+          {/* 9 Oct: the general lead form, at a plain address (was /lp/project, which now sends here) */}
+          <Route path="/enquiry" element={<Campaign slug="project" />} />
+          <Route path="/lp/project" element={<Navigate to="/enquiry" replace />} />
           <Route path="/lp/:campaign" element={<Campaign />} />
           {!LAUNCH && <Route path="/portal/*" element={<Portal />} />}
           {import.meta.env.MODE !== 'launch' && <Route path="/semicon" element={<Semicon />} />}
           {import.meta.env.MODE !== 'launch' && <Route path="/booth/screen" element={<BoothScreen />} />}
+          {import.meta.env.MODE !== 'launch' && <Route path="/booth/loop" element={<BoothLoop />} />}
           {import.meta.env.MODE !== 'launch' && <Route path="/booth/art/:id" element={<BoothArt />} />}
           {!LAUNCH && <Route path="/codex" element={<Codex />} />}
           {!LAUNCH && <Route path="/codex/slides" element={<CodexSlidesView />} />}

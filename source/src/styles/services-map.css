@@ -1452,3 +1452,20 @@ html.nav-under .sm-map-dark.sm-map-full{margin-top:calc(-1 * var(--navh,78px));p
 .rx-compact .rx-w .rx-n .rx-w-line{display:block;margin-top:10px;font:600 13px/1.35 "Instrument Sans",sans-serif;font-style:normal;color:#0C1220}
 .sm-map-dark .rx-compact .rx-w .rx-n .rx-w-line{color:rgba(255,255,255,.88)}
 .sm-map-dark .rx-compact .rx-w .rx-n.me:not(.n-w-s) .rx-w-line{color:#0C1220}
+
+/* 9 Oct ("can you make like scroll down indicator"): the facility map fills the first screen, so a cue at its foot says
+   there is more below. A label over a thin track with a red bead running down it; it fades as soon as the page scrolls. */
+.sm-cue{position:absolute;left:50%;bottom:clamp(16px,3vh,30px);z-index:3;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:6px 10px;border:0;background:none;color:rgba(230,234,240,.82);font:600 11.5px/1 "Switzer","Instrument Sans",system-ui,sans-serif;
+  letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:opacity .4s,color .25s}
+.sm-cue:hover{color:#fff}
+.sm-cue i{position:relative;display:block;width:2px;height:38px;background:rgba(230,234,240,.22);overflow:hidden}
+.sm-cue i::after{content:"";position:absolute;left:0;top:-12px;width:2px;height:12px;background:#EC2027;animation:smCue 1.8s cubic-bezier(.6,0,.3,1) infinite}
+@keyframes smCue{0%{transform:translateY(0)}100%{transform:translateY(52px)}}
+.sm-cue:focus-visible{outline:2px solid #EC2027;outline-offset:4px}
+html.sm-scrolled .sm-cue{opacity:0;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.sm-cue i::after{animation:none;top:13px}}
+@media(max-width:860px){.sm-cue{display:none}}
+/* the cue sits at the foot of the left column, in line with the title, clear of the view tools at the centre */
+.sm-cue{left:max(var(--gut,24px),calc((100vw / var(--zoomf,1) - 1440px) / 2 + var(--gut,24px)));transform:none;align-items:flex-start;padding-left:0}
+.sm-cue i{margin-left:1px}

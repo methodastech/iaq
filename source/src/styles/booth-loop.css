@@ -1,0 +1,26 @@
+/* The booth loop (pages/BoothLoop.jsx, 8 Oct 2026). The stage, the tab bar and the meeting card are the booth screen's
+   (booth-screen.css, loaded by BoothScreen.jsx). The root here is its own, not .bs: the booth screen resets every button
+   under .bs, which would strip the chart's chips and the map's tools. Only the tab bar's, the meeting card's and the
+   fab section's buttons are reset, at zero specificity, so their own rules still win. */
+:where(.bl .bs-ch) input { font: inherit; color: inherit; }
+.bl { position: fixed; inset: 0; z-index: 2147483600; background: #05080F; }
+:where(.bl .bs-top) button, :where(.bl .bs-bk) button, :where(.bl .bs-ch) button { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: left; -webkit-tap-highlight-color: transparent; }
+.bl-home { display: flex; align-items: center; }
+
+/* a section: the stage under the tab bar */
+.bl-ch { position: absolute; inset: 112px 0 0; overflow: hidden; animation: blIn .6s cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes blIn { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: none } }
+@media (prefers-reduced-motion: reduce) { .bl-ch { animation: none } }
+
+/* Fit: the component at its design width, centred and scaled to the section */
+.bl-fit { position: absolute; inset: 0; }
+.bl-fit-in { position: absolute; left: 50%; top: 50%; transform-origin: 50% 50%; }
+
+/* the slide sits on the stage's own pale ground; the chart on white like the Services page */
+.bl-units { background: #F7F9FC; }
+.bl-chart { background: #fff; }
+.bl-chart .bl-fit-in { padding: 8px 0; }
+
+/* the facility map fills the section edge to edge, as on the Services page */
+.bl-map { background: #0B1220; }
+.bl-map .bl-fit-in > section { margin: 0; }

@@ -90,7 +90,9 @@ const ALL_SELS = [
   ...WORK.flatMap(w => w.systems.map((_, i) => ['y', w.id + ':' + i])),
 ]
 
-export function MapBand() {
+/* 8 Oct: `autoTour` starts the map touring by itself (the booth loop, pages/BoothLoop.jsx); on the site it waits for
+   the play button */
+export function MapBand({ autoTour = false, scrollCue = !autoTour } = {}) {
   /* 24 Sep, late (Bazil: "this should be the banner", "the whole banner should be the grey background", "I want my 3D, not
      his", "remove this and name what this interface is about", "maybe put this info here"): the banner is IAQ's own Revit
      model, keyed onto the dark ground, beside the map; the head is the interface's name; the reading sits under the map.
@@ -98,7 +100,19 @@ export function MapBand() {
   const [sel, setSel] = useState(null)
   const [ext, setExt] = useState(null)
   const panelRef = useRef(null), measureRef = useRef(null)
-  const [tour, setTour] = useState(false)   /* the map tours itself only while this is on (the play button) */
+  const [tour, setTour] = useState(autoTour)   /* the map tours itself only while this is on (the play button) */
+  /* 9 Oct: the scroll cue fades once the page has moved */
+  useEffect(() => {
+    if (!scrollCue) return
+    const on = () => document.documentElement.classList.toggle('sm-scrolled', window.scrollY > 60)
+    /* and it stands in line with the title, whatever the width */
+    const align = () => { const h = headRef.current, c = h && h.closest('section')?.querySelector('.sm-cue'); if (!c) return
+      const zf = parseFloat(getComputedStyle(document.documentElement).zoom) || 1
+      c.style.left = Math.round((h.getBoundingClientRect().left - h.closest('section').getBoundingClientRect().left) / zf) + 'px' }
+    on(); align(); const t = setTimeout(align, 800)
+    window.addEventListener('scroll', on, { passive: true }); window.addEventListener('resize', align)
+    return () => { clearTimeout(t); window.removeEventListener('scroll', on); window.removeEventListener('resize', align); document.documentElement.classList.remove('sm-scrolled') }
+  }, [scrollCue])
   const stageRef = useRef(null), headRef = useRef(null), toolsRef = useRef(null), fabApi = useRef(null)
   /* 26 Sep (Bazil: "push the 3D to the bottom a bit", "don't cut the building", "make sure all this is placed perfectly"):
      the share of the canvas the model is framed into is measured from the page: as wide as the left column; the vertical
@@ -189,6 +203,18 @@ export function MapBand() {
           </div>
         </div>
       </div>
+      {/* 9 Oct ("can you make like scroll down indicator"): a cue at the foot of the first screen; it takes the visitor to
+          the next section and fades once the page has moved (services-map.css .sm-cue). Off in the booth loop. */}
+      {scrollCue && (
+        <button type="button" className="sm-cue" aria-label="Scroll down to the next section"
+          onClick={e => { let nx = e.currentTarget.closest('section')?.nextElementSibling
+            while (nx && (nx.tagName !== 'SECTION' || getComputedStyle(nx).position === 'sticky')) nx = nx.nextElementSibling   /* past the sticky section bar */
+            if (!nx) return
+            const off = -((document.querySelector('.nav')?.offsetHeight || 0) + (document.querySelector('.ssb')?.offsetHeight || 0))
+            window.__lenis ? window.__lenis.scrollTo(nx, { offset: off }) : nx.scrollIntoView({ behavior: 'smooth' }) }}>
+          <span>Scroll</span><i aria-hidden="true" />
+        </button>
+      )}
     </section>
   )
 }

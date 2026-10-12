@@ -81,8 +81,11 @@ function LpSelect ({ id, name, options }) {
 const NEEDS = ['A new facility, design and build', 'An upgrade or expansion of a facility', 'Process utilities or tool hook-up', 'Maintenance or energy management', 'Not sure yet']
 const TIMINGS = ['Within 3 months', '3 to 12 months', 'More than a year', 'Just exploring']
 
-export default function Campaign() {
-  const { campaign } = useParams()
+/* 9 Oct ("why not like /enquiry"): the general lead form lives at /enquiry (main.jsx passes slug="project"); /lp/project
+   redirects there (main.jsx) */
+export default function Campaign({ slug }) {
+  const { campaign: param } = useParams()
+  const campaign = slug || param
   const c = bySlug(campaign)
 
   const [state, setState] = useState({ status: 'idle' })

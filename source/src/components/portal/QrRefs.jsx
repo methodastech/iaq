@@ -17,7 +17,7 @@ const LIVE = 'https://iaqtechnology.com.my'
    Drop `soon` from an entry when its page is live. */
 const CODES = [
   { id: 'website', label: 'Website', note: 'The home page', path: '/' },
-  { id: 'lead', label: 'Start a project', note: 'The lead form page, for ads, print and the booth', path: '/lp/project', soon: true },
+  { id: 'lead', label: 'Start a project', note: 'The lead form page, for ads, print and the booth', path: '/enquiry', soon: true },
   { id: 'contact', label: 'Contact', note: 'Offices, phone and the enquiry form', path: '/contact', soon: true },
   { id: 'linkedin', label: 'LinkedIn', note: 'IAQ Group of Companies', url: 'https://www.linkedin.com/company/iaq-group-of-companies/' },
 ]

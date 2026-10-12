@@ -66,7 +66,17 @@ export function trail () {
    it sends; a field that is not declared there is dropped. Only the published site can receive: on this computer
    (the dev server, a local preview) nothing is sent and the caller says so. */
 export const LOCAL = typeof location !== 'undefined' && /^(localhost|127\.|192\.168\.|10\.|\[::1\])/.test(location.hostname)
+/* 10 Oct ("can i testing on localhost first?"): the briefs go to /api/enquiries wherever it is served: on this computer
+   the dev server answers it (tools/vite-enquiries-api.mjs) and the portal's Enquiries tracker reads it back; on the live
+   host, VITE_ENQUIRIES_API names the host's own endpoint. Without either, the review site keeps Netlify Forms. */
+export const ENQUIRIES_API = import.meta.env?.VITE_ENQUIRIES_API || (LOCAL ? '/api/enquiries' : '')
 export async function toNetlify (form, fields) {
+  if (ENQUIRIES_API) {
+    try {
+      const res = await fetch(ENQUIRIES_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ form, ...fields }) })
+      return res.ok ? { delivered: true } : { delivered: false, reason: 'http-' + res.status }
+    } catch { return { delivered: false, reason: 'network' } }
+  }
   if (LOCAL) return { delivered: false, reason: 'local' }
   const body = new URLSearchParams({ 'form-name': form })
   for (const [k, v] of Object.entries(fields)) if (v !== undefined && v !== null && v !== '') body.append(k, String(v))

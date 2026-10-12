@@ -2,11 +2,13 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 /* 25 Sep: the Client files tab, served from outside the repo on dev and preview only (never part of a build) */
 import clientFiles from './tools/vite-client-files.mjs'
+/* 10 Oct: /api/enquiries on this computer, the enquiry form's briefs kept in .data/enquiries.json (never in a build) */
+import enquiriesApi from './tools/vite-enquiries-api.mjs'
 
 export default defineConfig({
   /* 10 Sep: absolute base, required for nested paths under BrowserRouter (./assets from /services/design would resolve wrong) */
   base: '/',
-  plugins: [react(), clientFiles()],
+  plugins: [react(), clientFiles(), enquiriesApi()],
   /* Take the port from the environment. Vite does NOT read PORT on its own, so with the hardcoded
      --port flag removed from launch.json this is what lets the harness assign a free port when
      another session already holds the usual one. Falls back to Vite's own default when unset. */

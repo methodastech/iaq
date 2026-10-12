@@ -95,6 +95,9 @@ export default function CapEpc() {
       cycle={{ map: [0, 1, 2, 3], dim: [4, 5] }}
       cycleLede="The four stages EPC carries, in the order they run on site."
 
+      /* 9 Oct ("remove this section", on The project cycle, stage by stage): the cycle section is off this page; the stages
+         stay here for the day it returns */
+      hideCycle
       steps={[
         /* stage Q-EPC-A 1 and DV3 A1.3; concept to plans, specifications and drawings, CSA to MEP LIVE-HOME; feasibility, master planning, detail design disciplines, BIM, permitting LIVE-EPCC */
         { k: 'Design', t: 'Engineering design and consultation', d: 'IAQ turns the client’s concept into detailed plans, specifications and drawings. Work starts with a feasibility study and master planning. Detail design covers architecture, civil and structural, MEP, HVAC and process. The design is modelled in BIM. Permitting sits in the same stage.', covers: ['Feasibility study', 'Detail design and BIM'] },

@@ -263,3 +263,35 @@
 
 /* 1 Oct: the History editor's picture preview, under the picture's address */
 .cms-hx-pv{grid-column:1/-1;display:block;width:100%;max-width:420px;height:auto;max-height:240px;object-fit:contain;background:#F3F5F9}
+
+/* 10 Oct: the Enquiries tracker. A count per status that filters the list, a status tag at the head of each row, the
+   brief laid out as label and value when opened. Square corners, the portal's own greys and the site red. */
+.cms-enq-sum{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.cms-enq-sum button{display:flex;align-items:baseline;gap:8px;padding:10px 14px;border:1px solid #DCE2EC;background:#fff;cursor:pointer;font:inherit;color:#0C1220}
+.cms-enq-sum b{font:600 20px/1 "Switzer",sans-serif}
+.cms-enq-sum span{font-size:13px;color:#5A6478}
+.cms-enq-sum button.on{border-color:#0C1220;background:#0C1220;color:#fff}
+.cms-enq-sum button.on span{color:#C9D1DE}
+.cms-enq-q{flex:1;min-width:220px;padding:9px 12px;border:1px solid #DCE2EC;font:inherit;background:#fff}
+.cms-enq-st{flex:none;padding:3px 8px;font:600 11px/1.3 "Switzer",sans-serif;letter-spacing:.02em;background:#EEF1F6;color:#33405A}
+.cms-enq-st.s-new{background:#FDECEA;color:#B4161B}
+.cms-enq-st.s-contacted{background:#E8F1FB;color:#0B5A94}
+.cms-enq-st.s-quoted{background:#FFF4DE;color:#8A5A00}
+.cms-enq-st.s-won{background:#E5F5EA;color:#17703A}
+.cms-enq-st.s-lost{background:#EEF1F6;color:#6B7588}
+.cms-enq-body{padding:4px 18px 18px}
+.cms-enq-body dl{display:grid;grid-template-columns:140px minmax(0,1fr);gap:8px 16px;margin:6px 0 14px;font-size:14px}
+.cms-enq-body dt{color:#6B7588}
+.cms-enq-body dd{margin:0;color:#0C1220}
+.cms-enq-body dd a{color:#0772AE}
+.cms-enq-msg{white-space:pre-wrap}
+.cms-enq-acts{display:flex;gap:10px;align-items:center;margin-top:12px}
+.cms-enq-acts a.cms-reset{text-decoration:none;display:inline-flex;align-items:center}
+.cms-enq-empty{padding:22px 0;color:#6B7588}
+.cms-enq-key{display:flex;gap:10px;align-items:flex-end;margin-top:12px;flex-wrap:wrap}
+.cms-enq-key label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:#5A6478}
+.cms-enq-key input{padding:9px 12px;border:1px solid #DCE2EC;font:inherit;min-width:280px;background:#fff}
+.cms-enq-key button,.cms-enq-link{padding:10px 16px;border:0;background:#0C1220;color:#fff;font:600 13px/1 "Switzer",sans-serif;cursor:pointer}
+.cms-enq-link{margin-left:8px;padding:6px 10px}
+.cms-enq-err{display:block;margin-top:6px;color:#B4161B}
+@media(max-width:640px){.cms-enq-body dl{grid-template-columns:1fr}}

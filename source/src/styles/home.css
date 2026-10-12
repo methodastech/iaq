@@ -1470,3 +1470,11 @@ html.motion .hero .hl:nth-child(3)>span{animation-delay:.22s}
 /* 26 Sep (Bazil: "the 100% looks bad at loading screen", "or better, the world looks like it's being filled"): the count
    is carried by the globe filling and the logo filling; the number is off the screen (the loader is a progressbar) */
 #loader .ld-row{display:none}
+
+/* 9 Oct ("this particle remove"): the laminar field over the hero is off again, for good; hidden, the scene in
+   scenes/home.js draws nothing (it checks this before it starts) */
+#heroCanvas{display:none!important}
+
+/* 9 Oct (client: "remove that", then "keep the position but remove the service"): the market row at the foot of the hero
+   is hidden, not removed, so the hero keeps its layout; hidden it cannot be clicked or tabbed to */
+.hero .hero-mkts{visibility:hidden!important;pointer-events:none!important}

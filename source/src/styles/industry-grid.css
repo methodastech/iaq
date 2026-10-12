@@ -640,3 +640,13 @@
 /* 26 Sep (Bazil: "increase icon size"): the market mark on each tile, a size and a half up, the stroke held */
 .ig-card .ig-ic, .ig-in .ig-ic { width: 40px; height: 40px; }
 @media (max-width: 700px) { .ig-card .ig-ic, .ig-in .ig-ic { width: 32px; height: 32px; } }
+
+/* 9 Oct (client: "sharpen this video", "this one looks blurry"): while a panel's clip plays, the scrim keeps only its foot
+   (behind the line of copy) and the top is clear, and the clip is no longer enlarged 6% on hover (that magnified its
+   softness): the footage reads at its own sharpness, not through a grey veil */
+.ig-card.is-vready:hover .ig-scrim, .ig-card.is-vready:focus-within .ig-scrim {
+  background: linear-gradient(180deg, rgba(8,13,24,.6) 0%, rgba(8,13,24,.32) 12%, rgba(8,13,24,0) 24%, rgba(8,13,24,0) 62%, rgba(8,13,24,.62) 100%); }
+@media (hover: hover) and (pointer: fine) {
+  .ig-card.is-vready:hover .ig-vid, .ig-card.is-vready:focus-within .ig-vid { transform: none; }
+}
+.ig-card .ig-vid { filter: contrast(1.06) saturate(1.06); }

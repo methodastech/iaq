@@ -103,7 +103,7 @@ export default function UnitPage(props) {
   const {
     id, no, of = 3, name, full, title, lede, image, art, band, pull,
     facts = [], what = [], whatParts = null, hard, pains = [], painsHead, services, servicesHead, servicesLede, intro, bim, models, modelsHead, compare, bandRep,
-    steps = [], items = [], why = [], cycleHead, cycleLede,
+    steps = [], items = [], why = [], cycleHead, cycleLede, hideCycle = false,
     filter, proofNote, proofLink, cta, rep, cycle, works = true, scope, introEnd, servicesFlow = false, modelsJoin = 'or',
   } = props
 
@@ -402,7 +402,8 @@ export default function UnitPage(props) {
             onto the stages on 17 Sep: "merge this information with lifecycle and remove this
             section"). The card that repeated the row's title and sentence is gone. The observer
             below still picks the row nearest the viewport centre; clicking a row's head picks it too. */}
-        {steps.length > 0 && (
+        {/* 9 Oct: `hideCycle` takes the section off a page (EPC, client: "remove this section") */}
+        {steps.length > 0 && !hideCycle && (
           <section className="un-sec un-cycle" aria-labelledby="un-seq-h">
             <div className="pg-in">
               <div className="un-cycle-head">

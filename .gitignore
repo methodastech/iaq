@@ -8,3 +8,6 @@ site-netlify/
 .DS_Store
 Thumbs.db
 *.log
+
+# 10 Oct: briefs from the enquiry form saved on this computer by the dev server
+source/.data/

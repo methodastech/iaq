@@ -473,7 +473,11 @@ window.__revealOnPlay=function(iframe,wrap){
     });
     hero.appendChild(bar);
     /* bottom left, just over the market rail and in line with the copy; if that would touch the button, it sits beside it */
-    var place=function(){ var mk=hero.querySelector('.hero-mkts'), cta=hero.querySelector('.hero-ctas'), inner=hero.querySelector('.hero-inner'); if(!mk) return;
+    var place=function(){ var mk=hero.querySelector('.hero-mkts'), cta=hero.querySelector('.hero-ctas'), inner=hero.querySelector('.hero-inner'); 
+      /* 9 Oct: the market row is hidden ("keep the position but remove the service"); the scenes sit beside the button, centred on it */
+      if(!mk||getComputedStyle(mk).visibility==='hidden'){ if(!cta) return; var zf0=parseFloat(getComputedStyle(document.documentElement).zoom)||1, hb0=hero.getBoundingClientRect(), cb0=cta.getBoundingClientRect(), bh0=bar.getBoundingClientRect().height||34;
+        bar.style.left=Math.round((cb0.right-hb0.left)/zf0+32)+'px'; bar.style.right='auto';
+        bar.style.bottom=Math.round((hb0.bottom-cb0.bottom)/zf0+Math.max(0,(cb0.height-bh0)/zf0/2))+'px'; return; }
       var zf=parseFloat(getComputedStyle(document.documentElement).zoom)||1, hb=hero.getBoundingClientRect(), mb=mk.getBoundingClientRect(), bh=bar.getBoundingClientRect().height||34;
       var al=hero.querySelector('.hero-inner h1')||cta||inner||mk, left=(al.getBoundingClientRect().left-hb.left)/zf, bottom=(hb.bottom-mb.top)/zf+16;
       var cb=cta&&cta.getBoundingClientRect(), topPx=mb.top-16*zf-bh;

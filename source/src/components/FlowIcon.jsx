@@ -14,6 +14,7 @@ const P = {
   bottle:   <><path d="M10 3h4" /><path d="M10.5 3v2.6c0 1-.6 1.6-1.3 2.4C8.4 8.9 8 9.8 8 11v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-8c0-1.2-.4-2.1-1.2-3-.7-.8-1.3-1.4-1.3-2.4V3" /><path d="M8 14c1.3 0 1.3 1 2.7 1s1.3-1 2.7-1 1.3 1 2.6 1" /></>,
   leaf:     <><path d="M20 4c0 8-5 12-11 12H5c0-7 5-12 11-12z" /><path d="M5 20c2-5 5-8 10-10" /></>,
   mail:     <><rect x="3" y="5" width="18" height="14" /><path d="m3 6 9 7 9-7" /></>,
+  inbox:    <><path d="M3 13l3-8h12l3 8v6H3z" /><path d="M3 13h5l1.5 2.5h5L16 13h5" /></>,   /* 10 Oct: the portal's Enquiries */
   cycle:    <><path d="M20 12a8 8 0 1 1-3-6.2" /><path d="M20 4v5h-5" /></>,
   compass:  <><circle cx="12" cy="12" r="8" /><path d="m15 9-2.5 5.5L7 17l2.5-5.5z" /></>,
   crate:    <><rect x="4" y="7" width="16" height="12" /><path d="M4 11h16M10 7v12M14 7v12" /><path d="m6 7 2-3h8l2 3" /></>,

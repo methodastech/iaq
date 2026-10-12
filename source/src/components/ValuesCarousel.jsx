@@ -50,7 +50,9 @@ const PHOTO = {
   'V·05': ['/assets/iaq/val-efficiency.webp', '50% 50%'],        /* crews laying a cleanroom raised floor in organised zones */
   /* 25 Sep (Bazil: "make sure content correct"): the award photograph carried a subsidiary's name on the screen, which stays
      off public pages (client, DV3 A2.1); the finished ballroom stands for excellence delivered */
-  'V·06': ['/assets/iaq/val-excellence.webp', '50% 50%'],        /* a finished cleanroom bay at handover, the final walk */
+  /* 12 Oct ("use this image replace with that. give proper rename"): the gowned team in a finished cleanroom, supplied
+     as WhatsApp Image 2026-10-09 at 11.50.02, kept as val-excellence-cleanroom-team.webp (val-excellence.webp stays) */
+  'V·06': ['/assets/iaq/val-excellence-cleanroom-team.webp', '50% 55%'],
 }
 const MARKS = ['shield', 'check', 'people', 'drawing', 'gauge', 'chart']
 

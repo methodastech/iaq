@@ -455,19 +455,13 @@ export default function Commitment () {
           </div>
         </section>
 
-        {/* 4 · the three certificates, one viewer */}
-        <section className="cc-sec tint" id="certificates">
-          <div className="cc-in">
-            <h2 className="cc-h2" data-cc>Certified to <em>three ISO standards.</em></h2>
-            <p className="cc-lede" data-cc>Each certificate is issued by Intertek under UKAS accreditation and is shown here as issued.</p>
-            <CertViewer />
-          </div>
-        </section>
+        {/* 9 Oct (client: "remove this section"): the three ISO certificates are off the page; CertViewer and the CERTS
+            data stay above for the day they return. The policies above still link the PDFs. */}
 
         {/* 2 · environment and sustainability responsibility, the CSR events. 30 Sep (client: "this one should be at the
-            bottom"): moved from second to last. White, not tint, so the page still alternates after the certificates;
-            the news cards take the tint on a white section. */}
-        <section className="cc-sec" id="environment">
+            bottom"): moved from second to last. 9 Oct: tint again, now that it follows the white QEHS section (the
+            certificates between them are gone), so the page still alternates. */}
+        <section className="cc-sec tint" id="environment">
           <div className="cc-in">
             <h2 className="cc-h2" data-cc>Environment and sustainability <em>responsibility.</em></h2>
             <p className="cc-lede" data-cc>IAQ is dedicated to minimising its environmental impact through sustainable design, procurement and construction practices. It continuously seeks energy-efficient solutions and prioritises eco-friendly technologies.</p>

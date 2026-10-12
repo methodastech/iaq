@@ -9,11 +9,11 @@ import IndustryGrid from '../components/IndustryGrid.jsx'
 import { CYCLE_SVG } from '../data/cycleMarks.js'
 import initHome from '../scenes/home.js'
 import Build3D from '../components/Build3D.jsx'
+import HeroMarkets from '../components/HeroMarkets.jsx'
 /* 1 Oct: the Scroll to build 3D on the home page; false hides it (hidden in the morning, shown again the same day) */
 const SHOW_BUILD3D = true
 import ClosingBand from '../components/ClosingBand.jsx'
 import GroupRecord from '../components/GroupRecord.jsx'
-import HeroMarkets from '../components/HeroMarkets.jsx'
 import '../styles/home.css'
 import '../styles/mark-motion.css'
 
@@ -86,6 +86,8 @@ export default function Home() {
             same information as the old glass card, no box, no tiles */}
         {/* 18 Sep (Bazil: "too unprofessional, need to be more dynamic"): the uppercase label and four plain
             links became the market rail, all seven markets with their facts (components/HeroMarkets.jsx) */}
+        {/* 9 Oct (client: "remove that", then "keep the position but remove the service"): the market row is hidden but keeps
+            its place, so the headline, the button and the scene label stay where they were (home.css .hero-mkts) */}
         <HeroMarkets />
       </div>
 

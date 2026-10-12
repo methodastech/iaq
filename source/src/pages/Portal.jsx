@@ -3,6 +3,7 @@ import { Link, NavLink, Navigate, Routes, Route, useNavigate } from 'react-route
 import Nav from '../components/Nav.jsx'
 import ClosingBand from '../components/ClosingBand.jsx'
 import * as CMS from '../lib/cms.js'
+import { ENQUIRIES_API } from '../lib/enquiry.js'
 import { TAGS, longDate } from '../data/news.js'
 import { LOCS, DEPTS } from '../data/roles.js'
 import '../styles/portal.css'
@@ -38,13 +39,14 @@ import SigCatalogue from '../components/portal/SigCatalogue.jsx'
      /portal/booth      SEMICON Europa 2026: the plan, the stand drafts, the screen (full screen at /booth/screen)
    One member session covers every tab (lib/cms.js); signing out anywhere gates them all. */
 /* 22 Sep (Bazil: "icons for each"): every tab carries its line icon, from the site's one icon set */
-const TAB_ICON = { codex: 'layers', newsroom: 'press', careers: 'people', projects: 'building', history: 'clock', downloads: 'folder', booth: 'cube', models: 'cube', direction: 'layers', qr: 'grid', signature: 'mail', 'signature-designs': 'layers' }
+const TAB_ICON = { codex: 'layers', newsroom: 'press', careers: 'people', projects: 'building', history: 'clock', enquiries: 'inbox', downloads: 'folder', booth: 'cube', models: 'cube', direction: 'layers', qr: 'grid', signature: 'mail', 'signature-designs': 'layers' }
 const TABS = [
   ['codex', 'Codex', 'The IAQ structure, the infographic set and the cross-check'],
   ['newsroom', 'Newsroom', 'Articles on the site'],
   ['careers', 'Careers', 'Open roles'],
   ['projects', 'Projects', 'The project registry text'],
-  ['history', 'History', 'The milestones of History of IAQ'],   /* 1 Oct ("make like editable for this page") */
+  ['history', 'History', 'The milestones of History of IAQ'],
+  ['enquiries', 'Enquiries', 'Briefs sent from the enquiry form'],   /* 10 Oct ("add function to track enquiry form. add the sidebar") */   /* 1 Oct ("make like editable for this page") */
   ['downloads', 'All files', 'The capability pack, the certificates, the infographic set, to send'],   /* 25 Sep (Bazil: "Documents and Files to send are supposed to be the same"): the Documents group IS this page; its menu names it All files */
   /* 22 Sep (Bazil: "a detailed proposal plan for the IAQ booth ... and the portal section that has all this") */
   ['booth', 'Booth', 'SEMICON Europa 2026: the plan, the stand, the screen, print and online'],
@@ -73,6 +75,8 @@ const TABS = [
 const GROUPS = [
   { k: 'edit', label: 'Edit website', icon: 'press', note: 'Everything the site reads',
     items: ['newsroom', 'careers', 'projects', 'history'] },
+  /* 10 Oct ("can you add function to track enquiry form. add the sidebar"): its own title, the briefs from /enquiry */
+  { k: 'enquiries', label: 'Enquiries', icon: 'inbox', note: '', items: ['enquiries'], solo: true },
   /* 24 Sep (Bazil: "exhibition should have all the exhibition plans"): the booth page's own views sit in the
      panel, so every part of the SEMICON plan is one click from the bar */
   /* 25 Sep (Bazil: "design direction should be in another tab, standalone"): its own title in the sidebar, no group */
@@ -195,6 +199,7 @@ function Shell ({ onOut }) {
         <Route path="careers" element={<Page k="careers" title={<>Open roles, <em>kept current.</em></>} lede="A role saved here appears in the Careers list and its filters immediately. Applications route to the HR inbox."><RolesEditor /></Page>} />
         <Route path="projects" element={<Page k="projects" title={<>The project registry, <em>by scope and location.</em></>} lede="Edit the text of the published references. Photography and detail pages stay canonical."><ProjectsEditor /></Page>} />
         <Route path="history" element={<Page k="history" title={<>The history of IAQ, <em>milestone by milestone.</em></>} lede="Edit the words and the picture of each milestone on History of IAQ. The years and their order stay as published."><HistoryEditor /></Page>} />
+        <Route path="enquiries" element={<Page k="enquiries" title={<>Enquiries, <em>tracked to the reply.</em></>} lede="Every brief sent from the enquiry form (/enquiry and the campaign pages), newest first. Give each one a status and a note as it moves; the whole team sees the same list."><EnquiriesTracker /></Page>} />
         <Route path="downloads" element={<Page k="downloads" title={<>Files for members, <em>ready to send.</em></>} lede="The infographic set for the company profile, the capability pack and the certificates behind it."><Downloads /></Page>} />
         <Route path="booth/:view?" element={<PortalBooth />} />
         <Route path="direction" element={<DirectionPage />} />
@@ -617,6 +622,149 @@ function HistoryEditor () {
       </div>
       <SaveBar dirty={ed.dirty} onSave={ed.doSave} />
       <p style={{ marginTop: 14, fontSize: 13, color: '#828B9E' }}>A milestone added or a year changed alters the span itself, its scale and its count, so it goes through <code>src/data/history.js</code>. <Link to="/about/history">View the live page</Link>.</p>
+    </>
+  )
+}
+
+/* ---------- enquiries (10 Oct: "can you add function to track enquiry form. add the sidebar") ----------
+   The briefs from the enquiry form, through one plain address, /api/enquiries (lib/enquiry.js ENQUIRIES_API): on this
+   computer the dev server answers it and keeps the briefs in .data/enquiries.json (tools/vite-enquiries-api.mjs); on
+   the live host, the host's server answers the same three calls. Status and note save there, so everyone sees the same.
+   A host that protects the list can ask for a key: the page sends the one saved here as x-enquiries-key. */
+const ENQ_URL = ENQUIRIES_API || '/api/enquiries'
+const ENQ_KEY = 'iaq.enquiries.key'
+const ENQ_STATUS = [['new', 'New'], ['contacted', 'Contacted'], ['quoted', 'Quoted'], ['won', 'Won'], ['lost', 'Lost']]
+const ENQ_SAMPLE = [
+  { id: 's1', at: '2026-10-09T09:12:00Z', name: 'Aisyah Rahman', company: 'Sample Semiconductor Sdn Bhd', email: 'aisyah@example.com', phone: '+6012-345 6789', market: 'Semiconductor', need: 'A new facility, design and build', timing: '3 to 12 months', message: 'ISO 5 backend cleanroom, about 4,000 sqm, Kulim.', source: 'campaign:project', status: 'new', note: '' },
+  { id: 's2', at: '2026-10-08T02:40:00Z', name: 'Daniel Koh', company: 'Sample Data Centres', email: 'daniel@example.com', phone: '+65 6123 4567', market: 'Data Centre', need: 'Maintenance or energy management', timing: 'Within 3 months', message: 'Chiller plant optimisation for a 12 MW hall.', source: 'campaign:data-centre', status: 'contacted', note: 'Called 8 Oct, site visit next week.' },
+  { id: 's3', at: '2026-10-02T06:05:00Z', name: 'Lena Berg', company: 'Sample Battery AB', email: 'lena@example.com', phone: '', market: 'EV Battery', need: 'An upgrade or expansion of a facility', timing: 'More than a year', message: '', source: 'campaign:ev-battery', status: 'quoted', note: 'Budget quote sent.' },
+]
+const enqDate = s => { try { return new Date(s).toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }) } catch { return s } }
+const enqFrom = s => !s ? '-' : s === 'campaign:project' ? 'The enquiry form (/enquiry)' : s.startsWith('campaign:') ? 'Campaign page /lp/' + s.slice(9) : s
+function EnquiriesTracker () {
+  const [key, setKey] = useState(() => { try { return localStorage.getItem(ENQ_KEY) || '' } catch { return '' } })
+  const [draftKey, setDraftKey] = useState('')
+  const [state, setState] = useState({ phase: 'idle', items: [], error: '' })
+  const [sample, setSample] = useState(false)
+  const [filter, setFilter] = useState('all')
+  const [q, setQ] = useState('')
+  const [open, setOpen] = useState(null)
+  const [edits, setEdits] = useState({})
+  const [saving, setSaving] = useState('')
+  const local = /^(localhost|127\.|192\.168\.|10\.)/.test(location.hostname)
+
+  const load = async () => {
+    if (sample) return
+    setState(s => ({ ...s, phase: 'loading', error: '' }))
+    try {
+      const r = await fetch(ENQ_URL, { headers: key ? { 'x-enquiries-key': key } : {} })
+      const ct = r.headers.get('content-type') || ''
+      if (!ct.includes('json')) return setState({ phase: 'nofunction', items: [], error: '' })
+      const b = await r.json()
+      if (r.status === 401) return setState({ phase: 'key', items: [], error: 'That access key is not right.' })
+      if (r.status === 503) return setState({ phase: 'setup', items: [], error: b.message || '' })
+      if (!r.ok) return setState({ phase: 'error', items: [], error: b.message || 'The list could not be read (' + r.status + ').' })
+      setState({ phase: 'ready', items: b.items || [], error: '' })
+    } catch { setState({ phase: 'nofunction', items: [], error: '' }) }
+  }
+  useEffect(() => { load() }, [key, sample])   // eslint-disable-line react-hooks/exhaustive-deps
+
+  const items = sample ? ENQ_SAMPLE.map(x => ({ ...x, ...(edits[x.id] || {}) })) : state.items
+  const counts = Object.fromEntries(ENQ_STATUS.map(([k]) => [k, items.filter(x => x.status === k).length]))
+  const ql = q.trim().toLowerCase()
+  const shown = items.filter(x => (filter === 'all' || x.status === filter)
+    && (!ql || [x.name, x.company, x.email, x.market, x.need, x.message].join(' ').toLowerCase().includes(ql)))
+
+  const save = async (x, patch) => {
+    const next = { status: patch.status ?? x.status, note: patch.note ?? x.note }
+    if (sample) { setEdits(e => ({ ...e, [x.id]: next })); return }
+    setSaving(x.id)
+    try {
+      const r = await fetch(ENQ_URL + '/' + encodeURIComponent(x.id), { method: 'PATCH', headers: { 'content-type': 'application/json', ...(key ? { 'x-enquiries-key': key } : {}) }, body: JSON.stringify(next) })
+      if (r.ok) setState(s => ({ ...s, items: s.items.map(y => y.id === x.id ? { ...y, ...next } : y) }))
+    } finally { setSaving('') }
+  }
+  const csv = () => {
+    const cols = ['at', 'status', 'name', 'company', 'email', 'phone', 'market', 'need', 'timing', 'message', 'note', 'source']
+    const cell = v => '"' + String(v ?? '').replace(/"/g, '""') + '"'
+    const text = [cols.join(','), ...shown.map(x => cols.map(c => cell(x[c])).join(','))].join('\r\n')
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + text], { type: 'text/csv' }))
+    a.download = 'iaq-enquiries-' + new Date().toISOString().slice(0, 10) + '.csv'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000)
+  }
+  const keyForm = (
+    <form className="cms-enq-key" onSubmit={e => { e.preventDefault(); const k = draftKey.trim(); if (!k) return; try { localStorage.setItem(ENQ_KEY, k) } catch {} setKey(k) }}>
+      <label>Access key<input type="password" value={draftKey} onChange={e => setDraftKey(e.target.value)} placeholder="The ENQUIRIES_KEY set on Netlify" autoComplete="off" /></label>
+      <button type="submit">Open the list</button>
+    </form>
+  )
+
+  if (!sample && state.phase !== 'ready' && state.phase !== 'loading') {
+    return (
+      <>
+        {state.phase === 'key' && <div className="cms-note"><b>The list is private.</b> Enter the team&rsquo;s access key once; this browser remembers it. {state.error && <span className="cms-enq-err">{state.error}</span>}{keyForm}</div>}
+        {state.phase === 'setup' && <div className="cms-note"><b>The enquiries server is not set up yet.</b> {state.error}</div>}
+        {state.phase === 'nofunction' && <div className="cms-note"><b>{local ? 'Restart the dev server.' : 'No enquiries server on this site yet.'}</b> {local ? 'The tracker reads /api/enquiries, which the dev server serves once it is restarted (npm run dev).' : 'The live host needs to answer /api/enquiries (see tools/vite-enquiries-api.mjs for the three calls). Until then, look at the page with sample briefs.'}</div>}
+        {state.phase === 'error' && <div className="cms-note"><b>The list could not be read.</b> {state.error}</div>}
+        <div className="cms-bar">
+          <button type="button" className="cms-add" onClick={() => setSample(true)}>Show sample briefs</button>
+          {key && <button type="button" className="cms-reset" onClick={() => { try { localStorage.removeItem(ENQ_KEY) } catch {} setKey(''); setDraftKey('') }}>Forget the access key</button>}
+        </div>
+      </>
+    )
+  }
+
+  return (
+    <>
+      {sample && <div className="cms-note"><b>Sample briefs.</b> These three are made up, to show the page; nothing here is saved. <button type="button" className="cms-enq-link" onClick={() => { setSample(false); setEdits({}) }}>Back to the real list</button></div>}
+      <div className="cms-enq-sum" role="group" aria-label="Filter by status">
+        <button type="button" className={filter === 'all' ? 'on' : undefined} onClick={() => setFilter('all')}><b>{items.length}</b><span>All</span></button>
+        {ENQ_STATUS.map(([k, l]) => <button type="button" key={k} className={filter === k ? 'on' : undefined} onClick={() => setFilter(k)}><b>{counts[k]}</b><span>{l}</span></button>)}
+      </div>
+      <div className="cms-bar">
+        <input className="cms-enq-q" type="search" value={q} onChange={e => setQ(e.target.value)} placeholder="Search name, company, market or message" />
+        <button type="button" className="cms-reset" onClick={load} disabled={sample || state.phase === 'loading'}>{state.phase === 'loading' ? 'Loading…' : 'Refresh'}</button>
+        <button type="button" className="cms-reset" onClick={csv} disabled={!shown.length}>Export CSV</button>
+      </div>
+      {!shown.length && <p className="cms-enq-empty">{items.length ? 'No brief matches.' : <>No briefs yet. Send the form at <a href="/enquiry" target="_blank" rel="noopener">/enquiry</a> and press Refresh.</>}</p>}
+      <div className="cms-list">
+        {shown.map(x => {
+          const ed = edits['n' + x.id] ?? x.note
+          return (
+            <div className="cms-item" key={x.id}>
+              <div className="cms-item-h" onClick={() => setOpen(open === x.id ? null : x.id)}>
+                <span className={'cms-enq-st s-' + x.status}>{(ENQ_STATUS.find(s => s[0] === x.status) || ENQ_STATUS[0])[1]}</span>
+                <b>{x.name || 'No name'}{x.company ? ' · ' + x.company : ''}</b>
+                {x.market && <span className="cms-chip">{x.market}</span>}
+                <span className="cms-chip">{enqDate(x.at)}</span>
+              </div>
+              {open === x.id && (
+                <div className="cms-enq-body">
+                  <dl>
+                    <dt>Email</dt><dd>{x.email ? <a href={'mailto:' + x.email}>{x.email}</a> : '-'}</dd>
+                    <dt>Phone</dt><dd>{x.phone ? <a href={'tel:' + x.phone.replace(/[^\d+]/g, '')}>{x.phone}</a> : '-'}</dd>
+                    <dt>What they need</dt><dd>{x.need || '-'}</dd>
+                    <dt>Timing</dt><dd>{x.timing || '-'}</dd>
+                    <dt>The project</dt><dd className="cms-enq-msg">{x.message || '-'}</dd>
+                    <dt>Sent from</dt><dd>{enqFrom(x.source)}</dd>
+                  </dl>
+                  <div className="cms-form">
+                    <label>Status
+                      <select value={x.status} onChange={e => save(x, { status: e.target.value })}>{ENQ_STATUS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}</select>
+                    </label>
+                    <label className="full">Note for the team
+                      <textarea value={ed} onChange={e => setEdits(m => ({ ...m, ['n' + x.id]: e.target.value }))} placeholder="Who called, what was sent, what is next" />
+                    </label>
+                  </div>
+                  <div className="cms-enq-acts">
+                    <button type="button" className="cms-add" disabled={saving === x.id || ed === x.note} onClick={() => save(x, { note: ed })}>{saving === x.id ? 'Saving…' : 'Save note'}</button>
+                    {x.email && <a className="cms-reset" href={'mailto:' + x.email + '?subject=' + encodeURIComponent('Your enquiry to IAQ')}>Reply by email</a>}
+                  </div>
+                </div>
+              )}
+            </div>
+          )
+        })}
+      </div>
     </>
   )
 }

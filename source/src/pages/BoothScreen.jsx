@@ -183,7 +183,9 @@ function Open({ t, jump, setBook }) {
   )
 }
 
-function Fab({ t, x, sel, pick }) {
+/* 8 Oct: the fab section and its timing are shared with the booth loop (pages/BoothLoop.jsx) */
+export { FAB }
+export function Fab({ t, x, sel, pick }) {
   const s = FAB.seg.find(v => t >= v.a && t < v.b) || FAB.seg[FAB.seg.length - 1]
   const auto = t >= FAB.dur - 2 ? 60 : Math.min(s.to, s.from + Math.floor((t - s.a) * FPS))
   const f = sel.f != null ? sel.f : auto
