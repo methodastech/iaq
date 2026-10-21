@@ -63,7 +63,8 @@ export function UnitsBand() {
     <section ref={ref} className={'pg-sec sm-units' + (inView ? ' in' : '')} aria-labelledby="sm-units-h">
       <div className="pg-in">
         <h2 id="sm-units-h" className="sm-h2-u kind-h k-u" data-reveal=""><Icon name="epcUnit" className="kind-ic" />3 business units</h2>{/* 26 Sep (Bazil: "just write the title 3 business units in blue") */}
-        <p className="pg-lede" data-reveal="">EPC builds the facility. PCU &amp; TTI re-equips a running fab. EFM runs and maintains it.</p>
+        {/* 21 Oct (IAQ feedback, Services overview): IAQ's own paragraph, as given */}
+        <p className="pg-lede" data-reveal="">Our services bring together the capabilities needed to plan, deliver and support technical facilities. The exact scope is tailored to each project and may include engineering, procurement, construction, process-critical utilities, total tool installation and energy facility management.</p>
         <UnitsBoard />
       </div>
     </section>

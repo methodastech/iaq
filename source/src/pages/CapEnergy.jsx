@@ -89,6 +89,8 @@ export default function CapEnergy() {
           { k: 'Operate', icon: 'cycle', t: 'Support long-term performance through monitoring, maintenance and operational management.' },
         ] }}
       hideCycle
+      /* 21 Oct ("remove this"): the "Call EFM when" line is off the hero, as on EPC and PCU & TTI */
+      hideWhen
       /* 21 Oct (IAQ amendment sheet, Energy Management · CTA): its own section above the footer. Spelling slip only
          corrected ("infrastructure"). */
       ctaBand={{ title: <>Let&rsquo;s Discuss Your <em>Energy Goals</em></>, label: 'Discuss your energy goals', route: '/contact',

@@ -44,7 +44,7 @@ function StageHead({ no, name, line, fig }) {
     <header className="sa-head">
       <div className="pg-in sa-head-in">
         <div>
-          <span className="pg-k"><span className="sa-no">{String(no).padStart(2, '0')}</span>Service {no} of 6</span>
+          {/* 21 Oct ("already got numbering why repeated?"): the "01 · Service 1 of 6" line is gone; the stage bar numbers them */}
           <h2>{name}</h2>
           <p className="pg-lede">{line}</p>
         </div>

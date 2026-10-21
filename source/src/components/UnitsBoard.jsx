@@ -17,17 +17,22 @@ import { sysIcon } from './codex/RelExplorer.jsx'   /* 25 Sep (Bazil: "you can a
 /* 25 Sep (Bazil: "are these the best pictures to represent"): IAQ's own photographs (SharePoint, 17 Sep). EPC: a facility
    under construction from the air. PCU & TTI: the process utilities corridor of a cleanroom IAQ built. EFM: the plant at
    night, run and maintained. */
-const PHOTO = { epc: '/assets/iaq/site-aerial-build.webp', hookup: '/assets/iaq/cr-utilities-p1010244.webp', efm: '/assets/iaq/plant-dusk-02.webp' }
+/* 21 Oct (IAQ feedback, Services overview · Building image: "Use approved generic imagery or an image with permission"):
+   the three photographs above showed client sites (a fab under construction from the air, a client cleanroom, a client
+   plant at night). Each unit now carries a generic picture generated in ChatGPT, with no client, site, sign or name in it:
+   EPC, engineers reviewing drawings at a factory under construction; PCU & TTI, engineers in cleanroom suits checking a
+   process utility valve panel in a sub-fab; EFM, a routine round in a chiller plant room. */
+const PHOTO = { epc: '/assets/units/unit-card-epc.webp', hookup: '/assets/units/unit-card-pcu.webp', efm: '/assets/units/unit-card-efm.webp' }
 const MARKETS = { epc: 'All seven markets: semiconductor, data centre, EV battery, photovoltaics, district cooling, bio lifescience, food and beverage.', hookup: 'Semiconductor fabs only.', efm: 'Any facility with a cooling or energy bill worth cutting: chiller plants, district cooling, industrial plant.' }
 const workById = id => WORK.find(w => w.id === id)
 const svcById = id => SERVICES.find(s => s.id === id)
 const DETAIL = [
-  /* 26 Sep (Bazil: "put this into the card, better, no overlap for each card"): the diagram drawn for the card's width */
-  ['How it works', u => { const Dg = UNIT_DIAGRAM_V[u.id]; return Dg ? <div className="sm-ub-dg"><Dg /></div> : null }],
+  /* 21 Oct (IAQ feedback, Services overview · repeated business model: "Keep the business-model diagram in one agreed
+     location only"): the per-unit "How it works" diagram and the six-services row are off the Read more. The "Who does
+     what" chart below the units is the one place the business model is drawn on this page. */
   ['What it is', u => u.what],
   ['What you buy', u => u.bought],
   ['Bought as, in detail', u => <span className="sm-ub-models">{u.models.map(m => <span className="sm-ud-model" key={m.t}><span className="sm-mi"><ModelIcon name={m.t} />{m.t}</span><small>{m.s}</small></span>)}</span>],
-  ['Services', u => <span className="sm-svc6">{SERVICES.map(s => { const core = u.core.includes(s.id), ask = u.ask.includes(s.id); return <span key={s.id} className={'sm-chip s' + (core ? '' : ask ? ' ask' : ' off')}><i>{s.n}</i><Icon name={s.icon} className="sm-ti" />{s.short}</span> })}<small className="sm-ud-note">{u.ask.length ? 'Dashed: ' + u.ask.map(id => svcById(id).short.toLowerCase()).join(', ') + ' when you ask for it. Faint: not this unit.' : 'All six, always.'}</small></span>],
   ['Work and systems', u => <span className="sm-ud-work">{u.work.map(w => { const wk = workById(w); return <span key={w} className="sm-ud-w"><b className="sm-chip w"><Icon name={wk.icon} className="sm-ti" />{wk.name}</b><small>{wk.full}</small><span className="sm-ud-sys">{wk.systems.map(t => <i key={t}><Icon name={sysIcon(t)} className="sm-ti" />{t}</i>)}</span></span> })}</span>],
   ['Term', u => <b>{u.term}</b>],
   ['Markets', u => MARKETS[u.id]],
