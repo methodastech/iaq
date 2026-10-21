@@ -612,3 +612,207 @@
 .un-probs .un-pains2 li{padding:22px 22px 24px}
 @media(max-width:1100px){.un-probs .un-pains2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.un-probs .un-pains2{grid-template-columns:minmax(0,1fr)}}
+
+/* 15 Oct ("fix allignment", the EFM "Why owners choose it" cards): the title was pushed to the card's foot (margin-top:auto),
+   so a longer sentence lifted it and the titles of one row sat at different heights. The title now stands a fixed step under
+   the icon in every card, so titles and sentences line up across each row; the even row heights stay. */
+.un-bento-c b{ margin-top:clamp(36px, 5vh, 64px); padding-top:0; }
+
+/* 15 Oct ("font size, allignment all is off", the EFM seven services): the wide first card no longer gets a larger title,
+   and every card lays its number, mark, title and sentence on the row's shared tracks (subgrid), so in each row the marks,
+   the titles (a two-line title widens its track for the whole row) and the sentences start on the same lines */
+.un-page .un-svc7-grid{ grid-auto-rows:auto; }
+.un-page .un-svc7-grid li{ display:grid; grid-template-rows:subgrid; grid-row:span 4; row-gap:10px; align-content:start; }
+.un-page .un-svc7-grid li.is-wide b{ font-size:clamp(16px,1.35vw,19px); }
+.un-page .un-svc7-grid li > b{ align-self:start; }
+
+/* 19 Oct: a hero with no figures (PCU & TTI): one row, the copy centred beside the picture */
+.un-hero-in.no-facts{ grid-template-areas:"copy fig"; align-items:center; }
+.un-hero-in.no-facts .un-hero-copy{ align-self:center; padding-top:0; }   /* the copy is pinned to the top (align-self:start) when figures follow it */
+@media(max-width:860px){ .un-hero-in.no-facts{ grid-template-areas:"copy" "fig"; } }
+
+/* 19 Oct (client feedback, EPC · Our EPC Capabilities): the heading, IAQ's paragraph and the six capabilities as an even grid of
+   cards, each a mark and a name, three across (two on a tablet, one on a phone) */
+.un-caps-lede{ margin:14px 0 0; font-size:16px; line-height:1.6; color:var(--soft); max-width:64ch; }
+.un-caps-grid{ list-style:none; margin:clamp(24px,3.5vh,36px) 0 0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.un-caps-grid li{ display:flex; align-items:center; gap:16px; padding:clamp(20px,2vw,28px); background:var(--card, #F3F5F9); min-width:0; }
+.un-caps-grid .un-svc-mark{ flex:none; width:30px; height:30px; color:var(--unit, #0B8FD8); background:none; }
+.un-caps-grid .un-svc-mark svg{ width:26px; height:26px; }
+.un-caps-grid b{ font-family:"Switzer","Instrument Sans",system-ui,sans-serif; font-weight:600; font-size:clamp(16px,1.35vw,19px); line-height:1.25; letter-spacing:-.015em; color:var(--ink); }
+@media (max-width:1100px){ .un-caps-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:560px){ .un-caps-grid{ grid-template-columns:1fr; } }
+/* base.css's phone floor holds every "li > b" at 11px (!important); the capability names keep their own size */
+@media (max-width:640px){ .un-page .un-caps-grid li > b{ font-size:16px !important; } }
+
+/* 21 Oct: the page's own call to action, above the footer. A light band with a red hairline, the heading and IAQ's line on the
+   left, one red action on the right; a soft drifting glow behind, still under reduced motion. */
+.un-ctab{position:relative;overflow:hidden;isolation:isolate;background:#F3F5F9;border-top:1px solid rgba(12,18,32,.06);padding:clamp(56px,8vw,104px) 0}
+.un-ctab::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,#EC2027 30%,#EC2027 70%,transparent)}
+.un-ctab::after{content:"";position:absolute;z-index:-1;width:60%;aspect-ratio:1;right:-12%;top:-55%;border-radius:50%;background:radial-gradient(closest-side,rgba(236,32,39,.08),transparent);animation:unCtaGlow 16s ease-in-out infinite alternate}
+@keyframes unCtaGlow{to{transform:translate(-8%,10%) scale(1.08)}}
+.un-ctab-in{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:clamp(28px,5vw,80px)}
+.un-ctab-h{margin:0;font:600 clamp(30px,3.6vw,52px)/1.08 "Switzer","Instrument Sans",sans-serif;letter-spacing:-.03em;color:#0C1220}
+.un-ctab-h em{font-style:normal;color:#EC2027}
+.un-ctab-lede{margin:18px 0 0;max-width:62ch;font-size:clamp(16px,1.2vw,18px);line-height:1.6;color:var(--soft)}
+.un-ctab-btn{display:inline-flex;align-items:center;gap:14px;padding:18px 26px;background:#EC2027;color:#fff;text-decoration:none;font:600 16px/1 "Switzer",sans-serif;white-space:nowrap;box-shadow:0 18px 40px -20px rgba(236,32,39,.7);transition:transform .3s ease,box-shadow .3s ease}
+.un-ctab-btn i{font-style:normal;transition:transform .3s ease}
+.un-ctab-btn:hover{transform:translateY(-2px);box-shadow:0 24px 48px -20px rgba(236,32,39,.8)}
+.un-ctab-btn:hover i{transform:translateX(4px)}
+.un-ctab-btn:focus-visible{outline:2px solid #0C1220;outline-offset:3px}
+@media(max-width:860px){.un-ctab-in{grid-template-columns:1fr}.un-ctab-btn{justify-self:start}}
+@media(prefers-reduced-motion:reduce){.un-ctab::after{animation:none}.un-ctab-btn,.un-ctab-btn i{transition:none}}
+.un-ctab{padding-left:var(--gut);padding-right:var(--gut)}   /* 21 Oct: the same side margin as every other section */
+
+/* 21 Oct: Industries We Serve (EFM), the refined tile style of the market capability cards */
+.un-inds-grid{list-style:none;margin:clamp(24px,3.5vh,36px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.un-inds-grid li{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(22px,3vh,32px);padding:clamp(22px,2vw,28px);background:#fff;border:1px solid rgba(12,18,32,.07);box-shadow:0 1px 2px rgba(12,18,32,.03);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease}
+.un-inds-grid li:hover{transform:translateY(-3px);box-shadow:0 22px 44px -28px rgba(12,18,32,.28)}
+.un-inds-ic{width:28px;height:28px;color:#7C86A0;transition:color .4s ease}
+.un-inds-ic svg{width:28px;height:28px;stroke-width:1.25}
+.un-inds-grid li:hover .un-inds-ic{color:var(--unit,#0B8FD8)}
+.un-page .un-inds-grid li > b,.un-inds-grid b{font:500 clamp(16px,1.25vw,18px)/1.3 "Switzer","Instrument Sans",sans-serif!important;letter-spacing:-.01em;color:#0C1220}
+@media(max-width:1100px){.un-inds-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.un-inds-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.un-inds-grid li{transition:none}}
+
+/* 21 Oct: a delivery model in steps (EFM, Energy as a Service): four cards in a row, a hairline running behind the numbers so
+   they read as one sequence; the refined card style of the capability tiles */
+.un-proc-lede{margin:14px 0 0;max-width:64ch;font-size:16px;line-height:1.6;color:var(--soft)}
+.un-proc-steps{list-style:none;margin:clamp(28px,4vh,44px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;position:relative}
+.un-proc-steps li{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-areas:"n ic" "t t" "d d";align-items:center;row-gap:16px;padding:clamp(22px,2vw,28px);background:#fff;border:1px solid rgba(12,18,32,.07);box-shadow:0 1px 2px rgba(12,18,32,.03);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease}
+.un-proc-steps li:hover{transform:translateY(-3px);box-shadow:0 22px 44px -28px rgba(12,18,32,.28)}
+.un-proc-n{grid-area:n;font:600 11px/1 "Switzer",sans-serif;letter-spacing:.18em;color:#EC2027}
+.un-proc-ic{grid-area:ic;justify-self:end;width:26px;height:26px;color:#7C86A0}
+.un-proc-ic svg{width:26px;height:26px;stroke-width:1.25}
+.un-proc-steps li:hover .un-proc-ic{color:var(--unit,#0B8FD8)}
+.un-page .un-proc-steps li > b,.un-proc-steps b{grid-area:t;margin-top:8px;font:600 clamp(18px,1.5vw,22px)/1.2 "Switzer","Instrument Sans",sans-serif!important;letter-spacing:-.015em;color:#0C1220}
+.un-proc-t{grid-area:d;font-size:14.5px;line-height:1.55;color:var(--soft)}
+.un-proc-steps li:not(:last-child)::after{content:"";position:absolute;top:50%;right:-14px;width:14px;height:1px;background:#EC2027;opacity:.5}
+@media(max-width:1100px){.un-proc-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.un-proc-steps li::after{display:none}}
+@media(max-width:560px){.un-proc-steps{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.un-proc-steps li{transition:none}}
+.un-proc-steps li{align-items:start;align-content:start;grid-template-rows:auto auto 1fr}.un-proc-n,.un-proc-ic{align-self:center}   /* 21 Oct: every card starts its rows on the same lines, whatever the length of its text */
+
+/* 21 Oct ("this cta too basic, make it premium and subtle"): the CTA as an inset dark panel on the page's light ground */
+.un-ctab{background:transparent;border-top:0;padding:clamp(40px,6vw,88px) var(--gut)}
+.un-ctab::before,.un-ctab::after{display:none}
+.un-ctab-card{position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:clamp(32px,5vw,96px);
+  padding:clamp(40px,5vw,80px) clamp(28px,5vw,80px);background:linear-gradient(135deg,#0C1426 0%,#111B33 55%,#0A1120 100%);color:#fff;
+  box-shadow:0 50px 100px -60px rgba(12,18,32,.55)}
+.un-ctab-card::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(236,32,39,.9) 20%,rgba(236,32,39,.9) 50%,transparent 85%)}
+.un-ctab-grid{position:absolute;inset:0;z-index:-1;opacity:.5;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(80% 90% at 85% 30%,#000,transparent 75%);mask-image:radial-gradient(80% 90% at 85% 30%,#000,transparent 75%)}
+.un-ctab-sweep{position:absolute;z-index:-1;inset:-40% auto -40% -30%;width:40%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.05),transparent);transform:skewX(-14deg);animation:unSweep 9s ease-in-out infinite}
+@keyframes unSweep{0%,55%{left:-40%}100%{left:130%}}
+.un-ctab-k{display:inline-flex;align-items:center;gap:10px;font:600 11px/1 "Switzer",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.un-ctab-k i{width:22px;height:1px;background:#EC2027}
+.un-ctab .un-ctab-h{margin:18px 0 0;color:#fff;font-size:clamp(30px,3.4vw,50px)}
+.un-ctab .un-ctab-h em{color:#FF4D55}
+.un-ctab .un-ctab-lede{margin-top:18px;color:rgba(234,240,251,.72);max-width:58ch}
+.un-ctab-act{display:grid;gap:18px;justify-items:start}
+.un-ctab .un-ctab-btn{box-shadow:0 20px 44px -18px rgba(236,32,39,.75)}
+.un-ctab-tel{display:grid;gap:4px;color:#fff;text-decoration:none;font:500 16px/1.2 "Switzer",sans-serif;padding-left:2px;border-bottom:1px solid transparent;transition:border-color .3s ease}
+.un-ctab-tel small{font:600 10.5px/1 "Switzer",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.un-ctab-tel:hover{border-bottom-color:#EC2027}
+@media(max-width:860px){.un-ctab-card{grid-template-columns:1fr;align-items:start}}
+@media(prefers-reduced-motion:reduce){.un-ctab-sweep{animation:none;display:none}}
+
+/* 21 Oct (IAQ sheet, PCU & TTI · Delivery Approach, "Horizontal Journey Graphic"): one route across the stages. A node per
+   stage sits on a hairline; the red line draws in when the stages arrive, then a light runs the route on a loop and each
+   node answers as it passes (its delay is its share of the run). Still and complete under reduced motion. */
+.un-jrny{--node:76px;--px:clamp(16px,2.4vw,40px);--py:clamp(36px,4.6vw,64px);--T:7.5s;position:relative;margin-top:clamp(32px,4.5vh,52px);padding:var(--py) var(--px);
+  background:linear-gradient(180deg,#F6F8FB 0%,#FFFFFF 100%);border:1px solid rgba(12,18,32,.07);overflow:hidden;isolation:isolate}
+.un-jrny::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(12,18,32,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(12,18,32,.035) 1px,transparent 1px);background-size:32px 32px;
+  -webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+.un-jrny-track{position:absolute;top:calc(var(--py) + var(--node) / 2);height:1px;
+  left:calc(var(--px) + (100% - 2 * var(--px)) / var(--n) / 2);right:calc(var(--px) + (100% - 2 * var(--px)) / var(--n) / 2);background:rgba(12,18,32,.12)}
+.un-jrny-fill{position:absolute;inset:-.5px 0;background:linear-gradient(90deg,rgba(236,32,39,.5),#EC2027);transform-origin:0 50%;transition:transform 1.8s cubic-bezier(.65,0,.35,1) .3s}
+.un-armed .un-jrny:not(:has(li.in)) .un-jrny-fill{transform:scaleX(0)}
+.un-jrny-pulse{position:absolute;top:-1px;left:0;width:140px;height:3px;transform:translateX(-50%);opacity:0;border-radius:3px;
+  background:linear-gradient(90deg,transparent,#EC2027 50%,transparent);filter:drop-shadow(0 0 6px rgba(236,32,39,.7))}
+.un-jrny:has(li.in) .un-jrny-pulse{animation:jrPulse var(--T) linear 2s infinite}
+@keyframes jrPulse{0%{left:0;opacity:0}5%{opacity:1}64%{opacity:1}70%{left:100%;opacity:0}100%{left:100%;opacity:0}}
+.un-jrny-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:clamp(12px,2vw,28px);position:relative}
+.un-jrny-steps li{display:flex;flex-direction:column;align-items:center;text-align:center}
+.un-jrny-node{position:relative;display:grid;place-items:center;width:var(--node);height:var(--node);border-radius:50%;background:#fff;color:#5B6680;
+  border:1px solid rgba(12,18,32,.1);box-shadow:0 1px 2px rgba(12,18,32,.04),0 18px 36px -24px rgba(12,18,32,.35);transition:color .4s ease,border-color .4s ease}
+.un-jrny-node::before{content:"";position:absolute;inset:7px;border-radius:50%;border:1px dashed rgba(12,18,32,.12)}
+.un-jrny-node svg{width:28px;height:28px;stroke-width:1.2}
+.un-jrny:has(li.in) .un-jrny-node{animation:jrNode var(--T) ease-out calc(2s + var(--i) / (var(--n) - 1) * var(--T) * .7) infinite}
+@keyframes jrNode{
+  0%{color:#EC2027;border-color:rgba(236,32,39,.65);box-shadow:0 0 0 0 rgba(236,32,39,.32),0 18px 36px -20px rgba(236,32,39,.55)}
+  14%{box-shadow:0 0 0 16px rgba(236,32,39,0),0 18px 36px -20px rgba(236,32,39,.45)}
+  34%,100%{color:#5B6680;border-color:rgba(12,18,32,.1);box-shadow:0 0 0 0 rgba(236,32,39,0),0 18px 36px -24px rgba(12,18,32,.35)}}
+.un-jrny-steps li:hover .un-jrny-node{color:#EC2027;border-color:rgba(236,32,39,.5)}
+.un-jrny-n{margin-top:26px;font:600 10.5px/1 "Switzer",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#EC2027}
+.un-page .un-jrny-steps li > b,.un-jrny-steps b{margin-top:12px;font:600 clamp(18px,1.45vw,21px)/1.2 "Switzer","Instrument Sans",sans-serif!important;letter-spacing:-.015em;color:#0C1220}
+.un-jrny-t{margin-top:10px;max-width:27ch;font-size:14.5px;line-height:1.55;color:var(--soft)}
+@media(max-width:860px){
+  .un-jrny{--node:60px}
+  .un-jrny-steps{grid-template-columns:1fr;gap:30px}
+  .un-jrny-steps li{display:grid;grid-template-columns:var(--node) minmax(0,1fr);column-gap:20px;text-align:left;align-items:start}
+  .un-jrny-node{grid-row:1 / span 3}
+  .un-jrny-steps li > :not(.un-jrny-node){grid-column:2}
+  .un-jrny-n{margin-top:6px}
+  .un-page .un-jrny-steps li > b,.un-jrny-steps b{margin-top:8px}
+  .un-jrny-t{margin-top:6px;max-width:none}
+  .un-jrny-track{bottom:calc(var(--py) + var(--node) / 2 + 40px);left:calc(var(--px) + var(--node) / 2);right:auto;width:1px;height:auto}
+  .un-jrny-fill{transform-origin:50% 0;inset:0 -.5px;background:linear-gradient(180deg,rgba(236,32,39,.5),#EC2027)}
+  .un-armed .un-jrny:not(:has(li.in)) .un-jrny-fill{transform:scaleY(0)}
+  .un-jrny-pulse{display:none}
+}
+@media(prefers-reduced-motion:reduce){.un-jrny-pulse{display:none}.un-jrny .un-jrny-node{animation:none!important}.un-jrny-fill{transition:none}}
+
+/* 21 Oct (IAQ sheet, PCU & TTI · Statement, High): the statement as a dark band, the sectors it names under it, and a
+   wafer drawn beside it whose dies light in turn */
+.un-stmt{padding:0 var(--gut)}
+.un-stmt-card{position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.8fr);align-items:center;gap:clamp(28px,5vw,88px);
+  padding:clamp(40px,5.5vw,88px) clamp(28px,5vw,80px);background:linear-gradient(135deg,#0C1426 0%,#111B33 55%,#0A1120 100%);color:#fff;
+  box-shadow:0 40px 80px -64px rgba(12,18,32,.5)}
+.un-stmt-card::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(236,32,39,.9) 20%,rgba(236,32,39,.9) 50%,transparent 85%)}
+.un-stmt-card::after{content:"";position:absolute;z-index:-1;width:56%;aspect-ratio:1;right:-10%;top:50%;transform:translateY(-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(236,32,39,.12),transparent);pointer-events:none}
+.un-stmt-grid{position:absolute;inset:0;z-index:-1;opacity:.5;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(70% 90% at 80% 50%,#000,transparent 75%);mask-image:radial-gradient(70% 90% at 80% 50%,#000,transparent 75%)}
+.un-stmt-k{display:inline-flex;align-items:center;gap:10px;font:600 11px/1 "Switzer",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.un-stmt-k i{width:22px;height:1px;background:#EC2027}
+.un-stmt-t{margin:22px 0 0;max-width:36ch;font:500 clamp(22px,2.2vw,33px)/1.34 "Switzer","Instrument Sans",sans-serif;letter-spacing:-.02em;color:#fff;text-wrap:pretty}
+.un-stmt-t em{font-style:normal;color:#FF6B71}
+.un-stmt-items{list-style:none;margin:clamp(30px,4vh,44px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.12)}
+.un-stmt-items li{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"ic n" "ic t";grid-template-rows:auto 1fr;column-gap:14px;row-gap:8px;align-items:start;padding:22px 18px 4px 0}
+.un-stmt-items li + li{padding-left:18px;border-left:1px solid rgba(255,255,255,.1)}
+.un-stmt-ic{grid-area:ic;align-self:start;display:grid;place-items:center;width:40px;height:40px;border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.85);transition:border-color .35s ease,color .35s ease}
+.un-stmt-ic svg{width:20px;height:20px;stroke-width:1.25}
+.un-stmt-items li:hover .un-stmt-ic{border-color:#EC2027;color:#FF6B71}
+.un-stmt-n{grid-area:n;padding-top:4px;font:600 10px/1 "Switzer",sans-serif;letter-spacing:.2em;color:#FF6B71}
+.un-page .un-stmt-items li > b,.un-stmt-items b{grid-area:t;font:500 15.5px/1.25 "Switzer",sans-serif!important;color:#fff;letter-spacing:-.005em}
+.un-wafer{width:100%;max-width:340px;justify-self:center;overflow:visible}
+.un-wafer .wf-orbit{fill:none;stroke:rgba(255,255,255,.22);stroke-width:.8;stroke-dasharray:.6 1.4;transform-origin:0 0}
+.un-wafer .wf-edge{fill:rgba(255,255,255,.025);stroke:rgba(255,255,255,.55);stroke-width:1}
+.un-wafer .wf-edge2{fill:none;stroke:rgba(255,255,255,.14);stroke-width:.8}
+.un-wafer .wf-die{fill:none;stroke:rgba(255,255,255,.2);stroke-width:.7}
+.un-wafer .wf-lit{fill:rgba(236,32,39,.85);stroke:#FF6B71;stroke-width:.8;opacity:0}
+.un-wafer .wf-cross{fill:none;stroke:rgba(255,255,255,.3);stroke-width:.8}
+.un-wafer.in .wf-orbit{animation:wfTurn 60s linear infinite}
+.un-wafer.in .wf-lit{animation:wfLit 8s ease-in-out calc(1s + var(--k) * 1s) infinite}
+@keyframes wfTurn{to{transform:rotate(360deg)}}
+@keyframes wfLit{0%{opacity:0}6%{opacity:.9}14%{opacity:.9}26%,100%{opacity:0}}
+@media(max-width:960px){.un-stmt-card{grid-template-columns:1fr}.un-wafer{max-width:200px;justify-self:start;order:-1}}
+@media(max-width:620px){.un-stmt-items{grid-template-columns:1fr}.un-stmt-items li + li{padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.1)}.un-stmt-items li{padding:16px 0}}
+@media(prefers-reduced-motion:reduce){.un-wafer .wf-orbit,.un-wafer .wf-lit{animation:none!important}.un-wafer .wf-lit:nth-of-type(3n){opacity:.85}}
+
+/* 21 Oct (PCU & TTI, "like this animation"): reasons drawn as the Careers values are, the scene on its dotted ground, the
+   number in its corner, the reason under it */
+.un-whyv{list-style:none;margin:clamp(28px,4vh,44px) 0 0;padding:0;display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:14px}
+.un-whyv-c{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(12,18,32,.07);transition:box-shadow .5s var(--e1),border-color .5s var(--e1)}
+.un-whyv-c:hover{border-color:rgba(12,18,32,.12);box-shadow:0 26px 48px -34px rgba(12,18,32,.35)}
+.un-whyv-top{--blue:#EC2027;position:relative;display:block;height:clamp(150px,12vw,190px);background:#F4F6F9;overflow:hidden}
+.un-whyv-ix{position:absolute;top:12px;right:16px;font:600 clamp(20px,1.8vw,26px)/1 "Switzer",sans-serif;letter-spacing:-.02em;color:rgba(12,18,32,.16)}
+.un-page .un-whyv-c > b{margin:0;padding:clamp(20px,1.8vw,26px) clamp(20px,1.8vw,26px) 0;font:600 clamp(19px,1.5vw,22px)/1.2 "Switzer",sans-serif!important;letter-spacing:-.02em;color:var(--ink)}
+.un-whyv-c p{margin:10px 0 0;padding:0 clamp(20px,1.8vw,26px) clamp(22px,2vw,28px);font-size:14.5px;line-height:1.55;color:var(--soft)}
+@media(max-width:1100px){.un-whyv{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.un-whyv{grid-template-columns:1fr}}

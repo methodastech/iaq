@@ -105,7 +105,7 @@ function HxFigure({ fig }) {
   if (fig.ph) return (
     <figure className="hx-fig hx-fig-ph">
       <div className="hx-fig-box" style={style}><span className="hx-ph">{fig.cap}</span></div>
-      <figcaption className="hx-cap"><b>{fig.kind}</b>{fig.cap}</figcaption>
+      <figcaption className="hx-cap">{fig.cap}</figcaption>
     </figure>
   )
   return (
@@ -120,7 +120,8 @@ function HxFigure({ fig }) {
             </>
           : <img src={fig.img} alt={fig.alt} loading="lazy" decoding="async" />}
       </div>
-      <figcaption className="hx-cap"><b>{fig.kind}</b>{fig.cap}</figcaption>
+      {/* 15 Oct ("remove all the tag"): the Representation / Photo tag is gone; the milestone's caption stays */}
+      <figcaption className="hx-cap">{fig.cap}</figcaption>
     </figure>
   )
 }
@@ -213,6 +214,7 @@ export default function HistorySpan() {
                         registry holds the project this milestone is about, the year links to it.
                         Only the four the registry actually holds carry one, so a link never
                         promises a page that does not hold the project it names. */}
+                    {/* 19 Oct: no milestone carries a project link now (data/history.js); kept for a link IAQ approves */}
                     {m.proj && (
                       <Link className="hx-proj" to={m.proj.to}>
                         {m.proj.label}<i aria-hidden="true">&#8594;</i>
@@ -243,7 +245,8 @@ export default function HistorySpan() {
                   {gy > 0 && (
                     <span className="hx-gap" aria-hidden="true">
                       <span className="hx-ticks" />
-                      <span className="hx-gap-n">{gy} {gy === 1 ? 'year' : 'years'}</span>
+                      {/* 19 Oct (IAQ feedback, Timeline: "avoid implying project duration unless duration is the
+                          intended fact"): the "5 years" count between milestones is gone; the ticks keep the scale */}
                     </span>
                   )}
                 </li>

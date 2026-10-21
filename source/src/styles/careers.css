@@ -358,3 +358,7 @@ svg.cr-why-mk{width:72px;height:72px}
   .headband.cr-band{grid-template-columns:minmax(0,1fr)}
   .headband.cr-band .hb{grid-column:1;grid-row:2;aspect-ratio:16/9;min-height:0}
 }
+
+/* 19 Oct (client: "simple visuals that clearly communicate engineering, teamwork, learning or operational capability"): the
+   four reasons carry plain line marks (RecordFlat.jsx), in the card's ink with their one red part */
+svg.cr-why-ln{width:52px;height:52px;margin:0 0 16px;color:#0C1220}

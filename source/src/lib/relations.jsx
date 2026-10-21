@@ -19,7 +19,8 @@ export const TOUR = [['u', 'epc'], ['u', 'hookup'], ['u', 'efm'], ['y', 'mep:1']
    well"): tools hookup is service 6 AND the fourth kind of work, as the chart and the 4 works section already say. This is
    the one source: the work card, its three systems, and `does`, which says whether a unit does a kind of work (the three
    disciplines from the unit's work list; hookup from the unit carrying service 6). */
-export const HOOK_WORK = { id: 'hookup', name: 'Tools hookup', full: 'Service 6, the tools themselves', icon: 'link', k: 's',
+/* 15 Oct (client review of 13 Oct, Sunny: "Use \"Tool Installation\" and the sequence comes before \"Maintenance\", please stick to our wording") */
+export const HOOK_WORK = { id: 'hookup', name: 'Tool Installation', full: 'Service 5, the tools themselves', icon: 'link', k: 's',
   line: 'Each production tool connected and released to production.',
   systems: ['Gas, chemical, water and exhaust connections to each tool', 'Power and controls to each tool', 'Release to production'],
   /* 25 Sep, night (Bazil: "give a reasoning why hookup is here even though it's part of service") */

@@ -80,7 +80,7 @@ export default function ClosingBand({ note, ask }) {
           <div className="cb-right">
             <div className="cb-ask">
               <h2 className="close-h cb-h">{(ask && ask.title) || <>Tell us what you are <em>building.</em></>}</h2>
-              <p className="lede cb-lede">{(ask && ask.lede) || 'Feasibility to handover, one accountable team. Response in a working day.'}</p>
+              <p className="lede cb-lede">{(ask && ask.lede) || 'Feasibility to handover, one accountable team.'   /* 19 Oct (IAQ: "Do not promise response times unless IAQ has approved an SLA") */}</p>
 
               <div className="cb-go">
                 {/* the answer travels as router state and, for a hard reload, in sessionStorage: the

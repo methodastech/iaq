@@ -21,31 +21,29 @@ export default function MarketBioLifescience() {
       hash="pharma"
       ind="pharma"
       image="/assets/banners/mkt-bio-lifescience.jpg"
-      title={<>Regulated facilities, <em>proven by the record</em>.</>}
-      lede="GMP parenteral suites, laboratories and medical device plants, with the validation record produced at every stage."
-      facts={[
-        { k: 'Cleanroom classes', v: 'ISO 5 to ISO 8', sub: 'Class 100 to Class 100K on recorded projects.' },
-        { k: 'GMP grades', v: 'Grade B, C and D', sub: 'Held across recorded pharmaceutical and life science work.' },
-        { k: 'Range', v: 'Labs to production', sub: 'Research labs, tissue culture, parenteral lines and medical device plants.' },
-      ]}
+      /* 20 Oct (IAQ amendment sheet, Bio LifeScience · Hero Banner) */
+      title={<>BioLife <em>Science</em></>}
+      lede="Enabling Innovation Through Controlled Environments"
+      /* 20 Oct ("remove", on the figures under the hero): no figures strip, the registry figure included */
+      hideRegistry
+      /* 20 Oct (IAQ amendment sheet, Bio LifeScience · Industry Overview, Key Capabilities, Importance): IAQ's three sections,
+         in its order and words. Spelling slips only corrected ("increasingly important", "success"). */
+      whyKick={null}
       why={{
-        head: 'Contamination control is patient safety',
-        quote: 'Pharmaceutical manufacturing demands pristine, regulated environments to prevent contamination.',
-        cite: 'IAQ company profile',
-        body: 'Regulatory guideline specifications set the standard here, not preference. Research labs and production spaces are held to the same discipline, and the documentation has to prove it long after the builders have left.',
+        head: 'Industry Overview',
+        body: 'The BioLife Science sector continues to drive innovation across healthcare, biotechnology, pharmaceuticals and research. Facilities within this sector demand highly controlled environments, reliable utility infrastructure and consistent operational performance to support research, development and manufacturing activities. As regulatory and technological advancement evolve, facility reliability and environmental control have become increasingly important to long-term success.',
       }}
+      demandsHead="IAQ Key Capabilities"
       demands={[
-        'Regulatory guideline specifications',
-        'Highest cleanliness standards',
-        'GMP grades',
-        'Research labs through to production spaces',
+        { label: 'Controlled Environment', icon: 'filter' }, { label: 'Research Facilities', icon: 'flask' },
+        { label: 'Manufacturing Facilities', icon: 'factory' }, { label: 'Utility Infrastructure', icon: 'sysPcw' }, { label: 'EPC Delivery', icon: 'epcUnit' },
       ]}
+      deliverKick={null}
+      deliverHead="Why Precision Matters"
       deliverIntro={[
-        "IAQ builds cleanrooms to regulatory guideline specifications, so these facilities meet the highest cleanliness standards and stringent regulatory requirements.",
-        "In pharmaceuticals, precision is paramount. IAQ specialises in environments that meet the stringent demands of pharmaceutical facilities. From research labs to production spaces, they are held to the tightest standards of cleanliness, safety and function.",
+        'Life science environments depend on reliable infrastructure, environmental control and operational consistency.',
       ]}
-      scopeTitle="Typical Bio LifeScience scope"
-      cycleLede="Regulated work is proved in the documentation trail, so every stage produces the record the validation team needs at handover."
+      hideScope
       standards={{
         head: 'ISO class and GMP grade, held together',
         k: 'Cleanroom classification',

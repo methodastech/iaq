@@ -11,7 +11,7 @@ import '../styles/services-bar.css'
    ============================================================================ */
 const PARTS = [
   { k: 'units', n: '3', label: 'business units', sel: '.sm-units', id: 'business-units', c: '#0B8FD8' },
-  { k: 'services', n: '6', label: 'services', sel: '#services-cycle', c: '#EC2027' },
+  /* 15 Oct: the six-services section left the page, and its tab with it */
   /* 28 Sep (client): the 4 works and Tools hookup sections left the page, and their tabs with them */
   { k: 'who', n: '', label: 'Who does what', sel: '.sysm', id: 'who-does-what', c: '#1C4F9C' },
   { k: 'quote', n: '', label: 'Your quote', sel: '.sm-qs', id: 'your-quote', c: '#0C1220' },

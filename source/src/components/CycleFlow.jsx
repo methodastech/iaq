@@ -27,11 +27,13 @@ const NODES = [
   { i: 1, left: 396, top: 49, d: 700, title: 'Procurement', desc: [] },
   { i: 2, left: 711, top: 49, d: 900, title: 'Construction', desc: [] },
   { i: 3, left: 711, top: 225, d: 1100, title: 'Commissioning', desc: [] },
-  { i: 4, left: 396, top: 225, d: 1300, title: 'Maintenance', desc: [] },
+  /* 15 Oct (client review of 13 Oct, Sunny: "Use \"Tool Installation\" and the sequence comes before \"Maintenance\""): stage 5
+     is Tool Installation and Maintenance is stage 6; the return wire still runs from the last stage to Design */
+  { i: 4, left: 396, top: 225, d: 1300, title: 'Tool Installation', desc: [] },
   /* 17 Sep (Bazil, pointing the caption at this node): the sub-label used to read "Tools Hookup"
      under a title that already said Hookup, and the line that earned the loop floated on its own
      under the diagram. The line IS this stage's description, so it stands here instead. */
-  { i: 5, left: 72, top: 225, d: 1500, title: 'Tools Hookup', desc: ['feeds the', 'next Design'], loop: true },
+  { i: 5, left: 72, top: 225, d: 1500, title: 'Maintenance', desc: [], loop: true },
 ]
 
 /* the reference icon set, drawn on a 24 grid at one stroke weight */
@@ -82,7 +84,7 @@ const MESH = (() => {
 
 /* 24 Sep: the discs carry the detailed vector marks Bazil had refined for the ring and the home page
    (des prc con com mnt hok), so the three cycles on the site draw the same six objects. */
-const MARK_KEY = ['des', 'prc', 'con', 'com', 'mnt', 'hok']
+const MARK_KEY = ['des', 'prc', 'con', 'com', 'hok', 'mnt']   /* 15 Oct: Tool Installation is stage 5, Maintenance 6 (data/cycle.js) */
 
 const ARROW_R = <><path d="M4 12h15" /><path d="M13.5 6.5 19.5 12l-6 5.5" /></>
 const ARROW_L = <><path d="M20 12H5" /><path d="M10.5 6.5 4.5 12l6 5.5" /></>

@@ -129,3 +129,166 @@ span.vm.is-live .dy, span.vm.is-live .sc { animation: vmFade var(--vmd) linear i
    itself no longer reaches zero. */
 span.vm.is-live :is([class]) { animation-delay: calc(var(--vmi, 0) * -1.15s); }
 @media (prefers-reduced-motion: reduce) { span.vm.is-live * { animation: none !important; } }
+
+/* 20 Oct (client review: Safety, Engineering and Efficiency marks "ugly", "make it more premium and relatable"): the three
+   redrawn scenes (ValueMotion.jsx) and their one movement each. They sit after the old rules; the old hooks (.arc, .head,
+   .ol, .cur, .needle, .bar, .zone) no longer exist in the markup. */
+.vm-04 .cmp { transform-box: view-box; transform-origin: 160px 42px; }
+.vm-05 .hand { transform-box: view-box; transform-origin: 116px 90px; transform: rotate(120deg); }
+.vm-05 .chev { opacity: 1; }
+.vm-01.is-live .sh { animation: vmS1 var(--vmd) cubic-bezier(.5, 0, .25, 1) infinite; }
+.vm-01.is-live .badge { animation: vm1Badge var(--vmd) cubic-bezier(.2, .9, .3, 1) infinite; }
+@keyframes vmS1 { 0% { stroke-dashoffset: 1; } 55%, 100% { stroke-dashoffset: 0; } }
+.vm-04.is-live .earc { animation: vmE1 var(--vmd) cubic-bezier(.5, 0, .3, 1) infinite; }
+.vm-04.is-live .cmp { animation: vmE2 var(--vmd) cubic-bezier(.5, 0, .3, 1) infinite; }
+@keyframes vmE1 { 0%, 10% { stroke-dashoffset: 1; } 60%, 100% { stroke-dashoffset: 0; } }
+@keyframes vmE2 { 0%, 10% { transform: rotate(-12deg); } 60%, 100% { transform: rotate(0deg); } }
+.vm-05.is-live .hand { animation: vmF1 var(--vmd) cubic-bezier(.45, 0, .25, 1) infinite; }
+.vm-05.is-live .sweep { animation: vmF2 var(--vmd) cubic-bezier(.45, 0, .25, 1) infinite; }
+.vm-05.is-live .chev { animation: vmF3 var(--vmd) ease infinite; }
+@keyframes vmF1 { 0% { transform: rotate(0deg); } 50%, 90% { transform: rotate(120deg); } 100% { transform: rotate(120deg); } }
+@keyframes vmF2 { 0% { stroke-dashoffset: 1; } 50%, 100% { stroke-dashoffset: 0; } }
+@keyframes vmF3 { 0%, 48% { opacity: 0; transform: translateX(-6px); } 60%, 100% { opacity: 1; transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { span.vm.is-live * { animation: none !important; } }
+/* the per-card phase must stay last (see 24 Sep above), so the redrawn scenes keep their own clock */
+span.vm.is-live :is([class]) { animation-delay: calc(var(--vmi, 0) * -1.15s); }
+/* 20 Oct: the compass stands still; only its red arc draws in */
+.vm-04.is-live .cmp { animation: none; transform: none; }
+.vm-04.is-live .earc { animation: vmE1 var(--vmd) cubic-bezier(.5, 0, .3, 1) infinite; animation-delay: calc(var(--vmi, 0) * -1.15s); }
+/* 20 Oct: the safety helmet scene, its red ring and tick drawing in */
+.vm-01.is-live .sring { animation: vmS2 var(--vmd) cubic-bezier(.5, 0, .25, 1) infinite; animation-delay: calc(var(--vmi, 0) * -1.15s); }
+.vm-01.is-live .stick { animation: vmS3 var(--vmd) cubic-bezier(.5, 0, .25, 1) infinite; animation-delay: calc(var(--vmi, 0) * -1.15s); }
+@keyframes vmS2 { 0%, 8% { stroke-dashoffset: 1; } 40%, 100% { stroke-dashoffset: 0; } }
+@keyframes vmS3 { 0%, 40% { stroke-dashoffset: 1; } 52%, 100% { stroke-dashoffset: 0; } }
+.vm-01.is-live .band { animation: vmS4 var(--vmd) cubic-bezier(.5, 0, .25, 1) infinite; animation-delay: calc(var(--vmi, 0) * -1.15s); }
+@keyframes vmS4 { 0%, 10% { stroke-dashoffset: 1; } 46%, 100% { stroke-dashoffset: 0; } }
+
+/* 20 Oct: the safety board. Seven days ticked in turn, then the badge lands; resting state = a full ticked week with the badge */
+.vm-01 .sbadge { transform-box: fill-box; transform-origin: 50% 50%; }
+.vm-01.is-live .stk { animation: vmDay var(--vmd) cubic-bezier(.5, 0, .3, 1) infinite; }
+.vm-01.is-live .stk1 { animation-name: vmDay1; } .vm-01.is-live .stk2 { animation-name: vmDay2; } .vm-01.is-live .stk3 { animation-name: vmDay3; }
+.vm-01.is-live .stk4 { animation-name: vmDay4; } .vm-01.is-live .stk5 { animation-name: vmDay5; } .vm-01.is-live .stk6 { animation-name: vmDay6; }
+.vm-01.is-live .sbadge { animation: vmBadge var(--vmd) cubic-bezier(.2, .9, .3, 1) infinite; }
+@keyframes vmDay  { 0%, 4%  { stroke-dashoffset: 1; } 10%, 90% { stroke-dashoffset: 0; } 96%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmDay1 { 0%, 12% { stroke-dashoffset: 1; } 18%, 90% { stroke-dashoffset: 0; } 96%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmDay2 { 0%, 20% { stroke-dashoffset: 1; } 26%, 90% { stroke-dashoffset: 0; } 96%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmDay3 { 0%, 28% { stroke-dashoffset: 1; } 34%, 90% { stroke-dashoffset: 0; } 96%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmDay4 { 0%, 36% { stroke-dashoffset: 1; } 42%, 90% { stroke-dashoffset: 0; } 96%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmDay5 { 0%, 44% { stroke-dashoffset: 1; } 50%, 90% { stroke-dashoffset: 0; } 96%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmDay6 { 0%, 52% { stroke-dashoffset: 1; } 58%, 90% { stroke-dashoffset: 0; } 96%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmBadge { 0%, 60% { transform: scale(0); } 67% { transform: scale(1.2); } 72%, 90% { transform: scale(1); } 96%, 100% { transform: scale(0); } }
+/* the per-card phase stays last */
+span.vm.is-live :is([class]) { animation-delay: calc(var(--vmi, 0) * -1.15s); }
+
+/* 20 Oct (safety, option 4): the lanyard runs down, the hook clips, the harness lifts as the line takes the load. Still = clipped */
+.vm-01 .hook, .vm-01 .lnypack { transform-box: fill-box; transform-origin: 50% 50%; }
+.vm-01 .hrn { transform-box: view-box; transform-origin: 120px 100px; }
+.vm-01.is-live .lny { animation: vmLny var(--vmd) cubic-bezier(.5, 0, .3, 1) infinite; }
+.vm-01.is-live .lnypack { animation: vmPack var(--vmd) ease infinite; }
+.vm-01.is-live .hook { animation: vmHook var(--vmd) cubic-bezier(.2, .9, .3, 1) infinite; }
+.vm-01.is-live .hrn { animation: vmHrn var(--vmd) cubic-bezier(.3, 1.4, .5, 1) infinite; }
+@keyframes vmLny  { 0%, 8% { stroke-dashoffset: 1; } 38%, 90% { stroke-dashoffset: 0; } 97%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmPack { 0%, 20% { opacity: 0; } 30%, 90% { opacity: 1; } 97%, 100% { opacity: 0; } }
+@keyframes vmHook { 0%, 38% { opacity: 0; transform: scale(.4); } 46% { opacity: 1; transform: scale(1.25); } 52%, 90% { opacity: 1; transform: scale(1); } 97%, 100% { opacity: 0; } }
+@keyframes vmHrn  { 0%, 52% { transform: translateY(4px); } 62%, 90% { transform: translateY(0); } 97%, 100% { transform: translateY(4px); } }
+span.vm.is-live :is([class]) { animation-delay: calc(var(--vmi, 0) * -1.15s); }
+
+/* 20 Oct: safety = shield and check; engineering = meshing gears and the dimension line */
+.vm-01.is-live .shd  { animation: vmShd var(--vmd) cubic-bezier(.5, 0, .25, 1) infinite; }
+.vm-01.is-live .shd2 { animation: vmShd2 var(--vmd) cubic-bezier(.5, 0, .25, 1) infinite; }
+.vm-01.is-live .shck { animation: vmShck var(--vmd) cubic-bezier(.3, 0, .2, 1) infinite; }
+@keyframes vmShd  { 0% { stroke-dashoffset: 1; } 34%, 92% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmShd2 { 0%, 16% { stroke-dashoffset: 1; } 46%, 92% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmShck { 0%, 46% { stroke-dashoffset: 1; } 60%, 92% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 1; } }
+.vm-04 .g1 { transform-box: view-box; transform-origin: 96px 84px; }
+.vm-04 .g2 { transform-box: view-box; transform-origin: 140.22px 96.68px; transform: rotate(20deg); }
+.vm-04 .dimend { opacity: 1; }
+.vm-04.is-live .g1 { animation: vmG1 14s linear infinite; }
+.vm-04.is-live .g2 { animation: vmG2 14s linear infinite; }
+.vm-04.is-live .dimln { animation: vmDim var(--vmd) cubic-bezier(.5, 0, .3, 1) infinite; }
+.vm-04.is-live .dimend { animation: vmDimE var(--vmd) ease infinite; }
+@keyframes vmG1 { to { transform: rotate(360deg); } }
+@keyframes vmG2 { from { transform: rotate(20deg); } to { transform: rotate(-540deg); } }
+@keyframes vmDim  { 0%, 10% { stroke-dashoffset: 1; } 40%, 90% { stroke-dashoffset: 0; } 97%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmDimE { 0%, 6% { opacity: 0; } 12%, 90% { opacity: 1; } 97%, 100% { opacity: 0; } }
+/* 21 Oct: the unit pages' reasons (PCU & TTI, "like this animation", then "make icon relatable"). Staggering is in the
+   keyframes, not in delays, so the per-card phase rule at the end of this file still holds every scene together. */
+/* puzzle: the tool piece slides in and locks, the red seam closes */
+.vm-puzzle .pz2 { transform-box: view-box; transform-origin: 142px 78px; }
+.vm-puzzle.is-live .pz2 { animation: vmPz var(--vmd) cubic-bezier(.3, 0, .2, 1) infinite; }
+.vm-puzzle.is-live .seam { animation: vmSeam var(--vmd) ease infinite; }
+@keyframes vmPz { 0% { transform: translate(34px, -14px) rotate(10deg); opacity: 0; } 8% { opacity: 1; } 36% { transform: translate(-1.5px, 0) rotate(0deg); } 40%, 90% { transform: translate(0, 0) rotate(0deg); opacity: 1; } 97%, 100% { transform: translate(34px, -14px) rotate(10deg); opacity: 0; } }
+@keyframes vmSeam { 0%, 40% { stroke-dashoffset: 1; } 54%, 88% { stroke-dashoffset: 0; } 94%, 100% { stroke-dashoffset: 1; } }
+
+/* wafer: the magnifier sweeps the wafer, settles on one die, and the die lights */
+.vm-wafer.is-live .lens { animation: vmLens var(--vmd) cubic-bezier(.45, 0, .3, 1) infinite; }
+.vm-wafer.is-live .hit { animation: vmHit var(--vmd) ease infinite; }
+@keyframes vmLens { 0% { transform: translate(-46px, 30px); } 22% { transform: translate(-24px, 34px); } 40% { transform: translate(-30px, 2px); } 58%, 92% { transform: translate(0, 0); } 100% { transform: translate(-46px, 30px); } }
+@keyframes vmHit { 0%, 58% { opacity: 0; } 62% { opacity: 1; } 65% { opacity: .35; } 68%, 90% { opacity: 1; } 96%, 100% { opacity: 0; } }
+
+/* plan: each phase fills in its turn, then the plan is ticked */
+.vm-plan .gb { transform-box: fill-box; transform-origin: 0 50%; }
+.vm-plan .ok { transform-box: fill-box; transform-origin: 50% 50%; }
+.vm-plan.is-live .gb0 { animation: vmGb0 var(--vmd) cubic-bezier(.6, 0, .4, 1) infinite; }
+.vm-plan.is-live .gb1 { animation: vmGb1 var(--vmd) cubic-bezier(.6, 0, .4, 1) infinite; }
+.vm-plan.is-live .gb2 { animation: vmGb2 var(--vmd) cubic-bezier(.6, 0, .4, 1) infinite; }
+.vm-plan.is-live .gb3 { animation: vmGb3 var(--vmd) cubic-bezier(.6, 0, .4, 1) infinite; }
+.vm-plan.is-live .ok { animation: vmOk var(--vmd) cubic-bezier(.2, .9, .3, 1) infinite; }
+.vm-plan.is-live .okt { animation: vmOkT var(--vmd) ease infinite; }
+@keyframes vmGb0 { 0%, 4% { transform: scaleX(0); } 18%, 92% { transform: scaleX(1); } 97%, 100% { transform: scaleX(0); } }
+@keyframes vmGb1 { 0%, 18% { transform: scaleX(0); } 32%, 92% { transform: scaleX(1); } 97%, 100% { transform: scaleX(0); } }
+@keyframes vmGb2 { 0%, 32% { transform: scaleX(0); } 46%, 92% { transform: scaleX(1); } 97%, 100% { transform: scaleX(0); } }
+@keyframes vmGb3 { 0%, 46% { transform: scaleX(0); } 58%, 92% { transform: scaleX(1); } 97%, 100% { transform: scaleX(0); } }
+@keyframes vmOk { 0%, 60% { transform: scale(0); } 66% { transform: scale(1.18); } 70%, 92% { transform: scale(1); } 97%, 100% { transform: scale(0); } }
+@keyframes vmOkT { 0%, 66% { stroke-dashoffset: 1; } 74%, 92% { stroke-dashoffset: 0; } 97%, 100% { stroke-dashoffset: 1; } }
+
+/* bridge: the arch rises, the red deck spans the gap, the load crosses, the factory gear turns */
+.vm-bridge .gr { transform-box: view-box; transform-origin: 186px 102px; }
+.vm-bridge .load { opacity: 0; }
+.vm-bridge.is-live .arch { animation: vmArch var(--vmd) ease infinite; }
+.vm-bridge.is-live .deck { animation: vmDeck var(--vmd) cubic-bezier(.6, 0, .3, 1) infinite; }
+.vm-bridge.is-live .load { animation: vmLoad var(--vmd) cubic-bezier(.45, 0, .55, 1) infinite; }
+.vm-bridge.is-live .gr { animation: vmGr var(--vmd) cubic-bezier(.4, 0, .4, 1) infinite; }
+@keyframes vmArch { 0%, 2% { stroke-dashoffset: 1; } 18%, 92% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmDeck { 0%, 12% { stroke-dashoffset: 1; } 34%, 92% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmLoad { 0%, 36% { opacity: 0; transform: translateX(0); } 40% { opacity: 1; } 62% { opacity: 1; transform: translateX(66px); } 66%, 100% { opacity: 0; transform: translateX(66px); } }
+@keyframes vmGr { 0%, 62% { transform: rotate(0deg); } 94%, 100% { transform: rotate(270deg); } }
+/* 21 Oct: Corporate Commitment's three pillars (EsgE, EsgS, EsgG in ValueMotion.jsx) */
+/* E: the stem grows, the leaves open, the sun rises and turns */
+.vm-esgE .lf1 { transform-box: view-box; transform-origin: 120px 100px; }
+.vm-esgE .lf2 { transform-box: view-box; transform-origin: 120px 84px; }
+.vm-esgE .sun { transform-box: view-box; transform-origin: 166px 46px; }
+.vm-esgE.is-live .stem { animation: vmStem var(--vmd) cubic-bezier(.5, 0, .3, 1) infinite; }
+.vm-esgE.is-live .lf1 { animation: vmLf1 var(--vmd) cubic-bezier(.2, .9, .3, 1) infinite; }
+.vm-esgE.is-live .lf2 { animation: vmLf2 var(--vmd) cubic-bezier(.2, .9, .3, 1) infinite; }
+.vm-esgE.is-live .sun { animation: vmSun var(--vmd) cubic-bezier(.3, 0, .2, 1) infinite; }
+@keyframes vmStem { 0%, 4% { stroke-dashoffset: 1; } 26%, 92% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmLf1 { 0%, 20% { transform: scale(0); } 34%, 92% { transform: scale(1); } 98%, 100% { transform: scale(0); } }
+@keyframes vmLf2 { 0%, 28% { transform: scale(0); } 42%, 92% { transform: scale(1); } 98%, 100% { transform: scale(0); } }
+@keyframes vmSun { 0%, 38% { transform: translateY(22px) rotate(0deg); opacity: 0; } 56% { transform: translateY(0) rotate(30deg); opacity: 1; } 92% { transform: translateY(0) rotate(80deg); opacity: 1; } 100% { transform: translateY(22px) rotate(90deg); opacity: 0; } }
+
+/* S: three people arrive, the red shelter draws over them, the heart beats */
+.vm-esgS .p1, .vm-esgS .p2, .vm-esgS .p3 { transform-box: fill-box; transform-origin: 50% 100%; }
+.vm-esgS .heart { transform-box: fill-box; transform-origin: 50% 60%; }
+.vm-esgS.is-live .p1 { animation: vmP1 var(--vmd) cubic-bezier(.2, .9, .3, 1) infinite; }
+.vm-esgS.is-live .p2 { animation: vmP2 var(--vmd) cubic-bezier(.2, .9, .3, 1) infinite; }
+.vm-esgS.is-live .p3 { animation: vmP3 var(--vmd) cubic-bezier(.2, .9, .3, 1) infinite; }
+.vm-esgS.is-live .roof { animation: vmRoof var(--vmd) cubic-bezier(.5, 0, .3, 1) infinite; }
+.vm-esgS.is-live .heart { animation: vmHeart var(--vmd) ease infinite; }
+@keyframes vmP1 { 0%, 2% { transform: scale(0); opacity: 0; } 12%, 92% { transform: scale(1); opacity: 1; } 98%, 100% { transform: scale(0); opacity: 0; } }
+@keyframes vmP2 { 0%, 10% { transform: scale(0); opacity: 0; } 20%, 92% { transform: scale(1); opacity: 1; } 98%, 100% { transform: scale(0); opacity: 0; } }
+@keyframes vmP3 { 0%, 18% { transform: scale(0); opacity: 0; } 28%, 92% { transform: scale(1); opacity: 1; } 98%, 100% { transform: scale(0); opacity: 0; } }
+@keyframes vmRoof { 0%, 28% { stroke-dashoffset: 1; } 50%, 92% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmHeart { 0%, 50% { transform: scale(0); } 56% { transform: scale(1.3); } 60% { transform: scale(1); } 66% { transform: scale(1.18); } 70%, 92% { transform: scale(1); } 98%, 100% { transform: scale(0); } }
+
+/* G: the lines of the policy set out, then the pen signs it */
+.vm-esgG .doc { transform-box: fill-box; transform-origin: 0 50%; }
+.vm-esgG .pen { transform: translate(52px, -2px); }
+.vm-esgG.is-live .doc { animation: vmDoc var(--vmd) cubic-bezier(.5, 0, .3, 1) infinite; }
+.vm-esgG.is-live .sig { animation: vmSig var(--vmd) cubic-bezier(.5, 0, .5, 1) infinite; }
+.vm-esgG.is-live .pen { animation: vmPen var(--vmd) cubic-bezier(.5, 0, .5, 1) infinite; }
+@keyframes vmDoc { 0%, 4% { transform: scaleX(0); } 26%, 92% { transform: scaleX(1); } 98%, 100% { transform: scaleX(0); } }
+@keyframes vmSig { 0%, 34% { stroke-dashoffset: 1; } 66%, 92% { stroke-dashoffset: 0; } 98%, 100% { stroke-dashoffset: 1; } }
+@keyframes vmPen { 0%, 26% { transform: translate(14px, -18px); opacity: 0; } 32% { transform: translate(0, 0); opacity: 1; } 66% { transform: translate(52px, -2px); opacity: 1; } 74%, 100% { transform: translate(64px, -22px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { span.vm.is-live * { animation: none !important; } }
+span.vm.is-live :is([class]) { animation-delay: calc(var(--vmi, 0) * -1.15s); }

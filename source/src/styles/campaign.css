@@ -216,3 +216,35 @@ html.lp-page{overflow-x:clip}
 @media(prefers-reduced-motion:reduce){
   .lp-form-in .lpf-f input,.lp-form-in .lpf-f textarea,.lp-form-in .lpf-f .lp-sel-b{transition:none;transform:none!important}
 }
+
+/* 20 Oct ("make this enquiry more premium and subtle, right now looks pale, maybe add light animation"): depth instead of
+   flat panels. A slow drifting glow behind the section and a faint blueprint grid; the form panel is a frosted sheet with a
+   hairline that warms to red when the visitor is inside it; fields sit in rather than on the panel; the send button carries
+   a soft sheen that passes once in a while. All of it stops under reduced motion. */
+.lp-form-wrap{position:relative;overflow:hidden;isolation:isolate;background:#080D1B}
+.lp-form-wrap::before{content:"";position:absolute;inset:-20%;z-index:-2;pointer-events:none;
+  background:radial-gradient(38% 34% at 72% 30%,rgba(236,32,39,.16),transparent 70%),radial-gradient(42% 40% at 18% 78%,rgba(37,54,245,.14),transparent 72%);
+  animation:lpGlow 18s ease-in-out infinite alternate}
+.lp-form-wrap::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:48px 48px;-webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent)}
+@keyframes lpGlow{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-4%,3%,0) scale(1.06)}100%{transform:translate3d(3%,-2%,0) scale(1.02)}}
+.lpf-panel{background:linear-gradient(180deg,rgba(24,33,58,.82),rgba(14,20,38,.9));border-color:rgba(255,255,255,.09);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 40px 80px -40px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06);
+  transition:border-color .5s ease,box-shadow .5s ease}
+.lpf-panel::before{height:2px;background:linear-gradient(90deg,transparent,#EC2027 30%,#FF5A5F 50%,#EC2027 70%,transparent);background-size:200% 100%;animation:lpLine 6s linear infinite}
+@keyframes lpLine{to{background-position:-200% 0}}
+.lpf-panel:focus-within{border-color:rgba(236,32,39,.35);box-shadow:0 40px 90px -40px rgba(236,32,39,.28),inset 0 1px 0 rgba(255,255,255,.08)}
+.lp-form-in .lpf-f input,.lp-form-in .lpf-f textarea,.lp-form-in .lpf-f .lp-sel-b{background:rgba(6,10,22,.6);border-color:rgba(255,255,255,.1);
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.35);transition:border-color .3s ease,box-shadow .3s ease,background .3s ease}
+.lp-form-in .lpf-f input:focus,.lp-form-in .lpf-f textarea:focus,.lp-form-in .lpf-f .lp-sel-b:focus-visible,.lp-form-in .lpf-f .lp-sel.is-open .lp-sel-b{
+  background:rgba(6,10,22,.85);box-shadow:0 0 0 3px rgba(236,32,39,.16),inset 0 1px 2px rgba(0,0,0,.35)}
+.lp-form-in .lpf-panel .cta{position:relative;overflow:hidden;box-shadow:0 18px 40px -18px rgba(236,32,39,.7);transition:transform .3s ease,box-shadow .3s ease}
+.lp-form-in .lpf-panel .cta::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:30%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-18deg);animation:lpSheen 5.5s ease-in-out infinite}
+@keyframes lpSheen{0%,70%{left:-40%}100%{left:120%}}
+.lp-form-in .lpf-panel .cta:hover{transform:translateY(-1px);box-shadow:0 22px 46px -18px rgba(236,32,39,.85)}
+.lpf-direct{background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.08);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.lpf-steps li:first-child::before{box-shadow:0 0 0 0 rgba(236,32,39,.5);animation:lpPulse 2.8s ease-out infinite}
+@keyframes lpPulse{0%{box-shadow:0 0 0 0 rgba(236,32,39,.45)}70%,100%{box-shadow:0 0 0 10px rgba(236,32,39,0)}}
+@media (prefers-reduced-motion:reduce){.lp-form-wrap::before,.lpf-panel::before,.lp-form-in .lpf-panel .cta::after,.lpf-steps li:first-child::before{animation:none}}

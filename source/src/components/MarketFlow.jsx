@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Icon from './FlowIcon.jsx'
 import { iconFor } from './DetailDiagram.jsx'
-import { CYCLE } from '../data/cycle.js'
 import '../styles/market-flow.css'
 
 /* ============================================================================
@@ -31,23 +29,8 @@ export default function MarketFlow ({ scope = [], scopeTitle, lede }) {
           </ol>
         </div>
       )}
-      {lede && <p className="mf-lede">{lede}</p>}
-      <div className="mf-row">
-        <h3 className="mf-h">How it is delivered, <em>stage by stage.</em></h3>
-        <ol className="mf-cycle">
-          {CYCLE.map(d => (
-            <li key={d.id}>
-              <Link to={d.route}>
-                <span className="mf-n">Stage {d.no}</span>
-                <span className="mf-ic" aria-hidden="true"><Icon name={d.icon} /></span>
-                <b>{d.short}</b>
-                <small>{d.kick}</small>
-              </Link>
-            </li>
-          ))}
-        </ol>
-        <p className="mf-loop">The cycle closes: tools hookup feeds the next design.</p>
-      </div>
+      {/* 20 Oct (client: "this one is repeated, remove it under all the services"): the six-stage row ("How it is delivered,
+          stage by stage"), its lede and the closing loop line are off every market page; the scope row stays */}
     </div>
   )
 }

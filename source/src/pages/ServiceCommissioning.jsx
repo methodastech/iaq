@@ -118,7 +118,9 @@ export default function ServiceCommissioning() {
         title={<>Proven performance <em>before you move in.</em></>}
         lede="Established testing and commissioning programmes that prove every facility operates as intended, at its optimum, before handover."
         chips={['Validation', 'Stage 4 of 6']}
-        figure={{ src: '/assets/iaq/cr-ballroom-8575.webp', alt: 'Testing and commissioning: a finished IAQ cleanroom ballroom before the tools move in', hero: true }}
+        /* 19 Oct (IAQ feedback: "one approved image that actually depicts the service"): an engineer testing in a cleanroom,
+           in place of the empty finished ballroom, which showed the result rather than the testing */
+        figure={{ src: '/assets/banners/svc-commission.jpg', alt: 'Testing and commissioning: an engineer in a cleanroom suit taking a measurement with a tripod-mounted instrument', hero: true }}
       />
 
       {/* --------------------------------------------------- what it covers */}

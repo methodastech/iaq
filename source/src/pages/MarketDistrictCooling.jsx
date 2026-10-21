@@ -20,31 +20,29 @@ export default function MarketDistrictCooling() {
       hash="district-cooling"
       ind="district-cooling"
       image="/assets/banners/mkt-district-cooling.jpg"
-      title={<>District cooling, <em>run for decades</em>.</>}
-      lede="Centralised cooling plant for districts and campuses, including Malaysia's largest district cooling centre."
-      facts={[
-        { k: 'Flagship', v: "Malaysia's largest", sub: 'District cooling centre, Kuala Lumpur.' },
-        { k: 'Regional first', v: 'First in Southeast Asia', sub: 'Co-generative plant, delivered in Malaysia.' },
-        { k: 'Classification', v: 'Energy infrastructure', sub: 'Measured in kilowatt hours, as a plant rather than a classified environment.' },
-      ]}
+      /* 20 Oct (IAQ amendment sheet, District Cooling & Heating · Hero Banner) */
+      title={<>District Cooling <em>&amp; Heating</em></>}
+      lede="Advancing Sustainable Urban Infrastructure"
+      /* 20 Oct ("remove", on the figures under the hero): no figures strip, the registry figure included */
+      hideRegistry
+      /* 20 Oct (IAQ amendment sheet, District Cooling & Heating · Industry Overview, Key Capabilities, Importance): IAQ's three
+         sections, in its order and words. Spelling slips only corrected ("centralised", "operational"). */
+      whyKick={null}
       why={{
-        head: 'Efficiency at scale, held for decades',
-        quote: 'Recognising the crucial role these systems play in sustainable urban development.',
-        cite: 'IAQ company profile',
-        body: 'One central plant, cooling or heating multiple buildings at once. Efficiency at scale is the product, and it has to hold for decades rather than for a commissioning week. That is why operation and maintenance are part of the same contract.',
+        head: 'Industry Overview',
+        body: 'District cooling and heating systems are essential components of sustainable urban infrastructure, providing centralised thermal energy to support commercial developments, residential communities, healthcare facilities, educational campuses and industrial developments. By improving energy efficiency and reducing environmental impact, these systems help cities and organisations meet long-term sustainability and operational objectives.',
       }}
+      demandsHead="IAQ Key Capabilities"
       demands={[
-        'Centralised plant serving multiple buildings',
-        'Efficiency at scale',
-        'Long-term operation and maintenance',
-        'Sustainable urban development outcomes',
+        { label: 'District Energy Systems', icon: 'factory' }, { label: 'Cooling Infrastructure', icon: 'snow' },
+        { label: 'Energy Management', icon: 'power' }, { label: 'EPC Delivery', icon: 'epcUnit' }, { label: 'Lifecycle Support', icon: 'cycle' },
       ]}
+      deliverKick={null}
+      deliverHead="Why Energy Efficiency Matters"
       deliverIntro={[
-        'IAQ Group extends its expertise to district cooling and heating, recognising the crucial role these systems play in sustainable urban development.',
-        'We combine current plant technology with meticulous planning to deliver efficient district energy. Our services follow the industry as its needs change, and help clients cut energy use and environmental impact.',
+        'District cooling and heating systems help optimise energy use, improve reliability and support long-term sustainability objectives.',
       ]}
-      scopeTitle="Typical district cooling scope"
-      cycleLede="District energy is the one market where the fifth stage is the point. Maintenance runs for decades after handover, and what it learns goes back into the next plant."
+      hideScope
       standards={{
         head: 'Measured in efficiency, not in particles',
         k: 'Classification',

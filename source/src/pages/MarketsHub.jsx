@@ -50,6 +50,8 @@ const FLAGSHIPS = MARKETS.map(m => {
   return rows.length ? { ...rows[0], market: m.name } : null
 }).filter(Boolean)
 
+const SHOW_STANDARDS = false   /* 21 Oct: the "What each market requires" table, see the note in the render */
+
 export default function MarketsHub() {
   useEffect(() => { document.title = 'IAQ Group · Markets · Brand Method' }, [])
 
@@ -62,9 +64,11 @@ export default function MarketsHub() {
       <div className="mk-hub-head">
       <PageHead
         eyebrow="Where we build"
-        title={<>Seven markets, <em>one standard of clean</em>.</>}
+        /* 20 Oct (client review, Sunny: "what is that standard of clean?", "The metrics all change"): a plain heading, and the
+           chips carry IAQ's own figures from the home page (16 Oct sheet) in place of 250+ projects and 1,050,000 m2 */
+        title={<>Seven markets, <em>one integrated team</em>.</>}
         lede="Each market page sets out what the environment demands, how IAQ builds it and the projects that prove it."
-        chips={['7 markets', '250+ projects', '1,050,000 m² cleanroom built', '7 countries']}
+        chips={['7 markets', '235+ projects completed', '7 global offices', '31 years of experience']}
         figure={{ src: '/assets/banners/mkt-hub.jpg', alt: 'A hi-tech industrial campus at dusk: facility blocks, rooftop plant, a data hall and a solar roof', hero: true }}
       />
       </div>
@@ -76,6 +80,10 @@ export default function MarketsHub() {
           no heading over them; the band is tighter and the cards a screen high */}
 
       {/* ---------------------------------------- 03 · standards strip */}
+      {/* 21 Oct ("remove this", on the table's Measured by and Largest delivered columns): with both columns gone the table was a
+          list of the seven names, the same seven the strip below shows, so the whole band is off the page. SHOW_STANDARDS
+          brings it back. */}
+      {SHOW_STANDARDS && (<>
       <section className="pg-sec deep">
         <div className="pg-in">
           <span className="pg-k">One standard, seven measures</span>
@@ -132,12 +140,7 @@ export default function MarketsHub() {
             })}
           </div>
 
-          <div className="pg-stats">
-            <div className="pg-stat"><b>ISO 3 to 8</b><span>Cleanroom classes across the delivered record, Class 1 to Class 100K</span></div>
-            <div className="pg-stat"><b>Grade B, C, D</b><span>GMP grades held on recorded Bio LifeScience work</span></div>
-            <div className="pg-stat"><b>Dry room</b><span>Battery lines specified by humidity, with the dew point as the measure</span></div>
-            <div className="pg-stat"><b>1,050,000 m²</b><span>Cleanroom built-up area delivered by the group</span></div>
-          </div>
+          {/* 20 Oct (client review, Sunny: "Sequence is off, remove all the metrics beneath"): the four figure tiles are gone */}
 
           {/* A dashed "Content slot · certifications" panel used to close this band at
               full width, so the section ended on an admission that it is unfinished. The
@@ -145,6 +148,7 @@ export default function MarketsHub() {
               shows them; a downloadable set is a launch task, not a page element. */}
         </div>
       </section>
+      </>)}
 
       {/* 26 Sep (Bazil: "after that table only then show this"): the seven-market strip follows the board */}
       <section className="pg-sec tight mk-seven" aria-label="The seven markets">
@@ -164,7 +168,7 @@ export default function MarketsHub() {
         <div className="pg-in">
           <span className="pg-k">Proof</span>
           <h2>One project from each market</h2>
-          <p className="pg-lede">One project from each market, from the published registry. The full record of 250+ projects follows at launch.</p>
+          <p className="pg-lede">One project from each market, from the published registry. The full record follows at launch.</p>
 
           <div className="pg-proof">
             {FLAGSHIPS.map(p => (

@@ -23,8 +23,7 @@ export default function CultureCollage() {
           <span className="cuh-mo" data-mo={p.mo}>
             <img src={p.src} alt={p.alt} style={{ objectPosition: p.pos }} decoding="async" fetchPriority={p.k === 'a' ? 'high' : undefined} />
           </span>
-          <figcaption>{p.cap}</figcaption>
-          {p.rep && <span className="cuh-rep">Representation</span>}
+          {/* 15 Oct ("remove all the tag"): no caption or Representation tag on the pictures (the alt text keeps what each shows) */}
         </figure>
       ))}
     </div>

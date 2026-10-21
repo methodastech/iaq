@@ -89,24 +89,64 @@ function patch (label, re, to, expect = 1) {
   js = js.replace(new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g'), to)
 }
 patch('scroll position', new RegExp(`=\\(\\)=>(${ID})\\?(${ID}):scrollY`), '=()=>$1?$2:__b3d.y()')
-patch('scroll range', /document\.documentElement\.scrollHeight-innerHeight/, '__b3d.span()')
+/* 12 Oct delivery, second ("3D ONLY", 12:40): two, up from one; the second is the exploded view's jump to the end of
+   the build (only on ?view=exploded, the team's own page, but measured from the section all the same) */
+patch('scroll range', /document\.documentElement\.scrollHeight-innerHeight/, '__b3d.span()', 2)
 patch('scroll to', new RegExp(`scrollTo\\(\\{top:(${ID}),behavior:(${ID})\\}\\)`), '__b3d.scrollTo($1,$2)')
+/* the same exploded view then scrolls there with a bare scrollTo(0, end): through the section too, so it can never
+   throw the home page to its foot */
+patch('jump to the end', new RegExp(`([;,(])scrollTo\\(0,(${ID})\\)`), '$1__b3d.scrollTo($2,"instant")')
 patch('no jump to the top', new RegExp(`(${ID})\\|\\|scrollTo\\(0,0\\)`), '$1||0')
 const loop = (js.match(new RegExp(`;(${ID})\\(\\);?\\s*$`)) || [])[1]
 if (!loop) die('the script no longer ends by starting its render loop')
 patch('render loop', new RegExp(`requestAnimationFrame\\(${loop.replace(/\$/g, '\\$')}\\)`), `__b3d.raf(${loop})`, 2)
 /* 30 Sep delivery ("3D ONLY uplatest"): six panels, up from three (the rail HUD, two hover cards with their
    leader lines, the slow-frame notice, the floor loader, the x-ray pins) */
-patch('panels into the section', /document\.body\.append(Child)?\(/, '__b3d.root.append$1(', 6)
+/* 12 Oct delivery, second: seven (the exploded view's own heading panel) */
+patch('panels into the section', /document\.body\.append(Child)?\(/, '__b3d.root.append$1(', 7)
 patch('keyboard', /(^|[;,{}()])addEventListener\("keydown",/, '$1__b3d.onKey(', 6)
 /* 2 Oct delivery ("3D ONLY update 10-2"): thirteen, up from eleven (the props folder, a second machines list) */
 patch('model paths', /(["`])(?:\.\/)?models\//, `$1${BASE}models/`, 13)
 patch('sign paths', /"\.\/signs\//, `"${BASE}signs/`, 2)
 /* the sign painters take the page's base as an argument, "./", and add signs/... to it. From the 30 Sep delivery
    the fire kit and the scope cards take it too, and fetch models/... from it: seven calls, all a base */
-patch('sign base', /\("\.\/"([,)])/, `("${BASE}"$1`, 7)
+/* 14 Oct delivery ("3D ONLY (11)"): eight, one more part handed the base */
+patch('sign base', /\("\.\/"([,)])/, `("${BASE}"$1`, 8)
 /* 30 Sep delivery: the rail's isometric trade icons (icons/iso/*.svg) */
 patch('icon paths', /"\.\/icons\//, `"${BASE}icons/`, 1)
+/* 21 Oct ("follow this sequence", the panel as it builds): the trade numbers the rail and its footer print follow the build
+   order the visitor sees: Civil 1, Architectural 2, Fire Protection 3, HT & LV Electrical 4, Air-conditioning 5, Cleanroom 6,
+   Process Utilities 7 (the delivery numbered Process Utilities 3 and Fire to Cleanroom 4 to 7) */
+for (const [k, from, to] of [['Process Utilities', 3, 7], ['Fire Protection', 4, 3], ['HT & LV Electrical', 6, 4], ['Cleanroom System', 7, 6]])
+  patch('trade number ' + k, new RegExp(`"${k.replace(/[&]/g, '\$&')}":\{n:${from},`), `"${k}":{n:${to},`)
+/* 21 Oct ("follow this sequence"): the build itself runs in that order too. The delivery's stage list (the chapters after
+   Civil and Architectural) is re-ordered to Fire Protection, HT & LV Electrical, Air-conditioning, Cleanroom, Process
+   Utilities, then Tools Hookup; the delivery had Process Utilities first */
+{
+  const ORDER = ['Fire Protection', 'HT & LV Electrical', 'Air-conditioning', 'Cleanroom System', 'Process Utilities', 'Tools Hookup']
+  const at = js.indexOf(',n=[{chapter:"Process Utilities"')
+  if (at < 0) die('build order: the stage list (starting with Process Utilities) was not found. The delivery changed; update this tool.')
+  let depth = 0, end = -1
+  for (let k = at + 3; k < js.length; k++) { const c = js[k]; if (c === '[' || c === '{') depth++; else if (c === ']' || c === '}') { depth--; if (depth === 0) { end = k; break } } }
+  const arr = js.slice(at + 3, end + 1), items = []
+  for (let k = 1, d = 0, st = -1; k < arr.length - 1; k++) { const c = arr[k]; if (c === '{' || c === '[') { if (d === 0) st = k; d++ } else if (c === '}' || c === ']') { d--; if (d === 0) items.push(arr.slice(st, k + 1)) } }
+  const by = new Map(items.map(x => [(x.match(/chapter:"([^"]+)"/) || [])[1], x]))
+  if (items.length !== ORDER.length || ORDER.some(c => !by.has(c))) die(`build order: expected the stages ${ORDER.join(', ')}; found ${[...by.keys()].join(', ')}. Update this tool.`)
+  js = js.slice(0, at + 3) + '[' + ORDER.map(c => by.get(c)).join(',') + ']' + js.slice(end + 1)
+}
+/* 21 Oct ("did you the sequence or not? should be 8", the client's panel): eight entries. Tools Hookup builds as the close
+   of Process Utilities rather than a step of its own, Complete the build is 8 of 8, and the panel shows IAQ's names
+   (Civil and Structural, Air-conditioning and Mechanical Ventilation, Cleanroom) without renaming the chapters inside */
+for (const [a, b] of [
+  ['{chapter:"Tools Hookup",', '{chapter:"Process Utilities",'],
+  ['Overall:{n:9,', 'Overall:{n:8,'],
+  ['eD=9,', 'eD=8,'],
+  ['o.querySelector(".rd-t").textContent=a?"Complete the build":t.name,', 'o.querySelector(".rd-t").textContent=a?"Complete the build":({"Civil & Structural":"Civil and Structural","Air-conditioning":"Air-conditioning and Mechanical Ventilation","Cleanroom System":"Cleanroom"}[t.name]||t.name),'],
+  ['d=`${ov[h]?.n??e.activeChapter+1} / ${eD} · ${h}`', 'd=`${ov[h]?.n??e.activeChapter+1} / ${eD} · ${{"Civil & Structural":"Civil and Structural","Air-conditioning":"Air-conditioning and Mechanical Ventilation","Cleanroom System":"Cleanroom"}[h]||h}`'],
+]) {
+  if (js.split(a).length !== 2) die(`panel of eight: expected one "${a.slice(0, 40)}". The delivery changed; update this tool.`)
+  js = js.replace(a, b)
+}
 
 /* ---- the stylesheet ---- */
 const css = fs.readFileSync(path.join(SRC, 'assets', cssName), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '')
@@ -145,7 +185,9 @@ const scoped = scope(css)
 
 /* ---- write ---- */
 fs.rmSync(OUT, { recursive: true, force: true })
-const SKIP = new Set(['index.html', 'v3.html', 'README.txt', 'FILES.txt', 'serve.ps1', 'Open 3D (local).bat', '_headers', 'fonts'])
+/* 12 Oct: exploded.html is the 3D team's own stand-alone exploded view; it loads the bundle by its hashed name, which
+   this tool renames, so it stays out like v3.html */
+const SKIP = new Set(['index.html', 'v3.html', 'exploded.html', 'README.txt', 'FILES.txt', 'serve.ps1', 'Open 3D (local).bat', '_headers', 'fonts'])
 for (const f of fs.readdirSync(SRC)) if (!SKIP.has(f)) fs.cpSync(path.join(SRC, f), path.join(OUT, f), { recursive: true })
 fs.rmSync(path.join(OUT, 'assets', jsName)); fs.rmSync(path.join(OUT, 'assets', cssName))
 fs.writeFileSync(path.join(OUT, 'assets', 'app.js'), js)

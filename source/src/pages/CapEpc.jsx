@@ -1,5 +1,28 @@
 import React from 'react'
 import UnitPage from '../components/UnitPage.jsx'
+import Icon from '../components/FlowIcon.jsx'
+
+/* 19 Oct (client feedback, EPC · "The work, and the system inside it section to replace and update the information"): IAQ's
+   own section in place of the generic work and systems cards, its six capabilities in IAQ's order, each with its mark.
+   Spelling slip only corrected ("through a multidisciplinary team"). */
+const CAPS = [
+  ['compass', 'Engineering & Design'], ['crate', 'Procurement'], ['crane', 'Construction'],
+  ['gas', 'Process Utilities'], ['link', 'Tool Installation'], ['gauge', 'Testing & Commissioning'],
+]
+const EpcCapabilities = () => (
+  <div className="un-caps">
+    <h2 id="un-scope-h" className="un-h2" data-rv="">Our EPC <em>Capabilities</em></h2>
+    <p className="un-caps-lede" data-rv="" style={{ '--d': '.06s' }}>IAQ delivers EPC solutions through a multidisciplinary team of engineers, project managers and construction professionals. Our capabilities span the full project lifecycle, enabling efficient coordination and successful project delivery across complex industrial environments.</p>
+    <ul className="un-caps-grid">
+      {CAPS.map(([ic, t], i) => (
+        <li key={t} data-rv="" style={{ '--d': `${.08 + i * .05}s` }}>
+          <span className="un-svc-mark" aria-hidden="true"><Icon name={ic} /></span>
+          <b>{t}</b>
+        </li>
+      ))}
+    </ul>
+  </div>
+)
 
 /* Copy provenance. Rebuilt 15 Sep from IAQ's own answers; the previous version is in
    src/_backups/epc-efm-0915/CapEpc.jsx. Every fact carries a source tag beside it.
@@ -35,13 +58,15 @@ export default function CapEpc() {
       no="1"
       /* 18 Sep (Nabilah: "EPC and Construction is wrong, EPC already includes construction") */
       name="EPC"
-      full="Engineering, Procurement and Construction"
-      /* HUB block 01. The em holds one line (unbroken emphasis rule). */
-      title={<>One contract, from first drawing to <em style={{ whiteSpace: 'nowrap' }}>final handover.</em></>}
+      full="Engineering, Procurement & Construction"
+      /* 19 Oct (IAQ feedback, EPC · Headline and value proposition): IAQ's headline, as given. "One contract, from first
+         drawing to final handover" went with it: it implied every project runs every phase */
+      title={<>Engineering, Procurement &amp; Construction <em style={{ whiteSpace: 'nowrap' }}>(EPC)</em></>}
       /* Q-EPC-B: one-stop solution; design, procurement, construction; the system operates as intended. HUB: single contract. 15 words. */
-      lede="One contract covers design, procurement and construction. IAQ answers for the system working as intended."
+      lede="Engineering, procurement and construction under one contract, scoped to what each project needs. IAQ answers for the system working as intended."
       /* LIVE-EPCC and LIVE-EPCM; single point of contact Q-EPC-B; 12 to 24 months Q-EPC-B */
-      chips={['EPCC · EPCM', 'Single point of contact', 'Typically 12 to 24 months']}
+      /* 19 Oct (IAQ feedback, EPC · Metrics: "No blanket duration claim"): "Typically 12 to 24 months" is gone */
+      chips={['EPCC · EPCM', 'Single point of contact']}
       /* 17 Sep: IAQ's own photograph from the SharePoint share (Cleanroom Photos/IMG_8578), a finished
          ballroom at handover. It replaces the Higgsfield still and its clip, so the representation tag goes. */
       /* 25 Sep (Bazil: "add video of clean room", IMG_8588 and IMG_8589 "a good representation of clean room", "remove
@@ -64,22 +89,21 @@ export default function CapEpc() {
          of the generated still. The Representation tag goes with it: this is the real thing. */
       band="/assets/iaq/plant-dusk-02.webp"
       art="epc"
-      facts={[
-        { v: '1', l: 'point of contact for the whole facility' },
-        { v: '12 to 24', l: 'months, a typical EPC programme' },
-        { v: '4', l: 'stages, from design to commissioning' },   /* 25 Sep (Bazil): maintenance is EFM, tools hookup is PCU & TTI */
-      ]}
-      modelsHead={<>Two contract models, <em>one accountable team.</em></>}
-      models={[
-        /* HUB block 01; LIVE-EPCC */
-        { t: 'EPCC', s: 'Turnkey execution', d: 'IAQ delivers the complete project and is accountable for how the system performs, from feasibility to start-up.',
-          pts: ['Commissioning and start-up included', 'One party answers for the result'] },   /* 24 Sep (client: "Remove Design, procurement and construction under one contract.") */
-        /* HUB block 02; LIVE-EPCM */
-        { t: 'EPCM', s: 'Managed on your behalf', d: 'IAQ manages the project for the owner, who keeps the individual construction contracts. IAQ coordinates the contractors, the schedule and the cost.',
-          pts: ['Owner holds the construction contracts', 'IAQ runs coordination, programme and cost', 'Direct control kept where the owner wants it'] },
-      ]}
+      /* 19 Oct (IAQ feedback, EPC · Metrics: "Remove all the metrics on this section"): the three hero figures are gone
+         (1 point of contact, 12 to 24 months, 4 stages); UnitPage prints no figure row when the list is empty */
+      facts={[]}
+      /* 19 Oct (client feedback, EPC · Contract models and scope relationship: "Remove this section entirely"; IAQ: "Do not
+         publish a simplified two-model framework unless management confirms it is complete"): the "Two contract models, one
+         accountable team." section (the EPCC and EPCM cards) is off the page; the cards are in git history */
       /* the ledger: HUB blocks 01 and 02, LIVE-EPCC and LIVE-EPCM; duration Q-EPC-B */
       /* 25 Sep (Bazil: "no need this kind of complex info"): the At a glance ledger is off the page; the two model cards say it */
+      /* 19 Oct (client feedback, EPC · Definition): IAQ's heading and paragraph in place of "What EPC is." and its EPC
+         definition. The sheet's paragraph is cut off at "the highest standards of quality,"; it ends at "quality" here until
+         IAQ's last words are in. */
+      whatHead={<>Integrated Project <em>Delivery</em></>}
+      whatParts={[
+        { t: 'Complex facilities require more than technical expertise. They demand seamless coordination across engineering, procurement and construction to ensure every element is aligned from concept to commissioning. Through an integrated project delivery approach, IAQ combines multidisciplinary expertise, meticulous planning and disciplined execution to deliver facilities that meet the highest standards of quality.' },
+      ]}
       what={[
         /* Q-EPC-B, "What does EPC stand for and mean in IAQ's context" */
         'EPC stands for Engineering, Procurement and Construction. It is a one-stop solution. IAQ designs and engineers the system, procures the equipment and materials, and carries out the installation and construction works. IAQ also makes sure the system operates as intended on completion.',
@@ -90,6 +114,7 @@ export default function CapEpc() {
       ]}
       /* Q-EPC-B, "What level of single-point accountability" */
       /* 17 Sep: IAQ's own Revit extract for this system, from the SharePoint share */
+      scope={<EpcCapabilities />}
       bim={{ src: '/assets/iaq/bim-archi.webp', cap: 'The architectural model of a hi-tech facility, taken from IAQ’s own Revit coordination model.', alt: 'An isometric view of a facility’s architectural model' }}
       /* 25 Sep (Bazil: "remove the first picture"): the claim band's photograph is off this page */
       cycle={{ map: [0, 1, 2, 3], dim: [4, 5] }}
@@ -98,6 +123,8 @@ export default function CapEpc() {
       /* 9 Oct ("remove this section", on The project cycle, stage by stage): the cycle section is off this page; the stages
          stay here for the day it returns */
       hideCycle
+      /* 21 Oct ("remove this"): the "Call EPC when" line is off the hero, as on PCU & TTI */
+      hideWhen
       steps={[
         /* stage Q-EPC-A 1 and DV3 A1.3; concept to plans, specifications and drawings, CSA to MEP LIVE-HOME; feasibility, master planning, detail design disciplines, BIM, permitting LIVE-EPCC */
         { k: 'Design', t: 'Engineering design and consultation', d: 'IAQ turns the client’s concept into detailed plans, specifications and drawings. Work starts with a feasibility study and master planning. Detail design covers architecture, civil and structural, MEP, HVAC and process. The design is modelled in BIM. Permitting sits in the same stage.', covers: ['Feasibility study', 'Detail design and BIM'] },
@@ -110,19 +137,15 @@ export default function CapEpc() {
       ]}
       /* 17 Sep: the nine LIVE-EPCC scope lines moved onto their stage above (client: merge with
          the lifecycle and remove the section). They are the `covers` arrays in steps. */
+      /* 21 Oct (IAQ amendment sheet, EPC · Why IAQ): IAQ's five reasons, in its order and words, in place of "Why owners choose it." */
+      whyHead={<>Why Integrated Project <em>Delivery Matters</em></>}
+      whyAfterScope   /* 21 Oct: after Our EPC Capabilities, the sheet's order */
       why={[
-        /* Q-EPC-B, single-point accountability */
-        { k: 'One point of contact', icon: 'user', t: 'IAQ takes responsibility for the project, so the system works as intended.' },
-        /* Q-EPC-A differentiator 2; pain point 2 */
-        { k: 'End to end, in-house', icon: 'cycle', t: 'Design through to commissioning sits with IAQ’s own team, and IAQ’s other units carry maintenance and tools hookup after it.' },
-        /* Q-EPC-A differentiator 3; Q-EPC-B "the cleanroom specialist to begin with" */
-        { k: 'Cleanroom specialists', icon: 'particle', t: 'IAQ began as a cleanroom specialist, and that is still what a hi-tech facility is built around.' },
-        /* Q-EPC-A differentiator 1; pain point 4 */
-        { k: 'Local and global', icon: 'globe', t: 'IAQ delivers locally and globally, and knows the limits clients meet when they expand.' },
-        /* Q-EPC-B, typical timeline */
-        { k: '12 to 24 months', icon: 'calendar', t: 'A typical EPC project runs 12 to 24 months, depending on the project.' },
-        /* HUB blocks 01 and 02 */
-        { k: 'Two contract models', icon: 'copy', t: 'EPCC for full turnkey execution. EPCM when the owner keeps direct control of the construction contracts.' },
+        { k: 'Enhanced Coordination', icon: 'link', t: 'Improved collaboration between design, procurement and construction teams throughout the project lifecycle.' },
+        { k: 'Reduced Project Complexity', icon: 'layers', t: 'A structured delivery framework that helps streamline decision-making and project execution.' },
+        { k: 'Improved Schedule Certainty', icon: 'calendar', t: 'Early planning and coordinated execution help minimise delays and improve delivery confidence.' },
+        { k: 'Quality & Safety Focus', icon: 'shield', t: 'Consistent management of quality and safety standards across all phases of the project.' },
+        { k: 'Operational Readiness', icon: 'check', t: 'A lifecycle approach that supports a smoother transition from project completion to facility operation.' },
       ]}
       /* what no source answers: FAQ row blank in Q-EPC-A; Q-EPC-B gives a range but no fast-track answer; only two REG projects carry a model tag */
       slot={{
@@ -130,7 +153,7 @@ export default function CapEpc() {
         title: 'Still to come from the EPC questionnaire, sections A and B',
         items: [
           'The questions clients ask before signing an EPC contract (the row was left blank)',
-          'Whether a fast-track option shortens the 12 to 24 months',
+          'Whether “Fast-Track Project” is an approved service or project descriptor',
           'Which reference projects ran as EPCC and which as EPCM',
         ],
       }}
@@ -139,6 +162,10 @@ export default function CapEpc() {
       proofNote="Projects tagged EPCC or EPCM in IAQ’s registry, published by scope and location only. Client names are withheld where the contract requires it."
       /* Q-EPC-A: a visitor contacts the PIC at business@iaqtechnology.com.my, which the contact page carries */
       /* title and note: single point of contact Q-EPC-B; the reply line is the site's own promise */
+      /* 21 Oct (IAQ amendment sheet, EPC · CTA): IAQ's heading and line as a section of its own above the footer. Spelling
+         slips only corrected ("Discuss", "operationally"). */
+      ctaBand={{ title: <>Let&rsquo;s Discuss Your <em>Project Goals</em></>, label: 'Discuss your project', route: '/contact',
+        lede: 'Whether planning a new facility, expanding existing operations or upgrading critical infrastructure, IAQ delivers integrated EPC solutions that transform complex requirements into operationally ready facilities.' }}
       cta={{ label: 'Discuss an EPC project', route: '/contact', title: 'One contract for the whole facility.', note: 'Tell us the facility and the programme. One point of contact carries it from design to handover.' }}
     />
   )

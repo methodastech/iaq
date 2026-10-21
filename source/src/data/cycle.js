@@ -5,6 +5,8 @@ export const CYCLE = [
   { id: 'svc-procurement',   no: '2', route: '/services/all#procurement',       icon: 'crate',   name: 'Procurement',                       short: 'Procure',    kick: 'Sourcing, tenders and long-lead equipment' },
   { id: 'svc-construction',  no: '3', route: '/services/all#construction',      icon: 'crane',   name: 'Construction',                      short: 'Construct',  kick: 'Site, safety, quality, programme and cost' },
   { id: 'svc-commissioning', no: '4', route: '/services/all#commissioning',     icon: 'gauge',   name: 'Testing & Commissioning',           short: 'Commission', kick: 'Proven to operate as intended, before handover' },
-  { id: 'svc-maintenance',   no: '5', route: '/services/all#maintenance',       icon: 'gear',    name: 'Maintenance',                       short: 'Maintain',   kick: 'Planned care that protects lifespan and uptime' },
-  { id: 'cap-tool',          no: '6', route: '/services/all#tool-installation', icon: 'link',    name: 'Tools Hookup',                      short: 'Hookup',     kick: 'Production tools connected and released to production' },
+  /* 15 Oct (client review of 13 Oct, Sunny: "Use "Tool Installation" and the sequence comes before "Maintenance", please
+     stick to our wording"): stage 5 is Tool Installation, by IAQ's name, and Maintenance is stage 6 */
+  { id: 'cap-tool',          no: '5', route: '/services/all#tool-installation', icon: 'link',    name: 'Tool Installation',                 short: 'Tool Installation', kick: 'Production tools connected and released to production' },
+  { id: 'svc-maintenance',   no: '6', route: '/services/all#maintenance',       icon: 'gear',    name: 'Maintenance',                       short: 'Maintain',   kick: 'Planned care that protects lifespan and uptime' },
 ]

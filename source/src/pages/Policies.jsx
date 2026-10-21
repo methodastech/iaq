@@ -255,65 +255,8 @@ export default function Policies() {
         </div>
       </section>
 
-      <section className="pg-sec" aria-labelledby="pol-cert-h">
-        <div className="pg-in">
-          <div className="ghead">
-            <div>
-              <span className="pg-k">03 / Certifications</span>
-              <h2 id="pol-cert-h">Certified, on the record</h2>
-              <p>{LAUNCH ? 'The standards IAQ is audited against.' : 'The standards IAQ is audited against. These are already published on the site and are stated here as fact. The certificate files behind them are published here as IAQ supplies them.'}</p>
-            </div>
-          </div>
-
-          <div className="gcerts">
-            {CERTS.map(c => (
-              <div className={'gcert' + (c.file ? ' has-file' : '')} key={c.name}>
-                {c.thumb && (
-                  c.file
-                    ? <a className="gcert-th" href={c.file} target="_blank" rel="noopener"><img src={c.thumb} alt={`${c.name} certificate, first page`} loading="lazy" decoding="async" /></a>
-                    : <span className={'gcert-th' + (c.badge ? ' badge' : '')}><img src={c.thumb} alt={`${c.name} badge`} loading="lazy" decoding="async" /></span>
-                )}
-                <b>{c.name}</b>
-                <span>{c.meta}</span>
-                {c.no && (
-                  <dl className="gcert-meta">
-                    <div><dt>Certificate</dt><dd>{c.no}</dd></div>
-                    <div><dt>Certified since</dt><dd>{c.since}</dd></div>
-                    <div><dt>Valid until</dt><dd>{c.valid}</dd></div>
-                  </dl>
-                )}
-                {c.file && <a className="gcert-file" href={c.file} target="_blank" rel="noopener">View the certificate (PDF) <i aria-hidden="true">&rarr;</i></a>}
-              </div>
-            ))}
-          </div>
-          <p className="gcert-holder">{HOLDER}. Each certificate carries a QR code that Intertek verifies online.</p>
-
-          <div className="gslots">
-            <div className="pg-slot gslot">
-              <div className="pg-slot-in">
-                <span className="gslot-badge"><Icon name="file" /></span>
-                <b>Certificate library, the rest</b>
-                <p>The three ISO certificates are published above with their numbers and expiry dates. Two registrations are still stated without their file.</p>
-                <span className="pg-slot-tag">CIDB G7 registration certificate and the Gold OSH 2024 certificate · supplied by IAQ QHSE</span>
-              </div>
-            </div>
-            <div className="pg-slot gslot">
-              <div className="pg-slot-in">
-                <span className="gslot-badge"><Icon name="chart" /></span>
-                <b>Safety and ESH award record</b>
-                <p>The award list referenced in discovery, presented by year with the issuing body, so the safety record stands on named, dated evidence.</p>
-                <span className="pg-slot-tag">Full ESH award list and the certificate files, to follow as a separate attachment noted in discovery A2.12 · supplied by IAQ</span>
-              </div>
-            </div>
-          </div>
-
-          <p className="pg-note">
-            The commitment behind these standards is set out on the{' '}
-            <Link to="/about/esg">ESG commitment</Link> page, and the company behind them on{' '}
-            <Link to="/about">about the group</Link>.
-          </p>
-        </div>
-      </section>
+      {/* 21 Oct ("remove this"; IAQ, 13 Oct: "I do not need to show the cert on my website"): the "Certified, on the record" section
+          and its three Intertek certificates are off the page; the files stay in public/docs/certificates */}
       <ClosingBand note="Policies concept · Brand Method" />
     </>
   )

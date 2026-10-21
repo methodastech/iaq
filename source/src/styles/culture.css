@@ -645,3 +645,7 @@
 .cu-h2-mk .cu-hmk { display: block; overflow: visible; width: 96px; height: 96px; margin: 0 0 6px 12px; }
 .cu-h2-mk > span { display: block; }
 @media (max-width: 720px) { .cu-h2-mk .cu-hmk { width: 72px; height: 72px; margin: 0 0 4px 9px; } .cu-sf-q { max-width: none; } }
+
+/* 19 Oct: the growth heading's mark is the plain mortarboard (RecordFlat.jsx), not the isometric diorama */
+.cu-h2-mk .cu-hmk.cu-hmk-ln { width: 64px; height: 64px; margin: 0 0 14px; color: currentColor; }
+@media (max-width: 720px) { .cu-h2-mk .cu-hmk.cu-hmk-ln { width: 52px; height: 52px; margin: 0 0 10px; } }

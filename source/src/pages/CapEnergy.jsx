@@ -44,14 +44,19 @@ export default function CapEnergy() {
       /* LIVE-EFM "IAQ Energy Facility Management (EFM)"; Q-EM-C: Energy Management covers the services EFM provides */
       full="Energy Facility Management (EFM)"
       /* high electricity bill Q-EM-A pain point a; "no upfront costs" LIVE-CC; zero upfront investment Q-EM-A differentiator a. The em holds one line. */
-      title={<>Lower energy bills, with <em style={{ whiteSpace: 'nowrap' }}>no upfront cost.</em></>}
+      /* 19 Oct (client feedback, Energy Management · Hero Banner): IAQ's header and line, in place of "Lower energy bills, with
+         no upfront cost." */
+      title={<>Energy <em>Management</em></>}
       /* IAQ funds implementation, upgrading, operation and maintenance Q-EM-C; payment on actual savings, or a fixed tariff, Q-EM-C. 18 words. */
-      lede="IAQ funds, builds and runs the energy upgrade. You pay from the savings, or a fixed cooling tariff."
+      lede="Optimising Performance. Advancing Sustainability."
       /* ESCO under Suruhanjaya Tenaga LIVE-EFM; zero upfront investment Q-EM-A */
       chips={['Registered ESCO · Suruhanjaya Tenaga', 'Zero upfront investment']}
       /* 17 Sep: IAQ's own drone photograph of a delivered plant at dusk (SharePoint, Project Photos), in place of
          the Higgsfield still and clip, so the representation tag goes. The band lower down is another frame of the same flight. */
-      image={{ src: '/assets/iaq/plant-dusk-01.webp', alt: 'A plant delivered by IAQ, photographed from the air at dusk', hero: true }}
+      /* 19 Oct (client feedback, Hero Banner: "Premium visual: District Cooling / Energy Infrastructure / Central utility
+         Facility"): the district cooling plant room, the picture the District Cooling market page opens on, in place of the
+         plant from the air */
+      image={{ src: '/assets/banners/mkt-district-cooling.jpg', alt: 'A district cooling plant room: chillers and chilled water headers', hero: true }}
       /* the band below is IAQ's own photograph, so only the hero is tagged */
       bandRep={false}
       /* 15 Sep (UnitPage): the hero facts and the two funding models as cards. Zero upfront Q-EM-A; durations FLOW-EPC
@@ -59,31 +64,51 @@ export default function CapEnergy() {
       /* 17 Sep: IAQ's own drone photograph of a delivered plant at dusk, from the SharePoint share */
       band="/assets/iaq/plant-dusk-04.webp"
       art="energy"
-      facts={[
-        { v: 'RM0', l: 'upfront investment from you' },
-        { v: '5 to 10', l: 'years, Energy Performance Contracting' },
-        { v: '10 to 20', l: 'years, Cooling as a Service' },
-      ]}
+      /* 19 Oct ("remove this", on the hero's RM0 / 5 to 10 / 10 to 20 figures): no figures on the hero; UnitPage closes the
+         empty row (no-facts) */
+      facts={[]}
       /* 24 Sep (client: "For this section they have 7 end-to-end Energy Management Services, refer our current
          website: iaqtechnology.com.my/efm", and "Then can remove this sections" on the At a glance ledger): the three
          payment models and the ledger are replaced by the seven services, worded as IAQ's own page words them. */
-      servicesHead={<>Seven energy management services, <em>end to end.</em></>}
-      servicesLede="Designed to reduce operating expenditure, increase efficiency and improve sustainability outcomes."
+      /* 19 Oct (client feedback, Energy Management · Our Solutions): IAQ's five solutions, in IAQ's order and words, in place
+         of the seven services (24 Sep, from IAQ's current EFM page) */
+      /* 21 Oct (IAQ amendment sheet, Energy Management · Industry We Serve): the seven, in IAQ's order and words */
+      industries={{ head: <>Industries <em>We Serve</em></>, items: [
+        { t: 'Industrial & Manufacturing', icon: 'factory' }, { t: 'Commercial Developments', icon: 'building' }, { t: 'Data Centres', icon: 'server' },
+        { t: 'Healthcare', icon: 'shield' }, { t: 'Hospitality', icon: 'home' }, { t: 'Education Campuses', icon: 'people' },
+        { t: 'District Cooling Infrastructure', icon: 'snow' },
+      ] }}
+      /* 21 Oct (IAQ amendment sheet, Energy Management · Deliverable): Energy as a Service and its four steps, after Our
+         Solutions; the project cycle section it stands for is off the page. Spelling slip only corrected ("sustainability"). */
+      process={{ head: <>Energy as <em>a Service</em></>,
+        lede: 'IAQ’s Energy-as-a-Service approach enables organisations to improve energy performance through innovative delivery models that minimise capital expenditure while creating long-term operational and sustainability benefits.',
+        steps: [
+          { k: 'Assess', icon: 'gauge', t: 'Evaluate existing infrastructure and identify opportunities for improvement.' },
+          { k: 'Optimise', icon: 'chart', t: 'Develop strategies to improve efficiency, performance and energy consumption.' },
+          { k: 'Implement', icon: 'crane', t: 'Deliver upgrades, retrofits and infrastructure improvements through proven engineering solutions.' },
+          { k: 'Operate', icon: 'cycle', t: 'Support long-term performance through monitoring, maintenance and operational management.' },
+        ] }}
+      hideCycle
+      /* 21 Oct (IAQ amendment sheet, Energy Management · CTA): its own section above the footer. Spelling slip only
+         corrected ("infrastructure"). */
+      ctaBand={{ title: <>Let&rsquo;s Discuss Your <em>Energy Goals</em></>, label: 'Discuss your energy goals', route: '/contact',
+        lede: 'Whether you are evaluating energy optimisation opportunities, exploring sustainable cooling solutions or modernising existing infrastructure, IAQ can help identify practical pathways towards greater efficiency, resilience and long-term value.' }}
+      servicesHead={<>Our <em>Solutions</em></>}
       services={[
-        { t: 'Energy Audit', icon: 'gauge', d: 'Comprehensive energy audits to identify inefficiencies, optimise system performance and implement targeted Energy Saving Measures (ESMs).' },
-        { t: 'Energy Efficiency Solutions', icon: 'airflow', d: 'HVAC and building system optimisation through targeted retrofits and AI-based automation.' },
-        { t: 'Energy Performance Contracting', icon: 'chart', d: 'IAQ fully funds and delivers system upgrades, from HVAC retrofits to smart controls, and shares in the operating cost savings achieved.' },
-        { t: 'Cooling-as-a-Service / Build-Operate-Transfer', icon: 'snow', d: 'A utility-based cooling model: chilled water supplied under a long-term service agreement. Pay only for the cooling you consume.' },
-        { t: 'District Cooling System', icon: 'factory', d: 'End-to-end solutions from feasibility studies through engineering, procurement, construction, commissioning, operation and maintenance.' },
-        { t: 'Maintenance & Reliability', icon: 'gear', d: 'Comprehensive and non-comprehensive maintenance packages with skilled manpower for daily operations and emergency response.' },
-        { t: 'Cogeneration System', icon: 'power', d: 'Efficient on-site power and thermal energy generation that reduces energy costs, improves reliability and supports sustainable facility operations.' },
+        { t: 'Energy Audit', icon: 'gauge', d: 'Comprehensive assessments that identify opportunities to improve energy efficiency, system performance and investment planning.' },
+        { t: 'Energy Performance Contracting', icon: 'chart', d: 'Performance-based solutions that enable energy efficiency improvements through measurable operational outcomes.' },
+        { t: 'Cooling-as-a-Service', icon: 'snow', d: 'A utility-based approach that provides efficient cooling infrastructure while reducing upfront capital investment and operational complexity.' },
+        { t: 'District Cooling System', icon: 'factory', d: 'Integrated solutions spanning feasibility, development, operation and long-term lifecycle management.' },
+        { t: 'Operations & Maintenance', icon: 'gear', d: 'Structured maintenance programmes designed to enhance reliability, optimise performance and extend asset life.' },
       ]}
       /* 29 Sep (client, Website Update: "You should first describe what EFM is first", "Only then continue with The
          problems EFM solved"): the client's two paragraphs, as given, open "What EFM is."; the dash after "IAQ Group"
          is a comma on the site (house style, no dashes as pauses) */
+      /* 19 Oct (client feedback, Energy Management · Introduction to Energy Management): IAQ's heading and paragraph, in place
+         of "What EFM is." and its two paragraphs (29 Sep). Spelling slip only corrected ("reliability"). */
+      whatHead={<>Driving Sustainable <em>Facility Performance</em></>}
       whatParts={[
-        { t: 'IAQ Energy Facility Management (EFM) is part of the IAQ Group, a Total Facility Solutions Provider with 30 years of global experience in designing, building, upgrading, and maintaining critical facility systems.' },
-        { t: <>As a registered <b>Energy Service Company (ESCO)</b> under Suruhanjaya Tenaga, we specialize in energy efficiency and sustainable cooling solutions for high-performance cleanroom systems, district cooling infrastructure, and advanced HVAC optimization.</> },
+        { t: 'By combining technical expertise, innovative commercial models and lifecycle support services, IAQ helps organisations optimise energy infrastructure, improve reliability and create measurable long-term value across their facilities.' },
       ]}
       painsHead={<>The problems <em>EFM solves.</em></>}
       /* 24 Sep (client: "This section can replace with brief introduction of district cooling system"): stands where the
@@ -138,22 +163,15 @@ export default function CapEnergy() {
       ]}
       /* 17 Sep: the seven services moved onto the stages above as `covers` (client: merge with the
          lifecycle and remove the section). */
+      /* 21 Oct (IAQ amendment sheet, Energy Management · Why IAQ): IAQ's four reasons, in its order and words, in place of
+         "Why owners choose it.", after Energy as a Service */
+      whyHead={<>Why Energy Performance <em>Matters</em></>}
+      whyAfterServices
       why={[
-        /* Q-EM-A differentiator a; IAQ funds Q-EM-C; "focus capital on core business priorities" LIVE-EFM */
-        { k: 'Zero upfront investment', icon: 'chart', t: 'IAQ funds the implementation. Your capital stays free for core business priorities.' },
-        /* LIVE-EFM "Up to 30% cost reduction". IAQ's own published claim, kept as a range, not as a
-           promise: the BU head asked that no client project or achieved saving be named. */
-        { k: 'Up to 30% lower cost', icon: 'gauge', t: 'IAQ publishes savings of up to 30% on electricity consumption where the measures are applied in full.' },
-        /* Q-EM-A differentiator b; "Service Level Agreements ensure system reliability, energy efficiency and guaranteed uptime" LIVE-EFM */
-        { k: 'Performance assurance', icon: 'shield', t: 'Service Level Agreements cover system reliability, energy efficiency and uptime.' },
-        /* Q-EM-A differentiator c */
-        { k: '30 years in HVAC', icon: 'airflow', t: 'IAQ has 30 years of experience in HVAC.' },
-        /* Q-EM-A differentiator d; district cooling "from feasibility studies through engineering, procurement, construction, commissioning, operation and maintenance" LIVE-EFM */
-        { k: 'EPCC capability', icon: 'crane', t: 'IAQ engineers, procures, constructs and commissions the works. On district cooling it carries on into operation and maintenance.' },
-        /* LIVE-EFM Regulatory Compliance */
-        { k: 'Regulatory compliance', icon: 'check', t: 'Upgrades help facilities meet energy efficiency regulations and Building Energy Index (BEI) requirements.' },
-        /* main contractor for Malaysia's largest district cooling plant HIST 2013 and LIVE-EFM "Malaysia largest DCP"; "Malaysia First Multi Varsity District Cooling System" LIVE-EFM */
-        { k: 'District cooling record', icon: 'snow', t: 'IAQ was main contractor for Malaysia’s largest district cooling plant. Its references also include Malaysia’s first multi-varsity district cooling system.' },
+        { k: 'Engineering-Led Solutions', icon: 'compass', t: 'Backed by multidisciplinary engineering expertise and decades of project delivery experience.' },
+        { k: 'Performance-Focused Approach', icon: 'gauge', t: 'Focused on improving operational efficiency, system reliability and long-term asset value.' },
+        { k: 'Innovative Business Models', icon: 'chart', t: 'Flexible Energy-as-a-Service solutions that support energy transition initiatives while reducing investment barriers.' },
+        { k: 'Sustainability Commitment', icon: 'leaf', t: 'Helping organisations advance energy efficiency, carbon reduction and broader sustainability objectives.' },
       ]}
       /* what no source answers: client questions listed in Q-EM-A and Q-EM-C without answers; equipment ownership after FLOW-EPC; the unconfirmed LIVE-EFM figure */
       /* 17 Sep: the questionnaire came back and closed part of this. The "up to 30%" claim is IAQ's

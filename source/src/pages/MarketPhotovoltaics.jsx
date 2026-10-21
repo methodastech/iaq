@@ -20,31 +20,29 @@ export default function MarketPhotovoltaics() {
       hash="photovoltaic"
       ind="photovoltaic"
       image="/assets/banners/mkt-photovoltaics.jpg"
-      title={<>Cell and module lines, <em>built for the next process</em>.</>}
-      lede="Solar cell and module production facilities, designed to take the next generation of tooling."
-      facts={[
-        { k: 'Materials handled', v: 'Silicon, cadmium, silver', sub: 'Managed with toxic material and waste controls through design and construction.' },
-        { k: 'Cleanroom class', v: 'ISO 6 to ISO 8', sub: 'Class 1K on the published module plant, Class 100K recorded on solar cell production.' },
-        { k: 'Delivered in', v: 'the northern corridor, Kedah', sub: 'Solar panel manufacturing plant, KMW building M&E works.' },
-      ]}
+      /* 20 Oct (IAQ amendment sheet, Photovoltaics · Hero Banner) */
+      title={<em>Photovoltaics</em>}
+      lede="Supporting Clean Energy Manufacturing"
+      /* 20 Oct (client review, Sunny): "Delivered in" and "On the registry": "remove"; "Materials handled" and "Cleanroom class":
+         "how sure are you about this?". No figure stays that IAQ has not confirmed, so the strip is gone; the two queried
+         figures (silicon, cadmium, silver; ISO 6 to ISO 8, from the company profile p15 and the registry) can return once IAQ
+         confirms them. */
+      hideRegistry
+      /* 20 Oct (IAQ amendment sheet, Photovoltaics · Industry Overview, Key Capabilities, Importance): IAQ's three sections, in its
+         order and words. Spelling slips only corrected ("reliable"). */
+      whyKick={null}
       why={{
-        head: 'The process changes faster than the building',
-        quote: 'The solar industry is constantly evolving, with new materials and technologies emerging regularly.',
-        cite: 'IAQ company profile',
-        body: 'Silicon, cadmium and silver each come with environmental and health requirements that shape the design. Safe handling is built into the facility at design stage, alongside the local regulations that govern the site, so the controls are part of the building itself.',
+        head: 'Industry Overview',
+        body: 'As the world advances towards cleaner energy sources, photovoltaics manufacturing plays an increasingly important role in supporting global energy transformation. Modern solar production facilities require reliable infrastructure, consistent environmental control and efficient manufacturing environments to meet growing market demand while maintaining product quality, operational efficiency and competitiveness.',
       }}
-      demands={[
-        'Safe handling of silicon, cadmium and silver',
-        'Compliance with local regulations',
-        'Toxic material and waste management',
-        'Optimised energy output and efficiency',
-      ]}
+      demandsHead="IAQ Key Capabilities"
+      demands={[{ label: 'Solar manufacturing Facilities', icon: 'sun' }, { label: 'Utility Infrastructure', icon: 'sysPcw' }, { label: 'Manufacturing Facilities', icon: 'factory' }, { label: 'EPC Delivery', icon: 'epcUnit' }]}
+      deliverKick={null}
+      deliverHead="Why Manufacturing Infrastructure Matters"
       deliverIntro={[
-        'Solar panel manufacturing works with materials such as silicon, cadmium and silver, and IAQ carries the environmental and health controls for handling them safely through design and construction.',
-        "IAQ brings expertise in solar technology and local regulations, a commitment to optimising energy output and efficiency, and experience managing toxic materials and waste. Together they deliver reliable, efficient facilities for solar panel manufacturing.",
+        'Reliable infrastructure supports production efficiency, operational stability and long-term manufacturing growth.',
       ]}
-      scopeTitle="Typical photovoltaics scope"
-      cycleLede="Solar plants change process faster than most sectors, so design and procurement are run to keep the facility able to take the next generation of tooling."
+      hideScope
       standards={{
         head: 'Classified where the process needs it',
         k: 'Cleanroom classification',

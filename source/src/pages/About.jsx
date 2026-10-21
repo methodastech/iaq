@@ -39,14 +39,10 @@ export default function About() {
   <div className="plx-mid" data-speed="0.45" aria-hidden="true"><span>1995</span></div>
   <div className="head wrap">
     <span className="eyebrow">About IAQ</span>
-    <h1 id="heroH">Engineering trust, <em>since 1995.</em></h1>
-    <p className="lede">IAQ is a Malaysian total facility solutions provider. For 31 years it has designed, built and maintained hi-tech facilities through three business units.</p>
-    <div className="head-stats">
-      <div className="hchip"><svg className="hic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.3 3.8 5.2 3.8 8.5S14.5 18.2 12 20.5c-2.5-2.3-3.8-5.2-3.8-8.5S9.5 5.8 12 3.5z"/></svg><b data-count="7">0</b><span>Countries</span></div>
-      <div className="hchip"><svg className="hic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.5" cy="8" r="3.2"/><circle cx="16.5" cy="9.5" r="2.6"/><path d="M2.8 19.5c1.1-3.2 3.2-4.9 5.7-4.9s4.6 1.7 5.7 4.9M14 15c2.1.3 3.8 1.8 4.8 4.3"/></svg><b data-count="450">0</b><span>People</span></div>
-      <div className="hchip"><svg className="hic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l8 4.3-8 4.3-8-4.3z"/><path d="M4 12l8 4.3 8-4.3M4 16.4l8 4.3 8-4.3"/></svg><b><span data-count="250">0</span>+</b><span>Projects delivered</span></div>
-      <div className="hchip"><svg className="hic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16"/><path d="M4 10h16M10 4v16"/></svg><b><span data-count="1050000">0</span> m&#178;</b><span>Of cleanroom built</span></div>
-    </div>
+    {/* 19 Oct (client feedback, About the Group · Overview headline and introduction): IAQ's headline and introduction,
+        and "Remove the metrices below description": the four figure chips (countries, people, projects, m²) are gone */}
+    <h1 id="heroH">Advancing Industry <em>Since 1995</em></h1>
+    <p className="lede">IAQ Group supports the world&rsquo;s evolving industries through integrated engineering, construction and facility solutions. We combine technical expertise with disciplined execution to deliver facilities that perform today and adapt for tomorrow.</p>
   </div>
   {/* 22 Sep (Bazil: "better not be keep repeating"): the spec ticker that ran here said 1995, seven
       countries and 450 people again, directly under the chips that had just said them. It is gone, and
@@ -74,15 +70,17 @@ export default function About() {
         descriptive sentences below the 1st paragraph"). One statement at full size; the second
         sentence drops to reading size and takes the old footnote's line with it, so the block
         says the same thing in one bold line and one paragraph instead of two bold slabs. */}
-    <p className="mline" data-mline>IAQ began in 1995 with indoor air quality.</p>
-    {/* 22 Sep: the line above says 1995 and the hero says seven countries, so this no longer says either again */}
+    {/* 19 Oct (client feedback, About the Group · Section below headline): IAQ's statement and description. The sheet's
+        description is cut off at "both"; it is IAQ's company overview from its current website, which ends "locally and
+        globally". Spelling slips only corrected. */}
+    <p className="mline" data-mline>31 years of technical excellence through various service model with global presence across 7 countries</p>
     <p className="mdesc" data-mline>
-      Three decades on, the same firm designs, procures, builds, commissions and maintains controlled environments to class, as one total facility solutions provider.
+      IAQ is a leading ISO 9001, ISO 14001 and ISO 45001 certified Malaysian owned company that delivers engineering and design consultation, procurement, construction, commissioning and testing, tool installation and maintenance services of plants and on-board project management services to client in diverse industries both locally and globally.
     </p>
     </div>
     <figure className="man-photo">
       <img src="/assets/iaq/cr-utilities-p1010242.webp" alt="A cleanroom delivered by IAQ: the white hall under its ceiling grid and light lines" loading="lazy" decoding="async" />
-      <figcaption>A cleanroom delivered by IAQ</figcaption>
+      {/* 15 Oct ("remove all the tag"): no caption on the photograph */}
     </figure>
   </div>
 </section>
@@ -108,6 +106,12 @@ export default function About() {
       <li><img src="/assets/certs/ukas.webp" alt="UKAS management systems accreditation" loading="lazy" decoding="async" /></li>
       <li><img src="/assets/certs/cidb.webp" alt="CIDB Malaysia registered contractor" loading="lazy" decoding="async" /></li>
       <li><img src="/assets/certs/highwire-gold-2024.webp" alt="Highwire Safety Gold 2024" loading="lazy" decoding="async" /></li>
+      {/* 21 Oct (client feedback, About the Group · Certificates: "To include BCA, BizSafe Star, GICG Logo"): the three marks, cut from
+          the strip the client shared; Shazwan holds the master files, to replace these when they arrive */}
+      <li><img src="/assets/certs/gicg.webp" alt="GICG ISO 9001, 14001 and 45001 certification" loading="lazy" decoding="async" /></li>
+      <li><img src="/assets/certs/sac.webp" alt="SAC accredited certification body" loading="lazy" decoding="async" /></li>
+      <li><img src="/assets/certs/bca.webp" alt="BCA, Building and Construction Authority Singapore" loading="lazy" decoding="async" /></li>
+      <li><img src="/assets/certs/bizsafe-star.webp" alt="bizSAFE Star" loading="lazy" decoding="async" /></li>
     </ul>
     <p className="ab-awards-p">We are proud to be recognised by important organisations for our contribution towards the community and, more importantly, our clients.</p>
     <Link className="ab-awards-a" to="/policies">Policies and certificates <i aria-hidden="true">&rarr;</i></Link>

@@ -203,7 +203,7 @@ export default function Campaign({ slug }) {
             <h2>{project ? 'Tell us about the project' : 'Request the capability pack'}</h2>
             <p>
               {project
-                ? 'A few lines are enough to start. An engineer reads every brief and replies within a working day.'
+                ? 'A few lines are enough to start. Our team will review your enquiry and direct it to the appropriate contact.'
                 : 'The capability statement and certification pack, sent to your inbox. One email, no follow-up sequence.'}
             </p>
           </div>
@@ -213,8 +213,9 @@ export default function Campaign({ slug }) {
               <span className="lpf-k">What happens next</span>
               <ol className="lpf-steps">
                 <li><strong>You send the brief</strong><span>A few lines are enough to start.</span></li>
-                <li><strong>It goes to an engineer</strong><span>An engineer reads every brief.</span></li>
-                <li><strong>A reply within a working day</strong><span>To the email or phone you give.</span></li>
+                {/* 19 Oct (IAQ: "Do not promise response times unless IAQ has approved an SLA"): IAQ's routing, no reply time */}
+                <li><strong>Our team reviews it</strong><span>Every enquiry is read.</span></li>
+                <li><strong>It reaches the right contact</strong><span>At the email or phone you give.</span></li>
               </ol>
               <div className="lpf-direct">
                 <span className="lpf-k">Prefer to talk</span>
@@ -229,7 +230,7 @@ export default function Campaign({ slug }) {
               <div className="lp-done" role="status">
                 <b>{project ? 'Thank you. Your brief is with our team.' : 'Request received.'}</b>
                 <p>{project
-                  ? <>An engineer replies within a working day{state.email ? <> at <strong>{state.email}</strong></> : null}. For anything urgent, call +603 5124 8319.</>
+                  ? <>Our team will review it and direct it to the appropriate contact{state.email ? <>, who will reply to <strong>{state.email}</strong></> : null}. For anything urgent, call +603 5124 8319.</>
                   : <>{state.owner?.note}. The pack follows shortly.</>}</p>
               </div>
             ) : state.status === 'local' ? (

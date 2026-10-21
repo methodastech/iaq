@@ -31,3 +31,17 @@
 @keyframes mmFill{0%,10%{transform:scaleY(0)}50%,84%{transform:scaleY(1)}94%,100%{transform:scaleY(0)}}
 @keyframes mmSweep{0%,100%{transform:translateX(0)}50%{transform:translateX(128px)}}
 @media (prefers-reduced-motion: reduce){.mm.live *{animation:none!important}}
+
+/* 20 Oct (semiconductor, "easy to understand"): the die leaves the wafer and becomes the chip. Resting state = finished chip. */
+.mm-sem .sem-die{transform-box:fill-box;transform-origin:50% 50%;transform:translate(100px,6px) scale(1.667)}
+.mm-sem .sem-slot{opacity:.9}
+.mm-sem .sem-body{stroke-dasharray:1;stroke-dashoffset:0}
+.mm.live .mm-sem .sem-die{animation:semDie 6s cubic-bezier(.45,0,.2,1) infinite}
+.mm.live .mm-sem .sem-slot{animation:semSlot 6s ease infinite}
+.mm.live .mm-sem .sem-body{animation:semBody 6s cubic-bezier(.5,0,.3,1) infinite}
+.mm.live .mm-sem .sem-pins{animation:semPins 6s ease infinite}
+@keyframes semDie{0%{transform:none;opacity:0}6%{transform:none;opacity:1}18%{transform:translate(0,-4px) scale(1.1)}48%{transform:translate(100px,6px) scale(1.667)}88%{transform:translate(100px,6px) scale(1.667);opacity:1}96%,100%{transform:translate(100px,6px) scale(1.667);opacity:0}}
+@keyframes semSlot{0%,16%{opacity:0}24%,88%{opacity:.9}96%,100%{opacity:0}}
+@keyframes semBody{0%,48%{stroke-dashoffset:1;fill-opacity:0;opacity:1}64%{stroke-dashoffset:0;fill-opacity:0;opacity:1}72%,88%{stroke-dashoffset:0;fill-opacity:1;opacity:1}96%,100%{stroke-dashoffset:0;fill-opacity:0;opacity:0}}
+@keyframes semPins{0%,62%{opacity:0}72%,88%{opacity:1}96%,100%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.mm.live .mm-sem *{animation:none!important}}

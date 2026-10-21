@@ -175,7 +175,7 @@ export const PAGES = [
   /* ---------- 03 Who we serve ---------- */
   {
     id: 'markets-hub', group: 'markets', label: 'Markets', route: '/markets', icon: 'grid', status: 'new',
-    purpose: 'Seven markets, one standard of clean. The page where a buyer self-identifies in one click.',
+    purpose: 'Seven markets, one integrated team. The page where a buyer self-identifies in one click.',
     blocks: ['Intro', 'Seven market cards', 'Standards strip', 'Proof strip', 'Enquiry'],
     cta: { label: 'Start a project', route: '/contact' },
     linksOut: ['mkt-semiconductor', 'mkt-data-centre', 'mkt-ev-battery', 'mkt-photovoltaics', 'mkt-district-cooling', 'mkt-bio-lifescience', 'mkt-food-beverage', 'projects'],

@@ -75,6 +75,21 @@ function build () {
   /* 8 Oct ("i need text 3d rendering so the user know that section is 3d"): a label under the IAQ mark on the loading
      screen; build3d.css shows it only while the 3D loads */
   stage.querySelector('#overlay')?.insertAdjacentHTML('beforeend', '<span class="b3d-ld-label" aria-hidden="true">3D rendering</span>')
+  /* 12 Oct (client: "a button to skip this section", "center bottom", "goes to Seven markets, one standard of clean
+     instantly"): the skip sits on the stage, over the 3D and its loading screen, and jumps straight past the build to the
+     markets band (#industries) without scrolling through it */
+  const skip = document.createElement('button')
+  skip.type = 'button'; skip.className = 'b3d-skip'
+  skip.innerHTML = '<span>Skip the 3D</span><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 3l4 4 4-4M4 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+  skip.addEventListener('pointerdown', e => e.stopPropagation(), true)
+  skip.addEventListener('click', e => {
+    e.stopPropagation()
+    const to = document.getElementById('industries'); if (!to) return
+    const navH = document.querySelector('.nav')?.offsetHeight || 0
+    if (window.__lenis) window.__lenis.scrollTo(to, { immediate: true, force: true, offset: -navH })
+    else window.scrollTo({ top: to.getBoundingClientRect().top + scrollY - navH, behavior: 'instant' })
+  })
+  stage.append(skip)
   runway = stage.querySelector('#scroll-runway')
   runway.remove()
   for (const t of ['pointerdown', 'keydown']) stage.addEventListener(t, () => { asked = true }, { capture: true, passive: true })

@@ -29,3 +29,14 @@ html.b3d-pin .nav{transform:translateY(-105%)}
 .b3d .b3d-stage .b3d-ld-label{display:none}
 .b3d .b3d-stage #overlay:has(#enter:disabled) .b3d-ld-label{display:block;position:absolute;left:50%;top:calc(50% + min(62px,9vw));transform:translateX(-50%);z-index:3;
   font:600 12px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5A6478;white-space:nowrap}
+
+/* 12 Oct (client: a button to skip the 3D, centre bottom, straight to the markets): over the model and its loading
+   screen, the site's dark CTA, square; hidden during the walkthrough, which has its own exit. .b3d-stage keeps the
+   selector ahead of app.css, which loads after this file. */
+.b3d .b3d-stage .b3d-skip{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:2147483001;display:inline-flex;align-items:center;gap:10px;
+  padding:13px 22px;border:0;background:#0C1220;color:#fff;font:600 15px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:.005em;
+  cursor:pointer;box-shadow:0 10px 26px -12px rgba(12,18,32,.55);transition:background .25s}
+.b3d .b3d-stage .b3d-skip:hover{background:#EC2027}
+.b3d .b3d-stage .b3d-skip:focus-visible{outline:2px solid #EC2027;outline-offset:3px}
+.b3d .b3d-stage .b3d-skip svg{flex:none}
+body.room .b3d .b3d-stage .b3d-skip{display:none}

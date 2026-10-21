@@ -1037,3 +1037,61 @@ section.vm .vm-go{margin-top:auto;padding-top:6px}
 
 /* 30 Sep: the redrawn pictures carry the site's Representation label, flush in the top left corner on a solid block */
 section.vm .vm-photo .vm-rep{position:absolute;left:0;top:0;z-index:2;padding:5px 8px;background:#0A1020;color:rgba(255,255,255,.9);font:600 11px/1.2 "Switzer",sans-serif;letter-spacing:.02em}
+
+/* 19 Oct (client feedback, About · Section below headline): IAQ's statement is a long sentence, not the old six-word line,
+   so on a wide screen it takes the column's width at a slightly smaller size instead of running six short lines */
+@media(min-width:901px){.man-copy .mline{max-width:24ch;font-size:clamp(26px,2.3vw,36px);line-height:1.18}}
+
+/* 19 Oct (IAQ feedback, About · Project images and logo overlays): Vision and Mission without photographs, the way IAQ's
+   own site shows them. Two equal boxes: the mark on the left, the name, the line under it and the statement beside it. */
+section.vm .vm-card.vm-plain{min-height:0;background:#fff;border:1px solid #DDE3EA;border-top:3px solid #EC2027;transition:box-shadow .35s var(--e1),border-color .35s var(--e1)}
+section.vm .vm-card.vm-plain:hover{box-shadow:0 30px 60px -40px rgba(12,18,32,.35)}
+section.vm .vm-plain .vm-panel{display:grid;grid-template-columns:auto 1fr;column-gap:clamp(20px,2.2vw,32px);row-gap:14px;align-items:start;align-content:start;padding:clamp(28px,3vw,44px)}
+section.vm .vm-plain .vm-top{display:contents}
+section.vm .vm-plain .vm-mark{grid-column:1;grid-row:1/4;width:clamp(64px,5.6vw,84px);height:clamp(64px,5.6vw,84px);align-self:start}
+section.vm .vm-plain .vm-k{grid-column:2;grid-row:1;align-self:end}
+section.vm .vm-plain .vm-kick{grid-column:2;grid-row:2;align-self:start;margin-top:-6px}
+section.vm .vm-plain blockquote{grid-column:2;grid-row:3;margin:6px 0 0;max-width:42ch}
+@media(max-width:560px){
+  section.vm .vm-plain .vm-panel{grid-template-columns:1fr}
+  section.vm .vm-plain .vm-mark{grid-row:auto;width:60px;height:60px}
+  section.vm .vm-plain .vm-k,section.vm .vm-plain .vm-kick,section.vm .vm-plain blockquote{grid-column:1;grid-row:auto}
+}
+
+/* 20 Oct (client: Vision and Mission icons "more premium and subtle"): the fine marks (RecordFlat.jsx), smaller, in the ink,
+   still; the flag and gear animations belonged to the old marks */
+section.vm .vm-plain .vm-mark.vm-mark-fine{width:clamp(48px,4vw,60px);height:clamp(48px,4vw,60px);color:#0C1220}
+section.vm .vm-mark.vm-mark-fine svg, section.vm .vm-mark.vm-mark-fine svg *{animation:none!important}
+@media(max-width:760px){section.vm .vm-plain .vm-mark.vm-mark-fine{width:48px;height:48px}}
+
+/* 20 Oct (client: Vision and Mission icons "premium and have bit animation"): the two drawn marks (VisionMission.jsx) */
+section.vm .vm-plain .vm-mark.vm-mark-fine{width:clamp(60px,5vw,76px);height:clamp(60px,5vw,76px)}
+.vmx{display:block;width:100%;height:100%;overflow:visible}
+.vmx-ln{fill:none;stroke:#0C1220;stroke-width:1.4;stroke-linejoin:miter;stroke-linecap:butt}
+.vmx-thin{stroke-width:1;opacity:.45}
+.vmx-paper{fill:#fff}
+.vmx-red{fill:#EC2027}
+.vmx-tick{fill:none;stroke:#EC2027;stroke-width:2.6;stroke-linecap:butt;stroke-linejoin:miter}
+.vmx-needle{transform-box:view-box;transform-origin:32px 32px;transform:rotate(32deg)}
+.vmx-gear{transform-box:view-box;transform-origin:32px 32px}
+section.vm .vm-mark.vm-mark-fine svg.vmx .vmx-needle{animation:vmxNeedle 7s cubic-bezier(.45,0,.25,1) infinite!important}
+section.vm .vm-mark.vm-mark-fine svg.vmx .vmx-gear{animation:vmxGear 24s linear infinite!important}
+@keyframes vmxNeedle{0%{transform:rotate(32deg)}14%{transform:rotate(-24deg)}30%{transform:rotate(52deg)}44%{transform:rotate(22deg)}56%{transform:rotate(37deg)}66%,100%{transform:rotate(32deg)}}
+@keyframes vmxGear{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){section.vm .vm-mark.vm-mark-fine svg.vmx *{animation:none!important}}
+/* 21 Oct: the GICG and SAC mark is a wide lock-up; it takes the same height as the others */
+.ab-awards-row .ab-awards-wide img{height:clamp(50px,5vw,76px)}
+/* 21 Oct ("proper spacing, high quality logo"): eight marks in an even grid, each in a cell of the same size and centred in it,
+   wide marks narrower in height so every logo carries the same visual weight */
+.ab-awards-row{display:grid!important;grid-template-columns:repeat(8,minmax(0,1fr));gap:clamp(18px,2.4vw,40px)!important;align-items:center}
+.ab-awards-row li{display:flex;align-items:center;justify-content:center;height:clamp(64px,6vw,92px)}
+.ab-awards-row img{max-width:100%;max-height:100%;height:auto!important;width:auto}
+@media(max-width:900px){.ab-awards-row{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:480px){.ab-awards-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* 21 Oct ("check spacing, make sure proper align"): equal cells left narrow marks with wide gaps and wide marks with narrow ones.
+   The row now spreads the logos so the space between every pair is the same, the first flush with the heading and the last with
+   the right edge; all share one height band and one centre line. */
+.ab-awards-row{display:flex!important;justify-content:space-between;align-items:center;flex-wrap:nowrap;gap:clamp(16px,2vw,32px)!important}
+.ab-awards-row li{flex:0 0 auto;height:clamp(58px,5.2vw,84px)}
+.ab-awards-row img{height:100%!important;max-height:100%;width:auto;max-width:none}
+@media(max-width:1100px){.ab-awards-row{flex-wrap:wrap;justify-content:flex-start;gap:28px 40px!important}.ab-awards-row li{height:56px}}

@@ -47,7 +47,7 @@ const PHOTO = {
   'V·02': ['/assets/iaq/val-quality.webp', '50% 50%'],           /* a particle count test in a finished cleanroom */
   'V·03': ['/assets/iaq/val-honesty.webp', '62% 40%'],           /* the programme walked through with the client, openly */
   'V·04': ['/assets/iaq/val-engineering.webp', '50% 45%'],       /* the multidisciplinary team at the facility's BIM model ("dont show chairs") */
-  'V·05': ['/assets/iaq/val-efficiency.webp', '50% 50%'],        /* crews laying a cleanroom raised floor in organised zones */
+  'V·05': ['/assets/iaq/val-efficiency.webp?v=suit', '50% 50%'],        /* 19 Oct: engineers in cleanroom coveralls inspecting a finished raised floor (was crews laying the floor; IAQ asked for checking, not installing) */
   /* 25 Sep (Bazil: "make sure content correct"): the award photograph carried a subsidiary's name on the screen, which stays
      off public pages (client, DV3 A2.1); the finished ballroom stands for excellence delivered */
   /* 12 Oct ("use this image replace with that. give proper rename"): the gowned team in a finished cleanroom, supplied
@@ -146,8 +146,7 @@ export default function ValuesCarousel() {
                   <span className="vc-photo">
                     <img src={PHOTO[v.ix][0]} alt="" loading="lazy" decoding="async" style={{ objectPosition: PHOTO[v.ix][1] }} />
                     <span className="vc-n">{n + 1}</span>
-                    {/* 30 Sep: the six pictures are drawn representations of each value, labelled as the site labels them */}
-                    <span className="vc-rep">Representation</span>
+                    {/* 30 Sep: the six pictures were labelled Representation; 15 Oct ("remove all the tag"): no label */}
                   </span>
                   <span className="vc-body">
                     <span className="vc-mark" aria-hidden="true"><Icon name={MARKS[n]} /></span>

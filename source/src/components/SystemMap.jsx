@@ -30,7 +30,8 @@ const short = u => u.short || u.name
 /* the four kinds of work as the cover names them: the three disciplines, then the tools themselves */
 const KINDS = [
   ...WORK.map(w => ({ id: w.id, name: w.name, full: w.full, line: w.line, k: 'w', units: UNITS.filter(u => u.work.includes(w.id)).map(u => u.id) })),
-  { id: 'hookup', name: 'Tools hookup', full: 'Service 6, the tools themselves', line: 'Each production tool connected and released to production.', k: 's', units: UNITS.filter(u => u.core.includes('hookup')).map(u => u.id) },
+  { id: 'hookup', name: 'Tool Installation', full: 'Service 5, the tools themselves',   /* 15 Oct (client review of 13 Oct, Sunny: "Use \"Tool Installation\" and the sequence comes before \"Maintenance\", please stick to our wording") */
+   line: 'Each production tool connected and released to production.', k: 's', units: UNITS.filter(u => u.core.includes('hookup')).map(u => u.id) },
 ]
 const PINS = Object.fromEntries(KINDS.map(k => [k.id, LAYERS.filter(l => l.d === k.id)]))
 const carries = (u, s) => u.core.includes(s) ? 'core' : u.ask.includes(s) ? 'ask' : 'off'
@@ -39,7 +40,7 @@ const svc = id => SERVICES.find(x => x.id === id)
 const Fact = ({ k, children }) => <div className="sysm-rd-f"><dt>{k}</dt><dd>{children}</dd></div>
 const UChips = ({ ids }) => ids.map(id => <b key={id} className="rd-u" style={{ '--ub': UB[ORDER.indexOf(id)] }}>{short(UNIT[id])}</b>)
 const SChips = ({ ids }) => ids.map(id => <b key={id} className="rd-s"><i>{svc(id).n}</i>{svc(id).short}</b>)
-const WChips = ({ ids }) => ids.map(id => <b key={id} className={'rd-w' + (id === 'hookup' ? ' h' : '')}>{id === 'hookup' ? 'Tools hookup' : WORK.find(x => x.id === id).name}</b>)
+const WChips = ({ ids }) => ids.map(id => <b key={id} className={'rd-w' + (id === 'hookup' ? ' h' : '')}>{id === 'hookup' ? 'Tool Installation' : WORK.find(x => x.id === id).name}</b>)
 /* one panel per kind of selection: a head (chip and name), its line, then the facts */
 function readout(sel) {
   if (!sel) return null
@@ -60,7 +61,7 @@ function readout(sel) {
     }
     const works = [...u.work, ...(u.core.includes('hookup') ? ['hookup'] : [])]
     return <>{head(unitChip, short(u), u.full)}
-      <p className="sysm-rd-l">{u.line} <em>{u.term}</em></p>
+      <p className="sysm-rd-l">{u.line}{u.term && <> <em>{u.term}</em></>}</p>
       <dl className="sysm-rd-fs">
         <Fact k="Bought as">{BOUGHT[id].replace(/^./, c => c.toUpperCase())}</Fact>
         <Fact k="Carries"><SChips ids={u.core} /></Fact>
@@ -176,7 +177,7 @@ export default function SystemMap({ embed = false }) {
                 <button type="button" className={cls('sysm-u', on.u.has(id))} style={{ '--r': r, '--ub': UB[r] }}
                         onMouseEnter={enter(['u', id])} onFocus={enter(['u', id])}>
                   <b><i>Unit {u.no}</i><Icon name={u.icon} className="sysm-ui" />{short(u)}</b>
-                  <small>{u.line} <em>{u.term}</em></small>
+                  <small>{u.line}{u.term && <> <em>{u.term}</em></>}</small>
                 </button>
                 <div className={cls('sysm-bar', on.u.has(id))} style={{ '--r': r, '--ub': UB[r] }} role="img"
                      aria-label={`${short(u)} carries ${u.core.map(s => SERVICES.find(x => x.id === s).short).join(', ')}${u.ask.length ? `, and ${u.ask.map(s => SERVICES.find(x => x.id === s).short).join(', ')} when asked` : ''}`}>
@@ -188,7 +189,7 @@ export default function SystemMap({ embed = false }) {
                 </div>
                 <div className={cls('sysm-w', on.u.has(id))} style={{ '--r': r }}>
                   {u.work.map(w => <span key={w} className={cls('sm-chip w', on.w.has(w))} onMouseEnter={enter(['w', w])}>{WORK.find(x => x.id === w).name}</span>)}
-                  {u.core.includes('hookup') && <span className={cls('sm-chip s', on.w.has('hookup'))} onMouseEnter={enter(['w', 'hookup'])}>Tools hookup</span>}
+                  {u.core.includes('hookup') && <span className={cls('sm-chip s', on.w.has('hookup'))} onMouseEnter={enter(['w', 'hookup'])}>Tool Installation</span>}
                 </div>
               </React.Fragment>
             )

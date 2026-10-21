@@ -288,7 +288,10 @@ a.mk-fact:hover,a.mk-fact:focus-visible{background:none}
 .mm .mm-st{font-size:7.2px}
 
 /* the market photograph band: full bleed, the caption in a white chip at the foot, Representation where it is generated */
-.mk-band{position:relative;overflow:hidden;background:#0C1220;aspect-ratio:21/9;max-height:560px}
+/* 15 Oct ("fix that", the band stopping short of the right edge): with an auto width the 560px height cap passes through
+   the 21:9 ratio as a width cap (1306px), so on a wide screen the band ended early; an explicit full width keeps it edge
+   to edge and the cap only trims its height */
+.mk-band{position:relative;overflow:hidden;background:#0C1220;width:100%;aspect-ratio:21/9;max-height:560px}
 .mk-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .mk-band-cap{position:absolute;left:var(--gut);bottom:clamp(16px,2.4vw,28px);display:inline-flex;align-items:center;gap:10px;padding:9px 12px;background:#fff;color:var(--ink);font:600 13px/1 "Switzer","Instrument Sans",system-ui,sans-serif}
 .mk-band-cap i{font-style:normal;font-weight:500;color:var(--soft);padding-left:10px;box-shadow:inset 1px 0 0 rgba(12,18,32,.15)}
@@ -421,3 +424,50 @@ a.mk-fact:hover{background:rgba(16,26,48,.86)}
 .mk-cd-n2 .mk-cd-sq{margin:0}
 @media(max-width:560px){.mk-cards{grid-template-columns:minmax(0,1fr)}}
 @media(min-width:900px){.mk-cards{display:none}}
+
+/* 20 Oct (Food & Beverage, IAQ's amendment sheet): an overview paragraph without the pull quote, and a heading over the tiles */
+.mk-why-body{max-width:72ch;margin-top:14px}
+.mk-demands-h{margin:clamp(28px,4vh,44px) 0 0;font:600 clamp(18px,1.6vw,22px)/1.2 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:-.015em;color:var(--ink)}
+
+/* 20 Oct ("fix the icon and numbering arrangement", Food & Beverage capabilities): each card is the icon at the top left at a
+   readable size, its number set in the top right corner, the name under the icon */
+.mk-caps .dd-n{display:grid!important;grid-template-columns:1fr auto;grid-template-rows:auto auto;align-items:start;row-gap:18px;column-gap:12px;padding:clamp(20px,2vw,26px)!important}
+.mk-caps .dd-ic{grid-column:1;grid-row:1;width:44px!important;height:44px!important;display:grid;place-items:center;color:var(--mk-c,#6D5BD0)}
+.mk-caps .dd-ic svg{width:26px!important;height:26px!important}
+.mk-caps .dd-no{grid-column:2;grid-row:1;align-self:start;margin:0!important;font:600 12px/1 "Switzer",sans-serif;letter-spacing:.06em;color:var(--faint,#9aa3b2)}
+.mk-caps .dd-lb{grid-column:1 / -1;grid-row:2;margin:0!important}
+.mk-caps .dd-ic{width:auto!important;height:auto!important;place-items:start;background:none!important;border:0!important;box-shadow:none!important;transform:none!important}
+.mk-caps .dd-ic svg{width:32px!important;height:32px!important}
+.mk-caps .dd-ic{justify-self:start!important;margin:0!important;display:block!important}
+/* 20 Oct ("number should be on left"): the number in the top left corner, the icon at the top right */
+.mk-caps .dd-n{grid-template-columns:auto 1fr!important}
+.mk-caps .dd-no{grid-column:1!important;grid-row:1!important;justify-self:start}
+.mk-caps .dd-ic{grid-column:2!important;grid-row:1!important;justify-self:end!important}
+/* 20 Oct ("the icon arrangement still looks weird"): the number and the icon share one line, centred to each other, the icon
+   in the same 32px box on every card; the name sits a fixed step below */
+.mk-caps .dd-n{align-items:center!important;row-gap:22px!important}
+.mk-caps .dd-no{align-self:center!important;font-size:13px!important}
+.mk-caps .dd-ic{align-self:center!important;width:32px!important;height:32px!important;display:grid!important;place-items:center!important}
+.mk-caps .dd-ic svg{width:30px!important;height:30px!important}
+.mk-caps .dd-lb{align-self:start!important}
+/* 20 Oct: six capabilities run as three across and two down, so no card is left alone on a row */
+@media(min-width:901px){.mk-caps .dd:has(> .dd-n:nth-child(6):last-child){grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+
+/* 20 Oct ("make this more premium and subtle", the IAQ Key Capabilities cards on every market page): quieter cards with
+   more air. A hairline border instead of a flat block, the number set as 01 in small tracked type, the icon in a soft ink
+   that takes the market colour on hover, a red hairline that draws across the top on hover, and a slight lift. */
+.mk-caps .dd{gap:14px!important;counter-reset:cap}
+.mk-caps .dd-n{position:relative;counter-increment:cap;background:#fff!important;border:1px solid rgba(12,18,32,.07)!important;
+  box-shadow:0 1px 2px rgba(12,18,32,.03)!important;padding:clamp(24px,2.2vw,32px)!important;row-gap:clamp(28px,3vh,40px)!important;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease,border-color .45s ease!important}
+.mk-caps .dd-n::after{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:2px;background:#EC2027;transform:scaleX(0);transform-origin:0 50%;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.mk-caps .dd-n:hover{transform:translateY(-3px);border-color:rgba(12,18,32,.1)!important;box-shadow:0 22px 44px -28px rgba(12,18,32,.28)!important}
+.mk-caps .dd-n:hover::after{transform:scaleX(1)}
+.mk-caps .dd-no{font-size:0!important;line-height:1}
+.mk-caps .dd-no::before{content:counter(cap,decimal-leading-zero);font:600 11px/1 "Switzer",sans-serif;letter-spacing:.18em;color:#9AA3B2}
+.mk-caps .dd-ic{color:#7C86A0!important;opacity:.85;transition:color .4s ease,opacity .4s ease}
+.mk-caps .dd-ic svg{width:26px!important;height:26px!important;stroke-width:1.25}
+.mk-caps .dd-n:hover .dd-ic{color:var(--mk-c,#6D5BD0)!important;opacity:1}
+.mk-caps .dd-lb{font:500 clamp(16px,1.25vw,18px)/1.3 "Switzer","Instrument Sans",sans-serif!important;letter-spacing:-.01em;color:#0C1220}
+@media (prefers-reduced-motion:reduce){.mk-caps .dd-n,.mk-caps .dd-n::after{transition:none!important}}
+.mk-caps .dd-n{grid-template-rows:auto 1fr!important;align-content:start!important}.mk-caps .dd-lb{align-self:start!important}   /* 20 Oct: one-line and two-line names start on the same line */

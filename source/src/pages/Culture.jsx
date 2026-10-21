@@ -332,7 +332,7 @@ export default function Culture() {
             {stripRow.map((s, i) => (
               <figure className="cu-st" key={i} style={{ '--w': s.w }} aria-hidden={i >= STRIP.length ? 'true' : undefined}>
                 <img src={s.src} alt={i >= STRIP.length ? '' : s.cap} loading="lazy" decoding="async" />
-                <figcaption>{s.cap}</figcaption>
+                {/* 15 Oct ("remove all the tag"): no caption on the photographs */}
               </figure>
             ))}
           </div>
@@ -561,7 +561,7 @@ export default function Culture() {
                       <Clock tz={pl.tz} now={now} />
                       {open > 0 && <Link className="cu-pc-open" to={`/careers#loc=${pl.loc}`}>{open} {open === 1 ? 'role' : 'roles'} open</Link>}
                     </span>
-                    <span className="cu-pc-cap">{pl.cap || ''}</span>
+                    {/* 15 Oct ("remove all the tag"): no caption on the office photograph */}
                   </div>
                 )
               })}

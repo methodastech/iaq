@@ -116,7 +116,8 @@ export default function ServiceProcurement() {
         title={<>The right materials, the right partners, <em>right on time.</em></>}
         lede="Tracked, organised sourcing aligned to project requirements, quality standards and budget constraints."
         chips={['Supply chain', 'Stage 2 of 6']}
-        figure={{ src: '/assets/banners/svc-procure.jpg', alt: 'Procurement: crated long-lead equipment strapped on pallets in the logistics hall', hero: true }}
+        /* 21 Oct (Bazil: "replace this image with related"): goods receiving, the equipment checked against the order */
+        figure={{ src: '/assets/services/svc-procurement-receiving.webp', alt: 'Procurement: two engineers at goods receiving checking a delivered air handling unit and equipment crates against a delivery checklist', hero: true }}
       />
 
       {/* --------------------------------------------------- what it covers */}

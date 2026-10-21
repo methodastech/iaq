@@ -76,7 +76,7 @@ const EMAIL = 'business@iaqtechnology.com.my'
 const HQ_ADDR = 'No. 12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor, Malaysia'
 const DIRECTIONS = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent('IAQ Technology International Sdn. Bhd., Shah Alam')
 const INTENTS = [
-  { k: 'project', icon: 'crane', t: 'Start a project', d: 'Feasibility, tender, request for quotation (RFQ) or a full EPCC brief' },
+  { k: 'project', icon: 'crane', t: 'Start a project', d: 'Feasibility, tender, request for quotation (RFQ) or a company introduction' },   /* 20 Oct (Sunny: "'full EPCC brief' is wrong, can we simplify it with a company introduction?") */
   { k: 'career', icon: 'people', t: 'Join the team', d: 'Open roles across four departments' },
   { k: 'media', icon: 'press', t: 'Media or partnership', d: 'Press, investor and partner enquiries' },
 ]
@@ -151,10 +151,12 @@ export default function Contact() {
         <div className="cban-scrim" aria-hidden="true" />
         <div className="cban-in wrap">
           <span className="eyebrow">Contact</span>
-          <h1>Tell us what <em>you are building.</em></h1>
-          <p className="cban-lede">From feasibility to handover, one accountable team. Send the brief and the right engineer replies within one working day.</p>
+          {/* 20 Oct (client review, Sunny: "should be 'planning', build is already half way") */}
+          <h1>Tell us what <em>you are planning.</em></h1>
+          {/* 19 Oct (client feedback, Contact · Contact form wording; IAQ: "Do not promise response times unless IAQ has approved an
+              SLA"): IAQ's wording for the form, and no reply time anywhere on the page (the "1 working day" fact is gone) */}
+          <p className="cban-lede">Tell us about your project. Share a brief introduction to your company, your project requirements and the stage you are at: planning, design, construction or operations. Our team will review your enquiry and direct it to the appropriate contact.</p>
           <dl className="cban-facts">
-            <div><dt>1 working day</dt><dd>Reply, from an engineer</dd></div>
             <div><dt>31 years</dt><dd>Delivering controlled environments</dd></div>
             <div><dt>7 countries</dt><dd>Offices that can take the brief</dd></div>
           </dl>
@@ -170,13 +172,13 @@ export default function Contact() {
         <form className="cx-form" id="cform" noValidate onSubmit={onSubmit}>
           {state.status === 'sent' && (
             <div className="sent show" role="status">
-              Thank you. {state.owner?.note}, and an IAQ engineer will reply within one working day.
+              Thank you. {state.owner?.note}; our team will review your enquiry and direct it to the appropriate contact.
             </div>
           )}
           {state.status === 'mailto' && (
             <div className="sent show" role="status">
               Your email app has opened with the enquiry written out. Send it and it reaches{' '}
-              <a href={'mailto:' + EMAIL}>{EMAIL}</a>; an IAQ engineer replies within one working day.
+              <a href={'mailto:' + EMAIL}>{EMAIL}</a>, and our team will direct it to the appropriate contact.
             </div>
           )}
           {state.status === 'undelivered' && (
@@ -233,8 +235,8 @@ export default function Contact() {
                   <option>Procurement</option>
                   <option>Construction &middot; EPCC / EPCM</option>
                   <option>Testing &amp; Commissioning</option>
+                  <option>Tool Installation</option>{/* 15 Oct naming: Tool Installation, before Maintenance */}
                   <option>Maintenance</option>
-                  <option>Tools Hookup</option>
                   <option>Energy Facility Management</option>
                   <option>Not sure yet</option>
                 </select>
@@ -253,7 +255,7 @@ export default function Contact() {
             <label className="consent"><input type="checkbox" name="consent" required /> <span>I agree that IAQ may use these details to reply to this enquiry. They are not shared or used for marketing. See the <Link to="/policies">{LAUNCH ? 'privacy policy' : 'privacy policy, a draft awaiting IAQ\'s approval'}</Link>.</span></label>
             <div className="cx-send">
               <button className="submit" type="submit"><span>Send enquiry</span><i aria-hidden="true">&rarr;</i></button>
-              <p className="form-note">Replies come from an engineer. Confidential by default.</p>
+              <p className="form-note">Confidential by default.</p>
             </div>
           </fieldset>
         </form>
@@ -278,8 +280,8 @@ export default function Contact() {
           </ul>
           <h3>What happens next</h3>
           <ol className="cx-next">
-            <li><i>1</i>Your brief goes to the team for that service.</li>
-            <li><i>2</i>An engineer replies within one working day.</li>
+            <li><i>1</i>Your enquiry reaches our team.</li>
+            <li><i>2</i>Our team reviews it and directs it to the appropriate contact.</li>
             <li><i>3</i>One accountable team from there to handover.</li>
           </ol>
         </aside>
@@ -321,7 +323,7 @@ export default function Contact() {
             {/* 15 Sep: the old heading claimed an office in every country IAQ builds in. It is false:
                 IAQ has built in China, Poland, France and Morocco with no office there. */}
             <h2 id="offices-h">Seven countries, <em>one point of contact.</em></h2>
-            <p className="off-lede">Our offices serve projects across Asia and Europe. Send the brief to the nearest team. Every office can take it, and the reply still comes from an engineer.</p>
+            <p className="off-lede">Our offices serve projects across Asia and Europe. Send the brief to the nearest team. Every office can take it.</p>
           </div>
           <div className="of-grid">
             {COUNTRIES.map(g => (
@@ -337,7 +339,7 @@ export default function Contact() {
                       <div className="off-ph" aria-hidden={o.img ? undefined : 'true'}>
                         {o.img ? <img src={o.img} alt={o.rep ? '' : o.cap} loading="lazy" decoding="async" /> : <span className="off-ph-tag">Office photo &middot; supplied by IAQ</span>}
                         {o.hq && <span className="of-hq">Headquarters</span>}
-                        {o.cap && <span className="off-cap" aria-hidden={o.rep ? undefined : 'true'}>{o.cap}</span>}
+                        {/* 15 Oct ("remove all the tag"): no caption on the office photograph */}
                       </div>
                       <div className="of-b">
                         {o.city !== g.country && o.city !== 'USA' && <h4>{o.city}</h4>}
@@ -358,7 +360,7 @@ export default function Contact() {
             <article className="of of-route">
               <span className="cx-ic"><Icon name="mail" /></span>
               <h3>Choosing an office</h3>
-              <p>Write to headquarters. The brief is routed to the nearest team and an engineer replies within one working day.</p>
+              <p>Write to headquarters. The brief is routed to the nearest team.</p>
               <a className="of-mail" href={'mailto:' + EMAIL}>{EMAIL}</a>
               <a className="of-go" href="#contact-form"><span>Send the brief</span><i aria-hidden="true">&rarr;</i></a>
             </article>

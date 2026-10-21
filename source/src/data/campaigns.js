@@ -17,8 +17,8 @@ export const CAMPAIGNS = {
   project: {
     slug: 'project',
     eyebrow: 'Cleanroom and facility projects',
-    title: 'Tell us what you are building. One team delivers it.',
-    lede: 'Cleanrooms, dry rooms and the systems that hold them in spec, designed, built and maintained by one accountable team since 1995. Send the brief and an engineer replies within a working day.',
+    title: 'Tell us what you are planning. One team delivers it.',   /* 20 Oct (Sunny: "planning", not "building") */
+    lede: 'Cleanrooms, dry rooms and the systems that hold them in spec, designed, built and maintained by one accountable team since 1995. Send the brief and our team will direct it to the appropriate contact.',   /* 19 Oct: no reply time (IAQ: no SLA approved) */
     points: [
       'Design, procurement and construction under one contract',
       'ISO 3 to 7 cleanrooms and dry rooms to a specified dew point',

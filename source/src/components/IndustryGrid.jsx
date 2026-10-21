@@ -342,7 +342,7 @@ export default function IndustryGrid() {
             heading form, ink then the red phrase, instead of a three-line grey fade */}
         <h2 className="ig-h" data-reveal="">
           Seven markets, <br />
-          <em>one standard of clean.</em>
+          <em>one integrated team.</em>{/* 20 Oct (Sunny: "what is that standard of clean?") */}
         </h2>
 
         <div className="ig-intro-r">

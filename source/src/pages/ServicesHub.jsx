@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import ClosingBand from '../components/ClosingBand.jsx'
-import CycleBand from '../components/CycleBand.jsx'
 import ServicesSectionBar from '../components/ServicesSectionBar.jsx'
 import Related from '../components/Related.jsx'
 import CycleFlow from '../components/CycleFlow.jsx'
@@ -319,7 +318,7 @@ export default function ServicesHub() {
       {/* step 2 (24 Sep plan): the three units come first, because a buyer chooses the unit before anything else
           (the client asked for the units on top on 17 Sep); the one-view chart then summarises what the reader has met */}
       <UnitsBand />
-      <CycleBand id="services-cycle" />
+      {/* 15 Oct ("remove this section"): the six-services cycle is off this page; the home page keeps its ring */}
       {/* 28 Sep (client, Website Update 28.09.2026: "To remove this section and add the description highlighted in red to
           section below"): the 4 works section (components/WorksBand.jsx, added 26 Sep) is off the page. Each work's one line
           now sits in its Work card on the facility map (ServicesMap, RelExplorer `lines`). The Codex keeps its copy. */}

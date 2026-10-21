@@ -162,3 +162,9 @@
   .nf-mc-m img,.nf-media img,.nf-row-m img,.nf-card,.nf-btn,.nf-mc,.nf-mc-go{transition:none}
   .nf-card:hover{transform:none}
 }
+
+/* 19 Oct ("not align"): the row lined up on text baselines, and the category's icon made its box taller, so the date sat
+   about 4px under the category. The two are centred on one line now, the date in the category's own line height. */
+.nf-kick{align-items:center}
+.nf-kick time{line-height:16px}
+.nf-cat{line-height:16px}

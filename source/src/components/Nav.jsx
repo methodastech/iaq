@@ -90,9 +90,10 @@ const MENUS = [
          rest go quiet. `core` and `ask` are data/codex.js UNITS, as indices into the six. */
       { head: 'Business units', kind: 'segs', links: [
         { label: 'EPC', sub: 'Builds the facility, under one contract.', route: '/services/epc-construction', icon: 'epcUnit', img: 'u-epc',
-          pitch: 'One contract carrying design, procurement and construction, with single point accountability. Delivered as EPCC, or managed as EPCM.',
+          pitch: 'One contract carrying design, procurement and construction, with single point accountability.',
           full: 'Engineering, Procurement and Construction', core: [0, 1, 2, 3], ask: []   /* 25 Sep (Bazil): EPC carries design to commissioning */,
-          subs: [{ label: 'EPCC', route: '/services/epc-construction', hash: '#un-models-h' }, { label: 'EPCM', route: '/services/epc-construction', hash: '#un-models-h' }] },
+          /* 19 Oct (client feedback, EPC: contract models "Remove this section entirely"): the EPCC and EPCM links went with it */
+          subs: [] },
         /* 18 Sep, cross-check: IAQ's own name for unit 2 in the Discovery answers (A2.1), its website copy sheet, the
            questionnaire and Nabilah's 18 Sep message. "Total Tools Hookup Solution" is in none of them. */
         /* 22 Sep (Bazil: "no need so long and make it clean"): the short name, like the other two units, with the full
@@ -111,8 +112,9 @@ const MENUS = [
         { label: 'Procurement',             route: '/services/all#procurement',       icon: 'crate',   img: 'svc-procure',    pitch: 'Tracked sourcing aligned to quality, budget and programme.' },
         { label: 'Construction',            route: '/services/all#construction',      icon: 'crane',   img: 'svc-construct',  pitch: 'Delivery on live sites: programme, trades and safety held together.' },
         { label: 'Testing & Commissioning', route: '/services/all#commissioning',     icon: 'gauge',   img: 'svc-commission', pitch: 'Proven performance before handover: classification testing and validation.' },
+        /* 15 Oct (client review of 13 Oct, Sunny: "Use \"Tool Installation\" and the sequence comes before \"Maintenance\"") */
+        { label: 'Tool Installation',       route: '/services/tool-installation', icon: 'link',    img: 'svc-hookup',     pitch: 'Tool hook-up end to end, alongside production that keeps running.' },
         { label: 'Maintenance',             route: '/services/all#maintenance',       icon: 'gear',    img: 'svc-maintain',   pitch: 'Protecting the investment after handover, and feeding it into the next design.' },
-        { label: 'Tools Hookup',            route: '/services/tool-installation', icon: 'link',    img: 'svc-hookup',     pitch: 'Tool hook-up end to end, alongside production that keeps running.' },
       ] },
     ],
     /* `stack` left the wing on 22 Sep: the two groups sit side by side */

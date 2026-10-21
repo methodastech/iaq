@@ -7,6 +7,8 @@
 .tsc-fig svg.tid{ width:min(100%,calc(100vh / var(--zoomf,1) * 1280 / 912)); }
 .tsc-fig figcaption{ margin-top:10px; font-size:13.5px; line-height:1.5; color:var(--soft); }
 .tsc-cols{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:14px; }
+/* 15 Oct: with the Main Tool schematic gone the lists follow the lede straight away, so they keep the figure's room */
+.tsc-lede + .tsc-cols{ margin-top:28px; }
 .tsc-col{ padding:clamp(20px,2.2vw,28px); background:var(--bg); box-shadow:inset 0 1px 0 #EC2027; }   /* 26 Sep: the IAQ line, one red hairline (lines are never blue) */
 /* 26 Sep (Bazil: "blue theme correct, check other pages"): the unit page's blues, the lighter for the utilities, the deeper
    for the hook-up; the schematic above keeps IAQ's own legend colours */

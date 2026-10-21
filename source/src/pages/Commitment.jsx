@@ -11,6 +11,7 @@ import { OFFICES as OFFICE_LIST, OFFICE_COUNTRIES } from '../data/offices.js'
 import { flagSvg } from '../components/Flag.jsx'
 import '../styles/pages.css'
 import '../styles/commitment.css'
+import ValueMotion from '../components/ValueMotion.jsx'
 
 /* ============================================================================
    Corporate Commitment · /about/commitment · rebuilt 25 Sep 2026.
@@ -40,11 +41,11 @@ import '../styles/commitment.css'
    ============================================================================ */
 
 const PILLARS = [
-  { k: 'Environmental responsibility', Mark: MarkEnv, iso: 'esgEnv',
+  { k: 'Environmental responsibility', Mark: MarkEnv, iso: 'esgEnv', scene: 'esgE', l: 'E',
     t: 'IAQ is dedicated to minimising its environmental footprint through sustainable design and construction practices. It continuously seeks energy-efficient solutions and prioritises eco-friendly technologies.' },
-  { k: 'Social accountability', Mark: MarkSocial, iso: 'esgSocial',
+  { k: 'Social accountability', Mark: MarkSocial, iso: 'esgSocial', scene: 'esgS', l: 'S',
     t: 'The well-being and safety of employees and communities come first. IAQ promotes a diverse and inclusive work environment and upholds ethical labour practices.' },
-  { k: 'Corporate governance', Mark: MarkGov, iso: 'esgGov',
+  { k: 'Corporate governance', Mark: MarkGov, iso: 'esgGov', scene: 'esgG', l: 'G',
     t: 'Governance practices ensure transparency, accountability and ethical decision-making. IAQ adheres to the highest standards in compliance, fostering trust and credibility with clients, partners and stakeholders.' },
 ]
 
@@ -406,21 +407,24 @@ export default function Commitment () {
         {/* 1 · sustainability and responsibility */}
         <section className="cc-sec" id="commitment">
           <div className="cc-in">
-            <h2 className="cc-h2" data-cc>Sustainability and responsibility, <em>our commitment.</em></h2>
-            <div className="cc-pillars">
-              <div className="cc-globe" data-cc><EarthGlobe /></div>
-              <div className="cc-tiles">
-                {/* 25 Sep (Bazil: "bro just create icon for each", "its too tall"): the drawn sheets (CommitMarks.jsx, kept)
-                    gave way to one isometric mark per pillar, the set the About cards use */}
-                {PILLARS.map(({ k, t, iso }) => (
-                  <div className="cc-tile" key={k} data-cc>
-                    <span className="cc-tile-mk" aria-hidden="true">{(() => { const M = LINE_MARKS[iso]; return <M /> })()}</span>
-                    <h3>{k}</h3>
-                    <p>{t}</p>
-                  </div>
-                ))}
-              </div>
+            {/* 21 Oct (IAQ amendment sheet, Corporate Commitment · ESG section and globe graphic, Medium): IAQ's paragraph, verbatim,
+                beside the heading. The sheet's note: "Use only commitments/policies IAQ formally endorses. Do not imply a target,
+                certification or ESG performance result without evidence. Avoid duplicating the globe graphic." ("bro use different
+                design", "dont use globe"): the office globe is off this page (EarthGlobe is kept in this file, unused); each pillar is a
+                drawn scene now, as on the Careers values, and none of them shows a target or a result. */}
+            <div className="cc-esg-head">
+              <h2 className="cc-h2" data-cc>Sustainability and responsibility, <em>our commitment.</em></h2>
+              <p className="cc-lede" data-cc>Our corporate commitments guide how we work with our people, customers, partners and the wider environment. We aim to conduct our business responsibly, with attention to safety, integrity, operational discipline and continual improvement.</p>
             </div>
+            <ol className="cc-esg">
+              {PILLARS.map(({ k, t, scene, l }, i) => (
+                <li className="cc-esg-c" key={k} data-cc>
+                  <span className="cc-esg-top"><ValueMotion k={scene} i={i} /><span className="cc-esg-l" aria-hidden="true">{l}</span></span>
+                  <h3>{k}</h3>
+                  <p>{t}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 

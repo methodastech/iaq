@@ -9,8 +9,9 @@ export const SERVICES = [
   { id: 'procure',    n: 2, name: 'Procurement',                          short: 'Procure',    icon: 'crate',   line: 'Sourcing, tenders and long-lead equipment, tracked in one system.' },
   { id: 'construct',  n: 3, name: 'Construction',                         short: 'Construct',  icon: 'crane',   line: 'Site management, safety, quality, programme and cost.' },
   { id: 'commission', n: 4, name: 'Testing and commissioning',            short: 'Commission', icon: 'gauge',   line: 'Proven to operate as intended, before handover.' },
-  { id: 'maintain',   n: 5, name: 'Maintenance',                          short: 'Maintain',   icon: 'gear',    line: 'Planned care that protects lifespan and uptime.' },
-  { id: 'hookup',     n: 6, name: 'Tools hookup',                         short: 'Hook up',    icon: 'link',    line: 'Production tools connected into the facility and released to production.' },
+  /* 15 Oct (client review of 13 Oct, Sunny: "Use \"Tool Installation\" and the sequence comes before \"Maintenance\", please stick to our wording") */
+  { id: 'hookup',     n: 5, name: 'Tool Installation',                    short: 'Tool Installation', icon: 'link', line: 'Production tools connected into the facility and released to production.' },
+  { id: 'maintain',   n: 6, name: 'Maintenance',                          short: 'Maintain',   icon: 'gear',    line: 'Planned care that protects lifespan and uptime.' },
 ]
 
 export const WORK = [
@@ -28,20 +29,25 @@ export const WORK = [
 /* services: `core` is what the unit always carries; `ask` is carried when the client asks for it */
 export const UNITS = [
   {
-    id: 'epc', no: 1, name: 'EPC', full: 'Engineering, Procurement and Construction', icon: 'epcUnit',
+    /* 19 Oct (IAQ feedback, EPC: headline "Engineering, Procurement & Construction (EPC)"; "Do not imply every project
+       includes every phase or that tool installation is excluded from EPC"; Metrics: "Remove all the metrics", "No
+       blanket duration claim"): IAQ's name for the unit; the scope is what each project needs, not every phase by
+       default; Tool Installation and Maintenance are carried when the client asks (IAQ's own questionnaire, Q-EPC-A,
+       lists them as EPC stages 5 and 6), no longer shown as outside the unit; the 12 to 24 months term is gone */
+    id: 'epc', no: 1, name: 'EPC', full: 'Engineering, Procurement & Construction', icon: 'epcUnit',
     line: 'Builds the facility.',
-    what: 'One contract for a hi-tech facility, from the first drawing to handover. IAQ answers for the system working as intended.',
+    what: 'Engineering, procurement and construction for a hi-tech facility under one contract, scoped to what each project needs. IAQ answers for the system working as intended.',
     models: [
       { t: 'EPCC', s: 'IAQ delivers the whole project, commissioning included.' },
       { t: 'EPCM', s: 'IAQ manages it; the owner holds the construction contracts. Engaged by large multinationals on the biggest programmes.' },
     ],
     /* 25 Sep (Bazil: "EPC unit is not supposed to be in maintenance and tools hookup"): maintenance sits with EFM, tools
        hookup with PCU & TTI. NOTE: IAQ's questionnaire (Q-EPC-A) lists them as EPC stages 5 and 6; to confirm with IAQ */
-    core: ['design', 'procure', 'construct', 'commission'], ask: [],
+    core: ['design', 'procure', 'construct', 'commission'], ask: ['hookup', 'maintain'],
     work: ['csa', 'mep', 'process'],
     bought: 'The whole facility, or any one service under the same model.',
     when: 'You are building or extending a facility and want one company to answer for all of it.',
-    term: '12 to 24 months',
+    term: '',
     route: '/services/epc-construction',
   },
   {

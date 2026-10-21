@@ -17,39 +17,42 @@ export default function MarketSemiconductor() {
       name="Semiconductor"
       hash="semiconductor"
       ind="semiconductor"
-      image="/assets/banners/mkt-semiconductor.jpg"
-      title={<>ISO 3 to ISO 7, <em>delivered at fab speed</em>.</>}
-      lede="Wafer fabs, backend plants and ISO 3 to 7 cleanrooms, designed, built and proven by one team."
-      facts={[
-        { k: 'Cleanroom classes', v: 'ISO 3 to ISO 7', sub: 'Class 1 to Class 10K across delivered projects.' },
-        { k: 'Highest delivered', v: 'ISO Class 1', sub: 'The highest standard of cleanroom IAQ states it has built and delivered for a semiconductor project.' },
-        { k: 'Largest delivered', v: '43,000 m²', sub: 'Backend test, probe and assembly plant, Malaysia.' },
-      ]}
+      /* 20 Oct (Bazil: "change the image"): the empty yellow lithography room did not read as a semiconductor fab. Now an
+         operating wafer fab: rows of process tools, overhead wafer transport, engineers in cleanroom suits at a tool, matte
+         floor, no logos. Generated in ChatGPT, so it is a representation; the old banner stays in the folder */
+      image="/assets/banners/mkt-semiconductor-fab.jpg"
+      /* 20 Oct (IAQ amendment sheet, Semiconductor · Hero Banner; IAQ: "substantiate all project-size, class, capacity and
+         performance claims"): IAQ's header and line, and the figures strip (ISO 3 to 7, ISO Class 1, 43,000 m2, registry) is gone */
+      title={<em>Semiconductor</em>}
+      lede="Supporting Facilities That Power Modern Technology"
+      hideRegistry
+      /* 20 Oct (IAQ amendment sheet, Semiconductor · Industry Overview): IAQ's paragraph, in place of "Cleanliness, efficiency and
+         safety, held at fab speed", its quote and the company-profile label */
+      whyKick={null}
       why={{
-        head: 'Cleanliness, efficiency and safety, held at fab speed',
-        quote: 'Semiconductor technology evolves at breakneck speed.',
-        cite: 'IAQ company profile',
-        body: 'All three are settled at design stage, when the class, the airflow and the utility routes are fixed, rather than on site once the tools start arriving. A fab that reaches its class straight from the design holds its schedule.',
+        head: 'Industry Overview',
+        body: 'Semiconductor manufacturing demands precise environmental control, reliable utility infrastructure and seamless equipment integration. As technology advances and production requirements become increasingly complex, facilities must be designed and operated to meet the highest standards of performance and reliability.',
       }}
+      /* 20 Oct (IAQ amendment sheet, Semiconductor · 3rd Section, Key Capabilities, Importance): IAQ's sections in its order and
+         words, in place of the demand tiles, "One accountable team" and the typical scope. Spelling slip only corrected ("supports"). */
+      whyMore={{
+        head: 'How IAQ Supports Semiconductor Manufacturing',
+        body: 'Through EPC, PCU & TTI and Energy Management solutions, IAQ supports semiconductor facilities across the full lifecycle, from facility development and utility infrastructure to manufacturing readiness and operational optimisation.',
+      }}
+      demandsHead="IAQ Key Capabilities"
       demands={[
-        'Cleanliness to the tightest ISO classes',
-        'Efficiency and schedule certainty on fab ramp-up',
-        'Safety on live and brownfield fab sites',
-        'Facilities optimised for complex fabrication processes',
+        { label: 'Wafer Fabrication Facilities', icon: 'chip' }, { label: 'Advanced Packaging Utilities', icon: 'layers' },
+        { label: 'Process Critical Utilities', icon: 'pcuUnit' }, { label: 'Total Tool Installation', icon: 'link' },
+        { label: 'Cleanroom Infrastructure', icon: 'filter' }, { label: 'Manufacturing Readiness', icon: 'check' },
       ]}
+      deliverKick={null}
+      deliverHead="The Importance of Manufacturing Readiness"
       deliverIntro={[
-        'IAQ Group brings streamlined project management, modern construction methods and a dedicated team, so each client stays ahead.',
-        'We are a specialised engineering and construction company for semiconductor facilities, focused on cleanliness, efficiency and safety. The spaces we design and build are optimised for complex fabrication processes.',
+        'Successful semiconductor production depends on the seamless integration of facilities, utilities and manufacturing equipment. A well-prepared facility reduces risk, accelerates start-up and supports long-term operational performance.',
       ]}
-      scopeTitle="Typical semiconductor scope"
-      cycleLede="The same six stages carry a fab from the first concept drawing to the tools hookup that feeds the next expansion. Open any stage to see how it runs."
-      standards={{
-        head: 'ISO 3 to ISO 7, proven by test',
-        k: 'Cleanroom classification',
-        body: 'Delivered semiconductor projects run from ISO 3 to ISO 7, Class 1 to Class 10K. IAQ states it has built the highest standard of cleanroom, ISO Class 1, for a semiconductor project, and delivered it successfully. Classification is proven by test at commissioning, never assumed from the design.',
-        k2: 'How the class is held',
-        body2: 'We test and commission to our established programme. It proves the facility operates as intended, at its best, and meets every specified requirement. Every element is verified and brought to specification, so the facility is fully functional before it is handed over for operation.',
-      }}
+      hideScope
+      /* 21 Oct (client review, Sunny, on "ISO 3 to ISO 7, proven by test": "What test to prove?", "What is this grammar, run
+         from what?", "I hope in a school"): the standards section and its class chips are gone; the hero's figures went on 20 Oct */
       proofLede="Published semiconductor projects from the sample registry, each one linked to its full record."
     />
   )

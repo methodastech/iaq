@@ -59,6 +59,10 @@ export default function MarketPage({
   id, no, name, title, lede, image, ind, hash,
   facts = [], why, demands = [], deliverIntro = [], scopeTitle,
   cycleLede, standards, slot, proofLede,
+  hideRegistry = false,   /* 20 Oct: a page with no figures strip at all (Food & Beverage) */
+  /* 20 Oct (Food & Beverage, IAQ's amendment sheet): a page's own section headings and kickers, a heading over the tiles,
+     and the scope row switched off */
+  whyKick = 'What this market demands', demandsHead, whyMore, hideBand = false, deliverKick = 'How IAQ delivers it', deliverHead, hideScope = false,
 }) {
   useEffect(() => { document.title = `IAQ Group · ${name} · Brand Method` }, [name])
 
@@ -68,7 +72,7 @@ export default function MarketPage({
   const regLabel = INDLBL[ind] || name
 
   /* the fourth fact is always the registry, so R1 is reachable from the hero */
-  const allFacts = facts.concat([{
+  const allFacts = facts.concat(hideRegistry ? [] : [{
     k: 'On the registry',
     v: `${proof.length} published`,
     sub: 'Live on the site today. The full 250+ record migrates at launch.',
@@ -88,7 +92,7 @@ export default function MarketPage({
             own line mark, large, on a frosted tile with its red duotone shadow, standing right after the title and lede */}
         <PageHead crumbs={[{ label: 'Markets', to: '/markets' }]} eyebrow={`Market ${no} · Who we serve`} title={title} lede={lede}
           aside={<span className="mkb-ico"><MarketMotion id={id} /></span>} />
-        <div className="mk-facts-w">
+        {allFacts.length > 0 && <div className="mk-facts-w">
           <div className="pg-in">
             <div className="mk-facts">
               {allFacts.map(f => {
@@ -99,48 +103,55 @@ export default function MarketPage({
               })}
             </div>
           </div>
-        </div>
+        </div>}
       </div>
 
       {/* ------------------------------- 02 · what this market demands */}
       <section className="pg-sec">
         <div className="pg-in">
-          <span className="pg-k">What this market demands</span>
+          {whyKick && <span className="pg-k">{whyKick}</span>}
           <h2>{why.head}</h2>
+          {why.quote ? (
           <div className="pg-split">
             <blockquote className="pg-pull"><small>{why.cite}</small>{why.quote}</blockquote>
             <p className="pg-body u-mt0">{jargon(why.body)}</p>
           </div>
+          ) : <p className="pg-body mk-why-body">{jargon(why.body)}</p>}
+          {/* 20 Oct: a second heading and paragraph under the overview (Semiconductor, "How IAQ Supports ...") */}
+          {whyMore && <><h3 className="mk-demands-h">{whyMore.head}</h3><p className="pg-body mk-why-body">{jargon(whyMore.body)}</p></>}
+          {demandsHead && <h3 className="mk-demands-h">{demandsHead}</h3>}
           {/* the requirements as icon tiles (2 Sep): what the market is judged on, each with its
               own mark, no order implied */}
-          <DetailDiagram variant="grid" items={demands.map(d => ({ label: d }))} ariaLabel="What this market demands" />
+          <div className={demandsHead ? 'mk-caps' : undefined}><DetailDiagram variant="grid" items={demands.map(d => (typeof d === 'string' ? { label: d } : d))} ariaLabel="What this market demands" /></div>
         </div>
       </section>
 
       {/* ----------------------------------- 03 · how IAQ delivers it */}
       <section className="pg-sec calm">
         <div className="pg-in">
-          <span className="pg-k">How IAQ delivers it</span>
-          <h2>One accountable team, every system</h2>
+          {deliverKick && <span className="pg-k">{deliverKick}</span>}
+          <h2>{deliverHead || 'One accountable team, every system'}</h2>
           {deliverIntro.map((p, i) => <p className="pg-body" key={i}>{jargon(p)}</p>)}
 
           {/* 25 Sep, night (Bazil: "make sure every market complete flow or diagram easier for people to understand"): one
               diagram in two rows, the scope as numbered tiles with arrows and the six stages as tiles with their line
               (MarketFlow). The flow rail and the six-box strip that stood here are gone. */}
-          <MarketFlow scope={scope} scopeTitle={scopeTitle} lede={cycleLede} />
+          <MarketFlow scope={hideScope ? [] : scope} scopeTitle={scopeTitle} lede={cycleLede} />
         </div>
       </section>
 
       {/* ------------------------------- 03b · the market, photographed */}
-      {BAND[id] && (
+      {/* 20 Oct: `hideBand` drops a generated still a page should not carry (Data Centre, client: "So not our project?") */}
+      {BAND[id] && !hideBand && (
         <section className="mk-band" aria-label={BAND[id].cap}>
           <img src={BAND[id].src} alt={BAND[id].alt} loading="lazy" decoding="async" />
-          <span className="mk-band-cap">{BAND[id].cap}{BAND[id].rep && <i>Representation</i>}</span>
+          {/* 15 Oct ("remove all the tag"): no caption chip or Representation tag on the photograph */}
         </section>
       )}
 
       {/* ------------------------------- 04 · standards and classes */}
-      <section className="pg-sec">
+      {/* 20 Oct: drawn only when the page passes `standards` (Data Centre's was removed on the client's review) */}
+      {standards && <section className="pg-sec">
         <div className="pg-in">
           <span className="pg-k">Standards and classes</span>
           <h2>{standards.head}</h2>
@@ -171,7 +182,7 @@ export default function MarketPage({
             )}
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* ------------------------------------- 05 · proof projects */}
       <section className="pg-sec calm">

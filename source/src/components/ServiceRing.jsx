@@ -12,7 +12,7 @@ import '../styles/service-ring.css'
    steps every three seconds until the reader touches one; a station is a link to its service page. Nothing is
    positioned in pixels, so nothing is cut at any width.
    ============================================================================ */
-const MARK_KEY = ['des', 'prc', 'con', 'com', 'mnt', 'hok']
+const MARK_KEY = ['des', 'prc', 'con', 'com', 'hok', 'mnt']   /* 15 Oct: Tool Installation is stage 5, Maintenance 6 (data/cycle.js) */
 const W = 1000, H = 640, CX = 500, CY = 320, R = 210
 const ang = i => (-90 + i * 60) * Math.PI / 180
 const pt = (i, r = R) => [CX + Math.cos(ang(i)) * r, CY + Math.sin(ang(i)) * r]

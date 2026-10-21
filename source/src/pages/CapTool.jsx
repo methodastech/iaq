@@ -17,7 +17,10 @@ export default function CapTool() {
       no="2"
       name="PCU & TTI"
       full="Process Critical Utilities & Total Tool Installation Solutions"
-      title={<>The last hundred metres, where a facility <em>becomes a fab.</em></>}
+      /* 19 Oct (client feedback, PCU & TTI · "Direct header, no explanation", High): the unit's own name as the header, and
+         IAQ's line under it, in place of "The last hundred metres, where a facility becomes a fab." */
+      title={<>Process Critical Utilities (PCU) &amp; <em>Total Tool Installation (TTI)</em></>}
+      lede="Bridging Facility Readiness and Manufacturing Readiness"
       /* 29 Sep (client, Website Update: the hero's line "should be under below section", "you missing out the PCU
          description"): the line moved under "What PCU & TTI is." as the TTI half, beside a PCU half (whatParts) */
       chips={['Tool installation · hook-up', 'Semiconductor fabs']}
@@ -58,13 +61,10 @@ export default function CapTool() {
       art="hookup"
       /* 25 Sep (Bazil: "wouldn't this be better replaced with picture 2"): IAQ's Services Scope slide in place of the work cards */
       scope={<ToolScope />}
-      facts={[
-        { v: '6', l: 'services connected to every tool' },
-        /* 18 Sep, cross-check: the unit head's answer (SL questionnaire, section D) gives four phases and
-           "semiconductor exclusively"; IAQ's Utility Solutions deck names front end, advanced packaging and back end */
-        { v: '4', l: 'phases, from facilitization to commissioning' },
-        { v: '1', l: 'sector: semiconductor, front end to back end' },
-      ]}
+      /* 19 Oct (client feedback, PCU & TTI · "Direct header, no explanation"; IAQ: "Remove phrases that cannot be explained
+         plainly"): the hero is the header and its line only; the 6 / 4 / 1 figures (marked wrong in the 13 Oct review) and
+         the "Call PCU & TTI when" line are off it */
+      hideWhen
       hard={{ k: 'The last work done, with the least margin for error.', t: 'The facility is finished, the cleanroom is live, the tool is worth more than the room, and the programme arrives compressed. The work is planned and sequenced to hold the date.' }}
       /* the pair: what the tool is when it lands and what it is when IAQ hands it over, from the page's own steps */
       modelsHead={<>What arrives, <em>what leaves.</em></>}
@@ -77,9 +77,11 @@ export default function CapTool() {
       /* 24 Sep (client: "To remove below section, repetitive from its top description"): the At a glance ledger is gone */
       /* 29 Sep (client): both halves of the unit, PCU then TTI. The PCU line is the page's own (the utilities section's
          lede and the first `what` paragraph); the TTI line is the hero's, moved here as the client asked. */
+      /* 19 Oct (client feedback, PCU & TTI · Introduction to PCU & TTI): IAQ's heading and paragraph, in place of "What PCU &
+         TTI is." and its PCU and TTI halves (29 Sep). Spelling slip only corrected ("competion"). */
+      whatHead={<>Manufacturing Readiness <em>Start Here</em></>}
       whatParts={[
-        { k: 'Process Critical Utilities (PCU)', t: 'The specialty gases, chemicals, ultrapure water and exhaust that a production tool consumes. IAQ designs, installs and commissions them as one system, then brings each of them to the tool.' },
-        { k: 'Total Tool Installation (TTI)', t: 'Tool hook-up connects production equipment into the facility it sits in. Here is what the work involves, step by step.' },
+        { t: 'A production facility is only ready when its manufacturing equipment and utility systems operate as one. IAQ delivers integrated PCU and TTI solutions that connect critical utility infrastructure with manufacturing tools, enabling a seamless transition from facility completion to operational readiness.' },
       ]}
       what={[
         'Total Tool Installation connects production equipment fully and precisely into the facility it sits in. IAQ designs, installs and commissions the process critical utilities, then brings each of them to the tool.',
@@ -107,6 +109,9 @@ export default function CapTool() {
       pull="The last work done, with the least margin for error."
       /* 18 Sep, cross-check: IAQ's own four phases, from the unit head's answer in the SL (Utility) questionnaire,
          section D. They replace the six generic steps written from the plan brief. */
+      /* 15 Oct ("remove", on The project cycle, stage by stage): the cycle section is off this page, as on EPC; the stages
+         stay in the props */
+      hideCycle
       steps={[
         { k: 'Facilitize', t: 'Facilitization, before the tool arrives', d: 'Everything upstream of the tool’s connection point is built to the equipment maker’s facility requirements: the sub-fab and chase, the power, the structure and the room itself. The frozen tool layout is the gate. Late layout changes are the most common source of rework.', covers: ['VMBs and VMPs for specialty gases', 'UPW and PCW loops, vacuum, drains, N₂ and CDA', 'Exhaust branches, each stream ducted separately', 'Power drops, panels, UPS and EMI surveys', 'Floor cut-outs, loading and vibration criteria', 'Bay ISO class, AMC, temperature and humidity'] },
         { k: 'Rig in', t: 'Rig-in and move-in', d: 'The tool is uncrated in a de-trash airlock, so cardboard and wood stay outside the cleanroom. It is wiped down through the cleanliness zones, moved along a pre-agreed route, then set, levelled, anchored and seated on vibration isolation.', covers: ['De-trash airlock and staged wipe-down', 'Agreed tool route and floor protection', 'Set, level, anchor, vibration isolation'] },
@@ -116,14 +121,42 @@ export default function CapTool() {
       /* 17 Sep: the scope list moved onto the stages above as `covers` (client: merge it with the
          lifecycle), and the detail under each stage is the BU head's own answer in the SL (Utility)
          questionnaire, section D. */
+      /* 21 Oct (IAQ amendment sheet, PCU & TTI · Delivery Approach): "Horizontal Journey Graphic: Facilitisation --> Move-In &
+         Installation --> Utility Integration --> Testing & Commissioning. Each stage: simple icon, one line explanation". IAQ's
+         heading, stages and lines; spelling slip only corrected ("tolls"). */
+      process={{
+        head: <>Our Delivery <em>Approach</em></>,
+        journey: true,
+        steps: [
+          { k: 'Facilitisation', icon: 'building', t: 'Preparing facility infrastructure and utility systems for equipment installation' },
+          { k: 'Move-In & Installation', icon: 'crate', t: 'Positioning and installing manufacturing equipment' },
+          { k: 'Utility Integration', icon: 'gas', t: 'Connecting tools to critical utilities and support systems' },
+          { k: 'Testing & Commissioning', icon: 'check', t: 'Verifying system performance and operational readiness' },
+        ],
+      }}
+      /* 21 Oct (IAQ amendment sheet, PCU & TTI · Section for PCU & TTI Statement, High): IAQ's statement, verbatim; the three
+         facility types it names are set out under it */
+      statement={{
+        kicker: 'PCU & TTI',
+        label: 'PCU and TTI statement',
+        text: <>Our PCU and TTI solutions are dedicated to semiconductor manufacturing environments, supporting <em>wafer fabrication, advanced packaging and backend facilities</em> through specialised utility and equipment integration services.</>,
+        items: [
+          { t: 'Wafer Fabrication', icon: 'chip' },
+          { t: 'Advanced Packaging', icon: 'layers' },
+          { t: 'Backend Facilities', icon: 'factory' },
+        ],
+      }}
+      /* 21 Oct (IAQ amendment sheet, PCU & TTI · Why Clients Partner with IAQ): IAQ's heading and four reasons, in place of the
+         five written on 15 to 18 Sep; spelling slip only corrected ("Focue"). Each is drawn as a scene, as the Careers
+         values are ("like this animation"). They follow the delivery approach and the
+         statement, as the sheet orders them. */
+      whyHead={<>Why Clients Partner <em>with IAQ</em></>}
+      whyAfterServices
       why={[
-        { k: 'It is the critical path', icon: 'route', t: 'Hook-up is the last work before production, so the whole programme converges on it. Every day held to schedule is a day of output on the line.' },
-        { k: 'The room is already live', icon: 'shield', t: 'This work happens inside a classified cleanroom that is finished and certified. Holding that classification while the tool goes in is the skill.' },
-        { k: 'Semiconductor, front to back', icon: 'chip', t: 'Front end, advanced packaging and back end fabs. The sector where the tool is the investment and the facility exists to serve it.' },
-        /* SL (Utility) questionnaire, section A: "1 stop solutions from EPC Contracting base build all
-           the way to tool installation", and section D: standalone, but run on the EPC/EPCM model */
-        { k: 'One route from base build', icon: 'building', t: 'The same company that built the facility connects the tools into it, so the last step stays inside one team.' },
-        { k: 'Bought on its own', icon: 'link', t: 'It is a standalone service, run on the EPC or EPCM model, on a base facility built by IAQ or by others.' },
+        { k: 'Integrated Delivery', icon: 'link', scene: 'puzzle', t: 'Utility infrastructure and tool installation delivered through a coordinated execution framework.' },
+        { k: 'Semiconductor Focus', icon: 'chip', scene: 'wafer', t: 'Dedicated expertise supporting the unique requirements of semiconductor manufacturing facilities.' },
+        { k: 'Technical Excellence', icon: 'compass', scene: 'plan', t: 'Disciplined planning, coordination and execution throughout every project phase.' },
+        { k: 'Manufacturing Readiness', icon: 'factory', scene: 'bridge', t: 'Helping clients bridge the gap between facility completion and production start-up.' },
       ]}
       /* 17 Sep: the section D slot is closed. The BU head's answer in
          2026.07.27_IAQ BM Questionnaire_SL (Utility).xlsx sets out the four phases, and they are on

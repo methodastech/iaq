@@ -33,13 +33,22 @@ import '../styles/company.css'
    Culture, Commitment and the newsroom already publish.
    ============================================================================ */
 
+/* 19 Oct (IAQ feedback, "What thirty-one years have proved": "Metrics sequence since this is history page"): the six
+   records in IAQ's order, with IAQ's wording for each headline. 235+ projects delivered leads; the 2.6 million safe
+   manhours record is not in IAQ's list, so it is off this page (it stays in the newsroom). The supporting lines under
+   the five that had one are unchanged. 19 Oct, later (Bazil: "no description?"): the project count's line is drawn
+   from IAQ's own overview (iaqtechnology.com.my/overview): founded 1995, the industries it names, locally and globally. */
 const RECORDS = [
   {
-    k: 'Cleanroom class', b: 'ISO Class 1',
-    s: 'The highest standard of cleanroom IAQ has built, delivered successfully for a semiconductor client. Few companies in the market can do it at all.',
+    k: 'Project', b: '235+ projects delivered',
+    s: 'Hi-tech facilities delivered since 1995 for semiconductor, district cooling, life science and industrial clients, locally and globally.',
   },
   {
-    k: 'Energy', b: "Malaysia's largest district cooling centre",
+    k: 'Cleanroom class', b: 'ISO Class 1',
+    s: 'The highest standard of cleanroom IAQ has built, delivered successfully for a semiconductor client.',
+  },
+  {
+    k: 'Energy', b: "Malaysia's largest district cooling",
     s: 'Main contractor on the scheme, delivered with a 25 year maintenance mandate.',
   },
   {
@@ -54,19 +63,12 @@ const RECORDS = [
     k: 'Award · 2024', b: 'Gold, OSH Management',
     s: 'Gold Award for OSH Management at the 20th OSH Excellence Awards, alongside the Highwire Safety Award at Gold level.',
   },
-  {
-    k: 'Safety', b: '2.6 million safe manhours',
-    /* 15 Sep: corrected. The 2.6 million post is dated 28 February 2025; the DOSH Kuching
-       post (3 July 2025) names no figure and its banner reads 2.74 million, so the two are
-       stated separately rather than as one recognition. */
-    s: 'Reached on 28 February 2025 on the East Malaysia wafer fab expansion, with a clean lost time injury record. In July 2025 DOSH Kuching recognised the safety standards on IAQ’s Sarawak project.',
-  },
 ]
 
 
 /* the mark each record carries */
 /* 25 Sep (Bazil: "no shadow and refine the icons please", "use design direction correct"): the official line set */
-const recIcon = b => /ISO Class/.test(b) ? 'recClean' : /district cooling/i.test(b) ? 'recCooling' : /co-generative/i.test(b) ? 'recCogen' : /Builder/.test(b) ? 'recAward' : /OSH/.test(b) ? 'recMedal' : 'recSafety'
+const recIcon = b => /projects delivered/i.test(b) ? 'recProject' : /ISO Class/.test(b) ? 'recClean' : /district cooling/i.test(b) ? 'recCooling' : /co-generative/i.test(b) ? 'recCogen' : /Builder/.test(b) ? 'recAward' : /OSH/.test(b) ? 'recMedal' : 'recSafety'
 
 export default function History() {
   useEffect(() => { document.title = 'IAQ Group · History of IAQ · Brand Method' }, [])
@@ -81,9 +83,12 @@ export default function History() {
       {/* 25 Sep (Bazil: "create a video banner that's awesome for this"): the head is IAQ's crew clip under a dark scrim,
           the years 1995 to 2026 drawn across it, the title, the lede and the paragraph that sat in a grey band below */}
       <VideoBanner crumbs={[{ label: 'About', to: '/about' }]}
-        title={<>31 years <em>of development.</em></>}
-        lede="Founded in Malaysia in 1995 by Ir. Tiew Soon Aik, IAQ began as a cleanroom specialist and now delivers hi-tech facilities end to end, from design to maintenance."
-        body="The company started locally and is now global. Its footprint covers Singapore, Sweden, Poland, France, India and Germany, and it is still expanding. Globally IAQ grows as a cleanroom specialist. Regionally it operates as a total solutions provider: one accountable team from the first drawing to final handover, and then for the life of the facility."
+        /* 19 Oct (IAQ feedback, History narrative: "Replace with a fact-checked timeline of approved milestones. Do not
+           invent what was developed, when a project was won, or why the business expanded"): the head is IAQ's own
+           paragraph, as given (spelling only corrected). The founder line, "began as a cleanroom specialist", the
+           country list and the specialist / total-solutions positioning are gone: none of it is in IAQ's approved text */
+        title={<>Three decades <em>of engineering evolution.</em></>}
+        lede="Since 1995, IAQ has continuously expanded its engineering capabilities, project delivery expertise and global presence in support of advanced technology industries. From our foundations in Malaysia to projects across multiple international markets, our journey reflects a steadfast commitment to engineering excellence, innovation and long-term value creation."
         /* 25 Sep (Bazil: "need to replace this video with better and proper one", "put 31 years of development instead",
            "not need the banner to be too tall"): the generated crew clip is gone; IAQ's own plant at dusk from the air
            (Xfab drone shot DJI_0516) as an 8 s slow move; the banner height is in pages.css */
@@ -96,11 +101,11 @@ export default function History() {
       {/* ── Firsts and records ──────────────────────────────────────────── */}
       <section className="pg-sec">
         <div className="pg-in">
-          <h2>What thirty-one years <em>have proved.</em></h2>
+          <h2>What three decades <em>have proved.</em></h2>
           <p className="pg-lede">
             Each is on record in IAQ&rsquo;s company profile, its newsroom or the project registry.
           </p>
-          <div className="cp-tiles">
+          <div className="cp-tiles cp-rec">
             {RECORDS.map(r => (
               <div className="cp-tile cp-tile-ic" key={r.b}>
                 {/* 25 Sep (Bazil: "create visuals and icons for each", then "use design direction correct"): one line mark per record */}

@@ -15,7 +15,7 @@ const K = {
   news: 'iaq.cms.news.v1',
   roles: 'iaq.cms.roles.v1',
   projects: 'iaq.cms.projects.v1',
-  history: 'iaq.cms.history.v1',
+  history: 'iaq.cms.history.v2',   /* 17 Oct: IAQ's history amendment replaced every milestone's copy; edits saved before it (v1) would hide it */
 }
 
 /* prototype passcode, shown on the login card. The real portal gets SSO. */

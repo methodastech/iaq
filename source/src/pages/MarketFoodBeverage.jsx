@@ -20,30 +20,31 @@ export default function MarketFoodBeverage() {
       hash="fnb"
       ind="fnb"
       image="/assets/banners/mkt-food-beverage.jpg"
-      title={<>Hygienic plants, <em>from intake to package</em>.</>}
-      lede="Flavour and food production plants built to a hygienic regime, from intake to package."
-      facts={[
-        { k: 'Specification', v: 'Hygienic', sub: 'Hygienic specification rather than an ISO cleanroom class.' },
-        { k: 'Largest delivered', v: '40,000 m²', sub: 'Greenfield food flavouring manufacturing plant.' },
-        { k: 'Scope', v: 'CSA through waste', sub: 'Full facility scope from structure to process utilities, fire protection and waste.' },
-      ]}
+      /* 20 Oct (IAQ amendment sheet, Food & Beverage · Hero Banner) */
+      title={<>Food &amp; <em>Beverage</em></>}
+      lede="Supporting Safe and Reliable Production Environments"
+      /* 20 Oct (client review, Sunny: "just remove all the metrics footer"): no figures under the hero, the registry
+         figure included, so the strip is not drawn */
+      hideRegistry
+      /* 20 Oct (IAQ amendment sheet, Food & Beverage · Industry Overview, Key Capabilities, Importance): IAQ's three sections,
+         in its order and words, in place of "Hygiene is a building decision", its quote and tiles, and "One accountable team".
+         Spelling slip only corrected ("efficiency"). */
+      whyKick={null}
       why={{
-        head: 'Hygiene is a building decision, not a cleaning routine',
-        quote: 'The food and beverage industry relies on stringent quality and safety standards.',
-        cite: 'IAQ company profile',
-        body: 'Stringent quality and safety standards govern the whole facility, from the structure through the process utilities to the waste stream. They are designed in first, proven at commissioning, then maintained for the life of the plant.',
+        head: 'Industry Overview',
+        body: 'Food and beverage manufacturing facilities must balance production efficiency, product quality and operational reliability while meeting stringent hygiene and safety requirements. As consumer expectations, sustainability priorities and production demands continue to evolve, organisations require manufacturing environments that support consistent operations, supply chain resilience and long-term growth.',
       }}
+      demandsHead="IAQ Key Capabilities"
       demands={[
-        'Stringent quality and safety standards',
-        'Hygienic design and construction',
-        'Full facility scope from CSA through process utilities and waste',
+        { label: 'Manufacturing facilities', icon: 'factory' }, { label: 'Utility Infrastructure', icon: 'sysPcw' },
+        { label: 'Process Environments', icon: 'flask' }, { label: 'Energy Management', icon: 'power' }, { label: 'EPC Delivery', icon: 'epcUnit' },
       ]}
+      deliverKick={null}
+      deliverHead="Why Operational Continuity Matters"
       deliverIntro={[
-        'IAQ understands the importance of adhering to these standards, and our facilities are designed and constructed with utmost cleanliness and safety in mind.',
-        'We deliver the whole facility, from structure to process utilities and waste, so clients can operate with confidence.',
+        'Food and beverage production relies on reliable infrastructure that supports product quality, efficiency and uninterrupted operations.',
       ]}
-      scopeTitle="Typical food and beverage scope"
-      cycleLede="Hygiene is a design decision before it is a cleaning routine, which is why the layout, the finishes and the utilities are settled in stage one."
+      hideScope
       standards={{
         head: 'A hygienic specification, not an ISO class',
         k: 'Classification',

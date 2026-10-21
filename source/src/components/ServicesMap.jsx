@@ -199,7 +199,7 @@ export function MapBand({ autoTour = false, scrollCue = !autoTour } = {}) {
                 the Codex and in src/_versions/facility-map-v1-2026-09-25 */}
           </div>
           <div className="sm-map-side">
-            <div className="sm-map-in cx-page rx-compact"><RelExplorer value={ext} onSelect={setSel} read={false} tour={tour} onTouch={() => setTour(false)} only={['w', 'y']} lines />   {/* version 2: work and system only (no services, no units, tools hookup has its own section); 28 Sep (client): each Work card carries its one line, which the removed 4 works section held */}</div>
+            <div className="sm-map-in cx-page rx-compact"><RelExplorer value={ext} onSelect={setSel} read={false} tour={tour} onTouch={() => setTour(false)} only={['w', 'y']} lines rest />   {/* version 2: work and system only (no services, no units, tools hookup has its own section); 28 Sep (client): each Work card carries its one line, which the removed 4 works section held */}</div>
           </div>
         </div>
       </div>
@@ -212,7 +212,9 @@ export function MapBand({ autoTour = false, scrollCue = !autoTour } = {}) {
             if (!nx) return
             const off = -((document.querySelector('.nav')?.offsetHeight || 0) + (document.querySelector('.ssb')?.offsetHeight || 0))
             window.__lenis ? window.__lenis.scrollTo(nx, { offset: off }) : nx.scrollIntoView({ behavior: 'smooth' }) }}>
-          <span>Scroll</span><i aria-hidden="true" />
+          {/* 12 Oct ("where is the arrow indicator for user to scroll down"): a framed arrow that bobs, and a plain label */}
+          <i aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20"><path d="M10 4v11M5 10.5l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg></i>
+          <span>Scroll to explore</span>
         </button>
       )}
     </section>
@@ -222,7 +224,7 @@ export function MapBand({ autoTour = false, scrollCue = !autoTour } = {}) {
 /* the second line of the reading panel */
 function detail(sel) {
   const [k, id] = sel
-  if (k === 'u') { const u = UNITS.find(x => x.id === id); return 'Call ' + (u.short || u.name) + ' when ' + u.when.charAt(0).toLowerCase() + u.when.slice(1) + ' Term: ' + u.term + '.' }
+  if (k === 'u') { const u = UNITS.find(x => x.id === id); return 'Call ' + (u.short || u.name) + ' when ' + u.when.charAt(0).toLowerCase() + u.when.slice(1) + (u.term ? ' Term: ' + u.term + '.' : '') }
   if (k === 's') { const s = SERVICES.find(x => x.id === id); return 'Service ' + s.n + ' of 6. ' + s.line }
   if (k === 'w') { const w = workOf(id); return w.full + '. Its systems: ' + w.systems.join(', ') + '.' }
   const y = sysOf(id), w = y && workOf(y.work)
@@ -330,7 +332,7 @@ export function FaqBand() {
           <DmFaq className="faq-hic" />
           <div>
             <h2 id="sm-faq-h" className="sm-faq-h">Questions clients ask</h2>{/* 26 Sep (Bazil: "questions ask") */}
-            <p className="pg-lede">The questions facility owners ask before they engage IAQ, answered. Any other question, ask; the reply comes within a working day.</p>
+            <p className="pg-lede">The questions facility owners ask before they engage IAQ, answered. Any other question, ask.</p>
           </div>
         </div>
         <Faq />

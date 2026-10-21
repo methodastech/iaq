@@ -1,8 +1,6 @@
 import ContactCta from '../components/ContactCta.jsx'
 import React, { useEffect, useLayoutEffect, useRef } from 'react'
-import { CYCLE_SVG } from '../data/cycleMarks.js'
-import { MarkGrw, MarkCtr, MarkEmp } from '../components/Marks.jsx'
-import { DmGrow } from '../components/DioramaMarks.jsx'
+import { RfEng, RfLrn, RfCtr, RfPpl } from '../components/RecordFlat.jsx'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
@@ -154,11 +152,14 @@ function jumpIfSameHash(e, id) {
 
 /* 24 Sep (Bazil: "do not put an icon in a box in a box", "our icons look better"): the four reasons carry the site's own
    isometric marks, bare on the card: the construction crane, the career steps, the globe, the people */
+/* 19 Oct (client feedback, Careers: "Replace unclear icons with simple visuals that clearly communicate engineering, teamwork,
+   learning or operational capability"): plain line marks from the home record's set (RecordFlat.jsx) in place of the
+   isometric ones: a hard hat for the profession, a mortarboard for growth, the globe for the offices, people for the culture */
 const WHY_MARK = [
-  () => <span className="cr-why-mk" aria-hidden="true" dangerouslySetInnerHTML={{ __html: CYCLE_SVG.con }} />,
-  () => <MarkGrw className="cr-why-mk" aria-hidden="true" />,
-  () => <MarkCtr className="cr-why-mk" aria-hidden="true" />,
-  () => <MarkEmp className="cr-why-mk" aria-hidden="true" />,
+  () => <RfEng className="cr-why-mk cr-why-ln" />,
+  () => <RfLrn className="cr-why-mk cr-why-ln" />,
+  () => <RfCtr className="cr-why-mk cr-why-ln" />,
+  () => <RfPpl className="cr-why-mk cr-why-ln" />,
 ]
 
 /* 24 Sep (Bazil: "this is culture bro, use better visual"): three of IAQ's own team photographs, crossfading with a
@@ -259,12 +260,14 @@ export default function Careers() {
         <header className="cu-hero">
           <div className="cu-w cu-hero-in">
             <div className="cu-hero-copy">
+              {/* 19 Oct (client feedback, Careers · Brand and recruitment messaging; IAQ: "Avoid 'the cleanest rooms' unless it is an
+                  intentional, approved phrase"): IAQ's message in place of "The people behind the cleanest rooms." */}
               <h1 className="cu-h1 cu-rv">
-                <span className="cu-ln"><span>The people behind</span></span>{' '}
-                <span className="cu-ln"><em>the cleanest rooms.</em></span>
+                <span className="cu-ln"><span>Build your career</span></span>{' '}
+                <span className="cu-ln"><em>with IAQ Group.</em></span>
               </h1>
               <p className="cu-lede cu-rv" style={{ '--d': '.12s' }}>
-                450 people in seven countries build facilities that must hold their class. How the team works, and the roles open now.
+                Be part of teams delivering engineering and total facility solutions across complex project environments. Explore opportunities to contribute, learn and grow with a multidisciplinary organisation.
               </p>
               <div className="cu-ctas cu-rv" style={{ '--d': '.2s' }}>
                 <Link className="cu-btn" to="/careers#roles" onClick={e => jumpIfSameHash(e, 'roles')}>See open roles <Arrow /></Link>
@@ -292,7 +295,9 @@ export default function Careers() {
             <div className="cu-origin-copy">
               {/* 24 Sep (Bazil: "the 1995 on top of the title") */}
               <div className="cu-year-big cu-rv" aria-hidden="true">1995</div>
-              <h2 id="cu-origin-h" className="cu-h2 cu-rv">It started with <em>indoor air quality.</em></h2>
+              {/* 20 Oct (client review, Sunny: "what a poor representation of our brand albeit the reason behind is correct"): the
+                  heading says what IAQ was built on, in its own vision's words, in place of "It started with indoor air quality." */}
+              <h2 id="cu-origin-h" className="cu-h2 cu-rv">Built on <em>engineering excellence.</em></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>
                 Ir. Tiew Soon Aik founded IAQ in Malaysia in 1995, as a cleanroom specialist. Today it builds in seven countries.
               </p>
@@ -398,7 +403,7 @@ export default function Careers() {
         <section className="cu-sec cu-grow" id="cu-grow" aria-labelledby="cu-grow-h">
           <div className="cu-w">
             <div className="cu-head">
-              <h2 id="cu-grow-h" className="cu-h2 cu-h2-mk cu-rv"><DmGrow className="cu-hmk" aria-hidden="true" /><span>Where engineers <em>start and grow.</em></span></h2>
+              <h2 id="cu-grow-h" className="cu-h2 cu-h2-mk cu-rv"><RfLrn className="cu-hmk cu-hmk-ln" /><span>Where engineers <em>start and grow.</em></span></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>IAQ trains its engineers in house and coaches its leaders. It also takes the work into universities.</p>
             </div>
             <h3 className="cu-h3 cu-sub cu-rv">Training and coaching</h3>

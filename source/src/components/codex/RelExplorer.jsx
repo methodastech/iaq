@@ -53,7 +53,9 @@ import { SYS, related, sentence, MODELS, BOUGHT, list, isShort, unitShort, TOUR,
 /* only: the kinds shown, e.g. ['w', 'y'] (25 Sep, version 2 of the Services banner: "no need the business unit",
    "remove services as well", "tools hookup will have a dedicated section"); the Codex keeps all four */
 /* lines: each Work card also carries its one line from data/business.js (the Services map, 28 Sep client feedback) */
-export default function RelExplorer({ value, onSelect, read = true, tour = false, onTouch, only = null, lines = false } = {}) {
+/* 12 Oct: `rest` (the Services facility map): a pick made by hovering clears when the pointer leaves the lists, so the
+   building returns to the whole model; a pick made by clicking stays until it is clicked again */
+export default function RelExplorer({ value, onSelect, read = true, tour = false, onTouch, only = null, lines = false, rest = false } = {}) {
   const show = k => !only || only.includes(k)
   const WL = only ? WORK : WORK4, YL = only ? SYS : SYS_ALL
   const box = useRef(null)
@@ -63,6 +65,7 @@ export default function RelExplorer({ value, onSelect, read = true, tour = false
   const [geo, setGeo] = useState(null)
   const [wide, setWide] = useState(true)
   const touched = useRef(false)
+  const pinned = useRef(false)
   const seen = useRef(false)
   const on = useMemo(() => related(sel), [sel])
   useEffect(() => { if (value !== undefined && value !== null) { touched.current = true; setSel(value) } }, [value])
@@ -151,13 +154,14 @@ export default function RelExplorer({ value, onSelect, read = true, tour = false
     return () => { io.disconnect(); clearInterval(t) }
   }, [tour])
 
-  const pick = (k, id) => () => { touched.current = true; if (onTouch) onTouch(); setSel(s => (s && s[0] === k && s[1] === id) ? null : [k, id]) }
+  const pick = (k, id) => () => { touched.current = true; if (onTouch) onTouch(); setSel(s => { const off = s && s[0] === k && s[1] === id && (!rest || pinned.current); pinned.current = !off; return off ? null : [k, id] }) }   /* in `rest`, a click on what the pointer already shows pins it; a second click lets go */
   const hover = (k, id) => () => { if (touched.current) return; setSel([k, id]) }
   const st = (k, id) => (!sel ? '' : on.has(k + '|' + id) ? ' on' : ' off') + (sel && sel[0] === k && sel[1] === id ? ' me' : '')
   const ref = key => el => { nodes.current[key] = el }
 
   return (
-    <div className={'rx' + (sel ? ' has' : '') + (only ? ' rx-only rx-n' + only.length : '')} ref={box} onPointerDown={() => { touched.current = true; if (onTouch) onTouch() }}>
+    <div className={'rx' + (sel ? ' has' : '') + (only ? ' rx-only rx-n' + only.length : '')} ref={box} onPointerDown={() => { touched.current = true; if (onTouch) onTouch() }}
+      onMouseLeave={rest ? () => { if (!pinned.current && !tour) { touched.current = false; setSel(null) } } : undefined}>
       {/* 25 Sep (Bazil: "should have icon for each"): the four heads carry a mark, not only a dot */}
       <div className="rx-heads" aria-hidden="true">
         {show('s') && <span className="c-s"><i /><Icon name="cycle" />Service</span>}{show('u') && <span className="c-u"><i /><Icon name="epcUnit" />Business unit</span>}{show('w') && <span className="c-w"><i /><Icon name="helmet" />Work</span>}{show('y') && <span className="c-y"><i /><Icon name="sysPlumb" />System</span>}

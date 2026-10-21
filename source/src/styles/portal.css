@@ -295,3 +295,11 @@
 .cms-enq-link{margin-left:8px;padding:6px 10px}
 .cms-enq-err{display:block;margin-top:6px;color:#B4161B}
 @media(max-width:640px){.cms-enq-body dl{grid-template-columns:1fr}}
+
+/* 12 Oct: the Super Admin tabs in the sidebar. The earlier prototypes stay dimmed, as on the bar; a tab that opens a
+   review page in a new tab carries a small arrow. */
+.pt-side .pt-p.pt-sa.rej{opacity:.55}
+.pt-side .pt-p.pt-sa .pt-out-ic{font-style:normal;margin-left:6px;font-size:12px;opacity:.6}
+.pt-side .pt-p.pt-sa span{display:flex;align-items:center;gap:6px}
+.pt-side .pt-p.pt-sa span b{display:inline}
+.pt-side .pt-p.pt-sa .pt-out-ic{margin-left:0}

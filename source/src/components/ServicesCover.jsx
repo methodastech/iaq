@@ -36,7 +36,7 @@ const DISC = [
   ['csa', 'CSA', 'Civil, Structural and Architectural'],
   ['mep', 'MEP', 'Mechanical, Electrical and Plumbing'],
   ['process', 'Process utilities', 'What the tools run on'],
-  ['hookup', 'Tools hookup', 'Service 6, the tools themselves'],
+  ['hookup', 'Tool Installation', 'Service 5, the tools themselves'],   /* 15 Oct (client review of 13 Oct, Sunny: "Use \"Tool Installation\" and the sequence comes before \"Maintenance\", please stick to our wording") */
 ]
 
 export default function ServicesCover({ title, lede, chips }) {

@@ -187,7 +187,7 @@ export const FAQ = [
     { q: 'What standards is IAQ certified to?', a: 'ISO 9001:2015, ISO 14001:2015 and ISO 45001:2018, and CIDB Grade G7 in Malaysia.', link: ['About the Group', '/about'] },
     { q: 'Where does IAQ work?', a: 'Headquartered in Shah Alam, Malaysia, with Penang, Singapore, Germany and India among its offices, and project teams across Asia and Europe. Delivering since 1995.', link: ['Global Presence', '/global-presence'] },
     { q: 'Is the design done in BIM?', a: 'Yes. Every discipline is designed in one coordinated 3D model, so clashes are found on screen, not on site. The fab on the cover of this page is IAQ’s own model.' },
-    { q: 'How do I start?', a: 'Tell us what you are building, or what is running and needs to change. You have a reply within a working day.', link: ['Start a project', '/contact'] },
+    { q: 'How do I start?', a: 'Tell us what you are planning, or what is running and needs to change.', link: ['Start a project', '/contact'] },
   ] },
   /* 25 Sep (Bazil, on the EPC page's "At a glance" ledger: "no need this kind of complex info", "maybe in the FAQ for SEO
      purposes, but a new technical section"): the ledger's five rows, asked and answered in full sentences, one question
@@ -208,7 +208,7 @@ export const CONTRACTORS = [
   { name: 'A civil main contractor', kind: 'CSA only', has: ['csa'] },
   { name: 'An M&E contractor', kind: 'MEP only', has: ['mep'] },
 ]
-export const CONTRACTOR_COLS = [['csa', 'CSA'], ['mep', 'MEP'], ['process', 'Process'], ['hookup', 'Tools hookup'], ['energy', 'Energy, ESCO']]
+export const CONTRACTOR_COLS = [['csa', 'CSA'], ['mep', 'MEP'], ['process', 'Process'], ['hookup', 'Tool Installation'], ['energy', 'Energy, ESCO']]   /* 15 Oct (Sunny: "Use \"Tool Installation\"") */
 
 /* the reading rules, each one a correction from the review */
 export const RULES = [
@@ -236,9 +236,9 @@ export const TERMS = [
     ['EFM', 'Unit 3. Energy Facility Management. Runs and maintains the facility.'],
   ] },
   { layer: 'Services', items: [
-    ['The six', 'Engineering design and consultation, Procurement, Construction, Testing and commissioning, Maintenance, Tools hookup.'],
+    ['The six', 'Engineering design and consultation, Procurement, Construction, Testing and commissioning, Tool Installation, Maintenance.'],
     ['T&C', 'Testing and Commissioning, service 4.'],
-    ['Tools hookup', 'Service 6, the work of connecting a tool. Never the name of a unit.'],
+    ['Tool Installation', 'Service 5, the work of connecting a tool. Never the name of a unit.'],   /* 15 Oct (client review of 13 Oct, Sunny: "Use \"Tool Installation\" and the sequence comes before \"Maintenance\"") */
   ] },
   { layer: 'Work', items: [
     ['CSA', 'Civil, Structural and Architectural.'],
@@ -381,7 +381,7 @@ export const KINDS = [
     where: 'Grey chips under each unit in the Services menu; the four-ways slide; each unit page.', colour: 'Ink outline' },
   { k: 's', name: 'Service', icon: 'grid', count: 'Six',
     what: 'What is written into the contract, in the order a project runs. Any one can be bought alone, or several, or all six as one cycle.',
-    names: [['compass', '1 Design', 'Engineering design and consultation.'], ['crate', '2 Procure', 'Procurement.'], ['crane', '3 Construct', 'Construction.'], ['gauge', '4 Commission', 'Testing and commissioning.'], ['gear', '5 Maintain', 'Maintenance.'], ['link', '6 Hook up', 'Tools hookup: production tools connected and released.']],
+    names: [['compass', '1 Design', 'Engineering design and consultation.'], ['crate', '2 Procure', 'Procurement.'], ['crane', '3 Construct', 'Construction.'], ['gauge', '4 Commission', 'Testing and commissioning.'], ['link', '5 Tool Installation', 'Tool Installation: production tools connected and released.'], ['gear', '6 Maintain', 'Maintenance.']],
     example: '“Design only, please. We already hold the rest of the scope.”',
     think: 'The menu.', decides: 'The buyer, per contract.',
     not: 'Not a system. Process cooling water is a system that two services touch; it is never a service itself.',

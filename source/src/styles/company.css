@@ -303,3 +303,12 @@ a.cp-row:hover, a.cp-row:focus-visible { padding-left: 8px; color: var(--blue-br
 .cp-map-copy { max-width: 760px; }
 .cp-map-copy h2 { max-width: none; }
 .cp-map { margin-top: clamp(22px, 3.4vh, 40px); }
+
+/* 19 Oct (Bazil, on the History records: "make sure the alignment is align"): each tile's icon, label, headline and
+   line sit on the same rows as its neighbours', so a two-line headline ("First co-generative plant in Southeast Asia")
+   moves its whole row down together instead of pushing one description lower than the others */
+@supports (grid-template-rows: subgrid) {
+  .cp-tiles.cp-rec { grid-auto-rows: auto; }
+  .cp-rec .cp-tile { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 8px; align-content: start; }
+  .cp-rec .cp-tile > * { align-self: start; }
+}

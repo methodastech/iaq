@@ -4,6 +4,38 @@ import Icon from './FlowIcon.jsx'
 import { LINE_MARKS } from './HeroLineMarks.jsx'
 import IsoIcon from './IsoIcon.jsx'
 
+/* 20 Oct (client: the Vision and Mission icons "look more ugly", "make it premium and have bit animation"): two drawn marks
+   on a 64 grid, fine line work, one red part each and one quiet movement (about.css .vmx-*): the compass needle swings
+   and settles pointing ahead; the gear turns slowly round a steady red tick */
+const VTICKS = Array.from({ length: 24 }, (_, k) => {
+  const a = k * 15 * Math.PI / 180, r1 = k % 6 === 0 ? 21.5 : 24, r2 = 26.5
+  return `M${(32 + r1 * Math.sin(a)).toFixed(2)} ${(32 - r1 * Math.cos(a)).toFixed(2)}L${(32 + r2 * Math.sin(a)).toFixed(2)} ${(32 - r2 * Math.cos(a)).toFixed(2)}`
+}).join('')
+const VmVision = () => (
+  <svg className="vmx vmx-vis" viewBox="0 0 64 64" focusable="false">
+    <circle cx="32" cy="32" r="29.5" className="vmx-ln" />
+    <path d={VTICKS} className="vmx-ln vmx-thin" />
+    <g className="vmx-needle">
+      <path d="M32 11.5 35.6 32h-7.2z" className="vmx-red" />
+      <path d="M28.4 32 32 52.5 35.6 32z" className="vmx-ln vmx-paper" />
+    </g>
+    <circle cx="32" cy="32" r="2.4" className="vmx-ln vmx-paper" />
+  </svg>
+)
+const GEAR = (() => {
+  const P = (r, d) => `${(32 + r * Math.sin(d * Math.PI / 180)).toFixed(2)} ${(32 - r * Math.cos(d * Math.PI / 180)).toFixed(2)}`
+  return Array.from({ length: 10 }, (_, k) => { const a = k * 36; return `${k ? 'L' : 'M'}${P(22.5, a - 12)}L${P(28.5, a - 6.5)}L${P(28.5, a + 6.5)}L${P(22.5, a + 12)}` }).join('') + 'Z'
+})()
+const VmMission = () => (
+  <svg className="vmx vmx-mis" viewBox="0 0 64 64" focusable="false">
+    <g className="vmx-gear">
+      <path d={GEAR} className="vmx-ln vmx-paper" />
+      <circle cx="32" cy="32" r="14" className="vmx-ln vmx-thin" />
+    </g>
+    <path d="m25.5 32.5 4.6 4.6 8.4-9.2" className="vmx-tick" />
+  </svg>
+)
+
 /* ============================================================================
    VISION & MISSION, rebuilt 17 Sep 2026.
 
@@ -71,16 +103,21 @@ export default function VisionMission() {
               shade rising from the foot, and a frosted panel over the lower half carrying the mark on a white tile, the
               name, the statement and two fact tiles. Square corners throughout. */}
           {CARDS.map(c => (
-            <article className="vm-card vm-glass" id={c.id} key={c.k}>
-              <span className="vm-photo" aria-hidden="true"><img src={c.img} alt="" style={{ objectPosition: c.pos }} loading="lazy" decoding="async" />{c.rep && <span className="vm-rep">Representation</span>}</span>
-              <span className="vm-shade" aria-hidden="true" />
+            /* 19 Oct (IAQ feedback, About · Project images and logo overlays: "representation of IAQ Vision and Mission on
+               our current website is good enough. Icon is okay to use", "do not simply use a client's project photograph
+               and place IAQ's logo over it"): the photographs are off both cards. Each card is now the mark and the
+               statement only, as iaqtechnology.com.my/overview shows them. The img fields above are kept for reference
+               and are no longer rendered. */
+            <article className="vm-card vm-glass vm-plain" id={c.id} key={c.k}>
               <span className="vm-panel">
                 <span className="vm-top">
                   {/* 25 Sep, night (Bazil: "make sure better icon for vision and mission"): the house line marks, a compass for
                       where IAQ is going and a flag for what it does every day, in place of the isometric pair */}
                   {/* 25 Sep (Bazil: "use this icons style, this is our official icon style", the hero line set): drawn in
                       HeroLineMarks.jsx, ink on the white tile */}
-                  <span className="vm-mark" aria-hidden="true">{(() => { const M = LINE_MARKS[c.iso] || LINE_MARKS.vision; return <M /> })()}</span>
+                  {/* 20 Oct (client: "the icon ugly, please make it more premium and subtle"): a fine compass and a fine target, the home
+                      record's line set (RecordFlat.jsx), in place of the flag on a mountain and the gear with a leaf */}
+                  <span className="vm-mark vm-mark-fine" aria-hidden="true">{c.k === 'Mission' ? <VmMission /> : <VmVision />}</span>
                   <span className="vm-k">{c.k}</span>
                   <span className="vm-kick">{c.kick}</span>
                 </span>

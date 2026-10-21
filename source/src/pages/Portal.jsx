@@ -4,6 +4,7 @@ import Nav from '../components/Nav.jsx'
 import ClosingBand from '../components/ClosingBand.jsx'
 import * as CMS from '../lib/cms.js'
 import { ENQUIRIES_API } from '../lib/enquiry.js'
+import { ADMIN_TABS } from '../components/AdminBar.jsx'
 import { TAGS, longDate } from '../data/news.js'
 import { LOCS, DEPTS } from '../data/roles.js'
 import '../styles/portal.css'
@@ -72,7 +73,18 @@ const TABS = [
    arrives where the eye already is instead of on another screen. Every page keeps its own address,
    so /portal/codex and the rest still work and still deep-link.
    ============================================================================ */
+/* 12 Oct ("this nav bar can you move it to this portal. make like name it super admin at side bar then drop down"): the
+   super admin bar's tabs, first in the sidebar. The review pages (audit, competitors, plan, client files, design, the two
+   earlier prototypes) open in a new tab; the live site, CMS and Codex open here. */
+const SA_ICON = { 'Web Audit': 'chart', Competitors: 'target', 'Web Plan': 'calendar', Amendments: 'check', 'Client files': 'folder', Design: 'layers', 'Web 1': 'globe', 'Web 2': 'globe', CMS: 'press', Codex: 'layers' }
+/* CMS and Codex are left out: they are already in the portal (Edit website, Documents) */
+const SA_ITEMS = ADMIN_TABS.filter(t => t.label !== 'CMS' && t.label !== 'Codex').map(t => ({
+  k: 'sa-' + t.n, label: t.label, icon: SA_ICON[t.label] || 'home', rej: t.rej,
+  href: t.href === '/#/' ? '/' : t.href.replace(/\?admin$/, ''),
+  out: /\.html$|^\/home2$/.test(t.href),
+}))
 const GROUPS = [
+  { k: 'superadmin', label: 'Super Admin', icon: 'shield', note: 'The review workspace', items: SA_ITEMS },
   { k: 'edit', label: 'Edit website', icon: 'press', note: 'Everything the site reads',
     items: ['newsroom', 'careers', 'projects', 'history'] },
   /* 10 Oct ("can you add function to track enquiry form. add the sidebar"): its own title, the briefs from /enquiry */
@@ -162,6 +174,14 @@ function Shell ({ onOut }) {
               <div className="pt-sg-items" id={'pt-sg-' + g.k} hidden={g.k !== openGroup}>
               <em className="pt-sg-n">{g.note}</em>
               {g.items.map(it => {
+                /* 12 Oct: a Super Admin tab: a plain link out (or to the site), not a portal page */
+                if (it.href) {
+                  const cls = 'pt-p pt-sa' + (it.rej ? ' rej' : '')
+                  const inner = <><i className="pt-ic" aria-hidden="true"><Icon name={it.icon} /></i><span><b>{it.label}</b>{it.out && <em className="pt-out-ic" aria-hidden="true">&#8599;</em>}</span></>
+                  return it.out
+                    ? <a key={it.k} className={cls} href={it.href} target="_blank" rel="noopener">{inner}</a>
+                    : <Link key={it.k} className={cls} to={it.href}>{inner}</Link>
+                }
                 const k = itemKey(it), view = typeof it === 'string' ? '' : it.view
                 const to = '/portal/' + k + (view ? '/' + view : '')
                 const label = typeof it === 'string' ? (TAB_META[k] ? TAB_META[k].label : k) : it.label

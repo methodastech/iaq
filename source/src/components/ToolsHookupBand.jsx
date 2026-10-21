@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import Icon from './FlowIcon.jsx'
-import ToolInstallDiagram from './ToolInstallDiagram.jsx'
 import '../styles/tools-hookup-band.css'
 
 /* ============================================================================
@@ -17,31 +16,25 @@ const PHASES = [
   ['Commission', 'Commissioning', 'Every connection is proven before production: leak tested, purged and dried down to specification, balanced, and tested for continuity and every safety trip.'],
 ]
 
-export default function ToolsHookupBand({ embed = false, id = 'tools-hookup', fold = false }) {
+/* 19 Oct: `bare` drops the band's own heading and sentence, for /services/all where the stage head carries them */
+export default function ToolsHookupBand({ embed = false, id = 'tools-hookup', fold = false, bare = false }) {
   /* 26 Sep (Bazil: "easy to understand"): on the Services page the four phases carry the section and the schematic opens
      on demand (`fold`); the page was 1,700px of diagram at this point */
-  const [open, setOpen] = useState(!fold)
   return (
     <section className={'pg-sec thb' + (embed ? ' thb-embed' : '')} id={id} aria-labelledby={id + '-h'}>
       <div className="pg-in">
-        <h2 id={id + '-h'} className="kind-h k-s"><Icon name="link" className="kind-ic" />Tools hookup</h2>
-        <p className="pg-lede">Service 6. Each production tool is connected into the live facility and released to production, in four phases.</p>
+        {!bare && <>
+        <h2 id={id + '-h'} className="kind-h k-s"><Icon name="link" className="kind-ic" />Tool Installation</h2>{/* 15 Oct (Sunny: "Use \"Tool Installation\" ... please stick to our wording"): IAQ's name, and it is service 5 */}
+        <p className="pg-lede">Service 5. Each production tool is connected into the live facility and released to production, in four phases.</p>
+        </>}
+        {bare && <h3 id={id + '-h'} className="thb-sub">In four phases</h3>}
         <ol className="thb-ph">
           {PHASES.map(([k, t, d], i) => (
             <li key={k}><span className="thb-n">{i + 1}</span><b>{t}</b><p>{d}</p></li>
           ))}
         </ol>
-        {fold && (
-          <button type="button" className={'thb-open' + (open ? ' is-open' : '')} aria-expanded={open} aria-controls={id + '-fig'} onClick={() => setOpen(o => !o)}>
-            <Icon name="layers" /><span>{open ? 'Hide the Main Tool schematic' : 'See it on IAQ\u2019s Main Tool schematic'}</span><i aria-hidden="true">{open ? '\u2212' : '+'}</i>
-          </button>
-        )}
-        {open && (
-        <figure className="thb-fig" id={id + '-fig'}>
-          <ToolInstallDiagram />
-          <figcaption>IAQ&rsquo;s own Main Tool schematic, redrawn: the tool on the fab floor, the raised floor, the sub-fab equipment, and the lines between them in the direction they run.</figcaption>
-        </figure>
-        )}
+        {/* 21 Oct (client review, Sunny: "This picture is actually P&C, remove"): the Main Tool schematic and its open button are
+            gone (ToolInstallDiagram.jsx stays in the project) */}
         <p className="thb-by">Carried by <Link to="/services/tool-installation">PCU &amp; TTI <Icon name="arrow" /></Link></p>
       </div>
     </section>

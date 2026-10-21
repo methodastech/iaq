@@ -1469,3 +1469,13 @@ html.sm-scrolled .sm-cue{opacity:0;pointer-events:none}
 /* the cue sits at the foot of the left column, in line with the title, clear of the view tools at the centre */
 .sm-cue{left:max(var(--gut,24px),calc((100vw / var(--zoomf,1) - 1440px) / 2 + var(--gut,24px)));transform:none;align-items:flex-start;padding-left:0}
 .sm-cue i{margin-left:1px}
+
+/* 12 Oct ("where is the arrow indicator for user to scroll down"): the cue was a faint label over a hairline, easy to
+   miss. It is now an arrow in a framed square that bobs, beside a white label; the red fills the square on hover. */
+.sm-cue{flex-direction:row;align-items:center;gap:14px;padding:0;color:#fff;font:600 14px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:.01em;text-transform:none}
+.sm-cue i{display:grid;place-items:center;width:46px;height:46px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.55);overflow:visible;margin:0;transition:background .25s,border-color .25s}
+.sm-cue i::after{display:none}
+.sm-cue i svg{animation:smCueBob 1.6s ease-in-out infinite}
+@keyframes smCueBob{0%,100%{transform:translateY(-3px)}50%{transform:translateY(4px)}}
+.sm-cue:hover i{background:#EC2027;border-color:#EC2027}
+@media(prefers-reduced-motion:reduce){.sm-cue i svg{animation:none}}

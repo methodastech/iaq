@@ -86,4 +86,72 @@ export function RfCln (p) {
   </>)
 }
 
-export const RECORD_FLAT = { yrs: RfYrs, ctr: RfCtr, iso: RfIso, ind: RfInd, prj: RfPrj, cln: RfCln }
+/* 19 Oct (client: "update icon to a more relevance icon reflecting the metrics"): three marks for the new figures, to the
+   same spec as the six above */
+
+/* 20 Oct ("make premium icon and subtle"): the three new marks redrawn to the house spec's restraint, one person in front
+   and one behind, the hard hat in profile, the leaf on its stem; each red part small and held clear of the ink */
+
+/* employees · two people, one in front, the red a badge on the front one */
+export function RfPpl (p) {
+  return wrap(p, <>
+    <circle cx="16.6" cy="7.6" r="2.3" {...S} />
+    <path d="M14.4 13.2c.7-.5 1.4-.7 2.2-.7 2.6 0 4.4 2.2 4.4 5.5" {...S} />
+    <circle cx="9.4" cy="9" r="2.8" {...S} />
+    <path d="M3.6 20c0-3.6 2.4-6.2 5.8-6.2s5.8 2.6 5.8 6.2" {...S} />
+    <g className="iaq-sig mk-mv"><path d="M9.4 16.6v1.6" {...SIG} /></g>
+  </>)
+}
+
+/* engineering workforce · a hard hat, the red its crown ridge */
+export function RfEng (p) {
+  return wrap(p, <>
+    <path d="M5.5 16c0-4.4 2.9-7.6 6.5-7.6s6.5 3.2 6.5 7.6" {...S} />
+    <path d="M3.5 16h17M4.5 18.2h15" {...S} />
+    <path d="M9.4 9.2 10 12.6M14.6 9.2 14 12.6" {...S} />
+    <g className="iaq-sig mk-mv"><path d="M12 10.2v2.6" {...SIG} /></g>
+  </>)
+}
+
+/* carbon reduced · a leaf on its stem, the red a small fall beside it */
+export function RfCo2 (p) {
+  return wrap(p, <>
+    <path d="M5.5 18.5C5.5 11 9.5 5.5 17 5.5c0 7.5-4 13-11.5 13z" {...S} />
+    <path d="M5.5 18.5 13 11M3.5 20.5l2-2" {...S} />
+    <g className="iaq-sig mk-mv"><path d="M19.6 13.4v4.2M18.1 16.3l1.5 1.5 1.5-1.5" {...SIG} /></g>
+  </>)
+}
+
+/* learning · a mortarboard, its tassel the red part (19 Oct, Careers: "simple visuals that clearly communicate engineering,
+   teamwork, learning or operational capability") */
+export function RfLrn (p) {
+  return wrap(p, <>
+    <path d="M12 5l9 4.5-9 4.5-9-4.5z" {...S} />
+    <path d="M7 11.6v4.2c0 1.6 2.2 2.8 5 2.8s5-1.2 5-2.8v-4.2" {...S} />
+    <g className="iaq-sig mk-mv"><path d="M19.2 11.2v4.6" {...SIG} /><circle cx="19.2" cy="17.2" r="1" {...SIG} /></g>
+  </>)
+}
+
+/* 20 Oct (client: the Vision and Mission icons "ugly, please make it more premium and subtle"): two marks to the house spec */
+
+/* vision · a compass, its needle the red part: where IAQ is going */
+export function RfVis (p) {
+  return wrap(p, <>
+    <circle cx="12" cy="12" r="8.5" {...S} />
+    <path d="M12 3.5v1.6M12 18.9v1.6M3.5 12h1.6M18.9 12h1.6" {...S} />
+    <path d="M10.6 13.4 8.6 15.4" {...S} />
+    <g className="iaq-sig mk-mv"><path d="M13.2 10.8l2.4-2.4" {...SIG} /></g>
+    <circle cx="12" cy="12" r="1.3" {...S} />
+  </>)
+}
+
+/* mission · a target, its centre the red part: what IAQ does every day */
+export function RfMis (p) {
+  return wrap(p, <>
+    <circle cx="12" cy="12" r="8.5" {...S} />
+    <circle cx="12" cy="12" r="5" {...S} />
+    <g className="iaq-sig mk-mv"><circle cx="12" cy="12" r="1.5" {...SIG} /></g>
+  </>)
+}
+
+export const RECORD_FLAT = { yrs: RfYrs, ctr: RfCtr, iso: RfIso, ind: RfInd, prj: RfPrj, cln: RfCln, ppl: RfPpl, eng: RfEng, co2: RfCo2, lrn: RfLrn }

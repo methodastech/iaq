@@ -22,42 +22,32 @@ export default function MarketDataCentre() {
       hash="data-centre"
       ind="data-centre"
       image="/assets/banners/mkt-data-centre.jpg"
-      title={<>Uptime, engineered <em>and proven</em>.</>}
-      lede="Cooling, power and controlled environments at hyperscale, commissioned against the load before it arrives."
-      facts={[
-        { k: 'Largest delivered', v: '160 MW', sub: 'Hyperscale data centre in Malaysia. Client confidential, published by scale only.' },
-        { k: 'Also delivered', v: '9.6 MW', sub: 'Data centre campus phase 1: chilled and condenser water piping works.' },
-        { k: 'Cleanroom class', v: 'Engineered space', sub: 'Delivered data centres are recorded as engineered spaces; the measure is uptime and thermal stability.' },
-      ]}
+      /* 20 Oct (IAQ amendment sheet, Data Centre · Hero Banner, Industry Overview, Capabilities, Importance): IAQ's sections, in
+         its order and words. The figures strip (160 MW and 9.6 MW, which the 13 Oct review said contradict each other) is gone.
+         Spelling slips only corrected ("artificial", "capable", "data centre performance depends"). */
+      title={<em>Data Centres</em>}
+      lede="Enabling Resilient Digital Infrastructure"
+      hideRegistry
+      whyKick={null}
       why={{
-        head: 'Heat management is the job, around the clock',
-        quote: 'Empowering the digital future with precision, security and efficiency in data centre excellence.',
-        cite: 'IAQ company profile',
-        body: 'Precision, data security, reliability and operational efficiency are the four the profile names. Cooling carries all four at once, which is why heat management sets the pace of the build rather than following it.',
+        head: 'Industry Overview',
+        body: 'As demand for cloud computing, artificial intelligence and digital services continues to grow, data centres require highly reliable infrastructure capable of supporting uninterrupted operations.',
       }}
+      demandsHead="IAQ Key Capabilities"
       demands={[
-        'Absolute precision',
-        'Highest standards for data security, reliability and operational efficiency',
-        'Heat management',
-        'Energy efficiency and reduced environmental footprint',
+        { label: 'Mission Critical Infrastructure', icon: 'server' }, { label: 'Cooling Systems', icon: 'snow' },
+        { label: 'Utility Infrastructure', icon: 'sysPcw' }, { label: 'EPC Delivery', icon: 'epcUnit' }, { label: 'Energy Optimisation', icon: 'power' },
       ]}
+      deliverKick={null}
+      deliverHead="Why Infrastructure Reliability Matters"
       deliverIntro={[
-        'Global demand for computing, data processing, storage and sharing keeps growing, and data centres are rising with it. They demand absolute precision and the highest standards of data security, reliability and operational efficiency.',
-        'Heat management is critical. We use advanced cooling technologies to improve energy efficiency and reduce the environmental footprint of each data centre.',
+        'Data centre performance depends on resilient power, cooling and support infrastructure designed to maintain uptime and operational continuity.',
       ]}
-      scopeTitle="Typical data centre scope"
-      cycleLede="Cooling plant, distribution and controls run through the same six stages. Commissioning carries the weight: the load arrives on a fixed date, and the plant is proven against it."
-      standards={{
-        head: 'No cleanroom class. A different bar entirely.',
-        k: 'Classification',
-        body: 'Cleanroom classification does not apply here, and every delivered data centre project is recorded as Not Applicable. The bar is set instead by the four things the sector is judged on: absolute precision, data security, reliability and operational efficiency.',
-      }}
-      slot={{
-        tag: 'Content slot · data centre',
-        title: 'Uptime tier and commissioning evidence',
-        body: 'This panel is reserved for the tier rating, redundancy topology and level-by-level commissioning evidence on the delivered data centre projects. It holds them for publication as soon as IAQ confirms the figures, alongside the cooling technologies named on each project.',
-        who: 'Supplied by IAQ',
-      }}
+      hideScope
+      /* 20 Oct (client review, Sunny, on "No cleanroom class. A different bar entirely.": "You declare there is on the first page,
+         why the deviation now", "This is AI telling you and you just copy paste to me?"): the standards section and its content
+         slot are gone; and on the data hall photograph ("So not our project?"): it was a generated still, so the band is off */
+      hideBand
       proofLede="Published data centre work from the sample registry. The hyperscale project stands on the record by scale alone, 160 MW, held under client confidentiality."
     />
   )

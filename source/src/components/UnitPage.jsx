@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import Nav from './Nav.jsx'
 import ClosingBand from './ClosingBand.jsx'
 import Icon from './FlowIcon.jsx'
+import ValueMotion from './ValueMotion.jsx'
 import { UNITS as CX_UNITS, SERVICES as CX_SERVICES, WORK as CX_WORK } from '../data/codex.js'
 import UnitArt from './UnitArt.jsx'
 import CycleFlow from './CycleFlow.jsx'
@@ -99,12 +100,34 @@ const bentoCols = (n, max = 3) => (n >= 7 ? 4 : n === 4 ? 2 : Math.min(max, 3))
 const bentoWide = (n, max = 3) => { const c = bentoCols(n, max); return n % c !== 0 && (n + 1) % c === 0 }
 const bentoVars = (n, max = 3) => ({ '--cols': bentoCols(n, max) })
 
+/* 21 Oct: the statement band's drawing, a wafer and its dies. A few dies light in turn, as an inspection would pass over
+   them; the outer ring turns slowly. Runs only while the band is revealed, never under reduced motion (unit.css). */
+const WAFER_LIT = [[-2, -1], [1, -3], [2, 1], [-1, 2], [0, -1], [-3, 0], [1, 2], [3, -2]]
+function Wafer() {
+  const D = 26, R = 112, cells = []
+  for (let x = -5; x <= 4; x++) for (let y = -5; y <= 4; y++) {
+    const cx = x * D + D / 2, cy = y * D + D / 2
+    const far = Math.max(...[[x * D, y * D], [x * D + D, y * D], [x * D, y * D + D], [x * D + D, y * D + D]].map(([a, b]) => Math.hypot(a, b)))
+    if (far < R - 6) cells.push([x * D, y * D, Math.hypot(cx, cy)])
+  }
+  return (
+    <svg className="un-wafer" viewBox="-150 -150 300 300" aria-hidden="true" focusable="false" data-rv="" style={{ '--d': '.18s' }}>
+      <circle className="wf-orbit" r="140" pathLength="100" />
+      <circle className="wf-edge" r={R} />
+      <circle className="wf-edge2" r={R - 4} />
+      {cells.map(([x, y]) => <rect key={x + ',' + y} className="wf-die" x={x + 2} y={y + 2} width={D - 4} height={D - 4} />)}
+      {WAFER_LIT.map(([x, y], k) => <rect key={'l' + k} className="wf-lit" x={x * D + 2} y={y * D + 2} width={D - 4} height={D - 4} style={{ '--k': k }} />)}
+      <path className="wf-cross" d="M-150 0h22M128 0h22M0-150v22M0 128v22" />
+    </svg>
+  )
+}
+
 export default function UnitPage(props) {
   const {
     id, no, of = 3, name, full, title, lede, image, art, band, pull,
-    facts = [], what = [], whatParts = null, hard, pains = [], painsHead, services, servicesHead, servicesLede, intro, bim, models, modelsHead, compare, bandRep,
-    steps = [], items = [], why = [], cycleHead, cycleLede, hideCycle = false,
-    filter, proofNote, proofLink, cta, rep, cycle, works = true, scope, introEnd, servicesFlow = false, modelsJoin = 'or',
+    facts = [], what = [], whatParts = null, whatHead, hard, pains = [], painsHead, services, servicesHead, servicesLede, intro, bim, models, modelsHead, compare, bandRep,
+    steps = [], items = [], why = [], cycleHead, cycleLede, hideCycle = false, hideWhen = false,
+    filter, proofNote, proofLink, cta, ctaBand, industries, whyHead, whyAfterScope = false, whyAfterServices = false, process, statement, rep, cycle, works = true, scope, introEnd, servicesFlow = false, modelsJoin = 'or',
   } = props
 
   const root = useRef(null)
@@ -165,6 +188,41 @@ export default function UnitPage(props) {
   const ld = crumbLd([{ label: 'Home', to: '/' }, { label: 'Services', to: '/services' }, { label: name, to: '' }])
   const step = steps[cur] || steps[0]
 
+  /* 21 Oct: the reasons section, placed where the page's own order wants it (EPC after its capabilities, EFM after its
+     process, others in their usual place) */
+  const whyAt = whyAfterScope ? 'afterScope' : whyAfterServices ? 'afterServices' : 'default'
+  const whySection = why.length > 0 ? (
+          <section className="un-sec un-deliver" aria-labelledby="un-del-h">
+            <div className="pg-in">
+              <h2 id="un-del-h" className="un-h2" data-rv="">{whyHead || <>Why owners <em>choose it.</em></>}</h2>{/* 21 Oct: `whyHead`, a page's own heading (EPC) */}
+              {/* 26 Sep: an even grid of equal cards, the first one led in navy; it spans two columns when the count is odd,
+                  so no card is ever left alone on a row */}
+              {/* 21 Oct (PCU & TTI, "make this icon animation more premium", "like this animation", pointing at the Careers values):
+                  reasons that name a `scene` are drawn as the values are, a scene on its dotted ground above each reason */}
+              {why.every(b => b.scene) ? (
+                <ol className="un-whyv" style={{ '--n': why.length }}>
+                  {why.map((b, i) => (
+                    <li className="un-whyv-c" key={b.k} data-rv="" style={{ '--d': `${Math.min(i, 6) * .06}s` }}>
+                      <span className="un-whyv-top"><ValueMotion k={b.scene} i={i} /><span className="un-whyv-ix">{i + 1}</span></span>
+                      <b>{b.k}</b>
+                      <p>{jargon(b.t)}</p>
+                    </li>
+                  ))}
+                </ol>
+              ) : (
+                <ol className="un-bento" style={bentoVars(why.length)}>
+                  {why.map((b, i) => (
+                    <li className={'un-bento-c' + (i === 0 ? ' is-lead' : '') + (i === 0 && bentoWide(why.length) ? ' is-wide' : '')} key={b.k} data-rv="" style={{ '--d': `${Math.min(i, 6) * .05}s` }}>
+                      <Icon name={b.icon || iconFor(b.k + ' ' + b.t)} className="un-bento-ic" />
+                      <b>{b.k}</b>
+                      <p>{jargon(b.t)}</p>
+                    </li>
+                  ))}
+                </ol>
+              )}
+            </div>
+          </section>
+  ) : null
   return (
     <>
       <Nav />
@@ -174,7 +232,8 @@ export default function UnitPage(props) {
         {/* 15 Sep, second cut (Bazil: "the sizing, visual and stuff"): the photograph is a panel beside the copy,
             not a scrimmed wash behind it; the band is as tall as its content; the facts carry the weight */}
         <header className="un-hero">
-          <div className="pg-in un-hero-in">
+          {/* 19 Oct: `no-facts` closes the empty figures row when a page has none (PCU & TTI) */}
+          <div className={'pg-in un-hero-in' + (facts.length ? '' : ' no-facts')}>
             <div className="un-hero-copy">
               {/* 15 Sep (Bazil: "too much to read at the top, proper navigation is fine"): no breadcrumb line and no
                   unit line above the headline; the nav carries the way here, the crumb data stays for search engines */}
@@ -182,7 +241,8 @@ export default function UnitPage(props) {
               <h1 className="un-h1" data-rv="">{title}</h1>
               {lede && <p className="un-lede" data-rv="" style={{ '--d': '.1s' }}>{lede}</p>}
               {/* 24 Sep: when to call this unit, in the client's words (codex.js UNITS.when, also on the Services page cards) */}
-              {UNIT_WHEN[id] && <p className="un-when" data-rv="" style={{ '--d': '.14s' }}><span>Call {name} when</span>{UNIT_WHEN[id]}</p>}
+              {/* 19 Oct: `hideWhen` takes the line off a page (PCU & TTI, client: "Direct header, no explanation") */}
+              {UNIT_WHEN[id] && !hideWhen && <p className="un-when" data-rv="" style={{ '--d': '.14s' }}><span>Call {name} when</span>{UNIT_WHEN[id]}</p>}
             </div>
             <figure className="un-hero-fig" data-rv="" style={{ '--d': '.12s' }}>
               {/* a silent loop when the page has one (its still is the poster and the fallback); the still otherwise */}
@@ -192,7 +252,7 @@ export default function UnitPage(props) {
                 <img src={image?.src} alt={image?.alt || ''} />
                 {image?.video && <video src={image.video} poster={image.src} muted loop playsInline autoPlay preload="auto" aria-hidden="true" tabIndex={-1} />}
               </span>
-              {rep && <span className="un-rep">Representation</span>}
+              {/* 15 Oct ("remove all the tag"): no Representation tag on the hero picture */}
             </figure>
             {facts.length > 0 && (
               <ul className="un-facts" data-rv="" style={{ '--d': '.26s' }}>
@@ -212,7 +272,8 @@ export default function UnitPage(props) {
           <div className="pg-in">
             <div className={'un-intro2' + (band ? ' has-fig' : '')}>
               <div className="un-intro2-copy">
-                <h2 id="un-what-h" className="un-h2" data-rv="">What <em>{name} is.</em></h2>
+                {/* 19 Oct: `whatHead` gives the section a page's own heading (PCU & TTI, client feedback) */}
+                <h2 id="un-what-h" className="un-h2" data-rv="">{whatHead || <>What <em>{name} is.</em></>}</h2>
                 {/* 29 Sep (client, Website Update: PCU & TTI "you missing out the PCU description", EFM "first describe what
                     EFM is"): a page may give several statements, each with an optional label, in place of the one */}
                 {whatParts
@@ -227,7 +288,6 @@ export default function UnitPage(props) {
               {band && (
                 <figure className="un-intro2-fig" data-rv="" style={{ '--d': '.12s' }}>
                   <span className="un-mo" data-mo="0.35"><img src={band} alt="" loading="lazy" decoding="async" /></span>
-                  {bandIsRep && <span className="un-rep">Representation</span>}
                 </figure>
               )}
             </div>
@@ -259,24 +319,7 @@ export default function UnitPage(props) {
              is bought, its scope and its cycle. And ("fix the way it's being put together"): the hover cards opened one
              at a time, so the rows ran to uneven heights and a seventh claim sat alone on its own row. One aligned list
              now, every claim beside its sentence, nothing to open. */}
-        {why.length > 0 && (
-          <section className="un-sec un-deliver" aria-labelledby="un-del-h">
-            <div className="pg-in">
-              <h2 id="un-del-h" className="un-h2" data-rv="">Why owners <em>choose it.</em></h2>
-              {/* 26 Sep: an even grid of equal cards, the first one led in navy; it spans two columns when the count is odd,
-                  so no card is ever left alone on a row */}
-              <ol className="un-bento" style={bentoVars(why.length)}>
-                {why.map((b, i) => (
-                  <li className={'un-bento-c' + (i === 0 ? ' is-lead' : '') + (i === 0 && bentoWide(why.length) ? ' is-wide' : '')} key={b.k} data-rv="" style={{ '--d': `${Math.min(i, 6) * .05}s` }}>
-                    <Icon name={b.icon || iconFor(b.k + ' ' + b.t)} className="un-bento-ic" />
-                    <b>{b.k}</b>
-                    <p>{jargon(b.t)}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </section>
-        )}
+        {whyAt === 'default' && whySection}
 
         {/* 24 Sep (client, EFM: "they have 7 end-to-end Energy Management Services, refer our current website"): a unit
             can carry its services as a grid, one line each, as IAQ's own page lists them */}
@@ -296,6 +339,91 @@ export default function UnitPage(props) {
                   </li>
                 ))}
               </ol>
+            </div>
+          </section>
+        )}
+
+        {/* 21 Oct (IAQ amendment sheet, Energy Management · Deliverable): a page's own delivery model, its heading and line, then
+            its steps in order, numbered */}
+        {process && (
+          <section className="un-sec un-proc" aria-labelledby="un-proc-h">
+            <div className="pg-in">
+              <h2 id="un-proc-h" className="un-h2" data-rv="">{process.head}</h2>
+              {process.lede && <p className="un-proc-lede" data-rv="" style={{ '--d': '.06s' }}>{process.lede}</p>}
+              {/* 21 Oct (IAQ sheet, PCU & TTI · Delivery Approach: "Horizontal Journey Graphic ... each stage: simple icon, one line
+                  explanation"): `process.journey` draws the steps as one route, a node per stage on a line; a light runs the
+                  route while it is on screen and each node answers as it passes */}
+              {process.journey ? (
+                <div className="un-jrny" style={{ '--n': process.steps.length }}>
+                  <span className="un-jrny-track" aria-hidden="true"><i className="un-jrny-fill" /><i className="un-jrny-pulse" /></span>
+                  <ol className="un-jrny-steps">
+                    {process.steps.map((x, i) => (
+                      <li key={x.k} data-rv="" style={{ '--d': `${.1 + i * .08}s`, '--i': i }}>
+                        <span className="un-jrny-node" aria-hidden="true"><Icon name={x.icon} /></span>
+                        <span className="un-jrny-n">Stage {String(i + 1).padStart(2, '0')}</span>
+                        <b>{x.k}</b>
+                        <span className="un-jrny-t">{x.t}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              ) : (
+                <ol className="un-proc-steps">
+                  {process.steps.map((x, i) => (
+                    <li key={x.k} data-rv="" style={{ '--d': `${.08 + i * .06}s` }}>
+                      <span className="un-proc-n">{String(i + 1).padStart(2, '0')}</span>
+                      <span className="un-proc-ic" aria-hidden="true"><Icon name={x.icon} /></span>
+                      <b>{x.k}</b>
+                      <span className="un-proc-t">{x.t}</span>
+                    </li>
+                  ))}
+                </ol>
+              )}
+            </div>
+          </section>
+        )}
+        {/* 21 Oct (IAQ sheet, PCU & TTI · Statement, High): a page's own statement, the sectors it names set out under it */}
+        {statement && (
+          <section className="un-stmt" aria-label={statement.label || 'Statement'}>
+            <div className="pg-in">
+              <div className="un-stmt-card">
+                <span className="un-stmt-grid" aria-hidden="true" />
+                <div className="un-stmt-copy">
+                  <span className="un-stmt-k" data-rv=""><i aria-hidden="true" />{statement.kicker}</span>
+                  <p className="un-stmt-t" data-rv="" style={{ '--d': '.06s' }}>{statement.text}</p>
+                  {statement.items && (
+                    <ul className="un-stmt-items">
+                      {statement.items.map((x, i) => (
+                        <li key={x.t} data-rv="" style={{ '--d': `${.14 + i * .06}s` }}>
+                          <span className="un-stmt-ic" aria-hidden="true"><Icon name={x.icon} /></span>
+                          <span className="un-stmt-n">{String(i + 1).padStart(2, '0')}</span>
+                          <b>{x.t}</b>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                <Wafer />
+              </div>
+            </div>
+          </section>
+        )}
+        {whyAt === 'afterServices' && whySection}
+
+        {/* 21 Oct (IAQ amendment sheet, Energy Management · Industry We Serve): the industries a unit serves, as tiles, straight
+            after its solutions */}
+        {industries && industries.items.length > 0 && (
+          <section className="un-sec un-inds" aria-labelledby="un-inds-h">
+            <div className="pg-in">
+              <h2 id="un-inds-h" className="un-h2" data-rv="">{industries.head}</h2>
+              <ul className="un-inds-grid">
+                {industries.items.map((x, i) => (
+                  <li key={x.t} data-rv="" style={{ '--d': `${.06 + i * .04}s` }}>
+                    <span className="un-inds-ic" aria-hidden="true"><Icon name={x.icon} /></span>
+                    <b>{x.t}</b>
+                  </li>
+                ))}
+              </ul>
             </div>
           </section>
         )}
@@ -393,6 +521,8 @@ export default function UnitPage(props) {
             </div>
           </section>
         )}
+        {/* 21 Oct (EPC, "is it the right sequence?"): the page's reasons can follow its capabilities, as IAQ's sheet orders them */}
+        {whyAt === 'afterScope' && whySection}
 
         {/* 4 · the cycle: the drawing pinned beside the stages.
             17 Sep (client, EPC page: "Repetitive information. Try to merge the design and information
@@ -486,7 +616,7 @@ export default function UnitPage(props) {
             {/* 17 Sep: the band tag is its own flag. Two of these pages now carry IAQ's own
                 photograph on the band while the hero is still a generated still, and a real
                 photograph must not be labelled a representation. */}
-            {bandIsRep && <span className="un-rep un-rep-band">Representation</span>}
+            {/* 15 Oct ("remove all the tag"): no Representation tag on the band */}
             <div className="pg-in un-band-in">
               <span className="un-band-k" data-rv="">{name}</span>
               <p className="un-band-q" data-rv="" style={{ '--d': '.1s' }}>{pull}</p>
@@ -548,6 +678,32 @@ export default function UnitPage(props) {
         {/* 17 Sep (client: "Remove this page, too much interlink section, a bit messy"): the
             "Where this goes next" strip is gone from the unit pages. The footer sitemap and the
             menu carry those routes already. */}
+
+        {/* 21 Oct ("make new section for cta, not in the footer"): a page's own call to action, a full-width band of its own
+            above the closing band (EPC, IAQ's CTA from the 16 Oct sheet) */}
+        {ctaBand && (
+          <section className="un-ctab" aria-labelledby="un-ctab-h">
+            {/* 21 Oct ("too basic, make it premium and subtle"): an inset dark panel with a fine drawing grid, a slow light sweep,
+                a small label over the heading, the main action and a quieter phone line */}
+            <div className="pg-in">
+              <div className="un-ctab-card">
+                <span className="un-ctab-grid" aria-hidden="true" />
+                <span className="un-ctab-sweep" aria-hidden="true" />
+                <div className="un-ctab-copy">
+                  <span className="un-ctab-k" data-rv=""><i aria-hidden="true" />Start a conversation</span>
+                  <h2 id="un-ctab-h" className="un-ctab-h" data-rv="">{ctaBand.title}</h2>
+                  <p className="un-ctab-lede" data-rv="" style={{ '--d': '.06s' }}>{ctaBand.lede}</p>
+                </div>
+                <div className="un-ctab-act" data-rv="" style={{ '--d': '.12s' }}>
+                  <Link className="un-ctab-btn" to={ctaBand.route || '/contact'}>
+                    <span>{ctaBand.label || 'Start a project'}</span><i aria-hidden="true">&rarr;</i>
+                  </Link>
+                  <a className="un-ctab-tel" href="tel:+60351248319"><small>Or call us</small>+603 5124 8319</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
       </div>
       <ClosingBand />

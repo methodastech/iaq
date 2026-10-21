@@ -222,3 +222,16 @@
 .cc-tag b{ font:600 12px/1.15 "Switzer","Instrument Sans",system-ui,sans-serif; color:#0C1220; }
 .cc-tag small{ font:500 10.5px/1.2 "Instrument Sans",system-ui,sans-serif; color:#5A6478; }
 @media(max-width:640px){ .cc-tag small{ display:none; } }
+
+/* 21 Oct (IAQ sheet, Corporate Commitment · ESG section: "Avoid duplicating the globe graphic"; "dont use globe"): the heading
+   and IAQ's paragraph side by side, then the three pillars as drawn scenes, the pillar's letter in the corner */
+.cc-esg-head{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(24px,5vw,88px); align-items:end; }
+.cc-esg-head .cc-lede{ margin:0; }
+.cc-esg{ list-style:none; margin:clamp(32px,5vh,56px) 0 0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.cc-esg-c{ display:flex; flex-direction:column; background:#fff; border:1px solid rgba(12,18,32,.07); transition:box-shadow .5s ease, border-color .5s ease; }
+.cc-esg-c:hover{ border-color:rgba(12,18,32,.12); box-shadow:0 26px 48px -34px rgba(12,18,32,.35); }
+.cc-esg-top{ --blue:#EC2027; position:relative; display:block; height:clamp(170px,14vw,220px); background:#F4F6F9; overflow:hidden; }
+.cc-esg-l{ position:absolute; top:12px; right:16px; font:600 clamp(22px,2vw,30px)/1 "Switzer",sans-serif; letter-spacing:-.02em; color:rgba(12,18,32,.16); }
+.cc-esg-c h3{ margin:0; padding:clamp(22px,2vw,30px) clamp(22px,2vw,30px) 0; font:600 clamp(20px,1.6vw,24px)/1.2 "Switzer","Instrument Sans",sans-serif; letter-spacing:-.02em; color:var(--cc-ink); }
+.cc-esg-c p{ margin:12px 0 0; padding:0 clamp(22px,2vw,30px) clamp(24px,2.2vw,32px); font-size:15px; line-height:1.6; color:var(--cc-soft); }
+@media(max-width:960px){ .cc-esg-head{ grid-template-columns:1fr; gap:16px; } .cc-esg{ grid-template-columns:1fr; } }

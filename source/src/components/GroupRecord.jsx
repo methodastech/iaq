@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { RfYrs, RfCtr, RfIso, RfInd, RfPrj, RfCln } from './RecordFlat.jsx'
+import { RfYrs, RfCtr, RfPrj, RfPpl, RfEng, RfCo2 } from './RecordFlat.jsx'
 import '../styles/group-record.css'
 
 /* ============================================================================
@@ -89,14 +89,16 @@ const VizArea = () => (
    carries its Hard Anodise mark again (Marks.jsx; the years mark is the new desk calendar in MarketMarks.jsx), on the
    same line as the number, its one red part lifting in turn (group-record.css). The line drawings stay in this file,
    unused, for a revert. */
+/* 19 Oct (client feedback, Home · Metrics: "Updated Metrics and update icon to a more relevance icon reflecting the
+   metrics"): IAQ's six figures, in IAQ's order and words, each with a mark of what it counts (RecordFlat.jsx). The
+   previous six (31 years, 7 countries, 3 ISO, 7 industries, 250+ projects, 1.05 mil m2) are in git history. */
 const STATS = [
-  { n: 31, label: 'Years building hi-tech facilities', V: RfYrs },
-  { n: 7, label: 'Countries with an IAQ office', V: RfCtr },
-  { n: 3, label: 'ISO certifications, held and audited', V: RfIso },
-  { n: 7, label: 'Industries served', V: RfInd },
-  { n: 250, suffix: '+', label: 'Projects completed', V: RfPrj },
-  /* 22 Sep (Bazil: "put 1.05 mil"): the long figure ran past its column */
-  { n: 1.05, dec: 2, suffix: '\u00a0mil', label: 'm² of cleanroom built', V: RfCln },
+  { n: 530, suffix: '+', label: 'Employees', V: RfPpl },
+  { n: 7, label: 'Global offices', V: RfCtr },
+  { n: 31, label: 'Years of experience', V: RfYrs },
+  { n: 85, suffix: '%', label: 'Engineering workforce', V: RfEng },
+  { n: 20, label: 'Tons of carbon emission reduced annually', V: RfCo2 },
+  { n: 235, suffix: '+', label: 'Projects completed', V: RfPrj },
 ]
 
 export default function GroupRecord() {
@@ -122,7 +124,8 @@ export default function GroupRecord() {
               dorky like 6 numbers"): the heading counted the cards instead of saying anything. It is IAQ's own
               descriptor now, the one the footer and the company profile both carry, with the founding year on it. */}
           {/* 24 Sep (Bazil: "no , and ."): no comma, no full stop */}
-          <h2>Total facility solutions <em>engineered since 1995</em></h2>
+          {/* 19 Oct (client feedback, Home · Metrics): IAQ's heading and description for the block */}
+          <h2>Engineering Excellence <em>in Numbers</em></h2>
         </div>
 
         <div className="glance-body">
@@ -133,8 +136,8 @@ export default function GroupRecord() {
           {/* 23 Sep (Bazil: "not too long"): four lines cut to two. 1995 moved into the heading and the three
               ISO certificates are already a card in this block, so neither is said twice. */}
           <p className="lede">
-            Cleanrooms, dry rooms and the systems that hold them in spec, for the facilities that must hold their class
-            every day of production. One accountable team from design to handover, in seven countries.
+            Our track record reflects the expertise, scale and commitment behind IAQ&rsquo;s integrated facility solutions,
+            serving hi-tech industries across international markets.
           </p>
           {/* Bazil, 21 Sep: "number and icons same line". The drawing and the number share one row, the
               label sits under both, and there is no card round them. */}

@@ -32,8 +32,8 @@ export const META = {
   '/markets/bio-lifescience': ['GMP parenteral plants, laboratories and medical device facilities, built to their cleanroom class by IAQ.', '/assets/banners/mkt-bio-lifescience.jpg'],
   '/markets/food-beverage': ['Hygienic flavour and food production environments, engineered and built by IAQ.', '/assets/banners/mkt-food-beverage.jpg'],
   '/about/commitment': ['IAQ Group corporate commitment: ISO 9001, ISO 14001, ISO 45001, CIDB G7, and the policies behind the delivery.', '/assets/badge-iso.webp'],
-  '/markets': ['Seven markets, one standard of clean: semiconductor, data centre, EV battery, Bio LifeScience and more.', '/assets/industries/semiconductor.webp'],
-  '/global-presence': ['Seven countries, one standard of clean. Where IAQ has offices and delivered work.', '/assets/tl-2025-global.webp'],
+  '/markets': ['Seven markets, one integrated team: semiconductor, data centre, EV battery, Bio LifeScience and more.', '/assets/industries/semiconductor.webp'],
+  '/global-presence': ['Seven countries, one integrated team. Where IAQ has offices and delivered work.', '/assets/tl-2025-global.webp'],
   '/portal': ['Staff sign-in for the IAQ CMS: newsroom, careers and the project registry.', '/assets/photo-team.webp'],
   /* 18 Sep: culture is the top section of the Careers page; /careers/culture redirects to /careers#culture */
   '/careers': ['How IAQ works and the roles open now: the values on the record, the safety record, where engineers grow, and every vacancy by department.', '/assets/photo-team.webp'],

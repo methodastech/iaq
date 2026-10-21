@@ -28,6 +28,11 @@ const GROUPS = [
    ['09', 'Codex', '/portal/codex?admin']],
 ]
 
+/* 12 Oct ("move it to this portal ... name it super admin at side bar then drop down"): the tabs, for the portal's Super
+   Admin group (pages/Portal.jsx). The bar itself is off the website pages (main.jsx); the static review pages keep
+   their own copy (public/bmws.css). */
+export const ADMIN_TABS = GROUPS.flat().map(([n, label, href, rej]) => ({ n, label, href, rej: rej === 'rej' }))
+
 const CSS = `
 /* The super admin bar, one look on every Brand Method surface. Linked, never
    inlined: the moment a page keeps its own copy the bar drifts, which is how

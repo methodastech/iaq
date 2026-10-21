@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import applyMeta, { watchTitle } from './lib/meta.js'
 import Shell from './components/Shell.jsx'
-import AdminBar from './components/AdminBar.jsx'
 import { PROJECTS } from './data/projects.js'
 import { useParams } from 'react-router-dom'
 import './styles/base.css'
@@ -213,7 +212,8 @@ root.render(
     <SkipLink />
     <LaunchGuards />
     <RouteViews />
-    {import.meta.env.MODE !== 'launch' && <AdminBar />}
+    {/* 12 Oct ("move it to this portal"): the super admin bar is off the website pages; its tabs are the portal's Super
+        Admin group (components/AdminBar.jsx ADMIN_TABS, pages/Portal.jsx). Without it --tbh is 0 and the hero is the window. */}
     <Shell>
       <Suspense fallback={null}>
         <Routes>

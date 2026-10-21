@@ -72,6 +72,9 @@ export const LINE_SHAPES = {
   recCogen: ['M3.5 20V12h8v8', 'M11.5 20v-5h5v5', 'M13 17.5h2', 'M18 20V6h2.5v14', 'M5.5 15h4M5.5 17.5h4', 'M3.5 20h17', 'F:M18 4h2.5v1.5H18z'],
   recAward: ['M8 4h8v5a4 4 0 0 1-8 0z', 'M8 5.5H5.5v2a2.5 2.5 0 0 0 2.5 2.5M16 5.5h2.5v2a2.5 2.5 0 0 1-2.5 2.5', 'M12 13v3.5', 'M8.5 16.5h7v3.5h-7z', 'M7 20h10', 'F:M10.6 17.6h2.8v1.4h-2.8z'],
   recMedal: ['M8.8 11.4 5.5 4h13l-3.3 7.4', 'M10.2 4l1.8 6.2L13.8 4', 'M7 15a5 5 0 1 0 10 0a5 5 0 1 0-10 0', 'M9.3 15a2.7 2.7 0 1 0 5.4 0a2.7 2.7 0 1 0-5.4 0', 'F:M10.9 13.9h2.2v2.2h-2.2z'],
+  /* 19 Oct: recProject, for "235+ projects delivered": three blocks of a facility on the baseline, the tall one's
+     windows, a mast on its roof: the flag is the red */
+  recProject: ['M4 20v-8h5v8', 'M9 20V8h6v12', 'M15 20v-5h5v5', 'M11 11h2M11 13.5h2M11 16h2', 'M12 8V4', 'M4 20h16', 'F:M12 4h3v2h-3z'],
   recSafety: ['M12 4l7 2.5v5.5c0 4-3 6.8-7 8-4-1.2-7-4-7-8V6.5z', 'M12 6.6l4.6 1.7v3.7c0 2.7-2 4.6-4.6 5.6-2.6-1-4.6-2.9-4.6-5.6V8.3z', 'M9 12.2l2.2 2.2 3.8-4.2'],
 }
 
@@ -100,8 +103,8 @@ export const LnMission = Mark('mission')
 export const LnEsgEnv = Mark('esgEnv')
 export const LnEsgSocial = Mark('esgSocial')
 export const LnEsgGov = Mark('esgGov')
-export const LnRecClean = Mark('recClean'), LnRecCooling = Mark('recCooling'), LnRecCogen = Mark('recCogen'), LnRecAward = Mark('recAward'), LnRecMedal = Mark('recMedal'), LnRecSafety = Mark('recSafety')
-export const LINE_MARKS = { vision: LnVision, mission: LnMission, esgEnv: LnEsgEnv, esgSocial: LnEsgSocial, esgGov: LnEsgGov, recClean: LnRecClean, recCooling: LnRecCooling, recCogen: LnRecCogen, recAward: LnRecAward, recMedal: LnRecMedal, recSafety: LnRecSafety }
+export const LnRecClean = Mark('recClean'), LnRecCooling = Mark('recCooling'), LnRecCogen = Mark('recCogen'), LnRecAward = Mark('recAward'), LnRecMedal = Mark('recMedal'), LnRecSafety = Mark('recSafety'), LnRecProject = Mark('recProject')
+export const LINE_MARKS = { vision: LnVision, mission: LnMission, esgEnv: LnEsgEnv, esgSocial: LnEsgSocial, esgGov: LnEsgGov, recClean: LnRecClean, recCooling: LnRecCooling, recCogen: LnRecCogen, recAward: LnRecAward, recMedal: LnRecMedal, recSafety: LnRecSafety, recProject: LnRecProject }
 
 export const HERO_LINE = {
   'mkt-semiconductor': LnSem,

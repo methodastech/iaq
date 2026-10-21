@@ -38,6 +38,7 @@ const STEPS = [
   { k: 'bld', t: 'Cooling in every building', d: 'Every building runs its air-conditioning on it.' },
 ]
 
+const SHOW_MODELS = false   /* 21 Oct, client: the three models read as IAQ's own slides; see the note in the render */
 const MODELS = [
   {
     k: 'epc', t: 'Energy Performance Contracting', dur: '5 to 10 years',
@@ -231,7 +232,11 @@ export default function DistrictCooling3D({ intro }) {
           </div>
         </div>
 
-        <div className="dcs3-eaas">
+        {/* 21 Oct (client, on "Energy as a Service, in three models.": "so you are using my ppt slide to present?"): the three
+            models, their charts and diagrams were drawn from IAQ's company profile slides, so the block is off the page. The page
+            carries IAQ's own "Energy as a Service" steps from the amendment sheet (CapEnergy `process`). MODELS and the figures
+            are kept in this file; SHOW_MODELS brings the block back. */}
+        {SHOW_MODELS && <div className="dcs3-eaas">
           <h3 className="dcs3-h3" data-rv="">Energy as a Service, <em>in three models.</em></h3>
           <div className="dcs3-models">
             {MODELS.map((m, i) => (
@@ -256,7 +261,7 @@ export default function DistrictCooling3D({ intro }) {
               </article>
             ))}
           </div>
-        </div>
+        </div>}
 
         {(intro.paras || []).map((t, i) => <p className="un-dcs-by dcs3-by" key={i} data-rv="">{t}</p>)}
         {intro.to && <Link className="un-more" to={intro.to} data-rv="">{intro.cta}</Link>}

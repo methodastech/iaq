@@ -18,42 +18,30 @@ export default function MarketEvBattery() {
       hash="ev-battery"
       ind="ev-battery"
       image="/assets/banners/mkt-ev-battery.jpg"
-      title={<>Dry rooms, held <em>to the dew point</em>.</>}
-      lede="Gigafactory dry rooms and lithium cell facilities, where humidity, contamination and hazard are controlled together."
-      facts={[
-        { k: 'Environment', v: 'Dry room', sub: 'Dry room specification rather than ISO cleanroom class on most battery projects.' },
-        { k: 'Largest dry room', v: '62,000 m²', sub: 'Lithium-ion gigafactory dry room delivered in Sweden.' },
-        { k: 'Recorded class', v: 'ISO 7', sub: 'One recorded project at Class 10K, on a 79,000 m² lithium cell facility.' },
-      ]}
+      /* 20 Oct (IAQ amendment sheet, EV Battery · Hero Banner) */
+      title={<>EV Battery <em>Manufacturing</em></>}
+      lede="Supporting the Future of Electrification"
+      /* 20 Oct (client review, Sunny: "misaligned with Recorded Class ISO 7", "Dry room are not ISO classified, they are
+         designed based on ISO standard as reference"): the figures strip is gone, the registry figure included */
+      hideRegistry
+      /* 20 Oct (IAQ amendment sheet, EV Battery · Industry Overview, Key Capabilities, Importance): IAQ's three sections, in its
+         order and words. Spelling slips only corrected ("Electrification", "achieving"). */
+      whyKick={null}
       why={{
-        head: 'Humidity, contamination and hazard, controlled together',
-        quote: 'Battery manufacturing involves hazardous materials and processes, and each one is controlled by design.',
-        cite: 'IAQ company profile',
-        body: 'Moisture control, cleanliness, contamination control and the explosion proof requirement are one design task rather than four. The envelope, the airlocks, the dehumidification plant and the safety systems are designed as a single package.',
+        head: 'Industry Overview',
+        body: 'The global transition towards electrification continues to accelerate demand for advanced battery manufacturing facilities. These environments require highly controlled conditions, specialised utility systems and scalable infrastructure to support evolving production technologies, safety requirements and operational efficiency. As manufacturing capacity expands worldwide, facility performance and reliability remain critical to achieving sustainable, high-volume production.',
       }}
-      demands={[
-        'Moisture-controlled dry room environment',
-        'Adherence to cleanliness standards',
-        'Contamination control',
-        'Explosion proof requirement',
-      ]}
+      demandsHead="IAQ Key Capabilities"
+      demands={[{ label: 'Dry Room Facilities', icon: 'dewpoint' }, { label: 'Manufacturing Infrastructure', icon: 'factory' }, { label: 'Critical Utility Systems', icon: 'sysPcw' }, { label: 'EPC Delivery', icon: 'epcUnit' }]}
+      deliverKick={null}
+      deliverHead="Why Production Readiness Matters"
       deliverIntro={[
-        'A moisture-controlled environment, cleanliness standards, contamination control and explosion proofing are essential to making EV batteries safely.',
-        'IAQ builds facilities tailored to the requirements of EV battery manufacturing. Our focus is precision engineering and sustainability: the infrastructure behind clean energy.',
+        'Battery manufacturing requires specialised environments, stringent safety controls and highly coordinated facility operations to support large-scale production.',
       ]}
-      scopeTitle="Typical EV battery scope"
-      cycleLede="A dry room performs to the standard of its envelope and its dehumidification plant, so design and commissioning carry the outcome on every battery project."
-      standards={{
-        head: 'Dry room, not cleanroom',
-        k: 'Classification',
-        body: 'Battery lines are specified as dry rooms rather than ISO cleanrooms on most delivered projects, with one recorded project at ISO 7, Class 10K. The explosion proof requirement sits alongside the humidity target rather than after it, so the envelope, the airlocks and the safety systems are designed as one package.',
-      }}
-      slot={{
-        tag: 'Content slot · EV battery',
-        title: 'Dry room dew point specification',
-        body: 'This panel is reserved for the dew point target, the humidity tolerance held in operation and the explosion proof classification carried on the delivered dry rooms. Those figures publish here once IAQ confirms them for release.',
-        who: 'Supplied by IAQ',
-      }}
+      hideScope
+      /* 21 Oct (client review, Sunny, on "Dry room, not cleanroom": "this explanation is for BM or for IAQ's audience"): the
+         standards section is gone; and the dry room still above it ("same comment as before", generated, not IAQ's project) */
+      hideBand
       proofLede="Published EV battery projects from the sample registry, from European gigafactory dry rooms to lithium cell facilities in Southeast Asia."
     />
   )
