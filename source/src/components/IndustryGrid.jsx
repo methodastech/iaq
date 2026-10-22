@@ -346,12 +346,14 @@ export default function IndustryGrid() {
         </h2>
 
         <div className="ig-intro-r">
+          {/* 22 Oct (client, on "Each is judged by its own measure: a particle count, a dew point ...": "No it is not, change"):
+              the line the Markets page opens with, and the button no longer promises a comparison (the hub's table is gone) */}
           <p className="ig-copy" data-reveal="">
-            <span className="lead">Each is judged by its own measure:</span>{' '}
-            a particle count, a dew point, a temperature held steady, a hygiene regime.
+            <span className="lead">Each market page sets out what the environment demands,</span>{' '}
+            how IAQ builds it and the projects that prove it.
           </p>
           <Link className="ig-cta" to="/markets" data-reveal="">
-            <span>Compare the seven markets</span><Arrow />
+            <span>Explore the seven markets</span><Arrow />
           </Link>
         </div>
       </div>

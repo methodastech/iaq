@@ -392,6 +392,20 @@ export default function Commitment () {
     document.title = 'IAQ Group · Corporate Commitment · Brand Method'
   }, [])
 
+  /* 22 Oct: the pillars' slider on phones, the card in view and the indicator under it */
+  const esgRef = useRef(null)
+  const [esgAt, setEsgAt] = useState(0)
+  const onEsgScroll = () => {
+    const el = esgRef.current
+    if (!el || !el.children.length) return
+    const w = el.children[0].getBoundingClientRect().width + 12
+    setEsgAt(Math.max(0, Math.min(PILLARS.length - 1, Math.round(el.scrollLeft / w))))
+  }
+  const goEsg = i => {
+    const el = esgRef.current, c = el && el.children[i]
+    if (c) el.scrollTo({ left: c.offsetLeft - el.children[0].offsetLeft, behavior: 'smooth' })
+  }
+
   return (
     <>
       <Nav />
@@ -416,7 +430,9 @@ export default function Commitment () {
               <h2 className="cc-h2" data-cc>Sustainability and responsibility, <em>our commitment.</em></h2>
               <p className="cc-lede" data-cc>Our corporate commitments guide how we work with our people, customers, partners and the wider environment. We aim to conduct our business responsibly, with attention to safety, integrity, operational discipline and continual improvement.</p>
             </div>
-            <ol className="cc-esg">
+            {/* 22 Oct ("on mobile, make like slider and indicator rather than vertical scroll"): under 960px the three pillars
+                swipe sideways, one card to a screen, with three indicators under them (EsgDots); wider screens keep the row */}
+            <ol className="cc-esg" ref={esgRef} onScroll={onEsgScroll}>
               {PILLARS.map(({ k, t, scene, l }, i) => (
                 <li className="cc-esg-c" key={k} data-cc>
                   <span className="cc-esg-top"><ValueMotion k={scene} i={i} /><span className="cc-esg-l" aria-hidden="true">{l}</span></span>
@@ -425,6 +441,12 @@ export default function Commitment () {
                 </li>
               ))}
             </ol>
+            <div className="cc-esg-dots" role="tablist" aria-label="Commitment pillars">
+              {PILLARS.map(({ k }, i) => (
+                <button type="button" key={k} role="tab" aria-selected={esgAt === i} aria-label={k}
+                        className={esgAt === i ? 'on' : undefined} onClick={() => goEsg(i)} />
+              ))}
+            </div>
           </div>
         </section>
 

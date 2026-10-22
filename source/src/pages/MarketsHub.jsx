@@ -4,7 +4,7 @@ import Nav from '../components/Nav.jsx'
 import ClosingBand from '../components/ClosingBand.jsx'
 import PageHead from '../components/PageHead.jsx'
 import Icon from '../components/FlowIcon.jsx'
-import { IndustryRow } from '../components/IndustryGrid.jsx'
+// 22 Oct: IndustryRow (the home page's image strip) is no longer on this page; MarketIndex below replaces it
 import { TYPLBL, fmtSize, pad3 } from '../data/projects.js'
 import { MARKETS } from '../data/markets.js'
 import { HERO_LINE } from '../components/HeroLineMarks.jsx'
@@ -52,6 +52,45 @@ const FLAGSHIPS = MARKETS.map(m => {
 
 const SHOW_STANDARDS = false   /* 21 Oct: the "What each market requires" table, see the note in the render */
 
+/* 22 Oct (IAQ amendment sheet, Markets overview · Industry Cards): IAQ's name and line for each card, as given; spelling slips
+   only corrected ("that support" to "that supports", "next-generations" to "next-generation") */
+const CARD = {
+  'mkt-semiconductor': ['Semiconductor', 'Supporting advanced manufacturing facilities from infrastructure development to manufacturing readiness.'],
+  'mkt-data-centre': ['Data Centres', 'Delivering resilient infrastructure that supports uptime, scalability and operational continuity.'],
+  'mkt-ev-battery': ['EV Battery', 'Enabling next-generation battery manufacturing through specialised facility solutions.'],
+  'mkt-photovoltaics': ['Photovoltaics', 'Delivering infrastructure solutions for solar manufacturing and clean energy production.'],
+  'mkt-district-cooling': ['District Cooling & Heating', 'Supporting sustainable energy infrastructure through engineering and lifecycle expertise.'],
+  'mkt-bio-lifescience': ['BioLife Science', 'Creating controlled environments that support innovation, research and production.'],
+  'mkt-food-beverage': ['Food & Beverage', 'Supporting safe, efficient and reliable manufacturing environments.'],
+}
+/* each market page's own hero picture (the market data's `img` for semiconductor is an older frame) */
+const PIC = { 'mkt-semiconductor': '/assets/banners/mkt-semiconductor-fab.jpg' }
+/* 22 Oct ("no make it like grid design but premium"): the seven as a grid of picture tiles, the first one large. Each tile:
+   its number and mark at the top, IAQ's name and line for the card at the foot over a dark fade; on hover the picture
+   settles in, a red rule draws along the top and the arrow fills. */
+function MarketIndex() {
+  return (
+    <ol className="mk-gx">
+      {MARKETS.map((m, i) => (
+        <li key={m.id} className={'mk-gx-c' + (i === 0 ? ' is-lead' : '')} data-reveal="" style={{ '--i': i }}>
+          <Link to={m.to} className="mk-gx-a">
+            <img className="mk-gx-img" src={PIC[m.id] || m.img} alt="" loading="lazy" decoding="async" />
+            <span className="mk-gx-top">
+              <span className="mk-gx-n">{String(i + 1).padStart(2, '0')}</span>
+              <span className="mk-gx-ic" aria-hidden="true"><Icon name={m.icon} /></span>
+            </span>
+            <span className="mk-gx-foot">
+              <b>{(CARD[m.id] || [m.name])[0]}</b>
+              <span className="mk-gx-t">{(CARD[m.id] || [])[1]}</span>
+              <span className="mk-gx-go">Explore the market <i aria-hidden="true">&rarr;</i></span>
+            </span>
+          </Link>
+        </li>
+      ))}
+    </ol>
+  )
+}
+
 export default function MarketsHub() {
   useEffect(() => { document.title = 'IAQ Group · Markets · Brand Method' }, [])
 
@@ -66,8 +105,9 @@ export default function MarketsHub() {
         eyebrow="Where we build"
         /* 20 Oct (client review, Sunny: "what is that standard of clean?", "The metrics all change"): a plain heading, and the
            chips carry IAQ's own figures from the home page (16 Oct sheet) in place of 250+ projects and 1,050,000 m2 */
-        title={<>Seven markets, <em>one integrated team</em>.</>}
-        lede="Each market page sets out what the environment demands, how IAQ builds it and the projects that prove it."
+        /* 22 Oct (IAQ amendment sheet, Markets overview · Landing Page for Industry We Serve): IAQ's heading and paragraph, as given */
+        title={<>Supporting the Facilities Behind <em>Tomorrow&rsquo;s Industries</em></>}
+        lede="IAQ partners with clients across advanced manufacturing and critical infrastructure sectors, delivering engineering, procurement, construction, manufacturing readiness and energy management solutions tailored to the unique requirements of each industry."
         chips={['7 markets', '235+ projects completed', '7 global offices', '31 years of experience']}
         figure={{ src: '/assets/banners/mkt-hub.jpg', alt: 'A hi-tech industrial campus at dusk: facility blocks, rooftop plant, a data hall and a solar roof', hero: true }}
       />
@@ -158,7 +198,11 @@ export default function MarketsHub() {
               card grid — "i said side by side like teh industry at homepage". Same component,
               so the two can never drift apart. The registry fallback that filled the grid's
               eighth cell follows as its own line, since a strip has no empty cell to fill. */}
-          <IndustryRow />
+          {/* 22 Oct ("this design is repetitive, make other design than this"): the home page's image strip gave way to an
+              index of the seven, one row each (number, mark, name and the opening line of the market's own Industry
+              Overview, IAQ's text); then, the same day ("no make it like grid design but premium"), a grid of picture tiles.
+              IndustryRow stays on the home page. */}
+          <MarketIndex />
           {/* 25 Sep, night (Bazil: "remove this"): the "Not sure which fits?" registry line is gone */}
         </div>
       </section>

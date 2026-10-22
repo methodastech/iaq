@@ -471,3 +471,87 @@ a.mk-fact:hover{background:rgba(16,26,48,.86)}
 .mk-caps .dd-lb{font:500 clamp(16px,1.25vw,18px)/1.3 "Switzer","Instrument Sans",sans-serif!important;letter-spacing:-.01em;color:#0C1220}
 @media (prefers-reduced-motion:reduce){.mk-caps .dd-n,.mk-caps .dd-n::after{transition:none!important}}
 .mk-caps .dd-n{grid-template-rows:auto 1fr!important;align-content:start!important}.mk-caps .dd-lb{align-self:start!important}   /* 20 Oct: one-line and two-line names start on the same line */
+
+/* 22 Oct ("make same font size, make it consistant"): "IAQ Key Capabilities" (and Semiconductor's second heading) at the size
+   of the page's other section headings, phone size included */
+.pg-sec .mk-demands-h{font-size:clamp(23px,3.1vw,36px);line-height:1.06;letter-spacing:-.02em;max-width:44ch}
+@media(max-width:640px){.pg-sec .mk-demands-h{font-size:clamp(20px,6vw,27px)}}
+
+/* 22 Oct (Markets hub, "this design is repetitive", then "no make it like grid design but premium"): the seven as picture
+   tiles on a 12-column grid, the first one large (6 + 3 + 3, then 3 + 3 + 3 + 3). Number and mark at the top, the name and
+   IAQ's opening line at the foot over a dark fade. Hover: the picture settles in, a red rule draws along the top, the line
+   opens to full, the arrow moves. */
+.mk-gx{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}
+.mk-gx-c{grid-column:span 3;position:relative;min-height:clamp(300px,24vw,360px)}
+.mk-gx-c:nth-child(-n+3){min-height:clamp(340px,28vw,420px)}
+.mk-gx-c.is-lead{grid-column:span 6}
+.mk-gx-a{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;isolation:isolate;color:#fff;text-decoration:none;background:#0C1220}
+.mk-gx-img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .6s ease;filter:saturate(.85) brightness(.92)}
+.mk-gx-a::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,12,24,.5) 0%,rgba(7,12,24,.06) 30%,rgba(7,12,24,.18) 52%,rgba(7,12,24,.9) 100%);transition:background .6s ease}
+.mk-gx-a::after{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:#EC2027;transform:scaleX(0);transform-origin:0 50%;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.mk-gx-top{display:flex;align-items:center;justify-content:space-between;padding:clamp(16px,1.6vw,22px)}
+.mk-gx-n{font:600 12px/1 "Switzer",sans-serif;letter-spacing:.16em;color:rgba(255,255,255,.82)}
+.mk-gx-ic{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.28);background:rgba(7,12,24,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;transition:background .4s ease,border-color .4s ease}
+.mk-gx-ic svg{width:20px;height:20px;stroke-width:1.3}
+.mk-gx-foot{display:grid;gap:8px;padding:clamp(18px,1.8vw,26px)}
+.mk-gx-foot b{font:600 clamp(20px,1.7vw,26px)/1.12 "Switzer","Instrument Sans",sans-serif;letter-spacing:-.02em;color:#fff}
+.mk-gx-c.is-lead .mk-gx-foot b{font-size:clamp(26px,2.4vw,36px)}
+.mk-gx-t{font-size:14px;line-height:1.5;color:rgba(255,255,255,.8);max-width:52ch}   /* IAQ's card lines are short: shown in full */
+.mk-gx-go{display:inline-flex;align-items:center;gap:10px;margin-top:6px;font:600 12px/1 "Switzer",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:.72;transition:opacity .4s ease}
+.mk-gx-go i{font-style:normal;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.4);letter-spacing:0;transition:background .4s ease,border-color .4s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+.mk-gx-a:hover .mk-gx-img,.mk-gx-a:focus-visible .mk-gx-img{transform:scale(1);filter:saturate(1) brightness(1)}
+.mk-gx-a:hover::after,.mk-gx-a:focus-visible::after{transform:scaleX(1)}
+.mk-gx-a:hover .mk-gx-ic,.mk-gx-a:focus-visible .mk-gx-ic{background:#EC2027;border-color:#EC2027}
+.mk-gx-a:hover .mk-gx-go,.mk-gx-a:focus-visible .mk-gx-go{opacity:1}
+.mk-gx-a:hover .mk-gx-go i,.mk-gx-a:focus-visible .mk-gx-go i{background:#EC2027;border-color:#EC2027;transform:translateX(4px)}
+.mk-gx-a:focus-visible{outline:2px solid #EC2027;outline-offset:3px}
+@media(max-width:1100px){.mk-gx-c,.mk-gx-c.is-lead{grid-column:span 6}.mk-gx-c.is-lead{grid-column:span 12}}
+@media(max-width:640px){.mk-gx-c,.mk-gx-c.is-lead{grid-column:span 12;min-height:260px}.mk-gx-c:nth-child(-n+3){min-height:260px}}
+@media(prefers-reduced-motion:reduce){.mk-gx-img,.mk-gx-a::after,.mk-gx-go i{transition:none}}
+.mk-gx-c:not(.is-lead) .mk-gx-t{min-height:4.5em}   /* 22 Oct: three lines reserved, so the names line up across a row */
+
+/* 22 Oct (client: the market pages "look plain, no color", all seven): colour below the hero, in the market violet.
+   Headings take the house form (last word in violet); the overview stands beside a picture of the market; Semiconductor's
+   second paragraph sits on a violet-tinted panel (.mk-supp: .mk-more is an older card). */
+.mkb ~ .pg-sec h2 em,.mkb ~ .pg-sec .mk-demands-h em{font-style:normal;color:var(--mk)}
+.mkb + .pg-sec{background:radial-gradient(1100px 520px at 100% 0%,rgba(110,86,230,.075),transparent 70%),radial-gradient(900px 480px at 0% 100%,rgba(236,32,39,.035),transparent 70%)}
+.mk-ov.has-fig{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,4.5vw,80px);align-items:center}
+.mk-ov-fig{position:relative;margin:0;aspect-ratio:4/3;overflow:hidden;background:#0C1220;box-shadow:0 40px 80px -50px rgba(40,24,120,.55)}
+.mk-ov-fig img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03);transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.mk-ov-fig:hover img{transform:scale(1)}
+.mk-ov-fig::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(110,86,230,.28) 0%,rgba(110,86,230,0) 45%),linear-gradient(0deg,rgba(7,12,24,.45) 0%,rgba(7,12,24,0) 45%);pointer-events:none}
+.mk-ov-fig::after{content:"";position:absolute;z-index:2;left:0;top:0;width:96px;height:3px;background:var(--mk)}
+.mk-ov-mark{position:absolute;z-index:2;left:18px;bottom:18px;display:grid;place-items:center;width:52px;height:52px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff}
+.mk-ov-mark svg{width:26px;height:26px;stroke-width:1.3}
+.mk-supp{margin-top:clamp(32px,5vh,52px);padding:clamp(24px,3vw,40px) clamp(24px,3vw,44px);background:linear-gradient(120deg,rgba(110,86,230,.10),rgba(110,86,230,.03) 60%,rgba(236,32,39,.03));border-left:3px solid var(--mk)}
+.mk-supp .mk-demands-h{margin-top:0}
+.mk-supp .mk-why-body{margin-bottom:0}
+@media(max-width:900px){.mk-ov.has-fig{grid-template-columns:1fr}.mk-ov-fig{aspect-ratio:16/9}}
+@media(prefers-reduced-motion:reduce){.mk-ov-fig img,.mk-caps .dd-n{transition:none}}
+
+/* 22 Oct ("for this part, can you make more interesting, same goes with other market"): the capability cards as deep
+   navy-to-violet panels. A soft light follows the pointer (--mx/--my, set in MarketPage), a ring orbits the icon, the number
+   stands large and outlined in the corner, and a violet rule draws under the name on hover. Names only, as IAQ gave them. */
+.pg-sec .mk-caps .dd-n{position:relative;overflow:hidden;isolation:isolate;min-height:clamp(190px,15vw,230px);grid-template-columns:1fr!important;grid-template-rows:auto 1fr!important;row-gap:28px!important;align-content:start!important;
+  padding:clamp(24px,2.2vw,32px)!important;background:linear-gradient(155deg,#121A38 0%,#191A4C 55%,#2A1C78 100%)!important;border:1px solid rgba(157,140,245,.18)!important;
+  box-shadow:0 30px 60px -44px rgba(40,24,120,.7)!important;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s ease,border-color .5s ease!important}
+.pg-sec .mk-caps .dd-n::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.0;transition:opacity .4s ease;
+  background:radial-gradient(240px circle at var(--mx,70%) var(--my,10%),rgba(157,140,245,.34),transparent 65%)}
+.pg-sec .mk-caps .dd-n:hover::before{opacity:1}
+.pg-sec .mk-caps .dd-n::after{background:linear-gradient(90deg,#9D8CF5,#EC2027)!important;height:2px!important}
+.pg-sec .mk-caps .dd-n:hover{transform:translateY(-5px)!important;border-color:rgba(157,140,245,.45)!important;box-shadow:0 40px 70px -40px rgba(80,50,200,.75)!important}
+.pg-sec .mk-caps .dd-ic{position:relative;grid-column:1!important;grid-row:1!important;justify-self:start!important;align-self:start!important;width:58px!important;height:58px!important;border-radius:50%;
+  display:grid!important;place-items:center!important;background:rgba(110,86,230,.22)!important;border:1px solid rgba(180,168,247,.35)!important;color:#D9D2FF!important;opacity:1!important;transition:background .4s ease,color .4s ease!important}
+.pg-sec .mk-caps .dd-ic::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1px solid rgba(180,168,247,.12);border-top-color:#B4A8F7;animation:mkOrbit 7s linear infinite}
+.pg-sec .mk-caps .dd-n:nth-child(2n) .dd-ic::after{animation-duration:9s;animation-direction:reverse}
+.pg-sec .mk-caps .dd-ic svg{width:26px!important;height:26px!important;stroke-width:1.3}
+.pg-sec .mk-caps .dd-n:hover .dd-ic{background:var(--mk)!important;color:#fff!important}
+@keyframes mkOrbit{to{transform:rotate(360deg)}}
+.pg-sec .mk-caps .dd-no{position:absolute!important;right:18px;top:14px;z-index:-1;pointer-events:none}
+.pg-sec .mk-caps .dd-no::before{font:600 clamp(56px,4.6vw,76px)/1 "Switzer",sans-serif!important;letter-spacing:-.04em!important;color:transparent!important;-webkit-text-stroke:1px rgba(180,168,247,.32);transition:-webkit-text-stroke-color .4s ease}
+.pg-sec .mk-caps .dd-n:hover .dd-no::before{-webkit-text-stroke-color:rgba(200,190,255,.6)}
+.pg-sec .mk-caps .dd-lb{grid-column:1!important;grid-row:2!important;align-self:end!important;position:relative;padding-bottom:12px;color:#fff!important;font:600 clamp(17px,1.35vw,20px)/1.25 "Switzer","Instrument Sans",sans-serif!important;max-width:16ch}
+.pg-sec .mk-caps .dd-lb::after{content:"";position:absolute;left:0;bottom:0;width:28px;height:2px;background:#9D8CF5;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.pg-sec .mk-caps .dd-n:hover .dd-lb::after{width:64px}
+@media(prefers-reduced-motion:reduce){.pg-sec .mk-caps .dd-ic::after{animation:none}.pg-sec .mk-caps .dd-n,.pg-sec .mk-caps .dd-lb::after{transition:none!important}}
+@media(max-width:640px){.pg-sec .mk-caps .dd-no::before{font-size:44px!important}.pg-sec .mk-caps .dd-no{right:12px;top:12px}}

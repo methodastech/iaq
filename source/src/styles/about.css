@@ -1078,6 +1078,14 @@ section.vm .vm-mark.vm-mark-fine svg.vmx .vmx-needle{animation:vmxNeedle 7s cubi
 section.vm .vm-mark.vm-mark-fine svg.vmx .vmx-gear{animation:vmxGear 24s linear infinite!important}
 @keyframes vmxNeedle{0%{transform:rotate(32deg)}14%{transform:rotate(-24deg)}30%{transform:rotate(52deg)}44%{transform:rotate(22deg)}56%{transform:rotate(37deg)}66%,100%{transform:rotate(32deg)}}
 @keyframes vmxGear{to{transform:rotate(360deg)}}
+/* 22 Oct: the mission mark, the arrow strikes the centre (VisionMission.jsx VmMission) */
+.vmx-shaft{fill:none;stroke:#0C1220;stroke-width:1.6;stroke-linecap:butt}
+.vmx-ripple{fill:none;stroke:#EC2027;stroke-width:1.2;opacity:0;transform-box:view-box;transform-origin:30px 34px}
+.vmx-arrow{transform-box:view-box;transform-origin:30px 34px}
+section.vm .vm-mark.vm-mark-fine svg.vmx .vmx-arrow{animation:vmxArrow 5.5s cubic-bezier(.5,0,.2,1) infinite!important}
+section.vm .vm-mark.vm-mark-fine svg.vmx .vmx-ripple{animation:vmxRipple 5.5s ease-out infinite!important}
+@keyframes vmxArrow{0%{transform:translate(22px,-22px);opacity:0}6%{opacity:1}22%{transform:translate(-1.2px,1.2px)}25%,86%{transform:translate(0,0);opacity:1}94%{transform:translate(0,0);opacity:0}100%{transform:translate(22px,-22px);opacity:0}}
+@keyframes vmxRipple{0%,22%{opacity:0;transform:scale(1)}24%{opacity:.9}52%,100%{opacity:0;transform:scale(2.6)}}
 @media(prefers-reduced-motion:reduce){section.vm .vm-mark.vm-mark-fine svg.vmx *{animation:none!important}}
 /* 21 Oct: the GICG and SAC mark is a wide lock-up; it takes the same height as the others */
 .ab-awards-row .ab-awards-wide img{height:clamp(50px,5vw,76px)}
@@ -1095,3 +1103,10 @@ section.vm .vm-mark.vm-mark-fine svg.vmx .vmx-gear{animation:vmxGear 24s linear 
 .ab-awards-row li{flex:0 0 auto;height:clamp(58px,5.2vw,84px)}
 .ab-awards-row img{height:100%!important;max-height:100%;width:auto;max-width:none}
 @media(max-width:1100px){.ab-awards-row{flex-wrap:wrap;justify-content:flex-start;gap:28px 40px!important}.ab-awards-row li{height:56px}}
+
+/* 22 Oct ("fit in the screen"): the hero fills the window under the nav (and the workspace bar when it shows), as the home
+   hero does, so the next section starts at the fold; the 78vh / 720px cap above is lifted. The zoom on wide screens is
+   divided back out (base.css :root zoom); phones keep their own height (the 760px rule above). */
+@media(min-width:761px){
+  .ab-hero{min-height:calc(100svh / var(--zoomf, 1) - var(--navh, 78px) - var(--tbh, 0px))}
+}

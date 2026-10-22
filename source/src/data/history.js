@@ -71,7 +71,8 @@ export const SPAN = [
     /* 1 Oct ("replace"): supplied as "Texas Instruments industrial building exterior.png", kept as
        assets/history/2006-texas-instruments-building.webp: the semiconductor plant from the street, its own name on the
        facade. Used as supplied, as the photograph before it was; the earlier file stays in the folder */
-    fig: { img: '/assets/history/2006-texas-instruments-building.webp', kind: 'Photograph', ar: '1600 / 983',
+    /* 22 Oct (Bazil: "please remove the signage"): the occupier's name is painted out of the facade, same photograph */
+    fig: { img: '/assets/history/2006-semiconductor-plant.webp', kind: 'Photograph', ar: '1600 / 983',
            alt: 'A white semiconductor plant building under a blue sky, with a covered walkway in front',
            cap: 'A semiconductor plant, shown for illustration.' },
   },
@@ -80,7 +81,8 @@ export const SPAN = [
     text: "IAQ continued to develop its presence in international markets while enhancing expertise in facility optimisation, engineering analysis and operational performance improvement.",
     /* 29 Sep: supplied as "ChatGPT Image Sep 29, 2026, 02_10_21 PM.png", kept as assets/history/2008-cleanroom-france.webp.
        Generated, so it carries the representation label. It shows a client's name on the facade, used as supplied */
-    fig: { img: '/assets/history/2008-cleanroom-france.webp', rep: true, kind: 'Representation', ar: '1566 / 1005',
+    /* 22 Oct (Bazil: "please remove the signage"): the occupier's name is painted out of the facade, same photograph */
+    fig: { img: '/assets/history/2008-semiconductor-facility.webp', rep: true, kind: 'Representation', ar: '1566 / 1005',
            alt: 'A curved-roof white semiconductor facility with blue glazing behind planting',
            cap: 'Shown for illustration.' },
   },
@@ -89,7 +91,8 @@ export const SPAN = [
     text: "IAQ further strengthened its cleanroom and process facility expertise through project requiring highly controlled manufacturing environment and integrated utility systems.",
     /* 29 Sep: supplied as "ChatGPT Image Sep 29, 2026, 02_15_34 PM.png" (it replaced 02_10_21), kept as assets/history/2009-wafer-fab-ipoh.webp.
        Generated, so it carries the representation label. It shows a client's name on the facade, used as supplied */
-    fig: { img: '/assets/history/2009-wafer-fab-ipoh.webp', rep: true, kind: 'Representation', ar: '1727 / 911',
+    /* 22 Oct (Bazil: "please remove the signage"): the occupier's name is painted out of the facade, same photograph */
+    fig: { img: '/assets/history/2009-wafer-fab-building.webp', rep: true, kind: 'Representation', ar: '1727 / 911',
            alt: 'A white two-storey wafer fab building with blue roofs behind a green fence and palms',
            cap: 'Shown for illustration.' },
   },
@@ -108,7 +111,9 @@ export const SPAN = [
     /* 1 Oct ("replcae"): a row of primary chilled water pumps (PCHWP) under their insulated risers, in place of the market
        band's chiller hall (band-district-cooling.jpg stays the Markets page's own). Saved as assets/history/2013-dcs-pump-row.webp; not shown
        to be KLCC itself, so it keeps the Representation label; the motor's labels are illegible, no maker's name. */
-    fig: { img: '/assets/history/2013-dcs-pump-row.webp', rep: true, kind: 'Representation', ar: '1453 / 1083',
+    /* 22 Oct (Bazil: "make this image proper and clean"): background person, floor puddles and rust stains removed;
+       saved as 2013-dcs-pump-row-clean.webp. */
+    fig: { img: '/assets/history/2013-dcs-pump-row-clean.webp', rep: true, kind: 'Representation', ar: '1453 / 1083',
            alt: 'A row of chilled water pumps under insulated pipe risers in a district cooling plant',
            cap: 'The primary chilled water pumps of a district cooling plant, as an illustration.' },
   },

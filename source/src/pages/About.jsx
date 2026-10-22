@@ -79,7 +79,8 @@ export default function About() {
     </p>
     </div>
     <figure className="man-photo">
-      <img src="/assets/iaq/cr-utilities-p1010242.webp" alt="A cleanroom delivered by IAQ: the white hall under its ceiling grid and light lines" loading="lazy" decoding="async" />
+      {/* 22 Oct (Bazil: "remove the person, close door, and remove that red thing"): edited in ChatGPT, same photograph */}
+      <img src="/assets/iaq/cr-utilities-p1010242-clean.webp" alt="A cleanroom delivered by IAQ: the white hall under its ceiling grid and light lines" loading="lazy" decoding="async" />
       {/* 15 Oct ("remove all the tag"): no caption on the photograph */}
     </figure>
   </div>

@@ -47,7 +47,6 @@ export default function MarketDataCentre() {
       /* 20 Oct (client review, Sunny, on "No cleanroom class. A different bar entirely.": "You declare there is on the first page,
          why the deviation now", "This is AI telling you and you just copy paste to me?"): the standards section and its content
          slot are gone; and on the data hall photograph ("So not our project?"): it was a generated still, so the band is off */
-      hideBand
       proofLede="Published data centre work from the sample registry. The hyperscale project stands on the record by scale alone, 160 MW, held under client confidentiality."
     />
   )

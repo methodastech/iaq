@@ -33,7 +33,7 @@ const FIG = {
   design:        { src: '/assets/banners/svc-design.jpg',     alt: 'Engineering drawings on a desk beside a screen showing a facility model' },
   /* 21 Oct (Bazil: "replace this image with related"): engineers checking delivered equipment at goods receiving, generated in ChatGPT, in place of the wrapped units with the red ribbon */
   procurement:   { src: '/assets/services/svc-procurement-receiving.webp', alt: 'Two engineers at goods receiving checking a delivered air handling unit and equipment crates against a delivery checklist' },
-  construction:  { src: '/assets/iaq/cr-build-2024.webp',     alt: 'A cleanroom under construction, with scaffolding and wall panels in place' },
+  construction:  { src: '/assets/iaq/cr-build-2024-clear.webp',     alt: 'A cleanroom nearing completion, wall panels, ceiling grid and perforated floor in place' },
   commissioning: { src: '/assets/banners/svc-commission.jpg', alt: 'An engineer in a cleanroom suit taking a measurement with a tripod-mounted instrument' },
   tool:          { src: '/assets/banners/svc-hookup.jpg',     alt: 'Process utility lines and a connection panel along a cleanroom wall, ready for a production tool' },
   maintenance:   { src: '/assets/banners/svc-maintain.jpg',   alt: 'A technician with an equipment cabinet opened for servicing' },
@@ -44,7 +44,9 @@ function StageHead({ no, name, line, fig }) {
     <header className="sa-head">
       <div className="pg-in sa-head-in">
         <div>
-          {/* 21 Oct ("already got numbering why repeated?"): the "01 · Service 1 of 6" line is gone; the stage bar numbers them */}
+          {/* 21 Oct ("already got numbering why repeated?"): the "Service 1 of 6" words are gone; 22 Oct ("where is the
+              numbering"): the red number stays, alone, above each heading */}
+          <span className="pg-k"><span className="sa-no">{String(no).padStart(2, '0')}</span></span>
           <h2>{name}</h2>
           <p className="pg-lede">{line}</p>
         </div>

@@ -119,7 +119,7 @@ export default function ServiceConstruction() {
         title={<>Precision engineering, <em>built to exact standards.</em></>}
         lede="Project management, coordination and communication through a construction programme tailored to each client, on schedule and within budget."
         chips={['EPCC · EPCM', 'Stage 3 of 6']}
-        figure={{ src: '/assets/iaq/cr-build-2024.webp', alt: 'Construction: a cleanroom going up on an IAQ site, wall panels and ceiling grid in, scaffold still on the floor', hero: true }}
+        figure={{ src: '/assets/iaq/cr-build-2024-clear.webp', alt: 'Construction: a cleanroom on an IAQ site nearing completion, wall panels, ceiling grid and perforated floor in place', hero: true }}
       />
 
       {/* --------------------------------------------------- what it covers */}

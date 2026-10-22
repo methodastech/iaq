@@ -82,13 +82,8 @@ export default function NewsBanner({ compact = false }) {
           <p className="nb-lede">
             Project milestones, industry insight and company updates from across the group.
           </p>
-          {!compact && (
-            <dl className="nb-facts">
-              {facts.map(f => (
-                <div key={f.v}><dt>{f.k}</dt><dd>{f.v}</dd></div>
-              ))}
-            </dl>
-          )}
+          {/* 22 Oct ("looks ugly", on the 70 / 5 / 23 / Aug 2025 row under the lede): the counts are off the banner; the
+              title, the lede and the latest story beside them carry it. `facts` still feeds the compact band. */}
         </div>
 
         {compact && (

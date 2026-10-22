@@ -127,7 +127,7 @@ export default function UnitPage(props) {
     id, no, of = 3, name, full, title, lede, image, art, band, pull,
     facts = [], what = [], whatParts = null, whatHead, hard, pains = [], painsHead, services, servicesHead, servicesLede, intro, bim, models, modelsHead, compare, bandRep,
     steps = [], items = [], why = [], cycleHead, cycleLede, hideCycle = false, hideWhen = false,
-    filter, proofNote, proofLink, cta, ctaBand, industries, whyHead, whyAfterScope = false, whyAfterServices = false, process, statement, rep, cycle, works = true, scope, introEnd, servicesFlow = false, modelsJoin = 'or',
+    filter, proofNote, proofLink, cta, ctaBand, industries, whyHead, whyAfterScope = false, whyAfterServices = false, process, statement, capCards, rep, cycle, works = true, scope, introEnd, servicesFlow = false, modelsJoin = 'or',
   } = props
 
   const root = useRef(null)
@@ -226,7 +226,7 @@ export default function UnitPage(props) {
   return (
     <>
       <Nav />
-      <div className="un-page" ref={root}>
+      <div className="un-page" data-unit={id} ref={root}>
 
         {/* 1 · hero */}
         {/* 15 Sep, second cut (Bazil: "the sizing, visual and stuff"): the photograph is a panel beside the copy,
@@ -323,7 +323,33 @@ export default function UnitPage(props) {
 
         {/* 24 Sep (client, EFM: "they have 7 end-to-end Energy Management Services, refer our current website"): a unit
             can carry its services as a grid, one line each, as IAQ's own page lists them */}
-        {services && services.length > 0 && (
+        {/* 22 Oct (IAQ amendment sheet, PCU & TTI · Capabilities: "Two column of capability cards instead of paragraph", "Minimal
+            text, premium icons"): a page's own capability cards, each with its picture, line and list; in place of the services */}
+        {capCards && (
+          <section className="un-sec un-cap2" aria-labelledby="un-cap2-h">
+            <div className="pg-in">
+              <h2 id="un-cap2-h" className="un-h2" data-rv="">{capCards.head}</h2>
+              <div className="un-cap2-grid">
+                {capCards.cards.map((c, ci) => (
+                  <article className="un-cap2-c" key={c.t} data-rv="" style={{ '--d': `${.08 + ci * .1}s` }}>
+                    <figure className="un-cap2-fig"><img src={c.img} alt={c.alt} loading="lazy" decoding="async" /><span className="un-cap2-n">{String(ci + 1).padStart(2, '0')}</span></figure>
+                    <div className="un-cap2-body">
+                      <h3>{c.t}</h3>
+                      <p>{c.d}</p>
+                      <span className="un-cap2-k">{c.listHead}</span>
+                      <ul className="un-cap2-list">
+                        {c.items.map(x => (
+                          <li key={x.t}><span className="un-cap2-ic" aria-hidden="true"><Icon name={x.icon} /></span><span>{x.t}</span></li>
+                        ))}
+                      </ul>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+        {!capCards && services && services.length > 0 && (
           <section className="un-sec un-svc7" aria-labelledby="un-svc7-h">
             <div className="pg-in">
               <h2 id="un-svc7-h" className="un-h2" data-rv="">{servicesHead || <>What EFM <em>offers.</em></>}</h2>
@@ -624,22 +650,6 @@ export default function UnitPage(props) {
           </section>
         )}
 
-        {/* 6 · proof */}
-        {proof.length > 0 && (
-          <section className="un-sec un-proof" aria-labelledby="un-proof-h">
-            <div className="pg-in">
-              <div className="un-proof-head">
-                <h2 id="un-proof-h" className="un-h2" data-rv="">Delivered <em>this way.</em></h2>
-                <Link className="un-more" to={(proofLink && proofLink.to) || '/projects'} data-rv="">{(proofLink && proofLink.label) || 'See all published projects'}</Link>
-              </div>
-              <div className="un-proof-grid" data-n={proof.length}>
-                {proof.map(({ p, i }) => <ProofCard p={p} i={i} key={i} />)}
-              </div>
-              {proofNote && <p className="un-note" data-rv="">{proofNote}</p>}
-            </div>
-          </section>
-        )}
-
         {/* 25 Sep (Bazil, EFM: "district cooling can put at the bottom", then "explain district cooling nice and
             straightforward"): the brief closes the page, told as one picture and three plain steps */}
         {intro && introEnd && intro.scene && <DistrictCooling3D intro={intro} />}
@@ -671,6 +681,22 @@ export default function UnitPage(props) {
                   {intro.to && <Link className="un-more" to={intro.to} data-rv="">{intro.cta}</Link>}
                 </div>
               </div>
+            </div>
+          </section>
+        )}
+
+        {/* 6 · proof. 21 Oct (EFM, "district before project"): after the district cooling section, not before it */}
+        {proof.length > 0 && (
+          <section className="un-sec un-proof" aria-labelledby="un-proof-h">
+            <div className="pg-in">
+              <div className="un-proof-head">
+                <h2 id="un-proof-h" className="un-h2" data-rv="">Delivered <em>this way.</em></h2>
+                <Link className="un-more" to={(proofLink && proofLink.to) || '/projects'} data-rv="">{(proofLink && proofLink.label) || 'See all published projects'}</Link>
+              </div>
+              <div className="un-proof-grid" data-n={proof.length}>
+                {proof.map(({ p, i }) => <ProofCard p={p} i={i} key={i} />)}
+              </div>
+              {proofNote && <p className="un-note" data-rv="">{proofNote}</p>}
             </div>
           </section>
         )}

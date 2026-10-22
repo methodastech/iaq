@@ -6,7 +6,7 @@ import IsoIcon from './IsoIcon.jsx'
 
 /* 20 Oct (client: the Vision and Mission icons "look more ugly", "make it premium and have bit animation"): two drawn marks
    on a 64 grid, fine line work, one red part each and one quiet movement (about.css .vmx-*): the compass needle swings
-   and settles pointing ahead; the gear turns slowly round a steady red tick */
+   and settles pointing ahead; (22 Oct) the arrow strikes the target's centre */
 const VTICKS = Array.from({ length: 24 }, (_, k) => {
   const a = k * 15 * Math.PI / 180, r1 = k % 6 === 0 ? 21.5 : 24, r2 = 26.5
   return `M${(32 + r1 * Math.sin(a)).toFixed(2)} ${(32 - r1 * Math.cos(a)).toFixed(2)}L${(32 + r2 * Math.sin(a)).toFixed(2)} ${(32 - r2 * Math.cos(a)).toFixed(2)}`
@@ -26,13 +26,21 @@ const GEAR = (() => {
   const P = (r, d) => `${(32 + r * Math.sin(d * Math.PI / 180)).toFixed(2)} ${(32 - r * Math.cos(d * Math.PI / 180)).toFixed(2)}`
   return Array.from({ length: 10 }, (_, k) => { const a = k * 36; return `${k ? 'L' : 'M'}${P(22.5, a - 12)}L${P(28.5, a - 6.5)}L${P(28.5, a + 6.5)}L${P(22.5, a + 12)}` }).join('') + 'Z'
 })()
+/* 22 Oct ("change the icon animation to more relatable with mission"): the gear gave way to a target, the plain picture of a
+   mission. The red arrow flies in and strikes the centre, the rings answer with one ripple, then it rests on the mark. The
+   still (reduced motion) is the arrow in the centre. */
 const VmMission = () => (
   <svg className="vmx vmx-mis" viewBox="0 0 64 64" focusable="false">
-    <g className="vmx-gear">
-      <path d={GEAR} className="vmx-ln vmx-paper" />
-      <circle cx="32" cy="32" r="14" className="vmx-ln vmx-thin" />
+    <circle cx="30" cy="34" r="25" className="vmx-ln vmx-paper" />
+    <circle cx="30" cy="34" r="16.5" className="vmx-ln vmx-thin" />
+    <circle cx="30" cy="34" r="8.5" className="vmx-ln" />
+    <circle cx="30" cy="34" r="8.5" className="vmx-ripple" />
+    <circle cx="30" cy="34" r="2.6" className="vmx-red" />
+    <g className="vmx-arrow">
+      <path d="M30 34 52 12" className="vmx-shaft" />
+      <path d="M46 18 52 12 50.6 7.8 44.6 13.8zM46 18 52 12 56.2 13.4 50.2 19.4z" className="vmx-red" />
+      <path d="M30 34l2.2-6.4 4.2 4.2z" className="vmx-red" />
     </g>
-    <path d="m25.5 32.5 4.6 4.6 8.4-9.2" className="vmx-tick" />
   </svg>
 )
 

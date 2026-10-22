@@ -54,6 +54,7 @@ const SPAN = live(cmsHistory)
 
 const PX_PER_YEAR = 30          /* the scale of the drawing */
 const MIN_GAP = 40              /* text still needs air when years are adjacent */
+const GAP_EVEN = 72             /* 22 Oct: the one gap between entries, whatever the years between them */
 
 /* a clip that costs nothing until it is needed: no src until the entry is
    near the viewport, playing only while in view, poster always present */
@@ -192,7 +193,9 @@ export default function HistorySpan() {
               const gy = next ? next.yr - m.yr : 0
               /* the drawn gap: proportional, but never less than the minimum, and
                  present even between same-year entries so they never collide */
-              const gap = next ? `max(${MIN_GAP}px, ${gy * PX_PER_YEAR}px)` : '0px'
+              /* 22 Oct ("why is it this too much spacing?"): the year ticks and the "5 years" count that filled the scaled gap
+                 are both gone (26 Sep, 19 Oct), so a five-year step left 150px of blank page. One even gap between entries now. */
+              const gap = next ? `${GAP_EVEN}px` : '0px'
               const ach = m.kind === 'achievement'
               return (
                 <li key={`${m.label}-${m.title}`} className="hx-item"

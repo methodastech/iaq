@@ -1479,3 +1479,8 @@ html.sm-scrolled .sm-cue{opacity:0;pointer-events:none}
 @keyframes smCueBob{0%,100%{transform:translateY(-3px)}50%{transform:translateY(4px)}}
 .sm-cue:hover i{background:#EC2027;border-color:#EC2027}
 @media(prefers-reduced-motion:reduce){.sm-cue i svg{animation:none}}
+/* 22 Oct ("check the alignment", the three questions): a card whose answer is shorter than its neighbour's was stretching
+   its title and label rows to fill the row's height, so "Service" and "Work" sat lower than "Model". The spare height now
+   goes below the answer: title, label and answer start on the same lines in every card. */
+.sm-q{grid-template-rows:auto auto 1fr;align-content:start}
+.sm-q-n{align-self:start}

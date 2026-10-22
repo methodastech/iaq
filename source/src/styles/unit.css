@@ -816,3 +816,65 @@
 .un-whyv-c p{margin:10px 0 0;padding:0 clamp(20px,1.8vw,26px) clamp(22px,2vw,28px);font-size:14.5px;line-height:1.55;color:var(--soft)}
 @media(max-width:1100px){.un-whyv{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.un-whyv{grid-template-columns:1fr}}
+
+/* 22 Oct (IAQ sheet, PCU & TTI · Capabilities: "two column of capability cards", "minimal text, premium icons"): two cards
+   side by side, IAQ's model extract at the top of each on a drafting ground, then the name, IAQ's line and the list as icon
+   rows. A red rule draws along the top on hover and the picture settles in. */
+.un-cap2-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);margin-top:clamp(28px,4vh,44px)}
+.un-cap2-c{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(12,18,32,.08);box-shadow:0 30px 60px -48px rgba(12,18,32,.35);transition:box-shadow .5s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.un-cap2-c::before{content:"";position:absolute;z-index:2;left:-1px;right:-1px;top:-1px;height:3px;background:#EC2027;transform:scaleX(0);transform-origin:0 50%;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.un-cap2-c:hover{transform:translateY(-4px);box-shadow:0 40px 70px -44px rgba(12,18,32,.42)}
+.un-cap2-c:hover::before{transform:scaleX(1)}
+.un-cap2-fig{position:relative;margin:0;aspect-ratio:16/8;overflow:hidden;background:#F4F6F9;
+  background-image:linear-gradient(rgba(12,18,32,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(12,18,32,.045) 1px,transparent 1px);background-size:28px 28px}
+.un-cap2-fig img{position:absolute;left:4%;top:6%;width:92%;height:88%;object-fit:contain;mix-blend-mode:multiply;transform:scale(1.04);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.un-cap2-c:hover .un-cap2-fig img{transform:scale(1)}
+.un-cap2-n{position:absolute;left:18px;top:16px;font:600 12px/1 "Switzer",sans-serif;letter-spacing:.18em;color:#EC2027}
+.un-cap2-body{display:flex;flex-direction:column;padding:clamp(24px,2.4vw,36px)}
+.un-page .un-cap2-body h3{margin:0;font:600 clamp(22px,1.9vw,28px)/1.15 "Switzer","Instrument Sans",sans-serif;letter-spacing:-.02em;color:#0C1220}
+.un-cap2-body p{margin:12px 0 0;font-size:15px;line-height:1.6;color:var(--soft);max-width:52ch}
+.un-cap2-k{margin-top:clamp(22px,3vh,30px);font:600 11px/1 "Switzer",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C86A0}
+.un-cap2-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.un-cap2-list li{display:flex;align-items:center;gap:12px;padding:10px 12px 10px 10px;background:#F6F8FB;border:1px solid rgba(12,18,32,.05);font:500 14px/1.3 "Switzer","Instrument Sans",sans-serif;color:#0C1220;transition:background .35s ease,border-color .35s ease}
+.un-cap2-ic{flex:none;display:grid;place-items:center;width:36px;height:36px;background:#fff;border:1px solid rgba(236,32,39,.22);color:#EC2027;transition:background .35s ease,color .35s ease}
+.un-cap2-ic svg{width:19px;height:19px;stroke-width:1.35}
+.un-cap2-list li:hover{background:#fff;border-color:rgba(236,32,39,.28)}
+.un-cap2-list li:hover .un-cap2-ic{background:#EC2027;color:#fff}
+@media(max-width:980px){.un-cap2-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.un-cap2-list{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.un-cap2-c,.un-cap2-c::before,.un-cap2-fig img{transition:none}}
+
+/* 22 Oct (PCU & TTI hero: "too close with the frame"): the red/blue phrase was held on one line (nowrap), so "Total Tool
+   Installation (TTI)" ran out of its column into the picture. It wraps now, at the same size as every unit's title ("does
+   this font size same as EPC?": yes, it takes another line rather than a smaller size). */
+.un-h1 em{ white-space:normal; }
+/* 22 Oct (PCU & TTI title on three lines, the last one whole): the blue line holds together on wide screens, and this page's
+   copy column takes more of the hero so that line fits at the same size as every unit title; phones let it wrap */
+.un-h1 .un-h1-line{ white-space:nowrap; }
+@media(min-width:861px){ .un-page[data-unit="cap-tool"] .un-hero-in{ grid-template-columns:minmax(0, 1.3fr) minmax(0, .7fr); } }
+.un-page[data-unit="cap-tool"] .un-h1{ max-width:none; }
+@media(max-width:860px){ .un-h1 .un-h1-line{ white-space:normal; } }
+
+/* 22 Oct (EPC capabilities, "make grid", "with icon follow branding design"): three by two, white cards on hairlines. Each
+   carries the logo's three red bars as its accent, its number, a large mark drawn to the house icon spec, and the name. On
+   hover the bars run out, the card lifts and the mark's red part lifts off its drawing (as the record marks do). */
+.un-capg{ list-style:none; margin:clamp(28px,4vh,44px) 0 0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.un-capg li{ position:relative; display:grid; grid-template-columns:1fr auto; grid-template-rows:auto 1fr auto; grid-template-areas:"bars n" "mk mk" "t t"; row-gap:22px;
+  min-height:clamp(230px,18vw,270px); padding:clamp(24px,2.2vw,32px); background:#fff; border:1px solid rgba(12,18,32,.08);
+  box-shadow:0 1px 2px rgba(12,18,32,.03); transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease, border-color .5s ease; }
+.un-capg li:hover{ transform:translateY(-4px); border-color:rgba(236,32,39,.25); box-shadow:0 30px 56px -36px rgba(12,18,32,.35); }
+.un-capg-bars{ grid-area:bars; display:grid; gap:3px; align-self:center; }
+.un-capg-bars i{ display:block; height:3px; width:28px; background:#EC2027; transition:width .55s cubic-bezier(.2,.8,.2,1); }
+.un-capg-bars i:nth-child(2){ width:20px; transition-delay:.04s; } .un-capg-bars i:nth-child(3){ width:12px; transition-delay:.08s; }
+.un-capg li:hover .un-capg-bars i{ width:56px; } .un-capg li:hover .un-capg-bars i:nth-child(2){ width:44px; } .un-capg li:hover .un-capg-bars i:nth-child(3){ width:32px; }
+.un-capg-n{ grid-area:n; align-self:center; font:600 12px/1 "Switzer",sans-serif; letter-spacing:.18em; color:#9AA3B2; }
+.un-capg-mk{ grid-area:mk; align-self:center; width:clamp(64px,5.4vw,80px); height:clamp(64px,5.4vw,80px); color:#0C1220; }
+.un-capg-mk svg{ display:block; width:100%; height:100%; overflow:visible; }
+.un-capg-mk .sig{ transition:transform .55s cubic-bezier(.2,.8,.2,1); }
+.un-capg li:hover .un-capg-mk .sig{ transform:translateY(-1.4px); }
+.un-page .un-capg li > b{ grid-area:t; font:600 clamp(19px,1.6vw,23px)/1.2 "Switzer","Instrument Sans",sans-serif!important; letter-spacing:-.02em; color:#0C1220; }
+@media (max-width:1100px){ .un-capg{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:560px){ .un-capg{ grid-template-columns:1fr; } .un-capg li{ min-height:0; grid-template-columns:auto 1fr auto; grid-template-areas:"mk t n"; grid-template-rows:auto; column-gap:16px; align-items:center; }
+  .un-capg-bars{ display:none; } .un-capg-mk{ width:52px; height:52px; } }
+@media (prefers-reduced-motion:reduce){ .un-capg li, .un-capg-bars i, .un-capg-mk .sig{ transition:none; } }
+.un-capg-mk svg [stroke="currentColor"]{ stroke-width:.62; } .un-capg-mk svg [stroke="#EC2027"]{ stroke-width:1.15; }   /* 22 Oct: the house weights scaled for a mark this large */

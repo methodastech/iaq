@@ -22,7 +22,12 @@ import { sysIcon } from './codex/RelExplorer.jsx'   /* 25 Sep (Bazil: "you can a
    plant at night). Each unit now carries a generic picture generated in ChatGPT, with no client, site, sign or name in it:
    EPC, engineers reviewing drawings at a factory under construction; PCU & TTI, engineers in cleanroom suits checking a
    process utility valve panel in a sub-fab; EFM, a routine round in a chiller plant room. */
-const PHOTO = { epc: '/assets/units/unit-card-epc.webp', hookup: '/assets/units/unit-card-pcu.webp', efm: '/assets/units/unit-card-efm.webp' }
+/* 22 Oct (IAQ: "they want to change" the three unit pictures): new generic stills generated in ChatGPT, dry matte floors,
+   no client, site, sign or name. Then (Bazil: "i dont like process doing the work ... avoid making process work"): no one
+   shown doing hands-on work, so how IAQ operates is never open to question. EPC, two engineers with a tablet in a finished,
+   empty factory hall; PCU & TTI, a completed utility hookup along a row of tools, no people; EFM, engineers watching the
+   plant's energy and chilled water trends in a control room, the chiller plant behind the glass. */
+const PHOTO = { epc: '/assets/units/unit-card-epc-v3.webp', hookup: '/assets/units/unit-card-pcu-v3.webp', efm: '/assets/units/unit-card-efm-v2.webp' }
 const MARKETS = { epc: 'All seven markets: semiconductor, data centre, EV battery, photovoltaics, district cooling, bio lifescience, food and beverage.', hookup: 'Semiconductor fabs only.', efm: 'Any facility with a cooling or energy bill worth cutting: chiller plants, district cooling, industrial plant.' }
 const workById = id => WORK.find(w => w.id === id)
 const svcById = id => SERVICES.find(s => s.id === id)

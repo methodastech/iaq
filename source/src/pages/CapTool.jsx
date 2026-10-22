@@ -19,7 +19,8 @@ export default function CapTool() {
       full="Process Critical Utilities & Total Tool Installation Solutions"
       /* 19 Oct (client feedback, PCU & TTI · "Direct header, no explanation", High): the unit's own name as the header, and
          IAQ's line under it, in place of "The last hundred metres, where a facility becomes a fab." */
-      title={<>Process Critical Utilities (PCU) &amp; <em>Total Tool Installation (TTI)</em></>}
+      /* 22 Oct: set on three lines, as asked: "Process Critical / Utilities (PCU) & / Total Tool Installation (TTI)" */
+      title={<>Process Critical<br />Utilities (PCU) &amp;<br /><em className="un-h1-line">Total Tool Installation (TTI)</em></>}
       lede="Bridging Facility Readiness and Manufacturing Readiness"
       /* 29 Sep (client, Website Update: the hero's line "should be under below section", "you missing out the PCU
          description"): the line moved under "What PCU & TTI is." as the TTI half, beside a PCU half (whatParts) */
@@ -37,8 +38,24 @@ export default function CapTool() {
            a leak test probe, matte floor with no reflections. No faces from IAQ's Robocon photographs are reproduced.
            The client's 24 Sep line against generated installation footage is on record; this is Bazil's call. The
            photograph it replaces (P1010242) stays on the hub's Tools Hookup card. */
-        video: '/assets/videos/hookup-team-rep.mp4',
-        src: '/assets/iaq/hookup-team-rep.webp', hero: true,   /* 15 Sep: Higgsfield still, a connected tool in a bay, no people (the wrench shot was rejected: "the guy playing a screw"); no loop on this page */   /* 15 Sep: Higgsfield still, a representation */
+        /* 22 Oct (Bazil: "i dont like process doing the work. cause it might be have an isssue regarding how we operate. so
+           avoid making process work"; this video "is ai generated can you replace it"): the team loop is off the hero. Now a
+           finished hookup with nobody in it: a wrapped tool, its stainless utility lines rising from the open raised floor
+           to the connection panel, barriers round the opening, and only the camera moving. GPT Image 2.5 still, Seedance
+           2.5 start-image 8 s 1080p played forward then back (no seam dissolve, so no double image), both in Higgsfield. Still a representation. The
+           team loop and still stay in the folder. */
+        /* 22 Oct, later (Bazil: the client's example for tool installation, a phone video of a tool move-in along a protected
+           floor path, "dont copy one to one ... you can make video for it"): the same idea, made new and still with no one
+           doing hands-on work. A film-wrapped tool on its transport skid waits on a grey anti-static path edged in blue
+           tape, down the middle of a large new cleanroom; the camera glides along the path towards it. Matte floor, no
+           signs or notes (the example's glossy floor and paper notices are left out). GPT Image 2.5 still, Seedance 2.5
+           start-image 8 s 1080p played forward then back, in Higgsfield. A second take with three people in cleanroom
+           coats walking beside the tool, far off, is kept as tool-movein-b in the same folders. */
+        /* 22 Oct ("replace the video", hall-movein from Downloads): a slow move down a finished, empty cleanroom hall with the
+           tools standing along both sides. HEVC re-encoded to H.264 for every browser, played forward then back so the loop
+           has no jump; the still is its first frame. tool-movein-a stays in the folder. */
+        video: '/assets/videos/tool-movein-hall.mp4',
+        src: '/assets/iaq/tool-movein-hall.webp', hero: true,   /* 15 Sep: Higgsfield still, a connected tool in a bay, no people (the wrench shot was rejected: "the guy playing a screw"); no loop on this page */   /* 15 Sep: Higgsfield still, a representation */
         /* 26 Sep (Bazil: "the people in the video did not wear what the engineers wear in the 3D, nor the people in the
            picture I said", "please redo"): the team now wears IAQ's own site kit, as the walkthrough's engineers do and as
            the IAQ x UM Robocon team does: navy long-sleeve polo with the red IAQ chest logo, navy work trousers, white hard
@@ -48,14 +65,15 @@ export default function CapTool() {
            actual work"): three engineers, all hands-on (one torques a fitting with an open-end wrench, one seats a connector
            at the tool's utility panel, one opens a valve); nobody holding a tablet. GPT Image 2.5 edit of the previous still
            (job 5f9e3ce2), Seedance 2.5 start-image 8 s 1080p (job 348b2b04), 7 s loop with a 1 s seam dissolve. */
-        alt: 'Representation: three IAQ engineers in navy site polos, hard hats and shoe covers hooking up a wrapped process tool: one tightens a stainless fitting with a wrench, one connects a cable at the utility panel, one opens a valve',
+        alt: 'Representation: a slow move down a large finished cleanroom, its process tools standing along both sides of the hall',
       }}
       rep
       /* 15 Sep (UnitPage): the hero facts, the "why it is hard" line, the hookup diagram. Six services and six steps
          are the page's own sequence and scope; sectors from the plan brief. */
       /* 17 Sep: IAQ's own photograph (SharePoint Cleanroom Photos/DSCN6580): the team crossing a finished ballroom.
          Nothing generated is left on this page, so no representation tag. */
-      band="/assets/iaq/cr-team-dscn6580.webp"
+      /* 21 Oct (Bazil: "remove those people"): the same photograph with the people removed in ChatGPT */
+      band="/assets/iaq/cr-team-dscn6580-empty.webp"
       /* 26 Sep: the band is IAQ's own photograph; only the hero loop is generated, so only the hero carries the tag */
       bandRep={false}
       art="hookup"
@@ -66,14 +84,7 @@ export default function CapTool() {
          the "Call PCU & TTI when" line are off it */
       hideWhen
       hard={{ k: 'The last work done, with the least margin for error.', t: 'The facility is finished, the cleanroom is live, the tool is worth more than the room, and the programme arrives compressed. The work is planned and sequenced to hold the date.' }}
-      /* the pair: what the tool is when it lands and what it is when IAQ hands it over, from the page's own steps */
-      modelsHead={<>What arrives, <em>what leaves.</em></>}
-      models={[
-        { t: 'Delivered', s: 'The tool lands', d: 'A boxed tool on the floor of a live, classified cleanroom, waiting to be connected and energised on a compressed programme.',
-          pts: ['Footprint and drops set out against the as-built facility', 'Moved in with the classification held', 'Worth more than the room it sits in'] },
-        { t: 'Producing', s: 'IAQ hands it over', d: 'Every service brought to the tool and terminated to its own specification, then proven before anyone switches it on.',
-          pts: ['Power, gases, chemicals, UPW, exhaust and drainage connected', 'Pressure-tested, purged and verified', 'Interlocked into the facility, released with its documentation'] },
-      ]}
+      /* 21 Oct ("remove"): the "What arrives, what leaves." pair (Delivered, Producing) is off the page */
       /* 24 Sep (client: "To remove below section, repetitive from its top description"): the At a glance ledger is gone */
       /* 29 Sep (client): both halves of the unit, PCU then TTI. The PCU line is the page's own (the utilities section's
          lede and the first `what` paragraph); the TTI line is the hero's, moved here as the client asked. */
@@ -93,6 +104,35 @@ export default function CapTool() {
       /* 17 Sep: IAQ's own Revit extract for this system, from the SharePoint share */
       /* 25 Sep (Bazil: "3 sub pages business unit"): the Process Critical Utilities page folds in here as the unit's
          first half, its five steps as the utilities section; the four phases below are the tool installation */
+      /* 22 Oct (IAQ amendment sheet, PCU & TTI · Capabilities, High): "What We Deliver" as two capability cards, IAQ's text as
+         given ("Installlation", "Tetsing" corrected). Pictures: IAQ's own model extracts, the isometric utility network for PCU
+         and the tool hook-up layout for TTI. They replace the five-step utilities strip below (servicesHead etc., kept). */
+      capCards={{
+        head: <>What We <em>Deliver</em></>,
+        cards: [
+          { t: 'Process Critical Utilities', img: '/assets/iaq/bim-process.webp', alt: 'An isometric view of a process utility network in the model: the gas, water and exhaust mains and their branches',
+            d: 'Specialised utility systems that support the safe and reliable operation of semiconductor manufacturing facilities.',
+            listHead: 'Core Solutions',
+            items: [
+              { t: 'Specialty Gas Systems', icon: 'gas' },
+              { t: 'Chemical Distribution Systems', icon: 'flask' },
+              { t: 'Ultra-Pure Water (UPW)', icon: 'water' },
+              { t: 'Process Exhaust Systems', icon: 'airflow' },
+              { t: 'Waste Collection Treatment Systems', icon: 'sysWaste' },
+            ] },
+          { t: 'Total Tool Installation', img: '/assets/iaq/bim-hookup.webp', alt: 'An isometric view of a tool hook-up layout in the model: the production tools and the services that reach them',
+            d: 'Comprehensive equipment integration services supporting manufacturing start-up and production readiness.',
+            listHead: 'Core Services',
+            items: [
+              { t: 'Equipment Move-In', icon: 'crate' },
+              { t: 'Tool Installation', icon: 'pcuUnit' },
+              { t: 'Utility Hook-Up', icon: 'link' },
+              { t: 'System Integration', icon: 'layers' },
+              { t: 'Testing & Verification', icon: 'gauge' },
+              { t: 'Commissioning Support', icon: 'check' },
+            ] },
+        ],
+      }}
       servicesHead={<>Process critical utilities, <em>run as one system.</em></>}
       /* 26 Sep: the five utility steps run in sequence, drawn as a process strip; the pair below reads as a change */
       servicesFlow

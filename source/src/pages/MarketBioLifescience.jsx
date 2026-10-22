@@ -44,13 +44,7 @@ export default function MarketBioLifescience() {
         'Life science environments depend on reliable infrastructure, environmental control and operational consistency.',
       ]}
       hideScope
-      standards={{
-        head: 'ISO class and GMP grade, held together',
-        k: 'Cleanroom classification',
-        body: 'Recorded projects run from ISO 5 to ISO 8, Class 100 to Class 100K, alongside GMP Grades B, C and D. The pressure cascade, the finishes and the clean utilities are designed to the regulatory guideline from the first drawing rather than retrofitted to it later.',
-        k2: 'Validation-ready handover',
-        body2: 'We test and commission to our established programme. It proves the facility operates as intended, at its best, and meets every specified requirement. Anything the programme identifies is resolved and verified, so the facility is fully functional when it is handed over.',
-      }}
+      /* 21 Oct ("remove"): the "ISO class and GMP grade, held together" section is off the page */
       proofLede="Published Bio LifeScience projects from the sample registry, from small volume parenteral through to tissue culture laboratories."
     />
   )

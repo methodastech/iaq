@@ -141,7 +141,7 @@ const MENUS = [
        (main.jsx) and scenes/careers.js. */
     hub: 'careers', label: 'Careers',
     /* 24 Sep (Bazil: "career should land here", on the roles banner): the trigger lands on the roles, not the page top */
-    to: '/careers#roles',
+    to: '/careers',   /* 22 Oct ("when i click that should be redirect to top of the page"): the page top; the roles are a pick in the wing */
     lead: { title: 'Careers', pitch: `${ROLES.length} roles open in engineering, project delivery, commercial and finance, in Shah Alam and Penang.`, cta: 'Open Careers' },
     cols: [
       { head: 'One page, two sections', note: 'Culture first, then the open roles', kind: 'units', links: [

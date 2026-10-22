@@ -43,11 +43,7 @@ export default function MarketDistrictCooling() {
         'District cooling and heating systems help optimise energy use, improve reliability and support long-term sustainability objectives.',
       ]}
       hideScope
-      standards={{
-        head: 'Measured in efficiency, not in particles',
-        k: 'Classification',
-        body: 'Cleanroom classification does not apply to district energy. These plants are judged on efficiency at scale, on availability across every connected building, and on the cost of the energy delivered across a long operating life.',
-      }}
+      /* 22 Oct ("remove"): the "Measured in efficiency, not in particles" section and its content slot are off the page */
       slot={{
         tag: 'Content slot · district cooling',
         title: 'Plant capacity and efficiency record',

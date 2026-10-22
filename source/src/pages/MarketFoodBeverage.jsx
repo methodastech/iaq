@@ -45,11 +45,7 @@ export default function MarketFoodBeverage() {
         'Food and beverage production relies on reliable infrastructure that supports product quality, efficiency and uninterrupted operations.',
       ]}
       hideScope
-      standards={{
-        head: 'A hygienic specification, not an ISO class',
-        k: 'Classification',
-        body: 'Food and beverage projects on the record carry a hygienic specification rather than an ISO cleanroom class. Cleanliness is designed into the layout, the finishes and the process utilities, then proven at commissioning before the first production run.',
-      }}
+      /* 22 Oct ("remove"): the "A hygienic specification, not an ISO class" section and its content slot are off the page */
       slot={{
         tag: 'Content slot · food and beverage',
         title: 'Food safety standards and certification',

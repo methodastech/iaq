@@ -560,3 +560,6 @@ h2.kind-h.k-w{color:#231F20}
 .dd-li:hover .dd-ic,.dd-li:focus-visible .dd-ic,.dd-li:hover .dd-no,.dd-li:hover .dd-ln{color:inherit;border-color:transparent;box-shadow:none;transform:none}
 .mkb ~ * .dd-ic,.mkb ~ * .dd-li:hover .dd-ic{color:var(--mk-t)}
 .mkb ~ * .dd-no,.mkb ~ * .dd-li:hover .dd-no{color:var(--mk-t)}
+/* 22 Oct (History: "why there are whitespace, please this section fit it screen"): the video banner fills the window under the
+   nav, as the Home and About heroes do; phones keep their own height (the 700px rule above) */
+@media(min-width:701px){header.vb{margin-top:0;min-height:calc(100svh / var(--zoomf, 1) - var(--navh, 78px) - var(--tbh, 0px))}}

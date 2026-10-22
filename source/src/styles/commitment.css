@@ -235,3 +235,20 @@
 .cc-esg-c h3{ margin:0; padding:clamp(22px,2vw,30px) clamp(22px,2vw,30px) 0; font:600 clamp(20px,1.6vw,24px)/1.2 "Switzer","Instrument Sans",sans-serif; letter-spacing:-.02em; color:var(--cc-ink); }
 .cc-esg-c p{ margin:12px 0 0; padding:0 clamp(22px,2vw,30px) clamp(24px,2.2vw,32px); font-size:15px; line-height:1.6; color:var(--cc-soft); }
 @media(max-width:960px){ .cc-esg-head{ grid-template-columns:1fr; gap:16px; } .cc-esg{ grid-template-columns:1fr; } }
+
+/* 22 Oct ("on mobile, make like slider and indicator rather than vertical scroll"): under 960px the three pillars swipe
+   sideways, one card to a screen with the next peeking in, snapping card by card; three indicators under them, the active
+   one a long red bar. Wider screens keep the three in a row and hide the indicators. */
+.cc-esg-dots{ display:none; }
+@media(max-width:960px){
+  .cc-esg{ display:grid; grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:86%; gap:12px; overflow-x:auto; overscroll-behavior-x:contain;
+           scroll-snap-type:x mandatory; scrollbar-width:none; margin-inline:calc(var(--gut, 16px) * -1); padding-inline:var(--gut, 16px); scroll-padding-inline:var(--gut, 16px); }
+  .cc-esg::-webkit-scrollbar{ display:none; }
+  .cc-esg-c{ scroll-snap-align:start; }
+  .cc-esg-dots{ display:flex; justify-content:center; gap:8px; margin-top:20px; }
+  .cc-esg-dots button{ width:8px; height:8px; padding:0; border:0; border-radius:8px; background:rgba(12,18,32,.18); cursor:pointer; transition:width .4s cubic-bezier(.2,.8,.2,1), background .4s ease; }
+  .cc-esg-dots button.on{ width:28px; background:#EC2027; }
+  .cc-esg-dots button:focus-visible{ outline:2px solid #EC2027; outline-offset:3px; }
+}
+@media(min-width:620px) and (max-width:960px){ .cc-esg{ grid-auto-columns:60%; } }
+@media(prefers-reduced-motion:reduce){ .cc-esg-dots button{ transition:none; } }

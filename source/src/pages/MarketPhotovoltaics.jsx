@@ -43,11 +43,7 @@ export default function MarketPhotovoltaics() {
         'Reliable infrastructure supports production efficiency, operational stability and long-term manufacturing growth.',
       ]}
       hideScope
-      standards={{
-        head: 'Classified where the process needs it',
-        k: 'Cleanroom classification',
-        body: 'The published module plant runs at ISO 6, Class 1K, and solar cell production is recorded at ISO 8, Class 100K. Where the process does not need a classified environment, the record shows Not Applicable and the control effort moves to materials handling and waste instead.',
-      }}
+      /* 22 Oct ("remove"): the "Classified where the process needs it" section and its content slot are off the page */
       slot={{
         tag: 'Content slot · photovoltaics',
         title: 'Regulatory consents and waste approvals',

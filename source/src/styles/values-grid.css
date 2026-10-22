@@ -261,7 +261,8 @@
    photograph of six cards. The object on each card is counter-rotated out of the board so it
    stands as a sprite on the plate; the plate takes the plane, the object takes the camera.
    ============================================================================================ */
-.vb{ position:relative; margin-top:clamp(30px,4.5vh,56px); }
+div.vb{ position:relative; margin-top:clamp(30px,4.5vh,56px); }   /* 22 Oct: div only. The History page's video banner is header.vb, and once
+   this file had loaded (About) the bare .vb gave that banner a white gap above it */
 .vb-stage{ display:none; }
 .vb-flat{ display:block; }
 @media (min-width:900px) and (prefers-reduced-motion:no-preference){

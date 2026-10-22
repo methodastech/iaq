@@ -275,13 +275,15 @@ vec3 detN() { vec3 n = vDetNrm; if (dot(n, n) < 1e-10) n = cross(dFdx(vDetPos), 
   let corners0 = []
   /* the vertical band the fab may fill, in canvas CSS px: from lift's wanted top to 14px above the tools row, the tools
      row taken where it sits with the tallest reading open (--read-max on the panel); .74 of the box when there is no row */
+  /* 22 Oct (phone: the facility map stood empty): the head counts only when it stands OVER the canvas. On phones it sits
+     below the canvas, and its distance pushed the model's top under the canvas's foot, so nothing showed. */
   function bandPx() {
     const h = root.clientHeight || 200, cr = root.getBoundingClientRect(), z = cr.height / h || 1
     const sec = root.closest('.sm-map-dark'), head = sec && sec.querySelector('.sm-map-head-r, .sm-map-head')
     const v = camera.view && camera.view.enabled ? camera.view : null, share = v ? v.fullWidth / (root.clientWidth || 300) : 1
     let want = h * .14
     if (head) { const hr = head.getBoundingClientRect()
-      if (hr.width > 0 && hr.left < cr.left + cr.width * share && hr.bottom > cr.top) want = Math.max(want, (hr.bottom - cr.top) / z + 28) }
+      if (hr.width > 0 && hr.left < cr.left + cr.width * share && hr.bottom > cr.top && hr.top < cr.bottom) want = Math.max(want, (hr.bottom - cr.top) / z + 28) }
     let bottom = h * .74
     const tools = sec && sec.querySelector('.sm-map-tools'), panel = sec && sec.querySelector('.sm-map-read-b')
     /* 26 Sep (Bazil: "the building can be bigger and a bit lower"): version 2 has no reading panel, and the row was only
@@ -308,7 +310,7 @@ vec3 detN() { vec3 n = vDetNrm; if (dot(n, n) < 1e-10) n = cross(dFdx(vDetPos), 
     let want = h * .14
     const sec = root.closest('.sm-map-dark'), head = sec && sec.querySelector('.sm-map-head-r, .sm-map-head')
     if (head) { const hr = head.getBoundingClientRect(), cr = root.getBoundingClientRect(), z = cr.height / h || 1, share = fw / w
-      if (hr.width > 0 && hr.left < cr.left + cr.width * share && hr.bottom > cr.top) want = Math.max(want, (hr.bottom - cr.top) / z + 28) }
+      if (hr.width > 0 && hr.left < cr.left + cr.width * share && hr.bottom > cr.top && hr.top < cr.bottom) want = Math.max(want, (hr.bottom - cr.top) / z + 28) }
     /* 26 Sep (Bazil: "not too far to the top, just nice in the middle"): the fab sits in the middle of the room between
        the head and the tools row (bandPx), whatever height the fit gave it */
     const hpx = (maxY - minY) / 2 * h

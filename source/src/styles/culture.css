@@ -649,3 +649,11 @@
 /* 19 Oct: the growth heading's mark is the plain mortarboard (RecordFlat.jsx), not the isometric diorama */
 .cu-h2-mk .cu-hmk.cu-hmk-ln { width: 64px; height: 64px; margin: 0 0 14px; color: currentColor; }
 @media (max-width: 720px) { .cu-h2-mk .cu-hmk.cu-hmk-ln { width: 52px; height: 52px; margin: 0 0 10px; } }
+
+/* 22 Oct (Careers values, "check alignment"): every card in a row shares the same four rows (scene, title, line, proof), so
+   the proof lines start on one level even when one card's line runs to three lines and its neighbour's to two. Above the
+   phone layout only (the 640px block sets its own grid). */
+@media (min-width: 641px) {
+  .cu-vgrid .cu-vc { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
+  .cu-vgrid .cu-vc > .cu-vc-line, .cu-vgrid .cu-vc > .cu-vc-proof { align-self: start; }
+}

@@ -7,10 +7,15 @@ import MarketFlow from './MarketFlow.jsx'
    cleanroom photographs (SharePoint, Cleanroom Photos); the five others are generated facility stills (gpt_image_2,
    architectural, no people) and are tagged Representation, as the house rule requires. */
 const BAND = {
-  'mkt-semiconductor':   { src: '/assets/markets/band-semiconductor.jpg',   alt: 'A cleanroom bay delivered by IAQ, under its ceiling grid and light lines', cap: 'A cleanroom delivered by IAQ' },
-  'mkt-bio-lifescience': { src: '/assets/markets/band-bio-lifescience.jpg', alt: 'A wide cleanroom hall delivered by IAQ', cap: 'A cleanroom delivered by IAQ' },
-  'mkt-data-centre':     { src: '/assets/markets/band-data-centre.jpg',     alt: 'A data hall: rows of server racks along a cold aisle', cap: 'A data hall', rep: true },
-  'mkt-ev-battery':      { src: '/assets/markets/band-ev-battery.jpg',      alt: 'A battery dry room with cell assembly equipment behind glass', cap: 'A gigafactory dry room', rep: true },
+  /* 22 Oct (Bazil: "generate new one and replace"): a wafer fab bay generated in ChatGPT in place of the ceiling photograph */
+  'mkt-semiconductor':   { src: '/assets/markets/band-semiconductor-fab.jpg', alt: 'A semiconductor fab bay: process tools either side of the aisle, raised perforated floor, ceiling grid', cap: 'A semiconductor fab bay', rep: true },
+  /* 21 Oct (Bazil: "the floor should no reflection"): the same photograph with a matte floor and no date stamp, edited in ChatGPT;
+     22 Oct ("remove the scafolding"): the scaffold tower at the back wall is painted out */
+  'mkt-bio-lifescience': { src: '/assets/markets/band-bio-lifescience-clean.jpg', alt: 'A wide cleanroom hall delivered by IAQ', cap: 'A cleanroom delivered by IAQ' },
+  /* 22 Oct (Bazil: "should be consistent, the image should be big"): Data Centre and EV Battery carry the full-width band
+     like Semiconductor, each a ChatGPT-generated still (no people, no logos) in place of the stills the client removed */
+  'mkt-data-centre':     { src: '/assets/markets/band-data-centre-plant.jpg', alt: 'A data centre central utility plant: chillers, pumps and insulated chilled water pipes, switchgear behind', cap: 'A data centre utility plant', rep: true },
+  'mkt-ev-battery':      { src: '/assets/markets/band-ev-battery-line.jpg', alt: 'An enclosed battery cell assembly line, utility ducts and pipes overhead', cap: 'A battery cell assembly line', rep: true },
   'mkt-photovoltaics':   { src: '/assets/markets/band-photovoltaics.jpg',   alt: 'A solar module production line with cells on conveyors', cap: 'A cell and module line', rep: true },
   'mkt-district-cooling':{ src: '/assets/markets/band-district-cooling.jpg',alt: 'A district cooling plant room with chillers and chilled water headers', cap: 'A district cooling plant room', rep: true },
   'mkt-food-beverage':   { src: '/assets/markets/band-food-beverage.jpg',   alt: 'A hygienic food and beverage processing hall with stainless vessels', cap: 'A hygienic processing hall', rep: true },
@@ -55,6 +60,29 @@ export function projectsFor(ind) {
   return PROJECTS.map((p, i) => ({ ...p, i })).filter(p => p.ind === ind)
 }
 
+/* 22 Oct (client: the market pages look "plain, no color"): the section headings take the house form, the last word in the
+   market violet, and the overview stands beside a picture of the market (the same set the home page's market strip uses,
+   not the hero's own frame) */
+const accent = h => {
+  if (typeof h !== 'string') return h
+  const k = h.lastIndexOf(' ')
+  return k > 0 ? <>{h.slice(0, k)} <em>{h.slice(k + 1)}</em></> : h
+}
+/* 22 Oct (Bazil: "please generate new image related with the market. i dont want to use repeated image"): the overview
+   pictures no longer repeat the home page's market strip. Seven new stills generated in ChatGPT, each a subject the page
+   does not show elsewhere (not the hero, not the band): a wafer at a load port, a data centre roof of dry coolers, an
+   electrode coating line, solar cells at a robot gripper, a district cooling pipe tunnel, an aseptic filling isolator, a
+   high-care packing line. Matte floors, no logos or readable text. Representations, so no project is claimed */
+const OVPIC = {
+  'mkt-semiconductor': '/assets/markets/ov-semiconductor.jpg',
+  'mkt-data-centre': '/assets/markets/ov-data-centre.jpg',
+  'mkt-ev-battery': '/assets/markets/ov-ev-battery.jpg',
+  'mkt-photovoltaics': '/assets/markets/ov-photovoltaics.jpg',
+  'mkt-district-cooling': '/assets/markets/ov-district-cooling.jpg',
+  'mkt-bio-lifescience': '/assets/markets/ov-bio-lifescience.jpg',
+  'mkt-food-beverage': '/assets/markets/ov-food-beverage.jpg',
+}
+
 export default function MarketPage({
   id, no, name, title, lede, image, ind, hash,
   facts = [], why, demands = [], deliverIntro = [], scopeTitle,
@@ -65,6 +93,18 @@ export default function MarketPage({
   whyKick = 'What this market demands', demandsHead, whyMore, hideBand = false, deliverKick = 'How IAQ delivers it', deliverHead, hideScope = false,
 }) {
   useEffect(() => { document.title = `IAQ Group · ${name} · Brand Method` }, [name])
+  /* 22 Oct: the capability cards' light follows the pointer (markets.css, .mk-caps .dd-n::before); in percent, so the page zoom
+     on wide screens does not throw it off */
+  useEffect(() => {
+    const cards = [...document.querySelectorAll('.mk-caps .dd-n')]
+    const move = e => {
+      const r = e.currentTarget.getBoundingClientRect()
+      e.currentTarget.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%')
+      e.currentTarget.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%')
+    }
+    cards.forEach(c => c.addEventListener('pointermove', move))
+    return () => cards.forEach(c => c.removeEventListener('pointermove', move))
+  }, [id])
 
   const proof = projectsFor(ind)
   const scope = SCOPES[ind] || []
@@ -109,17 +149,27 @@ export default function MarketPage({
       {/* ------------------------------- 02 · what this market demands */}
       <section className="pg-sec">
         <div className="pg-in">
-          {whyKick && <span className="pg-k">{whyKick}</span>}
-          <h2>{why.head}</h2>
-          {why.quote ? (
-          <div className="pg-split">
-            <blockquote className="pg-pull"><small>{why.cite}</small>{why.quote}</blockquote>
-            <p className="pg-body u-mt0">{jargon(why.body)}</p>
+          <div className={'mk-ov' + (OVPIC[id] ? ' has-fig' : '')}>
+            <div className="mk-ov-copy">
+              {whyKick && <span className="pg-k">{whyKick}</span>}
+              <h2>{accent(why.head)}</h2>
+              {why.quote ? (
+              <div className="pg-split">
+                <blockquote className="pg-pull"><small>{why.cite}</small>{why.quote}</blockquote>
+                <p className="pg-body u-mt0">{jargon(why.body)}</p>
+              </div>
+              ) : <p className="pg-body mk-why-body">{jargon(why.body)}</p>}
+            </div>
+            {OVPIC[id] && (
+              <figure className="mk-ov-fig" aria-hidden="true">
+                <img src={OVPIC[id]} alt="" loading="lazy" decoding="async" />
+                <span className="mk-ov-mark"><Icon name={({ 'mkt-semiconductor': 'chip', 'mkt-data-centre': 'server', 'mkt-ev-battery': 'battery', 'mkt-photovoltaics': 'sun', 'mkt-district-cooling': 'snow', 'mkt-bio-lifescience': 'flask', 'mkt-food-beverage': 'bottle' })[id] || 'factory'} /></span>
+              </figure>
+            )}
           </div>
-          ) : <p className="pg-body mk-why-body">{jargon(why.body)}</p>}
           {/* 20 Oct: a second heading and paragraph under the overview (Semiconductor, "How IAQ Supports ...") */}
-          {whyMore && <><h3 className="mk-demands-h">{whyMore.head}</h3><p className="pg-body mk-why-body">{jargon(whyMore.body)}</p></>}
-          {demandsHead && <h3 className="mk-demands-h">{demandsHead}</h3>}
+          {whyMore && <div className="mk-supp"><h3 className="mk-demands-h">{accent(whyMore.head)}</h3><p className="pg-body mk-why-body">{jargon(whyMore.body)}</p></div>}
+          {demandsHead && <h3 className="mk-demands-h">{accent(demandsHead)}</h3>}
           {/* the requirements as icon tiles (2 Sep): what the market is judged on, each with its
               own mark, no order implied */}
           <div className={demandsHead ? 'mk-caps' : undefined}><DetailDiagram variant="grid" items={demands.map(d => (typeof d === 'string' ? { label: d } : d))} ariaLabel="What this market demands" /></div>
@@ -130,7 +180,7 @@ export default function MarketPage({
       <section className="pg-sec calm">
         <div className="pg-in">
           {deliverKick && <span className="pg-k">{deliverKick}</span>}
-          <h2>{deliverHead || 'One accountable team, every system'}</h2>
+          <h2>{accent(deliverHead || 'One accountable team, every system')}</h2>
           {deliverIntro.map((p, i) => <p className="pg-body" key={i}>{jargon(p)}</p>)}
 
           {/* 25 Sep, night (Bazil: "make sure every market complete flow or diagram easier for people to understand"): one
@@ -188,7 +238,7 @@ export default function MarketPage({
       <section className="pg-sec calm">
         <div className="pg-in">
           <span className="pg-k">Proof</span>
-          <h2>Delivered in this market</h2>
+          <h2>Delivered in this <em>market</em></h2>
           <p className="pg-lede">{proofLede}</p>
 
           <div className={proof.length < 3 ? 'pg-proof few' : 'pg-proof'}>

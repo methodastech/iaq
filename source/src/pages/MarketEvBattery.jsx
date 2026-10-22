@@ -41,7 +41,6 @@ export default function MarketEvBattery() {
       hideScope
       /* 21 Oct (client review, Sunny, on "Dry room, not cleanroom": "this explanation is for BM or for IAQ's audience"): the
          standards section is gone; and the dry room still above it ("same comment as before", generated, not IAQ's project) */
-      hideBand
       proofLede="Published EV battery projects from the sample registry, from European gigafactory dry rooms to lithium cell facilities in Southeast Asia."
     />
   )
