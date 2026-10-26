@@ -344,6 +344,8 @@ export default function Careers() {
               · 2.6 million: crossed 28 February 2025 on the XFAB 40K Expansion Project (newsroom 28 Feb 2025)
               · DOSH Kuching: July 2025, banner "2.74 million Safe Manhours without LTI" (newsroom 3 Jul 2025)
             Zero LTI: the client wafer fab building IAQ delivered with zero lost time injury (newsroom 1 Jun 2023). */}
+        {/* 27 Oct (client: "Remove this section, not relevant on the career page"): the safety record is off Careers */}
+        {false && (
         <section className="cu-sec cu-safety" id="cu-safety" aria-labelledby="cu-safety-h">
           <div className="cu-w">
             <div className="cu-head">
@@ -398,6 +400,7 @@ export default function Careers() {
             </blockquote>
           </div>
         </section>
+        )}
 
         {/* ── 1.5 · Learning and growth ──────────────────────────────────── */}
         <section className="cu-sec cu-grow" id="cu-grow" aria-labelledby="cu-grow-h">

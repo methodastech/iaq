@@ -1484,3 +1484,7 @@ html.sm-scrolled .sm-cue{opacity:0;pointer-events:none}
    goes below the answer: title, label and answer start on the same lines in every card. */
 .sm-q{grid-template-rows:auto auto 1fr;align-content:start}
 .sm-q-n{align-self:start}
+.sm-ub-head .sm-ub-desc{margin:12px 22px 22px;font-size:15px;line-height:1.6;color:var(--soft)}   /* 27 Oct: the short description under each unit name */
+/* 27 Oct ("dont make it hover"): the unit cards hold still under the pointer: no lift, no shadow, no picture zoom */
+.sm-ub-head:hover{transform:none!important;box-shadow:none!important}
+.sm-ub-head:hover .sm-uc-pic img{transform:none!important}

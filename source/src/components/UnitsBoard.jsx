@@ -44,6 +44,13 @@ const DETAIL = [
   ['Typical requests', u => <span className="sm-ud-asks">{SCENARIOS.filter(a => a.unit === u.id).map(a => <span key={a.ask}><q>{a.ask}</q><small>{a.model} · {a.services.map(id => svcById(id).short).join(', ')}</small></span>)}</span>],
 ]
 
+/* 27 Oct: each unit's short description, the opening of IAQ's own introduction on its page (CapEpc, CapTool, CapEnergy) */
+const DESC = {
+  epc: 'Complex facilities require more than technical expertise. They demand seamless coordination across engineering, procurement and construction to ensure every element is aligned from concept to commissioning.',
+  hookup: 'A production facility is only ready when its manufacturing equipment and utility systems operate as one. IAQ delivers integrated PCU and TTI solutions that connect critical utility infrastructure with manufacturing tools.',
+  efm: 'By combining technical expertise, innovative commercial models and lifecycle support services, IAQ helps organisations optimise energy infrastructure, improve reliability and create measurable long-term value across their facilities.',
+}
+
 export default function UnitsBoard() {
   const [open, setOpen] = useState(false)
   const [mob, setMob] = useState(0)
@@ -63,19 +70,17 @@ export default function UnitsBoard() {
           <div className={cell(i) + ' sm-ub-head'} role="cell" key={u.id} style={{ '--i': i }}>
             <div className="sm-uc-pic"><img src={PHOTO[u.id]} alt="" loading="lazy" decoding="async" /><span className="sm-ub-no">Unit {u.no}<i>{LIFE[i].k}</i></span></div>
             <h3><span className="sm-uc-mark" aria-hidden="true"><Icon name={u.icon} /></span><span className="sm-ub-nm">{u.short || u.name}<small>{u.id === 'hookup' ? u.name : u.full}</small></span></h3>
-            <p className="sm-uc-line">{u.line}</p>
+            {/* 27 Oct (client: "Remove this section just replace with short description of each business units"): the tagline,
+                Call when and Bought as rows give way to one short description each, IAQ's own words from each unit's page */}
+            <p className="sm-ub-desc">{DESC[u.id]}</p>
           </div>
         ))}
       </div>
-      <Row k="when" label="Call when" get={u => <b className="sm-uc3-when">{u.when}</b>} />
-      <Row k="bought" label="Bought as" get={u => <span className="sm-ub-models">{u.models.map(m => <span className="sm-mi" key={m.t}><ModelIcon name={m.t} />{m.t}</span>)}</span>} />
       {open && DETAIL.map(([label, get]) => <Row key={label} k={label} label={label} get={get} />)}
       <div className="sm-ub-row sm-ub-foot" role="row">
-        {UNITS.map((u, i) => <div className={cell(i)} role="cell" key={u.id}><Link className="sm-uc-go" to={u.route}>Open {u.short || u.name} <i aria-hidden="true">&rarr;</i></Link></div>)}
+        {UNITS.map((u, i) => <div className={cell(i)} role="cell" key={u.id}><Link className="sm-uc-go" to={u.route}>Learn More About {u.short || u.name} <i aria-hidden="true">&rarr;</i></Link></div>)}
       </div>
-      <div className="sm-ub-more">
-        <button type="button" className="sm-uc-more" aria-expanded={open} onClick={() => setOpen(o => !o)}>{open ? 'Less' : 'Read more: the three in detail'}<i aria-hidden="true">{open ? '−' : '+'}</i></button>
-      </div>
+      {/* 27 Oct ("remove the read more"): the "Read more: the three in detail" button and its rows are off the board */}
     </div>
   )
 }

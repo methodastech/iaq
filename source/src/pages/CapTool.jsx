@@ -1,6 +1,5 @@
 import React from 'react'
 import UnitPage from '../components/UnitPage.jsx'
-import ToolScope from '../components/ToolScope.jsx'
 
 /* Copy provenance
    desc, items      capabilities hub business-model block 03, verbatim (shared with Process
@@ -78,7 +77,9 @@ export default function CapTool() {
       bandRep={false}
       art="hookup"
       /* 25 Sep (Bazil: "wouldn't this be better replaced with picture 2"): IAQ's Services Scope slide in place of the work cards */
-      scope={<ToolScope />}
+      /* 27 Oct (client: "Remove this section, redundant information"): "The services scope, from plant to tool." (ToolScope) is off
+         this page, and no work cards stand in its place */
+      works={false}
       /* 19 Oct (client feedback, PCU & TTI · "Direct header, no explanation"; IAQ: "Remove phrases that cannot be explained
          plainly"): the hero is the header and its line only; the 6 / 4 / 1 figures (marked wrong in the 13 Oct review) and
          the "Call PCU & TTI when" line are off it */
@@ -105,13 +106,11 @@ export default function CapTool() {
       /* 25 Sep (Bazil: "3 sub pages business unit"): the Process Critical Utilities page folds in here as the unit's
          first half, its five steps as the utilities section; the four phases below are the tool installation */
       /* 22 Oct (IAQ amendment sheet, PCU & TTI · Capabilities, High): "What We Deliver" as two capability cards, IAQ's text as
-         given ("Installlation", "Tetsing" corrected). Pictures: IAQ's own model extracts, the isometric utility network for PCU
-         and the tool hook-up layout for TTI. They replace the five-step utilities strip below (servicesHead etc., kept). */
+         given ("Installlation", "Tetsing" corrected). 22 Oct ("remove the image"): the model pictures are off both cards. They replace the five-step utilities strip below (servicesHead etc., kept). */
       capCards={{
         head: <>What We <em>Deliver</em></>,
         cards: [
-          { t: 'Process Critical Utilities', img: '/assets/iaq/bim-process.webp', alt: 'An isometric view of a process utility network in the model: the gas, water and exhaust mains and their branches',
-            d: 'Specialised utility systems that support the safe and reliable operation of semiconductor manufacturing facilities.',
+          { t: 'Process Critical Utilities', d: 'Specialised utility systems that support the safe and reliable operation of semiconductor manufacturing facilities.',
             listHead: 'Core Solutions',
             items: [
               { t: 'Specialty Gas Systems', icon: 'gas' },
@@ -120,8 +119,7 @@ export default function CapTool() {
               { t: 'Process Exhaust Systems', icon: 'airflow' },
               { t: 'Waste Collection Treatment Systems', icon: 'sysWaste' },
             ] },
-          { t: 'Total Tool Installation', img: '/assets/iaq/bim-hookup.webp', alt: 'An isometric view of a tool hook-up layout in the model: the production tools and the services that reach them',
-            d: 'Comprehensive equipment integration services supporting manufacturing start-up and production readiness.',
+          { t: 'Total Tool Installation', d: 'Comprehensive equipment integration services supporting manufacturing start-up and production readiness.',
             listHead: 'Core Services',
             items: [
               { t: 'Equipment Move-In', icon: 'crate' },

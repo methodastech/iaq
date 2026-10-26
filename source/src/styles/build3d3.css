@@ -1,0 +1,24 @@
+/* IAQ 3D 3 on the home page (components/Build3D3.jsx), 26 Oct 2026.
+
+   The site zooms the root on desktops (base.css); the section takes it back out, so the frame is the window's real size,
+   as on the app's own page. The stage is one window tall and sticky; the runway under it is the length the page scrolls
+   through while the build runs (it starts under the stage, not after it). Phones: one window, no runway. */
+.b3d3{position:relative;display:block;background:#eef1f4;zoom:calc(1 / var(--zoomf,1))}
+.b3d3-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;z-index:1}
+.b3d3-stage iframe{display:block;width:100%;height:100%;border:0;background:#eef1f4}
+.b3d3-runway{height:620vh;margin-top:-100vh;pointer-events:none}   /* 27 Oct: longer, so the build keeps its pace and the finished facility holds at the end (Build3D3 HOLD) */
+.b3d3.is-touch .b3d3-stage{position:relative}
+
+/* before the frame loads: the label the client asked for on the 3D's loading screen (8 Oct) */
+.b3d3-wait{position:absolute;inset:0;display:grid;place-items:center;background:#eef1f4}
+.b3d3-wait span{font:600 12px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5A6478}
+
+/* the client's skip (12 Oct): centre bottom, the site's dark CTA */
+.b3d3-skip{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;gap:10px;
+  padding:13px 22px;border:0;background:#0C1220;color:#fff;font:600 15px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:.005em;
+  cursor:pointer;box-shadow:0 10px 26px -12px rgba(12,18,32,.55);transition:background .25s}
+.b3d3-skip:hover{background:#EC2027}
+.b3d3-skip:focus-visible{outline:2px solid #EC2027;outline-offset:3px}
+.b3d3-skip svg{flex:none}
+/* the nav steps aside while the stage fills the window */
+html.b3d-pin .nav{transform:translateY(-105%)}

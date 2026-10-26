@@ -147,6 +147,14 @@ for (const [a, b] of [
   if (js.split(a).length !== 2) die(`panel of eight: expected one "${a.slice(0, 40)}". The delivery changed; update this tool.`)
   js = js.replace(a, b)
 }
+/* 23 Oct ("why i scroll down the building not finish"): the delivery stopped the scroll at "Section complete" and waited for
+   the visitor to press Complete the build. The build now starts in its completed mode (Hr, the delivery's own flag for it),
+   so scrolling runs the whole build through the envelope, paving and handover. Complete the build and Replay still work. */
+{
+  const a = 'let Vn=null,Oa=!1,lM=-1,Hr=xa;', b = 'let Vn=null,Oa=!1,lM=-1,Hr=!0;'
+  if (js.split(a).length !== 2) die('scroll completes the build: expected one completed-mode flag. The delivery changed; update this tool.')
+  js = js.replace(a, b)
+}
 
 /* ---- the stylesheet ---- */
 const css = fs.readFileSync(path.join(SRC, 'assets', cssName), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '')

@@ -332,8 +332,10 @@ export default function UnitPage(props) {
               <div className="un-cap2-grid">
                 {capCards.cards.map((c, ci) => (
                   <article className="un-cap2-c" key={c.t} data-rv="" style={{ '--d': `${.08 + ci * .1}s` }}>
-                    <figure className="un-cap2-fig"><img src={c.img} alt={c.alt} loading="lazy" decoding="async" /><span className="un-cap2-n">{String(ci + 1).padStart(2, '0')}</span></figure>
+                    {/* 22 Oct ("remove the image"): a card draws its picture only when it is given one */}
+                    {c.img && <figure className="un-cap2-fig"><img src={c.img} alt={c.alt} loading="lazy" decoding="async" /><span className="un-cap2-n">{String(ci + 1).padStart(2, '0')}</span></figure>}
                     <div className="un-cap2-body">
+                      {!c.img && <span className="un-cap2-n un-cap2-n-in" aria-hidden="true">{String(ci + 1).padStart(2, '0')}</span>}
                       <h3>{c.t}</h3>
                       <p>{c.d}</p>
                       <span className="un-cap2-k">{c.listHead}</span>

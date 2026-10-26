@@ -318,3 +318,11 @@ div.vb{ position:relative; margin-top:clamp(30px,4.5vh,56px); }   /* 22 Oct: div
 /* 25 Sep (Bazil: "background colour should be the same as the footer, so it seamlessly combines"): the values band on the
    closing band's navy (#17213A, base.css), its foot shortened so the two read as one ground */
 .vg{background:#17213A;padding-bottom:clamp(40px,6vh,72px)}
+
+/* 22 Oct (found in the review PDF, "make it appear full"): the values index sits on the navy band (.vg) on phones and under
+   reduced motion, but kept the light page's ink, so the six values were dark on dark. Light ink on the band. */
+.vg .vx h3 { color: #fff; }
+.vg .vx p { color: rgba(255, 255, 255, .7); }
+.vg .vx-ix { color: #FF8A90; }
+.vg .vx-mark { color: rgba(255, 255, 255, .75); }
+.vg .vx-rule { background: rgba(255, 255, 255, .16); }

@@ -45,7 +45,18 @@ const OFFICES = [
   { id: 'my-hq', img: '/assets/iaq/hq-front-4595.webp', cap: 'Headquarters, Shah Alam', cc: 'MY', country: 'Malaysia', city: 'Shah Alam', hq: true, entity: 'IAQ Technology International Sdn. Bhd.',
     addr: 'No. 12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor, Malaysia',
     tel: '+603 5124 8319', hours: 'Mon to Fri · 9:00 to 18:00 · GMT +8' },
-  { id: 'my-penang', img: '/assets/newsroom/penang-branch-grand-opening-2025.webp', cap: 'Penang branch opening, July 2025', cc: 'MY', country: 'Malaysia', city: 'Penang', entity: 'IAQ Technology International Sdn. Bhd. · northern branch, opened July 2025',
+  /* 26 Oct (client: "Use office building photo"; Bazil: "remove the car and cone. maybe expand bit image"): the Penang
+     building from its Google Maps listing, in place of the grand opening photo. Car, cone and a neighbour's sign removed and
+     the frame widened in Higgsfield (GPT Image 2.5, outpaint); the signboard and the facade logo are the photograph's own
+     pixels, put back over the edit so no letter or number is altered. The opening photo stays in the newsroom.
+     Then (Bazil: "should be have like gate not open like that. use chatgpt to edit the image"): the widened right side
+     ended in open car park; edited in ChatGPT so the compound closes with a white pillared fence and a shut sliding gate,
+     like the real site and the fence on the left. Signboard and facade logo put back from the photograph again.
+     Then (Bazil: "already perfect, but ... besides signboard should be fence"): the strip right of the signboard is closed
+     with the same white pillared fence along the kerb; only that strip is taken from a further ChatGPT edit. */
+  /* 26 Oct: v3 showed a pale curved patch on the signboard where the real sign pixels met the edited corner; the board
+     tone and grain are now matched, kept as penang-office-building-v4.webp */
+  { id: 'my-penang', img: '/assets/iaq/penang-office-building-v4.webp', cap: 'Penang office', cc: 'MY', country: 'Malaysia', city: 'Penang', entity: 'IAQ Technology International Sdn. Bhd. · northern branch, opened July 2025',
     addr: '9, Lorong Valdor Jaya 2, Kawasan Perindustrian Valdor, 14200 Jawi, Pulau Pinang, Malaysia', hours: 'Mon to Fri · 9:00 to 18:00 · GMT +8' },
   { id: 'sg', img: '/assets/culture/sg-office-boardroom-2026.webp', cap: 'IAQ Engineering (SG) office, August 2026', cc: 'SG', country: 'Singapore', city: 'Singapore', entity: 'IAQ Engineering (SG) Pte. Ltd.',
     addr: '1 Tai Seng Avenue #04-03, Tai Seng Exchange, Singapore 536464',
@@ -152,7 +163,8 @@ export default function Contact() {
         <div className="cban-in wrap">
           <span className="eyebrow">Contact</span>
           {/* 20 Oct (client review, Sunny: "should be 'planning', build is already half way") */}
-          <h1>Tell us what <em>you are planning.</em></h1>
+          {/* 27 Oct (client: "We Love Talking to Visionaries Like You.") */}
+          <h1>We Love Talking to <em>Visionaries Like You.</em></h1>
           {/* 19 Oct (client feedback, Contact · Contact form wording; IAQ: "Do not promise response times unless IAQ has approved an
               SLA"): IAQ's wording for the form, and no reply time anywhere on the page (the "1 working day" fact is gone) */}
           <p className="cban-lede">Tell us about your project. Share a brief introduction to your company, your project requirements and the stage you are at: planning, design, construction or operations. Our team will review your enquiry and direct it to the appropriate contact.</p>
@@ -190,27 +202,11 @@ export default function Contact() {
             </div>
           )}
 
-          <fieldset className="cx-step" id="contact-intent">
-            <legend><i>1</i>What brings you here?</legend>
-            <div className="cx-intents" role="radiogroup" aria-label="What is your enquiry about">
-              {INTENTS.map(x => (
-                <button type="button" key={x.k} role="radio" aria-checked={intent === x.k}
-                        className={'cx-intent' + (intent === x.k ? ' on' : '')} onClick={() => setIntent(x.k)}>
-                  <span className="cx-ic"><Icon name={x.icon} /></span>
-                  <span className="cx-it"><b>{x.t}</b><span>{jargon(x.d)}</span></span>
-                </button>
-              ))}
-            </div>
-            {intent === 'career' && (
-              <p className="cx-out">Roles are listed and filterable on the careers page. <Link to="/careers">See the 16 open roles &rarr;</Link></p>
-            )}
-            {intent === 'media' && (
-              <p className="cx-out">Newsroom items and media contacts sit on the news page. <Link to="/news">Go to News &amp; Insights &rarr;</Link></p>
-            )}
-          </fieldset>
+          {/* 27 Oct (client: "Remove this section!"): the "What brings you here?" choice is off the form; an enquiry from this
+              page is a project enquiry (intent stays 'project', as before), and the steps renumber from 1 */}
 
           <fieldset className="cx-step">
-            <legend><i>2</i>About you</legend>
+            <legend><i>1</i>About you</legend>
             <div className="frow">
               <div className="field"><label htmlFor="f-name">Full name</label><input id="f-name" name="name" type="text" autoComplete="name" required /></div>
               <div className="field"><label htmlFor="f-company">Company</label><input id="f-company" name="company" type="text" autoComplete="organization" /></div>
@@ -222,7 +218,7 @@ export default function Contact() {
           </fieldset>
 
           <fieldset className="cx-step">
-            <legend><i>3</i>The project</legend>
+            <legend><i>2</i>The project</legend>
             <div className="frow">
               <div className="field"><label htmlFor="f-service">Service needed</label>
                 {/* 21 Sep: the closing band asks what is being built and hands the answer here, so the
@@ -278,12 +274,7 @@ export default function Contact() {
                 <span className="cx-links"><a href="#find-us">See it on the map &rarr;</a><a href="#offices">All seven offices &rarr;</a></span></div>
             </li>
           </ul>
-          <h3>What happens next</h3>
-          <ol className="cx-next">
-            <li><i>1</i>Your enquiry reaches our team.</li>
-            <li><i>2</i>Our team reviews it and directs it to the appropriate contact.</li>
-            <li><i>3</i>One accountable team from there to handover.</li>
-          </ol>
+          {/* 27 Oct (client: "Remove this section."): the "What happens next" steps are off the page */}
         </aside>
       </section>
 

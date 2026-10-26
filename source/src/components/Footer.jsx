@@ -128,6 +128,8 @@ export default function Footer({ note = FOOT_NOTE, nav = true }) {
       <div className="f-base">
         <span>&copy; 2026 IAQ Group &middot; IAQ Technology International Sdn. Bhd. 200001031412 (534019-T) &middot; ISO 9001 / 14001 / 45001 &middot; CIDB G7</span>
         {!LAUNCH && <span>{FOOT_NOTE}</span>}
+        {/* 27 Oct: the 3D's model credits, moved here from the corner of the 3D (the tree model is CC BY 4.0, credit required) */}
+        <span className="f-credit">3D: sky and textures Poly Haven, ambientCG (CC0); &ldquo;Tree Animate&rdquo; by Node_Art (Sketchfab, CC BY 4.0)</span>
         <a className="f-top" href="#top" onClick={e => { e.preventDefault(); (window.__lenis ? window.__lenis.scrollTo(0) : window.scrollTo({ top: 0, behavior: 'smooth' })) }}>Back to top <i aria-hidden="true">&uarr;</i></a>
       </div>
       {!LAUNCH && (

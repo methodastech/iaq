@@ -1478,3 +1478,7 @@ html.motion .hero .hl:nth-child(3)>span{animation-delay:.22s}
 /* 9 Oct (client: "remove that", then "keep the position but remove the service"): the market row at the foot of the hero
    is hidden, not removed, so the hero keeps its layout; hidden it cannot be clicked or tabbed to */
 .hero .hero-mkts{visibility:hidden!important;pointer-events:none!important}
+
+/* 27 Oct: the reel opens on the cleanroom corridor now (scenes/home.js SRC), so the frame behind it while it loads is that clip's first frame */
+.hero-video{background-image:url(/assets/hero-cleanroom-poster.webp)}
+@media(prefers-reduced-motion:reduce){.hero-video{background-image:url(/assets/hero-cleanroom-poster.webp)}}

@@ -76,7 +76,6 @@ function MarketIndex() {
           <Link to={m.to} className="mk-gx-a">
             <img className="mk-gx-img" src={PIC[m.id] || m.img} alt="" loading="lazy" decoding="async" />
             <span className="mk-gx-top">
-              <span className="mk-gx-n">{String(i + 1).padStart(2, '0')}</span>
               <span className="mk-gx-ic" aria-hidden="true"><Icon name={m.icon} /></span>
             </span>
             <span className="mk-gx-foot">

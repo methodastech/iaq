@@ -9,44 +9,21 @@ const CAPS = [
   ['compass', 'Engineering & Design'], ['crate', 'Procurement'], ['crane', 'Construction'],
   ['gas', 'Process Utilities'], ['link', 'Tool Installation'], ['gauge', 'Testing & Commissioning'],
 ]
-/* 22 Oct ("this one looks pale", "dont repeated design", "make other design", then "make grid", "with icon follow branding
-   design"): a grid of six, each with its own mark drawn to the house icon spec (RecordFlat.jsx: 24 grid, one fine ink
-   weight, butt caps, ONE red element that carries the idea), and the logo's red bars as the card's accent. The red part
-   lifts on hover. */
-const S = { fill: 'none', stroke: 'currentColor', strokeWidth: .85, strokeLinecap: 'butt', strokeLinejoin: 'miter' }
-const R = { fill: 'none', stroke: '#EC2027', strokeWidth: 1.4, strokeLinecap: 'butt', strokeLinejoin: 'miter' }
-const CAP_MARK = [
-  /* engineering & design: a drawing sheet, a set square on it, the red dimension line */
-  <><rect x="3.5" y="4" width="17" height="16" {...S} /><path d="M3.5 8h17" {...S} /><path d="M7 17.5V10.5l7 7z" {...S} /><g className="sig"><path d="M15 11h4M15 10v2M19 10v2" {...R} /></g></>,
-  /* procurement: a crate on its pallet, the red tag that marks it delivered */
-  <><path d="M5 8.5h11v8.5H5z" {...S} /><path d="M5 8.5 7.5 6h11L16 8.5M18.5 6v8.5L16 17" {...S} /><path d="M3.5 19.5h15" {...S} /><path d="M8 11.5h5" {...S} /><g className="sig"><path d="M19 9.5l2.2 2.2-2.2 2.2" {...R} /></g></>,
-  /* construction: a tower crane, mast, jib and line, the red load on the hook */
-  <><path d="M8 20.5V5M6 20.5h4" {...S} /><path d="M3.5 7.5h17M8 5l-4.5 2.5M8 5l7 2.5" {...S} /><path d="M17 7.5v5" {...S} /><g className="sig"><rect x="15.4" y="13.2" width="3.2" height="3" {...R} /></g></>,
-  /* process utilities: two runs of pipe, a branch down, the red valve on the branch */
-  <><path d="M3 7h18M3 10.5h18" {...S} /><path d="M12 10.5v9.5" {...S} /><path d="M6 6v5.5M18 6v5.5" {...S} /><g className="sig"><path d="M10 14.2h4l-4 3.2h4z" {...R} /></g></>,
-  /* tool installation: the production tool, its utility panel, the red connector reaching it */
-  <><rect x="9" y="4.5" width="11.5" height="15" {...S} /><path d="M9 9h11.5M12 12.5h5.5M12 15h5.5" {...S} /><path d="M3 12h3" {...S} /><g className="sig"><path d="M6 10.6h3v2.8H6z" {...R} /></g></>,
-  /* testing & commissioning: a gauge, its scale, the red needle reading true */
-  <><circle cx="12" cy="13" r="7.5" {...S} /><path d="M6.7 13H8M16 13h1.3M12 7.7V9M8.2 9.2l.9.9M15.8 9.2l-.9.9" {...S} /><circle cx="12" cy="13" r="1" {...S} /><g className="sig"><path d="M12.7 12.3l2.8-2.8" {...R} /></g></>,
-]
-function EpcCapabilities() {
-  return (
-    <div className="un-caps">
-      <h2 id="un-scope-h" className="un-h2" data-rv="">Our EPC <em>Capabilities</em></h2>
-      <p className="un-caps-lede" data-rv="" style={{ '--d': '.06s' }}>IAQ delivers EPC solutions through a multidisciplinary team of engineers, project managers and construction professionals. Our capabilities span the full project lifecycle, enabling efficient coordination and successful project delivery across complex industrial environments.</p>
-      <ul className="un-capg">
-        {CAPS.map(([, t], i) => (
-          <li key={t} data-rv="" style={{ '--d': `${.08 + i * .05}s` }}>
-            <span className="un-capg-bars" aria-hidden="true"><i /><i /><i /></span>
-            <span className="un-capg-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-            <span className="un-capg-mk" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false">{CAP_MARK[i]}</svg></span>
-            <b>{t}</b>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
+/* 22 Oct ("revert it back to old"): the 19 Oct grid again; the isometric, line-mark and other trials are in git (9566a07) */
+const EpcCapabilities = () => (
+  <div className="un-caps">
+    <h2 id="un-scope-h" className="un-h2" data-rv="">Our EPC <em>Capabilities</em></h2>
+    <p className="un-caps-lede" data-rv="" style={{ '--d': '.06s' }}>IAQ delivers EPC solutions through a multidisciplinary team of engineers, project managers and construction professionals. Our capabilities span the full project lifecycle, enabling efficient coordination and successful project delivery across complex industrial environments.</p>
+    <ul className="un-caps-grid">
+      {CAPS.map(([ic, t], i) => (
+        <li key={t} data-rv="" style={{ '--d': `${.08 + i * .05}s` }}>
+          <span className="un-svc-mark" aria-hidden="true"><Icon name={ic} /></span>
+          <b>{t}</b>
+        </li>
+      ))}
+    </ul>
+  </div>
+)
 
 /* Copy provenance. Rebuilt 15 Sep from IAQ's own answers; the previous version is in
    src/_backups/epc-efm-0915/CapEpc.jsx. Every fact carries a source tag beside it.
@@ -87,7 +64,8 @@ export default function CapEpc() {
          drawing to final handover" went with it: it implied every project runs every phase */
       title={<>Engineering, Procurement &amp; Construction <em style={{ whiteSpace: 'nowrap' }}>(EPC)</em></>}
       /* Q-EPC-B: one-stop solution; design, procurement, construction; the system operates as intended. HUB: single contract. 15 words. */
-      lede="Engineering, procurement and construction under one contract, scoped to what each project needs. IAQ answers for the system working as intended."
+      /* 27 Oct (IAQ amended copywriting sheet, EPC · Headline and value proposition): IAQ's line, as given */
+      lede="Integrated project delivery from concept development through commissioning."
       /* LIVE-EPCC and LIVE-EPCM; single point of contact Q-EPC-B; 12 to 24 months Q-EPC-B */
       /* 19 Oct (IAQ feedback, EPC · Metrics: "No blanket duration claim"): "Typically 12 to 24 months" is gone */
       chips={['EPCC · EPCM', 'Single point of contact']}

@@ -39,16 +39,20 @@ const FIG = {
   maintenance:   { src: '/assets/banners/svc-maintain.jpg',   alt: 'A technician with an equipment cabinet opened for servicing' },
 }
 const nameOf = S => S.META.eyebrow.replace(/^Stage \d+ · /, '')
-function StageHead({ no, name, line, fig }) {
+/* 27 Oct (client: "Need to restructure the layout, a bit messy"): one block per stage. The number, the name, the one line
+   and the stage's own text sit in one column beside its picture, the picture side alternating down the page. The second
+   heading ("The stage where ...") and the pull quote that repeated the text are not drawn (services-all.css .sa-body). */
+function StageHead({ no, name, line, fig, children }) {
   return (
-    <header className="sa-head">
+    <header className={'sa-head' + (no % 2 === 0 ? ' is-flip' : '')}>
       <div className="pg-in sa-head-in">
-        <div>
+        <div className="sa-copy">
           {/* 21 Oct ("already got numbering why repeated?"): the "Service 1 of 6" words are gone; 22 Oct ("where is the
               numbering"): the red number stays, alone, above each heading */}
           <span className="pg-k"><span className="sa-no">{String(no).padStart(2, '0')}</span></span>
           <h2>{name}</h2>
           <p className="pg-lede">{line}</p>
+          {children && <div className="sa-body">{children}</div>}
         </div>
         <figure className="sa-fig"><img src={fig.src} alt={fig.alt} loading="lazy" decoding="async" /></figure>
       </div>
@@ -76,8 +80,7 @@ export default function ServicesAll() {
           stage 05 is Tool Installation, by IAQ's name, and Maintenance closes the page as stage 06 */}
       {STAGES.slice(0, 4).map((S, i) => (
         <article key={S.META.slug} id={S.META.slug} className="sa-stage">
-          <StageHead no={i + 1} name={nameOf(S)} line={S.META.lede} fig={FIG[S.META.slug]} />
-          <S.Cover />
+          <StageHead no={i + 1} name={nameOf(S)} line={S.META.lede} fig={FIG[S.META.slug]}><S.Cover /></StageHead>
           {/* 21 Oct ("remove this section repeating"): S.Scope, "What IAQ carries at this stage.", is off every stage */}
         </article>
       ))}
@@ -87,8 +90,7 @@ export default function ServicesAll() {
       </article>
       {STAGES.slice(4).map((S, j) => { const i = j + 5; return (
         <article key={S.META.slug} id={S.META.slug} className="sa-stage">
-          <StageHead no={i + 1} name={nameOf(S)} line={S.META.lede} fig={FIG[S.META.slug]} />
-          <S.Cover />
+          <StageHead no={i + 1} name={nameOf(S)} line={S.META.lede} fig={FIG[S.META.slug]}><S.Cover /></StageHead>
           {/* 21 Oct ("remove this section repeating"): S.Scope, "What IAQ carries at this stage.", is off every stage */}
         </article>
       ) })}

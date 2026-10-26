@@ -46,7 +46,7 @@ const MENUS = [
     hub: 'services-hub', label: 'Services',
     /* 7 Oct (on the live wing: "this still need services overview button"; a row across the top "looks unclean"; asked
        where, the answer was a bar along the bottom): the main Services page as one slim bar under both columns. */
-    overview: { label: 'Services overview', sub: 'All three business units and the six services, on one page' },
+    /* 27 Oct ("remove that"): the Services overview row at the foot of the wing is gone; the wing's lead card opens the page */
     /* 2 Sep (Bazil): ONE main services page and a page per service. The wing therefore
        lists the six services of the delivery cycle in order, the same six the homepage ring
        and the hub diagram show, and the hub itself sits in the lead panel. The three
@@ -290,7 +290,9 @@ export default function Nav() {
   const { pathname } = useLocation()
   /* 25 Sep (Bazil: "the navigation bar should not be white, it should disappear like the homepage when we are at the top"):
      the services page opens on the dark facility map, so the bar runs clear over it too */
-  const overlap = pathname === '/' || pathname === '/services'
+  /* 27 Oct ("nav bar should be white", on /services): the bar is solid white over the facility map again; only the home
+     page's hero still runs it clear */
+  const overlap = pathname === '/'
   useEffect(() => {
     const nav = navRef.current
     if (!nav) return
@@ -426,7 +428,7 @@ export default function Nav() {
                                 <span className="nm-st-n">{ri + 1}</span>
                                 <i className="nm-ict s" aria-hidden="true"><Icon name={r.icon} /></i>
                                 <em>{r.label}</em>
-                                <span className="nm-st-k" aria-hidden="true">{st === ' asked' ? 'When asked' : ''}</span>
+                                {/* 27 Oct ("when asked remove"): no "When asked" label beside a service in the wing */}
                                 <span className="nm-go" aria-hidden="true">&rarr;</span>
                               </Link>
                             )

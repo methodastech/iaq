@@ -3,13 +3,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import ClosingBand from '../components/ClosingBand.jsx'
-import ServicesSectionBar from '../components/ServicesSectionBar.jsx'
 import Related from '../components/Related.jsx'
 import CycleFlow from '../components/CycleFlow.jsx'
 import CycleRing from '../components/CycleRing.jsx'
 import Icon from '../components/FlowIcon.jsx'
 import { UnitsBand, MapBand, FlowBand, QuestionsBand, WorkBand, FaqBand } from '../components/ServicesMap.jsx'
-import SystemMap from '../components/SystemMap.jsx'
 import { INDLBL, TYPLBL } from '../data/projects.js'
 import { cmsProjects, live } from '../lib/cms.js'
 const PROJECTS = live(cmsProjects)
@@ -302,7 +300,7 @@ export default function ServicesHub() {
       <MapBand />
       {/* 26 Sep (Bazil: "make the services page better ... more interesting, easy to understand"): the page's parts in one
           bar under the nav, the part in view lit */}
-      <ServicesSectionBar />
+      {/* 27 Oct ("remove this"): the sticky section tabs (3 business units / Your quote / Questions) are off the page */}
 
       {/* 17 Sep (client: "better to have 3 business unit on top of the page instead?" and "To
           minimize the description on this landing page and transfer the information to their
@@ -326,7 +324,9 @@ export default function ServicesHub() {
           four phases and the Main Tool schematic, added 25 Sep) is off this page. It stays on /services/all and the
           PCU & TTI page carries the schematic. */}
       {/* 25 Sep (Bazil: "remove this section"): the one-flow band (OneFlow) is off the page; the component stays */}
-      <SystemMap />
+      {/* 27 Oct (client: "Remove this section replace with the 3D parallax"): the "6 services, 3 units, 4 works" matrix
+          (SystemMap) is off the page. The 3D build stood in its place for the day, then ("remove 3d parallax on services")
+          came off too; it stays on the home page */}
       {/* 24 Sep (Bazil: "in between put the old services looping view"): the ring sits between the units and the map */}
       {/* ------------- the cycle FIRST (2 Sep, Bazil: "this should be at the top"): the one
            interactive diagram carries the whole story — hover a stage for its scope, click it

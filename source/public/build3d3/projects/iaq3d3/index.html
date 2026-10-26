@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IAQ 3D 3</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #fff; overflow: hidden; }
+      #scene { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+      #view-tools button:disabled { opacity: .4; cursor: default; }
+      #view-tools button.on { border-color: #EC2027 !important; }
+      /* a hidden view tool stays hidden: ui/theme.css sets #xray and #inside to inline-flex !important, which beat the
+         [hidden] attribute, so "Cut at 1F" and the old X-ray still showed (2026-10-22; the X-ray is in the left panel) */
+      #view-tools button[hidden] { display: none !important; }
+      /* the Exploded view button is one of the group (Azwan, 2026-10-22: "should belong to the groups", "the icon text
+         doesn't centre"): no gap above it, its icon wrapped and spaced like the others', their weight and size */
+      #view-tools #explode-toggle{margin-top:0!important}
+      #view-tools #explode-toggle svg{margin:0!important;display:block}
+      #view-tools #explode-toggle .xt-ic{display:inline-block;width:18px;line-height:1}
+      #view-tools #explode-toggle .xt-label{font-family:"Switzer","Instrument Sans",system-ui,sans-serif;font-weight:600;font-size:.8rem;letter-spacing:0}
+      /* CC-BY 4.0 requires the credit wherever the models are shown */
+      .credits { position: fixed; right: 10px; bottom: 8px; max-width: 60ch; text-align: right; font: 400 11px/1.4 "Segoe UI", Arial, sans-serif; color: rgba(40, 46, 52, .7); }
+    </style>
+    <script type="module" crossorigin src="../../assets/iaq3d3-CtOdtf-a.js"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="../../assets/wind-Dnd5-AVd.js">
+    <link rel="stylesheet" crossorigin href="../../assets/iaq3d3-BtgRWgaR.css">
+  <style id="b3d3-embed">@media (hover:none) and (pointer:coarse){#scene{touch-action:pan-y!important}}.credits{display:none!important}</style>
+</head>
+  <body>
+    <canvas id="scene"></canvas>
+    <!-- IAQ 3D 2's right-hand view tools (its index.html #view-tools, styled by ui/hud.css and ui/theme.css): zoom in,
+         zoom out, reset view, and the exploded view (hidden until it is ported). IAQ 3D 3 adds its X-ray and the 1F cut
+         to the same group, in the same buttons. -->
+    <div id="view-tools">
+      <p class="vt-keys">
+        <span class="on-scroll"><b>Scroll</b> build</span><span class="on-tap"><b>Tap</b> build</span><span><b>Drag</b> rotate</span>
+        <span><b>Pinch or ±</b> zoom</span><span><b>Hover</b> a part</span>
+      </p>
+      <div class="vt-zoom" role="group" aria-label="Zoom">
+        <button type="button" id="zoom-in" aria-label="Zoom in"><span class="xt-ic">+</span><span class="xt-label">Zoom in</span></button>
+        <button type="button" id="zoom-out" aria-label="Zoom out"><span class="xt-ic">−</span><span class="xt-label">Zoom out</span></button>
+        <button type="button" id="zoom-reset" aria-label="Reset view"><span class="xt-ic">↺</span><span class="xt-label">Reset view</span></button>
+        <button type="button" id="xray" aria-label="X-ray" hidden><span class="xt-ic">◫</span><span class="xt-label">X-ray</span></button>
+        <button type="button" id="inside" aria-label="Cut at 1F" hidden><span class="xt-ic">▭</span><span class="xt-label">Cut at 1F</span></button>
+        <button type="button" id="explode-toggle" aria-label="Exploded view" aria-pressed="false" title="Exploded view: the storeys lifted apart" hidden><span class="xt-ic"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 5.5 10 2.5l7 3-7 3-7-3z"/><path d="M3 10l7 3 7-3"/><path d="M3 14.5l7 3 7-3"/></svg></span><span class="xt-label">Exploded view</span></button>
+      </div>
+    </div>
+    <!-- IAQ 3D 2's rail styles itself by the skin (ui/theme.ts reads skin-v3 / skin-v4): IAQ 3D 3 is daylight, the
+         Environment skin, so its white card and ink type; without this the rail was bare white type -->
+    <button id="skin-v4" aria-pressed="true" hidden></button>
+    <div class="credits">Sky and textures: Poly Haven, ambientCG (CC0). "Tree Animate" by Node_Art (Sketchfab, CC BY 4.0).</div>
+  </body>
+</html>

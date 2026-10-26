@@ -1364,3 +1364,4 @@ h1,h2,h3{font-weight:500!important}   /* every page's own heading rule (unit her
 .nm-ovbar:hover i{transform:translateX(4px)}
 .nm-ovbar:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 @media(max-width:860px){.nm-ovbar{padding:14px 16px}.nm-ovbar span{display:none}}
+.sitefoot .f-base .f-credit,.f-base .f-credit{flex-basis:100%;order:9;font-size:10.5px;letter-spacing:.02em;opacity:.55;text-transform:none}   /* 27 Oct: the 3D credits, a quiet line under the base row */

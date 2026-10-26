@@ -31,8 +31,12 @@ export default function About() {
         line factory, should just leave that one here"): the campus-at-dusk clip with the red band at the eaves stays on
         this hero by his instruction. It is the site's concept footage, not a photograph of an IAQ site: the client's
         24 Sep rule on generated footage is on record, and this is the one place it is set aside on purpose. */}
-    <div className="ph-slot dark"><img className="hero-img" src="/assets/hero-campus-dusk.webp" alt="" /></div>
-    <div className="ab-video" aria-hidden="true"><video id="abVid" muted loop playsInline autoPlay preload="metadata" poster="/assets/hero-campus-dusk.webp"><source src="/assets/hero-campus-dusk.mp4" type="video/mp4" /></video></div>
+    {/* 26 Oct (client: "To remove this power plant as it emitting gas to environment. Not compliance to our environmental
+        sustainability commitment"): the cooling towers, stacks and every plume behind the plant are gone, forested hillside
+        in their place, the plant, roads, light and camera move unchanged. Seedance 2.5 video edit in Higgsfield, played
+        forward then back; the still is its first frame. The old clip and still stay in the folder. */}
+    <div className="ph-slot dark"><img className="hero-img" src="/assets/hero-campus-dusk-clean.webp" alt="" /></div>
+    <div className="ab-video" aria-hidden="true"><video id="abVid" muted loop playsInline autoPlay preload="metadata" poster="/assets/hero-campus-dusk-clean.webp"><source src="/assets/hero-campus-dusk-clean.mp4" type="video/mp4" /></video></div>
     <div className="ab-scrim" aria-hidden="true"></div>
     <canvas className="ab-part" id="abPart" aria-hidden="true"></canvas>
   </div>

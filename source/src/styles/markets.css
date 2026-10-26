@@ -555,3 +555,4 @@ a.mk-fact:hover{background:rgba(16,26,48,.86)}
 .pg-sec .mk-caps .dd-n:hover .dd-lb::after{width:64px}
 @media(prefers-reduced-motion:reduce){.pg-sec .mk-caps .dd-ic::after{animation:none}.pg-sec .mk-caps .dd-n,.pg-sec .mk-caps .dd-lb::after{transition:none!important}}
 @media(max-width:640px){.pg-sec .mk-caps .dd-no::before{font-size:44px!important}.pg-sec .mk-caps .dd-no{right:12px;top:12px}}
+.mk-gx-top{ justify-content:flex-end; }   /* 22 Oct ("remove the numbering"): the mark alone in the corner */

@@ -9,6 +9,9 @@ import IndustryGrid from '../components/IndustryGrid.jsx'
 import { CYCLE_SVG } from '../data/cycleMarks.js'
 import initHome from '../scenes/home.js'
 import Build3D from '../components/Build3D.jsx'
+import Build3D3 from '../components/Build3D3.jsx'
+/* 26 Oct ("replace the home page 3D with this new version": yes): IAQ 3D 3, the developer's new engine; false returns to Build3D */
+const USE_3D3 = true
 import HeroMarkets from '../components/HeroMarkets.jsx'
 /* 1 Oct: the Scroll to build 3D on the home page; false hides it (hidden in the morning, shown again the same day) */
 const SHOW_BUILD3D = true
@@ -212,7 +215,7 @@ export default function Home() {
         It replaced DevBuild3D, which framed the previous delivery (public/3d) in an iframe. */}
     {/* 1 Oct ("hide first the 3d section on home page", then "unhide the 3d part"): SHOW_BUILD3D (top of this file) turns
         it off and on. While off, the section is not mounted and none of its 150 MB of models load. */}
-    {SHOW_BUILD3D && <Build3D />}
+    {SHOW_BUILD3D && (USE_3D3 ? <Build3D3 /> : <Build3D />)}
 
     {/* Selected Work removed on client feedback (16:02) · KIV: returns with real
         project images once IAQ supplies them. The section lives in git history. */}

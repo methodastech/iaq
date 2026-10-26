@@ -46,7 +46,8 @@ export default function CapEnergy() {
       /* high electricity bill Q-EM-A pain point a; "no upfront costs" LIVE-CC; zero upfront investment Q-EM-A differentiator a. The em holds one line. */
       /* 19 Oct (client feedback, Energy Management · Hero Banner): IAQ's header and line, in place of "Lower energy bills, with
          no upfront cost." */
-      title={<>Energy <em>Management</em></>}
+      /* 27 Oct (client: "Energy Facility Management"): the unit's full name as the header */
+      title={<>Energy Facility <em>Management</em></>}
       /* IAQ funds implementation, upgrading, operation and maintenance Q-EM-C; payment on actual savings, or a fixed tariff, Q-EM-C. 18 words. */
       lede="Optimising Performance. Advancing Sustainability."
       /* ESCO under Suruhanjaya Tenaga LIVE-EFM; zero upfront investment Q-EM-A */

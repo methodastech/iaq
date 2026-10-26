@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { PROJECTS, INDUSTRIES, INDLBL } from '../data/projects.js'
 import '../styles/registry-banner.css'
 
@@ -40,29 +40,22 @@ const STATS = [
   { k: '7', v: 'Countries' },
 ]
 
+const SPOT = {
+  img: '/assets/projects/prj-003.webp',
+  alt: 'A semiconductor backend plant from the air: the production blocks, the central utility building and the tanks beside the river',
+  cap: 'Semiconductor backend plant, 43,000 m² test, probe and assembly',
+}
+
 export default function RegistryBanner({ shown = 18 }) {
-  /* three interleaved columns, so neighbouring tiles are never the same project */
-  const cols = useMemo(() => {
-    const imgs = PROJECTS.map(p => p.img).filter(Boolean)
-    const out = [[], [], []]
-    imgs.forEach((src, i) => out[i % 3].push(src))
-    /* each column is doubled so the vertical marquee can loop seamlessly */
-    return out.map(c => c.concat(c))
-  }, [])
 
   return (
     <section className="rb" aria-labelledby="rbH">
-      <div className="rb-wall" aria-hidden="true">
-        {cols.map((col, ci) => (
-          <div className={'rb-col rb-col-' + ci} key={ci}>
-            {col.map((src, i) => (
-              <span className="rb-tile" key={ci + '-' + i}>
-                <img src={src} alt="" loading="lazy" decoding="async" />
-              </span>
-            ))}
-          </div>
-        ))}
-      </div>
+      {/* 27 Oct (client: "Change this layout, too distracting. Maybe use one spotlight photo as a highlight on this header"): the
+          moving wall of every project photo gives way to one still spotlight, IAQ's semiconductor backend plant from the air */}
+      <figure className="rb-spot">
+        <img src={SPOT.img} alt={SPOT.alt} decoding="async" fetchpriority="high" />
+        <figcaption><span>Spotlight</span>{SPOT.cap}</figcaption>
+      </figure>
 
       {/* 26 Sep: no scrim and no grid; the words sit on their own navy block (registry-banner.css) */}
 
