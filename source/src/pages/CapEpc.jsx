@@ -65,7 +65,9 @@ export default function CapEpc() {
       title={<>Engineering, Procurement &amp; Construction <em style={{ whiteSpace: 'nowrap' }}>(EPC)</em></>}
       /* Q-EPC-B: one-stop solution; design, procurement, construction; the system operates as intended. HUB: single contract. 15 words. */
       /* 27 Oct (IAQ amended copywriting sheet, EPC · Headline and value proposition): IAQ's line, as given */
-      lede="Integrated project delivery from concept development through commissioning."
+      /* 27 Oct (Bazil: "the sub heading make it two line"): the same line, broken after "delivery" so it sits on two lines */
+      /* 28 Oct: break moved to after "development", so the two lines sit closer in length */
+      lede={<>Integrated project delivery from concept development<br />through commissioning.</>}
       /* LIVE-EPCC and LIVE-EPCM; single point of contact Q-EPC-B; 12 to 24 months Q-EPC-B */
       /* 19 Oct (IAQ feedback, EPC · Metrics: "No blanket duration claim"): "Typically 12 to 24 months" is gone */
       chips={['EPCC · EPCM', 'Single point of contact']}

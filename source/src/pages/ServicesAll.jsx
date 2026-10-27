@@ -36,7 +36,10 @@ const FIG = {
   construction:  { src: '/assets/iaq/cr-build-2024-clear.webp',     alt: 'A cleanroom nearing completion, wall panels, ceiling grid and perforated floor in place' },
   commissioning: { src: '/assets/banners/svc-commission.jpg', alt: 'An engineer in a cleanroom suit taking a measurement with a tripod-mounted instrument' },
   tool:          { src: '/assets/banners/svc-hookup.jpg',     alt: 'Process utility lines and a connection panel along a cleanroom wall, ready for a production tool' },
-  maintenance:   { src: '/assets/banners/svc-maintain.jpg',   alt: 'A technician with an equipment cabinet opened for servicing' },
+  /* 28 Oct (Bazil: "replace this image. maybe like clean room with jumpsuit doing checking"): two engineers in cleanroom
+     coveralls reading a wall pressure gauge against a checklist, made in ChatGPT; they check and record only, no hands-on
+     work. The picture keeps its left edge (pos) so the 4:3 crop holds the gauge */
+  maintenance:   { src: '/assets/services/svc-maintenance-check.webp', pos: '0% 40%', alt: 'Two engineers in cleanroom coveralls checking a wall pressure gauge reading against a checklist on a tablet' },
 }
 const nameOf = S => S.META.eyebrow.replace(/^Stage \d+ · /, '')
 /* 27 Oct (client: "Need to restructure the layout, a bit messy"): one block per stage. The number, the name, the one line
@@ -49,12 +52,12 @@ function StageHead({ no, name, line, fig, children }) {
         <div className="sa-copy">
           {/* 21 Oct ("already got numbering why repeated?"): the "Service 1 of 6" words are gone; 22 Oct ("where is the
               numbering"): the red number stays, alone, above each heading */}
-          <span className="pg-k"><span className="sa-no">{String(no).padStart(2, '0')}</span></span>
+          {/* 28 Oct ("my boss said dont add numbering"): no number above the stage heading; the stage bar at the top keeps its own */}
           <h2>{name}</h2>
           <p className="pg-lede">{line}</p>
           {children && <div className="sa-body">{children}</div>}
         </div>
-        <figure className="sa-fig"><img src={fig.src} alt={fig.alt} loading="lazy" decoding="async" /></figure>
+        <figure className="sa-fig"><img src={fig.src} alt={fig.alt} loading="lazy" decoding="async" style={fig.pos ? { objectPosition: fig.pos } : undefined} /></figure>
       </div>
     </header>
   )

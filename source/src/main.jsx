@@ -53,7 +53,7 @@ function RouteViews() {
 
 function ProjectRoute() {
   const { id } = useParams(); const v = parseInt(id, 10)
-  if (!(Number.isInteger(v) && v >= 0 && v < PROJECTS.length)) return <NotFound />
+  if (!(Number.isInteger(v) && v >= 0 && v < PROJECTS.length) || PROJECTS[v].hide) return <NotFound />   /* 28 Oct: a hidden record has no page */
   return <ProjectDetail />
 }
 const Home2 = lazy(() => import('./pages/Home2.jsx'))

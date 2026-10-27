@@ -26,7 +26,7 @@ import '../styles/registry-banner.css'
    largest so the shape of the record reads at a glance */
 function buildLedger () {
   const rows = INDUSTRIES.map(([k]) => ({
-    k, label: INDLBL[k], n: PROJECTS.filter(p => p.ind === k).length,
+    k, label: INDLBL[k], n: PROJECTS.filter(p => !p.hide && p.ind === k).length,
   })).sort((a, b) => b.n - a.n || a.label.localeCompare(b.label))
   const max = Math.max(1, ...rows.map(r => r.n))
   return rows.map(r => ({ ...r, pct: Math.round((r.n / max) * 100) }))

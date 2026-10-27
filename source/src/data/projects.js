@@ -10,7 +10,9 @@
    Extracted verbatim from _source/projects.html / _source/project.html. */
 
 export const PROJECTS = [
-  { name: 'Testing manufacturing plant, 25,000 m² greenfield', client: 'Semiconductor manufacturer', ind: 'semiconductor', region: 'malaysia', loc: 'Malaysia', type: 'cleanroom', iso: 'ISO 6 to 7', size: 25000, img: '/assets/projects/prj-001.webp', cap: 'Photo · iaqtechnology.com.my' },
+  /* 28 Oct ("remove this", on the Projects page): hide, so it is off every list; it stays at index 0 because projects,
+     their details (projectDetail.js) and the portal's saved edits are all keyed by position */
+  { hide: true, name: 'Testing manufacturing plant, 25,000 m² greenfield', client: 'Semiconductor manufacturer', ind: 'semiconductor', region: 'malaysia', loc: 'Malaysia', type: 'cleanroom', iso: 'ISO 6 to 7', size: 25000, img: '/assets/projects/prj-001.webp', cap: 'Photo · iaqtechnology.com.my' },
   { name: 'Wafer fab facility and expansion, cleanroom package with utilities', client: 'Wafer foundry', ind: 'semiconductor', region: 'malaysia', loc: 'the northern corridor, Kedah', type: 'epcc', iso: 'ISO 5', size: 0, img: '/assets/projects/prj-002.webp', cap: 'Photo · iaqtechnology.com.my' },
   { name: 'Semiconductor backend plant, 43,000 m² test, probe and assembly', client: 'Semiconductor manufacturer', ind: 'semiconductor', region: 'malaysia', loc: 'Malaysia', type: 'epcm', iso: 'ISO 6 to 7', size: 43000, img: '/assets/projects/prj-003.webp', cap: 'Photo · iaqtechnology.com.my' },
   { name: 'DLP cleanroom facility', client: 'Semiconductor manufacturer', ind: 'semiconductor', region: 'malaysia', loc: 'Malaysia', type: 'cleanroom', iso: 'ISO 5 to 7', size: 0, img: '/assets/projects/prj-004.webp', cap: 'Photo · iaqtechnology.com.my' },

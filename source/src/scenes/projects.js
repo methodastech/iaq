@@ -326,6 +326,7 @@ export default function initProjectsPage(opts) {
     return h.indexOf(state.q) >= 0
   }
   function pass(p) {
+    if (p.hide) return false   /* 28 Oct: a hidden record (data/projects.js) is never listed */
     if (state.ind.size && !state.ind.has(p.ind)) return false
     if (state.region.size && !state.region.has(p.region)) return false
     if (state.type.size && !state.type.has(p.type)) return false
@@ -342,7 +343,7 @@ export default function initProjectsPage(opts) {
     FACETS.forEach(function (f) {
       document.querySelectorAll('#' + f[0] + ' .fchip').forEach(function (ch) {
         var n = 0, v = ch.dataset.v
-        PROJECTS.forEach(function (p) { if (p[f[1]] === v && passExcept(p, f[1])) n++ })
+        PROJECTS.forEach(function (p) { if (!p.hide && p[f[1]] === v && passExcept(p, f[1])) n++ })
         ch.querySelector('.ct').textContent = n
         ch.classList.toggle('zero', n === 0 && !ch.classList.contains('on'))
       })
@@ -453,7 +454,7 @@ export default function initProjectsPage(opts) {
     var ro = document.getElementById('readout')
     var stamp = list.length + '|' + state.sort + '|' + activeLabels().join(',')
     if (stamp !== lastCount) {
-      ro.innerHTML = '<span class="rn">' + list.length + '</span> / ' + PROJECTS.length + ' projects'
+      ro.innerHTML = '<span class="rn">' + list.length + '</span> / ' + PROJECTS.filter(function (p) { return !p.hide }).length + ' projects'
         + '<span class="rd-x">' + describeState() + '</span>'
       if (!REDUCED) { var rn = ro.querySelector('.rn'); void rn.offsetWidth; rn.classList.add('tick') }
       lastCount = stamp
@@ -506,7 +507,7 @@ export default function initProjectsPage(opts) {
     })
     /* the two biggest industries in the whole record, as a way onward */
     var counts = {}
-    PROJECTS.forEach(function (p) { counts[p.ind] = (counts[p.ind] || 0) + 1 })
+    PROJECTS.forEach(function (p) { if (!p.hide) counts[p.ind] = (counts[p.ind] || 0) + 1 })
     Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] }).slice(0, 2)
       .forEach(function (k) {
         mk(INDLBL[k] + ' (' + counts[k] + ')', 'emp-alt', function () {

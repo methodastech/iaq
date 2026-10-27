@@ -198,14 +198,16 @@ export default function ProjectDetail() {
 
   /* related: same industry first, then nearest neighbours */
   const rel = []
-  PROJECTS.forEach((p, i) => { if (i !== PIDX && p.ind === P.ind) rel.push(i) })
+  /* 28 Oct: a hidden record (data/projects.js) is never related, previous or next */
+  PROJECTS.forEach((p, i) => { if (i !== PIDX && !p.hide && p.ind === P.ind) rel.push(i) })
   for (let r2 = 1; rel.length < 3 && r2 < PROJECTS.length; r2++) {
     const cand = (PIDX + r2) % PROJECTS.length
-    if (cand !== PIDX && rel.indexOf(cand) < 0) rel.push(cand)
+    if (cand !== PIDX && !PROJECTS[cand].hide && rel.indexOf(cand) < 0) rel.push(cand)
   }
   const related = rel.slice(0, 3)
-  const pv = (PIDX - 1 + PROJECTS.length) % PROJECTS.length
-  const nx = (PIDX + 1) % PROJECTS.length
+  const step = d => { let k = PIDX; do { k = (k + d + PROJECTS.length) % PROJECTS.length } while (PROJECTS[k].hide && k !== PIDX); return k }
+  const pv = step(-1)
+  const nx = step(1)
 
   const ind = INDLBL[P.ind]
   /* registry locations can open lower case ('the northern corridor, Kedah'); a fact tile or chip starts a line */

@@ -184,7 +184,7 @@ export default function UnitPage(props) {
     return () => io.disconnect()
   }, [steps.length])
 
-  const proof = PROJECTS.map((p, i) => ({ p, i })).filter(({ p }) => (filter ? filter(p) : true)).slice(0, 3)
+  const proof = PROJECTS.map((p, i) => ({ p, i })).filter(({ p }) => !p.hide && (filter ? filter(p) : true)).slice(0, 3)
   const ld = crumbLd([{ label: 'Home', to: '/' }, { label: 'Services', to: '/services' }, { label: name, to: '' }])
   const step = steps[cur] || steps[0]
 

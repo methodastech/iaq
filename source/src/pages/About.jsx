@@ -9,6 +9,8 @@ import FooterNav from '../components/FooterNav.jsx'
 import CloseAmbient from '../components/CloseAmbient.jsx'
 import initAbout from '../scenes/about.js'
 import ValuesGrid from '../components/ValuesGrid.jsx'
+import { QuestionsBand, FaqBand } from '../components/ServicesMap.jsx'
+import '../styles/pages.css'   /* 28 Oct: the section frame (.pg-sec, .pg-in) the quote and question bands sit in */
 import '../styles/about.css'
 
 export default function About() {
@@ -98,6 +100,11 @@ export default function About() {
 <VisionMission />
 
 <ValuesGrid />
+
+{/* 28 Oct ("can you move this section to maybe at about below Six values, held on every site."): the quote choices and the
+    client questions, moved here from the Services page (components/ServicesMap.jsx, unchanged) */}
+<QuestionsBand />
+<FaqBand />
 
 {/* 30 Sep (client, on the footer's "Registered, certified and recognised" row: "this should be under this about us page",
     with their old site's "What We've Achieved" band as the reference): the four marks leave the footer and stand here, below

@@ -45,7 +45,7 @@ import '../styles/markets.css'
 const FLAGSHIPS = MARKETS.map(m => {
   const rows = PROJECTS
     .map((p, i) => ({ ...p, i }))
-    .filter(p => p.ind === m.ind)
+    .filter(p => !p.hide && p.ind === m.ind)
     .sort((a, b) => (b.size || 0) - (a.size || 0) || a.i - b.i)
   return rows.length ? { ...rows[0], market: m.name } : null
 }).filter(Boolean)

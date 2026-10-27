@@ -45,9 +45,11 @@ import '../styles/news-front.css'
 function pickProjects(slug) {
   let h = 0
   for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) % 100000
-  const start = h % PROJECTS.length
+  /* 28 Oct: from the listed records only (a hidden one is skipped) */
+  const shown = PROJECTS.map((p, i) => i).filter(i => !PROJECTS[i].hide)
+  const start = h % shown.length
   return [0, 1, 2].map(k => {
-    const i = (start + k * 5) % PROJECTS.length
+    const i = shown[(start + k * 5) % shown.length]
     return { ...PROJECTS[i], i }
   })
 }

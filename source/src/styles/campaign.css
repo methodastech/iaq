@@ -248,3 +248,15 @@ html.lp-page{overflow-x:clip}
 .lpf-steps li:first-child::before{box-shadow:0 0 0 0 rgba(236,32,39,.5);animation:lpPulse 2.8s ease-out infinite}
 @keyframes lpPulse{0%{box-shadow:0 0 0 0 rgba(236,32,39,.45)}70%,100%{box-shadow:0 0 0 10px rgba(236,32,39,0)}}
 @media (prefers-reduced-motion:reduce){.lp-form-wrap::before,.lpf-panel::before,.lp-form-in .lpf-panel .cta::after,.lpf-steps li:first-child::before{animation:none}}
+
+/* 27 Oct (Bazil: "on the enquiry page can you follow on padding of our website"): the landing page takes the site's own
+   frame, the same width and side gutter as the nav and every other page (--maxw, --gut), in place of its narrower 1120px
+   column; the form band's inner column follows the same frame */
+.lp{max-width:var(--maxw);padding:0 var(--gut)}
+.lp-form-wrap{padding-left:var(--gut);padding-right:var(--gut)}
+.lp-form-in.lpf-two{max-width:var(--maxw)}
+
+/* 28 Oct (Enquiry, "wtf is this": the form band ran off both sides of the screen). The band breaks out to the full width
+   with 50vw, but the site zooms the root on desktops (base.css :root zoom 1.12 and up), which inflates vw: the band came out
+   12% wider than the window and its edges, the heading and the form fields, were cut. The zoom is divided back out. */
+.lp-form-wrap{margin-left:calc(50% - 50vw / var(--zoomf,1));margin-right:calc(50% - 50vw / var(--zoomf,1))}

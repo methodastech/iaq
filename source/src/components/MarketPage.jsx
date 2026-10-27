@@ -57,7 +57,7 @@ export const DISCIPLINES = CYCLE
 
 /** every published project in a market, with its registry index preserved */
 export function projectsFor(ind) {
-  return PROJECTS.map((p, i) => ({ ...p, i })).filter(p => p.ind === ind)
+  return PROJECTS.map((p, i) => ({ ...p, i })).filter(p => !p.hide && p.ind === ind)
 }
 
 /* 22 Oct (client: the market pages look "plain, no color"): the section headings take the house form, the last word in the

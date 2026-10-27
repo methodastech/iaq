@@ -78,7 +78,7 @@ export default function CapabilityPage(props) {
 
   const proof = PROJECTS
     .map((p, i) => ({ p, i }))
-    .filter(({ p }) => (filter ? filter(p) : true))
+    .filter(({ p }) => !p.hide && (filter ? filter(p) : true))
     .slice(0, 3)
 
   return (

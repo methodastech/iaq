@@ -36,7 +36,7 @@ const BEATS = [
 
 /* published projects where the design package carried the build: two delivered
    under a named contract model, two multi-class greenfields with full MEP */
-const PROOF = [1, 2, 4, 0]
+const PROOF = [1, 2, 4]   /* 28 Oct: 0 is hidden (data/projects.js) */
 
 function ProofCard({ i }) {
   const p = PROJECTS[i]

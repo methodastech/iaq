@@ -44,7 +44,7 @@ export default function GlobalPresence() {
   const grouped = useMemo(() => REGIONS.map(([key, name]) => ({
     key,
     name,
-    items: PROJECTS.map((p, i) => ({ ...p, i })).filter(p => p.region === key),
+    items: PROJECTS.map((p, i) => ({ ...p, i })).filter(p => !p.hide && p.region === key),
   })).filter(g => g.items.length), [])
 
   return (

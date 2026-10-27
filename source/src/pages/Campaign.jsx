@@ -105,7 +105,7 @@ export default function Campaign({ slug }) {
      which is the nearest thing to what the visitor was promised. */
   if (!c) return <Navigate to="/markets" replace />
 
-  const proof = PROJECTS.map((p, i) => ({ p, i })).filter(({ p }) => c.proof(p)).slice(0, 3)
+  const proof = PROJECTS.map((p, i) => ({ p, i })).filter(({ p }) => !p.hide && c.proof(p)).slice(0, 3)
   const project = c.form === 'project'
   const ask = project ? 'Send your project brief' : 'Request the capability pack'
 
@@ -317,14 +317,7 @@ export default function Campaign({ slug }) {
         </div>
       </section>
 
-      <footer className="lp-foot">
-        <span>IAQ Group · Total facility solutions since 1995</span>
-        <span>
-          <Link to={c.market}>{c.back ? 'Our ' + c.back : `The full ${c.eyebrow.toLowerCase()} page`}</Link>
-          <i aria-hidden="true">·</i>
-          <Link to="/">iaqtechnology.com</Link>
-        </span>
-      </footer>
+      {/* 28 Oct ("remove that white bar"): the light footer strip under the form is off the campaign pages; the page ends on the form band */}
     </main>
   )
 }

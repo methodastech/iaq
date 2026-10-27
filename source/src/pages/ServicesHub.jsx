@@ -7,7 +7,7 @@ import Related from '../components/Related.jsx'
 import CycleFlow from '../components/CycleFlow.jsx'
 import CycleRing from '../components/CycleRing.jsx'
 import Icon from '../components/FlowIcon.jsx'
-import { UnitsBand, MapBand, FlowBand, QuestionsBand, WorkBand, FaqBand } from '../components/ServicesMap.jsx'
+import { UnitsBand, MapBand, FlowBand, WorkBand } from '../components/ServicesMap.jsx'
 import { INDLBL, TYPLBL } from '../data/projects.js'
 import { cmsProjects, live } from '../lib/cms.js'
 const PROJECTS = live(cmsProjects)
@@ -334,7 +334,7 @@ export default function ServicesHub() {
       {/* pure white behind the diagram (Bazil, 2 Sep): the marks and discs are white objects, and
           on the off-white page ground they read as cut-outs rather than as the drawing */}
       {/* 24 Sep: the serpentine section that stood here is the page head now (step 1) */}
-      <QuestionsBand />
+      {/* 28 Oct ("move this section to about, below Six values"): "Three choices shape your quote." is on the About page now */}
 
 
       {/* 17 Sep: "Six services. Open the one you need." stood here and said, in cards, exactly
@@ -347,7 +347,7 @@ export default function ServicesHub() {
 
       {/* 24 Sep (client: "Remove this section."): the kinds-of-work band with its who-does-what table is gone */}
 
-      <FaqBand />
+      {/* 28 Oct: "Questions clients ask" moved to the About page with the quote choices */}
       {/* 24 Sep (Bazil: "move this to the bottom"): proof sits under the FAQ, last before the closing band. */}
       {/* 24 Sep (client: "Remove this section as project reference should be interlinked at each business unit
           description pages"): the proof strip is gone; each unit page keeps its own delivered projects */}

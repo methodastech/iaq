@@ -854,5 +854,8 @@
 @media(min-width:861px){ .un-page[data-unit="cap-tool"] .un-hero-in{ grid-template-columns:minmax(0, 1.3fr) minmax(0, .7fr); } }
 .un-page[data-unit="cap-tool"] .un-h1{ max-width:none; }
 @media(max-width:860px){ .un-h1 .un-h1-line{ white-space:normal; } }
+/* 28 Oct (EPC sub heading on two lines, broken after "development"): the first line runs past the 46ch lede measure, so
+   this page's lede takes the full copy column and the break holds; phones still wrap it */
+.un-page[data-unit="cap-epc"] .un-lede{ max-width:none; }
 
 .un-cap2-n.un-cap2-n-in{ position:static; display:block; margin-bottom:16px; }   /* 22 Oct: the number heads the card when it has no picture */
