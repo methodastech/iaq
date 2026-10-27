@@ -85,7 +85,12 @@ export default function ServicesAll() {
         </article>
       ))}
       <article className="sa-stage" id="tool-installation-stage">
-        <StageHead no={5} name="Tool Installation" line="Each production tool is connected into the live facility and released to production." fig={FIG.tool} />
+        {/* 27 Oct ("this one no description"): the stage carries its own text like the other five, IAQ's description of tool
+            installation from the PCU & TTI page (the SL questionnaire, section D) */}
+        <StageHead no={5} name="Tool Installation" line="Each production tool is connected into the live facility and released to production." fig={FIG.tool}>
+          <p className="pg-body">Total Tool Installation connects production equipment fully and precisely into the facility it sits in. IAQ designs, installs and commissions the process critical utilities, then brings each of them to the tool.</p>
+          <p className="pg-body">The utilities are built in two sections. The bulk systems are designed and built with the base build. Once the building is complete and the tools arrive, each utility is tapped from its valve manifold and connected into the tool: the hook-up.</p>
+        </StageHead>
         <ToolsHookupBand embed bare id="tool-installation" />
       </article>
       {STAGES.slice(4).map((S, j) => { const i = j + 5; return (
