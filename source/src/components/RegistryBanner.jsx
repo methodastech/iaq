@@ -40,9 +40,15 @@ const STATS = [
   { k: '7', v: 'Countries' },
 ]
 
+/* 28 Oct (Bazil: "generate other than this, dont copy ... related image for that hero image"): a new picture, made in
+   ChatGPT, in place of the backend plant aerial: a completed high-tech manufacturing campus from a drone at blue hour, the
+   production building, the central utility building with its tanks and the lit office block. Not a specific IAQ project, so
+   no project name sits on it. prj-003.webp stays on its project card. */
+/* 28 Oct, later (Bazil: "dont make it open window glass like"): the office block at the entrance is now solid panel walls
+   with narrow strip windows, no see-through glass; the rest of the picture is unchanged (prj-hero-campus-dusk-v2.webp) */
 const SPOT = {
-  img: '/assets/projects/prj-003.webp',
-  alt: 'A semiconductor backend plant from the air: the production blocks, the central utility building and the tanks beside the river',
+  img: '/assets/projects/prj-hero-campus-dusk-v2.webp',
+  alt: 'A completed high-tech manufacturing campus from the air at dusk: the production building, the central utility building and the lit office block',
   cap: 'Semiconductor backend plant, 43,000 m² test, probe and assembly',
 }
 
@@ -54,7 +60,7 @@ export default function RegistryBanner({ shown = 18 }) {
           moving wall of every project photo gives way to one still spotlight, IAQ's semiconductor backend plant from the air */}
       <figure className="rb-spot">
         <img src={SPOT.img} alt={SPOT.alt} decoding="async" fetchpriority="high" />
-        <figcaption><span>Spotlight</span>{SPOT.cap}</figcaption>
+        {/* 28 Oct (Bazil: "remove that"): the "Spotlight" label and project name over the photo are gone; the photo stands alone */}
       </figure>
 
       {/* 26 Sep: no scrim and no grid; the words sit on their own navy block (registry-banner.css) */}
