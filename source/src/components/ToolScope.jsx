@@ -24,7 +24,7 @@ const TTI = [
 export default function ToolScope() {
   return (
     <div className="tsc">
-      <h2 id="un-scope-h" className="un-h2" data-rv="">The services scope, <em style={{ whiteSpace: 'nowrap' }}>from plant to tool.</em></h2>
+      <h2 id="un-scope-h" className="un-h2" data-rv="">The services scope, <br /><em style={{ whiteSpace: 'nowrap' }}>from plant to tool</em></h2>
       <p className="tsc-lede" data-rv="" style={{ '--d': '.06s' }}>Engineering, procurement and construction management of process critical utility infrastructure and total tool installations, for semiconductor manufacturing.</p>
       {/* 15 Oct ("remove"; client review of 13 Oct: "This picture is actually P&C, remove"): the Main Tool schematic is gone
           (ToolInstallDiagram.jsx stays in the project) */}

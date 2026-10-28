@@ -6,7 +6,7 @@
 .cb-i a{text-decoration:none;color:inherit;display:grid;gap:3px}
 .cb-i b{font:600 16px/1.2 "Switzer",sans-serif;color:#0C1220}
 .cb-i small{font:400 13px/1.35 "Instrument Sans",sans-serif;color:rgba(12,18,32,.62)}
-.cb-k{justify-self:start;padding:5px 8px;font:600 11.5px/1 "Switzer",sans-serif}
+.cb-k{justify-self:start;padding:5px 8px;font:600 13px/1 "Switzer",sans-serif}
 .cb-i.core{box-shadow:inset 0 0 0 1.5px #EC2027}.cb-i.core .cb-k{background:#EC2027;color:#fff}
 .cb-i.ask{box-shadow:inset 0 0 0 1.5px transparent;outline:1.5px dashed #EC2027;outline-offset:-1.5px}.cb-i.ask .cb-k{color:#C8141D;box-shadow:inset 0 0 0 1.5px #EC2027}
 .cb-i.off{opacity:.55;background:#F5F7FA;box-shadow:none}.cb-i.off .cb-k{background:rgba(12,18,32,.08);color:rgba(12,18,32,.6)}

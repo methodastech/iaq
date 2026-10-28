@@ -280,7 +280,7 @@ function Reach () {
       <div className="h2-wrap a2-rc-grid">
         <div className="a2-rc-copy">
           <span className="a2-k">Global Presence</span>
-          <h2 className="a2-h2">From a Local Engineering Firm <em>to a Regional Leader</em></h2>
+          <h2 className="a2-h2">From a Local Engineering Firm <br /><em>to a Regional Leader</em></h2>
           <p>
             From modest Malaysian engineering firm in 1995 to a trusted global Total Facility
             Solutions Provider. This is the Journey of IAQ Group.
@@ -338,7 +338,7 @@ function Method () {
     <section className="a2-method" id="method" ref={root}>
       <div className="h2-wrap a2-mt-head">
         <span className="a2-k">How the work is done</span>
-        <h2 className="a2-h2">Six commitments, <em>held on every site</em></h2>
+        <h2 className="a2-h2">Six commitments, <br /><em>held on every site</em></h2>
       </div>
 
       <div className="h2-wrap a2-mt-grid">

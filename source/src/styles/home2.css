@@ -68,8 +68,8 @@
   padding: 14px 24px;
   border-radius: 0; /* no rounded buttons (24 Aug) */
   font-family: var(--label);
-  font-size: 11px;
-  letter-spacing: .14em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   border: 1px solid transparent;
   transition: background .3s, color .3s, border-color .3s, transform .3s var(--h2-ease);
@@ -187,8 +187,8 @@
   align-items: center;
   gap: 10px;
   font-family: var(--label);
-  font-size: 10px;
-  letter-spacing: .22em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, .62);
 }
@@ -230,8 +230,8 @@
 }
 .h2-ms-lab {
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .13em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: var(--h2-soft);
   margin-top: 12px;
@@ -310,8 +310,8 @@
   display: inline-block;
   margin-top: 22px;
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .15em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: var(--h2-red);
 }
@@ -426,8 +426,8 @@
 }
 .h2-mod-n {
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .18em;
+  font-size: 13px;
+  letter-spacing:.04em;
   color: var(--h2-red);
 }
 /* ── the figure: a proper stage, not a bullet-sized glyph ──────────────────
@@ -489,8 +489,8 @@
 .h2-mod-go {
   margin-top: 22px;
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .14em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: #fff;
 }
@@ -527,8 +527,8 @@
 }
 .h2-rec-meta dt {
   font-family: var(--label);
-  font-size: 10px;
-  letter-spacing: .14em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: var(--h2-soft);
 }
@@ -537,8 +537,8 @@
   display: inline-block;
   margin-top: 26px;
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .14em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: var(--h2-red);
 }

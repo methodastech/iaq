@@ -15,7 +15,7 @@ export default function CapPcu() {
       no="2"
       name="Process Critical Utilities"
       full="The utilities a production tool runs on"
-      title={<>The utilities <em>are the facility.</em></>}
+      title={<>The utilities <em>are the facility</em></>}
       lede="Specialty gases, chemicals, ultrapure water and exhaust, designed, installed and commissioned as one system."
       chips={['CDA · PCW · PV', 'UPW · Chemical · Exhaust']}
       /* 17 Sep: IAQ's own photograph (SharePoint Cleanroom Photos/P1010244): the utility runs feeding a cleanroom */
@@ -61,7 +61,7 @@ export default function CapPcu() {
       filter={p => p.ind === 'semiconductor'}
       proofNote="Published by scope and location only. Client names are withheld where the contract requires it."
       /* the note restates the Define step above: the demand schedule is set from the tool list */
-      cta={{ label: 'Discuss a utilities scope', route: '/contact', title: 'Specify the utilities with the team that installs them.', note: 'Send the tool list. The demand for gases, chemicals, water and exhaust is set from it.' }}
+      cta={{ label: 'Discuss a utilities scope', route: '/contact', title: 'Specify the utilities with the team that installs them', note: 'Send the tool list. The demand for gases, chemicals, water and exhaust is set from it.' }}
     />
   )
 }

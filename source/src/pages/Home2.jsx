@@ -371,7 +371,7 @@ function WhatWeDo() {
     <section className="h2-do" id="what-we-do" ref={root}>
       <div className="h2-wrap h2-do-head">
         <div className="h2-head">
-          <h2 className="h2-xl">From Blueprint to Handover, <em>and Beyond</em></h2>
+          <h2 className="h2-xl">From Blueprint to Handover, <br /><em>and Beyond</em></h2>
         </div>
         <Link to="/services" className="h2-pill h2-pill-ghost h2-do-cta">See How We Work <Arr /></Link>
       </div>
@@ -429,7 +429,7 @@ function Industries() {
     <section className="h2-ind" id="industries" ref={root}>
       <div className="h2-wrap">
         <div className="h2-head">
-          <h2 className="h2-xl">Built for Hi-Tech. <em>Engineered for Precision.</em></h2>
+          <h2 className="h2-xl">Built for Hi-Tech. <em>Engineered for Precision</em></h2>
         </div>
         <div className="h2-ind-grid">
           {INDS.map(i => (
@@ -703,7 +703,7 @@ function ClosingCta() {
         <img className="h2-final-bg" src="/assets/contact-cleanroom.webp" alt="" loading="lazy" />
       </div>
       <div className="h2-final-in">
-        <h2 className="h2-xl h2-on-dark">Let’s Build Your Next <em>Facility Together</em></h2>
+        <h2 className="h2-xl h2-on-dark">Let’s Build Your Next <br /><em>Facility Together</em></h2>
         <p className="h2-lede h2-on-dark">
           Have a project that demands precision, speed, and proven expertise? Talk to our team and
           discover how IAQ can bring your hi-tech facility to life.

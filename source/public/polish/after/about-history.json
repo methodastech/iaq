@@ -1,0 +1,82 @@
+{
+ "url": "/about/history",
+ "slug": "about-history",
+ "title": "IAQ Group \u00b7 History of IAQ \u00b7 Brand Method",
+ "at": "2026-10-26T11:03:10.669Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Three decades of engineering evolution",
+   "tag": "header",
+   "cls": "vb",
+   "top": 84,
+   "height": 816,
+   "text": "Home\n\u203a\nAbout\n1995\n2026\nThree decades of engineering evolution\nSince 1995, IAQ has continuously expanded its engineering capabilities, project delivery expertise and global presence in support of advanced technology industries. From our foundations in Malaysia to projects across multiple international markets, our journey reflects a steadfast commitment to engineering excellence, innovation and long-term value creation.",
+   "img": "about-history/01-hero.webp",
+   "shownHeight": 816,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 0,
+    "pixels": 0
+   },
+   "reason": "fullstop"
+  },
+  {
+   "i": 1,
+   "key": "milestones",
+   "heading": "Milestones",
+   "tag": "section",
+   "cls": "hx",
+   "top": 900,
+   "height": 15509,
+   "text": "Milestones\nREADING\n2026\nSupporting the Next Generation of Industry\n21 of 21\n1995\nFoundation of IAQ\nIAQ was established in Malaysia with a focus on engineering-led solutions for controlled environments and technology-driven industries, laying the foundation for a commitment to quality, reliability and technical excellence.\nThe IAQ headquarters, Shah Alam.\n2000\nRegional Expansion\nIAQ expanded beyond Malaysia, delivering large-scale industrial facilities and strengthening its capabilities in cleanroom, utility and infrastructure solutions for advanced manufacturing environments.\nShown for illustration.\n2002\nAdvancing Technical Expertise\nAs demand for higher-performance facilities grew, IAQ broadened its engineering capabilities to support specialised manufacturing environments requiring stringent environmental control and utility integration.\nShown for illustration.\n2006\nIntegrated Facility Delivery\nIAQ strengthened its multidisciplinary approach by delivering complete facility solutions encompassing architecture, mechanical and electrical systems, process utilities and building infrastructure.\nA semiconductor plant, shown for illustration.\n2008\nBuilding International Experience in Europe\nIAQ continued to develop its presence in international markets while enhancing expertise in facility optimisation, engineering analysis and operational performance improvement.\nShown for illustration.\n2009\nSupporting Semiconductor Manufacturing\nIAQ further strengthened its cleanroom and process facility expertise through project requiring highly controlled manufacturing environment and integrated utility systems.\nShown for illustration.\n2011\nGrowth in Electronics Manufacturing\nAs global demand for advanced electronics accelerated, IAQ supported facility expansions and manufacturing infrastructure developments requiring high-precision engineering execution.\nA finished cleanroom ballroom built by IAQ, shown for illustration.\n2013\nDiversification into Energy Infrastructure\nIAQ expanded into energy and utility infrastructure projects, applying its engineering expertise to large-scale developments supporting long-term operational reliability.\nThe primary chilled water pumps of a district cooling plant, as an illustration.\n2014\nExpanding Industrial Capabilities\nThe company continued to support a broader range of industrial and manufacturing projects, reinforcing its role as a multid",
+   "img": "about-history/02-milestones.webp",
+   "shownHeight": 8000,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 140,
+    "pixels": 23.92
+   }
+  },
+  {
+   "i": 2,
+   "key": "thirty-one-years-on-the-record",
+   "heading": "Thirty-one years, on the record",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 16409,
+   "height": 900,
+   "text": "Thirty-one years,\non the record\nEach is on record in IAQ\u2019s company profile, its newsroom or the project registry.\nPROJECT\n235+ projects delivered\nHi-tech facilities delivered since 1995 for semiconductor, district cooling, life science and industrial clients, locally and globally.\nCLEANROOM CLASS\nISO Class 1\nThe highest standard of cleanroom IAQ has built, delivered successfully for a semiconductor client.\nENERGY\nMalaysia's largest district cooling\nMain contractor on the scheme, delivered with a 25 year maintenance mandate.\nFIRST IN REGION\nFirst co-generative plant in Southeast Asia\nDelivered in Malaysia as part of IAQ\u2019s energy work.\nAWARD \u00b7 2024\nBuilder of the Year\nNamed at the Malaysian Construction Industry Excellence Awards by CIDB, judged on company performance, project management, technical expertise, innovation, quality, safety and sustainability.\nAWARD \u00b7 2024\nGold, OSH Management\nGold Award for OSH Management at the 20th OSH Excellence Awards, alongside the Highwire Safety Award at Gold level.",
+   "img": "about-history/03-thirty-one-years-on-the-record.webp",
+   "shownHeight": 900,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 54,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 3,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 17308,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nQuestions clients ask\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "about-history/04-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

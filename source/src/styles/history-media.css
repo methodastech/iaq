@@ -20,10 +20,10 @@
 .hx-fig-box video[data-on="1"]{ opacity:1; }
 
 /* the caption: the existing label style, a kind tag then one line of plain text */
-.hx-cap{ margin:9px 0 0; font-family:var(--label); font-size:11.5px; line-height:1.5;
+.hx-cap{ margin:9px 0 0; font-family:var(--label); font-size:13px; line-height:1.5;
          letter-spacing:.01em; color:var(--soft); max-width:60ch; }
-.hx-cap b{ display:inline-block; margin-right:10px; font-size:10px; font-weight:600;
-           letter-spacing:.16em; text-transform:uppercase; color:var(--soft); }
+.hx-cap b{ display:inline-block; margin-right:10px; font-size:13px; font-weight:600;
+           letter-spacing:.04em; text-transform:uppercase; color:var(--soft); }
 .hx-fig[data-rep="1"] .hx-cap b{ color:var(--blue-bright); }
 
 /* ---- badge artwork ------------------------------------------------------ */
@@ -43,15 +43,15 @@
 .hx-item[data-kind="achievement"] .hx-mark{ left:2px; top:7px; width:7px; height:7px;
             background:var(--blue); border-color:var(--blue); }
 .hx-kind{ display:inline-block; margin-left:10px; padding:3px 7px 2px;
-          font-family:var(--label); font-style:normal; font-size:10px; font-weight:600;
-          letter-spacing:.16em; text-transform:uppercase; color:var(--blue-bright);
+          font-family:var(--label); font-style:normal; font-size:13px; font-weight:600;
+          letter-spacing:.04em; text-transform:uppercase; color:var(--blue-bright);
           background:rgba(236,32,39,.07); vertical-align:2px; }
 
 /* ---- narrow ------------------------------------------------------------ */
 
 @media(max-width:560px){
   .hx-fig{ margin-top:16px; }
-  .hx-cap{ font-size:11px; }
+  .hx-cap{ font-size:13px; }
   .hx-badges{ gap:12px 18px; }
   .hx-badges img{ height:46px; }
   .hx-badges[data-solo="1"]{ gap:14px 24px; }

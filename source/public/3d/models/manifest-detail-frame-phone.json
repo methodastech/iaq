@@ -1,0 +1,90 @@
+{
+  "layer": "detail-frame-phone",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -69.5458501733986,
+      2.901662826538086,
+      -38.80636847150774
+    ],
+    "max": [
+      40.82334385736311,
+      29.173324584960938,
+      2.893633185501386
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      86.6916732788086,
+      2.901662826538086,
+      -42.3650016784668
+    ],
+    "max": [
+      197.0608673095703,
+      29.173324584960938,
+      -0.6650000214576721
+    ]
+  },
+  "storeys": [
+    {
+      "index": 0,
+      "key": "apron",
+      "name": "APRON",
+      "elevation": 4.2,
+      "file": "detail-frame-phone-0-apron.glb",
+      "triangles": 18901,
+      "sizeKB": 53
+    },
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-frame-phone-1-gf.glb",
+      "triangles": 16315,
+      "sizeKB": 59
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-frame-phone-2-1f.glb",
+      "triangles": 94146,
+      "sizeKB": 301
+    },
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-frame-phone-3-2f.glb",
+      "triangles": 7884,
+      "sizeKB": 26
+    },
+    {
+      "index": 4,
+      "key": "3f",
+      "name": "3F",
+      "elevation": 21.05,
+      "file": "detail-frame-phone-4-3f.glb",
+      "triangles": 180134,
+      "sizeKB": 543
+    },
+    {
+      "index": 5,
+      "key": "rf",
+      "name": "RF",
+      "elevation": 27.71,
+      "file": "detail-frame-phone-5-rf.glb",
+      "triangles": 2376,
+      "sizeKB": 9
+    }
+  ],
+  "source": "detail-frame-phone from detail-frame: make-lite --error 0.02 --prune --normals flat",
+  "flatShading": true
+}

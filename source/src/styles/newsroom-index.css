@@ -24,8 +24,8 @@
   transition:color .25s var(--e1), background .25s var(--e1), padding-left .3s var(--e1); }
 .nx-type .nm{ --nm-accent:#B5121B; color:#9AA5BA; transition:color .25s, transform .4s var(--e1); }
 .nx-type-n{ font-size:14px; }
-.nx-type-c{ font-family: var(--num); font-size:10.5px; font-weight:600;
-  letter-spacing:.1em; color:var(--soft); font-variant-numeric:tabular-nums; }
+.nx-type-c{ font-family: var(--num); font-size:13px; font-weight:600;
+  letter-spacing:.04em; color:var(--soft); font-variant-numeric:tabular-nums; }
 .nx-type:hover{ color:var(--ink); padding-left:8px; }
 .nx-type:hover .nm{ color:var(--ink); transform:translateX(1px); }
 .nx-type[data-on="1"]{ color:var(--ink); padding-left:8px; }
@@ -92,8 +92,8 @@
 
 .nx-mo-l{ position:relative; z-index:1; height:34px; justify-content:center;
   display:flex; flex-direction:column; align-items:center; gap:3px;
-  font-family: var(--label); font-size:10px; font-weight:600;
-  letter-spacing:.14em; text-transform:uppercase; color:var(--soft); }
+  font-family: var(--label); font-size:13px; font-weight:600;
+  letter-spacing:.04em; text-transform:uppercase; color:var(--soft); }
 .nx-mo-l i{ font-style:normal; color:var(--soft); }
 .nx-mo[data-empty="1"] .nx-mo-l{ color:var(--soft); opacity:.75; }
 /* an empty month keeps its column so a gap in publishing is visible, not closed up */
@@ -105,12 +105,12 @@
 .nx-read{ margin-top:22px; min-height:44px; display:flex; align-items:flex-start; gap:14px;
   flex-wrap:wrap; }
 .nx-read-k{ display:inline-flex; align-items:center; gap:7px; flex:none;
-  font-family: var(--label); font-size:10px; font-weight:600; letter-spacing:.18em;
+  font-family: var(--label); font-size:13px; font-weight:600; letter-spacing:.04em;
   text-transform:uppercase; color:var(--blue-bright); --nm-accent:#B5121B; }
 .nx-read-k .nm{ width:15px; height:15px; }
 .nx-read-t{ font-size:15px; line-height:1.5; color:var(--ink); max-width:70ch; }
-.nx-read-idle{ font-family: var(--label); font-size:10.5px; font-weight:600;
-  letter-spacing:.14em; text-transform:uppercase; color:var(--soft); }
+.nx-read-idle{ font-family: var(--label); font-size:13px; font-weight:600;
+  letter-spacing:.04em; text-transform:uppercase; color:var(--soft); }
 
 /* ---- narrow ------------------------------------------------------------ */
 

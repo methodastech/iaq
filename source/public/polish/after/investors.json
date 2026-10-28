@@ -1,0 +1,64 @@
+{
+ "url": "/investors",
+ "slug": "investors",
+ "title": "IAQ Group \u00b7 Investor Relations \u00b7 Brand Method",
+ "at": "2026-10-22T23:10:02.943Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Built now. Sealed until listing",
+   "tag": "header",
+   "cls": "pg-head",
+   "top": 84,
+   "height": 247,
+   "text": "Built now. Sealed until listing\nThe investor wing exists in full before it is needed, so it is ready the day IAQ lists. It stays off the public navigation, out of the search index and behind a gate until IAQ opens it.",
+   "img": "investors/01-hero.webp",
+   "shownHeight": 247,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 0,
+    "pixels": 0
+   },
+   "reason": "fullstop"
+  },
+  {
+   "i": 1,
+   "key": "this-section-opens-on-listing-day",
+   "heading": "This section opens on listing day",
+   "tag": "section",
+   "cls": "ggate",
+   "top": 331,
+   "height": 1124,
+   "text": "ACCESS CONTROLLED BY IAQ\nThis section opens on listing day\nInvestor Relations is complete and held sealed. Announcements, reports, governance documents and share information publish here the day IAQ reveals the section. Until then, access is granted by IAQ on request.\nPASSCODE\nUNLOCK\nCONCEPT DEMO PASSCODE: IAQ2027\nCLIENT SIDE GATE FOR THE DEMO. SERVER SIDE AUTHENTICATION IS FITTED BEFORE LAUNCH.\nLISTING ENTITY\nIAQ Technology International Sdn. Bhd.\nLISTING BOARD\nConfirmed by IAQ ahead of listing\nINDEXING\nnoindex, nofollow while sealed\nPUBLIC NAVIGATION\nUnlinked until reveal\nUntil then, two public pages cover what an investor reads first. The board and leadership line-up names the people, and the ESG commitment sets out governance as an operating standard.",
+   "img": "investors/02-this-section-opens-on-listing-day.webp",
+   "shownHeight": 1124,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 31,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 2,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 1455,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "investors/03-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

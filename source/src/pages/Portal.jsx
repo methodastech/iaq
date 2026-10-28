@@ -10,7 +10,10 @@ import { LOCS, DEPTS } from '../data/roles.js'
 import '../styles/portal.css'
 import '../styles/gate.css'
 import { CodexBody } from './Codex.jsx'
-import PortalBooth from './PortalBooth.jsx'
+import PortalBooth from './PortalBooth.jsx'   /* the September booth page; since the 22 Oct merge the Exhibition group opens PortalExpo (below) */
+import PortalExpo, { EXPO_PARTS } from './PortalExpo.jsx'   /* 9 Oct: the exhibition portal, whole (public/booth/expo) */
+import Presentation from './Presentation.jsx'   /* 7 Oct: the decks, one tab per slide */
+import { DECKS } from '../data/presentations.jsx'
 import Direction from '../components/booth/Direction.jsx'
 import IsoFamily from '../components/codex/IsoFamily.jsx'
 import ArtStyle from '../components/codex/ArtStyle.jsx'
@@ -40,7 +43,7 @@ import SigCatalogue from '../components/portal/SigCatalogue.jsx'
      /portal/booth      SEMICON Europa 2026: the plan, the stand drafts, the screen (full screen at /booth/screen)
    One member session covers every tab (lib/cms.js); signing out anywhere gates them all. */
 /* 22 Sep (Bazil: "icons for each"): every tab carries its line icon, from the site's one icon set */
-const TAB_ICON = { codex: 'layers', newsroom: 'press', careers: 'people', projects: 'building', history: 'clock', enquiries: 'inbox', downloads: 'folder', booth: 'cube', models: 'cube', direction: 'layers', qr: 'grid', signature: 'mail', 'signature-designs': 'layers' }
+const TAB_ICON = { codex: 'layers', newsroom: 'press', careers: 'people', projects: 'building', history: 'clock', enquiries: 'inbox', downloads: 'folder', booth: 'cube', models: 'cube', direction: 'layers', qr: 'grid', signature: 'mail', 'signature-designs': 'layers', presentation: 'play' }
 const TABS = [
   ['codex', 'Codex', 'The IAQ structure, the infographic set and the cross-check'],
   ['newsroom', 'Newsroom', 'Articles on the site'],
@@ -58,6 +61,8 @@ const TABS = [
   /* 29 Sep: under the Email signature group, the Generator (this page) and Designs, the catalogue */
   ['signature-designs', 'Designs', 'The house signature designs, each with your own details, ready to copy'],
   ['signature', 'Generator', 'Your signature in the house style, ready to paste into Outlook, Gmail or Apple Mail'],
+  /* 7 Oct (Bazil: "in codex we need to add a tab called presentation"): the decks, each a page of tabs that are its slides */
+  ['presentation', 'Presentation', 'The decks: tabs at the top, one per slide'],
   /* 29 Sep ("add marketing and sub QR code", "just that we put QR code for reference") */
   ['qr', 'QR code', 'The QR codes the team uses, to look up and download'],
   ['models', '3D', 'Both 3D demos in one place: the facility model that ships, and the walkthrough in progress'],
@@ -76,7 +81,7 @@ const TABS = [
 /* 12 Oct ("this nav bar can you move it to this portal. make like name it super admin at side bar then drop down"): the
    super admin bar's tabs, first in the sidebar. The review pages (audit, competitors, plan, client files, design, the two
    earlier prototypes) open in a new tab; the live site, CMS and Codex open here. */
-const SA_ICON = { 'Web Audit': 'chart', Competitors: 'target', 'Web Plan': 'calendar', Amendments: 'check', 'Client files': 'folder', Design: 'layers', 'Web 1': 'globe', 'Web 2': 'globe', CMS: 'press', Codex: 'layers' }
+const SA_ICON = { 'Web Audit': 'chart', Competitors: 'target', 'Web Plan': 'calendar', Amendments: 'check', Polishing: 'done', 'Web flow': 'route', 'Client files': 'folder', Design: 'layers', 'Web 1': 'globe', 'Web 2': 'globe', CMS: 'press', Codex: 'layers' }
 /* CMS and Codex are left out: they are already in the portal (Edit website, Documents) */
 const SA_ITEMS = ADMIN_TABS.filter(t => t.label !== 'CMS' && t.label !== 'Codex').map(t => ({
   k: 'sa-' + t.n, label: t.label, icon: SA_ICON[t.label] || 'home', rej: t.rej,
@@ -93,16 +98,18 @@ const GROUPS = [
      panel, so every part of the SEMICON plan is one click from the bar */
   /* 25 Sep (Bazil: "design direction should be in another tab, standalone"): its own title in the sidebar, no group */
   { k: 'direction', label: 'Design direction', icon: 'layers', note: '', items: ['direction'], solo: true },
-  { k: 'exhibition', label: 'Exhibition', icon: 'cube', note: 'SEMICON Europa 2026 and the 3D',
+  /* 9 Oct (Bazil: "please update the exhibition part fully with this"): the exhibition portal's own sections
+     (PortalExpo, public/booth/expo), then the 3D demos page. Re-wired here on 22 Oct when the October line was merged;
+     the September booth page (PortalBooth) stays on disk, its looping screen at /booth/loop */
+  { k: 'exhibition', label: 'Exhibition', icon: 'cube', note: 'SEMICON Europa 2026, variations A to D',
     items: [
-      { k: 'booth', view: 'plan', label: 'Plan', icon: 'calendar' },
-      { k: 'booth', view: 'stand', label: 'Stand', icon: 'cube' },
-      { k: 'booth', view: 'print', label: 'Print', icon: 'file' },
-      { k: 'booth', view: 'digital', label: 'Screen and digital', icon: 'play' },
-      { k: 'booth', view: 'website', label: 'Website', icon: 'globe' },   /* the booth page's own part, so every part in view has its sidebar item */
-      { k: 'booth', view: 'files', label: 'Booth files', icon: 'folder' },
+      ...EXPO_PARTS.map(([v, label, icon]) => ({ k: 'booth', view: v, label, icon })),
       'models',
     ] },
+  /* 7 Oct (Bazil: "in codex we need to add a tab called presentation", "one of it is IAQ Europe presentation 1"): one
+     item per deck, from data/presentations.jsx; each opens its page of slide tabs at /portal/presentation/<deck> */
+  { k: 'presentation', label: 'Presentation', icon: 'play', note: 'The decks, one tab per slide',
+    items: DECKS.map(d => ({ k: 'presentation', view: d.id, label: d.name, icon: 'file' })) },
   /* 29 Sep ("add marketing and sub QR code"): a Marketing group after Exhibition, the QR code reference page under it */
   { k: 'marketing', label: 'Marketing', icon: 'target', note: 'For campaigns and print',
     items: ['qr'] },
@@ -187,7 +194,7 @@ function Shell ({ onOut }) {
                 const label = typeof it === 'string' ? (TAB_META[k] ? TAB_META[k].label : k) : it.label
                 const note = typeof it === 'string' ? (TAB_META[k] ? TAB_META[k].note : '') : ''
                 const icon = typeof it === 'string' ? TAB_ICON[k] : it.icon
-                const viewOn = view && path[2] === 'booth' && ((boothPart || path[3] || 'plan') === view)
+                const viewOn = view && path[2] === k && ((k === 'booth' ? (boothPart || path[3] || 'top') : path[3]) === view)   /* 22 Oct: the expo's first part is top; a deck's view is its id */
                 return (
                   <React.Fragment key={to}>
                   <NavLink to={to} end={!!view} className={({ isActive }) => 'pt-p' + ((view ? viewOn : isActive) ? ' on' : '')} title={note || undefined}>
@@ -221,7 +228,8 @@ function Shell ({ onOut }) {
         <Route path="history" element={<Page k="history" title={<>The history of IAQ, <em>milestone by milestone.</em></>} lede="Edit the words and the picture of each milestone on History of IAQ. The years and their order stay as published."><HistoryEditor /></Page>} />
         <Route path="enquiries" element={<Page k="enquiries" title={<>Enquiries, <em>tracked to the reply.</em></>} lede="Every brief sent from the enquiry form (/enquiry and the campaign pages), newest first. Give each one a status and a note as it moves; the whole team sees the same list."><EnquiriesTracker /></Page>} />
         <Route path="downloads" element={<Page k="downloads" title={<>Files for members, <em>ready to send.</em></>} lede="The infographic set for the company profile, the capability pack and the certificates behind it."><Downloads /></Page>} />
-        <Route path="booth/:view?" element={<PortalBooth />} />
+        <Route path="booth/:view?" element={<PortalExpo />} />
+        <Route path="presentation/:deck?" element={<Presentation />} />
         <Route path="direction" element={<DirectionPage />} />
         <Route path="signature" element={<Page k="signature" title={<>Email signatures, <em>one house style.</em></>} lede="Fill in your details, check the preview, then copy the signature into your mail app. Every member’s signature comes out the same."><SignatureGen /></Page>} />
         <Route path="qr" element={<Page k="qr" title={<>QR codes, <em>for reference.</em></>} lede="The codes the team uses, each with the link it opens. Download PNG for screens and documents, SVG for print."><QrRefs /></Page>} />

@@ -1,0 +1,405 @@
+{
+ "at": "2026-10-23T00:30:32.510Z",
+ "base": "http://localhost:5177",
+ "widths": [
+  1280,
+  1180,
+  1024,
+  900,
+  768,
+  430
+ ],
+ "pages": {
+  "/": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.b3d-stage > div > div.panel > p.sub",
+      "t": "Loading the systems…",
+      "cut": 150,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [
+     {
+      "a": "div > div.vt-zoom > button > span.xt-ic \"+\"",
+      "b": "div.b3d-stage > section > div.h-left > h2.h-head \"The Facilities\"",
+      "pct": 68
+     },
+     {
+      "a": "div > div.vt-zoom > button > span.xt-label \"Zoom in\"",
+      "b": "div.b3d-stage > section > div.h-left > h2.h-head \"The Facilities\"",
+      "pct": 68
+     }
+    ],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [
+     {
+      "a": "div > div.vt-zoom > button > span.xt-ic \"+\"",
+      "b": "div.b3d-stage > section > div.h-left > h2.h-head \"The Facilities\"",
+      "pct": 68
+     },
+     {
+      "a": "div > div.vt-zoom > button > span.xt-label \"Zoom in\"",
+      "b": "div.b3d-stage > section > div.h-left > h2.h-head \"The Facilities\"",
+      "pct": 68
+     },
+     {
+      "a": "div > div.vt-zoom > button > span.xt-ic \"↺\"",
+      "b": "ol.h-rail > li.on > span.rd-b > span.rd-ct \"0 / 12 placed\"",
+      "pct": 59
+     },
+     {
+      "a": "div > div.vt-zoom > button > span.xt-ic \"−\"",
+      "b": "ol.h-rail > li.on > span.rd-b > b.rd-t \"Civil and Structural\"",
+      "pct": 26
+     }
+    ],
+    "small": []
+   },
+   "900": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "ol.h-rail > li.done > span.rd-b > b.rd-t",
+      "t": "Architectural",
+      "cut": 7,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   },
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "1180": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/about": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Quality consistency",
+      "cut": 215,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "The skills to bring excellence to your project, ma",
+      "cut": 215,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Honesty and integrity",
+      "cut": 244,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "Transparent communication of accurate information,",
+      "cut": 244,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Efficiency and proficiency",
+      "cut": 244,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "Flexible fast-track execution and contractual appr",
+      "cut": 244,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Pursuit of excellence",
+      "cut": 215,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "Delivering on our commitments with the highest deg",
+      "cut": 215,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     }
+    ],
+    "overlap": [
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Quality consistency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 71
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 54
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"The skills to bring excellen\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 39
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Delivering on our commitment\"",
+      "pct": 37
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Efficiency and proficiency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 21
+     }
+    ],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Quality consistency",
+      "cut": 35,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "The skills to bring excellence to your project, ma",
+      "cut": 35,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Honesty and integrity",
+      "cut": 64,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "Transparent communication of accurate information,",
+      "cut": 64,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Efficiency and proficiency",
+      "cut": 64,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "Flexible fast-track execution and contractual appr",
+      "cut": 64,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Pursuit of excellence",
+      "cut": 35,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "Delivering on our commitments with the highest deg",
+      "cut": 35,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     }
+    ],
+    "overlap": [
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Quality consistency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 70
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 52
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"The skills to bring excellen\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 39
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Delivering on our commitment\"",
+      "pct": 37
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Efficiency and proficiency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 21
+     }
+    ],
+    "small": []
+   },
+   "900": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Delivering on our commitment\"",
+      "pct": 56
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"The skills to bring excellen\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 54
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Efficiency and proficiency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 47
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Quality consistency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 35
+     }
+    ],
+    "small": []
+   },
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Delivering on our commitment\"",
+      "pct": 56
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"The skills to bring excellen\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 54
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Efficiency and proficiency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 47
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Quality consistency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 36
+     }
+    ],
+    "small": []
+   },
+   "1180": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"The skills to bring excellen\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 56
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Delivering on our commitment\"",
+      "pct": 52
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 45
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Quality consistency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Honesty and integrity\"",
+      "pct": 44
+     }
+    ],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"The skills to bring excellen\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 51
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Quality consistency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 48
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Delivering on our commitment\"",
+      "pct": 47
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Efficiency and proficiency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 39
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 26
+     }
+    ],
+    "small": []
+   }
+  }
+ }
+}

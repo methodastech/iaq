@@ -1,0 +1,75 @@
+    <div class="be-sub" id="ic-isolevels">
+      <!-- 29 Sep 2026, night (Bazil: "do do and dont isometric complicated and isometric simple icons or visuals, make sure
+           animation is top notch quality"). Two levels of the same isometric object. Detailed: build-iso6.mjs (svc-NAME.svg).
+           Simple: build-iso-simple.mjs (svc-NAME-simple.svg and -simple-still.svg), which also draws the Don't plates for real
+           (design/iso/guide/). Loops for both levels: iso-loops.mjs. Inserted by tools/design-apps-0925.py, block ISOGUIDE. -->
+      <style>
+        #ic-isolevels .be-plate{min-height:230px}
+        .ig-pair{display:flex;align-items:center;justify-content:center;gap:clamp(18px,2.4vw,34px);width:100%}
+        .ig-pair>picture,.ig-pair>img{display:block;width:min(190px,62%);height:auto;flex:none}
+        .ig-pair>picture img,.ig-at picture img{display:block;width:100%;height:auto}
+        #ic-isolevels :is(p,li,small){text-wrap:balance}
+        .ig-row.ig-tight{gap:8px}
+        .ig-stack{display:grid;gap:12px;justify-items:center;flex:none}
+        .ig-stack img{display:block}
+        .ig-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px;width:100%}
+        .ig-row img{display:block;flex:none}
+        .ig-at{display:grid;justify-items:center;gap:10px}
+        .ig-at small{font:500 12px/1.2 "Switzer",sans-serif;color:var(--soft);white-space:nowrap}
+        .ig-tile,.ig-disc,.ig-ring{display:grid;place-items:center;width:80px;height:80px;flex:none}
+        .ig-tile{background:#E9ECEF;border-radius:18px}.ig-disc{background:#EC2027;border-radius:50%}.ig-ring{border:2px solid #C9CDD3;border-radius:50%}
+        .ig-tile img,.ig-disc img,.ig-ring img{width:54px;height:54px}
+        .ig-legend{margin-top:26px;font:600 15px/1.3 "Switzer",sans-serif;color:var(--ink)}
+      </style>
+      <h3>Isometric, detailed and simple</h3>
+      <p>Every object is drawn at two levels from one model. The detailed drawing tells the story at illustration size; the
+        simple one is the same object cut back to its main volumes, so it still reads at 32 px. The size it will show at
+        decides the level, and a view never mixes the two.</p>
+
+      <p class="ig-legend">The six services at both levels</p>
+      <div class="be-grid be-3">
+        <figure><div class="be-plate"><div class="ig-pair"><img src="/design/iso/svc-design-still.svg?v=0929n" alt="Design, detailed" width="321" height="315"><div class="ig-stack"><img src="/design/iso/svc-design-simple-still.svg?v=0929n" alt="Design, simple" width="64" height="64"><img src="/design/iso/svc-design-simple-still.svg?v=0929n" alt="" width="48" height="48"><img src="/design/iso/svc-design-simple-still.svg?v=0929n" alt="" width="32" height="32"></div></div></div><figcaption class="be-cap"><b>Design</b><small>The plan chest, its drawing set and the red set square, then the chest, the sheet and the set square.</small></figcaption></figure>
+        <figure><div class="be-plate"><div class="ig-pair"><img src="/design/iso/svc-procure-still.svg?v=0929n" alt="Procure, detailed" width="321" height="315"><div class="ig-stack"><img src="/design/iso/svc-procure-simple-still.svg?v=0929n" alt="Procure, simple" width="64" height="64"><img src="/design/iso/svc-procure-simple-still.svg?v=0929n" alt="" width="48" height="48"><img src="/design/iso/svc-procure-simple-still.svg?v=0929n" alt="" width="32" height="32"></div></div></div><figcaption class="be-cap"><b>Procure</b><small>The forklift and its strapped crate, then the mast, the crate on its pallet and the red strap.</small></figcaption></figure>
+        <figure><div class="be-plate"><div class="ig-pair"><img src="/design/iso/svc-construct-still.svg?v=0929n" alt="Construct, detailed" width="321" height="315"><div class="ig-stack"><img src="/design/iso/svc-construct-simple-still.svg?v=0929n" alt="Construct, simple" width="64" height="64"><img src="/design/iso/svc-construct-simple-still.svg?v=0929n" alt="" width="48" height="48"><img src="/design/iso/svc-construct-simple-still.svg?v=0929n" alt="" width="32" height="32"></div></div></div><figcaption class="be-cap"><b>Construct</b><small>The steel frame under a lattice crane, then one bay, the mast and jib, and the red beam on the hook.</small></figcaption></figure>
+        <figure><div class="be-plate"><div class="ig-pair"><img src="/design/iso/svc-commission-still.svg?v=0929n" alt="Commission, detailed" width="321" height="315"><div class="ig-stack"><img src="/design/iso/svc-commission-simple-still.svg?v=0929n" alt="Commission, simple" width="64" height="64"><img src="/design/iso/svc-commission-simple-still.svg?v=0929n" alt="" width="48" height="48"><img src="/design/iso/svc-commission-simple-still.svg?v=0929n" alt="" width="32" height="32"></div></div></div><figcaption class="be-cap"><b>Commission</b><small>The test cart and the control panel, then the panel alone with its gauge and the red needle.</small></figcaption></figure>
+        <figure><div class="be-plate"><div class="ig-pair"><img src="/design/iso/svc-maintain-still.svg?v=0929n" alt="Maintain, detailed" width="321" height="315"><div class="ig-stack"><img src="/design/iso/svc-maintain-simple-still.svg?v=0929n" alt="Maintain, simple" width="64" height="64"><img src="/design/iso/svc-maintain-simple-still.svg?v=0929n" alt="" width="48" height="48"><img src="/design/iso/svc-maintain-simple-still.svg?v=0929n" alt="" width="32" height="32"></div></div></div><figcaption class="be-cap"><b>Maintain</b><small>The pump set, roll cab and coupling guard, then the pump on its skid and the red spanner.</small></figcaption></figure>
+        <figure><div class="be-plate"><div class="ig-pair"><img src="/design/iso/svc-hookup-still.svg?v=0929n" alt="Hookup, detailed" width="321" height="315"><div class="ig-stack"><img src="/design/iso/svc-hookup-simple-still.svg?v=0929n" alt="Hookup, simple" width="64" height="64"><img src="/design/iso/svc-hookup-simple-still.svg?v=0929n" alt="" width="48" height="48"><img src="/design/iso/svc-hookup-simple-still.svg?v=0929n" alt="" width="32" height="32"></div></div></div><figcaption class="be-cap"><b>Hookup</b><small>The cluster tool, its lines and the subfab, then the tool, the cabinet and the red process line.</small></figcaption></figure>
+      </div>
+
+      <div class="dd">
+        <div class="do"><h4><i>&#10003;</i>Do</h4><ul>
+          <li><b>Detailed for illustration.</b> Heroes, section heads and feature cards, at 160 px and up, one per view. It may run its one loop.</li>
+          <li><b>Simple for icons.</b> Navigation, chips and small cards, at 32 to 64 px. Still in navigation and chips, with its one tiny motion only on a card that has nothing else on it.</li>
+          <li><b>One object, two levels.</b> The simple icon is the detailed drawing cut back, never a new picture.</li>
+          <li><b>One level to a row.</b> A row of icons is all simple. A row of illustrations is all detailed, at one size.</li>
+          <li><b>The same rules at both levels.</b> True isometric, three greys, a fine edge, one red part, a clear ground.</li>
+        </ul></div>
+        <div class="no"><h4><i>&#10005;</i>Don&rsquo;t</h4><ul>
+          <li><b>No detailed drawing at icon size.</b> Below 160 px its fine detail closes up into a grey smudge.</li>
+          <li><b>No simple icon blown up.</b> Above 64 px it has nothing left to say.</li>
+          <li><b>No mixing the levels</b> in one row, one menu or one set.</li>
+          <li><b>No perspective or dimetric view,</b> no second accent and no red on a second part.</li>
+          <li><b>No tile, box or disc</b> behind an object, and no keyline round it.</li>
+          <li><b>No gradient, glow or shadow,</b> and no motion that grows or shrinks.</li>
+        </ul></div>
+      </div>
+
+      <p class="ig-legend">Drawn, not described</p>
+      <div class="be-grid be-3">
+        <figure><div class="be-plate"><div class="ig-pair"><div class="ig-at"><picture><source srcset="/design/iso/svc-maintain-still.svg?v=0929n" media="(prefers-reduced-motion: reduce)"><img src="/design/iso/svc-maintain.svg?v=0929n" alt="Maintain, detailed, at illustration size" width="170" height="167"></picture><small>170 px</small></div><div class="ig-at"><img src="/design/iso/svc-maintain-simple-still.svg?v=0929n" alt="Maintain, simple, at icon size" width="48" height="48"><small>48 px</small></div></div></div><figcaption class="be-cap"><b>Each level at its own size</b><small>Detailed in the story at 160 px and up, with its loop. Simple in the menu, still.</small></figcaption></figure>
+        <figure><div class="be-plate"><div class="ig-row"><img src="/design/iso/svc-maintain-still.svg?v=0929n" alt="" width="40" height="40"><img src="/design/iso/svc-procure-still.svg?v=0929n" alt="" width="40" height="40"><img src="/design/iso/svc-construct-still.svg?v=0929n" alt="" width="40" height="40"><img src="/design/iso/svc-hookup-still.svg?v=0929n" alt="" width="40" height="40"></div><span class="cross"></span></div><figcaption class="be-cap"><b>Detailed at icon size</b><small>At 40 px the drawings close up into grey line work and none of them reads.</small></figcaption></figure>
+        <figure><div class="be-plate"><img src="/design/iso/svc-maintain-simple-still.svg?v=0929n" alt="" width="200" height="200"><span class="cross"></span></div><figcaption class="be-cap"><b>Simple, blown up</b><small>At 200 px the icon is a few flat blocks with nothing to say. Use the detailed drawing.</small></figcaption></figure>
+
+        <figure><div class="be-plate"><div class="ig-row ig-tight"><img src="/design/iso/svc-design-simple-still.svg?v=0929n" alt="Design" width="40" height="40"><img src="/design/iso/svc-procure-simple-still.svg?v=0929n" alt="Procure" width="40" height="40"><img src="/design/iso/svc-construct-simple-still.svg?v=0929n" alt="Construct" width="40" height="40"><img src="/design/iso/svc-commission-simple-still.svg?v=0929n" alt="Commission" width="40" height="40"><img src="/design/iso/svc-maintain-simple-still.svg?v=0929n" alt="Maintain" width="40" height="40"><img src="/design/iso/svc-hookup-simple-still.svg?v=0929n" alt="Hookup" width="40" height="40"></div></div><figcaption class="be-cap"><b>One level to a row</b><small>The six services as simple icons, all at one size and still, as a menu shows them.</small></figcaption></figure>
+        <figure><div class="be-plate"><div class="ig-row"><img src="/design/iso/svc-design-simple-still.svg?v=0929n" alt="" width="56" height="56"><img src="/design/iso/svc-procure-still.svg?v=0929n" alt="" width="56" height="56"><img src="/design/iso/svc-construct-simple-still.svg?v=0929n" alt="" width="56" height="56"><img src="/design/iso/svc-commission-still.svg?v=0929n" alt="" width="56" height="56"></div><span class="cross"></span></div><figcaption class="be-cap"><b>Levels mixed in a row</b><small>Simple and detailed side by side, so two line weights and two densities fight each other.</small></figcaption></figure>
+        <figure><div class="be-plate"><div class="ig-row"><span class="ig-tile"><img src="/design/iso/svc-commission-simple-still.svg?v=0929n" alt=""></span><span class="ig-disc"><img src="/design/iso/svc-commission-simple-still.svg?v=0929n" alt=""></span><span class="ig-ring"><img src="/design/iso/svc-commission-simple-still.svg?v=0929n" alt=""></span></div><span class="cross"></span></div><figcaption class="be-cap"><b>In a tile, a disc or a ring</b><small>The object stands on the page itself. A container flattens it into a sticker.</small></figcaption></figure>
+
+        <figure><div class="be-plate"><img src="/design/iso/guide/do-procure.svg?v=0929n" alt="Procure, simple, true isometric" width="120" height="120"></div><figcaption class="be-cap"><b>True isometric, one red part</b><small>Both floor axes at thirty degrees, verticals upright, only the strap in red.</small></figcaption></figure>
+        <figure><div class="be-plate"><div class="ig-row"><img src="/design/iso/guide/dont-perspective.svg?v=0929n" alt="" width="120" height="120"><img src="/design/iso/guide/dont-dimetric.svg?v=0929n" alt="" width="120" height="120"></div><span class="cross"></span></div><figcaption class="be-cap"><b>Perspective or dimetric</b><small>The same crate from a camera and at unequal angles. It no longer sits with the set.</small></figcaption></figure>
+        <figure><div class="be-plate"><img src="/design/iso/guide/dont-accents.svg?v=0929n" alt="" width="120" height="120"><span class="cross"></span></div><figcaption class="be-cap"><b>A second accent, a second red</b><small>A yellow mast and a red pallet as well as the strap. Red marks one part only.</small></figcaption></figure>
+
+        <figure><div class="be-plate"><picture><source srcset="/design/iso/svc-procure-simple-still.svg?v=0929n" media="(prefers-reduced-motion: reduce)"><img src="/design/iso/svc-procure-simple.svg?v=0929n" alt="Procure, simple, with its one small motion" width="120" height="120"></picture></div><figcaption class="be-cap"><b>Flat tones and a fine edge</b><small>Three greys, a one pixel edge, a clear ground, and at most one small lift, never a zoom.</small></figcaption></figure>
+        <figure><div class="be-plate"><img src="/design/iso/guide/dont-keyline.svg?v=0929n" alt="" width="120" height="120"><span class="cross"></span></div><figcaption class="be-cap"><b>A keyline round it</b><small>A dark line traced round the silhouette turns the object into a sticker on the page.</small></figcaption></figure>
+        <figure><div class="be-plate"><img src="/design/iso/guide/dont-glow.svg?v=0929n" alt="" width="120" height="120"><span class="cross"></span></div><figcaption class="be-cap"><b>Gradients and a glow</b><small>Graded faces, a glowing strap and a coloured shadow. The tones stay flat.</small></figcaption></figure>
+      </div>
+    </div>

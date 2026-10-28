@@ -1,0 +1,88 @@
+{
+  "layer": "detail-ducts",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -68.11694850103532,
+      2.4200000762939453,
+      -35.89935934675188
+    ],
+    "max": [
+      79.91636143548811,
+      30.011526107788086,
+      39.04713952409773
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      88.12057495117188,
+      2.4200000762939453,
+      -39.45799255371094
+    ],
+    "max": [
+      236.1538848876953,
+      30.011526107788086,
+      35.48850631713867
+    ]
+  },
+  "storeys": [
+    {
+      "index": 0,
+      "key": "apron",
+      "name": "APRON",
+      "elevation": 4.2,
+      "file": "detail-ducts-0-apron.glb",
+      "triangles": 5644,
+      "sizeKB": 66
+    },
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-ducts-1-gf.glb",
+      "triangles": 122954,
+      "sizeKB": 881
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-ducts-2-1f.glb",
+      "triangles": 490118,
+      "sizeKB": 4117
+    },
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-ducts-3-2f.glb",
+      "triangles": 25870,
+      "sizeKB": 223
+    },
+    {
+      "index": 4,
+      "key": "3f",
+      "name": "3F",
+      "elevation": 21.05,
+      "file": "detail-ducts-4-3f.glb",
+      "triangles": 113666,
+      "sizeKB": 875
+    },
+    {
+      "index": 5,
+      "key": "rf",
+      "name": "RF",
+      "elevation": 27.71,
+      "file": "detail-ducts-5-rf.glb",
+      "triangles": 7224,
+      "sizeKB": 60
+    }
+  ]
+}

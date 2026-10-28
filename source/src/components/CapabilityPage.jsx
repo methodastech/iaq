@@ -97,7 +97,7 @@ export default function CapabilityPage(props) {
       <section className="pg-sec" aria-labelledby="cap-what">
         <div className="pg-in">
           <span className="pg-k">What it is</span>
-          <h2 id="cap-what">{name}, in plain terms.</h2>
+          <h2 id="cap-what">{name}, in plain terms</h2>
           <div className="pg-split">
             <div>{what.map((t, i) => <p className="pg-body" key={i}>{jargon(t)}</p>)}</div>
             {pull && <p className="pg-pull">{pull}</p>}
@@ -110,7 +110,7 @@ export default function CapabilityPage(props) {
         <section className="pg-sec calm" aria-labelledby="cap-seq">
           <div className="pg-in">
             <span className="pg-k">The sequence</span>
-            <h2 id="cap-seq">How the work runs, step by step.</h2>
+            <h2 id="cap-seq">How the work runs, step by step</h2>
             <div className="cap-flow" role="tablist" aria-label={`${name} delivery sequence`}>
               {steps.map((s, i) => (
                 <button
@@ -148,7 +148,7 @@ export default function CapabilityPage(props) {
         <section className="pg-sec" aria-labelledby="cap-scope">
           <div className="pg-in">
             <span className="pg-k">The scope</span>
-            <h2 id="cap-scope">What IAQ delivers in this unit.</h2>
+            <h2 id="cap-scope">What IAQ delivers in this unit</h2>
             {/* the scope as a diagram (2 Sep): one custom mark per item; on the Tools Hookup page
                 this is the sixth service's detail, on the business-unit pages the model's scope */}
             <DetailDiagram variant="flow" items={items.map(t => ({ label: t }))} ariaLabel={`${name} scope`} />
@@ -161,7 +161,7 @@ export default function CapabilityPage(props) {
         <section className="pg-sec calm" aria-labelledby="cap-why">
           <div className="pg-in">
             <span className="pg-k">Why it matters</span>
-            <h2 id="cap-why">What the facility owner gains.</h2>
+            <h2 id="cap-why">What the facility owner gains</h2>
             <div className="pg-beats">
               {why.map((b, i) => (
                 <div className="pg-beat" key={i}>
@@ -196,7 +196,7 @@ export default function CapabilityPage(props) {
         <section className="pg-sec calm" aria-labelledby="cap-proof">
           <div className="pg-in">
             <span className="pg-k">Proof</span>
-            <h2 id="cap-proof">Delivered this way.</h2>
+            <h2 id="cap-proof">Delivered this way</h2>
             <div className="pg-proof">
               {proof.map(({ p, i }) => <ProofCard p={p} i={i} key={i} />)}
             </div>

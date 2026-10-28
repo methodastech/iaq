@@ -88,8 +88,8 @@
 /* ---- index, caption, pagination ---------------------------------------- */
 
 .vp-no{ position:absolute; left:clamp(18px,2vw,30px); top:clamp(16px,1.8vw,26px);
-        font-family: var(--label); font-size:11px; font-weight:600;
-        letter-spacing:.18em; color:var(--soft); }
+        font-family: var(--label); font-size:13px; font-weight:600;
+        letter-spacing:.04em; color:var(--soft); }
 
 .vp-cap{ position:absolute; left:clamp(18px,2vw,30px); right:150px;
          bottom:clamp(18px,2.2vw,30px); margin:0; }
@@ -121,8 +121,8 @@
                 transition:transform .5s var(--e1); }
 .vp-leg[data-on="1"]::after{ transform:scaleX(1); }
 .vp-leg:focus-visible{ outline:1px solid var(--blue); outline-offset:-2px; }
-.vp-leg-ix{ display:block; font-family: var(--label); font-size:10.5px;
-            font-weight:600; letter-spacing:.18em; color:var(--soft);
+.vp-leg-ix{ display:block; font-family: var(--label); font-size:13px;
+            font-weight:600; letter-spacing:.04em; color:var(--soft);
             transition:color .24s linear; }
 .vp-leg-nm{ display:block; margin-top:6px; font-size:13px; line-height:1.35;
             color:var(--soft); transition:color .3s var(--e1); }
@@ -140,7 +140,7 @@
   .vp-plate{ aspect-ratio:1/1; min-height:0; }
   .vp-legend{ grid-template-columns:repeat(2,1fr); }
   .vp-cap{ right:118px; }
-  .vp-line{ font-size:12.5px; }
+  .vp-line{ font-size:13px; }
 }
 
 /* ---- reduced motion ---------------------------------------------------- */

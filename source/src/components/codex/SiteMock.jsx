@@ -155,7 +155,7 @@ function ReadingOrder() {
    buy it" on the unit's page), and the six services are one numbered list that answers to the unit under the
    pointer, from UNITS core and ask. This replica does the same. */
 const MENU_UNITS = [
-  { id: 'epc', label: 'EPC', full: 'Engineering, Procurement and Construction', sub: 'Builds the facility, under one contract.', icon: 'crane', subs: ['EPCC', 'EPCM'] },
+  { id: 'epc', label: 'EPC', full: 'Engineering, Procurement and Construction', sub: 'Builds the facility.', icon: 'crane', subs: ['EPCC', 'EPCM'] },
   { id: 'hookup', label: 'Process Critical Utilities & Total Tool Installation Solutions', sub: 'Re-equips a live semiconductor fab.', icon: 'link', subs: ['Process Critical Utilities', 'Total Tool Installation'] },
   { id: 'efm', label: 'EFM', full: 'Energy Facility Management', sub: 'Runs and maintains it.', icon: 'power', subs: ['Cooling as a Service', 'Energy Performance Contracting'] },
 ]

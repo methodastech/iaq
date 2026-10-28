@@ -23,9 +23,9 @@
 .om-flag { display: block; flex: none; width: 24px; height: 16px; box-shadow: 0 0 0 1px rgba(12, 18, 32, .12); }
 .om-t { display: flex; flex-direction: column; gap: 1px; }
 .om-t b { font: 600 13px/1.15 "Switzer", "Instrument Sans", system-ui, sans-serif; color: #0C1220; letter-spacing: -.005em; }
-.om-t small { font: 500 11.5px/1.2 "Instrument Sans", system-ui, sans-serif; color: #5A6478; }
+.om-t small { font: 500 13px/1.2 "Instrument Sans", system-ui, sans-serif; color: #5A6478; }
 
 /* a delivered-in country: its name beside its grey dot, no box */
-.om-dl { position: absolute; transform: translate(8px, -50%); font: 500 11.5px/1 "Instrument Sans", system-ui, sans-serif;
+.om-dl { position: absolute; transform: translate(8px, -50%); font: 500 13px/1 "Instrument Sans", system-ui, sans-serif;
   color: #93A1BC; white-space: nowrap; pointer-events: none; }
 .om-dl.l { transform: translate(calc(-100% - 8px), -50%); }

@@ -1,0 +1,70 @@
+{
+  "layer": "detail-cleanroomwalls",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -65.06265010015642,
+      5.900000095367432,
+      -33.806467653636645
+    ],
+    "max": [
+      38.412470444277176,
+      27.209999084472656,
+      4.360497711773206
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      91.17487335205078,
+      5.900000095367432,
+      -37.3651008605957
+    ],
+    "max": [
+      194.64999389648438,
+      27.209999084472656,
+      0.801864504814148
+    ]
+  },
+  "storeys": [
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-cleanroomwalls-1-gf.glb",
+      "triangles": 11412,
+      "sizeKB": 82
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-cleanroomwalls-2-1f.glb",
+      "triangles": 840,
+      "sizeKB": 9
+    },
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-cleanroomwalls-3-2f.glb",
+      "triangles": 115316,
+      "sizeKB": 881
+    },
+    {
+      "index": 4,
+      "key": "3f",
+      "name": "3F",
+      "elevation": 21.05,
+      "file": "detail-cleanroomwalls-4-3f.glb",
+      "triangles": 936,
+      "sizeKB": 8
+    }
+  ]
+}

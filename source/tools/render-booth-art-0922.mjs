@@ -9,7 +9,8 @@ const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.
 const p = await b.newPage(); const errs = []
 p.on('pageerror', e => errs.push(String(e).slice(0, 160)))
 await p.goto('http://localhost:5177/booth/art/w1', { waitUntil: 'networkidle0' })
-const ids = only.length ? only : await p.evaluate(async () => (await import('/src/components/booth/Art.jsx')).PIECES).then(o => Object.keys(o)).catch(() => [])
+/* 29 Sep: both directions, A (Art.jsx) and B (ArtB.jsx). 30 Sep: five, A to E (the registry in components/booth/sets.js) */
+const ids = only.length ? only : await p.evaluate(async () => Object.keys((await import('/src/components/booth/sets.js')).ALL_PIECES)).catch(() => [])
 for (const id of ids) {
   await p.goto(`http://localhost:5177/booth/art/${id}${Q}`, { waitUntil: 'networkidle0' })
   const [w, h] = await p.evaluate(() => { const d = document.querySelector('.ba'); return [+d.dataset.w, +d.dataset.h] })

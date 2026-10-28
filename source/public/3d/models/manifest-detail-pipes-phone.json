@@ -1,0 +1,72 @@
+{
+  "layer": "detail-pipes-phone",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -66.6321538843361,
+      5.900000095367432,
+      -36.25619375837297
+    ],
+    "max": [
+      67.17438755853499,
+      28.357749938964844,
+      35.62885415422468
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      89.6053695678711,
+      5.900000095367432,
+      -39.81482696533203
+    ],
+    "max": [
+      223.4119110107422,
+      28.357749938964844,
+      32.070220947265625
+    ]
+  },
+  "storeys": [
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-pipes-phone-1-gf.glb",
+      "triangles": 16546,
+      "sizeKB": 55
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-pipes-phone-2-1f.glb",
+      "triangles": 265156,
+      "sizeKB": 675
+    },
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-pipes-phone-3-2f.glb",
+      "triangles": 91000,
+      "sizeKB": 236
+    },
+    {
+      "index": 4,
+      "key": "3f",
+      "name": "3F",
+      "elevation": 21.05,
+      "file": "detail-pipes-phone-4-3f.glb",
+      "triangles": 116383,
+      "sizeKB": 329
+    }
+  ],
+  "source": "detail-pipes-phone from detail-pipes: make-lite --error 0.02 --prune --normals flat",
+  "flatShading": true
+}

@@ -403,8 +403,9 @@ export default function initProjectsPage(opts) {
         + ' aria-label="' + (saved ? 'Remove from shortlist: ' : 'Save to shortlist: ') + esc(p.name) + '"'
         + ' title="' + (saved ? 'Saved to your shortlist' : 'Save to your shortlist') + '">'
         + '<svg viewBox="0 0 24 24" fill="' + (saved ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" aria-hidden="true"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg></button>'
-      return '<a class="pc" href="/projects/' + idx + '" data-key="' + idx + '">' + vis + save + '<div class="pc-in"><div class="ref"><span>IAQ-PRJ-' + String(idx + 1).padStart(3, '0') + '</span><span class="iso">' + p.iso + '</span></div>' +
-        '<h3>' + p.name + '</h3><div class="cl">' + (CLOGOS[p.client] ? '<img src="' + CLOGOS[p.client] + '" alt="' + p.client + '" loading="lazy">' : p.client) + '</div>' +
+      return '<a class="pc" href="/projects/' + idx + '" data-key="' + idx + '">' + vis + save + '<div class="pc-in">' +   /* 26 Oct (IAQ review, NR, page 018: "Remove this"): the IAQ-PRJ code is off the card; 28 Oct ("Remove this", the whole row boxed): the class line above the name is off too */
+        '<h3>' + p.name.replace(/(\d) (m²)/g, '$1\u00a0$2') + '</h3>' +   /* 26 Oct: a figure keeps its unit on one line (rule 21) */
+        '<div class="cl">' + (CLOGOS[p.client] ? '<img src="' + CLOGOS[p.client] + '" alt="' + p.client + '" loading="lazy">' : p.client) + '</div>' +
         '<div class="meta"><span>' + p.loc + '</span>' + (p.size ? '<span>' + p.size.toLocaleString('en-US') + ' m²</span>' : '') + '</div>' +
         '<div class="tags"><span class="tag b">' + INDLBL[p.ind] + '</span><span class="tag">' + REGLBL[p.region] + '</span><span class="tag">' + TYPLBL[p.type] + '</span></div></div></a>'
     }).join('')

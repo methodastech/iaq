@@ -1,0 +1,81 @@
+{
+ "url": "/semicon",
+ "slug": "semicon",
+ "title": "IAQ Group · SEMICON Europa 2026 · Munich",
+ "at": "2026-10-22T15:32:58.597Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Controlled environments,built to class.",
+   "tag": "header",
+   "cls": "sm-hero",
+   "top": 84,
+   "height": 848,
+   "text": "SEMICON Europa 2026 · Munich\nControlled environments,\nbuilt to class.\nIAQ designs, builds and commissions cleanrooms and the whole hi-tech facility around them, then hooks up the tools inside. Meet the IAQ team on the stand in Munich.\n10 to 13 November 2026\nTuesday to Friday\nMesse München\nMunich, Germany. Co-located with electronica\nStand to be announced\nThis page carries it the day it is confirmed\nBook a meeting\nAdd the dates to your calendar",
+   "img": "semicon/01-hero.webp",
+   "shownHeight": 848
+  },
+  {
+   "i": 1,
+   "key": "a-fab-built-layer-by-layer",
+   "heading": "A fab, built layer by layer.",
+   "tag": "section",
+   "cls": "sm-sec.sm-story",
+   "top": 932,
+   "height": 871,
+   "text": "A fab, built layer by layer.\nIAQ’s own model of a fab, from the piles to the running plant. Play it, or drag through it: each moment says what is being built and which IAQ unit builds it.\n4\nThe machines arrive\nPause\n1\nThe ground and the frame\nEPC\n2\nAir, water and power\nEPC\n3\nThe clean room\nEPC\n4\nThe machines arrive\nPCU & TTI\n5\nRunning for years\nEFM\n4\nof 5\nThe machines arrive\nThe production machines are moved in. Each one is connected to its gases, chemicals, pure water and power, then tested.\nWho does it\nPCU & TTI\n(Process Critical Utilities & Total Tool Installation)\nconnects the machines\nThe kind of work\nProcess utilities\nMEP (Mechanical, Electrical and Plumbing)\nThe services in the contract\nTools hookup\nTesting and commissioning",
+   "img": "semicon/02-a-fab-built-layer-by-layer.webp",
+   "shownHeight": 871
+  },
+  {
+   "i": 2,
+   "key": "three-units-one-accountable-team",
+   "heading": "Three units, one accountable team.",
+   "tag": "section",
+   "cls": "sm-sec",
+   "top": 1803,
+   "height": 601,
+   "text": "Three units, one accountable team.\nBought together or one at a time, under one contract.\nEPC\nEngineering, Procurement & Construction\nBuilds the facility, under one contract.\nSee the unit\nPCU & TTI\nProcess Critical Utilities & Total Tool Installation Solutions\nRe-equips a live fab: the process utilities, and every tool connected.\nSee the unit\nEFM\nEnergy Facility Management\nRuns and maintains it, and cuts the energy bill.\nSee the unit",
+   "img": "semicon/03-three-units-one-accountable-team.webp",
+   "shownHeight": 601
+  },
+  {
+   "i": 3,
+   "key": "six-services-from-the-first-drawing",
+   "heading": "Six services, from the first drawing.",
+   "tag": "section",
+   "cls": "sm-sec.sm-svc",
+   "top": 2505,
+   "height": 651,
+   "text": "Six services, from the first drawing.\nThe full cycle, so one team answers for the facility working as intended.\n1\nEngineering design and consultation\nConcept to detailed design, feasibility, permitting, BIM.\n2\nProcurement\nSourcing, tenders and long-lead equipment, tracked in one system.\n3\nConstruction\nSite management, safety, quality, programme and cost.\n4\nTesting and commissioning\nProven to operate as intended, before handover.\n5\nTool Installation\nProduction tools connected into the facility and released to production.\n6\nMaintenance\nPlanned care that protects lifespan and uptime.",
+   "img": "semicon/04-six-services-from-the-first-drawing.webp",
+   "shownHeight": 651
+  },
+  {
+   "i": 4,
+   "key": "in-europe-a-team-in-dresden",
+   "heading": "In Europe, a team in Dresden.",
+   "tag": "section",
+   "cls": "sm-sec.sm-eu",
+   "top": 3156,
+   "height": 720,
+   "text": "In Europe, a team in Dresden.\nOffices in seven countries. In Germany, IAQ Engineering (DE) GmbH works from Dresden, a short trip from Munich and from Europe’s growing chip cluster.\nIAQ Engineering (DE) GmbH\n8. OG, Budapester Straße 5, 01069 Dresden, Germany\n+49 351 4387 9529\nHeadquarters\nShah Alam, Malaysia\nbusiness@iaqtechnology.com.my\nBook a meeting in Munich\nMalaysia HQ, Shah Alam\nSingapore\nGermany Dresden\nIndia Ahmedabad\nSweden\nUnited States\nIreland",
+   "img": "semicon/05-in-europe-a-team-in-dresden.webp",
+   "shownHeight": 720
+  },
+  {
+   "i": 5,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 3876,
+   "height": 1212,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building.\nFeasibility to handover, one accountable team.\nStart a project\n→\nEMAIL\nbusiness@iaqtechnology.com.my\n→\nPHONE\n+603 5124 8319\n→\nHQ · SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n→\n© 2026 IAQ GROUP · IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) · ISO 9001 / 14001 / 45001 · CIDB G7\nPROTOTYPE · BRAND METHOD\nBACK TO TOP ↑",
+   "img": "semicon/06-follow.webp",
+   "shownHeight": 1212
+  }
+ ],
+ "errs": []
+}

@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
 import FooterNav from '../components/FooterNav.jsx'
-import CloseAmbient from '../components/CloseAmbient.jsx'
 import IndustryGrid from '../components/IndustryGrid.jsx'
 import { CYCLE_SVG } from '../data/cycleMarks.js'
 import initHome from '../scenes/home.js'
 import Build3D from '../components/Build3D.jsx'
 import Build3D3 from '../components/Build3D3.jsx'
-/* 26 Oct ("replace the home page 3D with this new version": yes): IAQ 3D 3, the developer's new engine; false returns to Build3D */
+/* 28 Oct (synced to the CTO's 27 Oct copy, "except for 3d parallax"): the home 3D stays IAQ 3D 3; false returns to Build3D */
 const USE_3D3 = true
 import HeroMarkets from '../components/HeroMarkets.jsx'
 /* 1 Oct: the Scroll to build 3D on the home page; false hides it (hidden in the morning, shown again the same day) */
@@ -26,8 +25,18 @@ import '../styles/mark-motion.css'
 /* 15 Oct (client review of 13 Oct, Sunny: "Use "Tool Installation" and the sequence comes before "Maintenance""): stage 5 is
    Tool Installation and Maintenance is stage 6; the order here matches scenes/home.js (its copy list and routes) */
 const STEP_MARKS = ['des', 'prc', 'con', 'com', 'hok', 'mnt']
+const ISO_MARKS = ['design', 'procure', 'construct', 'commission', 'hookup', 'maintain']   /* 22 Oct: the isometric set, in stage order (Tool Installation is stage 5) */
 const STEP_NAMES = ['Design', 'Procure', 'Construct', 'Commission', 'Tool Installation', 'Maintain']
 const STEP_SLUGS = ['design', 'procure', 'construct', 'commission', 'hookup', 'maintain']
+
+/* 22 Oct, note 5: the Next and Previous controls press the ring's stations, so scenes/home.js runs the change exactly as a
+   click on the ring does (the arc, the dial, the clip and the copy together) */
+function stepRing (dir) {
+  const b = [...document.querySelectorAll('#lpBubbles .lpn')]
+  if (!b.length) return
+  const i = Math.max(0, b.findIndex(x => x.classList.contains('on')))
+  b[(i + dir + b.length) % b.length].click()
+}
 
 export default function Home() {
   useEffect(() => {
@@ -75,8 +84,8 @@ export default function Home() {
         {/* 19 Oct (client feedback, Home · Hero headline / introductory statement, High): IAQ's headline and statement, in two
             reveal lines, the second phrase in red */}
         <h1 aria-label="Engineering Precision. Delivering Excellence.">
-          <span className="hl" aria-hidden="true"><span>Engineering Precision.</span></span>{' '}
-          <span className="hl" aria-hidden="true"><span>Delivering <em>Excellence.</em></span></span>
+          <span className="hl" aria-hidden="true"><span>Engineering Precision</span></span>{' '}
+          <span className="hl" aria-hidden="true"><span>Delivering <em>Excellence</em></span></span>{/* 23 Oct, rule 4 (Bazil: "whatever best"): the two full stops go, IAQ's words and capitals stay, one part per line; the aria-label keeps the spoken sentence */}
         </h1>
         <p className="lede">IAQ Group delivers integrated engineering and total facility solutions for complex industrial and mission-critical environments.</p>
         {/* one action only, per the client (24 Aug): contact, nothing competing */}
@@ -126,7 +135,7 @@ export default function Home() {
       <div className="lpx" id="lpxWrap">
         <div className="lp-intro">
           {/* 28 Aug (client): the section carries its NAME as the heading, no eyebrow above it */}
-          <h2>The delivery cycle.</h2>
+          <h2>The delivery cycle</h2>
           <p className="lp-lede" data-reveal="">Six stages, one accountable team. Each stage hands to the next.</p>{/* 15 Oct: "tools hookup feeds the next design" went with the new order */}
         </div>
 
@@ -146,8 +155,10 @@ export default function Home() {
                         aria-pressed={i === 0 ? 'true' : 'false'} aria-label={`Stage ${i + 1}: ${nm}`}>
                   <span className="lpn-in">
                     <span className="lpn-disc">
-                      <span className="lpn-mk" aria-hidden="true"
-                            dangerouslySetInnerHTML={{ __html: CYCLE_SVG[STEP_MARKS[i]] }} />
+                      {/* 22 Oct, note 5 (Bazil: "provide better icons ... we have isometric icons"): the Design tab's isometric
+                          service icons (public/assets/cycle-iso, from design/iso/svc-*-ic) in place of the photoreal marks;
+                          CYCLE_SVG stays for the Services page ring */}
+                      <span className="lpn-mk" aria-hidden="true"><img src={`/assets/cycle-iso/${ISO_MARKS[i]}.webp`} alt="" decoding="async" /></span>
                     </span>
                     <span className="lpn-lb"><i>{i + 1}</i>{nm}</span>
                   </span>
@@ -193,18 +204,28 @@ export default function Home() {
                             {/* the number sits inside a MINIATURE of the ring, filled to the same fraction and
                   on the same easing, so the copy column reads as the other half of one instrument */}
               <span className="lp-cardno" aria-hidden="true">
-                <span className="lp-dial" id="lpDial"><svg viewBox="0 0 40 40" aria-hidden="true"><circle className="dl-trk" cx="20" cy="20" r="19" pathLength="1" /><circle className="dl-arc" cx="20" cy="20" r="19" pathLength="1" /></svg><b id="lpNum">1</b></span><small>/ 6</small>
+                <span className="lp-dial" id="lpDial"><svg viewBox="0 0 40 40" aria-hidden="true"><circle className="dl-trk" cx="20" cy="20" r="19" pathLength="1" /><circle className="dl-arc" cx="20" cy="20" r="19" pathLength="1" /></svg><b id="lpNum">1</b></span>{/* 22 Oct, note 3 (Bazil: "just put number three and that's about it"): the "/ 6" is gone */}
               </span>
               <h3 id="lpTitle">Engineering Design &amp; Consultation</h3>
             </div>
             <span className="lp-kick" id="lpKick">Where the facility is decided</span>
             <p id="lpDesc">Concept to detailed design across CSA and MEP.</p>
-            <a className="lp-more" id="lpMore" href="/services/all#design"><span id="lpMoreT">See Engineering Design &amp; Consultation</span>
-              <svg viewBox="0 0 26 10" fill="none" stroke="currentColor" strokeWidth="1.6"
-                   strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M1 5h23" /><path d="M20 1.2 24 5l-4 3.8" />
-              </svg>
-            </a>
+            {/* 22 Oct, note 5 (Bazil: "put an arrow or a button ... and just continue to the next", "it's as if this is a
+                node and not part of the website"): the link is the site's button, and Previous and Next walk the ring by
+                pressing its stations, so the panel, the dial and the arc all move together */}
+            <div className="lp-acts">
+              <a className="lp-more" id="lpMore" href="/services/all#design"><span id="lpMoreT">See Engineering Design &amp; Consultation</span>
+                <svg viewBox="0 0 26 10" fill="none" stroke="currentColor" strokeWidth="1.6"
+                     strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M1 5h23" /><path d="M20 1.2 24 5l-4 3.8" />
+                </svg>
+              </a>
+              <span className="lp-nav">
+                <button type="button" aria-label="Previous stage" onClick={() => stepRing(-1)}><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2 4 7l5 5" /></svg></button>
+                <button type="button" aria-label="Next stage" onClick={() => stepRing(1)}><svg viewBox="0 0 14 14" aria-hidden="true"><path d="m5 2 5 5-5 5" /></svg></button>
+                <span className="lp-next-l">Next stage</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>

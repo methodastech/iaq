@@ -148,7 +148,7 @@ function Pictures({ part, title }) {
 
 /* ---------- section 1 · for everyone ---------- */
 const PLAIN = [
-  ['crane', 'EPC', 'It builds the factory.', 'From the first drawing to a finished, clean facility, under one contract.', 'Engineering, Procurement and Construction'],
+  ['crane', 'EPC', 'It builds the factory.', 'From the first drawing to a finished, clean facility.', 'Engineering, Procurement and Construction'],
   ['link', 'PCU & TTI', 'It connects the machines.', 'When production machines arrive in a chip factory, it brings them their gases, chemicals, water and power.', 'Process Critical Utilities & Total Tool Installation'],
   ['power', 'EFM', 'It runs it for less.', 'It maintains the plant and cuts the energy bill, funded by IAQ upfront.', 'Energy Facility Management'],
 ]

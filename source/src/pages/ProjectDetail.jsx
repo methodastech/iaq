@@ -5,13 +5,12 @@ import { Link, useParams } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
 import FooterNav from '../components/FooterNav.jsx'
-import CloseAmbient from '../components/CloseAmbient.jsx'
 import initProjectPage from '../scenes/project.js'
 import SaveProject from '../components/SaveProject.jsx'
 import Tour360 from '../components/Tour360.jsx'
 import Icon from '../components/FlowIcon.jsx'
 import '../styles/shortlist.css'
-import { INDLBL, REGLBL, TYPLBL, ICONS, CLOGOS, BLURB, SCOPES, pad3 } from '../data/projects.js'
+import { INDLBL, REGLBL, TYPLBL, ICONS, CLOGOS, BLURB, SCOPES } from '../data/projects.js'
 import { cmsProjects, live } from '../lib/cms.js'
 const PROJECTS = live(cmsProjects)
 import { PROJECT_DETAIL, CLASS_MEANING, DELIVERY_NOTE } from '../data/projectDetail.js'
@@ -115,7 +114,7 @@ function RelCard({ idx }) {
         <div className="pcv"><div className="grid-bg"></div><span className="ph-ico" dangerouslySetInnerHTML={{ __html: ICONS[p.ind] || '' }} /><span className="ph-cap">{INDLBL[p.ind]}: photo at production</span></div>
       )}
       <div className="pc-in">
-        <div className="ref"><span>IAQ-PRJ-{pad3(idx + 1)}</span><span className="iso">{p.iso}</span></div>
+        {/* 26 Oct (IAQ review, NR): no IAQ-PRJ code on a card; 28 Oct ("Remove this"): nor the class line, as on /projects */}
         <h3>{p.name}</h3>
         <div className="cl">{CLOGOS[p.client] ? <img src={CLOGOS[p.client]} alt={p.client} loading="lazy" /> : p.client}</div>
         <div className="meta"><span>{p.loc}</span>{p.size ? <span>{p.size.toLocaleString('en-US')} m&sup2;</span> : null}</div>
@@ -503,7 +502,7 @@ export default function ProjectDetail() {
 
         <aside className="prj-side">
           <div className="ps-card">
-            <span className="pd-ref">IAQ-PRJ-{pad3(PIDX + 1)}</span>
+            {/* 26 Oct (IAQ review, NR): the IAQ-PRJ code is off the project page too; it is the site's numbering, not an IAQ reference */}
             <div className="ps-logo" id="prjLogo">{CLOGOS[P.client] ? <img src={CLOGOS[P.client]} alt={P.client} loading="lazy" decoding="async" /> : <span className="txt">{P.client}</span>}</div>
             <p className="pd-side-sub">{TYPLBL[P.type]}, {P.loc}</p>
 

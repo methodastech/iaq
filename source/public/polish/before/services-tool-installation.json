@@ -1,0 +1,117 @@
+{
+ "url": "/services/tool-installation",
+ "slug": "services-tool-installation",
+ "title": "IAQ Group · PCU & TTI · Brand Method",
+ "at": "2026-10-22T15:30:44.466Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Process CriticalUtilities (PCU) &Total Tool Installation (TTI)",
+   "tag": "header",
+   "cls": "un-hero",
+   "top": 84,
+   "height": 547,
+   "text": "Process Critical\nUtilities (PCU) &\nTotal Tool Installation (TTI)\nBridging Facility Readiness and Manufacturing Readiness",
+   "img": "services-tool-installation/01-hero.webp",
+   "shownHeight": 547
+  },
+  {
+   "i": 1,
+   "key": "manufacturing-readiness-start-here",
+   "heading": "Manufacturing Readiness Start Here",
+   "tag": "section",
+   "cls": "un-sec.un-what",
+   "top": 630,
+   "height": 672,
+   "text": "Manufacturing Readiness Start Here\nA production facility is only ready when its manufacturing equipment and utility systems operate as one. IAQ delivers integrated PCU and TTI solutions that connect critical utility infrastructure with manufacturing tools, enabling a seamless transition from facility completion to operational readiness.",
+   "img": "services-tool-installation/02-manufacturing-readiness-start-here.webp",
+   "shownHeight": 672
+  },
+  {
+   "i": 2,
+   "key": "what-we-deliver",
+   "heading": "What We Deliver",
+   "tag": "section",
+   "cls": "un-sec.un-cap2",
+   "top": 1302,
+   "height": 777,
+   "text": "What We Deliver\n01\nProcess Critical Utilities\nSpecialised utility systems that support the safe and reliable operation of semiconductor manufacturing facilities.\nCORE SOLUTIONS\nSpecialty Gas Systems\nChemical Distribution Systems\nUltra-Pure Water (UPW)\nProcess Exhaust Systems\nWaste Collection Treatment Systems\n02\nTotal Tool Installation\nComprehensive equipment integration services supporting manufacturing start-up and production readiness.\nCORE SERVICES\nEquipment Move-In\nTool Installation\nUtility Hook-Up\nSystem Integration\nTesting & Verification\nCommissioning Support",
+   "img": "services-tool-installation/03-what-we-deliver.webp",
+   "shownHeight": 777
+  },
+  {
+   "i": 3,
+   "key": "our-delivery-approach",
+   "heading": "Our Delivery Approach",
+   "tag": "section",
+   "cls": "un-sec.un-proc",
+   "top": 2080,
+   "height": 698,
+   "text": "Our Delivery Approach\nSTAGE 01\nFacilitisation\nPreparing facility infrastructure and utility systems for equipment installation\nSTAGE 02\nMove-In & Installation\nPositioning and installing manufacturing equipment\nSTAGE 03\nUtility Integration\nConnecting tools to critical utilities and support systems\nSTAGE 04\nTesting & Commissioning\nVerifying system performance and operational readiness",
+   "img": "services-tool-installation/04-our-delivery-approach.webp",
+   "shownHeight": 698
+  },
+  {
+   "i": 4,
+   "key": "un-stmt",
+   "heading": "",
+   "tag": "section",
+   "cls": "un-stmt",
+   "top": 2778,
+   "height": 653,
+   "text": "PCU & TTI\nOur PCU and TTI solutions are dedicated to semiconductor manufacturing environments, supporting wafer fabrication, advanced packaging and backend facilities through specialised utility and equipment integration services.\n01\nWafer Fabrication\n02\nAdvanced Packaging\n03\nBackend Facilities",
+   "img": "services-tool-installation/05-un-stmt.webp",
+   "shownHeight": 653
+  },
+  {
+   "i": 5,
+   "key": "why-clients-partner-with-iaq",
+   "heading": "Why Clients Partner with IAQ",
+   "tag": "section",
+   "cls": "un-sec.un-deliver",
+   "top": 3430,
+   "height": 690,
+   "text": "Why Clients Partner with IAQ\n1\nIntegrated Delivery\nUtility infrastructure and tool installation delivered through a coordinated execution framework.\n2\nSemiconductor Focus\nDedicated expertise supporting the unique requirements of semiconductor manufacturing facilities.\n3\nTechnical Excellence\nDisciplined planning, coordination and execution throughout every project phase.\n4\nManufacturing Readiness\nHelping clients bridge the gap between facility completion and production start-up.",
+   "img": "services-tool-installation/06-why-clients-partner-with-iaq.webp",
+   "shownHeight": 690
+  },
+  {
+   "i": 6,
+   "key": "the-services-scope-from-plant-to-tool",
+   "heading": "The services scope, from plant to tool.",
+   "tag": "section",
+   "cls": "un-sec.un-scope",
+   "top": 4120,
+   "height": 839,
+   "text": "The services scope, from plant to tool.\nEngineering, procurement and construction management of process critical utility infrastructure and total tool installations, for semiconductor manufacturing.\nProcess critical utilities\nBuilt with the base build\nWater solutions\nUPW plant and distribution, process waste drains, WWT, reclaim, ZLD, chemical storage tanks and dispensing\nChemical and slurry solutions\nBulk chemical, blending and dispense systems\nGas solutions\nBulk gas, specialty gas and abatement, bunker (NH₃, SiH₄, H₂) and liquid dispense system\nProcess exhaust solutions\nGeneral, acid, caustic, solvent and calamity exhaust\nTool installation hook-up\nConnected into each tool\nBulk gas\nSpecialty gas\nProcess chemicals\nUltrapure water\nProcess cooling water\nProcess drain\nProcess vacuum\nHigh vacuum\nProcess exhaust\nGas detection and monitoring\nElectrical power and controls",
+   "img": "services-tool-installation/07-the-services-scope-from-plant-to-tool.webp",
+   "shownHeight": 839
+  },
+  {
+   "i": 7,
+   "key": "delivered-this-way",
+   "heading": "Delivered this way.",
+   "tag": "section",
+   "cls": "un-sec.un-proof",
+   "top": 4959,
+   "height": 768,
+   "text": "Delivered this way.\nSee all semiconductor projects\nMalaysia\nISO 6 to 7\nTesting manufacturing plant, 25,000 m² greenfield\nSemiconductor manufacturer\nSemiconductor\nCleanroom\nthe northern corridor, Kedah\nISO 5\nWafer fab facility and expansion, cleanroom package with utilities\nWafer foundry\nSemiconductor\nEPCC\nMalaysia\nISO 6 to 7\nSemiconductor backend plant, 43,000 m² test, probe and assembly\nSemiconductor manufacturer\nSemiconductor\nEPCM\nPublished by scope and location only. Client names are withheld where the contract requires it.",
+   "img": "services-tool-installation/08-delivered-this-way.webp",
+   "shownHeight": 768
+  },
+  {
+   "i": 8,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 5727,
+   "height": 1212,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building.\nFeasibility to handover, one accountable team.\nStart a project\n→\nEMAIL\nbusiness@iaqtechnology.com.my\n→\nPHONE\n+603 5124 8319\n→\nHQ · SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n→\n© 2026 IAQ GROUP · IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) · ISO 9001 / 14001 / 45001 · CIDB G7\nPROTOTYPE · BRAND METHOD\nBACK TO TOP ↑",
+   "img": "services-tool-installation/09-follow.webp",
+   "shownHeight": 1212
+  }
+ ],
+ "errs": []
+}

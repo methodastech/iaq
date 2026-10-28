@@ -59,7 +59,7 @@ export default function FabExplorer() {
     <section className={'fx' + (sel ? ' has' : '')} id="what-iaq-does" aria-labelledby="fx-h" ref={box} onPointerDown={() => { touched.current = true }}>
       <div className="wrap">
         <div className="fx-head">
-          <h2 id="fx-h">Everything IAQ does, <em>on one facility.</em></h2>
+          <h2 id="fx-h">Everything IAQ does, <br /><em>on one facility</em></h2>
           <p className="fx-lede">Three business units, six services, three kinds of work and the systems they build. Pick any one, and the facility shows where it sits.</p>
         </div>
         <div className="fx-grid">

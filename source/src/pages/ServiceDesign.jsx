@@ -61,13 +61,13 @@ function ProofCard({ i }) {
 /* 25 Sep (IAQ, 24 Sep review: "merge all the description pages for each service into one"): the cover and the scope
    are exported so the single page /services/all can stack the six stages in order; this page still renders them */
 const SLUG = 'design'
-export const META = { slug: SLUG, eyebrow: "Stage 01 · Engineering Design & Consultation", title: <>Where the facility <em>is decided.</em></>, lede: "Concept to detailed design across CSA and MEP, with expert advice through the development of the project." }
+export const META = { slug: SLUG, eyebrow: "Stage 01 · Engineering Design & Consultation", title: <>Where the facility <em>is decided</em></>, lede: "Concept to detailed design across CSA and MEP, with expert advice through the development of the project." }
 export function Cover() {
   return (
       <section className="pg-sec" aria-labelledby={"cov-h-"+SLUG}>
         <div className="pg-in">
           <span className="pg-k">What it covers</span>
-          <h2 id={"cov-h-"+SLUG}>The stage where cost and compliance are decided.</h2>
+          <h2 id={"cov-h-"+SLUG}>The stage where cost and compliance are decided</h2>
           <div className="pg-split">
             <div>
               <p className="pg-body">
@@ -95,7 +95,7 @@ export function Scope() {
       <section className="pg-sec calm" aria-labelledby={"scope-h-"+SLUG}>
         <div className="pg-in">
           <span className="pg-k">Scope</span>
-          <h2 id={"scope-h-"+SLUG}>What IAQ carries at this stage.</h2>
+          <h2 id={"scope-h-"+SLUG}>What IAQ carries at this stage</h2>
           {/* the scope as a diagram (2 Sep): one custom mark per item on a rail that draws in */}
           <DetailDiagram variant="flow" items={SCOPE.map(s => ({ label: s }))} ariaLabel="Scope at this stage" />
           <CarriedBy service="design" />
@@ -116,7 +116,7 @@ export default function ServiceDesign() {
           rather than on the same render the ring and the hub already showed. */}
       <PageHead crumbs={[{ label: 'Services', to: '/services' }]}
         eyebrow="Stage 01 · Engineering Design & Consultation"
-        title={<>Where the facility <em>is decided.</em></>}
+        title={<>Where the facility <em>is decided</em></>}
         lede="Concept to detailed design across CSA and MEP, with expert advice through the development of the project."
         chips={['CSA · MEP', 'Stage 1 of 6']}
         figure={{ src: '/assets/iaq/bim-archi.webp', alt: 'Engineering design: the architectural model of a hi-tech facility, from IAQ\u2019s own Revit coordination model', hero: true }}
@@ -132,7 +132,7 @@ export default function ServiceDesign() {
       <section className="pg-sec" aria-labelledby="run-h">
         <div className="pg-in">
           <span className="pg-k">How it runs</span>
-          <h2 id="run-h">Three things have to be true before it moves on.</h2>
+          <h2 id="run-h">Three things have to be true before it moves on</h2>
           {/* the process as a diagram (2 Sep, Bazil: "a whole good process with custom icons") */}
           <GateList items={BEATS} ariaLabel="How it runs" />
 
@@ -152,7 +152,7 @@ export default function ServiceDesign() {
       <section className="pg-sec calm" aria-labelledby="proof-h">
         <div className="pg-in">
           <span className="pg-k">Proof</span>
-          <h2 id="proof-h">Designed, then built by the same team.</h2>
+          <h2 id="proof-h">Designed, then built by the same team</h2>
           <p className="pg-lede">
             One process, six stages: every project below ran the full cycle. These are drawn from the
             published registry, chosen for the class and the scale of the design package.

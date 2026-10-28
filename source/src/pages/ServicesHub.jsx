@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import ClosingBand from '../components/ClosingBand.jsx'
+import ServicesSectionBar from '../components/ServicesSectionBar.jsx'
 import Related from '../components/Related.jsx'
 import CycleFlow from '../components/CycleFlow.jsx'
 import CycleRing from '../components/CycleRing.jsx'
@@ -300,7 +301,7 @@ export default function ServicesHub() {
       <MapBand />
       {/* 26 Sep (Bazil: "make the services page better ... more interesting, easy to understand"): the page's parts in one
           bar under the nav, the part in view lit */}
-      {/* 27 Oct ("remove this"): the sticky section tabs (3 business units / Your quote / Questions) are off the page */}
+      <ServicesSectionBar />
 
       {/* 17 Sep (client: "better to have 3 business unit on top of the page instead?" and "To
           minimize the description on this landing page and transfer the information to their
@@ -324,9 +325,9 @@ export default function ServicesHub() {
           four phases and the Main Tool schematic, added 25 Sep) is off this page. It stays on /services/all and the
           PCU & TTI page carries the schematic. */}
       {/* 25 Sep (Bazil: "remove this section"): the one-flow band (OneFlow) is off the page; the component stays */}
-      {/* 27 Oct (client: "Remove this section replace with the 3D parallax"): the "6 services, 3 units, 4 works" matrix
-          (SystemMap) is off the page. The 3D build stood in its place for the day, then ("remove 3d parallax on services")
-          came off too; it stays on the home page */}
+      {/* 27 Oct (IAQ review, NR, page 005: "Remove this section replace with the 3D parallax"): the "6 services 3 units 4 works"
+          matrix (SystemMap) is off; the scroll-built 3D facility from the home page (Build3D) stands in its place */}
+      {/* 28 Oct (synced to the CTO's copy "except for 3d parallax"; the 3D came off Services on 27 Oct, "remove 3d parallax on services"): no 3D here; it stays on the home page */}
       {/* 24 Sep (Bazil: "in between put the old services looping view"): the ring sits between the units and the map */}
       {/* ------------- the cycle FIRST (2 Sep, Bazil: "this should be at the top"): the one
            interactive diagram carries the whole story — hover a stage for its scope, click it
@@ -334,7 +335,7 @@ export default function ServicesHub() {
       {/* pure white behind the diagram (Bazil, 2 Sep): the marks and discs are white objects, and
           on the off-white page ground they read as cut-outs rather than as the drawing */}
       {/* 24 Sep: the serpentine section that stood here is the page head now (step 1) */}
-      {/* 28 Oct ("move this section to about, below Six values"): "Three choices shape your quote." is on the About page now */}
+      {/* 27 Oct (IAQ review, NR, page 005, circled with the removals around it): "Three choices shape your quote" (QuestionsBand) is off */}
 
 
       {/* 17 Sep: "Six services. Open the one you need." stood here and said, in cards, exactly
@@ -347,7 +348,8 @@ export default function ServicesHub() {
 
       {/* 24 Sep (client: "Remove this section."): the kinds-of-work band with its who-does-what table is gone */}
 
-      {/* 28 Oct: "Questions clients ask" moved to the About page with the quote choices */}
+      {/* 26 Oct (IAQ review, NR, page 005: "Remove this FAQ or create a dedicated FAQ section"): the questions have their own page,
+          /faq (pages/FaqPage.jsx), linked from the footer and the Contact page; FaqBand stays in ServicesMap.jsx */}
       {/* 24 Sep (Bazil: "move this to the bottom"): proof sits under the FAQ, last before the closing band. */}
       {/* 24 Sep (client: "Remove this section as project reference should be interlinked at each business unit
           description pages"): the proof strip is gone; each unit page keeps its own delivered projects */}

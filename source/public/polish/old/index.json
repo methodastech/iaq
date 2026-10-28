@@ -1,0 +1,327 @@
+{
+ "base": "http://localhost:5177",
+ "at": "2026-10-22T14:44:57.009Z",
+ "pages": [
+  {
+   "url": "/",
+   "slug": "home",
+   "title": "IAQ Group · Total Facility Solutions · Brand Method",
+   "height": 14373,
+   "errs": 0,
+   "ms": 28645
+  },
+  {
+   "url": "/about",
+   "slug": "about",
+   "title": "IAQ Group · About · Brand Method",
+   "height": 4620,
+   "errs": 0,
+   "ms": 6238
+  },
+  {
+   "url": "/about/history",
+   "slug": "about-history",
+   "title": "IAQ Group · History of IAQ · Brand Method",
+   "height": 16739,
+   "ext": "jpg",
+   "errs": 0,
+   "ms": 7840
+  },
+  {
+   "url": "/about/commitment",
+   "slug": "about-commitment",
+   "title": "IAQ Group · Corporate Commitment · Brand Method",
+   "height": 6020,
+   "errs": 0,
+   "ms": 6663
+  },
+  {
+   "url": "/about/leadership",
+   "slug": "about-leadership",
+   "title": "IAQ Group · Board & Leadership · Brand Method",
+   "height": 5002,
+   "errs": 0,
+   "ms": 5875
+  },
+  {
+   "url": "/about/esg",
+   "slug": "about-esg",
+   "title": "IAQ Group · ESG · Brand Method",
+   "height": 5539,
+   "errs": 0,
+   "ms": 5949
+  },
+  {
+   "url": "/global-presence",
+   "slug": "global-presence",
+   "title": "IAQ Group · Global Presence · Brand Method",
+   "height": 5475,
+   "errs": 0,
+   "ms": 5984
+  },
+  {
+   "url": "/services",
+   "slug": "services",
+   "title": "IAQ Group · Services · Brand Method",
+   "height": 9340,
+   "errs": 0,
+   "ms": 10617
+  },
+  {
+   "url": "/services/all",
+   "slug": "services-all",
+   "title": "IAQ Group · The six services · Brand Method",
+   "height": 9539,
+   "errs": 0,
+   "ms": 6834
+  },
+  {
+   "url": "/services/design",
+   "slug": "services-design",
+   "title": "IAQ Group · The six services · Brand Method",
+   "height": 9539,
+   "errs": 0,
+   "ms": 6867
+  },
+  {
+   "url": "/services/procurement",
+   "slug": "services-procurement",
+   "title": "IAQ Group · The six services · Brand Method",
+   "height": 9539,
+   "errs": 0,
+   "ms": 6940
+  },
+  {
+   "url": "/services/construction",
+   "slug": "services-construction",
+   "title": "IAQ Group · The six services · Brand Method",
+   "height": 9539,
+   "errs": 0,
+   "ms": 6826
+  },
+  {
+   "url": "/services/commissioning",
+   "slug": "services-commissioning",
+   "title": "IAQ Group · The six services · Brand Method",
+   "height": 9539,
+   "errs": 0,
+   "ms": 6862
+  },
+  {
+   "url": "/services/maintenance",
+   "slug": "services-maintenance",
+   "title": "IAQ Group · The six services · Brand Method",
+   "height": 9539,
+   "errs": 0,
+   "ms": 6932
+  },
+  {
+   "url": "/services/epc-construction",
+   "slug": "services-epc-construction",
+   "title": "IAQ Group · EPC · Brand Method",
+   "height": 7147,
+   "errs": 0,
+   "ms": 6604
+  },
+  {
+   "url": "/services/process-critical-utilities",
+   "slug": "services-process-critical-utilities",
+   "title": "IAQ Group · PCU & TTI · Brand Method",
+   "height": 8906,
+   "errs": 0,
+   "ms": 6898
+  },
+  {
+   "url": "/services/tool-installation",
+   "slug": "services-tool-installation",
+   "title": "IAQ Group · PCU & TTI · Brand Method",
+   "height": 8906,
+   "errs": 0,
+   "ms": 7032
+  },
+  {
+   "url": "/services/energy-management",
+   "slug": "services-energy-management",
+   "title": "IAQ Group · EFM · Brand Method",
+   "height": 8820,
+   "errs": 0,
+   "ms": 9004
+  },
+  {
+   "url": "/markets",
+   "slug": "markets",
+   "title": "IAQ Group · Markets · Brand Method",
+   "height": 4572,
+   "errs": 0,
+   "ms": 6113
+  },
+  {
+   "url": "/markets/semiconductor",
+   "slug": "markets-semiconductor",
+   "title": "IAQ Group · Semiconductor · Brand Method",
+   "height": 5704,
+   "errs": 0,
+   "ms": 6177
+  },
+  {
+   "url": "/markets/data-centre",
+   "slug": "markets-data-centre",
+   "title": "IAQ Group · Data Centre · Brand Method",
+   "height": 5303,
+   "errs": 0,
+   "ms": 5944
+  },
+  {
+   "url": "/markets/ev-battery",
+   "slug": "markets-ev-battery",
+   "title": "IAQ Group · EV Battery · Brand Method",
+   "height": 5359,
+   "errs": 0,
+   "ms": 6099
+  },
+  {
+   "url": "/markets/photovoltaics",
+   "slug": "markets-photovoltaics",
+   "title": "IAQ Group · Photovoltaics · Brand Method",
+   "height": 5331,
+   "errs": 0,
+   "ms": 5982
+  },
+  {
+   "url": "/markets/district-cooling",
+   "slug": "markets-district-cooling",
+   "title": "IAQ Group · District Cooling & Heating · Brand Method",
+   "height": 5254,
+   "errs": 0,
+   "ms": 5983
+  },
+  {
+   "url": "/markets/bio-lifescience",
+   "slug": "markets-bio-lifescience",
+   "title": "IAQ Group · Bio LifeScience · Brand Method",
+   "height": 5253,
+   "errs": 0,
+   "ms": 6062
+  },
+  {
+   "url": "/markets/food-beverage",
+   "slug": "markets-food-beverage",
+   "title": "IAQ Group · Food & Beverage · Brand Method",
+   "height": 5227,
+   "errs": 0,
+   "ms": 6026
+  },
+  {
+   "url": "/projects",
+   "slug": "projects",
+   "title": "IAQ Group · Projects · Brand Method",
+   "height": 4398,
+   "errs": 0,
+   "ms": 6136
+  },
+  {
+   "url": "/projects/4",
+   "slug": "projects-4",
+   "title": "IAQ Group · Silicon wafer manufacturing, multi-class greenfield with full MEP · Semiconductor · Brand Method",
+   "height": 6618,
+   "errs": 0,
+   "ms": 6513
+  },
+  {
+   "url": "/news",
+   "slug": "news",
+   "title": "IAQ Group · News & Insights · Brand Method",
+   "height": 3740,
+   "errs": 0,
+   "ms": 6010
+  },
+  {
+   "url": "/news/pdk-kota-raja-community-visit",
+   "slug": "news-pdk-kota-raja-community-visit",
+   "title": "IAQ Group · Empowering Communities Through Compassion: IAQ Visits PDK Kota Raja · Brand Method",
+   "height": 4910,
+   "errs": 0,
+   "ms": 5885
+  },
+  {
+   "url": "/careers",
+   "slug": "careers",
+   "title": "IAQ Group · Careers · Brand Method",
+   "height": 9780,
+   "errs": 0,
+   "ms": 7429
+  },
+  {
+   "url": "/contact",
+   "slug": "contact",
+   "title": "IAQ Group · Start a Project · Brand Method",
+   "height": 6027,
+   "errs": 0,
+   "ms": 7314
+  },
+  {
+   "url": "/investors",
+   "slug": "investors",
+   "title": "IAQ Group · Investor Relations · Brand Method",
+   "height": 2819,
+   "errs": 0,
+   "ms": 5414
+  },
+  {
+   "url": "/policies",
+   "slug": "policies",
+   "title": "IAQ Group · Policies · Brand Method",
+   "height": 4584,
+   "errs": 0,
+   "ms": 5976
+  },
+  {
+   "url": "/exhibition",
+   "slug": "exhibition",
+   "title": "IAQ Group · Digital Exhibition · Brand Method",
+   "height": 4699,
+   "errs": 0,
+   "ms": 5766
+  },
+  {
+   "url": "/shortlist",
+   "slug": "shortlist",
+   "title": "IAQ Group · Project shortlist · Brand Method",
+   "height": 2167,
+   "errs": 0,
+   "ms": 5510
+  },
+  {
+   "url": "/enquiry",
+   "slug": "enquiry",
+   "title": "Page not found · IAQ Group",
+   "height": 2031,
+   "errs": 0,
+   "ms": 5632
+  },
+  {
+   "url": "/lp/project",
+   "slug": "lp-project",
+   "title": "IAQ Group · Markets · Brand Method",
+   "height": 4572,
+   "errs": 0,
+   "ms": 6125
+  },
+  {
+   "url": "/semicon",
+   "slug": "semicon",
+   "title": "IAQ Group · SEMICON Europa 2026 · Munich",
+   "height": 5272,
+   "errs": 0,
+   "ms": 6362
+  },
+  {
+   "url": "/booth/screen",
+   "slug": "booth-screen",
+   "title": "IAQ Group · Booth screen · SEMICON Europa 2026",
+   "height": 900,
+   "errs": 0,
+   "ms": 5265
+  }
+ ]
+}

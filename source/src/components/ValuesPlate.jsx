@@ -128,7 +128,7 @@ export default function ValuesPlate() {
 
         <div className="vp-head">
           <span className="eyebrow">What we hold</span>
-          <h2 id="vpH">Six values, <em>held on every site.</em></h2>
+          <h2 id="vpH">Six values, <br /><em>held on every site</em></h2>
         </div>
 
         <figure className="vp-plate" ref={plateRef}

@@ -1,0 +1,33 @@
+/* the one-page prospect form (pages/Prospect.jsx), phone first, no site chrome */
+.pp{min-height:100vh;background:#F6F8FB;color:var(--ink,#0C1220);padding:28px 16px 48px;font-family:"Instrument Sans",system-ui,sans-serif}
+.pp-in{max-width:520px;margin:0 auto;background:#fff;padding:26px 20px 28px;border-radius:14px;box-shadow:0 18px 50px -30px rgba(12,18,32,.3)}
+.pp-logo{height:40px;width:auto;display:block;margin-bottom:18px}
+.pp h1{font:500 28px/1.1 "Switzer",sans-serif;letter-spacing:-.025em;margin:0 0 8px}
+.pp h1 em{font-style:normal;color:var(--unit,#EC2027)}
+.pp-lede{margin:0 0 18px;font-size:15px;color:var(--soft,#48536A)}
+.pp-err{margin:0 0 14px;padding:10px 12px;border-radius:8px;background:rgba(236,32,39,.08);color:#B3121A;font-size:14px}
+.pp-f{display:flex;flex-direction:column;gap:6px;margin:0 0 14px;padding:0;border:0;min-width:0}
+.pp-f label,.pp-f legend{font-size:13px;font-weight:600;color:var(--soft,#48536A)}
+.pp-f input,.pp-f select,.pp-f textarea{font:500 16px "Instrument Sans",sans-serif;color:var(--ink,#0C1220);border:0;background:#F3F5F8;padding:14px 15px;border-radius:8px;outline:none;width:100%}
+.pp-f input:focus,.pp-f select:focus,.pp-f textarea:focus{box-shadow:inset 0 0 0 2px var(--blue,#0B8FD8)}
+.pp-f select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8A94A6 50%),linear-gradient(135deg,#8A94A6 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+.pp-f textarea{resize:vertical;min-height:84px}
+.pp-chips{flex-direction:row;flex-wrap:wrap;gap:8px}
+.pp-chips legend{margin-bottom:8px}
+.pp-chips label{position:relative}
+.pp-chips input{position:absolute;opacity:0;width:0;height:0}
+.pp-chips span{display:inline-block;padding:10px 14px;border-radius:99px;background:#F3F5F8;font:500 14px/1 "Instrument Sans",sans-serif;color:var(--ink,#0C1220);cursor:pointer}
+.pp-chips input:checked+span{background:rgba(236,32,39,.1);box-shadow:inset 0 0 0 1.5px var(--unit,#EC2027);color:#B3121A}
+.pp-chips input:focus-visible+span{box-shadow:inset 0 0 0 2px var(--blue,#0B8FD8)}
+.pp-btn{display:block;width:100%;margin-top:6px;padding:16px;border:0;border-radius:10px;background:var(--unit,#EC2027);color:#fff;font:600 16px/1 "Switzer",sans-serif;text-align:center;text-decoration:none;cursor:pointer}
+.pp-btn:disabled{opacity:.6}
+.pp-fine{margin:12px 0 0;font-size:12.5px;color:#8A94A6;text-align:center}
+.pp-done p{font-size:15px;color:var(--soft,#48536A);margin:0 0 18px}
+@media(min-width:560px){.pp{padding-top:48px}.pp-in{padding:34px 32px 34px}.pp h1{font-size:32px}}
+/* the site's own label rule set these at 11 px: the house floor is 13 px, sentences 14 (9 Oct) */
+.pp .pp-f label:not(.pp-chips label),.pp .pp-f legend{font:600 14px/1.3 "Instrument Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--soft,#48536A)}
+.pp .pp-fine{font-size:13px}
+/* base.css carries a phone rule (max-width 640px) that forces 11px !important on a list of tag selectors including label */
+@media (max-width:640px){.pp .pp-f label:not(.pp-chips label),.pp .pp-f legend{font-size:14px!important}.pp .pp-chips span{font-size:14px!important}.pp .pp-fine{font-size:13px!important}}
+/* square, like the site's buttons and fields (Bazil, 8 Oct: "no curve corner") */
+.pp .pp-in,.pp .pp-f input,.pp .pp-f select,.pp .pp-f textarea,.pp .pp-btn,.pp .pp-chips span,.pp .pp-err{border-radius:0}

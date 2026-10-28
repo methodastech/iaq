@@ -7,9 +7,9 @@
 .fv-zoom button{width:32px;height:32px;border:0;background:rgba(255,255,255,.1);color:#fff;font:600 16px/1 "Switzer",sans-serif;cursor:pointer;backdrop-filter:blur(6px)}
 .fv-zoom button:hover{background:rgba(255,255,255,.2)}
 .fv-legend{list-style:none;margin:0;padding:10px 12px;display:flex;flex-wrap:wrap;gap:4px 6px;background:#0B1220}
-.fv-legend li button{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border:0;background:transparent;color:rgba(255,255,255,.55);font:500 12px/1.2 "Switzer",sans-serif;cursor:pointer;transition:color .2s,background .2s}
+.fv-legend li button{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border:0;background:transparent;color:rgba(255,255,255,.55);font:500 13px/1.2 "Switzer",sans-serif;cursor:pointer;transition:color .2s,background .2s}
 .fv-legend li button i{width:9px;height:9px;background:var(--c);flex:none;opacity:.55;transition:opacity .2s}
-.fv-legend li button b{font-weight:600;font-size:11px;color:rgba(255,255,255,.4)}
+.fv-legend li button b{font-weight:600;font-size:13px;color:rgba(255,255,255,.4)}
 .fv-legend li.on button{color:#fff;background:rgba(255,255,255,.08)}
 .fv-legend li.on button i{opacity:1}
 .fv-legend li.on button b{color:#fff}
@@ -39,7 +39,7 @@
 /* callouts on the model: an ink dot, a grey leader, a white chip with a hairline; Switzer, sentence case */
 .fv .fab-lab i{width:6px;height:6px;background:#0C1220;box-shadow:0 0 0 2px #fff}
 .fv .fab-lab i::after{width:16px;background:rgba(12,18,32,.4)}
-.fv .fab-lab b{font:600 11.5px/1.2 "Switzer",sans-serif;letter-spacing:-.004em;text-transform:none;color:#0C1220;background:#fff;padding:5px 8px;border:0;box-shadow:inset 0 0 0 1px rgba(12,18,32,.14);margin-left:12px}
+.fv .fab-lab b{font:600 13px/1.2 "Switzer",sans-serif;letter-spacing:-.004em;text-transform:none;color:#0C1220;background:#fff;padding:5px 8px;border:0;box-shadow:inset 0 0 0 1px rgba(12,18,32,.14);margin-left:12px}
 .fv .fab-pick i{background:#EC2027;box-shadow:0 0 0 2px #fff}
 .fv .fab-pick.on b{box-shadow:inset 0 0 0 1.5px #EC2027}
 /* the home page hides every callout but the pick (fab-assembly.css line 270, 15 Sep: the key replaced them). In the
@@ -67,7 +67,7 @@
 .fv .fab-lab{align-items:flex-end;gap:0}
 .fv .fab-lab i{width:6px;height:6px;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.25);margin:0 0 -3px -3px}
 .fv .fab-lab i::after{content:"";position:absolute;left:50%;bottom:100%;top:auto;width:1px;height:26px;background:rgba(255,255,255,.55);transform:translateX(-.5px)}
-.fv .fab-lab b{position:relative;margin:0 0 30px -6px;font:600 11.5px/1.2 "Switzer",sans-serif;letter-spacing:-.004em;text-transform:none;color:#0C1220;background:#fff;padding:6px 9px;border:0;box-shadow:0 8px 18px -10px rgba(0,0,0,.6);border-radius:0}
+.fv .fab-lab b{position:relative;margin:0 0 30px -6px;font:600 13px/1.2 "Switzer",sans-serif;letter-spacing:-.004em;text-transform:none;color:#0C1220;background:#fff;padding:6px 9px;border:0;box-shadow:0 8px 18px -10px rgba(0,0,0,.6);border-radius:0}
 .fv .fab-pick i{background:#EC2027;box-shadow:0 0 0 2px rgba(236,32,39,.35)}
 .fv .fab-pick i::after{background:rgba(236,32,39,.7)}
 .fv .fab-pick.on b{box-shadow:inset 0 0 0 1.5px #EC2027,0 8px 18px -10px rgba(0,0,0,.6)}

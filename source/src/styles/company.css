@@ -15,8 +15,8 @@
 
 /* mono sub-kicker used inside split columns and above grouped lists */
 .cp-pk {
-  display: block; font-family: var(--label); font-size: 10.5px;
-  letter-spacing: .18em; text-transform: uppercase; color: var(--faint); font-weight:600;
+  display: block; font-family: var(--label); font-size: 13px;
+  letter-spacing:.04em; text-transform: uppercase; color: var(--faint); font-weight:600;
 }
 
 /* ------------------------------------------------------------- timeline ----
@@ -36,8 +36,8 @@
 .cp-mile:hover::before { border-color: var(--blue); background: var(--blue); }
 .cp-mile.key::before { background: var(--blue); border-color: var(--blue); }
 .cp-yr {
-  display: block; font-family: var(--label); font-size: 11px;
-  letter-spacing: .18em; font-weight:600; color: var(--blue-bright);
+  display: block; font-family: var(--label); font-size: 13px;
+  letter-spacing:.04em; font-weight:600; color: var(--blue-bright);
 }
 .cp-mile h3 { font-size: clamp(17px, 2vw, 21px); margin-top: 7px; }
 .cp-mile p { color: var(--soft); font-size: 14.5px; margin-top: 8px; max-width: 58ch; line-height: 1.6; }
@@ -49,7 +49,7 @@
 }
 .cp-tile { background: var(--bg2); padding: clamp(16px, 2.4vw, 22px); display: flex; flex-direction: column; gap: 8px; }
 .cp-tile .k {
-  font-family: var(--label); font-size: 10px; letter-spacing: .16em;
+  font-family: var(--label); font-size: 13px; letter-spacing:.04em;
   text-transform: uppercase; font-weight:600; color: var(--faint);
 }
 .cp-tile b { font-family: "Switzer", sans-serif; font-size: clamp(16px, 2vw, 21px); font-weight: 600; letter-spacing: -.02em; line-height: 1.16; }
@@ -68,21 +68,21 @@
 }   /* 26 Sep: no dashed grey rule under the portrait slot */
 .cp-portrait svg { width: 30px; height: 30px; stroke: #8792A8; fill: none; stroke-width: 1.5; }
 .cp-portrait span {
-  font-family: var(--label); font-size: 10px; letter-spacing: .14em;
+  font-family: var(--label); font-size: 13px; letter-spacing:.04em;
   text-transform: uppercase; font-weight:600; color: #3A445C;
 }
 .cp-person-b { padding: 15px 16px; }
 .cp-person-b b { display: block; font-family: "Switzer", sans-serif; font-size: 17px; font-weight: 600; letter-spacing: -.01em; line-height: 1.2; }
 .cp-person-b span {
-  display: block; font-family: var(--label); font-size: 10.5px;
-  letter-spacing: .13em; text-transform: uppercase; color: var(--faint);
+  display: block; font-family: var(--label); font-size: 13px;
+  letter-spacing:.04em; text-transform: uppercase; color: var(--faint);
   margin-top: 7px; font-weight:600;
 }
 .cp-person details { border-top: 0; margin-top: auto; }
 .cp-person summary {
   list-style: none; cursor: pointer; padding: 13px 16px; min-height: 44px;
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  font-family: var(--label); font-size: 10px; letter-spacing: .14em;
+  font-family: var(--label); font-size: 13px; letter-spacing:.04em;
   text-transform: uppercase; font-weight:600; color: var(--soft); transition: color .25s;
 }
 .cp-person summary::-webkit-details-marker { display: none; }
@@ -100,15 +100,15 @@
   border-bottom: 0; font-size: 14px; color: var(--soft); line-height: 1.55;
 }
 .cp-facts li b {
-  font-family: var(--label); font-size: 10.5px; letter-spacing: .14em;
+  font-family: var(--label); font-size: 13px; letter-spacing:.04em;
   text-transform: uppercase; color: var(--blue-bright); flex: none; min-width: 92px; font-weight:600;
 }
 
 /* ------------------------------------------------------ certification chips */
 .cp-certs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
 .cp-certs em {
-  font-style: normal; font-family: var(--label); font-size: 10.5px;
-  letter-spacing: .1em; text-transform: uppercase; font-weight:600; color: var(--ink);
+  font-style: normal; font-family: var(--label); font-size: 13px;
+  letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--ink);
   border: 0; padding: 11px 14px; background: rgba(23,33,58,.06);   /* 26 Sep: a filled slim box, no outline */
 }
 
@@ -124,7 +124,7 @@
 .cp-globe-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; justify-content: center; }
 .cp-globe-legend span {
   display: inline-flex; align-items: center; gap: 8px; font-family: var(--label);
-  font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #8FA0BE; font-weight:600;
+  font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: #8FA0BE; font-weight:600;
 }
 .cp-globe-legend i { width: 8px; height: 8px; border-radius: 0; display: block; flex: none; }   /* 26 Sep: square, not round */
 .cp-globe-legend i.of { background: #FF3B44; }
@@ -139,13 +139,13 @@
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 14px); background: none; border: 0;   /* 26 Sep, 06:10 (Bazil: "cannot have too many lines"): blocks on space, no grid lines */ margin-top: clamp(22px, 3vw, 30px);
 }
 .cp-office { background: var(--bg2); padding: clamp(16px, 2.4vw, 22px); }
-.cp-office .k { font-family: var(--label); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); }
+.cp-office .k { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); }
 .cp-office h3 { font-size: 19px; margin-top: 9px; }
 .cp-office p { font-size: 13.5px; color: var(--soft); line-height: 1.6; margin-top: 8px; }
 .cp-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; }
-.cp-chips .lbl { font-family: var(--label); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; font-weight:600; color: var(--faint); }
+.cp-chips .lbl { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--faint); }
 .cp-chips em, .cp-chips a {
-  font-style: normal; font-size: 12.5px; font-weight: 500; text-decoration: none; color: inherit;
+  font-style: normal; font-size: 13px; font-weight: 500; text-decoration: none; color: inherit;
   border: 0; padding: 10px 12px; background: rgba(23,33,58,.06);   /* 26 Sep: a filled slim box, no outline */
   display: inline-flex; align-items: center; min-height: 40px; transition: background .25s, color .25s;
 }
@@ -160,26 +160,26 @@
   transition: padding-left .3s var(--e1), color .25s;
 }
 a.cp-row:hover, a.cp-row:focus-visible { padding-left: 8px; color: var(--blue-bright); }
-.cp-row .c { font-family: var(--label); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; font-weight:600; }
+.cp-row .c { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; }
 .cp-row .n { font-size: 14.5px; color: var(--soft); line-height: 1.5; }
-.cp-row .v { font-family: var(--label); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); font-weight:600; white-space: nowrap; }
+.cp-row .v { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--faint); font-weight:600; white-space: nowrap; }
 
 /* ------------------------------------------------------------------ news ---*/
 .cp-feature { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(18px, 3.4vw, 44px); align-items: center; margin-top: 18px; }
 .cp-feature h2 { font-size: clamp(22px, 2.9vw, 33px); max-width: 36ch; margin-top: 13px; }
 .cp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .cp-tag {
-  font-family: var(--label); font-size: 10px; letter-spacing: .14em;
+  font-family: var(--label); font-size: 13px; letter-spacing:.04em;
   text-transform: uppercase; font-weight:600; color: var(--blue-bright);
   border: 0; background: rgba(236, 32, 39, .07); padding: 6px 9px;
 }
 /* --soft (7.7:1), not --faint (3.42:1): this is the smallest type on the article page */
-.cp-date { font-family: var(--label); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); font-weight: 600; }
+.cp-date { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--soft); font-weight: 600; }
 
 .cp-filter { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 20px; }
-.cp-filter .lbl { font-family: var(--label); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; font-weight:600; color: var(--faint); margin-right: 4px; }
+.cp-filter .lbl { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--faint); margin-right: 4px; }
 .cp-fchip {
-  font-family: var(--label); font-size: 10.5px; letter-spacing: .1em;
+  font-family: var(--label); font-size: 13px; letter-spacing:.04em;
   text-transform: uppercase; font-weight:600; color: var(--soft);
   border: 1px solid transparent; background: rgba(23, 33, 58, .06); padding: 11px 13px;
   min-height: 40px; cursor: pointer; transition: background .25s, color .25s, border-color .25s;
@@ -199,8 +199,8 @@ a.cp-row:hover, a.cp-row:focus-visible { padding-left: 8px; color: var(--blue-br
 .cp-card h3 { font-size: 15.5px; line-height: 1.32; font-weight: 600; }
 .cp-card:hover h3 { color: var(--blue-bright); }
 .cp-card .go {
-  margin-top: auto; font-family: var(--label); font-size: 10px;
-  letter-spacing: .14em; text-transform: uppercase; font-weight:600; color: var(--faint);
+  margin-top: auto; font-family: var(--label); font-size: 13px;
+  letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--faint);
 }
 .cp-card:hover .go { color: var(--blue-bright); }
 /* no box: the tone change already separates it, and this state is now reachable */
@@ -220,7 +220,7 @@ a.cp-row:hover, a.cp-row:focus-visible { padding-left: 8px; color: var(--blue-br
    CMS note tells IAQ the body publishes here, so this is a real path, not a dead one. */
 .cp-prose { font-size: 16.5px; line-height: 1.72; color: var(--soft); }
 .cp-prose p + p { margin-top: 1.1em; }
-.cp-src { font-family: var(--label); font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--soft); margin-top: 22px; }
+.cp-src { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--soft); margin-top: 22px; }
 
 /* the lead image: every route into an article shows a photograph, so the article
    opening on a white band read as a downgrade from the card that was clicked */
@@ -228,7 +228,7 @@ a.cp-row:hover, a.cp-row:focus-visible { padding-left: 8px; color: var(--blue-br
 .cp-art-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* source link, replacing the dead "Source · IAQ newsroom" label */
-.cp-srclink { font-family: var(--label); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; }
+.cp-srclink { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; }
 .cp-srclink i { font-style: normal; display: inline-block; transition: transform .2s; }
 .cp-srclink:hover, .cp-srclink:focus-visible { color: var(--blue-bright); border-bottom-color: currentColor; }
 .cp-srclink:hover i { transform: translate(2px, -2px); }
@@ -237,13 +237,13 @@ a.cp-row:hover, a.cp-row:focus-visible { padding-left: 8px; color: var(--blue-br
 .cp-pn { display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; margin-top: 30px; border-top: 1px solid var(--line); padding-top: 16px; }   /* 26 Sep, 06:10 (Bazil: "cannot have too many lines"): one line over both, not one each */
 .cp-pn a { flex: 1 1 240px; min-width: 0; text-decoration: none; padding: 0; border-top: 0; transition: color .2s; }
 .cp-pn a:hover, .cp-pn a:focus-visible { color: var(--blue); }
-.cp-pn .k { display: block; font-family: var(--label); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
+.cp-pn .k { display: block; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--soft); }
 .cp-pn .t { display: block; margin-top: 7px; font-family: "Switzer", sans-serif; font-weight: 600; font-size: 14.5px; line-height: 1.35; color: var(--ink); }
 .cp-pn a:hover .t { color: var(--blue-bright); }
 .cp-pn .nx { text-align: right; }
 .cp-back {
   display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
-  font-family: var(--label); font-size: 10.5px; letter-spacing: .14em;
+  font-family: var(--label); font-size: 13px; letter-spacing:.04em;
   text-transform: uppercase; font-weight:600; color: var(--faint);
   min-height: 40px; transition: color .25s;
 }
@@ -268,14 +268,14 @@ a.cp-row:hover, a.cp-row:focus-visible { padding-left: 8px; color: var(--blue-br
   .cp-person-b b { font-size: 15px; }
   .cp-person summary { padding: 12px; }
   .cp-portrait { aspect-ratio: 1 / 1; padding: 10px; gap: 6px; }
-  .cp-portrait span { font-size: 8px; letter-spacing: .1em; }
+  .cp-portrait span { font-size: 13px; letter-spacing:.04em; }
   .cp-row { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 14px 0; }
   .cp-row .v { white-space: normal; }
   .cp-facts li { flex-direction: column; gap: 4px; }
   .cp-facts li b { min-width: 0; }
   .cp-globe { max-width: 290px; }
   .cp-globe-copy h2 { font-size: clamp(21px, 6.2vw, 27px); }
-  .cp-certs em { font-size: 9.5px; padding: 10px 11px; }
+  .cp-certs em { font-size: 13px; padding: 10px 11px; }
 }
 @media (max-width: 400px) {
   .cp-tiles, .cp-grid, .cp-offices, .cp-people { grid-template-columns: minmax(0, 1fr); }
@@ -296,7 +296,7 @@ a.cp-row:hover, a.cp-row:focus-visible { padding-left: 8px; color: var(--blue-br
 /* 25 Sep, phone pass: the pin map's labels are 8.5 units on a 320 viewBox, about 10px tall on a phone and colliding
    (Ireland over Dresden). They are 10 units everywhere now and hidden under 640px, where the copy beneath the map
    names every office and every country delivered in. */
-.cp-globe svg text{font-size:10px}
+.cp-globe svg text{font-size:13px}
 @media (max-width:640px){ .cp-globe svg text{display:none} }
 
 /* 8 Oct: the map band. The copy sits above, the map runs the band's full width under it (components/OfficeMap.jsx) */

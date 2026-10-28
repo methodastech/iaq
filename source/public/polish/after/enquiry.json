@@ -1,0 +1,45 @@
+{
+ "url": "/enquiry",
+ "slug": "enquiry",
+ "title": "IAQ Group \u00b7 Cleanroom and facility projects",
+ "at": "2026-10-27T02:01:18.640Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "we-love-talking-to-visionaries-like-you",
+   "heading": "We Love Talking To Visionaries Like You",
+   "tag": "section",
+   "cls": "lp-hero",
+   "top": 85,
+   "height": 523,
+   "text": "We Love Talking To Visionaries Like You\nSend your project brief",
+   "img": "enquiry/01-we-love-talking-to-visionaries-like-you.webp",
+   "shownHeight": 523,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -252,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 1,
+   "key": "tell-us-about-the-project",
+   "heading": "Tell us about the project",
+   "tag": "section",
+   "cls": "lp-form-wrap",
+   "top": 608,
+   "height": 1178,
+   "text": "Tell us about the project\nA few lines are enough to start. Our team will review your enquiry and direct it to the appropriate contact.\nWHAT HAPPENS NEXT\nYou send the brief\nA few lines are enough to start.\nOur team reviews it\nEvery enquiry is read.\nIt reaches the right contact\nAt the email or phone you give.\nPREFER TO TALK\nbusiness@iaqtechnology.com.my\n+603 5124 8319\nLEAVE THIS EMPTY\n01\nCONTACT\nName\nCompany\nWork email\nPhone\n02\nPROJECT\nMarket\nChoose one\nTiming\nChoose one\nWhat you need\nChoose one\nThe project optional\nSend the brief\nYour details are used only to reply to this enquiry.",
+   "img": "enquiry/02-tell-us-about-the-project.webp",
+   "shownHeight": 1178,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 7,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

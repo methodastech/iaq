@@ -8,7 +8,8 @@ const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.
 const p = await b.newPage(); const errs = []
 p.on('pageerror', e => errs.push(String(e).slice(0, 160)))
 await p.goto('http://localhost:5177/booth/art/w1', { waitUntil: 'networkidle0' })
-const all = await p.evaluate(async () => { const P = (await import('/src/components/booth/Art.jsx')).PIECES; return Object.entries(P).filter(([, v]) => v.print).map(([k, v]) => [k, v.w, v.h]) })
+/* 29 Sep: both directions, A (Art.jsx) and B (ArtB.jsx). 30 Sep: five, A to E (the registry in components/booth/sets.js) */
+const all = await p.evaluate(async () => { const P = (await import('/src/components/booth/sets.js')).ALL_PIECES; return Object.entries(P).filter(([, v]) => v.print).map(([k, v]) => [k, v.w, v.h]) })
 for (const [id, w, h] of all.filter(([id]) => !only.length || only.includes(id))) {
   const bl = Math.max(w, h) < 400 ? 3 : 10, W = w + 2 * bl, H = h + 2 * bl
   const k = 900 / Math.max(W, H)

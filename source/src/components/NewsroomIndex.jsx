@@ -79,7 +79,7 @@ export default function NewsroomIndex({ active, onPick }) {
 
         <header className="nx-head">
           <span className="eyebrow">The newsroom, indexed</span>
-          <h2 id="nxH">{NEWS.length} stories, <em>{months.length} months.</em></h2>
+          <h2 id="nxH">{NEWS.length} stories, <br /><em>{months.length} months</em></h2>
           <p className="nx-lede">
             One mark per story, stacked in the month it was published. Pick a type to isolate its
             line, or hover a mark to read the headline.

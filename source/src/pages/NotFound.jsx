@@ -13,7 +13,7 @@ export default function NotFound () {
       <Nav />
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '170px 22px 120px', textAlign: 'center' }}>
         <span style={{ fontFamily: '"Switzer","Instrument Sans",system-ui,sans-serif', fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', color: '#B5121B', fontWeight: 600 }}>404 · Not found</span>
-        <h1 style={{ fontSize: 'clamp(28px,4vw,40px)', margin: '12px 0 10px' }}>That page is not here.</h1>
+        <h1 style={{ fontSize: 'clamp(28px,4vw,40px)', margin: '12px 0 10px' }}>That page is not here</h1>
         <p style={{ fontSize: 15, color: '#48536A', lineHeight: 1.6 }}>
           The address may have changed with the new site structure. Start from the homepage, or go
           straight to the projects or the services.

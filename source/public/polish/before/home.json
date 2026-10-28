@@ -1,0 +1,81 @@
+{
+ "url": "/",
+ "slug": "home",
+ "title": "IAQ Group · Total Facility Solutions · Brand Method",
+ "at": "2026-10-22T15:29:33.900Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Engineering Precision. Delivering Excellence.",
+   "tag": "header",
+   "cls": "hero.dark-band",
+   "top": 0,
+   "height": 900,
+   "text": "Engineering Precision.\nDelivering Excellence.\nIAQ Group delivers integrated engineering and total facility solutions for complex industrial and mission-critical environments.\nMore about us\nKuala Lumpur",
+   "img": "home/01-hero.webp",
+   "shownHeight": 900
+  },
+  {
+   "i": 1,
+   "key": "engineering-excellence-in-numbers",
+   "heading": "Engineering Excellence in Numbers",
+   "tag": "section",
+   "cls": "glance.gr",
+   "top": 900,
+   "height": 791,
+   "text": "Engineering Excellence in Numbers\nOur track record reflects the expertise, scale and commitment behind IAQ’s integrated facility solutions, serving hi-tech industries across international markets.\n530+\nEmployees\n7\nGlobal offices\n31\nYears of experience\n85%\nEngineering workforce\n20\nTons of carbon emission reduced annually\n235+\nProjects completed\nMalaysia\nShah Alam · HQ\nSingapore\nSingapore\nGermany\nDresden\nIndia\nAhmedabad\nSweden\nSkellefteå\nUSA\nPhoenix\nIreland\nDublin",
+   "img": "home/02-engineering-excellence-in-numbers.webp",
+   "shownHeight": 791
+  },
+  {
+   "i": 2,
+   "key": "the-delivery-cycle",
+   "heading": "The delivery cycle.",
+   "tag": "section",
+   "cls": "sec.lpx-band",
+   "top": 1690,
+   "height": 913,
+   "text": "The delivery cycle.\nSix stages, one accountable team. Each stage hands to the next.\n1\nDESIGN\n2\nPROCURE\n3\nCONSTRUCT\n4\nCOMMISSION\n5\nTOOL INSTALLATION\n6\nMAINTAIN\n2\n/ 6\nProcurement\nTHE RIGHT MATERIALS, THE RIGHT PARTNERS, RIGHT ON TIME\nTracked, organised sourcing aligned to project requirements, quality standards and budget constraints.\nSEE PROCUREMENT",
+   "img": "home/03-the-delivery-cycle.webp",
+   "shownHeight": 913
+  },
+  {
+   "i": 3,
+   "key": "piling",
+   "heading": "Piling",
+   "tag": "section",
+   "cls": "b3d",
+   "top": 2604,
+   "height": 18945,
+   "text": "Environment\nClassic\n+\nZoom in\n−\nZoom out\n↺\nReset view\nExploded view\nLoading the systems… 6 of 6 floors\nResume\nSkip the 3D\nThe Facilities\nCivil and Structural\nPiles · pile caps · ground beams · sub-fab slab · columns · waffle floor\nArchitectural\nRoof trusses · purlins · roof deck · wall envelope\nFire Protection\nSprinkler mains · risers · branch lines\nHT & LV Electrical\nTransformer · switchboards · busbar · cable trays · cabling\nAir-conditioning and Mechanical Ventilation\nFresh-air intake · supply main · drops to plenum · return main · return out\nCleanroom\nCeiling grid · FFU field · air handlers · partitions · exhaust stacks\nProcess Utilities\nPipe rack · PCW header · UPW header · risers to tools · gas cabinets\n28 / 28 placed\nComplete the build\nReplay build\nEnter cleanroom\nX-ray view\nSpeed\n0.5×\n1×\n1.5×\n2×",
+   "img": "home/04-piling.webp",
+   "shownHeight": 8000
+  },
+  {
+   "i": 4,
+   "key": "seven-markets-one-integrated-team",
+   "heading": "Seven markets, one integrated team.",
+   "tag": "section",
+   "cls": "sec",
+   "top": 21549,
+   "height": 1204,
+   "text": "Seven markets,\none integrated team.\nEach market page sets out what the environment demands, how IAQ builds it and the projects that prove it.\nExplore the seven markets\nSemiconductor\nWafer fabs, backend plants, ISO 3 to 7 cleanrooms.\nSee the market\nData Centre\nCooling, power and controlled environments at scale.\nSee the market\nEV Battery\nGigafactory dry rooms, humidity-critical builds.\nSee the market\nPhotovoltaics\nSolar cell and module production facilities.\nSee the market\nBio\nLifeScience\nGMP parenteral, labs and medical device plants.\nSee the market\nFood &\nBeverage\nHygienic flavour and food production environments.\nSee the market\nDistrict\nCooling &\nHeating\nIncluding Malaysia’s largest district cooling centre.\nSee the market",
+   "img": "home/05-seven-markets-one-integrated-team.webp",
+   "shownHeight": 1204
+  },
+  {
+   "i": 5,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 22752,
+   "height": 1178,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building.\nFeasibility to handover, one accountable team.\nStart a project\n→\nEMAIL\nbusiness@iaqtechnology.com.my\n→\nPHONE\n+603 5124 8319\n→\nHQ · SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n→\n© 2026 IAQ GROUP · IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) · ISO 9001 / 14001 / 45001 · CIDB G7\nPROTOTYPE · BRAND METHOD\nBACK TO TOP ↑",
+   "img": "home/06-follow.webp",
+   "shownHeight": 1178
+  }
+ ],
+ "errs": []
+}

@@ -14,9 +14,9 @@
   border: 1px solid var(--line2); display: flex; align-items: center; justify-content: center;
   box-shadow: 0 10px 22px -16px rgba(12, 18, 32, .35); transition: color .3s, border-color .3s, transform .5s var(--e1), box-shadow .5s var(--e1); }
 .dd-ic svg { width: 24px; height: 24px; display: block; }
-.dd-no { font-family: var(--label); font-size: 10px; letter-spacing: .16em; font-weight:600; color: var(--blue-bright); }
+.dd-no { font-family: var(--label); font-size: 13px; letter-spacing:.04em; font-weight:600; color: var(--blue-bright); }
 .dd-lb { font-family: "Switzer", sans-serif; font-weight: 600; font-size: clamp(14px, 1.35vw, 16.5px); line-height: 1.25; letter-spacing: -.01em; color: var(--ink); overflow-wrap: break-word; }
-.dd-ln { font-size: 12.5px; color: var(--soft); line-height: 1.5; }
+.dd-ln { font-size: 13px; color: var(--soft); line-height: 1.5; }
 .dd-n:hover .dd-ic { color: var(--blue); border-color: rgba(236, 32, 39, .5); transform: translateY(-3px); box-shadow: 0 16px 30px -16px rgba(236, 32, 39, .35); }
 
 /* ---- flow: the rail runs through the disc centres and draws left to right ---- */

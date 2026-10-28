@@ -1,0 +1,48 @@
+{
+ "at": "2026-10-22T15:46:32.473Z",
+ "states": [
+  {
+   "key": "01-signed-out",
+   "name": "Member icon, signed out",
+   "note": "The popover before sign in: what it says, the passcode field, the emergency access line.",
+   "img": "states/01-signed-out.webp",
+   "text": "Skip to content\nAbout\nServices\nMarkets\nProjects\nNews\nCareers\nMEMBER LOGIN\nSign in to the member area.\nPASSCODE\nSign in\nEMERGENCY ACCESS\nOpens the member area for testing, no passcode\nNo access yet? Request it\nStart a project\n1995\nAdvancing Industry Since 1995\n\nIAQ Group supports the world’s evolving industries through integrated engineering, construction and facility solutions. We combine technical expertise with disciplined execution to deliver facilities that perform today and adapt for tomorrow.\n\n31 years of technical excellence through various service model with global presence across 7 countries\n\nIAQ is a leading ISO 9001, ISO 14001 and ISO 45001 certified Malaysian owned company that delivers engineering and design consultation, procurement, construction, commissioning and testing, tool installation and maintenance services of plants and on-board project management services to client in diverse industries both locally and globally.\n\nWhat IAQ stands for, and where it is going\nVision\nWhere IAQ is going\nTo be a regional facility solutions provider with engineering excellence, facilitating technological innovation and advancement in quality of life.\nMission\nWhat IAQ does every da"
+  },
+  {
+   "key": "02-wrong-passcode",
+   "name": "Wrong passcode",
+   "note": "The error state after a wrong passcode.",
+   "img": "states/02-wrong-passcode.webp",
+   "text": "Skip to content\nAbout\nServices\nMarkets\nProjects\nNews\nCareers\nMEMBER LOGIN\nSign in to the member area.\nPASSCODE\nThat passcode is not right. Try again.\nSign in\nEMERGENCY ACCESS\nOpens the member area for testing, no passcode\nNo access yet? Request it\nStart a project\n1995\nAdvancing Industry Since 1995\n\nIAQ Group supports the world’s evolving industries through integrated engineering, construction and facility solutions. We combine technical expertise with disciplined execution to deliver facilities that perform today and adapt for tomorrow.\n\n31 years of technical excellence through various service model with global presence across 7 countries\n\nIAQ is a leading ISO 9001, ISO 14001 and ISO 45001 certified Malaysian owned company that delivers engineering and design consultation, procurement, construction, commissioning and testing, tool installation and maintenance services of plants and on-board project management services to client in diverse industries both locally and globally.\n\nWhat IAQ stands for, and where it is going\nVision\nWhere IAQ is going\nTo be a regional facility solutions provider with engineering excellence, facilitating technological innovation and advancement in quality "
+  },
+  {
+   "key": "03-signed-in",
+   "name": "Member icon, signed in",
+   "note": "The popover once signed in: the Codex, the portal, sign out.",
+   "img": "states/03-signed-in.webp",
+   "text": "Skip to content\nAbout\nServices\nMarkets\nProjects\nNews\nCareers\nMEMBER LOGIN\nSign in to the member area.\nPASSCODE\nSign in\nEMERGENCY ACCESS\nOpens the member area for testing, no passcode\nNo access yet? Request it\nStart a project\n1995\nAdvancing Industry Since 1995\n\nIAQ Group supports the world’s evolving industries through integrated engineering, construction and facility solutions. We combine technical expertise with disciplined execution to deliver facilities that perform today and adapt for tomorrow.\n\n31 years of technical excellence through various service model with global presence across 7 countries\n\nIAQ is a leading ISO 9001, ISO 14001 and ISO 45001 certified Malaysian owned company that delivers engineering and design consultation, procurement, construction, commissioning and testing, tool installation and maintenance services of plants and on-board project management services to client in diverse industries both locally and globally.\n\nWhat IAQ stands for, and where it is going\nVision\nWhere IAQ is going\nTo be a regional facility solutions provider with engineering excellence, facilitating technological innovation and advancement in quality of life.\nMission\nWhat IAQ does every da"
+  },
+  {
+   "key": "04-portal-signed-in",
+   "name": "Portal, signed in",
+   "note": "The member portal shell with its sidebar, on the Codex.",
+   "img": "states/04-portal-signed-in.webp",
+   "text": "Skip to content\nAbout\nServices\nMarkets\nProjects\nNews\nCareers\nStart a project\nSign in to the member portal.\n\nThe Codex, the newsroom, the open roles, the project registry and the member downloads, each on its own tab.\n\nSign in\nEMERGENCY ACCESS\nOpens the member area for testing, no passcode\nPrototype access: the passcode is iaqsolution321. At production this becomes individual staff accounts with roles and an audit trail.\nTOTAL FACILITY SOLUTIONS\n\nEngineering and facility solutions since 1995.\n\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building.\n\nFeasibility to handover, one accountable team.\n\nStart a project\n→\nEMAIL\nbusiness@iaqtechnology.com.my\n→\nPHONE\n+603 5124 8319\n→\nHQ · SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n→\n© 2026 IAQ GROUP · IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) · ISO 9001 / 14001 / 45001 · CIDB G7\nPROTOTYPE · BRAND METHOD\nBACK TO TOP ↑\nESC\nPAGES\nHome\nIAQ Group homepage\nPAGE\nAbout IAQ\nThe IAQ story since 1995, vision, mission and core val"
+  },
+  {
+   "key": "05-portal-gate",
+   "name": "Portal gate, signed out",
+   "note": "What the portal shows a visitor who is not signed in.",
+   "img": "states/05-portal-gate.webp",
+   "text": "Skip to content\nAbout\nServices\nMarkets\nProjects\nNews\nCareers\nStart a project\nSign in to the member portal.\n\nThe Codex, the newsroom, the open roles, the project registry and the member downloads, each on its own tab.\n\nSign in\nEMERGENCY ACCESS\nOpens the member area for testing, no passcode\nPrototype access: the passcode is iaqsolution321. At production this becomes individual staff accounts with roles and an audit trail.\nTOTAL FACILITY SOLUTIONS\n\nEngineering and facility solutions since 1995.\n\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building.\n\nFeasibility to handover, one accountable team.\n\nStart a project\n→\nEMAIL\nbusiness@iaqtechnology.com.my\n→\nPHONE\n+603 5124 8319\n→\nHQ · SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n→\n© 2026 IAQ GROUP · IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) · ISO 9001 / 14001 / 45001 · CIDB G7\nPROTOTYPE · BRAND METHOD\nBACK TO TOP ↑\nESC\nPAGES\nHome\nIAQ Group homepage\nPAGE\nAbout IAQ\nThe IAQ story since 1995, vision, mission and core val"
+  },
+  {
+   "key": "06-codex-gate",
+   "name": "Codex gate",
+   "note": "The Codex address when signed out: it redirects to the portal gate.",
+   "img": "states/06-codex-gate.webp",
+   "text": "Skip to content\nAbout\nServices\nMarkets\nProjects\nNews\nCareers\nStart a project\nSign in to the member portal.\n\nThe Codex, the newsroom, the open roles, the project registry and the member downloads, each on its own tab.\n\nSign in\nEMERGENCY ACCESS\nOpens the member area for testing, no passcode\nPrototype access: the passcode is iaqsolution321. At production this becomes individual staff accounts with roles and an audit trail.\nTOTAL FACILITY SOLUTIONS\n\nEngineering and facility solutions since 1995.\n\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building.\n\nFeasibility to handover, one accountable team.\n\nStart a project\n→\nEMAIL\nbusiness@iaqtechnology.com.my\n→\nPHONE\n+603 5124 8319\n→\nHQ · SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n→\n© 2026 IAQ GROUP · IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) · ISO 9001 / 14001 / 45001 · CIDB G7\nPROTOTYPE · BRAND METHOD\nBACK TO TOP ↑\nESC\nPAGES\nHome\nIAQ Group homepage\nPAGE\nAbout IAQ\nThe IAQ story since 1995, vision, mission and core val"
+  }
+ ],
+ "errs": []
+}

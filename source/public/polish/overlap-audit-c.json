@@ -1,0 +1,1010 @@
+{
+ "at": "2026-10-23T00:16:52.038Z",
+ "base": "http://localhost:5177",
+ "widths": [
+  768,
+  430
+ ],
+ "pages": {
+  "/": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.b3d-stage > div > div.panel > p.sub",
+      "t": "Loading the systems…",
+      "cut": 150,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [
+     {
+      "a": "div > div.vt-zoom > button > span.xt-ic \"+\"",
+      "b": "div.b3d-stage > section > div.h-left > h2.h-head \"The Facilities\"",
+      "pct": 68
+     },
+     {
+      "a": "div > div.vt-zoom > button > span.xt-label \"Zoom in\"",
+      "b": "div.b3d-stage > section > div.h-left > h2.h-head \"The Facilities\"",
+      "pct": 68
+     }
+    ],
+    "small": [
+     {
+      "at": "section.b3d > div.b3d-stage > div > button",
+      "px": 12.5,
+      "t": "Environment"
+     },
+     {
+      "at": "section.b3d > div.b3d-stage > div > button",
+      "px": 12.5,
+      "t": "Classic"
+     },
+     {
+      "at": "div.h-left > div.h-ctrl > div.h-speed > span.h-speed-l",
+      "px": 12,
+      "t": "Speed"
+     },
+     {
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button",
+      "px": 12.5,
+      "t": "0.5×"
+     },
+     {
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button",
+      "px": 12.5,
+      "t": "1×"
+     },
+     {
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button",
+      "px": 12.5,
+      "t": "1.5×"
+     },
+     {
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button",
+      "px": 12.5,
+      "t": "2×"
+     }
+    ]
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [
+     {
+      "a": "div > div.vt-zoom > button > span.xt-ic \"+\"",
+      "b": "div.b3d-stage > section > div.h-left > h2.h-head \"The Facilities\"",
+      "pct": 68
+     },
+     {
+      "a": "div > div.vt-zoom > button > span.xt-label \"Zoom in\"",
+      "b": "div.b3d-stage > section > div.h-left > h2.h-head \"The Facilities\"",
+      "pct": 68
+     },
+     {
+      "a": "div > div.vt-zoom > button > span.xt-ic \"↺\"",
+      "b": "ol.h-rail > li.on > span.rd-b > span.rd-ct \"0 / 12 placed\"",
+      "pct": 47
+     },
+     {
+      "a": "div > div.vt-zoom > button > span.xt-ic \"−\"",
+      "b": "ol.h-rail > li.on > span.rd-b > b.rd-t \"Civil and Structural\"",
+      "pct": 26
+     }
+    ],
+    "small": [
+     {
+      "at": "section.b3d > div.b3d-stage > div > button",
+      "px": 12.5,
+      "t": "Environment"
+     },
+     {
+      "at": "section.b3d > div.b3d-stage > div > button",
+      "px": 12.5,
+      "t": "Classic"
+     },
+     {
+      "at": "ol.h-rail > li.on > span.rd-b > span.rd-ct",
+      "px": 12,
+      "t": "0 / 12 placed"
+     },
+     {
+      "at": "div.h-left > div.h-ctrl > div.h-speed > span.h-speed-l",
+      "px": 12,
+      "t": "Speed"
+     },
+     {
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button",
+      "px": 12.5,
+      "t": "0.5×"
+     },
+     {
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button",
+      "px": 12.5,
+      "t": "1×"
+     },
+     {
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button",
+      "px": 12.5,
+      "t": "1.5×"
+     },
+     {
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button",
+      "px": 12.5,
+      "t": "2×"
+     }
+    ]
+   }
+  },
+  "/about": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > header.ab-hero > div.plx-mid > span",
+      "t": "1995",
+      "cut": 6,
+      "side": "right",
+      "by": "div > header.ab-hero"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Quality consistency",
+      "cut": 215,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "The skills to bring excellence to your project, ma",
+      "cut": 215,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Honesty and integrity",
+      "cut": 244,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "Transparent communication of accurate information,",
+      "cut": 244,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Efficiency and proficiency",
+      "cut": 244,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "Flexible fast-track execution and contractual appr",
+      "cut": 244,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Pursuit of excellence",
+      "cut": 215,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "Delivering on our commitments with the highest deg",
+      "cut": 215,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     }
+    ],
+    "overlap": [
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Quality consistency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 71
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 54
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"The skills to bring excellen\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 39
+     },
+     {
+      "a": "div > header.ab-hero > div.plx-mid > span \"1995\"",
+      "b": "div > header.ab-hero > div.head.wrap > p.lede \"IAQ Group supports the world\"",
+      "pct": 38
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Delivering on our commitment\"",
+      "pct": 37
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Efficiency and proficiency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 21
+     }
+    ],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > header.ab-hero > div.plx-mid > span",
+      "t": "1995",
+      "cut": 12,
+      "side": "right",
+      "by": "div > header.ab-hero"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Quality consistency",
+      "cut": 35,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "The skills to bring excellence to your project, ma",
+      "cut": 35,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Honesty and integrity",
+      "cut": 64,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "Transparent communication of accurate information,",
+      "cut": 64,
+      "side": "right",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Efficiency and proficiency",
+      "cut": 64,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "Flexible fast-track execution and contractual appr",
+      "cut": 64,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > b",
+      "t": "Pursuit of excellence",
+      "cut": 35,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     },
+     {
+      "at": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line",
+      "t": "Delivering on our commitments with the highest deg",
+      "cut": 35,
+      "side": "left",
+      "by": "section.vg > div.wrap > div.vc > div.vc-stage"
+     }
+    ],
+    "overlap": [
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Quality consistency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 70
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 52
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"The skills to bring excellen\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Transparent communication of\"",
+      "pct": 39
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Flexible fast-track executio\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > span.vc-line \"Delivering on our commitment\"",
+      "pct": 37
+     },
+     {
+      "a": "div > header.ab-hero > div.plx-mid > span \"1995\"",
+      "b": "div > header.ab-hero > div.head.wrap > p.lede \"IAQ Group supports the world\"",
+      "pct": 23
+     },
+     {
+      "a": "li.vc-card > button.vc-hit > span.vc-body > b \"Efficiency and proficiency\"",
+      "b": "li.vc-card > button.vc-hit > span.vc-body > b \"Pursuit of excellence\"",
+      "pct": 21
+     }
+    ],
+    "small": []
+   }
+  },
+  "/about/history": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/about/commitment": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > header.pg-head.pg-head-hero > span.u-visually-hidden",
+      "t": "Aerial view of an IAQ facility under construction",
+      "cut": 343,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > header.pg-head.pg-head-hero > span.u-visually-hidden",
+      "t": "Aerial view of an IAQ facility under construction",
+      "cut": 343,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/about/leadership": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/about/esg": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/global-presence": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/services": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"What is the difference betwe\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"Can I buy one service on its\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "h3 > button.faq-gb > span.faq-gt > b \"Time and cost\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "section.faq-g > h3 > button.faq-gb > span.faq-gn \"4\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"How long does a facility tak\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "h3 > button.faq-gb > span.faq-gt > b \"A live fab\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "section.faq-g > h3 > button.faq-gb > span.faq-gn \"4\"",
+      "pct": 100
+     },
+     {
+      "a": "div.faq-a > div > a.faq-more > i \"→\"",
+      "b": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "pct": 100
+     },
+     {
+      "a": "div.faq-a > div > a.faq-more > i \"→\"",
+      "b": "li.faq-i > div.faq-a > div > p \"Typically 12 to 24 months un\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"Can I buy one service on its\"",
+      "pct": 100
+     }
+    ],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"What is the difference betwe\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"How long does a facility tak\"",
+      "pct": 100
+     },
+     {
+      "a": "div.faq-a > div > a.faq-more > i \"→\"",
+      "b": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"Can I buy one service on its\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"How is tools hookup priced?\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Yes. Procurement only, desig\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"Who answers for a system’s p\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Yes. Procurement only, desig\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"My fab is live. Can tools be\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Under EPCC, IAQ: one contrac\"",
+      "b": "div.faq-a > div > a.faq-more > i \"→\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Under EPCC, IAQ: one contrac\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"How are the savings measured\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Under EPCC, IAQ: one contrac\"",
+      "b": "li.faq-i > div.faq-a > div > p \"That is the PCU & TTI unit. \"",
+      "pct": 100
+     }
+    ],
+    "small": []
+   }
+  },
+  "/services/all": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/services/epc-construction": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/services/tool-installation": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/services/energy-management": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/markets": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > div.mk-hub-head > header.pg-head.pg-head-hero > span.u-visually-hidden",
+      "t": "A hi-tech industrial campus at dusk: facility bloc",
+      "cut": 660,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > div.mk-hub-head > header.pg-head.pg-head-hero > span.u-visually-hidden",
+      "t": "A hi-tech industrial campus at dusk: facility bloc",
+      "cut": 660,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/markets/semiconductor": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/markets/data-centre": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/markets/ev-battery": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/markets/photovoltaics": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/markets/district-cooling": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/markets/bio-lifescience": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/markets/food-beverage": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/projects": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/projects/0": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/news": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/news/pdk-kota-raja-community-visit": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/careers": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [
+     {
+      "a": "div.cu-vgrid > article.cu-vc.cu-rv > span.cu-vc-top > span.cu-vc-ix \"1\"",
+      "b": "div.cu-w > div.cu-vgrid > article.cu-vc.cu-rv > h3 \"Safety commitment\"",
+      "pct": 37
+     },
+     {
+      "a": "div.cu-vgrid > article.cu-vc.cu-rv > span.cu-vc-top > span.cu-vc-ix \"2\"",
+      "b": "div.cu-w > div.cu-vgrid > article.cu-vc.cu-rv > h3 \"Quality consistency\"",
+      "pct": 37
+     },
+     {
+      "a": "div.cu-vgrid > article.cu-vc.cu-rv > span.cu-vc-top > span.cu-vc-ix \"3\"",
+      "b": "div.cu-w > div.cu-vgrid > article.cu-vc.cu-rv > h3 \"Honesty and integrity\"",
+      "pct": 37
+     },
+     {
+      "a": "div.cu-vgrid > article.cu-vc.cu-rv > span.cu-vc-top > span.cu-vc-ix \"4\"",
+      "b": "div.cu-w > div.cu-vgrid > article.cu-vc.cu-rv > h3 \"Engineering capabilities\"",
+      "pct": 37
+     },
+     {
+      "a": "div.cu-vgrid > article.cu-vc.cu-rv > span.cu-vc-top > span.cu-vc-ix \"5\"",
+      "b": "div.cu-w > div.cu-vgrid > article.cu-vc.cu-rv > h3 \"Efficiency and proficiency\"",
+      "pct": 37
+     },
+     {
+      "a": "div.cu-vgrid > article.cu-vc.cu-rv > span.cu-vc-top > span.cu-vc-ix \"6\"",
+      "b": "div.cu-w > div.cu-vgrid > article.cu-vc.cu-rv > h3 \"Pursuit of excellence\"",
+      "pct": 37
+     }
+    ],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/contact": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/enquiry": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.lpf-panel > form > p.lp-hp > label",
+      "t": "LEAVE THIS EMPTY",
+      "cut": 196,
+      "side": "right",
+      "by": "div.lp-form-in.lpf-two > div.lpf-panel > form > p.lp-hp"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.lpf-panel > form > p.lp-hp > label",
+      "t": "LEAVE THIS EMPTY",
+      "cut": 196,
+      "side": "right",
+      "by": "div.lp-form-in.lpf-two > div.lpf-panel > form > p.lp-hp"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/investors": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/policies": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/exhibition": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/shortlist": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/semicon": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  }
+ }
+}

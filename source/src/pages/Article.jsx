@@ -139,7 +139,7 @@ function NotFound() {
       <section className="pg-sec">
         <div className="pg-in">
           <span className="eyebrow">Not found</span>
-          <h2>Start again <em>in the newsroom.</em></h2>
+          <h2>Start again <em>in the newsroom</em></h2>
           <p className="pg-lede">
             Every story we publish stays in the newsroom index. The full index is one click away.
           </p>
@@ -263,7 +263,7 @@ export default function Article() {
       <section className="pg-sec ar-white ar-proj">
         <div className="pg-in">
           <span className="eyebrow">Related projects</span>
-          <h2>More of <em>IAQ&rsquo;s work.</em></h2>
+          <h2>More of <em>IAQ&rsquo;s work</em></h2>
           <p className="pg-lede">A selection of IAQ&rsquo;s published projects.</p>
           <div className="cp-rows">
             {projects.map(p => (
@@ -281,7 +281,7 @@ export default function Article() {
       <section className="pg-sec ar-more">
         <div className="pg-in">
           <span className="eyebrow">More articles</span>
-          <h2>Also in <em>the newsroom.</em></h2>
+          <h2>Also in <em>the newsroom</em></h2>
           <ul className="nf-grid">
             {more.map(n => <li key={n.slug}><Card n={n} /></li>)}
           </ul>

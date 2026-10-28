@@ -1,0 +1,447 @@
+{
+ "at": "2026-10-27T01:49:04.566Z",
+ "base": "http://localhost:5177",
+ "widths": [
+  768,
+  430
+ ],
+ "pages": {
+  "/": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.b3d-stage > div > div.panel > p.sub",
+      "t": "Loading structure…",
+      "cut": 130,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.b3d-stage > div > div.panel > p.sub",
+      "t": "Loading the systems…",
+      "cut": 150,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [
+     {
+      "a": "div > div.vt-zoom > button > span.xt-ic \"+\"",
+      "b": "div.b3d-stage > section > div.h-left > h2.h-head \"The Facilities\"",
+      "pct": 68
+     },
+     {
+      "a": "div > div.vt-zoom > button > span.xt-label \"Zoom in\"",
+      "b": "div.b3d-stage > section > div.h-left > h2.h-head \"The Facilities\"",
+      "pct": 68
+     }
+    ],
+    "small": []
+   }
+  },
+  "/services": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.b3d-stage > div > div.panel > p.sub",
+      "t": "Building collision…",
+      "cut": 124,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.b3d-stage > div > div.panel > p.sub",
+      "t": "Loading the systems… 5 of 6 floors",
+      "cut": 233,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [
+     {
+      "a": "div > div.vt-zoom > button > span.xt-ic \"+\"",
+      "b": "div.b3d-stage > section > div.h-left > h2.h-head \"The Facilities\"",
+      "pct": 68
+     },
+     {
+      "a": "div > div.vt-zoom > button > span.xt-label \"Zoom in\"",
+      "b": "div.b3d-stage > section > div.h-left > h2.h-head \"The Facilities\"",
+      "pct": 68
+     },
+     {
+      "a": "div > div.vt-zoom > button > span.xt-ic \"↺\"",
+      "b": "ol.h-rail > li.on > span.rd-b > span.rd-ct \"0 / 12 placed\"",
+      "pct": 59
+     },
+     {
+      "a": "div > div.vt-zoom > button > span.xt-ic \"−\"",
+      "b": "ol.h-rail > li.on > span.rd-b > b.rd-t \"Civil and Structural\"",
+      "pct": 26
+     }
+    ],
+    "small": []
+   }
+  },
+  "/services/all": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > header.pg-head.pg-head-hero > span.u-visually-hidden",
+      "t": "A finished ballroom cleanroom by IAQ: perforated r",
+      "cut": 636,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > header.pg-head.pg-head-hero > span.u-visually-hidden",
+      "t": "A finished ballroom cleanroom by IAQ: perforated r",
+      "cut": 636,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/services/epc-construction": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/services/tool-installation": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/services/energy-management": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/markets/semiconductor": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/projects": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/careers": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [
+     {
+      "a": "div.cu-vgrid > article.cu-vc.cu-rv > span.cu-vc-top > span.cu-vc-ix \"1\"",
+      "b": "div.cu-w > div.cu-vgrid > article.cu-vc.cu-rv > h3 \"Safety commitment\"",
+      "pct": 37
+     },
+     {
+      "a": "div.cu-vgrid > article.cu-vc.cu-rv > span.cu-vc-top > span.cu-vc-ix \"2\"",
+      "b": "div.cu-w > div.cu-vgrid > article.cu-vc.cu-rv > h3 \"Quality consistency\"",
+      "pct": 37
+     },
+     {
+      "a": "div.cu-vgrid > article.cu-vc.cu-rv > span.cu-vc-top > span.cu-vc-ix \"3\"",
+      "b": "div.cu-w > div.cu-vgrid > article.cu-vc.cu-rv > h3 \"Honesty and integrity\"",
+      "pct": 37
+     },
+     {
+      "a": "div.cu-vgrid > article.cu-vc.cu-rv > span.cu-vc-top > span.cu-vc-ix \"4\"",
+      "b": "div.cu-w > div.cu-vgrid > article.cu-vc.cu-rv > h3 \"Engineering capabilities\"",
+      "pct": 37
+     },
+     {
+      "a": "div.cu-vgrid > article.cu-vc.cu-rv > span.cu-vc-top > span.cu-vc-ix \"5\"",
+      "b": "div.cu-w > div.cu-vgrid > article.cu-vc.cu-rv > h3 \"Efficiency and proficiency\"",
+      "pct": 37
+     },
+     {
+      "a": "div.cu-vgrid > article.cu-vc.cu-rv > span.cu-vc-top > span.cu-vc-ix \"6\"",
+      "b": "div.cu-w > div.cu-vgrid > article.cu-vc.cu-rv > h3 \"Pursuit of excellence\"",
+      "pct": 37
+     }
+    ],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/contact": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/enquiry": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.lpf-panel > form > p.lp-hp > label",
+      "t": "LEAVE THIS EMPTY",
+      "cut": 196,
+      "side": "right",
+      "by": "div.lp-form-in.lpf-two > div.lpf-panel > form > p.lp-hp"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.lpf-panel > form > p.lp-hp > label",
+      "t": "LEAVE THIS EMPTY",
+      "cut": 196,
+      "side": "right",
+      "by": "div.lp-form-in.lpf-two > div.lpf-panel > form > p.lp-hp"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/faq": {
+   "430": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > header.pg-head.pg-head-hero > span.u-visually-hidden",
+      "t": "The IAQ office in Shah Alam: open desks with red c",
+      "cut": 402,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"What is the difference betwe\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"Can I buy one service on its\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "h3 > button.faq-gb > span.faq-gt > b \"Time and cost\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "section.faq-g > h3 > button.faq-gb > span.faq-gn \"4\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"How long does a facility tak\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "h3 > button.faq-gb > span.faq-gt > b \"A live fab\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "section.faq-g > h3 > button.faq-gb > span.faq-gn \"4\"",
+      "pct": 100
+     },
+     {
+      "a": "div.faq-a > div > a.faq-more > i \"→\"",
+      "b": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "pct": 100
+     },
+     {
+      "a": "div.faq-a > div > a.faq-more > i \"→\"",
+      "b": "li.faq-i > div.faq-a > div > p \"Typically 12 to 24 months un\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"Can I buy one service on its\"",
+      "pct": 100
+     }
+    ],
+    "small": []
+   },
+   "768": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > header.pg-head.pg-head-hero > span.u-visually-hidden",
+      "t": "The IAQ office in Shah Alam: open desks with red c",
+      "cut": 402,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"What is the difference betwe\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"How long does a facility tak\"",
+      "pct": 100
+     },
+     {
+      "a": "div.faq-a > div > a.faq-more > i \"→\"",
+      "b": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"Can I buy one service on its\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"How is tools hookup priced?\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Yes. Procurement only, desig\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"Who answers for a system’s p\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Yes. Procurement only, desig\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"My fab is live. Can tools be\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Under EPCC, IAQ: one contrac\"",
+      "b": "div.faq-a > div > a.faq-more > i \"→\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Under EPCC, IAQ: one contrac\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"How are the savings measured\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Under EPCC, IAQ: one contrac\"",
+      "b": "li.faq-i > div.faq-a > div > p \"That is the PCU & TTI unit. \"",
+      "pct": 100
+     }
+    ],
+    "small": []
+   }
+  }
+ }
+}

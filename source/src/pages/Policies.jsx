@@ -158,7 +158,7 @@ export default function Policies() {
 
       <PageHead
         eyebrow="Policies"
-        title={<>Everything IAQ commits to, <em>in writing.</em></>}
+        title={<>Everything IAQ commits to, <br /><em>in writing</em></>}
         lede={LAUNCH ? "The terms that govern this website and how IAQ handles personal data, with the certifications IAQ is audited against." : "Every IAQ policy at its own permanent address. Approved text and signed PDFs publish here as each one is issued."}
       />
 

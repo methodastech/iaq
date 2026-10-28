@@ -4,7 +4,7 @@
 .gate-tx h3{font-size:clamp(20px,2.3vw,27px);margin-top:10px;max-width:22ch}
 .gate-tx p{margin-top:12px;color:var(--soft);font-size:15px;line-height:1.6;max-width:46ch}
 .gate-form{display:grid;gap:5px}
-.gate-form label{font-family: var(--label);font-size:10.5px;letter-spacing:.14em;
+.gate-form label{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--faint);margin-top:10px}
 .gate-form input{border:1px solid var(--line2);background:var(--bg);padding:12px 13px;font:inherit;font-size:15px;color:var(--ink)}
 .gate-form input:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
@@ -82,13 +82,13 @@
 
 .gd-body{display:flex;flex-direction:column;flex:1;padding:15px 16px 13px 18px}
 .gd-logo{width:52px;height:auto;display:block;margin-bottom:11px}
-.gd-k{font-family:var(--label);font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;
+.gd-k{font-family:var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;
   font-weight:600;color:var(--blue-bright)}
 .gd-cover b{font-family:"Switzer",sans-serif;font-size:19px;font-weight:600;letter-spacing:-.02em;
   line-height:1.1;color:var(--ink);margin-top:7px;max-width:9ch}
-.gd-sub{font-size:10px;color:var(--soft);line-height:1.5;margin-top:9px;max-width:26ch}
+.gd-sub{font-size:13px;color:var(--soft);line-height:1.5;margin-top:9px;max-width:26ch}
 .gd-foot{margin-top:auto;display:flex;justify-content:space-between;font-family:var(--label);
-  font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);
+  font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);
   padding-top:11px;border-top:1px solid var(--line)}
 .gd-foot i{font-style:normal}
 /* the sheen: one soft band across the coated cover, the only thing that says this is a surface
@@ -115,9 +115,9 @@
    inside a bordered card that already sat inside a bordered section. The label column
    carries the separation now. */
 .gd-list li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px;padding:8px 0;font-size:13px;color:var(--soft);line-height:1.5}
-.gd-list li b{font-family: var(--label);font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink);padding-top:2px}
+.gd-list li b{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--ink);padding-top:2px}
 .gate-ex .gate-form input[disabled]{background:var(--bg);color:var(--faint);cursor:not-allowed}
 .gate-ex .gate-form .cta[disabled]{opacity:.55;cursor:not-allowed}
-.gate-note{font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:10px;line-height:1.6}
+.gate-note{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);margin-top:10px;line-height:1.6}
 @media(max-width:1024px){.gate-ex{grid-template-columns:minmax(0,1fr) minmax(260px,340px)}.gate-doc{display:none}}
 @media(max-width:820px){.gate-ex{grid-template-columns:1fr}.gd-list li{grid-template-columns:1fr;gap:4px}}

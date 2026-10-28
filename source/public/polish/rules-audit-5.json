@@ -1,0 +1,194 @@
+{
+ "at": "2026-10-22T23:28:52.183Z",
+ "base": "http://localhost:5177",
+ "pages": {
+  "/": {
+   "title": "IAQ Group · Total Facility Solutions · Brand Method",
+   "F": {
+    "fullstop": [
+     {
+      "t": "Engineering Precision. Delivering Excellence.",
+      "at": "div > header.hero.dark-band > div.hero-inner > h1"
+     }
+    ],
+    "stub": [
+     {
+      "t": "Architectural Roof trusses · purlins · roof deck · wall envelope",
+      "lines": 3,
+      "stub": [
+       "1: Architectural"
+      ],
+      "w": 312,
+      "at": "section > div.h-left > ol.h-rail > li.done",
+      "tag": "li",
+      "cls": "done"
+     },
+     {
+      "t": "Fire Protection Sprinkler mains · risers · branch lines",
+      "lines": 2,
+      "stub": [
+       "1: Fire Protection"
+      ],
+      "w": 312,
+      "at": "section > div.h-left > ol.h-rail > li.done",
+      "tag": "li",
+      "cls": "done"
+     },
+     {
+      "t": "Cleanroom Ceiling grid · FFU field · air handlers · partitions · exhaust stacks",
+      "lines": 3,
+      "stub": [
+       "1: Cleanroom"
+      ],
+      "w": 312,
+      "at": "section > div.h-left > ol.h-rail > li.done",
+      "tag": "li",
+      "cls": "done"
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [
+     {
+      "t": "Environment",
+      "px": 12.5,
+      "at": "section.b3d > div.b3d-stage > div > button"
+     },
+     {
+      "t": "Classic",
+      "px": 12.5,
+      "at": "section.b3d > div.b3d-stage > div > button"
+     },
+     {
+      "t": "Piles · pile caps · ground beams · sub-fab slab · ",
+      "px": 12.5,
+      "at": "ol.h-rail > li.done > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "sub-fab",
+      "px": 12.5,
+      "at": "li.done > span.rd-b > span.rd-seq > span"
+     },
+     {
+      "t": "Roof trusses · purlins · roof deck · wall envelope",
+      "px": 12.5,
+      "at": "ol.h-rail > li.done > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "Sprinkler mains · risers · branch lines",
+      "px": 12.5,
+      "at": "ol.h-rail > li.done > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "Transformer · switchboards · busbar · cable trays ",
+      "px": 12.5,
+      "at": "ol.h-rail > li.done > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "Fresh-air intake · supply main · drops to plenum ·",
+      "px": 12.5,
+      "at": "ol.h-rail > li.done > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "Fresh-air",
+      "px": 12.5,
+      "at": "li.done > span.rd-b > span.rd-seq > span"
+     },
+     {
+      "t": "Ceiling grid · FFU field · air handlers · partitio",
+      "px": 12.5,
+      "at": "ol.h-rail > li.done > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "Pipe rack · PCW header · UPW header · risers to to",
+      "px": 12.5,
+      "at": "ol.h-rail > li.on.blip > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "28 / 28 placed",
+      "px": 12,
+      "at": "ol.h-rail > li.on.blip > span.rd-b > span.rd-ct"
+     },
+     {
+      "t": "Speed",
+      "px": 12,
+      "at": "div.h-left > div.h-ctrl > div.h-speed > span.h-speed-l"
+     },
+     {
+      "t": "0.5×",
+      "px": 12.5,
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button"
+     },
+     {
+      "t": "1×",
+      "px": 12.5,
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button"
+     },
+     {
+      "t": "1.5×",
+      "px": 12.5,
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button"
+     },
+     {
+      "t": "2×",
+      "px": 12.5,
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button"
+     }
+    ],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.hero.dark-band > div.hero-video.live",
+     "h": 900,
+     "vh": 1,
+     "bg": "rgb(7, 12, 24)"
+    },
+    "crumb": null
+   }
+  },
+  "/semicon": {
+   "title": "IAQ Group · SEMICON Europa 2026 · Munich",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Six services, from the first drawing",
+      "lines": 2,
+      "stub": [
+       "1: Six services,"
+      ],
+      "w": 746,
+      "at": "section.sm-sec.sm-svc > div.pg-in > div.sm-h > h2",
+      "tag": "h2",
+      "cls": ""
+     },
+     {
+      "t": "In Europe, a team in Dresden",
+      "lines": 2,
+      "stub": [
+       "1: In Europe,"
+      ],
+      "w": 531,
+      "at": "section.sm-sec.sm-eu > div.pg-in.sm-eu-in > div > h2",
+      "tag": "h2",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.sm-hero > div.pg-in.sm-hero-in",
+     "h": 717,
+     "vh": 0.8,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  }
+ }
+}

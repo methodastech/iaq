@@ -41,7 +41,7 @@ export default function Esg() {
 
       <PageHead crumbs={[{ label: 'About', to: '/about' }]}
         eyebrow="ESG commitment"
-        title={<>Building responsibly matters <em>as much as building well.</em></>}
+        title={<>Building responsibly matters <br /><em>as much as building well</em></>}
         lede="How IAQ protects its people, its environment and the trust its clients place in it."
         chips={['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'CIDB G7']}
       />
@@ -50,7 +50,7 @@ export default function Esg() {
       <section className="pg-sec">
         <div className="pg-in">
           <span className="eyebrow">ESG at IAQ</span>
-          <h2>Three commitments, held <em>as operating standards.</em></h2>
+          <h2>Three commitments, held <em>as operating standards</em></h2>
           <p className="pg-lede">
             IAQ integrates environmental, social and corporate governance principles into every project.
             Built into the way the work is run, every day.
@@ -79,7 +79,7 @@ export default function Esg() {
       <section className="pg-sec calm">
         <div className="pg-in">
           <span className="eyebrow">Environment</span>
-          <h2>Sustainable <em>by design.</em></h2>
+          <h2>Sustainable <em>by design</em></h2>
           <div className="pg-split">
             <div>
               <p className="pg-body u-mt0">
@@ -124,7 +124,7 @@ export default function Esg() {
       <section className="pg-sec">
         <div className="pg-in">
           <span className="eyebrow">Social and safety</span>
-          <h2>People <em>first.</em></h2>
+          <h2>People <em>first</em></h2>
           <div className="pg-split">
             <div>
               <p className="pg-body u-mt0">
@@ -159,7 +159,7 @@ export default function Esg() {
       <section className="pg-sec calm">
         <div className="pg-in">
           <span className="eyebrow">Governance</span>
-          <h2>Doing business <em>the right way.</em></h2>
+          <h2>Doing business <em>the right way</em></h2>
           <div className="pg-split">
             <div>
               <p className="pg-body u-mt0">
@@ -187,7 +187,7 @@ export default function Esg() {
       <section className="pg-sec">
         <div className="pg-in">
           <span className="eyebrow">Certifications</span>
-          <h2>Standards we <em>hold ourselves to.</em></h2>
+          <h2>Standards we <em>hold ourselves to</em></h2>
           <p className="pg-lede">
             ISO 9001 (Quality), ISO 14001 (Environmental) and ISO 45001 (Safety): internationally
             recognised standards that guide how we work.
@@ -221,7 +221,7 @@ export default function Esg() {
       <section className="pg-sec calm">
         <div className="pg-in">
           <span className="eyebrow">Reporting</span>
-          <h2>What we report, <em>and where.</em></h2>
+          <h2>What we report, <br /><em>and where</em></h2>
           <p className="pg-lede">
             The commitment is evidenced in the newsroom as it happens. These are the published items
             tagged to community, safety and quality.

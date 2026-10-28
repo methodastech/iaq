@@ -120,7 +120,7 @@ export default function Exhibition() {
 
       <PageHead
         eyebrow="Digital Exhibition"
-        title={<>The stand, <em>run like a system.</em></>}
+        title={<>The stand, <br /><em>run like a system</em></>}
         lede="A controlled walkthrough of IAQ capability for exhibitions and partner briefings. Built for the Germany stand, reusable at every show, and able to run without the hall network."
       />
 

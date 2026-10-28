@@ -1,0 +1,490 @@
+/* ============================================================================
+   Presentation · 7 Oct 2026 (Bazil: "tabs at the top and they're just like slides", "this one is for the screen
+   exhibition"). A deck page in the portal: the head, a strip of tabs (one per slide, the one in hand carries the
+   blue bar as the booth's tabs do), the slide at 16:9 in the Codex slide system, Previous / Full screen / Next.
+   No hairlines (house rule): the strip separates by its tint alone. No short forms line in any slide (Bazil).
+   ============================================================================ */
+.pr{padding-bottom:70px}
+.pr .pr-head{max-width:1180px;padding-bottom:4px}
+/* the screen: 16:9, the tab bar laid over its top edge as part of it, the slide beneath. Square corners (Bazil) */
+.pr-show{max-width:1180px;margin:0 auto;padding:0 22px}
+.pr-screen{position:relative;container-type:inline-size;aspect-ratio:16/9;width:100%;overflow:hidden;background:#F3F6FB;box-shadow:0 18px 50px rgba(12,18,32,.12)}
+.pr-tabs{position:absolute;left:0;right:0;top:0;z-index:40;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.pr-tabs>div{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;padding:0 1.2cqw}
+.pr-tabs>div::-webkit-scrollbar{display:none}
+.pr-tabs a{position:relative;display:inline-flex;align-items:center;gap:.55cqw;padding:1.05cqw 1cqw .95cqw;font:600 1cqw/1 "Switzer","Instrument Sans",sans-serif;color:var(--soft);text-decoration:none;white-space:nowrap;box-shadow:inset 0 -.22cqw 0 transparent;transition:color .2s,box-shadow .2s}
+.pr-tabs a i{font:500 .86cqw/1 "Switzer",sans-serif;font-style:normal;color:var(--faint);font-variant-numeric:tabular-nums;transition:color .2s}
+.pr-tabs a:hover{color:var(--ink)}
+.pr-tabs a.on{color:var(--ink);box-shadow:inset 0 -.22cqw 0 var(--unit,#EC2027)}
+.pr-tabs a.on i{color:var(--unit,#EC2027)}
+.pr-slide{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#F3F6FB}
+.pr-keep{position:relative}
+.pr-keep:not(.on){position:absolute;inset:0;visibility:hidden;pointer-events:none}
+/* room under the bar inside every frame */
+.pr-screen .pr-fr .cxs-in{padding-top:6.2cqw}
+.pr-screen .pr-3d iframe{top:3.3cqw;height:calc(100% - 3.3cqw)}
+.pr-stage{max-width:1180px;margin:0 auto;padding:16px 22px 0}
+.pr-ctl{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.pr-ctl-r{display:inline-flex;gap:8px}
+.pr-ctl button{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;color:var(--ink);border:1px solid rgba(12,18,32,.14);font:500 13.5px/1 "Instrument Sans",system-ui,sans-serif;cursor:pointer;transition:border-color .2s,color .2s}
+.pr-ctl button:hover:not(:disabled){border-color:var(--unit,#EC2027);color:var(--unit,#EC2027)}
+.pr-ctl button:disabled{opacity:.4;cursor:default}
+.pr-ctl button svg{width:16px;height:16px;stroke-width:1.5}
+.pr-ctl .pr-prev svg{transform:rotate(180deg)}
+.pr-n{display:flex;align-items:baseline;gap:10px;font:400 13.5px/1.3 "Instrument Sans",system-ui,sans-serif;color:var(--soft)}
+.pr-n b{font:600 13.5px/1.3 "Switzer",sans-serif;color:var(--ink);font-variant-numeric:tabular-nums}
+.pr-note{margin:12px 0 0;font:400 14px/1.5 "Instrument Sans",system-ui,sans-serif;color:var(--soft);max-width:72ch}
+
+/* no short forms line on any slide in a deck (Bazil: "make sure no short code") */
+.pr .cxs-gl{display:none!important}
+
+/* full screen is the booth TV (Bazil: "it's for this TV presentation during the exhibition", "zoom in ... take space at the
+   screen"): the screen fills the display at 16:9, the tab bar part of it; the controls rise from the foot while the
+   pointer moves, then sink */
+.pr-show.is-fs{position:relative;max-width:none;padding:0;background:#000;height:100vh;overflow:hidden;display:grid;place-items:center}
+.pr-show.is-fs .pr-screen{width:min(100vw,calc(100vh * 16 / 9));height:min(100vh,calc(100vw * 9 / 16));box-shadow:none;background:#000}
+.pr-show.is-fs .pr-stage{position:absolute;left:0;right:0;bottom:0;z-index:40;max-width:none;padding:10px 16px;background:rgba(246,248,251,.92);transform:translateY(100%);transition:transform .3s var(--e1,ease)}
+.pr-show.is-fs.peek .pr-stage{transform:none}
+.pr-show.is-fs .pr-note{display:none}
+
+/* zoom: the slide's content scales from its centre; the frame clips */
+.pr-live{transform-origin:50% 50%;transition:transform .35s var(--e1,ease)}
+.pr-zoom{display:inline-flex;align-items:center;gap:2px;margin-right:6px}
+.pr-zoom b{font:600 12.5px/1 "Switzer",sans-serif;color:var(--soft);min-width:44px;text-align:center;font-variant-numeric:tabular-nums}
+.pr-ctl .pr-zoom button{padding:9px 10px}
+.pr-ctl .pr-zoom button svg{width:14px;height:14px}
+
+/* a frame: the Codex slide system, no key */
+.pr-fr .cxs-f{grid-template-columns:auto minmax(0,1fr) auto}
+.pr-fr .cxs-b{min-height:0;position:relative}
+
+/* a piece laid out at its design width and scaled to the box */
+.pr-fit{position:absolute;inset:0;overflow:hidden}
+.pr-fit-in{position:absolute;left:50%;top:50%;transform-origin:50% 50%}
+
+/* 1 and 2 · the 3D */
+.pr-3d{position:relative;aspect-ratio:16/9;width:100%;background:#F3F6FB;overflow:hidden}
+.pr-3d iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:#F3F6FB}
+.pr-3d-veil{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:14px;background:#F3F6FB;z-index:2}
+.pr-3d-veil img{height:34px;width:auto;opacity:.9}
+.pr-3d-veil span{font:500 14px/1 "Instrument Sans",system-ui,sans-serif;color:var(--soft)}
+.pr-3d-hint{position:absolute;left:16px;bottom:14px;margin:0;padding:8px 12px;background:rgba(255,255,255,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:500 13px/1.3 "Instrument Sans",system-ui,sans-serif;color:var(--ink);z-index:3;pointer-events:none;max-width:46%}
+
+/* 4 · the ring beside the station in hand */
+.pr-ring{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:3cqw;align-items:stretch}
+.pr-ring-l{position:relative;min-height:0}
+.pr-ring-r{display:grid;grid-template-rows:auto minmax(0,1fr);gap:1.6cqw;align-content:start;min-height:0;padding-top:.6cqw}
+.pr-ring-now{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.4cqw 1.1cqw;align-items:baseline;animation:pr-rise .45s var(--e1,ease) both}
+.pr-ring-now i{grid-row:1/3;font:600 3.2cqw/1 "Switzer",sans-serif;font-style:normal;color:var(--unit,#EC2027);font-variant-numeric:tabular-nums}
+.pr-ring-now b{font:600 2cqw/1.1 "Switzer",sans-serif;letter-spacing:-.02em;color:var(--ink)}
+.pr-ring-now p{grid-column:2;margin:0;font:400 1.15cqw/1.4 "Instrument Sans",system-ui,sans-serif;color:var(--soft);max-width:30cqw}
+.pr-ring-list{list-style:none;margin:0;padding:0;display:grid;gap:.45cqw;align-content:start}
+.pr-ring-list button{display:flex;align-items:center;gap:1cqw;width:100%;padding:.75cqw 1cqw;border:0;background:#fff;color:var(--ink);font:500 1.15cqw/1.2 "Switzer",sans-serif;text-align:left;cursor:pointer;box-shadow:inset 0 0 0 .08cqw rgba(12,18,32,.1);transition:background .25s,box-shadow .25s,color .25s}
+.pr-ring-list button i{font-style:normal;font:600 .95cqw/1 "Switzer",sans-serif;color:var(--faint);min-width:1.1cqw;font-variant-numeric:tabular-nums}
+.pr-ring-list li.on button{background:rgba(236,32,39,.08);box-shadow:inset 0 0 0 .1cqw var(--unit,#EC2027)}
+.pr-ring-list li.on button i{color:var(--unit,#EC2027)}
+.pr-ring .sr{margin:0;max-width:none}
+@keyframes pr-rise{from{opacity:0;translate:0 .6cqw}to{opacity:1;translate:0 0}}
+
+/* 5 · the chart */
+.pr-fr-chart .sysm{background:transparent}
+
+@media(max-width:900px){.pr-tabs{top:0}.pr-tabs>div,.pr-stage,.pr .pr-head{padding-left:16px;padding-right:16px}}
+
+/* the showreel: the tab in hand fills over its seconds; a held reel freezes the fill */
+.pr-tabs a{position:relative}
+.pr-tab-bar{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--blue);animation:pr-fill linear forwards}
+.pr-show.is-reel .pr-tabs a.on{box-shadow:inset 0 -3px 0 rgba(11,143,216,.22)}
+@keyframes pr-fill{to{width:100%}}
+.pr-ctl-l{display:inline-flex;gap:8px}
+.pr-ctl .pr-reel svg{width:15px;height:15px}
+.pr-ctl .pr-reel.on{border-color:var(--blue);color:var(--blue);background:rgba(11,143,216,.07)}
+
+/* 0 · the banner: the home hero as a slide. Measures in cqw so it scales as one piece to the TV */
+.pr-ban{position:relative;container-type:inline-size;aspect-ratio:16/9;width:100%;overflow:hidden;background:#070C18 url(/assets/hero-cleanroom-poster.webp) center/cover no-repeat;color:#fff;isolation:isolate}
+.pr-ban-v{position:absolute;inset:0;z-index:0}
+.pr-ban-v video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s cubic-bezier(.4,0,.2,1);will-change:opacity}
+.pr-ban-v video.on{opacity:1}
+.pr-ban-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(90deg,rgba(7,12,24,.86) 0%,rgba(7,12,24,.7) 30%,rgba(7,12,24,.3) 64%,rgba(7,12,24,.4) 100%),
+  linear-gradient(180deg,rgba(7,12,24,.42) 0%,rgba(7,12,24,0) 26%,rgba(7,12,24,0) 66%,rgba(7,12,24,.78) 100%)}
+.pr-ban-in{position:absolute;z-index:2;left:5.4cqw;top:46%;transform:translateY(-50%);display:grid;gap:2.4cqw}
+.pr-ban-logo{height:7.4cqw;width:auto;display:block}
+.pr-ban h3{margin:0;font:600 5.3cqw/1.06 "Switzer",sans-serif;letter-spacing:-.028em;color:#fff;max-width:60cqw}
+.pr-ban h3 em{font-style:normal;color:#FF4D55;white-space:nowrap}
+.pr-ban-mk{position:absolute;z-index:2;left:5.4cqw;right:5.4cqw;bottom:3.4cqw;margin:0;padding:0;list-style:none;display:flex;justify-content:space-between;gap:1.6cqw}
+.pr-ban-mk li{display:flex;align-items:center;gap:.7cqw;font:600 1.12cqw/1.2 "Switzer",sans-serif;color:#fff;white-space:nowrap}
+.pr-ban-ic{width:1.9cqw;height:1.9cqw;flex:none;color:#fff;stroke-width:1.4}
+
+/* 6 · scan */
+.pr-qr{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:6cqw;align-items:center;justify-items:center;padding:0 6cqw}
+.pr-qr-c{display:grid;justify-items:center;gap:1.1cqw;text-align:center}
+.pr-qr-c svg{width:24cqw;height:24cqw;display:block;background:#fff;padding:1.4cqw;box-shadow:0 1.2cqw 3cqw rgba(12,18,32,.12)}
+.pr-qr-c b{font:600 1.9cqw/1.1 "Switzer",sans-serif;letter-spacing:-.02em;color:var(--ink);margin-top:.6cqw}
+.pr-qr-c span{font:400 1.15cqw/1.3 "Instrument Sans",system-ui,sans-serif;color:var(--soft)}
+
+/* the systems view: the model shifted left (the frame wider than the box, its right under the panel), the eight
+   labels in a column on the left with leaders to their parts, the three units in a glass panel on the right */
+.pr-3d{container-type:inline-size}
+.pr-3d.is-sys iframe{width:132%;left:-32%}
+.pr-labels{position:absolute;inset:0;z-index:3;pointer-events:none}
+.pr-leaders{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.pr-leaders line{stroke:rgba(12,18,32,.42);stroke-width:1.2;fill:none}
+.pr-leaders line.on{stroke:#0C1220;stroke-width:1.8}
+.pr-leaders circle{fill:#fff;stroke:rgba(12,18,32,.6);stroke-width:1.4}
+.pr-leaders circle.on{fill:#0C1220;stroke:#fff;stroke-width:1.6}
+.pr-lb{position:absolute;left:1.8cqw;top:calc(6.2cqw + var(--slot) * 4.9cqw);display:inline-flex;align-items:center;gap:.6cqw;padding:.5cqw .9cqw .5cqw .55cqw;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 .4cqw 1.2cqw rgba(12,18,32,.12);font:600 .98cqw/1 "Switzer",sans-serif;color:var(--soft);white-space:nowrap;transition:color .25s,background .25s,transform .25s}
+.pr-lb i{width:.9cqw;height:.9cqw;background:var(--c);flex:none}
+.pr-lb b{font:600 .86cqw/1 "Switzer",sans-serif;color:var(--ink);font-variant-numeric:tabular-nums;min-width:.9cqw}
+.pr-lb.on{color:#fff;background:var(--c);transform:translateX(.4cqw)}
+.pr-lb.on i{background:#fff}
+.pr-lb.on b{color:#fff}
+.pr-sys{position:absolute;z-index:4;right:1.6cqw;top:1.6cqw;bottom:1.6cqw;width:31cqw;display:grid;grid-template-rows:auto minmax(0,1fr);gap:.9cqw;padding:1.4cqw 1.3cqw 1.1cqw;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1.2cqw 3cqw rgba(12,18,32,.14);color:var(--ink)}
+.pr-sys header{display:grid;gap:.35cqw}
+.pr-sys header b{font:600 1.75cqw/1.1 "Switzer",sans-serif;letter-spacing:-.024em}
+.pr-sys header b em{font-style:normal;color:var(--unit,#EC2027)}
+.pr-sys header span{font:400 .92cqw/1.4 "Instrument Sans",system-ui,sans-serif;color:var(--soft)}
+.pr-sys-list{min-height:0;overflow:auto;display:grid;gap:.7cqw;align-content:start;scrollbar-width:thin}
+.pr-sys-u h4{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.2cqw .6cqw;align-items:baseline;margin:0 0 .3cqw;padding:0 .6cqw}
+.pr-sys-u h4 i{font:600 .72cqw/1 "Switzer",sans-serif;font-style:normal;padding:.3cqw .5cqw;background:#EC2027;color:#fff}
+.pr-sys-u.u-pcu h4 i{background:#0B8FD8}
+.pr-sys-u.u-efm h4 i{background:#0C1220}
+.pr-sys-u h4 b{font:600 1.15cqw/1.15 "Switzer",sans-serif;letter-spacing:-.015em}
+.pr-sys-u h4 small{grid-column:2;font:400 .8cqw/1.3 "Instrument Sans",system-ui,sans-serif;color:var(--soft)}
+.pr-sys ol{list-style:none;margin:0;padding:0;display:grid;gap:.2cqw}
+.pr-sys li button{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.6cqw;width:100%;padding:.5cqw .6cqw;border:0;background:transparent;color:var(--ink);font:500 1cqw/1.2 "Switzer",sans-serif;text-align:left;cursor:pointer;transition:background .25s}
+.pr-sys li button:hover{background:rgba(12,18,32,.05)}
+.pr-sys li button em{font-style:normal;font:600 .72cqw/1 "Switzer",sans-serif;padding:.32cqw .5cqw;white-space:nowrap;background:#EEF1F5;color:var(--soft)}
+.pr-sys li.on button{background:rgba(236,32,39,.08);box-shadow:inset 0 0 0 .1cqw var(--unit,#EC2027)}
+.pr-sys li.on button em{background:#EC2027;color:#fff}
+.pr-sys-u.u-pcu li.on button{background:rgba(11,143,216,.08);box-shadow:inset 0 0 0 .1cqw #0B8FD8}
+.pr-sys-u.u-pcu li.on button em{background:#0B8FD8}
+.pr-sys-u.u-efm li.on button{background:rgba(12,18,32,.06);box-shadow:inset 0 0 0 .1cqw #0C1220}
+.pr-sys-u.u-efm li.on button em{background:#0C1220}
+.pr-sys-d{padding:.4cqw .6cqw .5cqw;animation:pr-rise .4s var(--e1,ease) both}
+.pr-sys-d p{margin:0 0 .5cqw;font:400 .9cqw/1.4 "Instrument Sans",system-ui,sans-serif;color:var(--soft)}
+.pr-sys-chips{display:flex;flex-wrap:wrap;gap:.3cqw}
+.pr-sys-chips b{font:500 .8cqw/1.25 "Instrument Sans",system-ui,sans-serif;padding:.3cqw .55cqw;background:#fff;box-shadow:inset 0 0 0 .07cqw rgba(12,18,32,.14);color:var(--ink)}
+
+/* the view toggle in the systems panel */
+.pr-sys-v{display:inline-flex;margin-top:.3cqw;box-shadow:inset 0 0 0 .07cqw rgba(12,18,32,.16)}
+.pr-sys-v button{padding:.45cqw .8cqw;border:0;background:transparent;color:var(--soft);font:600 .8cqw/1 "Switzer",sans-serif;cursor:pointer}
+.pr-sys-v button.on{background:#0C1220;color:#fff}
+
+/* 3 · three units across the life of a facility, redrawn square */
+.pr-un{position:absolute;inset:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:1.3cqw}
+.pr-un-units{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.6cqw}
+.pr-un-u{position:relative;display:grid;align-content:start;gap:.3cqw;padding:1.1cqw 1.2cqw 1.1cqw;background:#F3F5F8;color:var(--ink);transition:background .3s,color .3s}
+.pr-un-u small{font:600 .78cqw/1 "Switzer",sans-serif;color:var(--soft);text-transform:none}
+.pr-un-u b{font:600 2cqw/1 "Switzer",sans-serif;letter-spacing:-.025em}
+.pr-un-u span{font:400 .95cqw/1.35 "Instrument Sans",system-ui,sans-serif;color:var(--soft);max-width:34cqw}
+.pr-un-u em{position:absolute;right:1.1cqw;top:1.1cqw;display:flex;gap:.4cqw}
+.pr-un-u em i{font:600 .78cqw/1 "Switzer",sans-serif;font-style:normal;padding:.42cqw .6cqw;background:#fff;color:var(--ink);box-shadow:inset 0 0 0 .07cqw rgba(12,18,32,.14)}
+.pr-un-u.on{background:var(--unit,#EC2027);color:#fff}
+.pr-un-u.on small,.pr-un-u.on span{color:rgba(255,255,255,.82)}
+.pr-un-stages{list-style:none;margin:0;padding:1.4cqw 0 0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.6cqw;position:relative;align-content:start}
+.pr-un-stages::before{content:"";position:absolute;left:0;right:0;top:0;height:.16cqw;background:var(--unit,#EC2027)}   /* the one long red line */
+.pr-un-stages li{display:grid;align-content:start;gap:.25cqw;padding:.2cqw .9cqw 0 0;transition:opacity .3s}
+.pr-un-stages li i{font:600 .86cqw/1 "Switzer",sans-serif;font-style:normal;color:var(--unit,#EC2027);font-variant-numeric:tabular-nums}
+.pr-un-stages li b{font:600 1.32cqw/1.1 "Switzer",sans-serif;letter-spacing:-.02em;color:var(--ink);margin-bottom:.5cqw;min-height:2.6cqw}
+.pr-un-stages li small{font:600 .74cqw/1 "Switzer",sans-serif;color:var(--faint);margin-top:.35cqw}
+.pr-un-stages li strong{font:600 1.02cqw/1.25 "Switzer",sans-serif;color:var(--unit,#EC2027)}
+.pr-un-stages li span{font:400 .92cqw/1.4 "Instrument Sans",system-ui,sans-serif;color:var(--soft)}
+.pr-un-stages li.on b{color:var(--unit,#EC2027)}
+.pr-un:has(li.on) li:not(.on){opacity:.55}
+.pr-un-round{margin:0;font:400 .98cqw/1.4 "Instrument Sans",system-ui,sans-serif;color:var(--soft)}
+.pr-un-round em{font-style:normal;font-weight:600;color:var(--ink)}
+
+/* ============================================================================
+   Brand direction on every slide (Bazil: "why our slide not following our brand direction"): white ground, no glow, no
+   dot grid, no rounded corner, Switzer, the red phrase, one long red line per piece above the foot, no numbering.
+   ============================================================================ */
+.pr-screen .cxs{background:#fff}
+.pr-screen .cxs::before{display:none}
+.pr-screen .cxs-h h3 em{color:#EC2027}
+.pr-screen .pr-fr .cxs-f{border-top:.16cqw solid #EC2027;padding-top:1.1cqw}
+.pr-screen .pr-fr .cxs-f .n{display:none}
+.pr-tabs a i{display:none}
+.pr-ring-now{grid-template-columns:minmax(0,1fr)}
+.pr-ring-now p{grid-column:1}
+.pr-ring-list button i{display:none}
+.pr-un-stages li i{display:none}
+.pr-lb b{display:none}
+/* the banner: the mark larger, the picture brighter to the right, the words on solid ground to the left */
+.pr-ban-logo{height:11cqw}
+.pr-ban-in{gap:2.6cqw;top:47%}
+.pr-ban-scrim{background:
+  linear-gradient(90deg,rgba(7,12,24,.82) 0%,rgba(7,12,24,.62) 28%,rgba(7,12,24,.16) 58%,rgba(7,12,24,.04) 100%),
+  linear-gradient(180deg,rgba(7,12,24,.22) 0%,rgba(7,12,24,0) 24%,rgba(7,12,24,0) 70%,rgba(7,12,24,.62) 100%)}
+/* scan: two square tiles, no shadow, a line of use under each */
+.pr-qr{gap:5cqw;padding:0 8cqw}
+.pr-qr-c{gap:.9cqw}
+.pr-qr-c svg{width:21cqw;height:21cqw;padding:1.1cqw;box-shadow:inset 0 0 0 .07cqw rgba(12,18,32,.16)}
+.pr-qr-c b{font-size:1.7cqw}
+.pr-qr-c span{font:600 1cqw/1.3 "Switzer",sans-serif;color:#EC2027}
+.pr-qr-c small{font:400 1cqw/1.4 "Instrument Sans",system-ui,sans-serif;color:var(--soft);max-width:26cqw}
+
+/* units slide, the richer cut: the six cycle marks over the stages, the three blocks red, the one long red line */
+.pr-un{grid-template-rows:auto minmax(0,1fr) auto;gap:1.1cqw}
+.pr-un-u{background:#EC2027;color:#fff;padding:1.2cqw 1.3cqw 1.2cqw;gap:.35cqw}
+.pr-un-u small{color:rgba(255,255,255,.78)}
+.pr-un-u b{font-size:2.3cqw}
+.pr-un-u span{color:rgba(255,255,255,.9);font-size:1cqw}
+.pr-un-u p{margin:.2cqw 0 0;font:500 .86cqw/1.3 "Instrument Sans",system-ui,sans-serif;color:rgba(255,255,255,.78)}
+.pr-un-u em i{background:rgba(255,255,255,.16);color:#fff;box-shadow:inset 0 0 0 .07cqw rgba(255,255,255,.4)}
+.pr-un-u.on{background:#B3121A}
+.pr-un-stages{padding-top:1.5cqw}
+.pr-un-stages::before{background:#EC2027}
+.pr-un-stages li{gap:.3cqw}
+.pr-un-mk{display:block;width:7.2cqw;height:7.2cqw;margin:0 0 .4cqw -.4cqw}
+.pr-un-mk svg{display:block;width:100%;height:100%}
+.pr-un-stages li b{font-size:1.5cqw;min-height:0;color:var(--ink);margin-bottom:.3cqw}
+.pr-un-stages li strong{color:#EC2027;font-size:1.1cqw}
+.pr-un-stages li span{font-size:.98cqw}
+.pr-un-stages li.on b{color:#EC2027}
+.pr-un:has(li.on) li:not(.on){opacity:.62}
+.pr-un-round{font-size:1.05cqw}
+
+/* services slide: the website's serpentine, the stage in hand named beneath */
+.pr-cyc{position:absolute;inset:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:.6cqw}
+.pr-cyc-f{position:relative;min-height:0}
+.pr-cyc-f .cyb{width:1500px}
+.pr-cyc-now{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.2cqw 1.4cqw;align-items:baseline;padding-top:.8cqw;animation:pr-rise .45s var(--e1,ease) both}
+.pr-cyc-now small{grid-row:1;font:600 .9cqw/1 "Switzer",sans-serif;color:#EC2027}
+.pr-cyc-now b{grid-row:1;font:600 2.1cqw/1.05 "Switzer",sans-serif;letter-spacing:-.025em;color:var(--ink)}
+.pr-cyc-now p{grid-column:2;margin:0;font:400 1.1cqw/1.4 "Instrument Sans",system-ui,sans-serif;color:var(--soft)}
+
+/* scan slide: the title centred, big words, a phone with the site between the two codes */
+.pr-fr-qr .cxs-h{text-align:center}
+.pr-fr-qr .cxs-h h3{font-size:3.4cqw;margin:1cqw auto 0}
+.pr-qr{grid-template-columns:1fr auto 1fr;gap:4cqw;padding:0 5cqw;align-items:center}
+.pr-qr-c svg{width:20cqw;height:20cqw}
+.pr-qr-c b{font-size:2cqw}
+.pr-qr-c span{font-size:1.15cqw}
+.pr-qr-ph{width:15.5cqw;height:31cqw;padding:.55cqw;background:#0C1220;box-shadow:0 1.6cqw 3cqw rgba(12,18,32,.2)}
+.pr-qr-ph-in{position:relative;width:100%;height:100%;overflow:hidden;background:#070C18}
+.pr-qr-ph-in>img:first-child{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75}
+.pr-qr-ph-logo{position:absolute;left:1.3cqw;top:2cqw;height:2.6cqw;width:auto}
+.pr-qr-ph-in p{position:absolute;left:1.3cqw;right:1.3cqw;bottom:2.2cqw;margin:0;font:600 1.5cqw/1.1 "Switzer",sans-serif;letter-spacing:-.02em;color:#fff}
+.pr-qr-ph-in p em{font-style:normal;color:#FF4D55}
+
+/* banner, round three (Bazil: "a bit too dark?", "positioned clearer and bigger?", "IAQ is not aligned"): the picture
+   lighter, the words still on ground; the markets on a block at the foot, larger; the mark's own transparent margin
+   (67 of 668 px) pulled back so its left edge sits on the title's */
+.pr-ban-v video{filter:brightness(1.08) saturate(1.05)}
+.pr-ban-scrim{background:
+  linear-gradient(90deg,rgba(7,12,24,.66) 0%,rgba(7,12,24,.46) 30%,rgba(7,12,24,.1) 60%,rgba(7,12,24,0) 100%),
+  linear-gradient(180deg,rgba(7,12,24,.18) 0%,rgba(7,12,24,0) 22%,rgba(7,12,24,0) 100%)}
+.pr-ban-logo{margin-left:-2.7cqw}
+.pr-ban-in{top:44%}
+.pr-ban-mk{left:0;right:0;bottom:0;padding:1.6cqw 5.4cqw;background:rgba(7,12,24,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);gap:1.2cqw}
+.pr-ban-mk li{font-size:1.32cqw;gap:.8cqw}
+.pr-ban-ic{width:2.4cqw;height:2.4cqw}
+
+/* units slide: fill the frame */
+.pr-un{gap:1.4cqw}
+.pr-un-u{padding:1.4cqw 1.4cqw 1.3cqw}
+.pr-un-u b{font-size:2.6cqw}
+.pr-un-u span{font-size:1.08cqw}
+.pr-un-stages{padding-top:1.8cqw;gap:.8cqw}
+.pr-un-mk{width:9cqw;height:9cqw;margin:0 0 .5cqw -.5cqw}
+.pr-un-stages li b{font-size:1.65cqw;margin-bottom:.45cqw}
+.pr-un-stages li small{font-size:.8cqw;margin-top:.5cqw}
+.pr-un-stages li strong{font-size:1.2cqw}
+.pr-un-stages li span{font-size:1.06cqw}
+.pr-un-round{font-size:1.12cqw;padding-bottom:.3cqw}
+/* scan: two codes only, centred (Bazil, on the phone mock: "what the heck is at the middle") */
+.pr-qr{grid-template-columns:auto auto;justify-content:center;gap:9cqw}
+.pr-qr-ph{display:none}
+/* banner: a shadow behind the mark and the words (Bazil), so the picture can stay light */
+.pr-ban-logo{filter:drop-shadow(0 .5cqw 1.4cqw rgba(0,0,0,.6)) drop-shadow(0 .1cqw .3cqw rgba(0,0,0,.45))}
+.pr-ban h3{text-shadow:0 .35cqw 1.6cqw rgba(0,0,0,.6),0 .1cqw .3cqw rgba(0,0,0,.45)}
+.pr-ban-mk li{text-shadow:0 .1cqw .5cqw rgba(0,0,0,.5)}
+
+/* ============================================================================
+   systems view on the black stage (Bazil: "the info on the black background, no need boxes"): the panel and the
+   labels are type on the stage, no glass, no chips; kind colours from the Codex, lifted for the dark ground
+   ============================================================================ */
+.pr-3d.is-sys{background:#0B0F17}
+.pr-3d.is-sys .pr-sys{background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;color:#fff;padding:1.2cqw 1.2cqw 1cqw 0;width:30cqw}
+.pr-3d.is-sys .pr-sys header b{color:#fff}
+.pr-3d.is-sys .pr-sys header b em{color:#FF4D55}
+.pr-3d.is-sys .pr-sys header span{color:rgba(255,255,255,.6)}
+.pr-3d.is-sys .pr-sys-v{box-shadow:none;gap:1.2cqw;margin-top:.5cqw}
+.pr-3d.is-sys .pr-sys-v button{padding:.3cqw 0;color:rgba(255,255,255,.55);background:transparent;box-shadow:inset 0 -.12cqw 0 transparent}
+.pr-3d.is-sys .pr-sys-v button.on{color:#fff;background:transparent;box-shadow:inset 0 -.12cqw 0 #FF4D55}
+.pr-3d.is-sys .pr-sys-u h4 i{background:transparent;padding:0;color:#FF4D55}
+.pr-3d.is-sys .pr-sys-u.u-pcu h4 i{color:#3DB4F0}
+.pr-3d.is-sys .pr-sys-u.u-efm h4 i{color:#2FD58B}
+.pr-3d.is-sys .pr-sys-u h4 b{color:#fff}
+.pr-3d.is-sys .pr-sys-u h4 small{color:rgba(255,255,255,.55)}
+.pr-3d.is-sys .pr-sys li button{color:rgba(255,255,255,.8);padding:.45cqw .6cqw .45cqw 0}
+.pr-3d.is-sys .pr-sys li button:hover{background:transparent;color:#fff}
+.pr-3d.is-sys .pr-sys li button em{background:transparent;padding:0;color:rgba(255,255,255,.45)}
+.pr-3d.is-sys .pr-sys li.on button{background:transparent;box-shadow:none;color:#FF4D55;font-weight:600}
+.pr-3d.is-sys .pr-sys-u.u-pcu li.on button{color:#3DB4F0}
+.pr-3d.is-sys .pr-sys-u.u-efm li.on button{color:#2FD58B}
+.pr-3d.is-sys .pr-sys li.on button em{background:transparent;color:rgba(255,255,255,.55)}
+.pr-3d.is-sys .pr-sys-d{padding:.1cqw .6cqw .5cqw 0}
+.pr-3d.is-sys .pr-sys-d p{color:rgba(255,255,255,.72)}
+.pr-sys-s{margin:0;font:400 .9cqw/1.45 "Instrument Sans",system-ui,sans-serif;color:rgba(255,255,255,.9)}
+.pr-3d.is-sys .pr-lb{background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;color:rgba(255,255,255,.8);padding:.4cqw 0;font-size:1.02cqw}
+.pr-3d.is-sys .pr-lb.on{color:#fff;background:transparent;transform:none;font-weight:700}
+.pr-3d.is-sys .pr-lb.on i{background:var(--c)}
+.pr-3d.is-sys .pr-leaders line{stroke:rgba(255,255,255,.35)}
+.pr-3d.is-sys .pr-leaders line.on{stroke:#fff}
+.pr-3d.is-sys .pr-leaders circle{fill:#0B0F17;stroke:rgba(255,255,255,.6)}
+.pr-3d.is-sys .pr-leaders circle.on{fill:#fff;stroke:#0B0F17}
+.pr-3d.is-sys .pr-lb{left:2.2cqw;top:calc(6.4cqw + var(--slot) * 4.6cqw)}
+
+/* slide change: a short fade, nothing cuts (Bazil: "needs to seem flawless") */
+.pr-live{animation:pr-fade .55s ease both}
+@keyframes pr-fade{from{opacity:0}to{opacity:1}}
+
+/* scan: bigger, clearer (Bazil) */
+.pr-qr{gap:8cqw}
+.pr-qr-c svg{width:27cqw;height:27cqw;padding:1.3cqw}
+.pr-qr-c b{font-size:2.3cqw}
+.pr-qr-c span{font-size:1.3cqw}
+.pr-fr-qr .cxs-h h3{font-size:3.6cqw}
+
+/* ============================================================================
+   the tab strip, redrawn (Bazil: "make the tab a lot better", "I don't like the bar", "an icon to close and open"):
+   dark glass over the screen's top edge, the slides as white type, the one in hand marked by a red square, no fill
+   bar; a mark at the right closes it, a mark in the corner opens it again
+   ============================================================================ */
+.pr-tabs{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;background:rgba(10,14,22,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:transform .35s var(--e1,ease),opacity .3s}
+.pr-tabs.closed{transform:translateY(-100%);opacity:0;pointer-events:none}
+.pr-tabs>div{padding:0 1.6cqw;gap:.4cqw}
+.pr-tabs a{gap:.6cqw;padding:1.15cqw 1.1cqw 1.05cqw;font:500 1.02cqw/1 "Switzer",sans-serif;color:rgba(255,255,255,.62);box-shadow:none;transition:color .2s}
+.pr-tabs a i{display:block;width:.55cqw;height:.55cqw;background:transparent;transition:background .2s}
+.pr-tabs a:hover{color:#fff}
+.pr-tabs a.on{color:#fff;font-weight:600;box-shadow:none}
+.pr-tabs a.on i{background:#EC2027}
+.pr-tab-bar{display:none}
+.pr-tabs-x,.pr-tabs-o{display:grid;place-items:center;width:3.4cqw;height:3.4cqw;border:0;background:transparent;color:rgba(255,255,255,.7);cursor:pointer;transition:color .2s,background .2s}
+.pr-tabs-x:hover,.pr-tabs-o:hover{color:#fff;background:rgba(255,255,255,.08)}
+.pr-tabs-x svg,.pr-tabs-o svg{width:1.5cqw;height:1.5cqw}
+.pr-tabs-o{position:absolute;right:1cqw;top:1cqw;z-index:41;background:rgba(10,14,22,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.pr-screen .pr-fr .cxs-in{padding-top:6.4cqw}
+.pr-screen .pr-3d iframe{top:3.5cqw;height:calc(100% - 3.5cqw)}
+.pr-tabs-r{display:inline-flex;align-items:center;padding-right:.4cqw}
+.pr-tabs-loop{display:grid;place-items:center;width:3.4cqw;height:3.4cqw;border:0;background:transparent;color:rgba(255,255,255,.7);cursor:pointer;transition:color .2s,background .2s}
+.pr-tabs-loop svg{width:1.5cqw;height:1.5cqw}
+.pr-tabs-loop:hover{color:#fff;background:rgba(255,255,255,.08)}
+.pr-tabs-loop.on{color:#fff;background:#EC2027}
+/* the window-fill stand-in for full screen */
+.pr-show.is-fs.fill{position:fixed;inset:0;z-index:10000}
+.pr-show.is-fs.fill{z-index:2147483000}
+
+/* ============================================================================
+   8 Oct refinement (Bazil: "refine and fix it to be a proper presentation")
+   ============================================================================ */
+/* full screen under the site's root zoom (base.css: zoom 1.12 from 1025 px, 1.5 from 2240, 2.1 from 3200): the deck
+   undoes it, so 100vw and 100vh are the screen's own and nothing hangs past its edges */
+.pr-show.is-fs{zoom:calc(1 / var(--zoomf,1))}
+/* the tab strip: every slide in view, centred, no focus ring on a pointer click */
+.pr-tabs>div{justify-content:safe center;overflow-x:auto}
+.pr-tabs a{padding:1.15cqw 1.35cqw 1.05cqw;font-size:1.05cqw}
+.pr-tabs a:focus{outline:none}
+.pr-tabs a:focus-visible{outline:none;color:#fff;box-shadow:inset 0 -.16cqw 0 rgba(255,255,255,.5)}
+.pr-tabs button:focus{outline:none}
+.pr-tabs button:focus-visible{outline:none;background:rgba(255,255,255,.12)}
+.pr-ctl button:focus{outline:none}
+.pr-ctl button:focus-visible{outline:2px solid #EC2027;outline-offset:2px}
+/* the 3D handover veil */
+.pr-3d-hand{position:absolute;inset:0;z-index:6;background:#0B0F17;opacity:0;pointer-events:none;transition:opacity .45s ease}
+.pr-3d-hand.on{opacity:1;transition-duration:.2s}
+/* the systems labels move to their slots smoothly as the order settles */
+.pr-3d.is-sys .pr-lb{transition:top .5s cubic-bezier(.2,.7,.2,1),color .25s}
+/* one chart: the chart and the read-out of the unit in hand, larger; the work cards stay on the website */
+.pr-chart{position:absolute;inset:0}
+.pr-chart .sysm-work{display:none}
+.pr-chart .sysm{font-size:15px}
+
+/* 8 · the invitation: a white block beside the footage */
+.pr-visit{position:relative;container-type:inline-size;aspect-ratio:16/9;width:100%;overflow:hidden;background:#0B0F17;color:var(--ink,#0C1220)}
+.pr-visit-v{position:absolute;top:0;right:0;bottom:0;left:42cqw;overflow:hidden;background:#0B0F17}
+.pr-visit-v video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.3s cubic-bezier(.4,0,.2,1);animation:pr-push 14s ease-in-out infinite alternate}
+.pr-visit-v video.on{opacity:1}
+@keyframes pr-push{from{transform:scale(1)}to{transform:scale(1.07)}}
+.pr-visit-cap{position:absolute;z-index:3;right:4cqw;bottom:4.4cqw;max-width:30cqw;display:grid;gap:.5cqw;padding:1.5cqw 1.8cqw;background:#fff;animation:pr-up .8s .7s cubic-bezier(.2,.7,.2,1) both}
+.pr-visit-cap b{font:600 1.6cqw/1.15 "Switzer",sans-serif;letter-spacing:-.02em;color:var(--ink,#0C1220)}
+.pr-visit-cap span{font:400 1cqw/1.4 "Instrument Sans",system-ui,sans-serif;color:var(--soft,#48536A)}
+.pr-visit-p{position:absolute;z-index:2;top:0;bottom:0;left:0;width:42cqw;background:#fff;display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;padding:6.6cqw 4.4cqw 3.4cqw 5cqw}
+.pr-visit-logo{height:4.4cqw;width:auto;display:block;margin-left:-1.1cqw;animation:pr-up .7s cubic-bezier(.2,.7,.2,1) both}
+.pr-visit-in{align-self:center;display:grid;gap:2cqw}
+.pr-visit-in>*{animation:pr-up .7s cubic-bezier(.2,.7,.2,1) both}
+.pr-visit-in>*:nth-child(2){animation-delay:.12s}.pr-visit-in>*:nth-child(3){animation-delay:.24s}
+@keyframes pr-up{from{opacity:0;translate:0 1.2cqw}to{opacity:1;translate:0 0}}
+.pr-visit h3{margin:0;font:600 3.7cqw/1.04 "Switzer",sans-serif;letter-spacing:-.03em;color:var(--ink,#0C1220)}
+.pr-visit h3 em{font-style:normal;color:#EC2027;white-space:nowrap}
+.pr-visit-facts{list-style:none;margin:0;padding:0 0 1.8cqw;display:grid;gap:1cqw;border-bottom:.16cqw solid #EC2027}
+.pr-visit-facts li{display:grid;grid-template-columns:2cqw minmax(0,1fr);gap:1cqw;align-items:start}
+.pr-visit-facts svg{width:1.8cqw;height:1.8cqw;color:#EC2027;stroke-width:1.5;margin-top:.1cqw}
+.pr-visit-facts span{display:grid;gap:.25cqw;font:400 1.15cqw/1.35 "Instrument Sans",system-ui,sans-serif;color:var(--soft,#48536A)}
+.pr-visit-facts b{font:600 1.55cqw/1.15 "Switzer",sans-serif;color:var(--ink,#0C1220)}
+.pr-visit-offers{list-style:none;margin:0;padding:0;display:grid;gap:.75cqw}
+.pr-visit-offers li{font:500 1.4cqw/1.25 "Switzer",sans-serif;color:#A3ABB8;transition:color .45s,translate .45s}
+.pr-visit-offers li.on{color:var(--ink,#0C1220);translate:.5cqw 0}
+.pr-visit-booth{display:flex;align-items:baseline;gap:1.2cqw;margin-top:1.8cqw;animation:pr-up .7s .36s cubic-bezier(.2,.7,.2,1) both}
+.pr-visit-booth span{font:500 1.25cqw/1 "Instrument Sans",system-ui,sans-serif;color:var(--soft,#48536A)}
+.pr-visit-booth b{font:700 4.4cqw/1 "Switzer",sans-serif;letter-spacing:-.03em;color:#EC2027}
+.pr-visit-url{margin:1.2cqw 0 0;font:500 1.1cqw/1 "Instrument Sans",system-ui,sans-serif;color:var(--soft,#48536A)}
+/* banner: the seven markets fit across 1920 */
+.pr-ban-mk{padding:1.45cqw 4.4cqw;gap:1cqw}
+.pr-ban-mk li{font-size:1.12cqw;gap:.65cqw}
+.pr-ban-ic{width:2cqw;height:2cqw}
+/* systems: the model centred in the space between the labels and the panel; the panel below the tab strip */
+.pr-3d.is-sys iframe{width:120%;left:-17%}
+.pr-3d.is-sys .pr-sys{top:5.2cqw;bottom:2cqw}
+.pr-3d.is-sys .pr-lb{top:calc(7.4cqw + var(--slot,0) * 4.6cqw)}
+/* systems panel: every unit and item in view at once, no scrollbar on a TV */
+.pr-3d.is-sys .pr-sys{gap:.7cqw;padding-top:.6cqw}
+.pr-3d.is-sys .pr-sys-list{gap:.55cqw;scrollbar-width:none}
+.pr-3d.is-sys .pr-sys-list::-webkit-scrollbar{display:none}
+.pr-3d.is-sys .pr-sys li button{padding:.32cqw .6cqw .32cqw 0;font-size:.98cqw}
+.pr-3d.is-sys .pr-sys-u h4{margin-bottom:.15cqw}
+.pr-3d.is-sys .pr-sys-d p{margin-bottom:.35cqw;font-size:.88cqw}
+.pr-sys-s{font-size:.86cqw}
+/* a focus inside the 3D (the frame is wider than its box on the systems view) must never scroll the screen sideways */
+.pr-screen,.pr-slide,.pr-3d,.pr-visit,.pr-ban,.pr-fit{overflow:clip}
+/* full screen box: never scrolled by a focus, the screen sized from the box itself (no page scrollbar while filling) */
+.pr-show.is-fs{overflow:clip}
+.pr-show.is-fs .pr-screen{width:min(100%,calc(100vh * 16 / 9));height:auto;aspect-ratio:16/9}
+html.pr-filling,html.pr-filling body{overflow:hidden}
+/* six services: the stage in hand, unnumbered */
+.pr-cyc-now{grid-template-columns:minmax(0,1fr);gap:.3cqw}
+.pr-cyc-now p{grid-column:1}
+/* three units: everything inside the frame at 16:9 */
+.pr-un{gap:1cqw}
+.pr-un-u{padding:1.1cqw 1.3cqw 1.1cqw}
+.pr-un-u b{font-size:2.3cqw}
+.pr-un-stages{padding-top:1.3cqw}
+.pr-un-mk{width:6.2cqw;height:6.2cqw;margin:0 0 .3cqw -.3cqw}
+.pr-un-stages li b{font-size:1.5cqw;margin-bottom:.25cqw}
+.pr-un-stages li small{margin-top:.35cqw}
+.pr-un-stages li strong{font-size:1.1cqw}
+.pr-un-stages li span{font-size:1cqw}
+/* SEMICON: the title whole inside the white block */
+.pr-visit-p{width:46cqw}
+.pr-visit-v{left:46cqw}
+.pr-visit h3{font-size:3.25cqw}
+
+/* ============================================================================
+   8 Oct, performance (Bazil: "presentation is lagging")
+   ============================================================================ */
+/* the 3D asleep while another slide is up: a two-pixel sliver draws nothing */
+.pr-3d.asleep iframe{height:2px!important}   /* never narrower: below 900 px wide the app switches itself to tap-to-build */
+/* no background blur over a moving picture anywhere in the deck: each blurred bar re-blurred the video or the 3D under
+   it every frame. Solid tints in their place */
+.pr-tabs,.pr-tabs-o{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(10,14,22,.86)}
+.pr-3d-hint,.pr-lb,.pr-sys,.pr-ban-mk{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.pr-3d-hint{background:rgba(255,255,255,.94)}
+.pr-ban-mk{background:rgba(7,12,24,.72)}
+.pr-3d:not(.is-sys) .pr-lb,.pr-3d:not(.is-sys) .pr-sys{background:rgba(255,255,255,.96)}
+/* the pushing footage on the invitation and the dissolving banner are composited, not repainted */
+.pr-visit-v video,.pr-ban-v video{will-change:opacity,transform}
+/* a slide that failed: the mark on white, never a blank screen */
+.pr-fail{position:relative;aspect-ratio:16/9;width:100%;display:grid;place-items:center;background:#fff}
+.pr-fail img{height:7cqw;min-height:48px;width:auto}

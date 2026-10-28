@@ -15,7 +15,7 @@
 .fr-lab.below{flex-direction:column-reverse;transform:translate(-50%,-3px)}
 .fr-lab.below.al-l{transform:translate(-3px,-3px)}
 .fr-lab.below.al-r{transform:translate(calc(-100% + 3px),-3px)}
-.fr-lab b{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font:500 12.5px/1 "Switzer",sans-serif;letter-spacing:.005em;color:#fff;background:#17213A;padding:7px 10px 7px 9px;border-radius:0}
+.fr-lab b{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font:500 13px/1 "Switzer",sans-serif;letter-spacing:.005em;color:#fff;background:#17213A;padding:7px 10px 7px 9px;border-radius:0}
 .fr-lab b::before{content:"";flex:none;width:6px;height:6px;background:var(--c)}
 .fr-lab i{display:block;width:6px;height:6px;background:var(--c);box-shadow:0 0 0 1.5px #0F1319}
 .fr-lab:hover b{background:#EC2326}
@@ -23,7 +23,7 @@
 .fr-tools{position:absolute;right:10px;bottom:10px;display:flex;gap:4px}
 .fr-tools button{width:32px;height:32px;border:0;background:rgba(255,255,255,.1);color:#fff;font:600 15px/1 "Switzer",sans-serif;cursor:pointer}
 .fr-tools button:hover{background:rgba(255,255,255,.2)}
-.fr-hint{position:absolute;left:10px;bottom:12px;margin:0;font-size:12px;color:rgba(255,255,255,.62);pointer-events:none;background:rgba(15,19,25,.7);padding:5px 9px}
+.fr-hint{position:absolute;left:10px;bottom:12px;margin:0;font-size:13px;color:rgba(255,255,255,.62);pointer-events:none;background:rgba(15,19,25,.7);padding:5px 9px}
 @media(max-width:560px){.fr-lab b{display:none}.fr-hint{display:none}.fr{aspect-ratio:1.15}}
 
 /* 25 Sep, night (Bazil: "do a quick loading on this banner before everything appear"): until the building stands the

@@ -1,0 +1,90 @@
+{
+  "layer": "detail-sprinklers-lite",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -66.72540797369157,
+      4.350386619567871,
+      -36.25494253766985
+    ],
+    "max": [
+      39.30573521478499,
+      27.85420036315918,
+      47.628766416187574
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      89.51211547851562,
+      4.350386619567871,
+      -39.813575744628906
+    ],
+    "max": [
+      195.5432586669922,
+      27.85420036315918,
+      44.070133209228516
+    ]
+  },
+  "storeys": [
+    {
+      "index": 0,
+      "key": "apron",
+      "name": "APRON",
+      "elevation": 4.2,
+      "file": "detail-sprinklers-lite-0-apron.glb",
+      "triangles": 2460,
+      "sizeKB": 11
+    },
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-sprinklers-lite-1-gf.glb",
+      "triangles": 333858,
+      "sizeKB": 806
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-sprinklers-lite-2-1f.glb",
+      "triangles": 233212,
+      "sizeKB": 539
+    },
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-sprinklers-lite-3-2f.glb",
+      "triangles": 368748,
+      "sizeKB": 880
+    },
+    {
+      "index": 4,
+      "key": "3f",
+      "name": "3F",
+      "elevation": 21.05,
+      "file": "detail-sprinklers-lite-4-3f.glb",
+      "triangles": 206635,
+      "sizeKB": 527
+    },
+    {
+      "index": 5,
+      "key": "rf",
+      "name": "RF",
+      "elevation": 27.71,
+      "file": "detail-sprinklers-lite-5-rf.glb",
+      "triangles": 43138,
+      "sizeKB": 93
+    }
+  ],
+  "source": "lite of detail-sprinklers: make-lite --error 0.005 --normals flat",
+  "flatShading": true
+}

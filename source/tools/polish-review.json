@@ -1,0 +1,1798 @@
+{
+  "meta": {
+    "old": "The 9 Oct build of this workspace",
+    "new": "IAQ-website-2026-10-22.zip, the line IAQ reviewed through October, applied here on 22 Oct",
+    "captured": "",
+    "by": "Brand Method, 22 Oct 2026, against the house bar (Trusted Engineer voice, figure first, sentence case, no boxed icons, no filler ledes) and the client's own October instructions",
+    "before": "The 22 Oct build (IAQ-website-2026-10-22.zip, applied here on 22 Oct), every section captured before any change",
+    "after": "The same section after the change, captured the same way, dated"
+  },
+  "skip": [
+    "lp-project",
+    "projects-4",
+    "services-design",
+    "services-procurement",
+    "services-construction",
+    "services-commissioning",
+    "services-maintenance",
+    "services-process-critical-utilities"
+  ],
+  "pairs": {
+    "projects-0": "projects-4"
+  },
+  "pages": {
+    "home": {
+      "name": "Home",
+      "change": "The hero headline is now the client's slogan, Engineering Precision. Delivering Excellence., with More about us as the button (14 Oct, IAQ). The seven-market rail under the hero is gone. The numbers band carries IAQ's new figures (530+ employees, 85% engineering workforce, 20 tons of carbon, 235+ projects). Tool Installation is stage 5 and Maintenance stage 6 (Sunny, 13 Oct). The Scroll to build 3D is the client's requested home 3D, on a 16,000 px scroll runway with a skip button. The markets band says Seven markets, one integrated team.",
+      "design": {
+        "rate": "bad",
+        "why": "The hero reads well on its own: the two-line headline sits low over the lift photograph and the red word lands. But the seven-market rail that tied the hero to the markets is gone, so the first screen no longer says who IAQ builds for. The 3D section runs 16,000 px of scroll for one stage, which is 60 percent of the page; a visitor who does not want it scrolls through four blank screens before reaching the markets. The numbers band and the cycle ring are the 9 Oct design unchanged."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "Engineering Precision. Delivering Excellence. is a claim any contractor can make; the 9 Oct line said what IAQ builds (the environments where the future is made) and the lede said what it is (cleanrooms, dry rooms and the systems that hold them in spec). The new lede is one 20-word sentence of category words: integrated engineering, total facility solutions, complex industrial, mission-critical. Title case on a slogan is against the house. If the slogan is the client's, keep it and give it a lede that names the product and the figure (31 years, one team)."
+      },
+      "fix": "Put the seven-market rail back under the hero. Cap the 3D runway at six screens or make the stage advance on its own with the scroll as a scrub. Rewrite the lede figure first; keep the slogan only if IAQ insists.",
+      "fixed": {
+        "date": "22 Oct 2026",
+        "what": "The Scroll to build runway is capped at eight screens, from twenty-one. The build still runs every step, the scrub is faster, the skip button stays.",
+        "why": "Sixty percent of the page was blank scroll under one stage. The client asked for a skip button on 12 Oct, a sign the length cost them; the cap keeps the 3D and every step and shortens the wait.",
+        "held": "The headline and the statement are IAQ's 19 Oct text and the seven-market rail left on IAQ's 9 Oct word (\"remove that\", \"keep the position but remove the service\"); both stay. The statement rewrite is proposed below."
+      },
+      "proposals": [
+        {
+          "block": "Hero statement",
+          "now": "IAQ Group delivers integrated engineering and total facility solutions for complex industrial and mission-critical environments.",
+          "proposed": "Cleanrooms, dry rooms and the systems that hold them in spec. Designed, built and maintained by one team since 1995.",
+          "why": "Names the product and the figure; no category words. The headline above it stays IAQ's."
+        },
+        {
+          "block": "Numbers block",
+          "now": "Engineering Excellence in Numbers. Our track record reflects the expertise, scale and commitment behind IAQ's integrated facility solutions, serving hi-tech industries across international markets.",
+          "proposed": "Thirty-one years, in numbers. Six figures from IAQ's own record: people, offices, years, the engineering share of the workforce, carbon cut each year, projects completed.",
+          "why": "The lede says what the six figures are instead of praising them. Sentence case."
+        }
+      ]
+    },
+    "about": {
+      "name": "About IAQ",
+      "change": "The hero headline is Advancing Industry Since 1995 with a new lede. The story block became a 15-word heading with a 45-word paragraph. A What we've achieved row of eight registration and award logos was added above the closing band. The six values carousel is unchanged.",
+      "design": {
+        "rate": "good",
+        "why": "The page keeps the 9 Oct structure: dark hero on the plant photograph, story block with the cleanroom, vision and mission cards, the values carousel. The new logo row is a real addition: eight marks in one line, no boxes, and it gives the page the proof the client asked for on 24 Sep."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "The story heading, 31 years of technical excellence through various service model with global presence across 7 countries, is fifteen words with a grammar slip and no verb. The paragraph under it is one 40-word sentence (IAQ is a leading ISO 9001, ISO 14001 and ISO 45001 certified Malaysian owned company that delivers... to client in diverse industries both locally and globally). Advancing Industry Since 1995 is title case and says nothing a buyer can check. The 9 Oct line said Engineering trust, since 1995 and IAQ began in 1995 with indoor air quality, which is the actual story."
+      },
+      "fix": "Keep the client's facts (three ISO standards, seven countries, the six services) and rewrite the story block in two short sentences, sentence case. Keep the new logo row."
+    },
+    "about-history": {
+      "name": "History of IAQ",
+      "change": "Every milestone was replaced from IAQ's 16 Oct history amendment PDF (17 Oct): 21 entries, Foundation of IAQ to Supporting the Next Generation of Industry, each with the client's own paragraph. The headline is Three decades of engineering evolution. Most entries carry a render captioned shown for illustration in place of the IAQ photographs, and the scale, class and location strips under each entry are gone. The proof grid at the foot stays.",
+      "design": {
+        "rate": "bad",
+        "why": "The timeline itself is the 9 Oct layout and still works. What changed is what fills it: fourteen of the twenty-one pictures are renders of other people's buildings captioned shown for illustration, where the 9 Oct page showed IAQ's own Ipoh plant, the Poland office team, the MCIEA stage and the 2.6 million manhours banner. The fact strips (25,000 m², Class 1, Ipoh) that made each milestone checkable are gone, so every entry is a heading, a paragraph and a picture that is not IAQ's."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "The client's amendment sets the milestones and the dates, and that is the record to follow. But as written every entry reads alike: title case headings (Advancing Technical Expertise, Strengthening Energy Solutions, Enhancing Construction Management Services) and a sentence of the same shape under each (IAQ strengthened its multidisciplinary approach by delivering complete facility solutions...). No figure, no place, no client type, so nothing can be checked. The 9 Oct entries named the plant, the size and the class."
+      },
+      "fix": "Keep IAQ's 21 milestones and dates. Under each, keep their sentence but put the fact first where one exists (the 25,000 m² Ipoh plant, the Poland branch, the MCIEA award) and restore IAQ's own photographs where the 9 Oct page had them; a render stays only where IAQ supplied no picture."
+    },
+    "about-commitment": {
+      "name": "Corporate Commitment",
+      "change": "The three pillars are now three white cards with a line icon and an E, S or G letter, with a new introductory paragraph; the textured globe is gone. The section order changed: QEHS policies before the CSR stories. The section Certified to three ISO standards, with the three certificates, their numbers and validity dates, is gone from the page.",
+      "design": {
+        "rate": "bad",
+        "why": "The pillars are three equal cards with an icon drawn inside a tinted box and a faint letter in the corner, the pattern the house rules exclude (no icons in boxes, no card grids that could be any site). The globe that gave the section its one visual is gone. Further down, the certificate viewer that let a buyer read the ISO document as issued has been removed, so the page that is named Commitment shows no certificate."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "The pillar text, the policy text and the CSR stories are unchanged and plain. What is missing is the record: the certificate numbers (Q903788A, E903788, 0151940), the certified since and valid until dates and the Intertek and UKAS lines. The client asked on 24 Sep to see the certificates directly on this page. Unless IAQ asked for their removal in October, this is a loss."
+      },
+      "fix": "Ask IAQ whether the certificates were removed on their instruction. If not, put the three-certificate block back under the policies. Replace the boxed-icon cards with the three line marks on the page itself, no box, and the globe or one photograph beside them."
+    },
+    "about-leadership": {
+      "name": "Leadership",
+      "change": "No change between the builds. The page still carries portrait placeholders and Line-up to be confirmed for every position after the founder, waiting on IAQ.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged. The layout is ready for the names and portraits; the placeholders say plainly what is owed and by whom."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "Unchanged and honest about what is missing. The founder's honorific and the record block are correct."
+      },
+      "fix": "Nothing on our side. IAQ owes the line-up, titles and portraits."
+    },
+    "about-esg": {
+      "name": "ESG commitment",
+      "change": "No design or copy change; only the separator in the supplied-by notes changed.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "Unchanged. The two content slots still say what IAQ owes (an energy saving figure, the certificate artwork)."
+      },
+      "fix": "Nothing on our side."
+    },
+    "global-presence": {
+      "name": "Global presence",
+      "change": "The dark dot globe is now a flat world map with a flag label at each of the nine office pins (Shah Alam, Penang, Singapore, Dresden, Ahmedabad, Skellefteå, Phoenix, Dublin) and grey marks where IAQ has built. The address cards left the page; a line sends the reader to the Contact page. The lede now says seven countries (it said six, a slip).",
+      "design": {
+        "rate": "good",
+        "why": "The flat map with flags is clearer than the small dark globe: every office is named where it is and the delivered-in countries read as a second layer. The labels are busy around Malaysia and Singapore, but legible. One section fewer and the page still holds together."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "The six-countries slip is fixed. Seven countries, pinned where they are is plain and true. The office addresses now live on Contact only, which is where a visitor looks for them."
+      },
+      "fix": "Nothing to fix. Later: separate the Malaysia and Singapore labels so they do not touch."
+    },
+    "services": {
+      "name": "Services hub",
+      "change": "The facility map at the top now shows the building closed and grey at rest, the home 3D's materials (14 Oct, IAQ), with a Scroll to explore cue. The 6 services ring, the 4 works cards and the Tools hookup phases are off the page (IAQ, 28 Sep and 15 Oct); the units-by-services matrix carries that story now. The three business units block has a new introductory paragraph.",
+      "design": {
+        "rate": "bad",
+        "why": "The page opens on a flat grey block with a list beside it; the 9 Oct page opened on the exploded, coloured model. The client asked for the home build's finished look, which is right, but at rest it reads as an empty slab until the visitor scrolls. With the ring, the works and the hookup phases removed, the page is the map, three cards, the matrix and the FAQ, so the middle of the page lost its rhythm."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "The new unit lede, Our services bring together the capabilities needed to plan, deliver and support technical facilities. The exact scope is tailored to each project..., describes the section instead of saying anything. The 9 Oct line was three sentences a buyer remembers: EPC builds the facility. PCU & TTI re-equips a running fab. EFM runs and maintains it. Everything else on the page is the house copy unchanged."
+      },
+      "fix": "Light the model at rest (the exploded or lit view, or an entry animation that closes the building in the first second) so the top of the page shows the facility. Restore the three-sentence unit lede. Keep the removed sections removed."
+    },
+    "services-all": {
+      "name": "Six services, one page",
+      "change": "Stage headings are now the service names with a photograph beside each (Engineering Design & Consultation, Procurement, Construction, Testing & Commissioning, Tool Installation, Maintenance). The What IAQ carries at this stage lists and the unit chips under each stage are gone. Tool Installation is stage 5, Maintenance 6, IAQ's wording (Sunny, 13 Oct).",
+      "design": {
+        "rate": "good",
+        "why": "Six stages, each a heading, a photograph, the house paragraph and the one-line takeaway. The photographs give the page life it did not have and the page is a third shorter. The unit chips that went were useful but the matrix on the Services hub still carries that mapping."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "The house copy is intact: The stage where cost and compliance are decided, The design intent held all the way to site, The class the design promised, proven by test. The stage names follow IAQ's wording. The ampersands in the headings are the client's own names and stay."
+      },
+      "fix": "Nothing to fix. Later: bring back one line per stage saying which unit carries it."
+    },
+    "services-epc-construction": {
+      "name": "EPC unit page",
+      "change": "The page was rebuilt around the client's text: Engineering, Procurement & Construction (EPC) as the headline, Integrated Project Delivery, Our EPC Capabilities (six chips), Why Integrated Project Delivery Matters (five cards), Delivered this way, and a Let's Discuss Your Project Goals band. The figures strip (1 point of contact, 12 to 24 months, 4 stages), What EPC is, Why owners choose it, the two contract models, the work and systems cards and the project cycle drawing are gone (IAQ asked for the figures and the cycle off, 15 and 19 Oct).",
+      "design": {
+        "rate": "bad",
+        "why": "The page is now five text blocks and two grids of boxed icons: six capability chips each with an icon in a tile, then five cards of the same shape. That is the template pattern the house excludes, and it replaced three diagrams (contract models, work and systems, the cycle) that showed what EPC is. The hero keeps the blue em on a title-case headline. Nothing on the page is drawn."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "Complex facilities require more than technical expertise. They demand seamless coordination... Enhanced Coordination, Reduced Project Complexity, Improved Schedule Certainty: every heading is title case and every sentence is a claim without a figure. The 9 Oct page said One contract, from first drawing to final handover, then 12 to 24 months, EPCC or EPCM, and what each model means. If this text is the client's capability sheet, the facts in it (the six capabilities, the four stages) survive a rewrite in the house voice."
+      },
+      "fix": "Keep the client's capability list and section order. Rewrite each block sentence case, one fact per sentence, and bring back the two contract models as the one drawing on the page. Replace the boxed-icon grids with plain rows.",
+      "held": "No design change applied. The capabilities grid is the one the review reverted to on 22 Oct (\"revert it back to old\") after the isometric and line-mark trials, so it stands. The headline, the definition, the capabilities lede, the five reasons and the call to action are IAQ's 19 to 21 Oct sheet, and the contract models left on IAQ's word (\"do not publish a simplified two-model framework unless management confirms it is complete\"). The rewrite below keeps every fact and name and goes to IAQ for approval.",
+      "proposals": [
+        {
+          "block": "Definition",
+          "now": "Complex facilities require more than technical expertise. They demand seamless coordination across engineering, procurement and construction to ensure every element is aligned from concept to commissioning. Through an integrated project delivery approach, IAQ combines multidisciplinary expertise, meticulous planning and disciplined execution to deliver facilities that meet the highest standards of quality.",
+          "proposed": "One contract covers engineering, procurement and construction, so one team answers for the facility from concept to commissioning. IAQ's engineers, project managers and construction staff plan and run the work together, and the facility is handed over proven, not promised.",
+          "why": "The same claim in half the words, a verb in every sentence, no seamless or meticulous."
+        },
+        {
+          "block": "Capabilities lede",
+          "now": "IAQ delivers EPC solutions through a multidisciplinary team of engineers, project managers and construction professionals. Our capabilities span the full project lifecycle, enabling efficient coordination and successful project delivery across complex industrial environments.",
+          "proposed": "Six capabilities, one team: engineering and design, procurement, construction, process utilities, tool installation, testing and commissioning. Every one is carried in house.",
+          "why": "Lists what the six are, so the sentence can be checked against the grid under it."
+        },
+        {
+          "block": "Why it matters, five reasons",
+          "now": "Enhanced Coordination. Reduced Project Complexity. Improved Schedule Certainty. Quality & Safety Focus. Operational Readiness. Each with a line of the same shape (improved collaboration..., a structured delivery framework..., early planning..., consistent management..., a lifecycle approach...).",
+          "proposed": "Coordination: design, procurement and construction sit with one team, so a change in one is known to the others the same day. Less complexity: one framework for decisions, one programme, one point of contact. Schedule certainty: long-lead items are ordered from design sign-off, so the programme is set before site starts. Quality and safety: one management system, ISO 9001, 14001 and 45001, across every phase. Operational readiness: commissioning is in the contract, so the facility is handed over running.",
+          "why": "IAQ's five reasons in IAQ's order; each now carries the mechanism or the standard behind it. Sentence case."
+        },
+        {
+          "block": "Call to action",
+          "now": "Whether planning a new facility, expanding existing operations or upgrading critical infrastructure, IAQ delivers integrated EPC solutions that transform complex requirements into operationally ready facilities.",
+          "proposed": "A new facility, an extension or an upgrade: send the brief and the programme, and one team takes it from design to handover.",
+          "why": "The ask is in the sentence. 29 words to 23."
+        }
+      ]
+    },
+    "services-tool-installation": {
+      "name": "PCU & TTI unit page",
+      "change": "Rebuilt on the client's text: Process Critical Utilities (PCU) & Total Tool Installation (TTI), Manufacturing Readiness Start Here, What We Deliver (two boxed lists), Our Delivery Approach (four stages in circles), a dark band on semiconductor focus, Why Clients Partner with IAQ (four illustrated cards), the scope lists and Delivered this way. The Main Tool schematic is gone (IAQ: that picture is P&C, 15 Oct), as are the figures strip, What arrives what leaves, and the five-step utilities sequence.",
+      "design": {
+        "rate": "bad",
+        "why": "The hero, the dark band and the four illustrated cards are the strongest parts of the new unit pages and the page is still shorter than before. But the capability lists sit as chips in boxes, the delivery approach is four icons in circles with a line between, and the schematic that explained hook-up is gone with nothing drawn in its place. The scope lists from the 9 Oct page are kept and read well."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "Manufacturing Readiness Start Here, Why Clients Partner with IAQ, Integrated Delivery, Technical Excellence: title case headings and category words. The 9 Oct line, The last hundred metres, where a facility becomes a fab, said what the unit does; the new lede takes 40 words to say the same. The four phases (facilitization, rig-in, hook-up, commissioning) that the unit head gave us are reduced to four labels."
+      },
+      "fix": "Keep the client's section order and names. Rewrite headings in sentence case with the fact first. Put the four phases back with their one-line meanings. Remove the boxes around the capability chips.",
+      "fixed": {
+        "date": "22 Oct 2026",
+        "what": "The eleven capability lines on the What We Deliver cards are plain rows with the mark on the line: no chip box, no box round the icon, a hairline between rows.",
+        "why": "IAQ's own graphic rule, no icons in boxes, and the sheet's own words, minimal text, premium icons. Every name, the two cards and their order are unchanged.",
+        "held": "The three-line header, the introduction, the delivery approach, the statement and the four reasons are IAQ's 19 to 22 Oct sheet text and stay as given; the Main Tool schematic left on IAQ's word (that picture is P&C). The house-voice rewrite is proposed below."
+      },
+      "proposals": [
+        {
+          "block": "Introduction",
+          "now": "A production facility is only ready when its manufacturing equipment and utility systems operate as one. IAQ delivers integrated PCU and TTI solutions that connect critical utility infrastructure with manufacturing tools, enabling a seamless transition from facility completion to operational readiness.",
+          "proposed": "A fab is ready when every tool is connected to its gases, chemicals, water, power and exhaust, and proven. IAQ builds those utilities and brings each one to the tool, so the gap between a finished building and a producing line is closed by one team.",
+          "why": "Says what the utilities are; keeps IAQ's readiness idea; 42 words to 46 but every one a noun or a verb."
+        },
+        {
+          "block": "The two cards' lines",
+          "now": "Specialised utility systems that support the safe and reliable operation of semiconductor manufacturing facilities. / Comprehensive equipment integration services supporting manufacturing start-up and production readiness.",
+          "proposed": "The gases, chemicals, ultrapure water, exhaust and waste systems a fab's tools consume, built to purity standards. / Each tool moved in, installed, connected to its utilities, tested and commissioned, in that order.",
+          "why": "Names the systems and the steps the lists under them repeat."
+        },
+        {
+          "block": "Delivery approach, four stages",
+          "now": "Preparing facility infrastructure and utility systems for equipment installation. / Positioning and installing manufacturing equipment. / Connecting tools to critical utilities and support systems. / Verifying system performance and operational readiness.",
+          "proposed": "Facilitisation: the sub-fab, the drops and the power built to the tool maker's requirements before the tool arrives. / Move-in and installation: the tool uncrated outside the cleanroom, moved on the agreed route and set on its base. / Utility integration: each utility tapped from the facility and connected to the tool, to its own standard. / Testing and commissioning: every connection leak tested, purged, balanced and proven before production.",
+          "why": "IAQ's four stage names kept; one fact per stage, from the unit head's own four phases (SL questionnaire, section D)."
+        },
+        {
+          "block": "Why clients partner, four reasons",
+          "now": "Integrated Delivery. Semiconductor Focus. Technical Excellence. Manufacturing Readiness. Each with a line (a coordinated execution framework..., dedicated expertise..., disciplined planning..., bridge the gap...).",
+          "proposed": "Integrated delivery: the team that built the utilities connects the tools, so nothing is handed between contractors. Semiconductor focus: front end, advanced packaging and back end, nothing else. Technical discipline: the work is planned to the day inside a live cleanroom and sequenced so the class holds. Manufacturing readiness: the tool is handed over producing, not delivered.",
+          "why": "Each line carries the mechanism. IAQ's four reasons and order kept."
+        }
+      ]
+    },
+    "services-energy-management": {
+      "name": "Energy Management unit page",
+      "change": "Rebuilt on the client's text: Energy Management with the subtitle Optimising Performance. Advancing Sustainability., Driving Sustainable Facility Performance, The problems EFM solves (kept), Our Solutions (five), Energy as a Service (four steps), Why Energy Performance Matters (four cards), Industries We Serve (seven chips), the district cooling 3D (kept), Delivered this way, and a Let's Discuss Your Energy Goals band. The RM0 / 5 to 10 / 10 to 20 figures are off (IAQ, 19 Oct), as are the seven-service grid, the project cycle and the three-model comparison.",
+      "design": {
+        "rate": "bad",
+        "why": "The district cooling 3D and the delivered projects keep the page honest, and the problems row survived. The rest is grids of boxes: five solution cards, four step cards, four reason cards, seven industry chips in tiles. The three-model comparison (Energy Performance Contracting, Cooling as a Service, Operate and Maintain) that told a buyer how to contract EFM is gone."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "Lower energy bills, with no upfront cost was the one line a facility owner needed; the new headline is the unit name and a two-fragment slogan. Engineering-Led Solutions, Performance-Focused Approach, Innovative Business Models, Sustainability Commitment are headings that could sit on any consultancy's site. The client took the RM0 figure off, which is their call, but the page can still say who pays and when."
+      },
+      "fix": "Keep the client's structure. Bring back the three contracting models as one row (who funds, who runs, how long). Rewrite the headings sentence case and say in the lede what EFM does for the bill.",
+      "fixed": {
+        "date": "22 Oct 2026",
+        "what": "The 01 to 05 numerals are off the Our Solutions cards; the mark leads each card. The Energy as a Service steps keep their numbers, they are an order.",
+        "why": "IAQ graphic rules: no numbering where there is no sequence. The five solutions are a set, not steps.",
+        "held": "IAQ's hero line, introduction, five solutions, Energy as a Service, the seven industries, the four reasons and the call to action are the 19 to 21 Oct sheet and stay as given; the RM0 and term figures left the hero on IAQ's 19 Oct word. The rewrite is proposed below; it puts the terms back where they are facts of a service, if IAQ agrees."
+      },
+      "proposals": [
+        {
+          "block": "Hero line",
+          "now": "Optimising Performance. Advancing Sustainability.",
+          "proposed": "IAQ funds, builds and runs the energy upgrade. You pay from the savings.",
+          "why": "Says the offer. The heading, Energy Management, stays IAQ's."
+        },
+        {
+          "block": "Introduction",
+          "now": "By combining technical expertise, innovative commercial models and lifecycle support services, IAQ helps organisations optimise energy infrastructure, improve reliability and create measurable long-term value across their facilities.",
+          "proposed": "Energy Facility Management is IAQ's registered ESCO. It audits a plant, funds and builds the upgrade, then runs it under a contract paid from the saving or a fixed cooling tariff.",
+          "why": "States the model and the registration (Suruhanjaya Tenaga) instead of the benefit words."
+        },
+        {
+          "block": "Our Solutions, five lines",
+          "now": "Energy Audit: comprehensive assessments... / Energy Performance Contracting: performance-based solutions... / Cooling-as-a-Service: a utility-based approach... / District Cooling System: integrated solutions spanning... / Operations & Maintenance: structured maintenance programmes...",
+          "proposed": "Energy audit: where the plant loses energy, measured, with the measures that pay back. / Energy performance contracting: IAQ funds the upgrade and is paid from the saving, 5 to 10 years. / Cooling as a service: chilled water under a long-term agreement; you pay for the cooling you use. / District cooling system: one central plant for a campus or district, feasibility to operation; Malaysia's largest is IAQ's. / Operations and maintenance: comprehensive or non-comprehensive packages, with the manpower on site.",
+          "why": "Each line names the model and its term. IAQ's five names and order kept."
+        },
+        {
+          "block": "Why it matters, four reasons",
+          "now": "Engineering-Led Solutions. Performance-Focused Approach. Innovative Business Models. Sustainability Commitment.",
+          "proposed": "Engineering led: 30 years in HVAC and chiller plant, EPCC in house. Performance based: the contract pays IAQ from the measured saving, so the saving is the deliverable. Business models: EPC, cooling as a service, operate and maintain; the owner picks who funds and who runs. Sustainability: up to 30% less electricity where the measures are applied in full, IAQ's published figure.",
+          "why": "Facts in place of adjectives; the 30% figure is IAQ's own published claim."
+        },
+        {
+          "block": "Call to action",
+          "now": "Whether you are evaluating energy optimisation opportunities, exploring sustainable cooling solutions or modernising existing infrastructure, IAQ can help identify practical pathways towards greater efficiency, resilience and long-term value.",
+          "proposed": "Send last year's electricity bill and the plant list. The audit comes back with the saving and who pays for the upgrade.",
+          "why": "The ask and the return in 22 words."
+        }
+      ]
+    },
+    "markets": {
+      "name": "Markets hub",
+      "change": "The headline is Supporting the Facilities Behind Tomorrow's Industries with a new lede and figures (7 markets, 235+ projects, 7 global offices, 31 years). The requirements table (market, measured by, class or spec, largest delivered, in registry) and the figure strip (ISO 3 to 8, Grade B C D, dry room, 1,050,000 m²) are gone; seven photograph cards with a line each and an Explore the market link stand in their place. One project from each market is unchanged.",
+      "design": {
+        "rate": "good",
+        "why": "Seven photograph cards in a three-and-four grid with the market name and one line on each read premium and fast; the old vertical strip at the foot was smaller and busier. The hero and the project row are unchanged."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "The old page set a measure per market (particle count, dew point, kilowatt hours, GMP grade) and the largest thing delivered in each; that table was the page's argument. The new lines are Delivering resilient infrastructure that supports uptime, scalability and operational continuity and Supporting sustainable energy infrastructure through engineering and lifecycle expertise: nothing a buyer can check. The headline is title case and Seven markets, one standard of clean said more."
+      },
+      "fix": "Keep the photograph grid. Under each card, one measure and one delivered figure instead of the slogan line. Headline back to sentence case.",
+      "held": "No design change: the photograph grid is the review's 22 Oct direction (\"make it like grid design but premium\") and reads well. The headline, the lede and the seven card lines are IAQ's 22 Oct sheet; the requirements table and the figure tiles left on Sunny's 20 and 21 Oct notes. The rewrite below answers her question (\"what is that standard of clean?\") in plain words and goes to IAQ.",
+      "proposals": [
+        {
+          "block": "Headline and lede",
+          "now": "Supporting the Facilities Behind Tomorrow's Industries. IAQ partners with clients across advanced manufacturing and critical infrastructure sectors, delivering engineering, procurement, construction, manufacturing readiness and energy management solutions tailored to the unique requirements of each industry.",
+          "proposed": "Seven markets, one team. Each has its own measure of done: a particle count, a dew point, a GMP grade, a hygiene regime, uptime. IAQ designs, builds and maintains to that measure.",
+          "why": "Sentence case; names the measures in plain words, which is what the client asked when the old line said standard of clean."
+        },
+        {
+          "block": "The seven card lines",
+          "now": "Supporting advanced manufacturing facilities from infrastructure development to manufacturing readiness. / Delivering resilient infrastructure that supports uptime, scalability and operational continuity. / Enabling next-generation battery manufacturing... / Delivering infrastructure solutions for solar manufacturing... / Supporting sustainable energy infrastructure... / Creating controlled environments that support innovation... / Supporting safe, efficient and reliable manufacturing environments.",
+          "proposed": "Semiconductor: wafer fabs, backend plants and ISO 3 to 7 cleanrooms, with the tools hooked up. / Data centres: cooling, power and controls at hyperscale, commissioned against the load. / EV battery: dry rooms held to a dew point, gigafactory scale. / Photovoltaics: cell and module plants, M&E and cleanroom. / District cooling and heating: one central plant for a district; Malaysia's largest is IAQ's. / Bio and life science: GMP parenteral, labs and medical device plants. / Food and beverage: hygienic production environments for flavour and food.",
+          "why": "One noun phrase per market that says what gets built. IAQ's seven names and order kept."
+        }
+      ]
+    },
+    "markets-semiconductor": {
+      "name": "Semiconductor market",
+      "change": "The page was rebuilt on the client's text: the market name with a title-case subtitle, Industry Overview, How IAQ Supports Semiconductor Manufacturing, IAQ Key Capabilities (six numbered dark boxes), The Importance of Manufacturing Readiness with a photograph, and Delivered in this market. The figures strip (ISO 3 to 7, Class 1 highest delivered, 43,000 m² largest, five on the registry), the typical scope diagram, the stage-by-stage row and the proven-by-test block are gone.",
+      "design": {
+        "rate": "bad",
+        "why": "The hero is the market name beside a small icon in a circle, where the 9 Oct hero made the claim (ISO 3 to ISO 7, delivered at fab speed) with the figures under it. The capabilities section is six dark violet boxes with a large numeral in the corner, the one pattern the house rules name as templated. The scope row, the cycle row and the proof block that gave the page its drawings are gone. The delivered projects remain and carry the page."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "Industry Overview, Key Capabilities, The Importance of Manufacturing Readiness: headings that name the section, not the market. The body is category text (facilities must be designed and operated to meet the highest standards of performance and reliability). The 9 Oct page named the class range, the largest plant and how the class is proven. Those facts are IAQ's and still true."
+      },
+      "fix": "Keep the client's six capabilities as a plain list. Put the figures strip back under the hero (class range, largest delivered, on the registry) and the proven-by-test block before the projects. Headings sentence case.",
+      "fixed": {
+        "date": "22 Oct 2026",
+        "what": "The outlined numeral in the corner of each capability card is off; the mark, the name and the violet panel stay.",
+        "why": "the review, 22 Oct, on the market marks: remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay, they answered the client's note that the pages looked plain, no colour.",
+        "held": "The hero line, the overview, the capabilities and the importance paragraph are IAQ's 20 Oct sheet, in its order and words; the figures strip left on IAQ's own instruction (\"substantiate all project-size, class, capacity claims\") and the proven-by-test block on Sunny's 21 Oct note, so neither returns until IAQ supplies the figures. The rewrite is proposed below."
+      },
+      "proposals": [
+        {
+          "block": "Hero line",
+          "now": "Supporting Facilities That Power Modern Technology",
+          "proposed": "Wafer fabs, backend plants and ISO 3 to 7 cleanrooms, built and proven by one team.",
+          "why": "A claim the registry can check."
+        },
+        {
+          "block": "Industry overview",
+          "now": "Semiconductor manufacturing demands precise environmental control, reliable utility infrastructure and seamless equipment integration. As technology advances and production requirements become increasingly complex, facilities must be designed and operated to meet the highest standards of performance and reliability.",
+          "proposed": "A fab is judged by its particle count, its airflow and the purity of what reaches the tool. All three are settled at design, when the class, the air routes and the utility runs are fixed, and proven by test at commissioning.",
+          "why": "The measure first, the mechanism second."
+        },
+        {
+          "block": "The importance of manufacturing readiness",
+          "now": "Successful semiconductor production depends on the seamless integration of facilities, utilities and manufacturing equipment. A well-prepared facility reduces risk, accelerates start-up and supports long-term operational performance.",
+          "proposed": "Readiness is the day the tools run. Facilitisation before the tool arrives, hook-up to each tool's own standard and commissioning before production take a finished building to a producing line.",
+          "why": "States the three steps instead of the benefit words."
+        }
+      ]
+    },
+    "markets-data-centre": {
+      "name": "Data centre market",
+      "change": "Same rebuild as Semiconductor: name hero with a title-case subtitle, Industry Overview, IAQ Key Capabilities (five numbered dark boxes), Why Infrastructure Reliability Matters with a plant-room photograph, Delivered in this market. The 160 MW and 9.6 MW figures, No cleanroom class a different bar entirely, the scope row and the stage row are gone.",
+      "design": {
+        "rate": "bad",
+        "why": "The same template as every market page now: name, overview paragraph, numbered dark boxes, one photograph, projects. The 9 Oct page opened on Uptime, engineered and proven with the four figures that matter for a data centre. The one photograph is good; the boxes are not."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "As demand for cloud computing, artificial intelligence and digital services continues to grow, data centres require highly reliable infrastructure: a sentence every data centre contractor has published. The 160 MW figure, the chilled and condenser water scope and the line that cleanroom class does not apply here were the facts; all gone."
+      },
+      "fix": "Put the figures strip and the scope row back. Capabilities as a plain list. Headings sentence case. Same fix across the seven market pages.",
+      "fixed": {
+        "date": "22 Oct 2026",
+        "what": "The outlined numeral in the corner of each capability card is off; the mark, the name and the violet panel stay.",
+        "why": "the review, 22 Oct, on the market marks: remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay, they answered the client's note that the pages looked plain, no colour.",
+        "held": "The hero line, the overview, the capabilities and the importance paragraph are IAQ's 20 Oct sheet, in its order and words; the figures strip left on IAQ's own instruction (\"substantiate all project-size, class, capacity claims\") and the proven-by-test block on Sunny's 21 Oct note, so neither returns until IAQ supplies the figures. The rewrite is proposed below."
+      },
+      "proposals": [
+        {
+          "block": "Hero line",
+          "now": "Enabling Resilient Digital Infrastructure",
+          "proposed": "Cooling, power and controls at hyperscale, commissioned against the load before it arrives.",
+          "why": "Says what IAQ builds in a data centre."
+        },
+        {
+          "block": "Industry overview",
+          "now": "As demand for cloud computing, artificial intelligence and digital services continues to grow, data centres require highly reliable infrastructure capable of supporting uninterrupted operations.",
+          "proposed": "A data centre is judged on uptime. Chilled and condenser water, power distribution and controls are built as one plant and proven under load, so the first rack arrives to a cooled, powered hall.",
+          "why": "The measure first; the scope named."
+        }
+      ]
+    },
+    "markets-ev-battery": {
+      "name": "EV battery market",
+      "change": "Same rebuild as Semiconductor: name hero, Industry Overview, numbered capability boxes, one photograph, Delivered in this market. The dew point figures, the dry room scope and the stage row are gone.",
+      "design": {
+        "rate": "bad",
+        "why": "The market template: name, paragraph, numbered dark boxes, photograph, projects. The dry room and dew point were the drawing this page needed and are gone."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "Category text in title case; the dew point, the 62,000 m² dry room and the gigafactory scope that the 9 Oct page led with are gone."
+      },
+      "fix": "As Semiconductor: figures back under the hero, scope row back, capabilities as a plain list, sentence case.",
+      "fixed": {
+        "date": "22 Oct 2026",
+        "what": "The outlined numeral in the corner of each capability card is off; the mark, the name and the violet panel stay.",
+        "why": "the review, 22 Oct, on the market marks: remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay, they answered the client's note that the pages looked plain, no colour.",
+        "held": "The hero line, the overview, the capabilities and the importance paragraph are IAQ's 20 Oct sheet, in its order and words; the figures strip left on IAQ's own instruction (\"substantiate all project-size, class, capacity claims\") and the proven-by-test block on Sunny's 21 Oct note, so neither returns until IAQ supplies the figures. The rewrite is proposed below."
+      },
+      "proposals": [
+        {
+          "block": "Hero line",
+          "now": "Enabling Next-Generation Battery Manufacturing",
+          "proposed": "Dry rooms held to a dew point, at gigafactory scale.",
+          "why": "The one measure that matters in a battery plant."
+        },
+        {
+          "block": "Industry overview",
+          "now": "IAQ's paragraph on specialised facility solutions for battery manufacturing.",
+          "proposed": "Electrode and cell lines run in dry rooms where moisture is the enemy; the dew point is specified by the process and held by the air handling, the envelope and the airlocks. IAQ builds all three.",
+          "why": "Names the mechanism; keeps IAQ's claim."
+        }
+      ]
+    },
+    "markets-photovoltaics": {
+      "name": "Photovoltaics market",
+      "change": "Same rebuild as Semiconductor: name hero, Industry Overview, numbered capability boxes, one photograph, Delivered in this market. The figures, scope and stage rows are gone.",
+      "design": {
+        "rate": "bad",
+        "why": "The market template again; the module plant figures and the scope drawing are gone."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "Category text in title case; the KMW module plant figure and the process stability measure are gone."
+      },
+      "fix": "As Semiconductor.",
+      "fixed": {
+        "date": "22 Oct 2026",
+        "what": "The outlined numeral in the corner of each capability card is off; the mark, the name and the violet panel stay.",
+        "why": "the review, 22 Oct, on the market marks: remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay, they answered the client's note that the pages looked plain, no colour.",
+        "held": "The hero line, the overview, the capabilities and the importance paragraph are IAQ's 20 Oct sheet, in its order and words; the figures strip left on IAQ's own instruction (\"substantiate all project-size, class, capacity claims\") and the proven-by-test block on Sunny's 21 Oct note, so neither returns until IAQ supplies the figures. The rewrite is proposed below."
+      },
+      "proposals": [
+        {
+          "block": "Hero line",
+          "now": "Delivering Infrastructure Solutions for Solar Manufacturing",
+          "proposed": "Cell and module plants: M&E, cleanroom and process utilities, built to run.",
+          "why": "Says what gets built."
+        },
+        {
+          "block": "Industry overview",
+          "now": "IAQ's paragraph on solar manufacturing infrastructure.",
+          "proposed": "A module plant is a production line first: process stability at scale, clean air where cells are handled, power and utilities sized for the throughput. IAQ delivered the KMW module plant's building M&E in Kedah.",
+          "why": "A fact from the registry carries the paragraph."
+        }
+      ]
+    },
+    "markets-district-cooling": {
+      "name": "District cooling and heating market",
+      "change": "Same rebuild as Semiconductor: name hero, Industry Overview, numbered capability boxes, one photograph, Delivered in this market. The kilowatt-hour measure, Malaysia's largest district cooling centre and the chilled-water scope rows are gone.",
+      "design": {
+        "rate": "bad",
+        "why": "The market template; the one market where IAQ holds a national record now opens on a paragraph."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "Malaysia's largest district cooling centre was the lead fact and is now only in the project card. The new text is category words in title case."
+      },
+      "fix": "As Semiconductor, and lead with the record.",
+      "fixed": {
+        "date": "22 Oct 2026",
+        "what": "The outlined numeral in the corner of each capability card is off; the mark, the name and the violet panel stay.",
+        "why": "the review, 22 Oct, on the market marks: remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay, they answered the client's note that the pages looked plain, no colour.",
+        "held": "The hero line, the overview, the capabilities and the importance paragraph are IAQ's 20 Oct sheet, in its order and words; the figures strip left on IAQ's own instruction (\"substantiate all project-size, class, capacity claims\") and the proven-by-test block on Sunny's 21 Oct note, so neither returns until IAQ supplies the figures. The rewrite is proposed below."
+      },
+      "proposals": [
+        {
+          "block": "Hero line",
+          "now": "Supporting Sustainable Energy Infrastructure",
+          "proposed": "One central plant cools a whole district. Malaysia's largest is IAQ's.",
+          "why": "Leads with the record."
+        },
+        {
+          "block": "Industry overview",
+          "now": "IAQ's paragraph on sustainable energy infrastructure through engineering and lifecycle expertise.",
+          "proposed": "Chilled water made at one plant and piped to every building on the network, measured in kilowatt hours of cooling delivered. IAQ was main contractor for Malaysia's largest district cooling centre and runs district cooling end to end, feasibility to operation.",
+          "why": "The measure and the record, both IAQ's own published facts."
+        }
+      ]
+    },
+    "markets-bio-lifescience": {
+      "name": "Bio and life science market",
+      "change": "Same rebuild as Semiconductor: name hero, Industry Overview, numbered capability boxes, one photograph, Delivered in this market. The GMP grade measure (Grade B, C, D) and the parenteral scope rows are gone.",
+      "design": {
+        "rate": "bad",
+        "why": "The market template; the GMP grade strip that set this market apart is gone."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "Category text in title case; the GMP grades and the small-volume parenteral scope are gone."
+      },
+      "fix": "As Semiconductor, with the GMP grades back under the hero.",
+      "fixed": {
+        "date": "22 Oct 2026",
+        "what": "The outlined numeral in the corner of each capability card is off; the mark, the name and the violet panel stay.",
+        "why": "the review, 22 Oct, on the market marks: remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay, they answered the client's note that the pages looked plain, no colour.",
+        "held": "The hero line, the overview, the capabilities and the importance paragraph are IAQ's 20 Oct sheet, in its order and words; the figures strip left on IAQ's own instruction (\"substantiate all project-size, class, capacity claims\") and the proven-by-test block on Sunny's 21 Oct note, so neither returns until IAQ supplies the figures. The rewrite is proposed below."
+      },
+      "proposals": [
+        {
+          "block": "Hero line",
+          "now": "Creating Controlled Environments That Support Innovation",
+          "proposed": "GMP grade B, C and D: parenteral plants, labs and medical device clean areas.",
+          "why": "Names the grades the market is judged by."
+        },
+        {
+          "block": "Industry overview",
+          "now": "IAQ's paragraph on controlled environments for research and production.",
+          "proposed": "A pharmaceutical or medical device plant is classified by GMP grade, and the grade is held by the air changes, the pressure cascade and the finishes. IAQ builds to the grade and proves it at qualification.",
+          "why": "Mechanism in place of benefit words."
+        }
+      ]
+    },
+    "markets-food-beverage": {
+      "name": "Food and beverage market",
+      "change": "Same rebuild as Semiconductor: name hero, Industry Overview, numbered capability boxes, one photograph, Delivered in this market. The hygiene regime measure and the flavour plant scope rows are gone.",
+      "design": {
+        "rate": "bad",
+        "why": "The market template; the hygiene scope row is gone."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "Category text in title case; the hygiene regime measure and the 40,000 m² greenfield plant are gone from the top of the page."
+      },
+      "fix": "As Semiconductor.",
+      "fixed": {
+        "date": "22 Oct 2026",
+        "what": "The outlined numeral in the corner of each capability card is off; the mark, the name and the violet panel stay.",
+        "why": "the review, 22 Oct, on the market marks: remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay, they answered the client's note that the pages looked plain, no colour.",
+        "held": "The hero line, the overview, the capabilities and the importance paragraph are IAQ's 20 Oct sheet, in its order and words; the figures strip left on IAQ's own instruction (\"substantiate all project-size, class, capacity claims\") and the proven-by-test block on Sunny's 21 Oct note, so neither returns until IAQ supplies the figures. The rewrite is proposed below."
+      },
+      "proposals": [
+        {
+          "block": "Hero line",
+          "now": "Supporting Safe, Efficient and Reliable Manufacturing Environments",
+          "proposed": "Hygienic production environments for flavour and food, built to the regime.",
+          "why": "Names the measure (the hygiene regime)."
+        },
+        {
+          "block": "Industry overview",
+          "now": "IAQ's paragraph on safe and reliable manufacturing environments.",
+          "proposed": "Food and flavour plants are judged on hygiene: washdown finishes, drainage, air handling and the separation of wet and dry zones. IAQ builds them as cleanrooms are built, to a regime that is audited.",
+          "why": "Mechanism in place of benefit words."
+        }
+      ]
+    },
+    "projects": {
+      "name": "Project registry",
+      "change": "No change between the builds beyond the separator in the count line.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged: the dark hero with the mosaic, the four figures, the filter bar and the eighteen cards."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "Unchanged."
+      },
+      "fix": "Nothing to fix. IAQ still owes the definitive launch list beyond the 18 published references."
+    },
+    "projects-0": {
+      "name": "Project detail page",
+      "change": "The template is unchanged; the two captures show different first projects (the 9 Oct build listed the silicon wafer plant first, the 22 Oct build the testing plant). Stage 5 is Tool Installation and stage 6 Maintenance in the How IAQ delivers row.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged template: hero photograph, the facts strip, the brief, scope, story, the six stages with photographs, class and contract, business units, related projects."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "Unchanged. The supplied-by-IAQ slots still mark what the client owes per project."
+      },
+      "fix": "Nothing to fix."
+    },
+    "news": {
+      "name": "Newsroom",
+      "change": "The figures strip under the hero (70 published stories, 5 topics, 23 months, Aug 2025) was removed. Everything else is unchanged.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged apart from the figures strip; the hero still has the latest story card beside the title."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "Unchanged."
+      },
+      "fix": "Nothing to fix. The figures strip can return if IAQ wants the count shown."
+    },
+    "news-pdk-kota-raja-community-visit": {
+      "name": "News article",
+      "change": "No change between the builds.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged: single column, the photograph, previous and next, more of the work, also in the newsroom."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "Unchanged, IAQ's own published text."
+      },
+      "fix": "Nothing to fix."
+    },
+    "careers": {
+      "name": "Careers",
+      "change": "The hero headline is Build your career with IAQ Group. with a new two-sentence lede; the 1995 band says Built on engineering excellence. The value marks changed to the plainer set (shield, clipboard, scales). Everything from Everybody goes home safe down is unchanged.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged structure: the photo hero, the dark founder band, the six values, the safety record, training, universities, the roles console. It still holds."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "The 9 Oct hero said The people behind the cleanest rooms and 450 people in seven countries build facilities that must hold their class. The new lede is Be part of teams delivering engineering and total facility solutions across complex project environments. Explore opportunities to contribute, learn and grow with a multidisciplinary organisation: two sentences of recruitment filler with no fact. It started with indoor air quality was the true founding line; Built on engineering excellence is not a story."
+      },
+      "fix": "Restore the two figure-first hero lines and the founding line. Keep everything else."
+    },
+    "contact": {
+      "name": "Contact",
+      "change": "The headline is Tell us what you are planning. with a lede that asks for a company introduction and the project stage. The one-working-day reply promise is gone: What happens next now says the team reviews the brief and directs it to the appropriate contact. Addresses were added for Skellefteå (Sweden) and Dublin (Ireland). The form, the map and the seven-country office grid are unchanged.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged: the form with its three steps, the direct contacts, the head office map, the office cards with photographs. Two more offices now have real addresses."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "Send the brief and the right engineer replies within one working day was the promise that made the page worth filling in. It is now Our team will review your enquiry and direct it to the appropriate contact, which promises nothing. If IAQ will not commit to a day, the line can still say who reads the brief and that every brief is read the day it arrives."
+      },
+      "fix": "Agree a reply promise with IAQ and state it in one sentence. Keep the new addresses."
+    },
+    "enquiry": {
+      "name": "Enquiry form (new page)",
+      "change": "A new page from the 22 Oct line: the general lead form at /enquiry (the old /lp/project address sends here). A dark form in two steps, Contact and Project, with What happens next beside it. On this computer the briefs go to the portal's Enquiries tab.",
+      "design": {
+        "rate": "good",
+        "why": "A clean landing page: white intro with the cleanroom photograph, the dark form with its two numbered steps and the red Send the brief button. Nothing templated."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "Tell us what you are planning. One team delivers it. with the house lede (cleanrooms, dry rooms and the systems that hold them in spec). The four bullet points name what IAQ does. What happens next is plain."
+      },
+      "fix": "Nothing to fix. Confirm the live endpoint before launch."
+    },
+    "investors": {
+      "name": "Investors",
+      "change": "No change. The wing stays sealed until the listing.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "Unchanged."
+      },
+      "fix": "Nothing to fix."
+    },
+    "policies": {
+      "name": "Policies",
+      "change": "The section Certified, on the record, with the three ISO certificates (numbers, dates, PDF links), the CIDB G7, UKAS, Highwire and Gold OSH tiles, the certificate library note and the ESH award record, is gone. The six documents list and the privacy policy slot are unchanged.",
+      "design": {
+        "rate": "good",
+        "why": "What remains is unchanged and clean. The page is now short, which is fine for a policies page."
+      },
+      "copy": {
+        "rate": "bad",
+        "why": "The certificate record was the only place on the site, after the Commitment page lost it too, where the three certificate numbers and validity dates were written down. Both are gone now, so no page states the certificates as a record. Either IAQ asked for this in October or it was lost in the rebuild; it needs confirming."
+      },
+      "fix": "Confirm with IAQ. If not asked for, restore the certificate record here or on the Commitment page, once, not twice."
+    },
+    "exhibition": {
+      "name": "Exhibition page",
+      "change": "No change beyond the separator in the supplied-by notes.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "Unchanged."
+      },
+      "fix": "Nothing to fix."
+    },
+    "shortlist": {
+      "name": "Saved projects",
+      "change": "No change.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "Unchanged."
+      },
+      "fix": "Nothing to fix."
+    },
+    "semicon": {
+      "name": "SEMICON Europa page",
+      "change": "Stage names follow IAQ's wording (Tool Installation 5, Maintenance 6); the fab build-up and the rest are unchanged.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "Unchanged apart from the stage names."
+      },
+      "fix": "Nothing to fix."
+    },
+    "booth-screen": {
+      "name": "Booth screen",
+      "change": "No change.",
+      "design": {
+        "rate": "good",
+        "why": "Unchanged."
+      },
+      "copy": {
+        "rate": "good",
+        "why": "Unchanged."
+      },
+      "fix": "Nothing to fix."
+    }
+  },
+  "sections": {
+    "home": {
+      "hero": {
+        "copy": "The headline and the statement are IAQ's own words (19 Oct, High) and stay. No copy change. 23 Oct, rule 4: the two full stops in 'Engineering Precision. Delivering Excellence.' are gone; the words and IAQ's capitals stay, one part per line, and the spoken label keeps the sentence for screen readers.",
+        "design": "The description ran one long line and one short one; the two lines are balanced now (text-wrap: balance on the lede), and the More about us button sits lower, with more air between the description and the button (margin 30 to 46 px). The nav, the headline, the reel and the scene label are untouched. 26 Oct, IAQ: cleanroom clips open the banner, stadium out, IAQ's wafer fab footage in, campus clip without the power plant.",
+        "more": [
+          {
+            "b": "polish/after/extra/home-hero-pre1026.webp",
+            "a": "polish/after/extra/home-hero-post1026.webp",
+            "cap": "The banner before and after: the stadium frame, then the cleanroom bay"
+          }
+        ]
+      },
+      "b3d": {
+        "design": "The Scroll to build runway is capped at eight screens, from twenty-one. Sixty percent of the page was blank scroll under one stage; the client asked for a skip button on 12 Oct, a sign the length cost them. Every build step still runs, the scrub is faster, the skip button stays."
+      },
+      "where-the-industry-builds-iaq-is-there": {
+        "copy": "Title and lede rewritten. Was: Engineering Excellence in Numbers, with Our track record reflects the expertise, scale and commitment behind IAQ's integrated facility solutions, serving hi-tech industries across international markets. Now: Where the industry builds, IAQ is there, with the figures as one sentence (seven offices in the hi-tech clusters, 530 people, 85 percent engineers, 235 facilities since 1995). Rule 3: the review, there is no meaning to the title. The globe beside it shows the offices in those clusters, so the title is what the block proves. IAQ's 19 Oct heading and description are in the Before.",
+        "design": "The six figures in three columns, each under a hairline, the number at display size with its mark beside it and the label under; the globe a step larger (620 to 700 px). Rule 4: the review, boring icons and number, and the map as well."
+      },
+      "engineering-excellence-in-numbers": {
+        "copy": "Title and lede rewritten, see the After row for this section (its key changed with the title).",
+        "design": "Three-column figures at display size, a mark beside each and the label under, the globe a step larger (rules 3 and 4): the block reads as proof, not as a list of numbers. 26 Oct, IAQ: the moving dots on the routes are off (rule 42).",
+        "more": [
+          {
+            "b": "polish/after/extra/home-glance-pre1026.webp",
+            "a": "polish/after/extra/home-glance-post1026.webp",
+            "cap": "The globe before and after: travelling dots along the routes, then solid lines only"
+          }
+        ]
+      },
+      "the-delivery-cycle": {
+        "copy": "The title lost its full stop (rule 8). Stage names and lines unchanged.",
+        "design": "The stage panel is a card of the page: white panel, the stage number alone in the dial (no \"/ 6\", rule 5), the link is the site's button, and Previous and Next walk the ring (rule 6). The six stations carry the isometric service icons from the Design tab set in place of the photoreal marks (rule 7). the presentation is bad, it is as if this is a node and not part of the website; the icons look very bad, we have isometric icons. 23 Oct. Awkward by the rules, now fixed: every stage icon sat in a white disc with a hairline ring, the live one in a red ring (rule 26, no icon in a circle); the card's number sat in a dial that repeated the ring's own progress arc (rules 26 and 33, say a thing once); the red uppercase line under the title read as an eyebrow in the wrong place (rules 16 and 30); on a narrower window the left label ('5 Tool installation') ran off the section's edge. The icons now stand bare on the ring, the live one still larger; the number stands plain in red beside the title; the stage line is a sentence-case lead in ink; the ring keeps 64 px each side for its labels. Kept: the ring track and the red arc (they are the cycle and its progress), the previous and next buttons (they answer the pointer), the stage names in small caps with their numbers."
+      },
+      "seven-markets-one-integrated-team": {
+        "copy": "23 Oct, rule 4: the full stop after 'one integrated team' removed (the 22 Oct sweep missed it: the phrase sits inside the red em).",
+        "design": "The dark lead line stands on its own line; nothing else moved."
+      },
+      "where-the-industry-builds-iaq-is-the": {
+        "design": "23 Oct, rules 22 and 28: the title broke 'builds,' onto a line of its own because the record's h2 was boxed to 19ch and set up to 58 px; a title that breaks before its red phrase is no longer boxed and its ceiling is 50 px, so 'Where the industry builds,' holds on one line over 'IAQ is there'. 23 Oct, later: no. The hairline over each of the six figures separated nothing the spacing does not already separate; gone."
+      },
+      "piling": {
+        "design": "23 Oct, the responsive check: the 3D stage's own controls (speed row, rail readouts, skin switch) sat at 12 to 12.5 px under the bundle's own rules; brought to 13 px (rule 14). Between 900 and 1300 px wide the Enter cleanroom button shared a row in a 290 px column and clipped its label by 20 to 44 px; the buttons stack there. Picture: the stage on a 768 px tablet.",
+        "more": [
+          {
+            "b": null,
+            "a": "polish/after/extra/home-3d-768.webp",
+            "cap": "The 3D stage on a 768 px tablet after the check: heading, readout and controls clear of each other"
+          }
+        ]
+      },
+      "follow": {
+        "design": "26 Oct, IAQ: the particles in the closing band are off, every page (rule 42).",
+        "more": [
+          {
+            "b": "polish/after/extra/home-close-pre1026.webp",
+            "a": "polish/after/extra/home-close-post1026.webp",
+            "cap": "The closing band before and after: particles, then the plain navy ground"
+          }
+        ]
+      }
+    },
+    "services-tool-installation": {
+      "what-we-deliver": {
+        "design": "The eleven capability lines are plain rows, the mark on the line, a hairline between rows: no chip box, no box round the icon. IAQ's own graphic rule (no icons in boxes) and the sheet's words (minimal text, premium icons). The two cards, their names and order are IAQ's and unchanged."
+      },
+      "our-delivery-approach": {
+        "design": "The four icons stand on the line with no circle and no dashed ring (rule 36). Labels lost their tracking (rule 20). 23 Oct, night: the 22 Oct pass took the white disc off each stage icon (rule 26) and with it the mask that hid the track, so the red line ran through the drawings. A thin band in the panel's own colour now sits behind each icon on the line's row: the line stops at the icon and starts again after it. The live-stage halo, a pink ring pulsing out of the icon, was a circle by another name (rules 26 and 42); the stage now lights by colour alone as the pulse passes."
+      },
+      "why-clients-partner-with-iaq": {
+        "design": "The four cards keep their drawn scenes, which animate on their own, and no longer lift on hover: they are not links (rule 35). why make it interactive when it is already animating."
+      },
+      "let-s-discuss-your-project-goals": {
+        "design": "The kicker Start a conversation is off (rule 38). The band stacks: title and line on top, the button anchored bottom right, the phone bottom left (rule 39). The title lost its full stop. the button is the anchor point at the bottom right; the eyebrow is unnecessary."
+      },
+      "let-s-discuss-your-energy-goals": {
+        "design": "The kicker Start a conversation is off (rule 38). The band stacks: title and line on top, the button anchored bottom right, the phone bottom left (rule 39). The title lost its full stop. the button is the anchor point at the bottom right; the eyebrow is unnecessary."
+      },
+      "lets-discuss-your-project-goals": {
+        "design": "The kicker Start a conversation is off (rule 38). The band stacks: title and line on top, the button anchored bottom right, the phone bottom left (rule 39). The title lost its full stop. the button is the anchor point at the bottom right; the eyebrow is unnecessary."
+      },
+      "lets-discuss-your-energy-goals": {
+        "design": "The kicker Start a conversation is off (rule 38). The band stacks: title and line on top, the button anchored bottom right, the phone bottom left (rule 39). The title lost its full stop. the button is the anchor point at the bottom right; the eyebrow is unnecessary."
+      },
+      "the-services-scope-from-plant-to-tool": {
+        "design": "26 Oct, IAQ: removed, it repeated What We Deliver (rule 10).",
+        "more": [
+          {
+            "b": "polish/after/extra/tool-scope-pre1026.webp",
+            "a": null,
+            "cap": "The section IAQ asked to remove"
+          }
+        ]
+      }
+    },
+    "services-energy-management": {
+      "our-solutions": {
+        "design": "The 01 to 05 numerals are off the five solution cards; the mark leads each card. IAQ graphic rules: no numbering where there is no sequence. The five names and their lines are IAQ's and unchanged. 23 Oct, rule 11: Energy Audit opened the grid as a double-width card with a bigger title for no reason given; the five solutions are now five equal tiles across on a wide screen (three and two below 1280 px). why is semiconductor the biggest'."
+      },
+      "let-s-discuss-your-project-goals": {
+        "design": "The kicker Start a conversation is off (rule 38). The band stacks: title and line on top, the button anchored bottom right, the phone bottom left (rule 39). The title lost its full stop. the button is the anchor point at the bottom right; the eyebrow is unnecessary."
+      },
+      "let-s-discuss-your-energy-goals": {
+        "design": "The kicker Start a conversation is off (rule 38). The band stacks: title and line on top, the button anchored bottom right, the phone bottom left (rule 39). The title lost its full stop. the button is the anchor point at the bottom right; the eyebrow is unnecessary."
+      },
+      "lets-discuss-your-project-goals": {
+        "design": "The kicker Start a conversation is off (rule 38). The band stacks: title and line on top, the button anchored bottom right, the phone bottom left (rule 39). The title lost its full stop. the button is the anchor point at the bottom right; the eyebrow is unnecessary."
+      },
+      "lets-discuss-your-energy-goals": {
+        "design": "The kicker Start a conversation is off (rule 38). The band stacks: title and line on top, the button anchored bottom right, the phone bottom left (rule 39). The title lost its full stop. the button is the anchor point at the bottom right; the eyebrow is unnecessary."
+      },
+      "how-district-cooling-works": {
+        "design": "The tour's timing rebuilt, rule 41. The labels used to pop in on the first frame of a step and ride the 1.5 s camera move; they now wait for the camera to arrive and come in one after another in the list's order, so the plant's three notes read in sequence. The storage tank ran on a free twelve-second cycle, so its caption flipped between Charging and Drawn on at any moment of the step (22 Oct opened the step on Drawn on and flipped to Charging six seconds in); it now runs on the step's own clock: low and charging as the step opens, full, then drawn on, one cycle inside the step, the caption changing with the water. The three stations were labelled with the same three words (rule 33, say a thing once); each now carries its building. Each step dwells for its own content (the plant 9 s, storage 10 s, the rest 8 s, in place of a flat 7 s) with a hairline filling under the running step so the visitor sees when it moves on, and the tour ends on the overview with Play offered again instead of looping for ever. Also 23 Oct, rules 26 and 42: the step markers on the district and the numbers in the list are square like the facility map's pins, and the pinging ring round the live marker is gone (the blue fill already says which step is live).",
+        "more": [
+          {
+            "b": "polish/before/extra/dcs-plant.webp",
+            "a": "polish/after/extra/dcs-plant.webp",
+            "cap": "Step 1, the plant: the notes, and (after) the time bar under the running step"
+          },
+          {
+            "b": "polish/before/extra/dcs-tes-a.webp",
+            "a": "polish/after/extra/dcs-tes-charging.webp",
+            "cap": "Step 2 as it opens: 22 Oct showed Drawn on at the start; now Charging"
+          },
+          {
+            "b": "polish/before/extra/dcs-tes-b.webp",
+            "a": "polish/after/extra/dcs-tes-drawn.webp",
+            "cap": "Step 2 later: 22 Oct flipped to Charging mid-step; now Drawn on follows the charge"
+          },
+          {
+            "b": "polish/before/extra/dcs-ets.webp",
+            "a": "polish/after/extra/dcs-ets.webp",
+            "cap": "Step 4: three identical labels, now each station with its building"
+          },
+          {
+            "b": null,
+            "a": "polish/after/extra/dcs-end.webp",
+            "cap": "After the last step: the tour ends on the overview, Play offered again (22 Oct looped for ever)"
+          }
+        ]
+      },
+      "delivered-this-way": {
+        "design": "23 Oct, rule 35: the four process cards lifted and shadowed under the pointer though nothing in them is a link; still now. Their lines balanced (rule 22)."
+      },
+      "hero": {
+        "copy": "26 Oct, IAQ: the title is the unit's full name (rule 28).",
+        "more": [
+          {
+            "b": "polish/after/extra/efm-hero-pre1026.webp",
+            "a": "polish/after/extra/efm-hero-post1026.webp",
+            "cap": "The EFM banner before and after"
+          }
+        ]
+      }
+    },
+    "markets-semiconductor": {
+      "iaq-key-capabilities": {
+        "design": "The outlined corner numeral is off each capability card. remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay: they answered the client's note that the pages looked plain, no colour. The capability names are IAQ's and unchanged. Later the same day: the cards keep still under the pointer, they are not links (rule 35), and their rule would draw at the foot (rule 31). Later again: the orbit ring, the circle and the underline are off; the card is the mark beside the name (rule 42)."
+      },
+      "industry-overview": {
+        "design": "The overview picture lost its violet top rule and the boxed mark in its corner; no zoom on hover (rule 34). The section kicker is off (rule 38). why the purple line, and an icon in a box within a box."
+      },
+      "delivered-in-this-market": {
+        "design": "26 Oct, IAQ: a named list of equal rows plus a filtered registry link, all seven market pages (rules 31 to 33).",
+        "more": [
+          {
+            "b": "polish/after/extra/semi-projects-pre1026.webp",
+            "a": "polish/after/extra/semi-projects-post1026.webp",
+            "cap": "Semiconductor before and after"
+          }
+        ]
+      }
+    },
+    "markets-data-centre": {
+      "iaq-key-capabilities": {
+        "design": "The outlined corner numeral is off each capability card. remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay: they answered the client's note that the pages looked plain, no colour. The capability names are IAQ's and unchanged. Later the same day: the cards keep still under the pointer, they are not links (rule 35), and their rule would draw at the foot (rule 31). Later again: the orbit ring, the circle and the underline are off; the card is the mark beside the name (rule 42)."
+      },
+      "industry-overview": {
+        "design": "The overview picture lost its violet top rule and the boxed mark in its corner; no zoom on hover (rule 34). The section kicker is off (rule 38). why the purple line, and an icon in a box within a box."
+      }
+    },
+    "markets-ev-battery": {
+      "iaq-key-capabilities": {
+        "design": "The outlined corner numeral is off each capability card. remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay: they answered the client's note that the pages looked plain, no colour. The capability names are IAQ's and unchanged. Later the same day: the cards keep still under the pointer, they are not links (rule 35), and their rule would draw at the foot (rule 31). Later again: the orbit ring, the circle and the underline are off; the card is the mark beside the name (rule 42)."
+      },
+      "industry-overview": {
+        "design": "The overview picture lost its violet top rule and the boxed mark in its corner; no zoom on hover (rule 34). The section kicker is off (rule 38). why the purple line, and an icon in a box within a box."
+      },
+      "delivered-in-this-market": {
+        "design": "27 Oct, sweep: row names balance, no word alone (rule 21).",
+        "more": [
+          {
+            "b": "polish/after/extra/ev-rows-pre1027.webp",
+            "a": "polish/after/extra/ev-rows-post1027.webp",
+            "cap": "Before and after"
+          }
+        ]
+      }
+    },
+    "markets-photovoltaics": {
+      "iaq-key-capabilities": {
+        "design": "The outlined corner numeral is off each capability card. remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay: they answered the client's note that the pages looked plain, no colour. The capability names are IAQ's and unchanged. Later the same day: the cards keep still under the pointer, they are not links (rule 35), and their rule would draw at the foot (rule 31). Later again: the orbit ring, the circle and the underline are off; the card is the mark beside the name (rule 42)."
+      },
+      "industry-overview": {
+        "design": "The overview picture lost its violet top rule and the boxed mark in its corner; no zoom on hover (rule 34). The section kicker is off (rule 38). why the purple line, and an icon in a box within a box."
+      }
+    },
+    "markets-district-cooling": {
+      "iaq-key-capabilities": {
+        "design": "The outlined corner numeral is off each capability card. remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay: they answered the client's note that the pages looked plain, no colour. The capability names are IAQ's and unchanged. Later the same day: the cards keep still under the pointer, they are not links (rule 35), and their rule would draw at the foot (rule 31). Later again: the orbit ring, the circle and the underline are off; the card is the mark beside the name (rule 42)."
+      },
+      "industry-overview": {
+        "design": "The overview picture lost its violet top rule and the boxed mark in its corner; no zoom on hover (rule 34). The section kicker is off (rule 38). why the purple line, and an icon in a box within a box."
+      }
+    },
+    "markets-bio-lifescience": {
+      "iaq-key-capabilities": {
+        "design": "The outlined corner numeral is off each capability card. remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay: they answered the client's note that the pages looked plain, no colour. The capability names are IAQ's and unchanged. Later the same day: the cards keep still under the pointer, they are not links (rule 35), and their rule would draw at the foot (rule 31). Later again: the orbit ring, the circle and the underline are off; the card is the mark beside the name (rule 42)."
+      },
+      "industry-overview": {
+        "design": "The overview picture lost its violet top rule and the boxed mark in its corner; no zoom on hover (rule 34). The section kicker is off (rule 38). why the purple line, and an icon in a box within a box."
+      }
+    },
+    "markets-food-beverage": {
+      "iaq-key-capabilities": {
+        "design": "The outlined corner numeral is off each capability card. remove the numbering; IAQ's graphic rules say the same. The violet panel, the pointer light and the orbit stay: they answered the client's note that the pages looked plain, no colour. The capability names are IAQ's and unchanged. Later the same day: the cards keep still under the pointer, they are not links (rule 35), and their rule would draw at the foot (rule 31). Later again: the orbit ring, the circle and the underline are off; the card is the mark beside the name (rule 42)."
+      },
+      "industry-overview": {
+        "design": "The overview picture lost its violet top rule and the boxed mark in its corner; no zoom on hover (rule 34). The section kicker is off (rule 38). why the purple line, and an icon in a box within a box."
+      }
+    },
+    "about": {
+      "hero": {
+        "copy": "The headline lost its full stop (rule 8). The lede is balanced: four even lines, no single word left on the last (rule 1). The words are IAQ's and unchanged.",
+        "design": "The banner is an inner-page height, 520 px at most, not 78 percent of the window. The white fade at the foot is off (rule 16: it makes things worse). The bar runs clear over it at the top and goes solid on scroll (rule 17). 23 Oct, the responsive check at six window widths: the ghost 1995 numeral behind the banner sat across the lede's last lines at every width up to 1280 and bled off the banner's right edge; below 1300 px it is off, on a wide screen it stays to the right of the text (rule 42). Pictures: the banner on a 430 px phone, before and after.",
+        "more": [
+          {
+            "b": "polish/before/extra/about-hero-430.webp",
+            "a": "polish/after/extra/about-hero-430.webp",
+            "cap": "The About banner on a 430 px phone: the numeral across the lede, then off"
+          }
+        ]
+      },
+      "achievements": {
+        "copy": "Title: Achievements, in place of What we've achieved. The line under the marks is unchanged.",
+        "design": "Title, the eight marks, the line and the link centred, the eyebrow off, and more room above and below."
+      },
+      "what-we-ve-achieved": {
+        "copy": "Retitled Achievements; see the Achievements row (its key changed with the title).",
+        "design": "Title, description and button centred, with more vertical room: the block stands as a statement rather than a cramped row (walk-through note 14)."
+      },
+      "six-values-held-on-every-site": {
+        "design": "27 Oct, sweep: value lines balance, no word alone (rule 21).",
+        "more": [
+          {
+            "b": "polish/after/extra/about-values-pre1027.webp",
+            "a": "polish/after/extra/about-values-post1027.webp",
+            "cap": "Before and after"
+          }
+        ]
+      }
+    },
+    "about-history": {
+      "milestones": {
+        "design": "A time axis runs the length of the record: a hairline behind the marks, a red line drawing down it to the era under the eye, each passed mark filled ink, the live mark ringed; the year at reading size in red at its mark. Captions run the full width of the picture, so no stub lines (the orphan wrap). Type a step up. Rule 22, 23. templatised, boring, nothing showing the flow of time; why two lines.",
+        "copy": "Unchanged: IAQ's 17 Oct amendment sets the milestones. The pictures captioned as an illustration stay for now; rule 24 says IAQ's own photographs replace them where they exist (the 9 Oct build had them)."
+      },
+      "hero": {
+        "copy": "The headline (IAQ's) lost its full stop; the lede balanced. The foot heading changed from What three decades have proved to Thirty-one years, on the record, so the hero's three decades is said once (rule 27).",
+        "design": "The breadcrumb moved to the top of the banner (rule 25). The years 1995 and 2026 at display size on their red rule. The crumb and years labels lost their tracking (rule 20)."
+      }
+    },
+    "services": {
+      "the-iaq-facility-map": {
+        "design": "The 3D, rule 37 and 41. At rest the cladding joints drew as a one-pixel hatch across the front wall: at the resting distance a 1 m course was three to six pixels, so every joint became a line and the wall read as cracked. The joints now fade out as a course falls under about twelve pixels on screen, draw at a third of the old weight close up, and go out altogether when a pick dims the building. The picked state: the see-through pass drew every lit mesh over a cleared depth buffer at a third opacity with a glow, so the whole building piled up into a white haze of shards. It now keeps the depth and tints only what is hidden, flat and faint, drawn before the contact-shading composite; and the building's skin (shell, envelope, louvres) never ghosts, because the envelope is the facade and tinting its far side through the near wall made the building read as glass. Architectural finishes now reads as a solid clad building, Cleanroom envelope as the walls and ceiling grid seen through the dimmed shell. The pictures under this row show rest, two picks and a zoom, 22 Oct against today. Earlier, 22 Oct (rule 29): Scroll to explore leads the view tools row, flush left; the first screen carries the same air above the title as below the row. 23 Oct, later: the map opened on the south face (loading doors, no sign) from the south-west. The resting view is now the sign side: the north face with the IAQ logo and the west end, from the north-west a little above, and the key light moved to that side so the faces separate. The cladding joints, which the morning's fix faded out altogether at the resting distance (which left a plain grey block), now stay as a soft panel rhythm at a third of the 22 Oct weight and only fade when a course falls under four pixels. Pictures below: the four diagonal views rendered for the choice, the north-west taken.",
+        "more": [
+          {
+            "b": "polish/before/extra/facility-rest.webp",
+            "a": "polish/after/extra/facility-rest.webp",
+            "cap": "At rest: the front wall, 22 Oct hatch against today"
+          },
+          {
+            "b": "polish/before/extra/facility-picked.webp",
+            "a": "polish/after/extra/facility-picked.webp",
+            "cap": "Architectural finishes picked"
+          },
+          {
+            "b": "polish/before/extra/facility-picked2.webp",
+            "a": "polish/after/extra/facility-picked2.webp",
+            "cap": "Cleanroom envelope picked"
+          },
+          {
+            "b": "polish/before/extra/facility-zoom.webp",
+            "a": "polish/after/extra/facility-zoom.webp",
+            "cap": "Architectural finishes, zoomed in two steps"
+          },
+          {
+            "b": null,
+            "a": "polish/after/extra/facility-view-nw.webp",
+            "cap": "The resting view now: the sign side from the north-west, the angle of the 23 Oct screenshot, key light on that side"
+          },
+          {
+            "b": null,
+            "a": "polish/after/extra/facility-view-nw2.webp",
+            "cap": "Alternative, not taken: north-west with the end opened a little (frdir -.82,.36,-.46)"
+          },
+          {
+            "b": null,
+            "a": "polish/after/extra/facility-view-nw3.webp",
+            "cap": "Alternative, not taken: the west end leading (frdir -.92,.38,-.34)"
+          },
+          {
+            "b": null,
+            "a": "polish/after/extra/facility-view-sw.webp",
+            "cap": "What it opened on until 23 Oct: the south face, no sign, the loading doors (the back)"
+          },
+          {
+            "b": null,
+            "a": "polish/after/extra/facility-view-ne.webp",
+            "cap": "For the record: from the north-east"
+          },
+          {
+            "b": null,
+            "a": "polish/after/extra/facility-view-se.webp",
+            "cap": "For the record: from the south-east"
+          }
+        ]
+      },
+      "3-business-units": {
+        "design": "26 Oct, IAQ: picture, name, short description, \"Learn more about\"; the repeated detail is off (rule 10). 27 Oct, sweep: one card per unit with its link inside, on a phone too; no rules between cards; EFM and EPC lines cleaned (no \"under one contract\", no ESCO claim); no word alone on a last line (rule 21).",
+        "more": [
+          {
+            "b": "polish/after/extra/services-units-pre1026.webp",
+            "a": "polish/after/extra/services-units-post1026.webp",
+            "cap": "The three units before and after"
+          },
+          {
+            "b": "polish/after/extra/units-phone-pre1027.webp",
+            "a": "polish/after/extra/units-phone-post1027.webp",
+            "cap": "On a phone, before and after"
+          },
+          {
+            "b": null,
+            "a": "polish/after/extra/units-desk-post1027.webp",
+            "cap": "Desktop after"
+          }
+        ]
+      },
+      "questions-clients-ask": {
+        "design": "26 Oct, IAQ: the FAQ moved to its own page, /faq.",
+        "more": [
+          {
+            "b": "polish/after/extra/services-faq-pre1026.webp",
+            "a": "polish/after/extra/faq-page-post1026.webp",
+            "cap": "Before: the FAQ on Services. After: the new FAQ page"
+          }
+        ]
+      },
+      "6-services-3-units-4-works": {
+        "design": "27 Oct, IAQ: the matrix is off; the scroll-built 3D facility is in its place.",
+        "more": [
+          {
+            "b": "polish/after/extra/services-matrix-pre1027.webp",
+            "a": "polish/after/extra/services-b3d-post1027.webp",
+            "cap": "The matrix, then the 3D build (tablet width)"
+          }
+        ]
+      },
+      "three-choices-shape-your-quote": {
+        "design": "27 Oct, IAQ: removed with the circled sections around it.",
+        "more": [
+          {
+            "b": "polish/after/extra/services-quote-pre1027.webp",
+            "a": null,
+            "cap": "The section removed"
+          }
+        ]
+      }
+    },
+    "about-commitment": {
+      "sustainability-and-responsibility-our-commitment": {
+        "copy": "Title: Sustainability and responsibility, on one line; our commitment on the next (rule 28). The lede balanced.",
+        "design": "No other change yet: the boxed E, S, G cards and the missing certificates are still open from the first review."
+      }
+    },
+    "markets": {
+      "one-project-from-each-market": {
+        "copy": "The lede balances into two even lines; no \"at launch.\" stub (rule 22)."
+      },
+      "hero": {
+        "copy": "The headline lost its full stop; the seven card lines balance (rule 22).",
+        "design": "Seven equal tiles, four across and three centred under them; the drawn market mark in the corner with no tile; the arrow without its circle; the picture rests a little grey and colours under the pointer, no zoom; the red rule at the foot (rules 31 to 34). why is semiconductor the biggest one; icons on a square within a square; the zoom in and out; the line should be at the bottom."
+      }
+    },
+    "services-epc-construction": {
+      "let-s-discuss-your-project-goals": {
+        "design": "The kicker Start a conversation is off (rule 38). The band stacks: title and line on top, the button anchored bottom right, the phone bottom left (rule 39). The title lost its full stop. the button is the anchor point at the bottom right; the eyebrow is unnecessary."
+      },
+      "let-s-discuss-your-energy-goals": {
+        "design": "The kicker Start a conversation is off (rule 38). The band stacks: title and line on top, the button anchored bottom right, the phone bottom left (rule 39). The title lost its full stop. the button is the anchor point at the bottom right; the eyebrow is unnecessary."
+      },
+      "lets-discuss-your-project-goals": {
+        "design": "The kicker Start a conversation is off (rule 38). The band stacks: title and line on top, the button anchored bottom right, the phone bottom left (rule 39). The title lost its full stop. the button is the anchor point at the bottom right; the eyebrow is unnecessary."
+      },
+      "lets-discuss-your-energy-goals": {
+        "design": "The kicker Start a conversation is off (rule 38). The band stacks: title and line on top, the button anchored bottom right, the phone bottom left (rule 39). The title lost its full stop. the button is the anchor point at the bottom right; the eyebrow is unnecessary."
+      },
+      "why-integrated-project-delivery-matters": {
+        "design": "23 Oct, rules 11 and 42: the first card spanned two columns with a bigger title and a radial glow in its corner, so one reason looked more important than the other four for no reason given. Five equal cards across on a wide screen (three and two below 1280 px), the first still dark; the glow removed."
+      },
+      "hero": {
+        "copy": "27 Oct: \"under one contract\" off the line (IAQ, 24 Sep); IAQ's sheet gives the EPC headline only, so the description waits on IAQ's text.",
+        "more": [
+          {
+            "b": "polish/after/extra/epc-hero-pre1027.webp",
+            "a": "polish/after/extra/epc-hero-post1027.webp",
+            "cap": "The EPC banner before and after"
+          }
+        ]
+      }
+    },
+    "careers": {
+      "hero": {
+        "design": "23 Oct, rules 12 and 35: the banner stood at 80% of the window (the photo set 547 px tall plus the air); the set comes down to about 450 px and the air with it. The photos no longer zoom under the pointer: they are not links.",
+        "copy": "23 Oct, rule 4: 'Build your career with IAQ Group' loses its full stop."
+      },
+      "where-engineers-start-and-grow": {
+        "copy": "23 Oct, rule 4: 'Where engineers start and grow' loses its full stop.",
+        "design": "27 Oct, sweep: card titles balance, no word alone (rule 21).",
+        "more": [
+          {
+            "b": "polish/after/extra/careers-grow-pre1027.webp",
+            "a": "polish/after/extra/careers-grow-post1027.webp",
+            "cap": "Before and after"
+          }
+        ]
+      },
+      "everybody-goes-home-safe": {
+        "design": "26 Oct, IAQ: removed from Careers; the record stays on ESG Commitment.",
+        "more": [
+          {
+            "b": "polish/after/extra/careers-safety-pre1026.webp",
+            "a": null,
+            "cap": "The section IAQ asked to remove"
+          }
+        ]
+      }
+    },
+    "shortlist": {
+      "hero": {
+        "copy": "23 Oct, rule 4: 'The projects you saved' loses its full stop."
+      }
+    },
+    "semicon": {
+      "hero": {
+        "copy": "23 Oct, rule 4: 'built to class' loses its full stop on the page title; the booth art keeps the printed line as designed."
+      }
+    },
+    "contact": {
+      "hero": {
+        "design": "23 Oct, rule 12: the banner stood at 72% of the window with a title, a lede and two figures in it; its air is trimmed (padding 110/78 to 70/54 at most) so it sits nearer half the window with the same content. 27 Oct, sweep: on a phone the two figures keep display size.",
+        "copy": "26 Oct, IAQ: IAQ's new line, no full stop (rule 8).",
+        "more": [
+          {
+            "b": "polish/after/extra/contact-hero-pre1026.webp",
+            "a": "polish/after/extra/contact-hero-post1026.webp",
+            "cap": "The Contact banner before and after"
+          },
+          {
+            "b": "polish/after/extra/cban-phone-pre1027.webp",
+            "a": "polish/after/extra/cban-phone-post1027.webp",
+            "cap": "On a phone, before and after"
+          }
+        ]
+      },
+      "or-reach-us-directly": {
+        "design": "26 Oct, IAQ: step 1 and What happens next are off.",
+        "more": [
+          {
+            "b": "polish/after/extra/contact-form-pre1026.webp",
+            "a": "polish/after/extra/contact-form-post1026.webp",
+            "cap": "The form and its side before and after"
+          }
+        ]
+      }
+    },
+    "projects-0": {
+      "pd-band": {
+        "design": "23 Oct, rules 17 and 27: the breadcrumb sat just above the title, half way down the banner above this band; it now stands at the banner's top like every other breadcrumb. The fact tiles carried an icon in a white box inside the grey tile, and the cards below an icon in a tinted box inside the card (a box within a box); the icons now sit bare on their tile."
+      }
+    },
+    "services-all": {
+      "hero": {
+        "design": "26 Oct, IAQ: photo banner, one block per stage, numbers back, the bar lights the stage in view (rules 10, 29, 42).",
+        "more": [
+          {
+            "b": "polish/after/extra/services-all-top-pre1026.webp",
+            "a": "polish/after/extra/services-all-top-post1026.webp",
+            "cap": "The top of the page before and after"
+          }
+        ]
+      }
+    },
+    "projects": {
+      "250-projects-on-the-record": {
+        "design": "26 Oct, IAQ: one spotlight photo in place of the moving wall; project codes off. 27 Oct, sweep: on a phone the four figures keep display size, two by two.",
+        "more": [
+          {
+            "b": "polish/after/extra/projects-banner-pre1026.webp",
+            "a": "polish/after/extra/projects-banner-post1026.webp",
+            "cap": "The banner before and after"
+          },
+          {
+            "b": "polish/after/extra/projects-cards-pre1026.webp",
+            "a": "polish/after/extra/projects-cards-post1026.webp",
+            "cap": "The registry cards before and after: the code is off"
+          },
+          {
+            "b": "polish/after/extra/rb-phone-pre1027.webp",
+            "a": "polish/after/extra/rb-phone-post1027.webp",
+            "cap": "On a phone, before and after"
+          }
+        ]
+      }
+    },
+    "enquiry": {
+      "tell-us-what-you-are-planning-one-team-delivers-": {
+        "copy": "26 Oct, IAQ: IAQ's new line; 27 Oct, the paragraph and four points are off (the first repeated a line IAQ removed on 24 Sep).",
+        "more": [
+          {
+            "b": "polish/after/extra/enquiry-hero-pre1026.webp",
+            "a": "polish/after/extra/enquiry-hero-post1026.webp",
+            "cap": "The Enquiry head before and after"
+          },
+          {
+            "b": "polish/after/extra/enquiry-hero2-pre1027.webp",
+            "a": "polish/after/extra/enquiry-hero2-post1027.webp",
+            "cap": "27 Oct: the paragraph and points off"
+          }
+        ]
+      }
+    }
+  },
+  "rules": [
+    {
+      "n": 1,
+      "rule": "A description that runs to two lines is balanced: two lines of near-equal length, never one long and one short.",
+      "from": "Home hero, 22 Oct"
+    },
+    {
+      "n": 2,
+      "rule": "Air between a description and its button: the button sits a clear step below the text.",
+      "from": "Home hero, 22 Oct"
+    },
+    {
+      "n": 3,
+      "rule": "A title must mean something a reader can take away. Not a label of what the block is (in numbers) but a statement the block proves.",
+      "from": "Home numbers block, 22 Oct"
+    },
+    {
+      "n": 4,
+      "rule": "Figures and their icons are not a list: display-size numbers, a mark beside each, a label under, so the record reads as proof.",
+      "from": "Home numbers block, 22 Oct"
+    },
+    {
+      "n": 5,
+      "rule": "A stage readout shows the stage number only, never 3 / 6.",
+      "from": "Home delivery cycle, 22 Oct"
+    },
+    {
+      "n": 6,
+      "rule": "Every panel is part of the page: a card with the page's own button and a way to continue (next, previous), never a floating node with a text link.",
+      "from": "Home delivery cycle, 22 Oct"
+    },
+    {
+      "n": 7,
+      "rule": "Icons are the isometric set. The older photoreal and line marks are replaced wherever they still stand.",
+      "from": "Home delivery cycle, 22 Oct"
+    },
+    {
+      "n": 8,
+      "rule": "No full stop at the end of a title. Commas are fine, they carry meaning.",
+      "from": "Home markets band, 22 Oct; applied to every title on the site"
+    },
+    {
+      "n": 9,
+      "rule": "A line break falls where a thought ends. A description that is split in two tones breaks before the second thought, never with its first word dangling.",
+      "from": "Home markets band, 22 Oct"
+    },
+    {
+      "n": 10,
+      "rule": "No repeated information in one view. Repeated design is fine, it is consistency; repeated content is not.",
+      "from": "Services menu, 22 Oct"
+    },
+    {
+      "n": 11,
+      "rule": "Menu hover: the word goes a touch heavier and red. No dot, no marker.",
+      "from": "Navigation, 22 Oct"
+    },
+    {
+      "n": 12,
+      "rule": "A dropdown has no coloured outline; a neutral hairline and a shadow.",
+      "from": "Navigation, 22 Oct"
+    },
+    {
+      "n": 13,
+      "rule": "Every button and icon answers the pointer: colour, a one-pixel lift, a darker button.",
+      "from": "Navigation, 22 Oct"
+    },
+    {
+      "n": 14,
+      "rule": "Type sizes: body text on Tony Robbins' site measures 20 px, nav 16 px. IAQ runs 15 px body and 18.5 px ledes at a 1.12 zoom (about 17 and 21 px on screen). Decision pending: a body step up to 16 or 17 px.",
+      "from": "22 Oct"
+    },
+    {
+      "n": 15,
+      "rule": "An inner page banner is not the home banner: about half the window, never the full height.",
+      "from": "About, 22 Oct"
+    },
+    {
+      "n": 16,
+      "rule": "No white fade or blur on a banner. The picture ends where the section ends.",
+      "from": "About, 22 Oct"
+    },
+    {
+      "n": 17,
+      "rule": "On every page that opens on a dark banner the bar runs clear at the top and goes solid on scroll, as on the home page.",
+      "from": "About, 22 Oct"
+    },
+    {
+      "n": 18,
+      "rule": "A proof block (certificates, awards) is centred: title, the marks, the line and the link in the middle, with room above and below.",
+      "from": "About achievements, 22 Oct"
+    },
+    {
+      "n": 19,
+      "rule": "The member area is designed in every state: signed out, wrong passcode, signed in, the portal, the gate, signed out again. Actions in sentence case.",
+      "from": "Member area, 22 Oct"
+    },
+    {
+      "n": 20,
+      "rule": "A small-caps label keeps its style but not its tracking: letter-spacing.04em at most, site wide. Wide tracking reads as scattered.",
+      "from": "Footer label, 22 Oct"
+    },
+    {
+      "n": 21,
+      "rule": "The orphan wrap: a caption, a label or a one-sentence line never breaks into a second line of one or two words. It runs the full width of what it sits under, or it is one line.",
+      "from": "History captions, 22 Oct"
+    },
+    {
+      "n": 22,
+      "rule": "A timeline shows the flow of time: an axis that draws as it is read, the passed marks filled, the live one lit, the year at reading size. Unless the layout is responsive and there really is no room (a phone), where a short last line is allowed.",
+      "from": "History, 22 Oct"
+    },
+    {
+      "n": 23,
+      "rule": "No standalone illustration where a photograph of IAQ's own work exists.",
+      "from": "History, 22 Oct"
+    },
+    {
+      "n": 24,
+      "rule": "A breadcrumb sits at the top of the banner, under the bar, never at its foot above the title.",
+      "from": "History banner, 22 Oct"
+    },
+    {
+      "n": 25,
+      "rule": "A figure that is the point of the page (the years) is set at display size, not as a small label.",
+      "from": "History banner, 22 Oct"
+    },
+    {
+      "n": 26,
+      "rule": "Say a thing once per page: a hero line is not repeated as a foot heading. Where the foot needs a heading, give it the figure.",
+      "from": "History, 22 Oct"
+    },
+    {
+      "n": 27,
+      "rule": "& in a title only where it joins two names (Engineering, Procurement & Construction; Food & Beverage); \"and\" inside a sentence title.",
+      "from": "22 Oct"
+    },
+    {
+      "n": 28,
+      "rule": "A two-part title breaks before its red phrase: the statement on one line, the phrase on the next, never mid-phrase. The same for the description under it: balanced lines.",
+      "from": "Commitment, 22 Oct"
+    },
+    {
+      "n": 29,
+      "rule": "A banner's air is balanced: the same room above the title as below the last row. A scroll cue sits on the controls row, at the left, never on a line of its own.",
+      "from": "Services map, 22 Oct"
+    },
+    {
+      "n": 30,
+      "rule": "A menu column does not change on hover: no when-asked tags, no lighting and dimming. The hover is the row under the pointer, nothing else.",
+      "from": "Services menu, 22 Oct"
+    },
+    {
+      "n": 31,
+      "rule": "A hover rule (the red line that draws on hover) runs along the FOOT of a card or tile, everywhere on the site.",
+      "from": "Markets grid, 22 Oct"
+    },
+    {
+      "n": 32,
+      "rule": "A picture tile rests a little grey and comes to full colour under the pointer. No zoom on hover.",
+      "from": "Markets grid, 22 Oct"
+    },
+    {
+      "n": 33,
+      "rule": "Tiles in a set are equal. No outsized first tile.",
+      "from": "Markets grid, 22 Oct"
+    },
+    {
+      "n": 34,
+      "rule": "An arrow stands alone: no circle behind it, no box behind an icon, no square within a square.",
+      "from": "Markets grid, PCU & TTI, 22 Oct"
+    },
+    {
+      "n": 35,
+      "rule": "Nothing that cannot be clicked reacts to the pointer: no lift, no light, no rule on a card that is not a link. A card that animates on its own needs no hover.",
+      "from": "PCU & TTI reasons, 22 Oct"
+    },
+    {
+      "n": 36,
+      "rule": "No icon in a circle, no dashed ring, no dot-dot-dot decoration. Where an icon is thin, use the more detailed drawing.",
+      "from": "PCU & TTI delivery approach, 22 Oct"
+    },
+    {
+      "n": 37,
+      "rule": "The Services facility map: the front face must read clean. Done 23 Oct: the cladding joints fade with distance and go out on a pick; the picked state keeps its depth and tints only what is hidden; the building's skin never ghosts.",
+      "from": "Services map, 22 Oct; done 23 Oct"
+    },
+    {
+      "n": 38,
+      "rule": "No eyebrow above a title unless it carries a fact. Start a conversation, Where we build and their kind are off.",
+      "from": "EFM band, 22 Oct"
+    },
+    {
+      "n": 39,
+      "rule": "A call-to-action band stacks: the title and the line on top, the button anchored bottom right, the phone at the left of the same row. The same on every page.",
+      "from": "EFM band, 22 Oct"
+    },
+    {
+      "n": 40,
+      "rule": "Every page is swept against these rules, not only the ones walked. Each change is recorded here so a design can be vetoed.",
+      "from": "22 Oct"
+    },
+    {
+      "n": 41,
+      "rule": "The 3D and animation get the same polish: timing, labels, the view at rest. Done 23 Oct on the district cooling tour (labels after the camera, the tank on the step's clock, stations named once, a dwell per step with a time bar, the tour ends on the overview) and on the Services map (rule 37).",
+      "from": "22 Oct; done 23 Oct"
+    },
+    {
+      "n": 42,
+      "rule": "Never a design that has no function: no ring, circle, line or dot put in to fill space. Density over white space: the client does not like white space; negative space only where it does a job.",
+      "from": "Market capability cards, 22 Oct"
+    },
+    {
+      "n": 43,
+      "rule": "On a phone a banner's headline, line and button stay together; no dead gap pushing the line to the foot.",
+      "from": "Home on the phone, 22 Oct"
+    }
+  ],
+  "sitewide": [
+    {
+      "date": "22 Oct 2026",
+      "what": "Every title on the site lost its trailing full stop: 138 headings in 168 files. The home slogan keeps its two mid-line full stops, it is IAQ's own line.",
+      "why": "Rule 8. a full stop at the title makes it look worse; commas are fine.",
+      "ex": {
+        "slug": "about-commitment",
+        "key": "sustainability-and-respons"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Services menu: the Services overview bar under the two columns is off. The lead panel's Open the page is the one route to the hub.",
+      "why": "Rule 10. The panel and the bar said the same thing twice.",
+      "ex": null
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Menu hover: no dot; the word a touch heavier (a hairline text shadow, so the width does not jump) and red, light nav and over the hero alike.",
+      "why": "Rule 11: the menu hover marks the word itself, heavier and red; a dot beside it was a second marker for the same thing.",
+      "ex": null
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Dropdown panel: the red hairline edge (the --line2 token) and the red caret edges are a neutral hairline.",
+      "why": "Rule 12. The call was open the red outline belonged.",
+      "ex": null
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Search icon, member icon and Start a project: hover states added (red and a one-pixel lift; the button darkens). Over the hero the white rule had outranked the old hover.",
+      "why": "Rule 13. it does not interact with me.",
+      "ex": null
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Every lede that wraps is balanced (text-wrap: balance on.lede, the page heads, the unit and market ledes).",
+      "why": "Rule 1, asked twice (home hero, About banner).",
+      "ex": {
+        "slug": "about",
+        "key": "hero"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "The bar runs clear over the dark banner on About, Contact, the markets hub and its seven pages and the three unit pages, and goes solid on scroll (Nav.jsx overlap; base.css nav-under).",
+      "why": "Rule 17. why is the bar still white, not like the home page.",
+      "ex": {
+        "slug": "contact",
+        "key": "hero"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Member popover: You are signed in without its full stop; Open the portal, Sign out and the emergency access line in sentence case at reading size, no tracked capitals.",
+      "why": "Rules 8 and 19: no full stop at a title or a label line; the member popover's lines are labels, in sentence case.",
+      "ex": null
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Every tracked label brought to.04em across all stylesheets.",
+      "why": "Rule 20. the alphabets are spaced out too much, change the overall website.",
+      "ex": {
+        "slug": "projects",
+        "key": "250-projects-on-the-record"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Captions and single-line labels run the full width of their figure and wrap pretty; ledes and body paragraphs wrap pretty.",
+      "why": "Rule 21, the orphan wrap: a caption boxed to a narrow measure broke its last word onto a line of its own; full width and pretty wrapping stop that.",
+      "ex": {
+        "slug": "about-history",
+        "key": "milestones"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Type a step up: body 16 px, ledes 17 to 19.5 px, body paragraphs 15.5 to 17 px, captions 14 px. Tony Robbins' site runs 20 px paragraphs; IAQ is now about 18 on screen.",
+      "why": "Rule 14: body type at 16 px and ledes at 17 to 19.5 px read at arm's length on a laptop; the reference standard was a 20 px paragraph.",
+      "ex": {
+        "slug": "about",
+        "key": "manifesto-man-light"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Every paragraph, list line, definition, caption and lede balances its lines; long article text wraps pretty. Titles with a red closing phrase after a comma, or after a statement of 20 characters or more, break before the phrase.",
+      "why": "Rules 21, 22 and 28. so many have one word in one line; check every page and fix.",
+      "ex": {
+        "slug": "services-all",
+        "key": "engineering-design-consult"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Services menu: the six services no longer light, dim or carry When asked when a unit is hovered.",
+      "why": "Rule 30. remove the when asked and any weird complications when hovering.",
+      "ex": null
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Markets grid: seven equal tiles (four across, three centred), the drawn market marks with no tile, the arrow without its circle, no zoom, the picture resting grey and colouring on hover, the rule at the foot. The unit capability cards and the market capability cards draw their rule at the foot too.",
+      "why": "Rules 31 to 34. the review, on the grid, in full.",
+      "ex": {
+        "slug": "markets",
+        "key": "pg-sec-tight"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Hover effects removed from every card that is not a link on the unit and market pages (the reasons, the capability cards, the industries, the journey, the statement items, the market capability cards).",
+      "why": "Rule 35. anything we are not supposed to click does not interact with the mouse.",
+      "ex": {
+        "slug": "services-epc-construction",
+        "key": "our-epc-capabilities"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "The delivery approach journey (PCU & TTI): the icons stand on the line with no circle and no dashed ring; the stage label, name and line unchanged.",
+      "why": "Rule 36: an icon in a circle or a dashed ring is decoration round the drawing; the drawing stands on the line on its own.",
+      "ex": {
+        "slug": "services-tool-installation",
+        "key": "our-delivery-approach"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Eyebrows off site wide: the page head eyebrow, the section kickers (.pg-k), the statement and contact kickers. Reading on the timeline and the stage line under the cycle stay, they carry a fact.",
+      "why": "Rule 38: an eyebrow that only names the block repeats the title; it goes unless it carries a fact.",
+      "ex": {
+        "slug": "about-esg",
+        "key": "hero"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "The unit pages' call-to-action band: no kicker; title and line on top, the button bottom right, the phone bottom left.",
+      "why": "Rule 39: the band reads top to bottom, text first, the button anchored bottom right as the last thing the eye meets.",
+      "ex": {
+        "slug": "services-epc-construction",
+        "key": "let-s-discuss-your-project"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Market pages: the overview picture lost its violet rule and its boxed mark; no zoom on hover. The E, S and G letters left the Commitment cards.",
+      "why": "Rule 34: a rule, a boxed mark and a zoom on hover decorate a picture that is not a link; the picture is the content.",
+      "ex": {
+        "slug": "markets-semiconductor",
+        "key": "industry-overview"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Market capability cards: the orbit ring, the circle behind the icon and the underline are off; the card is the mark beside the name, compact, in its violet panel.",
+      "why": "Rule 42. it looks messy; never a design that does not have a function.",
+      "ex": {
+        "slug": "markets-semiconductor",
+        "key": "the-importance-of-manufact"
+      }
+    },
+    {
+      "date": "22 Oct 2026",
+      "what": "Home on a phone: the headline, the line and the button sit together at the foot of the banner.",
+      "why": "Rule 43: on a phone the headline, its line and the button belong together at the foot of the banner, not spread down the screen.",
+      "ex": {
+        "slug": "home",
+        "key": "hero"
+      }
+    },
+    {
+      "date": "23 Oct",
+      "what": "The type floor: every px font size under 13 in the public stylesheets brought to 13 px",
+      "why": "Rule 14 and the standing font rule (nothing under 13 px, the same size on every screen). The rules audit found 10 and 10.5 px labels on every page: footer column heads, project and market tags, the search palette, job references, back-to-top. Admin, portal, codex and booth styles untouched.",
+      "ex": {
+        "slug": "careers",
+        "key": "engineering"
+      }
+    },
+    {
+      "date": "23 Oct",
+      "what": "Tracking, second pass: letter-spacing between.05 and.079em brought to.04em (13 rules)",
+      "why": "Rule 16. The 22 Oct pass caught.08em and above; the Projects and Careers tags still sat at.06 to.07em.",
+      "ex": {
+        "slug": "projects",
+        "key": "250-projects-on-the-record"
+      }
+    },
+    {
+      "date": "23 Oct",
+      "what": "Titles balanced: h1, h2 and h3 wrap balanced instead of pretty; card titles (projects, news, market tiles), office addresses, the project prompt and the History entries balanced too; the pretty exception kept only for long reads (news and article bodies)",
+      "why": "Rules 22 and 23. \"article p\" forced pretty wrapping on every card built as an <article> (the contact offices, the six services), so their short paragraphs ended on one- or two-word lines; titles were pretty, so a two-line card title ended on a single word.",
+      "ex": {
+        "slug": "news",
+        "key": "latest"
+      }
+    },
+    {
+      "date": "23 Oct",
+      "what": "Title full stops removed where the 22 Oct sweep missed them: home \"Seven markets, one integrated team\", Careers \"Build your career with IAQ Group\" and \"Where engineers start and grow\", Shortlist \"The projects you saved\", the SEMICON page \"built to class\" (the booth art keeps the printed line)",
+      "why": "Rule 4. Found by the rules audit. The home hero tagline's two stops went last, on the 23 Oct go-ahead (23 Oct, evening).",
+      "ex": {
+        "slug": "careers",
+        "key": "hero"
+      }
+    },
+    {
+      "date": "23 Oct",
+      "what": "Equal tiles on the unit pages: the five why-cards (EPC) and the five solution cards (EFM) no longer open on a double-width card with a bigger title; five across on a wide screen, three and two below 1280 px; the radial glow in the lead card's corner removed",
+      "why": "Rule 11 and rule 42 (no decoration without a function).",
+      "ex": {
+        "slug": "services-epc-construction",
+        "key": "why-integrated-project-del"
+      }
+    },
+    {
+      "date": "23 Oct",
+      "what": "District cooling step markers square (on the model and in the list), the pinging ring round the live marker removed",
+      "why": "Rules 26 and 42: no number in a circle, no decoration without a function; the facility map's pins are square.",
+      "ex": {
+        "slug": "services-energy-management",
+        "key": "how-district-cooling-works"
+      }
+    },
+    {
+      "date": "23 Oct",
+      "what": "Project page: the breadcrumb at the top of the banner; the fact tiles and cards no longer carry an icon in a white or tinted box inside the tile",
+      "why": "Rules 17 and 27: a breadcrumb belongs at the top of its banner; an icon in a box inside a tile is a box within a box.",
+      "ex": {
+        "slug": "projects-0",
+        "key": "pd-band"
+      }
+    },
+    {
+      "date": "23 Oct",
+      "what": "Contact banner trimmed from 72% of the window toward the half-window rule; the History banner is left filling the screen on the 22 Oct instruction (\"please this section fit it screen\")",
+      "why": "Rule 12, with the exception recorded.",
+      "ex": {
+        "slug": "contact",
+        "key": "hero"
+      }
+    },
+    {
+      "date": "23 Oct",
+      "what": "Responsive check: every route at 1280, 1180, 1024, 900, 768 and 430 px wide, for horizontal overflow, text cut by a clipping box, text over text, and type under 13 px",
+      "why": "Rules 14, 22 and 42 at every width, not only at 1440. Found and fixed: the About banner's ghost numeral over the lede (off below 1300 px); the home 3D stage's control type under 13 px and its Enter cleanroom button clipping between 900 and 1300 px. Checked and sound: the PCU & TTI delivery journey at 1190 and 1024, the careers values grid and the About values carousel on a phone. Left: the 3D stage's loading line on a 430 px phone and one rail label 7 px short at exactly 900 px, both inside the 3D bundle.",
+      "ex": {
+        "slug": "about",
+        "key": "hero"
+      }
+    },
+    {
+      "date": "26 Oct",
+      "what": "IAQ's review of 26 Oct, all 22 pages: films and pictures cleaned, home banner reordered, FAQ page, unit cards, All six services, market project lists, Projects spotlight, codes off, Careers, Contact and Enquiry.",
+      "why": "IAQ's own notes, item by item in the Amendments tab. One waits on IAQ: the Penang signboard.",
+      "ex": {
+        "slug": "services-all",
+        "key": "hero"
+      }
+    },
+    {
+      "date": "27 Oct",
+      "what": "\"Under one contract\" removed from the booth artwork, print PDFs, booth plan, exhibition portal files, deck and Codex; nothing else reworded. The booth's B to F artwork restored after the 22 Oct merge had reverted it.",
+      "why": "IAQ asked for the line off on 24 Sep.",
+      "ex": {
+        "slug": "services",
+        "key": "3-business-units"
+      }
+    },
+    {
+      "date": "27 Oct",
+      "what": "\"Under one contract\" and general \"one contract\" claims removed from the booth artwork, print PDFs, booth plan, exhibition portal files, deck and Codex; the booth's B to F artwork restored after the 22 Oct merge had reverted it.",
+      "why": "IAQ asked for the line off on 24 Sep and asks not to imply one contract model; the EPCC model's own definition stays.",
+      "ex": {
+        "slug": "services",
+        "key": "3-business-units"
+      }
+    }
+  ],
+  "states": {
+    "01-signed-out": {
+      "design": "The popover before sign in: the passcode field, the sign-in button, the emergency access line and the request link. The eyebrow label and the field label keep their small tracked style; the emergency line is in sentence case now.",
+      "changed": true
+    },
+    "02-wrong-passcode": {
+      "copy": "That passcode is not right. Try again: plain and short.",
+      "design": "The error reads under the field in red."
+    },
+    "03-signed-in": {
+      "copy": "You are signed in, without the full stop (rule 8). The line under it says what the Codex and the portal hold.",
+      "design": "Open the Codex stays the red button; Open the portal and Sign out are sentence-case actions at reading size instead of tracked capitals.",
+      "changed": true
+    },
+    "04-portal-signed-in": {
+      "design": "The portal shell: the sidebar with its groups (Super Admin, Edit website, Enquiries, Design direction, Exhibition, Presentation, Marketing, Documents, Email signature) and the Codex open."
+    },
+    "05-portal-gate": {
+      "design": "The gate a visitor meets at /portal when signed out: the passcode form on the site's page."
+    },
+    "06-codex-gate": {
+      "design": "/codex when signed out sends to the portal gate; nothing of the Codex shows."
+    }
+  }
+}

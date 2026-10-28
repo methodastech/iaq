@@ -1,0 +1,52 @@
+{
+  "layer": "detail-processwater",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -66.15884913580095,
+      8.8885498046875,
+      -29.898527742747973
+    ],
+    "max": [
+      36.132380112245926,
+      12.777000427246094,
+      2.456882117862989
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      90.07867431640625,
+      8.8885498046875,
+      -33.45716094970703
+    ],
+    "max": [
+      192.36990356445312,
+      12.777000427246094,
+      -1.1017510890960693
+    ]
+  },
+  "storeys": [
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-processwater-1-gf.glb",
+      "triangles": 6886,
+      "sizeKB": 75
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-processwater-2-1f.glb",
+      "triangles": 102466,
+      "sizeKB": 973
+    }
+  ]
+}

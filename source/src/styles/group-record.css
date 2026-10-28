@@ -25,8 +25,8 @@
   font-size: 13.5px; letter-spacing: 0; text-transform: none; line-height: 1.4; }
 
 .gviz { display: block; flex: none; width: 88px; height: 22px; overflow: visible; }
-.gv-t { font: 500 7.4px/1 "Switzer", "Instrument Sans", system-ui, sans-serif; fill: #66708A; letter-spacing: .02em; }
-.gv-tb { font-weight:600; fill: var(--ink); font-size: 7.8px; }
+.gv-t { font: 500 13px/1 "Switzer", "Instrument Sans", system-ui, sans-serif; fill: #66708A; letter-spacing: .02em; }
+.gv-tb { font-weight:600; fill: var(--ink); font-size: 13px; }
 .gv-base { stroke: rgba(12,18,32,.28); stroke-width: 1.5; }
 .gv-tick { stroke: rgba(12,18,32,.28); stroke-width: 1.5; }
 .gv-red { stroke: var(--blue); stroke-width: 2; stroke-linecap: butt; }
@@ -73,7 +73,7 @@
   .gr .gstats { gap: 26px 16px; }
   .gr .grow { flex-direction: column; align-items: flex-start; gap: 10px; }
   .gr .gstat .num { font-size: 26px; }
-  .gr .gstat .lab { font-size: 12.5px; margin-top: 6px; }
+  .gr .gstat .lab { font-size: 13px; margin-top: 6px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .gstats.is-in .gv-pop, .gstats.is-in .gv-draw, .gstats.is-in .gv-wipe { animation: none; }
@@ -135,7 +135,7 @@
    place"): the number gives up a step to the mark, and the mark is drawn finer (stroke .85 on the 24 grid) so that
    the extra size buys detail rather than weight. */
 .gr .gstat .num { font-size: clamp(22px, 1.95vw, 28px); }
-.gr .gstat .lab { font-size: 12.5px; }
+.gr .gstat .lab { font-size: 13px; }
 @media (min-width: 861px) {
   .gr .gstat { grid-template-columns: clamp(36px, 3.2vw, 46px) minmax(0, 1fr); column-gap: 13px; }
   .gr .gr-mk { width: clamp(36px, 3.2vw, 46px); height: clamp(36px, 3.2vw, 46px); }
@@ -217,8 +217,29 @@
 .gr .globe-tag .fl{display:block;margin:0;line-height:0}
 .gr .globe-tag .gt-flag{display:block;width:22px;height:15px;box-shadow:0 0 0 1px rgba(12,18,32,.12)}
 .gr .globe-tag .gt-t{display:flex;flex-direction:column;gap:1px}
-.gr .globe-tag .gt-t b{font:600 12px/1.15 "Switzer","Instrument Sans",system-ui,sans-serif}
-.gr .globe-tag .gt-t small{font:500 10.5px/1.2 "Instrument Sans",system-ui,sans-serif;color:#5A6478}
+.gr .globe-tag .gt-t b{font:600 13px/1.15 "Switzer","Instrument Sans",system-ui,sans-serif}
+.gr .globe-tag .gt-t small{font:500 13px/1.2 "Instrument Sans",system-ui,sans-serif;color:#5A6478}
 .gr .globe-tag.sel{background:#fff;color:#0C1220;box-shadow:inset 3px 0 0 #EC2027,0 8px 20px -12px rgba(12,18,32,.45)}
 .gr .globe-tag.sel .gt-t b{color:#EC2027}
 .gr .globe-tag.far,.gr .globe-tag.far:hover{background:rgba(255,255,255,.75)}
+
+/* 22 Oct, Polishing walk-through, note 2 (Bazil: "boring icons and number", "and the map as well"): the six figures in three
+   columns, each under a hairline, the number at display size with its mark beside it and the label under; the globe a step
+   larger. The two-column list is in _backups/polish-walk-1022/group-record.css. */
+@media (min-width: 981px) {
+  .gr .gstats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(22px, 3vh, 30px) clamp(18px, 2vw, 28px); margin-top: clamp(26px, 4vh, 40px); }
+  .gr .gstat { padding-top: 16px; border-top: 1px solid rgba(12,18,32,.12); }
+  .gr .grow { gap: 8px 12px; align-items: baseline; }
+  .gr .gr-mk { width: clamp(30px, 2.4vw, 36px); height: clamp(30px, 2.4vw, 36px); align-self: center; }
+  .gr .gstat .num { font-size: clamp(34px, 3vw, 46px); letter-spacing: -.035em; }
+  .gr .gstat .lab { margin-top: 8px; font-size: 13.5px; max-width: 16ch; }
+  .gr .globe-host { max-width: 700px; }
+}
+
+/* 23 Oct, Polishing sweep, rules 22 and 28 (the home record title broke "builds," onto its own line): a title that breaks
+   before its red phrase is not boxed to 19ch, and its ceiling comes down so the first part holds on one line */
+.gr h2:has(> br){ max-width:none; font-size:clamp(30px, 3.5vw, 50px); }
+
+/* 23 Oct (Bazil, of the six figures: "do we really need the lines?"): no. The hairline over each figure separated
+   nothing the spacing does not already separate (rule 42, no decoration without a function; his standing no-lines taste). */
+@media (min-width: 981px){ .gr .gstat{ border-top:0; padding-top:0; } }

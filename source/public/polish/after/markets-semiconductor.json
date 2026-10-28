@@ -1,0 +1,117 @@
+{
+ "url": "/markets/semiconductor",
+ "slug": "markets-semiconductor",
+ "title": "IAQ Group \u00b7 Semiconductor \u00b7 Brand Method",
+ "at": "2026-10-27T02:00:12.707Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Semiconductor",
+   "tag": "header",
+   "cls": "pg-head",
+   "top": 84,
+   "height": 403,
+   "text": "Semiconductor\nSupporting Facilities That Power Modern Technology",
+   "img": "markets-semiconductor/01-hero.webp",
+   "shownHeight": 403,
+   "changed": false,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 0
+   }
+  },
+  {
+   "i": 1,
+   "key": "industry-overview",
+   "heading": "Industry Overview",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 487,
+   "height": 1151,
+   "text": "Industry Overview\nSemiconductor manufacturing demands precise environmental control, reliable utility infrastructure and seamless equipment integration. As technology advances and production requirements become increasingly complex, facilities must be designed and operated to meet the highest standards of performance and reliability.\nHow IAQ Supports Semiconductor Manufacturing\nThrough EPC, PCU & TTI and Energy Management solutions, IAQ supports semiconductor facilities across the full lifecycle, from facility development and utility infrastructure to manufacturing readiness and operational optimisation.\nIAQ Key Capabilities\nWafer Fabrication Facilities\nAdvanced Packaging Utilities\nProcess Critical Utilities\nTotal Tool Installation\nCleanroom Infrastructure\nManufacturing Readiness",
+   "img": "markets-semiconductor/02-industry-overview.webp",
+   "shownHeight": 1151,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -289,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 2,
+   "key": "the-importance-of-manufacturing-readiness",
+   "heading": "The Importance of Manufacturing Readiness",
+   "tag": "section",
+   "cls": "pg-sec.calm",
+   "top": 1638,
+   "height": 324,
+   "text": "The Importance of Manufacturing Readiness\nSuccessful semiconductor production depends on the seamless integration of facilities, utilities and manufacturing equipment. A well-prepared facility reduces risk, accelerates start-up and supports long-term operational performance.",
+   "img": "markets-semiconductor/03-the-importance-of-manufacturing-readiness.webp",
+   "shownHeight": 324,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 1.72
+   }
+  },
+  {
+   "i": 3,
+   "key": "mk-band",
+   "heading": "",
+   "tag": "section",
+   "cls": "mk-band",
+   "top": 1962,
+   "height": 617,
+   "text": "",
+   "img": "markets-semiconductor/04-mk-band.webp",
+   "shownHeight": 617,
+   "changed": false,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 0.57
+   }
+  },
+  {
+   "i": 4,
+   "key": "delivered-in-this-market",
+   "heading": "Delivered in this market",
+   "tag": "section",
+   "cls": "pg-sec.calm",
+   "top": 2579,
+   "height": 669,
+   "text": "Delivered in this market\nPublished semiconductor projects from the sample registry, each one linked to its full record.\nOpen the registry, filtered to Semiconductor\n\u2192\nTesting manufacturing plant, 25,000\u00a0m\u00b2 greenfield\nSemiconductor manufacturer, Malaysia\nISO 6 to 7\n\u2192\nWafer fab facility and expansion, cleanroom package with utilities\nWafer foundry, the northern corridor, Kedah\nISO 5\n\u2192\nSemiconductor backend plant, 43,000\u00a0m\u00b2 test, probe and assembly\nSemiconductor manufacturer, Malaysia\nISO 6 to 7\n\u2192\nDLP cleanroom facility\nSemiconductor manufacturer, Malaysia\nISO 5 to 7\n\u2192\nSilicon wafer manufacturing, multi-class greenfield with full MEP\nSilicon wafer manufacturer, Ipoh, Perak\nISO 3 to 7\n\u2192",
+   "img": "markets-semiconductor/05-delivered-in-this-market.webp",
+   "shownHeight": 669,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -359,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 5,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 3248,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nQuestions clients ask\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "markets-semiconductor/06-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

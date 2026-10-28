@@ -1,0 +1,187 @@
+/* =====================================================================================================================
+   Website sections, 29 Sep 2026. Bazil: "i need a mockup of how sections of website should be done also in this page".
+   Nine sections, each drawn at reduced scale in a browser frame from the live build's own copy, figures, logo, marks and
+   photographs, then how it is built and a Do and Don't pair.
+
+   Every selector is scoped under #websections. A mock is drawn on a 1440 px window: --u is one site pixel at that width
+   (100cqw / 1440 of the frame), so each mock scales as one picture and never reflows. --u is set on .ws-mk, never on the
+   container itself, so cqw always resolves against the frame.
+   ===================================================================================================================== */
+#websections{--w-red:#EC2027;--w-ink:#0C1220;--w-k:#231F20;--w-soft:#48536A;--w-faint:#66708A;--w-pap:#F7F9FC;--w-tint:#F3F5F8;--w-dark:#0A101F;--w-vio:#6E56E6}
+/* the section number in the tab's own type, never a typewriter face */
+#websections .sh .no{font-family:"Switzer",sans-serif;font-weight:600;letter-spacing:0}
+#websections figure{margin:0}
+
+/* ---------------------------------------------------------------- one section type */
+#websections .ws-it{margin-top:clamp(46px,4.6vw,76px)}
+#websections .ws-it>h3{font:600 clamp(19px,1.7vw,24px)/1.2 "Switzer",sans-serif;letter-spacing:-.015em;color:var(--ink,#101010)}
+#websections .ws-it>p{margin-top:8px;max-width:82ch;font:400 15px/1.6 "Instrument Sans",sans-serif;color:var(--soft,#4A4A4A)}
+
+/* the browser frame: a plain bar with the address, square, no dots */
+/* drawn as an object, the way 18 In use draws its frames (apps.css --obj): the paper ground of a mock would otherwise
+   melt into the page */
+#websections .ws-fr{margin-top:18px;background:#fff;box-shadow:var(--obj,0 1px 1px rgba(10,16,31,.10),0 4px 10px -4px rgba(10,16,31,.16),0 26px 46px -20px rgba(10,16,31,.38))}
+#websections .ws-url{display:flex;align-items:center;height:32px;padding:0 14px;background:#E4E7EC;font:500 12px/1 "Switzer",sans-serif;color:#5A5F6B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#websections .ws-st{container-type:inline-size;overflow:hidden;background:#fff}
+
+/* ---------------------------------------------------------------- the mock, in site pixels */
+#websections .ws-mk{--u:calc(100cqw / 1440);position:relative;color:var(--w-ink);font-family:"Instrument Sans",sans-serif;line-height:1.2;text-align:left}
+#websections .ws-mk *{box-sizing:border-box}
+#websections .ws-mk img{display:block;max-width:none}
+#websections .ws-mk b,#websections .ws-mk i,#websections .ws-mk em,#websections .ws-mk small{font-style:normal}
+#websections .ws-mk em{color:var(--w-red);white-space:nowrap}
+#websections .w-h1{display:block;font:500 calc(72*var(--u))/1.08 "Switzer",sans-serif;letter-spacing:calc(-1.8*var(--u));color:var(--w-ink)}
+#websections .w-h2{display:block;font:500 calc(58*var(--u))/1.02 "Switzer",sans-serif;letter-spacing:calc(-2*var(--u));color:var(--w-ink)}
+#websections .w-lede{display:block;font:400 calc(18.5*var(--u))/1.6 "Instrument Sans",sans-serif;color:var(--w-soft)}
+#websections .w-btn{display:inline-flex;align-items:center;gap:calc(12*var(--u));height:calc(44*var(--u));padding:0 calc(22*var(--u));background:var(--w-red);color:#fff;font:600 calc(14.5*var(--u))/1 "Switzer",sans-serif;white-space:nowrap}
+#websections .w-link{display:inline-flex;align-items:center;gap:calc(10*var(--u));font:600 calc(15*var(--u))/1.2 "Switzer",sans-serif;color:var(--w-ink);white-space:nowrap}
+/* one drawn arrow for every mock: the cycle's own, 24 grid, butt ends, mitred */
+#websections .w-arw{flex:none;display:block;width:calc(18*var(--u));height:calc(18*var(--u));fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:butt;stroke-linejoin:miter}
+/* the one long red line, margin to margin */
+#websections .w-l1{display:block;height:max(1px,calc(1.5*var(--u)));background:var(--w-red)}
+/* the photograph: a clean block, square corners, cover crop */
+#websections .w-ph{position:relative;overflow:hidden;background:#E9ECF1}
+#websections .w-ph img{width:100%;height:100%;object-fit:cover}
+
+/* ---------------------------------------------------------------- navigation bar */
+#websections .w-nav{display:flex;align-items:center;height:calc(76*var(--u));padding:0 calc(22*var(--u));background:var(--w-pap)}
+#websections .w-logo{height:calc(46*var(--u));width:auto}
+#websections .w-nl{margin-left:auto;display:flex;align-items:center}
+#websections .w-nl span{padding:0 calc(12*var(--u));font:500 calc(13.5*var(--u))/1 "Switzer",sans-serif;color:var(--w-soft);white-space:nowrap}
+#websections .w-nl .on{color:var(--w-red);font-weight:600}
+#websections .w-na{display:flex;align-items:center;gap:calc(10*var(--u));margin-left:calc(18*var(--u))}
+#websections .w-srch{display:grid;place-items:center;width:calc(40*var(--u));height:calc(40*var(--u));color:var(--w-ink)}
+#websections .w-srch svg{display:block;width:calc(21*var(--u));height:calc(21*var(--u));fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:butt;stroke-linejoin:miter}
+#websections .w-nav .w-btn{height:calc(40*var(--u));padding:0 calc(18*var(--u));font-size:calc(14*var(--u))}
+
+/* ---------------------------------------------------------------- hero */
+#websections .w-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:calc(48*var(--u));align-items:center;padding:calc(88*var(--u)) calc(22*var(--u));background:#fff}
+#websections .w-hero-t{display:flex;flex-direction:column;align-items:flex-start;gap:calc(28*var(--u))}
+#websections .w-hero .w-lede{max-width:calc(540*var(--u))}
+#websections .w-hero .w-btn{height:calc(48*var(--u))}
+#websections .w-hero .w-ph{height:calc(520*var(--u))}
+
+/* ---------------------------------------------------------------- figures ledger */
+#websections .w-fig{padding:calc(96*var(--u)) calc(22*var(--u));background:var(--w-pap)}
+#websections .w-fig .w-h2{max-width:calc(820*var(--u))}
+#websections .w-fig .w-l1{margin-top:calc(56*var(--u))}
+#websections .w-figs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:calc(24*var(--u));margin-top:calc(36*var(--u))}
+#websections .w-figs b{display:block;font:500 calc(64*var(--u))/1 "Switzer",sans-serif;letter-spacing:calc(-2*var(--u));color:var(--w-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+#websections .w-figs span{display:block;margin-top:calc(12*var(--u));font:500 calc(15*var(--u))/1.35 "Switzer",sans-serif;color:var(--w-soft)}
+
+/* ---------------------------------------------------------------- services */
+#websections .w-svc{padding:calc(104*var(--u)) calc(22*var(--u)) calc(88*var(--u));background:#fff}
+#websections .w-hd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:calc(48*var(--u));align-items:end}
+#websections .w-kind{display:flex;align-items:center;gap:.38em;font:500 calc(36*var(--u))/1.1 "Switzer",sans-serif;letter-spacing:calc(-1.26*var(--u));color:var(--w-red)}
+#websections .w-kind svg{display:block;width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter}
+#websections .w-svc .w-lede{font-size:calc(19*var(--u));max-width:calc(620*var(--u))}
+#websections .w-svcs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:calc(24*var(--u));margin-top:calc(64*var(--u))}
+#websections .w-mkic{display:block;width:calc(120*var(--u));height:calc(120*var(--u));overflow:visible}
+#websections .w-svcs b{display:block;margin-top:calc(20*var(--u));font:600 calc(18*var(--u))/1.2 "Switzer",sans-serif;letter-spacing:calc(-.2*var(--u));color:var(--w-ink)}
+#websections .w-svcs span{display:block;margin-top:calc(8*var(--u));font:400 calc(15*var(--u))/1.45 "Instrument Sans",sans-serif;color:var(--w-soft)}
+
+/* ---------------------------------------------------------------- split */
+#websections .w-split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:calc(64*var(--u));align-items:center;padding:calc(96*var(--u)) calc(22*var(--u));background:#fff}
+#websections .w-split-t{display:flex;flex-direction:column;align-items:flex-start;gap:calc(24*var(--u))}
+#websections .w-split .w-h2,#websections .w-mkt .w-h2,#websections .w-rec .w-h2{font-size:calc(50*var(--u));letter-spacing:calc(-1.5*var(--u))}
+#websections .w-split .w-ph{height:calc(560*var(--u))}
+#websections .w-pan{position:absolute;left:0;top:0;padding:calc(18*var(--u)) calc(22*var(--u));background:#fff;font:600 calc(16*var(--u))/1.2 "Switzer",sans-serif;color:var(--w-ink);white-space:nowrap}
+
+/* ---------------------------------------------------------------- markets band */
+#websections .w-mkt{padding:calc(96*var(--u)) calc(22*var(--u));background:var(--w-pap)}
+#websections .w-mkt .w-h2 em{color:var(--w-vio)}
+#websections .w-mkt-r{display:flex;flex-direction:column;align-items:flex-start;gap:calc(20*var(--u))}
+#websections .w-mkt-r .w-lede{font-size:calc(19*var(--u))}
+#websections .w-mkts{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:calc(16*var(--u));margin-top:calc(56*var(--u))}
+#websections .w-mkts .w-ph{aspect-ratio:3/4}
+#websections .w-mktic{display:block;margin-top:calc(18*var(--u));width:calc(32*var(--u));height:calc(32*var(--u));fill:none;stroke:var(--w-vio);stroke-width:.95;stroke-linecap:butt;stroke-linejoin:miter}
+#websections .w-mktic .f{fill:var(--w-vio);stroke:none}
+#websections .w-mkts b{display:block;margin-top:calc(12*var(--u));font:600 calc(17*var(--u))/1.2 "Switzer",sans-serif;color:var(--w-ink)}
+#websections .w-mkts span{display:block;margin-top:calc(6*var(--u));font:400 calc(14*var(--u))/1.45 "Instrument Sans",sans-serif;color:var(--w-soft)}
+
+/* ---------------------------------------------------------------- project record rows */
+#websections .w-rec{padding:calc(96*var(--u)) calc(22*var(--u));background:#fff}
+#websections .w-rec .w-l1{margin-top:calc(48*var(--u))}
+#websections .w-rows{margin-top:calc(20*var(--u))}
+#websections .w-r{display:grid;grid-template-columns:calc(120*var(--u)) minmax(0,1fr) calc(200*var(--u)) calc(150*var(--u)) calc(230*var(--u)) calc(20*var(--u));gap:calc(24*var(--u));align-items:center;padding:calc(16*var(--u))}
+#websections .w-r:nth-child(even){background:var(--w-tint)}
+#websections .w-th{height:calc(80*var(--u))}
+#websections .w-r b{display:block;font:600 calc(17*var(--u))/1.3 "Switzer",sans-serif;color:var(--w-ink)}
+#websections .w-r small{display:block;margin-top:calc(4*var(--u));font:400 calc(14*var(--u))/1.4 "Instrument Sans",sans-serif;color:var(--w-soft)}
+#websections .w-r>span{font:500 calc(15*var(--u))/1.35 "Switzer",sans-serif;color:var(--w-ink)}
+#websections .w-r>span.v{color:var(--w-vio)}
+#websections .w-r .w-arw{width:calc(20*var(--u));height:calc(20*var(--u));color:var(--w-ink)}
+#websections .w-r.w-rh{padding-top:0;padding-bottom:calc(6*var(--u))}
+#websections .w-r.w-rh>span{font:500 calc(13*var(--u))/1 "Switzer",sans-serif;color:var(--w-faint)}
+
+/* ---------------------------------------------------------------- closing band */
+#websections .w-close{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:calc(64*var(--u));align-items:start;padding:calc(112*var(--u)) calc(22*var(--u));background:var(--w-dark)}
+#websections .w-close-a{display:flex;flex-direction:column;align-items:flex-start;gap:calc(24*var(--u))}
+#websections .w-close .w-h2{color:#fff;letter-spacing:calc(-2.2*var(--u))}
+#websections .w-close .w-lede{color:#B7C2D6}
+#websections .w-close .w-btn{height:calc(52*var(--u));padding:0 calc(26*var(--u));font-size:calc(16*var(--u));margin-top:calc(8*var(--u))}
+#websections .w-close .w-btn .w-arw{width:calc(20*var(--u));height:calc(20*var(--u))}
+#websections .w-crs{display:flex;flex-direction:column;gap:calc(28*var(--u));padding-top:calc(8*var(--u))}
+#websections .w-cr{display:grid;grid-template-columns:minmax(0,1fr) calc(20*var(--u));column-gap:calc(24*var(--u));row-gap:calc(8*var(--u))}
+#websections .w-cr i{grid-column:1/-1;font:500 calc(13*var(--u))/1.2 "Switzer",sans-serif;color:#8A96AE}
+#websections .w-cr b{font:600 calc(25*var(--u))/calc(32*var(--u)) "Switzer",sans-serif;letter-spacing:calc(-.375*var(--u));color:#fff}
+#websections .w-cr b.adr{font:500 calc(17*var(--u))/calc(26*var(--u)) "Switzer",sans-serif;letter-spacing:0;color:#D5DCE8}
+/* one arrow size in the band, 20 px, in the button and on every row; on a row it sits on the centre of the value's first
+   line: (32 - 20) / 2 = 6 for a 32 px line, (26 - 20) / 2 = 3 for the address */
+#websections .w-cr .w-arw{width:calc(20*var(--u));height:calc(20*var(--u));color:#fff;margin-top:calc(6*var(--u))}
+#websections .w-cr b.adr+.w-arw{margin-top:calc(3*var(--u))}
+
+/* ---------------------------------------------------------------- footer */
+#websections .w-foot{padding:calc(72*var(--u)) calc(22*var(--u)) calc(40*var(--u));background:var(--w-dark)}
+#websections .w-ft{display:grid;grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr));gap:calc(40*var(--u));align-items:start}
+#websections .w-fb img{height:calc(44*var(--u));width:auto}
+#websections .w-fb b{display:block;margin-top:calc(20*var(--u));font:600 calc(15*var(--u))/1.3 "Switzer",sans-serif;color:#fff}
+#websections .w-fb span{display:block;margin-top:calc(6*var(--u));font:400 calc(15*var(--u))/1.5 "Instrument Sans",sans-serif;color:#AAB6CE}
+#websections .w-fc{display:flex;flex-direction:column;align-items:flex-start;gap:calc(10*var(--u))}
+#websections .w-fc b{margin-bottom:calc(6*var(--u));font:600 calc(14*var(--u))/1.3 "Switzer",sans-serif;color:#fff}
+#websections .w-fc span{font:500 calc(15*var(--u))/1.4 "Switzer",sans-serif;color:#AAB6CE}
+#websections .w-fbd{display:flex;align-items:center;gap:calc(32*var(--u));margin-top:calc(64*var(--u))}
+#websections .w-fbd>span{font:500 calc(13*var(--u))/1.3 "Switzer",sans-serif;color:#8A96AE}
+#websections .w-fbd div{display:flex;align-items:center;gap:calc(28*var(--u))}
+#websections .w-fbd img{height:calc(56*var(--u));width:auto}
+#websections .w-foot .w-link{color:#fff;font-size:calc(14*var(--u))}
+#websections .w-foot .w-link .w-arw{width:calc(16*var(--u));height:calc(16*var(--u))}
+#websections .w-fbd .w-link{margin-left:auto}
+#websections .w-foot .w-l1{margin-top:calc(40*var(--u))}
+#websections .w-fl{display:flex;justify-content:space-between;align-items:flex-start;gap:calc(24*var(--u));margin-top:calc(20*var(--u))}
+#websections .w-fl>span{font:500 calc(13*var(--u))/1.6 "Switzer",sans-serif;color:#8A96AE}
+#websections .w-up{transform:rotate(-90deg)}
+
+/* ---------------------------------------------------------------- how it is built, beside the Do and Don't */
+#websections .ws-ft{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2fr);gap:14px;margin-top:14px;align-items:stretch}
+#websections .ws-ft .dd{margin-top:0}
+#websections .ws-spec{background:#fff;padding:20px 22px 24px}
+#websections .ws-spec h4{margin:0 0 16px;font:600 16px/1.2 "Switzer",sans-serif;color:var(--ink,#101010)}
+#websections .ws-spec dl{margin:0;display:grid;gap:10px}
+#websections .ws-spec dl div{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px}
+#websections .ws-spec dt{font:600 13px/1.55 "Switzer",sans-serif;color:var(--ink,#101010)}
+#websections .ws-spec dd{margin:0;font:400 13.5px/1.55 "Instrument Sans",sans-serif;color:var(--soft,#4A4A4A)}
+#websections .ws-spec dd b{font-weight:600;color:var(--ink,#101010)}
+@media(max-width:1250px){#websections .ws-ft{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){#websections .ws-spec dl div{grid-template-columns:minmax(0,1fr);gap:2px}}
+
+/* ---------------------------------------------------------------- the visual Do and Don't plates */
+#websections .ws-vis .be-plate{min-height:176px}
+#websections .ws-vis .be-cap b{font-weight:600}
+#websections .p-logo{display:block;height:46px;width:auto}
+#websections .p-typed{font:600 44px/1 "Switzer",sans-serif;letter-spacing:-.02em;color:#EC2027}
+#websections .p-mk{display:block;width:104px;height:104px;overflow:visible}
+#websections .p-disc{display:grid;place-items:center;width:136px;height:136px;border-radius:50%;background:#E9ECF1}
+#websections .p-disc .p-mk{width:84px;height:84px}
+#websections .p-ph{position:relative;width:100%;max-width:420px;height:170px;overflow:hidden;background:#E9ECF1}
+#websections .p-ph img{display:block;width:100%;height:100%;object-fit:cover}
+#websections .p-pan{position:absolute;left:0;top:0;padding:9px 12px;background:#fff;font:600 13px/1.2 "Switzer",sans-serif;color:#0C1220}
+#websections .p-on{position:absolute;left:16px;bottom:14px;right:16px;font:500 26px/1.05 "Switzer",sans-serif;letter-spacing:-.02em;color:#fff}
+/* the plate flags: apps.css writes "\00a0\00a0Do", and the D is read as a fifth hex digit of the escape (U+0A0D), so
+   the flags print "o" and "on't". A space ends the escape; scoped here, the shared sheet is not this section's to edit */
+#websections .be-plate:has(.cross)::before{content:"\2715\00a0\00a0 Don\2019t"}
+#websections .be-grid:has(.cross) figure:not(:has(.cross)) .be-plate::before{content:"\2713\00a0\00a0 Do"}
+
+/* 29 Sep night (Bazil, note 2: "boxes design like this should be at the edge of left upper corner with no spacing"): the panel on a
+   photograph sits flush to its top left corner, no gap, square. The Don't plate shows the old corner, inset from the edges. */
+#websections .p-pan.p-pan-bl{top:auto;left:14px;bottom:14px}

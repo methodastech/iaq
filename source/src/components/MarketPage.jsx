@@ -29,7 +29,7 @@ import Icon from './FlowIcon.jsx'
 import DetailDiagram from './DetailDiagram.jsx'
 import { jargon } from '../lib/jargon.jsx'
 import { CYCLE } from '../data/cycle.js'
-import { SCOPES, INDLBL, TYPLBL, fmtSize, pad3 } from '../data/projects.js'
+import { SCOPES, INDLBL } from '../data/projects.js'
 import { cmsProjects, live } from '../lib/cms.js'
 const PROJECTS = live(cmsProjects)
 import '../styles/pages.css'
@@ -235,31 +235,34 @@ export default function MarketPage({
       </section>}
 
       {/* ------------------------------------- 05 · proof projects */}
-      <section className="pg-sec calm">
+      {/* 26 Oct (IAQ review, NR, page 011: "Kindly help to propose another way of interlinking the project in each pages"): the
+          grid of picture cards (with the PRJ code IAQ asked to remove) is now a named list: every project one equal row, a small
+          picture, its name, client and place, its cleanroom class, the way into its record; and one link into the Projects
+          registry already filtered to this market (/projects#<ind>, the deep link scenes/projects.js reads). Equal rows (rule
+          33), the red rule at the foot on hover (31), pictures a little grey at rest (32). Same data, all seven market pages. */}
+      <section className="pg-sec calm mk-dl" aria-labelledby="mk-dl-h">
         <div className="pg-in">
-          <span className="pg-k">Proof</span>
-          <h2>Delivered in this <em>market</em></h2>
-          <p className="pg-lede">{proofLede}</p>
-
-          <div className={proof.length < 3 ? 'pg-proof few' : 'pg-proof'}>
-            {proof.map(p => (
-              <Link className="pg-pc" key={p.i} to={`/projects/${p.i}`}>
-                <div className="pg-pcv"><img src={p.img} alt="" loading="lazy" /></div>
-                <div className="pg-pc-in">
-                  <span className="pg-ref"><span>PRJ &middot; {pad3(p.i)}</span><span className="iso">{p.iso}</span></span>
-                  <h3>{p.name}</h3>
-                  <span className="pg-cl">{p.client} &middot; {p.loc}</span>
-                  <div className="pg-tags">
-                    {/* fmtSize prints "At scale" when a size is not recorded, which
-                        says nothing on a tag: only show the tag when there is a number */}
-                    {p.size > 0 && <span className="pg-tag b">{fmtSize(p)}</span>}
-                    {TYPLBL[p.type] && <span className="pg-tag">{TYPLBL[p.type]}</span>}
-                  </div>
-                </div>
-              </Link>
-            ))}
+          <div className="mk-dl-head">
+            <div>
+              <h2 id="mk-dl-h">Delivered in this <em>market</em></h2>
+              <p className="pg-lede">{proofLede}</p>
+            </div>
+            <Link className="mk-dl-all" to={'/projects#' + ind}>Open the registry, filtered to {name} <i aria-hidden="true">&rarr;</i></Link>
           </div>
-
+          {proof.length > 0 && (
+            <ul className="mk-dl-list" aria-label={name + ' projects'}>
+              {proof.map(p => (
+                <li key={p.i}>
+                  <Link className="mk-dl-row" to={`/projects/${p.i}`}>
+                    <span className="mk-dl-th"><img src={p.img} alt="" loading="lazy" decoding="async" /></span>
+                    <span className="mk-dl-rt"><b>{p.name.replace(/(\d) (m²)/g, '$1\u00a0$2')}</b><small>{p.client}, {p.loc}</small></span>
+                    <span className="mk-dl-iso">{p.iso}</span>
+                    <i aria-hidden="true">&rarr;</i>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </section>
       <ClosingBand note={`${name} market concept · Brand Method`} />

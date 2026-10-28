@@ -60,7 +60,7 @@ const POOLS = {
   ],
   Company: [
     '/assets/hero-campus.webp',
-    '/assets/about-hero-dusk.webp',
+    '/assets/hero-campus-dusk-clean.webp',   /* 26 Oct: was about-hero-dusk.webp, a plant with stacks (IAQ review, NR: no emitting plants) */
     '/assets/film-poster.webp',
     '/assets/tl-2000-china.webp',
     '/assets/about-1994-workshop.webp',

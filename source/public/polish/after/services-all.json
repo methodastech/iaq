@@ -1,0 +1,261 @@
+{
+ "url": "/services/all",
+ "slug": "services-all",
+ "title": "IAQ Group \u00b7 The six services \u00b7 Brand Method",
+ "at": "2026-10-26T11:03:25.499Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Six stages, one page",
+   "tag": "header",
+   "cls": "pg-head.pg-head-hero",
+   "top": 84,
+   "height": 444,
+   "text": "A finished ballroom cleanroom by IAQ: perforated raised floor, ceiling grid and light lines\nHOME\n\u203a\nSERVICES\nSix stages,\none page\nEach service, what it covers and what IAQ carries at that stage, in the order a facility runs through them.",
+   "img": "services-all/01-hero.webp",
+   "shownHeight": 444,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 162,
+    "pixels": 0
+   }
+  },
+  {
+   "i": 1,
+   "key": "engineering-design-consultation",
+   "heading": "Engineering Design & Consultation",
+   "tag": "header",
+   "cls": "sa-head",
+   "top": 584,
+   "height": 434,
+   "text": "01\nEngineering Design & Consultation\nConcept to detailed design across CSA and MEP, with expert advice through the development of the project.",
+   "img": "services-all/02-engineering-design-consultation.webp",
+   "shownHeight": 434,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 7.88
+   }
+  },
+  {
+   "i": 2,
+   "key": "the-stage-where-cost-and-compliance-are-decided",
+   "heading": "The stage where cost and compliance are decided",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 1019,
+   "height": 335,
+   "text": "The stage where cost and compliance are decided\nOur engineering design and consultation service turns a client\u2019s concept into a design that can be built. We produce the detailed plans, specifications and drawings for every construction element, from Civil, Structural and Architectural (CSA) to Mechanical, Electrical and Plumbing (MEP). We advise on the project as it develops.\nDecisions taken here set the budget, the programme and the classification the facility will be tested against four stages later. That is why design sits inside the same team that builds and commissions it, rather than outside it.\nThe budget, the programme and the class are set here.",
+   "img": "services-all/03-the-stage-where-cost-and-compliance-are-decided.webp",
+   "shownHeight": 335,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -98,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 3,
+   "key": "procurement",
+   "heading": "Procurement",
+   "tag": "header",
+   "cls": "sa-head",
+   "top": 1414,
+   "height": 434,
+   "text": "02\nProcurement\nTracked, organised sourcing aligned to project requirements, quality standards and budget constraints.",
+   "img": "services-all/04-procurement.webp",
+   "shownHeight": 434,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 6.64
+   }
+  },
+  {
+   "i": 4,
+   "key": "the-design-intent-held-all-the-way-to-site",
+   "heading": "The design intent, held all the way to site",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 1848,
+   "height": 305,
+   "text": "The design intent, held all the way to site\nWe run an organised system in which every procurement activity is tracked. Identifying, sourcing, purchasing and managing resources stays aligned with the project requirements, quality standards and budget.\nOn a hi-tech facility the programme is usually set by one or two long-lead items rather than the building. Tracking them from the day the design is signed off is what puts the construction stage on programme.\nLong-lead items set the programme, so they are tracked from design sign-off.",
+   "img": "services-all/05-the-design-intent-held-all-the-way-to-site.webp",
+   "shownHeight": 305,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -99,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 5,
+   "key": "construction",
+   "heading": "Construction",
+   "tag": "header",
+   "cls": "sa-head",
+   "top": 2214,
+   "height": 434,
+   "text": "03\nConstruction\nProject management, coordination and communication through a construction programme tailored to each client, on schedule and within budget.",
+   "img": "services-all/06-construction.webp",
+   "shownHeight": 434,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 4.06
+   }
+  },
+  {
+   "i": 6,
+   "key": "a-live-site-held-to-the-programme",
+   "heading": "A live site, held to the programme",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 2648,
+   "height": 364,
+   "text": "A live site, held to the programme\nIAQ provides project management, coordination and communication through a construction programme tailored to each client\u2019s needs. Successful delivery depends on strong leadership and precise execution. IAQ\u2019s experience keeps each project managed effectively, on schedule and within budget.\nThis is the stage where the contract model shows itself. Under EPCC the whole scope sits with IAQ on a single contract. Under EPCM IAQ leads the programme while the client holds the individual construction contracts. Both models are set out on the Services page.\nOne contract under EPCC, or one programme lead under EPCM.",
+   "img": "services-all/07-a-live-site-held-to-the-programme.webp",
+   "shownHeight": 364,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -99,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 7,
+   "key": "testing-commissioning",
+   "heading": "Testing & Commissioning",
+   "tag": "header",
+   "cls": "sa-head",
+   "top": 3073,
+   "height": 434,
+   "text": "04\nTesting & Commissioning\nEstablished testing and commissioning programmes that prove every facility operates as intended, at its optimum, before handover.",
+   "img": "services-all/08-testing-commissioning.webp",
+   "shownHeight": 434,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 8.51
+   }
+  },
+  {
+   "i": 8,
+   "key": "the-stage-that-turns-a-specification-into-a-numb",
+   "heading": "The stage that turns a specification into a number",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 3508,
+   "height": 335,
+   "text": "The stage that turns a specification into a number\nWe test and commission every facility to our established programme. It proves the facility operates as intended, at its best, and meets every specified requirement. Any issue or deficiency is found and put right, so the facility is fully functional before it is handed over for operation.\nA cleanroom class is proven by measurement. At this stage the classification the design promised is proven by test, and every system is tuned to specification. The certified documentation the client presents at audit is issued here.\nThe class the design promised, proven by test.",
+   "img": "services-all/09-the-stage-that-turns-a-specification-into-a-numb.webp",
+   "shownHeight": 335,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -98,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 9,
+   "key": "tool-installation",
+   "heading": "Tool Installation",
+   "tag": "header",
+   "cls": "sa-head",
+   "top": 3903,
+   "height": 434,
+   "text": "05\nTool Installation\nEach production tool is connected into the live facility and released to production.",
+   "img": "services-all/10-tool-installation.webp",
+   "shownHeight": 434,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 3.22
+   }
+  },
+  {
+   "i": 10,
+   "key": "in-four-phases",
+   "heading": "In four phases",
+   "tag": "section",
+   "cls": "pg-sec.thb",
+   "top": 4337,
+   "height": 421,
+   "text": "IN FOUR PHASES\n1\nFacilitization, before the tool arrives\nEverything upstream of the tool\u2019s connection point is built to the equipment maker\u2019s facility requirements: the sub-fab and chase, the power, the structure and the room itself.\n2\nRig-in and move-in\nThe tool is uncrated in a de-trash airlock, so cardboard and wood stay outside the cleanroom.\n3\nHook-up proper\nEach utility is tapped from the facility and connected into the tool, to its own standard.\n4\nCommissioning\nEvery connection is proven before production: leak tested, purged and dried down to specification, balanced, and tested for continuity and every safety trip.\nCarried by PCU & TTI",
+   "img": "services-all/11-in-four-phases.webp",
+   "shownHeight": 421,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": -76,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 11,
+   "key": "maintenance",
+   "heading": "Maintenance",
+   "tag": "header",
+   "cls": "sa-head",
+   "top": 4818,
+   "height": 434,
+   "text": "06\nMaintenance\nPlanned maintenance that protects asset lifespan, minimises downtime and keeps facilities compliant.",
+   "img": "services-all/12-maintenance.webp",
+   "shownHeight": 434,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 6.63
+   }
+  },
+  {
+   "i": 12,
+   "key": "the-facility-kept-at-the-standard-it-was-handed-",
+   "heading": "The facility, kept at the standard it was handed over at",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 5253,
+   "height": 335,
+   "text": "The facility, kept at the standard it was handed over at\nOur maintenance service keeps constructed assets at their optimal lifespan. Regular maintenance minimises downtime and prevents breakdowns, and keeps each facility within its safety, performance and regulatory standards.\nIt also feeds the cycle. What the maintenance team learns about how a facility behaves in service is what the design team uses on the next retrofit, expansion or upgrade. That is why the same group carries a facility for its whole life.\nWhat maintenance learns, the next retrofit uses.",
+   "img": "services-all/13-the-facility-kept-at-the-standard-it-was-handed-.webp",
+   "shownHeight": 335,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -69,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 13,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 5689,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nQuestions clients ask\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "services-all/14-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

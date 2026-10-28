@@ -1,13 +1,18 @@
 import React, { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Icon from '../components/FlowIcon.jsx'
-import { EVENT, DEADLINES, BRIEF, CONFIRMED, MESSAGE, SURFACES, PRINT_SPEC, SCREEN, COLLATERAL, TIMELINE, OWNERS, OPEN, FILES, POSTS } from '../data/booth.js'
-import { ART, PIECES, FlyerFront, FlyerBack, FlyerFrontB, FlyerBackB, RollUp, RollUpB, Post1, Post2, Post3, Post4, Ad, ADS, Signature } from '../components/booth/Art.jsx'
-import Direction from '../components/booth/Direction.jsx'
+import { EVENT, DEADLINES, BRIEF, CONFIRMED, MESSAGE, SURFACES, PRINT_SPEC, SCREEN, COLLATERAL, TIMELINE, OWNERS, OPEN, FILES, POSTS, DIRECTIONS } from '../data/booth.js'
+import { ADS } from '../components/booth/Art.jsx'
+import { DIRS, LIVE, REJECTED, DEFAULT_DIR, SETS, OPT, pieceId, statusOf } from '../components/booth/sets.js'
+import { PRINT_SETS, PIECES_PRINT } from '../components/booth/Print.jsx'
+import { Directions, DirStatus } from '../components/booth/Direction.jsx'
 import { useBrandFonts } from '../lib/brandFonts.js'
 import '../styles/booth.css'
+import CodexDownload, { CodexMini, PartDownload } from '../components/booth/CodexDownload.jsx'   /* 30 Sep: the codex and print files downloads, styles/booth-codex.css */
 
 const BoothModel = lazy(() => import('../components/booth/BoothModel.jsx'))
+/* 30 Sep: the print pieces in 3D, a folded sheet and a card (loaded only when the Print part comes near) */
+const PrintViewer = lazy(() => import('../components/booth/PrintViewer.jsx'))
 
 /* ============================================================================
    Portal · Booth (22 Sep 2026). SEMICON Europa 2026, designed: the plan, the design direction, the
@@ -18,14 +23,21 @@ const BoothModel = lazy(() => import('../components/booth/BoothModel.jsx'))
    Content: data/booth.js. Artwork: components/booth/Art.jsx (mm-true vector). 3D: BoothModel.jsx.
    Downloads: public/booth/png (tools/render-booth-art-0922.mjs) and public/booth/print
    (tools/export-booth-print-0922.mjs).
+   29 Sep (Bazil: "complete the exhibition with 2 choices of direction"): every piece in two directions, shown side by
+   side and labelled: A, White cleanroom (Art.jsx) and B, Navy statement (ArtB.jsx). The two columns are in the Plan
+   (Directions, from Direction.jsx); the 3D stand switches between them.
+   30 Sep (Bazil: "make a 4th variation as well", "make a 5th version as well, all red on the back wall"): five directions,
+   A to E (components/booth/sets.js). Side by side stopped working, so the page has ONE chooser (in the head, mirrored in the
+   sticky bar) that switches every piece, the 3D stand and the file list; ?dir=C lands on a direction; the reader's last
+   choice is remembered in this browser. Compare in the Plan shows the five stands at one scale.
    ============================================================================ */
 
 /* the seven parts, in the order the work is read: [id, name, icon, what it holds, its sub-sections] */
 const VIEWS = [
-  ['plan', 'Plan', 'calendar', 'What the stand has to do, what IAQ has confirmed, the dates, and the answers still needed.', [['brief', 'Brief and headline'], ['timeline', 'Dates and owners'], ['questions', 'Open questions']]],
-  ['stand', 'Stand', 'cube', 'IAQ’s corner in 3D, then each wall and the counter at its real size, ready for berrylife.', [['corner3d', 'The corner in 3D'], ['walls', 'Walls and counter to scale']]],
-  ['print', 'Print', 'file', 'The A5 leaflet in two design sets, the rest of the take-away, and the roll-ups for after Munich.', [['leaflet', 'Leaflet, two sets'], ['takeaway', 'Take-away'], ['rollups', 'Roll-ups']]],
-  ['digital', 'Screen and digital', 'play', 'The booth screen running live, then the LinkedIn posts, the web ads and the email signature.', [['screen', 'Booth screen'], ['posts', 'LinkedIn posts'], ['ads', 'Web ads'], ['sig', 'Email signature']]],
+  ['plan', 'Plan', 'calendar', 'What the stand has to do, the five design directions compared, what IAQ has confirmed, the dates, and the answers still needed.', [['brief', 'Brief and headline'], ['directions', 'Five directions'], ['timeline', 'Dates and owners'], ['questions', 'Open questions']]],
+  ['stand', 'Stand', 'cube', 'IAQ’s corner in 3D, then each wall and the counter at its real size, in the direction chosen above, ready for berrylife.', [['corner3d', 'The corner in 3D'], ['walls', 'Walls and counter to scale']]],
+  ['print', 'Print', 'file', 'The exhibition print: the A5 leaflet and the trifold in three designs each, in 3D and flat, then the leaflet and the roll-up in the chosen direction, and the rest of the take-away.', [['leaflet2', 'Leaflet, three designs'], ['trifold', 'Trifold, three designs'], ['leaflet', 'Leaflet in the direction'], ['takeaway', 'Take-away'], ['rollups', 'Roll-up']]],
+  ['digital', 'Screen and digital', 'play', 'The booth screen running live, then the LinkedIn posts, the web ads and the email signature in the chosen direction.', [['screen', 'Booth screen'], ['posts', 'LinkedIn posts'], ['ads', 'Web ads'], ['sig', 'Email signature']]],
   ['website', 'Website', 'globe', 'The booth page that the code on every piece opens.', []],
   ['files', 'Files', 'folder', 'Every piece as PNG and print PDF, and what IAQ and berrylife sent.', []],
 ]
@@ -42,6 +54,15 @@ export default function PortalBooth() {
   const land = ALIAS[view] || view
   const [on, setOn] = useState(VIEWS.find(x => x[0] === land) ? land : 'plan')
   const [big, setBig] = useState(null)
+  /* the one direction every piece on the page shows: ?dir= wins, then this browser's last choice, then A */
+  const [dir, setDirState] = useState(() => {
+    const q = typeof window !== 'undefined' && (window.location.search.match(/[?&]dir=([a-f][23]?)/i) || [])[1]
+    if (q && DIRS.includes(q.toUpperCase())) return q.toUpperCase()
+    /* 30 Sep: C is the preferred direction and opens the page; the key changed so earlier visits do not override it */
+    try { const v = localStorage.getItem('iaq.booth.dir2'); if (DIRS.includes(v)) return v } catch (e) { /* storage off */ }
+    return DEFAULT_DIR
+  })
+  const setDir = d => { setDirState(d); try { localStorage.setItem('iaq.booth.dir2', d) } catch (e) { /* storage off */ } }
   const tabs = useRef(null)
   useEffect(() => { document.title = 'IAQ Group · Portal · Booth' }, [])
   /* land on the section the address names, once the page has laid out */
@@ -112,14 +133,16 @@ export default function PortalBooth() {
       <header className="bt-head">
         <div className="bt-head-in">
           <div>
-            <span className="bt-k">SEMICON Europa 2026 · booth, for IAQ approval</span>
+            <span className="bt-k">SEMICON Europa 2026, the booth for IAQ approval</span>
             <h1>The stand in Munich, <em>designed.</em></h1>
-            <p>Every piece for the show, finished and to scale: the three walls and the counter, the stand in 3D, the flyer and roll-ups, the posts, ads and signature, the screen loop and the booth page. The design direction says why each looks the way it does.</p>
+            <p>Every piece for the show, finished and to scale, in five design directions for IAQ to choose between: the three walls and the counter, the stand in 3D, the leaflet and roll-up, the posts, ads and signature. The screen loop and the booth page run live.</p>
             <div className="bt-cta">
               <a className="bt-btn" href="#bt-digital" onClick={e => { e.preventDefault(); go('digital') }}><Icon name="play" />See the booth screen</a>
               <a className="bt-btn ghost" href="#bt-stand" onClick={e => { e.preventDefault(); go('stand') }}><Icon name="cube" />The stand in 3D</a>
             </div>
+            <CodexDownload />
           </div>
+          <DirChooser dir={dir} setDir={setDir} />
           <div className="bt-dls">
             {DEADLINES.map(d => {
               const n = daysTo(d.d)
@@ -141,18 +164,21 @@ export default function PortalBooth() {
               <div>
                 <h2>{name}</h2>
                 <p>{what}</p>
+                <PartDownload />
               </div>
               {subs.length > 0 && <nav className="bt-part-toc" aria-label={name}>{subs.map(([sid, l]) => <a key={sid} href={'#bt-s-' + sid} onClick={e => { e.preventDefault(); go('bt-s-' + sid) }}>{l}<Icon name="arrow" /></a>)}</nav>}
             </header>
-            {id === 'plan' && <Plan />}
-            {id === 'stand' && <Stand setBig={setBig} />}
-            {id === 'print' && <Print />}
-            {id === 'digital' && <><Screen /><Digital /></>}
+            {id === 'plan' && <Plan dir={dir} setDir={setDir} />}
+            {id === 'stand' && <Stand dir={dir} setDir={setDir} setBig={setBig} />}
+            {id === 'print' && <Print dir={dir} />}
+            {id === 'digital' && <><Screen /><Digital dir={dir} /></>}
             {id === 'website' && <Website />}
-            {id === 'files' && <Files setBig={setBig} />}
+            {id === 'files' && <Files dir={dir} setBig={setBig} />}
           </section>
         ))}
       </div>
+
+      <DirMini dir={dir} setDir={setDir} />
 
       {big && (
         <div className="bt-lb" role="dialog" aria-label="Full size" onClick={() => setBig(null)}>
@@ -174,6 +200,47 @@ function Sec({ id, title, lede, children }) {
     </div>
   )
 }
+/* 30 Sep: the one chooser. The live directions as tabs with their names, C tagged preferred; the rejected pair after them,
+   smaller, still viewable. The head carries it large; a fixed pill mirrors it once the head has scrolled away */
+function DirChooser({ dir, setDir }) {
+  const tab = d => (
+    <button type="button" key={d} className={(d === dir ? 'on' : '') + (statusOf(d) === 'rejected' ? ' rej' : '')} aria-pressed={d === dir} onClick={() => setDir(d)}>
+      <i className={'bt-dsw bt-dsw-' + d.toLowerCase()} aria-hidden="true" /><b>Direction {d}</b><span>{DIRECTIONS[d].tab || DIRECTIONS[d].name}</span><DirStatus d={d} />
+    </button>
+  )
+  return (
+    <div className="bt-dirs" role="group" aria-label="Design direction for every piece on this page">
+      <span className="bt-dirs-k">Show every piece in</span>
+      <div className="bt-dirs-t">{LIVE.map(tab)}</div>
+      <div className="bt-dirs-r"><span className="bt-dirs-k">Rejected</span><div>{REJECTED.map(tab)}</div></div>
+    </div>
+  )
+}
+/* the head's chooser mirrored small, fixed at the foot of the window once the head has scrolled away, so the direction can
+   be switched from any piece (inside the portal the booth's own tab bar is hidden, so it cannot live there) */
+function DirMini({ dir, setDir }) {
+  const [show, setShow] = useState(false)
+  useEffect(() => {
+    let raf = 0
+    const check = () => { raf = 0; const el = document.querySelector('.bt-dirs'); setShow(!!el && el.getBoundingClientRect().bottom < 0) }
+    const soon = () => { if (!raf) raf = requestAnimationFrame(check) }
+    check(); window.addEventListener('scroll', soon, { passive: true }); window.addEventListener('resize', soon)
+    const t = setTimeout(check, 1200)
+    return () => { window.removeEventListener('scroll', soon); window.removeEventListener('resize', soon); cancelAnimationFrame(raf); clearTimeout(t) }
+  }, [])
+  return (
+    <div className={'bt-dmini' + (show ? ' show' : '')} role="group" aria-label="Design direction" aria-hidden={!show}>
+      <CodexMini tabIndex={show ? 0 : -1} />
+      <small>Direction {dir}, {DIRECTIONS[dir].tab || DIRECTIONS[dir].name}</small>
+      {DIRS.map(d => <button type="button" key={d} tabIndex={show ? 0 : -1} className={(d === dir ? 'on' : '') + (statusOf(d) === 'rejected' ? ' rej' : '')} aria-pressed={d === dir} title={`Direction ${d}, ${DIRECTIONS[d].name}${statusOf(d) === 'rejected' ? ', rejected' : ''}`} onClick={() => setDir(d)}>{d}</button>)}
+    </div>
+  )
+}
+/* the directions: the label over a piece or a row, "Direction A, White cleanroom", and its one line */
+function DirTag({ d, line = true }) {
+  const x = DIRECTIONS[d]
+  return <div className={'bt-dir bt-dir-' + d.toLowerCase()}><b>Direction {d}, {x.name} <DirStatus d={d} /></b>{line && <span>{x.line}</span>}</div>
+}
 function Dl({ id, print }) {
   return (
     <span className="bt-dlk">
@@ -184,10 +251,10 @@ function Dl({ id, print }) {
 }
 
 /* ---------------------------------------------------------------- plan */
-function Plan() {
+function Plan({ dir, setDir }) {
   return (
     <>
-      <Sec id="brief" title={<>What the stand <em>has to do.</em></>} lede={`${EVENT.dates} · ${EVENT.where} · ${EVENT.stand}`}>
+      <Sec id="brief" title={<>What the stand <em>has to do.</em></>} lede={`${EVENT.dates}, ${EVENT.where}, ${EVENT.stand}`}>
         <ul className="bt-brief">{BRIEF.map(b => <li key={b.k}><b>{b.k}</b><span>{b.t}</span></li>)}</ul>
         <h3 className="bt-sub">Confirmed by IAQ</h3>
         <ul className="bt-conf">{CONFIRMED.map(c => <li key={c.k}><Icon name="check" /><div><b>{c.k}</b><span>{c.t}</span><small>{c.who}</small></div></li>)}</ul>
@@ -204,12 +271,15 @@ function Plan() {
           </div>
         </div>
       </Sec>
+      <Sec id="directions" title={<>Five live directions, <em>one choice.</em></>} lede="Every piece below is finished in each. C is our preferred one after the 30 Sep review; B and D were rejected and stay viewable. Compare them here at one scale; the chooser at the top switches every piece on the page. Every backdrop leads with the cleanroom, and the screen hangs at 1900 mm in all of them.">
+        <Directions d={dir} setD={setDir} />
+      </Sec>
       <Sec id="timeline" title={<>Eight weeks, <em>three fixed dates.</em></>} lede="The fixed dates come from IAQ. The steps between them are our proposal, with one review round for each piece.">
         <Timeline />
         <h3 className="bt-sub">Who does what</h3>
         <table className="bt-tbl bt-owners"><tbody>{OWNERS.map(([k, val]) => <tr key={k}><th>{k}</th><td>{val}</td></tr>)}</tbody></table>
       </Sec>
-      <Sec id="questions" title={<>Ten answers <em>we need from IAQ.</em></>} lede="Each one says what we did in the meantime, so nothing waits on the answer.">
+      <Sec id="questions" title={<>Eleven answers <em>we need from IAQ.</em></>} lede="Each one says what we did in the meantime, so nothing waits on the answer.">
         <ol className="bt-qs">{OPEN.map((q, i) => <li key={q.q}><i>{i + 1}</i><div><b>{q.q}</b><span>{q.did}</span></div><small>{q.who}</small></li>)}</ol>
       </Sec>
     </>
@@ -238,23 +308,22 @@ function Timeline() {
 }
 
 /* ---------------------------------------------------------------- stand */
-function Stand({ setBig }) {
-  const [opt, setOpt] = useState('w2')
+/* the 3D stand in each direction (BoothModel option) */
+function Stand({ dir, setDir, setBig }) {
   const [zones, setZones] = useState(false)
   const [bleed, setBleed] = useState(false)
-  const list = SURFACES.flatMap(s => s.id === 'w2' ? [s, { ...s, id: 'w2b', k: 'Side wall · option B, every layer', content: 'The headline, IAQ’s exploded fab with its four layers named, and the plinth. For a stand that leads with how IAQ builds rather than where it is.' }] : [s])
+  const set = SETS[dir]
   return (
     <>
-      <Sec id="corner3d" title={<>The IAQ corner, <em>in 3D.</em></>} lede="Built to berrylife’s measurements, with the print artwork on the walls. The screen cycles the loop’s six chapters.">
+      <Sec id="corner3d" title={<>The IAQ corner, <em>in 3D.</em></>} lede="Built to berrylife’s measurements, with the print artwork of the chosen direction on the walls and the screen raised to 1900 mm. The screen cycles the loop’s six chapters.">
         <div className="bt-3d">
-          <Suspense fallback={<div className="bm3 bm3-load" />}><BoothModel option={opt} /></Suspense>
+          <Suspense fallback={<div className="bm3 bm3-load" />}><BoothModel option={OPT[dir]} /></Suspense>
           <div className="bt-3d-side">
-            <h3>The side wall</h3>
+            <h3>On the walls</h3>
             <div className="bt-seg">
-              <button type="button" className={opt === 'w2' ? 'on' : undefined} onClick={() => setOpt('w2')}><b>A · Global presence</b><span>As in berrylife’s concept: the map, Dresden in red, the four proof numbers.</span></button>
-              <button type="button" className={opt === 'w2b' ? 'on' : undefined} onClick={() => setOpt('w2b')}><b>B · Every layer</b><span>IAQ’s exploded fab, its four layers named.</span></button>
+              {DIRS.map(d => <button type="button" key={d} className={(dir === d ? 'on' : '') + (statusOf(d) === 'rejected' ? ' rej' : '')} aria-pressed={dir === d} onClick={() => setDir(d)}><b>Direction {d}, {DIRECTIONS[d].name} <DirStatus d={d} /></b><span>{DIRECTIONS[d].line}</span></button>)}
             </div>
-            <p className="bt-note">The back wall, the aisle column and the counter are one design each. IAQ’s part is this corner only, and the outside and back of the walls are not printed (both confirmed by Nabilah, 22 Sep). Green Excel’s side is left plain: it is theirs to design.</p>
+            <p className="bt-note">IAQ’s part is this corner only, and the outside and back of the walls are not printed (both confirmed by Nabilah, 22 Sep). Green Excel’s side is left plain: it is theirs to design.</p>
           </div>
         </div>
         <div className="bt-renders">
@@ -264,27 +333,33 @@ function Stand({ setBig }) {
         </div>
         <p className="bt-note">berrylife’s renders of the stand as it stands today, for comparison.</p>
       </Sec>
-      <Sec id="walls" title={<>The walls and the counter, <em>to scale.</em></>} lede="Each drawing is its real size in millimetres, all vector, so it prints at 1:1. Due to berrylife on 10 October.">
+      <Sec id="walls" title={<>The walls and the counter, <em>to scale.</em></>} lede="Each drawing is its real size in millimetres, all vector, so it prints at 1:1. Due to berrylife on 10 October, in the direction IAQ chooses.">
         <div className="bt-tools">
+          <DirTag d={dir} />
           <label><input type="checkbox" checked={zones} onChange={e => setZones(e.target.checked)} /> Show the height zones</label>
           <label><input type="checkbox" checked={bleed} onChange={e => setBleed(e.target.checked)} /> Show 10 mm bleed</label>
         </div>
-        <Lineup zones={zones} bleed={bleed} />
-        <div className="bt-srfs">{list.map(s => {
-          const A = ART[s.id]
+        <Lineup dir={dir} zones={zones} bleed={bleed} />
+        <div className="bt-rows">{SURFACES.map(s => {
+          const sf = set.surf[s.id], A = set.walls[s.id]
           return (
-            <article className={'bt-srf bt-srf-' + s.id} key={s.id}>
-              <div className="bt-srf-art"><A zones={zones ? s.zones : null} bleed={bleed} /></div>
-              <div className="bt-srf-copy">
-                <h3>{s.k}</h3>
+            <article className={'bt-row bt-row1 bt-row-' + s.id} key={s.id}>
+              <div className="bt-row-copy">
+                <h3>{s.k.split(' · ')[0]}</h3>
                 <p>{s.where}</p>
                 <dl>
                   <div><dt>Size</dt><dd>{s.w} × {s.h} mm{s.visible ? `, ${s.visible} mm visible` : ''}</dd></div>
-                  <div><dt>On it</dt><dd>{s.content}</dd></div>
-                  <div><dt>Print</dt><dd>Vector PDF at 1:1 with 10 mm bleed. Any photograph would need {s.pxW.toLocaleString()} × {s.pxH.toLocaleString()} px at {s.ppi} ppi: none is used.</dd></div>
+                  <div><dt>Print</dt><dd>Vector PDF at 1:1 with 10 mm bleed. A photograph on a wall needs {s.pxW.toLocaleString()} × {s.pxH.toLocaleString()} px at {s.ppi} ppi for the full surface: the camera original, never the web copy.</dd></div>
                 </dl>
-                <Dl id={s.id} print />
               </div>
+              <figure className="bt-ab-fig">
+                <div className="bt-ab-art"><A zones={zones ? sf.zones : null} bleed={bleed} /></div>
+                <figcaption>
+                  <b>Direction {dir}, {DIRECTIONS[dir].name} <DirStatus d={dir} /></b>
+                  <span>{sf.content}</span>
+                  <Dl id={sf.id} print />
+                </figcaption>
+              </figure>
             </article>
           )
         })}</div>
@@ -296,15 +371,15 @@ function Stand({ setBig }) {
     </>
   )
 }
-function Lineup({ zones, bleed }) {
-  const s = 0.1
+function Lineup({ dir, zones, bleed }) {
+  const s = 0.1, set = SETS[dir]
   return (
     <div className="bt-lineup">
       {SURFACES.map(x => {
-        const A = ART[x.id]
+        const A = set.walls[x.id]
         return (
           <figure key={x.id} style={{ '--w': x.w * s, '--h': x.h * s }}>
-            <div className="bt-lu-box"><A zones={zones ? x.zones : null} bleed={bleed} /></div>
+            <div className="bt-lu-box"><A zones={zones ? set.surf[x.id].zones : null} bleed={bleed} /></div>
             <figcaption>{x.k.split(' · ')[0]}<small>{x.w} × {x.h}</small></figcaption>
           </figure>
         )
@@ -318,33 +393,60 @@ function Lineup({ zones, bleed }) {
 }
 
 /* ---------------------------------------------------------------- print */
-const SETS = [
-  { k: 'Set A', h: 'Controlled environments, built to class.', t: 'The recommended headline. Front: what IAQ does, the three units, the exploded fab, the show in the navy crown. Back: the six services, the record, Dresden and headquarters, the code.', F: FlyerFront, B: FlyerBack, ids: ['flyer1', 'flyer2'] },
-  { k: 'Set B', h: 'The cleanroom, and the whole fab around it.', t: 'Sits beside Green Excel’s cleanroom products and says what IAQ adds. Front: the fab’s four layers named, the show and the code in the navy foot. Back: the three units, the record, Dresden and headquarters, the code to book a meeting.', F: FlyerFrontB, B: FlyerBackB, ids: ['flyerB1', 'flyerB2'] },
-]
-function Print() {
+/* 30 Sep (Bazil: "2 design A5 variant", "and 2 more trifold variant", "for the exhibition print"): the take-away in two
+   designs each, flat and straight, both sides, independent of the chooser (components/booth/Print.jsx) */
+/* mounts its children only once the reader comes within a screen of it, so three.js loads only for the Print part */
+function Near({ children }) {
+  const ref = useRef(null), [on, setOn] = useState(false)
+  useEffect(() => {
+    const el = ref.current; if (!el || on) return
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { setOn(true); io.disconnect() } }, { rootMargin: '600px 0px' })
+    io.observe(el); return () => io.disconnect()
+  }, [on])
+  return <div ref={ref}>{on ? children : <div className="pv pv-load" />}</div>
+}
+function PrintDesigns({ k }) {
+  return (
+    <div className={'bt-pd bt-pd-' + k.toLowerCase()}>
+      {PRINT_SETS.filter(p => p.k === k).map(p => (
+        <div className="bt-pd-row" key={p.n}>
+          <div className="bt-pd-h"><b>Design {p.n}</b><span>{p.t}</span></div>
+          <figure><p.F /><figcaption>{k === 'Trifold' ? 'Outside, flat: inside flap, back, front cover' : 'Front'} <Dl id={p.ids[0]} print /></figcaption></figure>
+          <figure><p.B /><figcaption>{k === 'Trifold' ? 'Inside, flat: left, centre, right' : 'Back'} <Dl id={p.ids[1]} print /></figcaption></figure>
+        </div>
+      ))}
+    </div>
+  )
+}
+function Print({ dir }) {
+  const set = SETS[dir], f = set.flyer, R = set.roll.C
   return (
     <>
-      <Sec id="leaflet" title={<>The leaflet, <em>A5, two design sets.</em></>} lede="Handed out at the counter: 148 × 210 mm, front and back, 3 mm bleed, 350 gsm silk suggested. IAQ picks one set; the code on both opens the booth page.">
-        {SETS.map(set => (
-          <div className="bt-set" key={set.k}>
-            <div className="bt-set-h">
-              <span className="bt-chip">{set.k}</span>
-              <b>{set.h}</b>
-              <p>{set.t}</p>
-            </div>
-            <figure><set.F /><figcaption>Front <Dl id={set.ids[0]} print /></figcaption></figure>
-            <figure><set.B /><figcaption>Back <Dl id={set.ids[1]} print /></figcaption></figure>
+      <Sec id="leaflet2" title={<>The leaflet, <em>three designs.</em></>} lede="A5, 148 × 210 mm, both sides, 3 mm bleed, 250 gsm uncoated suggested. Cleanroom construction first, the three units, the six services as a loop, the figures, the booth, the contacts and the code. Personal contact details follow from IAQ.">
+        <Near><Suspense fallback={<div className="pv pv-load" />}><PrintViewer kind="leaflet" /></Suspense></Near>
+        <PrintDesigns k="Leaflet" />
+      </Sec>
+      <Sec id="trifold" title={<>The trifold, <em>three designs.</em></>} lede="A4 roll fold, 297 × 210 mm flat, folded to 100 × 210: outside the inside flap (97), the back and the front cover; inside the three units, the cleanroom layer by layer and the six services as a loop. The folds are marked only in the print file’s zones, never on the art.">
+        <Near><Suspense fallback={<div className="pv pv-load" />}><PrintViewer kind="trifold" /></Suspense></Near>
+        <PrintDesigns k="Trifold" />
+      </Sec>
+      <Sec id="leaflet" title={<>The leaflet, <em>in the chosen direction.</em></>} lede="Each direction’s own A5 leaflet: 148 × 210 mm, 3 mm bleed. The code on both opens the booth page.">
+        <div className="bt-set">
+          <div className="bt-set-h">
+            <DirTag d={dir} />
+            <b>{f.h}</b>
+            <p>{f.t}</p>
           </div>
-        ))}
+          <figure><f.F /><figcaption>Front <Dl id={f.ids[0]} print /></figcaption></figure>
+          <figure><f.B /><figcaption>Back <Dl id={f.ids[1]} print /></figcaption></figure>
+        </div>
       </Sec>
       <Sec id="takeaway" title="The rest of the take-away">
         <div className="bt-coll">{COLLATERAL.filter(c => !['flyer', 'rollup'].includes(c.id)).map(c => <div key={c.id} className="bt-ci"><div className="bt-ci-h"><b>{c.k}</b><span className="bt-chip">{c.status}</span></div><small>{c.size}</small><p>{c.use}</p><span className="bt-ci-q">{c.qty}</span></div>)}</div>
       </Sec>
-      <Sec id="rollups" title={<>Two roll-ups, <em>for after Munich.</em></>} lede="Not needed on this stand: IAQ’s corner has its walls. For the office, site entrances and every smaller show after Munich. Both follow the brand book’s roll-up designs, 850 × 2000 mm.">
-        <div className="bt-print2 tall">
-          <figure><RollUp /><figcaption>A · Navy crown, white field, red foot (Brand OS design 1) <Dl id="rollA" print /></figcaption></figure>
-          <figure><RollUpB /><figcaption>B · Full navy, one statement (Brand OS design 2) <Dl id="rollB" print /></figcaption></figure>
+      <Sec id="rollups" title={<>The roll-up, <em>for after Munich.</em></>} lede="Not needed on this stand: IAQ’s corner has its walls. For the office, site entrances and every smaller show after Munich, 850 × 2000 mm.">
+        <div className="bt-print2 tall bt-print1">
+          <figure><R /><figcaption><DirTag d={dir} line={false} /><span className="bt-cap">{set.roll.cap}</span><Dl id={set.roll.id} print /></figcaption></figure>
         </div>
       </Sec>
     </>
@@ -352,30 +454,39 @@ function Print() {
 }
 
 /* ---------------------------------------------------------------- digital */
-function Digital() {
-  const P = { post1: Post1, post2: Post2, post3: Post3, post4: Post4 }
+function Digital({ dir }) {
+  const set = SETS[dir], Ad = set.Ad, Sig = set.Sig
   return (
     <>
-      <Sec id="posts" title={<>Four LinkedIn posts, <em>one campaign.</em></>} lede="1080 × 1350, the portrait size LinkedIn shows largest in the feed. Posts 3 and 4 carry a picture of the stand: the 3D view until the real photographs exist.">
-        <div className="bt-posts">
-          {POSTS.map(p => {
-            const A = P[p.id]
-            return (
-              <figure key={p.id}>
-                <A />
-                <figcaption><b>{p.when}</b><span>{p.caption}</span><Dl id={p.id} /></figcaption>
-              </figure>
-            )
-          })}
+      <Sec id="posts" title={<>Four LinkedIn posts, <em>one campaign.</em></>} lede="1080 × 1350, the portrait size LinkedIn shows largest in the feed. Posts 3 and 4 carry a picture of the stand: the 3D view, in the same direction, until the real photographs exist.">
+        <div className="bt-dirrow">
+          <DirTag d={dir} />
+          <div className="bt-posts">
+            {POSTS.map(p => {
+              const P = set.posts[p.id]
+              return (
+                <figure key={p.id}>
+                  <P />
+                  <figcaption><b>{p.when}</b><span>{p.caption}</span><Dl id={pieceId(dir, p.id)} /></figcaption>
+                </figure>
+              )
+            })}
+          </div>
+          <p className="bt-note">The captions to post are the same in every direction.</p>
         </div>
       </Sec>
-      <Sec id="ads" title={<>Web ads, <em>in four standard sizes.</em></>} lede="The brand book’s banner grammar: navy band, white field, one message, one red call to action. For the organiser’s ad system or any magazine site.">
-        <div className="bt-ads">
-          {ADS.map(s => <figure key={s.join('x')} style={{ '--w': s[0], '--h': s[1] }}><Ad size={s} /><figcaption>{s[0]} × {s[1]} <Dl id={'ad' + s.join('x')} /></figcaption></figure>)}
+      <Sec id="ads" title={<>Web ads, <em>in four standard sizes.</em></>} lede="One message and one red call to action, for the organiser’s ad system or any magazine site.">
+        <div className="bt-dirrow">
+          <DirTag d={dir} />
+          <div className="bt-ads">
+            {ADS.map(s => <figure key={s.join('x')} style={{ '--w': s[0], '--h': s[1] }}><Ad size={s} /><figcaption>{s[0]} × {s[1]} <Dl id={pieceId(dir, 'ad' + s.join('x'))} /></figcaption></figure>)}
+          </div>
         </div>
       </Sec>
       <Sec id="sig" title={<>The email signature, <em>600 × 150.</em></>} lede="On every IAQ email from 26 October to 13 November.">
-        <figure className="bt-sig"><Signature /><figcaption><Dl id="sig" /></figcaption></figure>
+        <div className="bt-sigs bt-sigs1">
+          <figure className="bt-sig"><Sig /><figcaption><DirTag d={dir} line={false} /><Dl id={pieceId(dir, 'sig')} /></figcaption></figure>
+        </div>
       </Sec>
     </>
   )
@@ -425,19 +536,25 @@ function Website() {
 }
 
 /* ---------------------------------------------------------------- files */
-function Files({ setBig }) {
-  const made = Object.entries(PIECES).map(([id, p]) => ({ id, ...p }))
+function Files({ dir, setBig }) {
+  const made = Object.entries(SETS[dir].pieces).map(([id, p]) => ({ id, ...p }))
   return (
     <>
-      <Sec title={<>Every piece, <em>ready to send.</em></>} lede="PNG for screens and review. Print PDFs are vector at 1:1 with bleed, in RGB: the CMYK FOGRA39 conversion is the last step, after IAQ signs off.">
+      <Sec title={<>Every piece, <em>ready to send.</em></>} lede={`Direction ${dir}, ${DIRECTIONS[dir].name}: the chooser at the top switches this list. PNG for screens and review. Print PDFs are vector at 1:1 with bleed, in RGB: the CMYK FOGRA39 conversion is the last step, after IAQ signs off.`}>
         <table className="bt-tbl bt-files-t">
           <thead><tr><th>Piece</th><th>Size</th><th>Files</th></tr></thead>
           <tbody>{made.map(p => <tr key={p.id}><th>{p.k}</th><td>{p.w} × {p.h} {p.unit}</td><td><Dl id={p.id} print={p.print} /></td></tr>)}</tbody>
         </table>
       </Sec>
+      <Sec title={<>The exhibition print, <em>three designs each.</em></>} lede="The leaflet and the trifold, whichever direction is chosen above.">
+        <table className="bt-tbl bt-files-t">
+          <thead><tr><th>Piece</th><th>Size</th><th>Files</th></tr></thead>
+          <tbody>{Object.entries(PIECES_PRINT).map(([id, p]) => <tr key={id}><th>{p.k}</th><td>{p.w} × {p.h} {p.unit}</td><td><Dl id={id} print /></td></tr>)}</tbody>
+        </table>
+      </Sec>
       <Sec title="What IAQ and berrylife sent" lede="As received on 22 September.">
         <div className="bt-files">
-          {FILES.flatMap(f => (f.n ? Array.from({ length: f.n }, (_, i) => ({ ...f, k: `${f.k} · ${i + 1}`, href: f.f(i + 1) })) : [{ ...f, href: f.f() }])).map(f => (
+          {FILES.flatMap(f => (f.n ? Array.from({ length: f.n }, (_, i) => ({ ...f, k: `${f.k}, sheet ${i + 1}`, href: f.f(i + 1) })) : [{ ...f, href: f.f() }])).map(f => (
             f.pdf
               ? <a key={f.k} className="bt-file pdf" href={f.href} target="_blank" rel="noreferrer"><Icon name="file" /><b>{f.k}</b><small>{f.src}</small></a>
               : <button key={f.k} type="button" className="bt-file" onClick={() => setBig(f.href)}><img src={f.href} alt="" loading="lazy" /><b>{f.k}</b><small>{f.src}</small></button>

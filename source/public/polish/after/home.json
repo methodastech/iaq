@@ -1,0 +1,117 @@
+{
+ "url": "/",
+ "slug": "home",
+ "title": "IAQ Group \u00b7 Total Facility Solutions \u00b7 Brand Method",
+ "at": "2026-10-27T01:59:37.341Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Engineering Precision Delivering Excellence",
+   "tag": "header",
+   "cls": "hero.dark-band",
+   "top": 0,
+   "height": 900,
+   "text": "Engineering Precision\nDelivering Excellence\nIAQ Group delivers integrated engineering and total facility solutions for complex industrial and mission-critical environments.\nMore about us\nTool hook-up",
+   "img": "home/01-hero.webp",
+   "shownHeight": 900,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 0,
+    "pixels": 0
+   }
+  },
+  {
+   "i": 1,
+   "key": "where-the-industry-builds-iaq-is-there",
+   "heading": "Where the industry builds, IAQ is there",
+   "tag": "section",
+   "cls": "glance.gr",
+   "top": 900,
+   "height": 791,
+   "text": "Where the industry builds,\nIAQ is there\nSeven offices sit in the world\u2019s hi-tech clusters, from Penang to Dresden to Phoenix. 530 people, 85 percent of them engineers, have delivered 235 facilities since 1995.\n530+\nEmployees\n7\nGlobal offices\n31\nYears of experience\n85%\nEngineering workforce\n20\nTons of carbon emission reduced annually\n235+\nProjects completed\nMalaysia\nShah Alam \u00b7 HQ\nSingapore\nSingapore\nGermany\nDresden\nIndia\nAhmedabad\nSweden\nSkellefte\u00e5\nUSA\nPhoenix\nIreland\nDublin",
+   "img": "home/02-where-the-industry-builds-iaq-is-there.webp",
+   "shownHeight": 791,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 0,
+    "pixels": 9.95
+   }
+  },
+  {
+   "i": 2,
+   "key": "the-delivery-cycle",
+   "heading": "The delivery cycle",
+   "tag": "section",
+   "cls": "sec.lpx-band",
+   "top": 1690,
+   "height": 908,
+   "text": "The delivery cycle\nSix stages, one accountable team. Each stage hands to the next.\n1\nDESIGN\n2\nPROCURE\n3\nCONSTRUCT\n4\nCOMMISSION\n5\nTOOL INSTALLATION\n6\nMAINTAIN\n1\nEngineering Design & Consultation\nWhere the facility is decided\nConcept to detailed design across CSA and MEP, with expert advice through the development of the project.\nSee Engineering Design & Consultation\nNext stage",
+   "img": "home/03-the-delivery-cycle.webp",
+   "shownHeight": 908,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -5,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 3,
+   "key": "piling",
+   "heading": "Piling",
+   "tag": "section",
+   "cls": "b3d",
+   "top": 2599,
+   "height": 7200,
+   "text": "Environment\nClassic\n+\nZoom in\n\u2212\nZoom out\n\u21ba\nReset view\nExploded view\nLoading the systems\u2026 6 of 6 floors\nResume\nSkip the 3D\nThe Facilities\nCivil and Structural\nPiles\u00a0\u00b7 pile caps\u00a0\u00b7 ground beams\u00a0\u00b7 sub-fab slab\u00a0\u00b7 columns\u00a0\u00b7 waffle floor\nArchitectural\nRoof trusses\u00a0\u00b7 purlins\u00a0\u00b7 roof deck\u00a0\u00b7 wall envelope\nFire Protection\nSprinkler mains\u00a0\u00b7 risers\u00a0\u00b7 branch lines\nHT & LV Electrical\nTransformer\u00a0\u00b7 switchboards\u00a0\u00b7 busbar\u00a0\u00b7 cable trays\u00a0\u00b7 cabling\nAir-conditioning and Mechanical Ventilation\nFresh-air intake\u00a0\u00b7 supply main\u00a0\u00b7 drops to plenum\u00a0\u00b7 return main\u00a0\u00b7 return out\nCleanroom\nCeiling grid\u00a0\u00b7 FFU field\u00a0\u00b7 air handlers\u00a0\u00b7 partitions\u00a0\u00b7 exhaust stacks\nProcess Utilities\nPipe rack\u00a0\u00b7 PCW header\u00a0\u00b7 UPW header\u00a0\u00b7 risers to tools\u00a0\u00b7 gas cabinets\n28 / 28 placed\nComplete the build\nReplay build\nEnter cleanroom\nX-ray view\nSpeed\n0.5\u00d7\n1\u00d7\n1.5\u00d7\n2\u00d7",
+   "img": "home/04-piling.webp",
+   "shownHeight": 7200,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": -11745,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 4,
+   "key": "seven-markets-one-integrated-team",
+   "heading": "Seven markets, one integrated team",
+   "tag": "section",
+   "cls": "sec",
+   "top": 9799,
+   "height": 1204,
+   "text": "Seven markets,\none integrated team\nEach market page sets out what the environment demands,\nhow IAQ builds it and the projects that prove it.\nExplore the seven markets\nSemiconductor\nWafer fabs, backend plants, ISO 3 to 7 cleanrooms.\nSee the market\nData Centre\nCooling, power and controlled environments at scale.\nSee the market\nEV Battery\nGigafactory dry rooms, humidity-critical builds.\nSee the market\nPhotovoltaics\nSolar cell and module production facilities.\nSee the market\nBio\nLifeScience\nGMP parenteral, labs and medical device plants.\nSee the market\nFood &\nBeverage\nHygienic flavour and food production environments.\nSee the market\nDistrict\nCooling &\nHeating\nIncluding Malaysia\u2019s largest district cooling centre.\nSee the market",
+   "img": "home/05-seven-markets-one-integrated-team.webp",
+   "shownHeight": 1204,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 0,
+    "pixels": 0.53
+   }
+  },
+  {
+   "i": 5,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 11002,
+   "height": 1203,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nQuestions clients ask\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "home/06-follow.webp",
+   "shownHeight": 1203,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 25,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

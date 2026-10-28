@@ -1,0 +1,79 @@
+{
+  "layer": "detail-sanitary",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -65.9345678247658,
+      2.899401903152466,
+      -35.85539877546282
+    ],
+    "max": [
+      69.35087071283186,
+      21.062000274658203,
+      37.86809670793562
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      90.3029556274414,
+      2.899401903152466,
+      -39.414031982421875
+    ],
+    "max": [
+      225.58839416503906,
+      21.062000274658203,
+      34.30946350097656
+    ]
+  },
+  "storeys": [
+    {
+      "index": 0,
+      "key": "apron",
+      "name": "APRON",
+      "elevation": 4.2,
+      "file": "detail-sanitary-0-apron.glb",
+      "triangles": 29600,
+      "sizeKB": 290
+    },
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-sanitary-1-gf.glb",
+      "triangles": 14058,
+      "sizeKB": 140
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-sanitary-2-1f.glb",
+      "triangles": 10794,
+      "sizeKB": 109
+    },
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-sanitary-3-2f.glb",
+      "triangles": 7702,
+      "sizeKB": 77
+    },
+    {
+      "index": 4,
+      "key": "3f",
+      "name": "3F",
+      "elevation": 21.05,
+      "file": "detail-sanitary-4-3f.glb",
+      "triangles": 1092,
+      "sizeKB": 14
+    }
+  ]
+}

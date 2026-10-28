@@ -92,7 +92,7 @@ export default function Investors() {
 
       <PageHead
         eyebrow="Investor Relations"
-        title={<>Built now. <em>Sealed until listing.</em></>}
+        title={<>Built now. <em>Sealed until listing</em></>}
         lede="The investor wing exists in full before it is needed, so it is ready the day IAQ lists. It stays off the public navigation, out of the search index and behind a gate until IAQ opens it."
       />
 

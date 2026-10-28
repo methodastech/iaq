@@ -1,0 +1,81 @@
+{
+ "url": "/services",
+ "slug": "services",
+ "title": "IAQ Group · Services · Brand Method",
+ "at": "2026-10-22T15:30:22.702Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "the-iaq-facility-map",
+   "heading": "The IAQ facility map",
+   "tag": "section",
+   "cls": "pg-sec.sm-map",
+   "top": 0,
+   "height": 877,
+   "text": "Loading the facility model\nThe IAQ facility map\n+\n−\n↻\n▶ Play the tour\nWork\nSystem\nCSA\n(Civil, Structural and Architectural)\nThe building itself.\nMEP\n(Mechanical, Electrical and Plumbing)\nWhat makes the building run.\nProcess utilities\nThe utilities a production tool consumes\nWhat the tool runs on.\nPiling and foundations\nStructural frame and roof\nCleanroom envelope\nArchitectural finishes\nAir conditioning and ventilation (HVAC, ACMV), fan filter units\nProcess cooling water (PCW)\nChiller plant and district cooling\nFire protection\nElectrical, high and low voltage\nPlumbing and drainage\nClean dry air (CDA)\nSpecialty gases and chemical delivery\nUltrapure water (UPW)\nProcess vacuum (PV) and exhaust\nWaste treatment\nScroll to explore",
+   "img": "services/01-the-iaq-facility-map.webp",
+   "shownHeight": 877
+  },
+  {
+   "i": 1,
+   "key": "3-business-units",
+   "heading": "3 business units",
+   "tag": "section",
+   "cls": "pg-sec.sm-units",
+   "top": 877,
+   "height": 1232,
+   "text": "3 business units\nOur services bring together the capabilities needed to plan, deliver and support technical facilities. The exact scope is tailored to each project and may include engineering, procurement, construction, process-critical utilities, total tool installation and energy facility management.\nUnit 1\nDesign and build\nEPC\nEngineering, Procurement & Construction\nBuilds the facility.\nUnit 2\nTools in, fab live\nPCU & TTI\nProcess Critical Utilities & Total Tool Installation Solutions\nRe-equips a live semiconductor fab.\nUnit 3\nRun and maintain\nEFM\nEnergy Facility Management\nRuns and maintains it.\nCall when\nYou are building or extending a facility and want one company to answer for all of it.\nCall when\nYour fab is running and new tools are coming in, or the gas, chemical, water or exhaust systems need to grow.\nCall when\nYour energy or cooling bill is high and you want it cut, with IAQ funding the work and paid from the saving.\nBought as\nEPCC\nEPCM\nBought as\nStandalone\nOn the EPC or EPCM model\nBought as\nCooling as a Service\nEnergy Performance Contracting\nBuild Operate Transfer\nOpen EPC\n→\nOpen PCU & TTI\n→\nOpen EFM\n→\nRead more: the three in detail\n+",
+   "img": "services/02-3-business-units.webp",
+   "shownHeight": 1232
+  },
+  {
+   "i": 2,
+   "key": "6-services-3-units-4-works",
+   "heading": "6 services 3 units 4 works",
+   "tag": "section",
+   "cls": "pg-sec.sysm",
+   "top": 2109,
+   "height": 901,
+   "text": "6 services 3 units 4 works\nWhich unit carries which service, and the work each one does.\nBusiness unit\n1\nDesign\n2\nProcure\n3\nConstruct\n4\nCommission\n5\nTool Installation\n6\nMaintain\nWork it does\nUnit 1\nEPC\nBuilds the facility.\nDesign\nProcure\nConstruct\nCommission\nTool Installation, when you ask\nMaintain, when you ask\nCSA\nMEP\nProcess utilities\nUnit 2\nPCU & TTI\nRe-equips a live semiconductor fab.\nPer tool set\nDesign\nProcure\nConstruct\nCommission\nTool Installation\nMaintain, when you ask\nMEP\nProcess utilities\nTool Installation\nUnit 3\nEFM\nRuns and maintains it.\n5 to 20 years\nDesign, when you ask\nProcure, when you ask\nConstruct, when you ask\nCommission\nMaintain\nMEP\nUnit 1\nEPC\nEngineering, Procurement & Construction\nBuilds the facility.\nBought as\nEPCC or EPCM\nCarries\n1\nDesign\n2\nProcure\n3\nConstruct\n4\nCommission\nWhen you ask\n5\nTool Installation\n6\nMaintain\nWork\nCSA\nMEP\nProcess utilities\nCarried by the unit\nCarried when you ask for it\nOutside this unit",
+   "img": "services/03-6-services-3-units-4-works.webp",
+   "shownHeight": 901
+  },
+  {
+   "i": 3,
+   "key": "three-choices-shape-your-quote",
+   "heading": "Three choices shape your quote.",
+   "tag": "section",
+   "cls": "pg-sec.sm-qs",
+   "top": 3010,
+   "height": 650,
+   "text": "Three choices shape your quote.\nThe model, the scope and the work. Pick each one, and the quote follows.\n1\nWhich model?\nModel\nHow the job is contracted. EPCC: IAQ delivers everything and answers for the result. EPCM: the owner holds the contracts and IAQ manages them. A single service on its own. Or, for energy, an ESCO contract paid from the savings.\n2\nWhich scope?\nService\nWhat the contract covers. One of the six services, several, or all six. For example procurement only, design only, or design, procure and build.\n3\nWhich work?\nWork\nWhich kind of work the contractor does, which is how the market classifies it: CSA, MEP or process utilities. Most contractors do one. IAQ does all three in house.",
+   "img": "services/04-three-choices-shape-your-quote.webp",
+   "shownHeight": 650
+  },
+  {
+   "i": 4,
+   "key": "questions-clients-ask",
+   "heading": "Questions clients ask",
+   "tag": "section",
+   "cls": "pg-sec.sm-faq",
+   "top": 3660,
+   "height": 996,
+   "text": "Questions clients ask\nThe questions facility owners ask before they engage IAQ, answered. Any other question, ask.\nChoosing a model\nHow IAQ is engaged, and who answers for what.\n4\nTime and cost\nHow long each engagement runs, and what is paid when.\n4\nA live fab\nBringing tools into a fab that keeps running.\n4\nAfter handover\nRunning and maintaining what was built.\n3\nWorking with IAQ\nStandards, reach, and how to start.\n4\nTechnical: EPCC and EPCM\nThe two contract models side by side, point by point.\n5\nAnother question?\nAsk us →\nChoosing a model\nHow IAQ is engaged, and who answers for what.\n4\nWhich model should I choose?\nEPCC when you want one party to deliver everything and answer for the result. EPCM when you hold the construction contracts yourself and want IAQ to manage them. Large multinationals engage EPCM on the biggest programmes.\nSee EPC\n→\nWhat is the difference between EPCC and EPCM?\nEPCC is EPC plus Commissioning: IAQ delivers the whole project, commissioning included. EPCM is EPC Management: IAQ manages the project to the same standard, and the owner holds the construction contracts.\nCan I buy one service on its own?\nYes. Procurement only, design only, or design, procure and construct. The scope changes; the EPC model still governs how it runs.\nWho answers for a system’s performance?\nUnder EPCC, IAQ: one contract, one party, from the first drawing to a facility proven to operate as intended. Under EPCM the owner holds the contracts and IAQ manages them; the standard the work is held to is the same.\nTime and cost\nHow long each engagement runs, and what is paid when.\n4\nHow long does a facility take?\nTypically 12 to 24 months under EPC, depending on the project. Tool hookup is priced and scheduled per tool set.\nHow is tools hookup priced?\nPer tool set. Each set is scoped from the tool maker’s facility requirements, so the price follows the tools you bring in, not the size of the fab.\nSee PCU & TTI\n→\nWhat does an energy contract cost up front?\nNothing. Under Cooling as a Service IAQ funds, builds and runs the chiller plant for a fixed tariff over 10 to 20 years. Under Energy Performance Contracting IAQ funds the upgrade and is paid from the measured savings over 5 to 10 years.\nSee EFM\n→\nHow are the savings measured?\nAgainst an audited baseline agreed before the work starts. IAQ is paid from the measured saving, so the saving has to be real and has to last.",
+   "img": "services/05-questions-clients-ask.webp",
+   "shownHeight": 996
+  },
+  {
+   "i": 5,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 4656,
+   "height": 1212,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building.\nFeasibility to handover, one accountable team.\nStart a project\n→\nEMAIL\nbusiness@iaqtechnology.com.my\n→\nPHONE\n+603 5124 8319\n→\nHQ · SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n→\n© 2026 IAQ GROUP · IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) · ISO 9001 / 14001 / 45001 · CIDB G7\nPROTOTYPE · BRAND METHOD\nBACK TO TOP ↑",
+   "img": "services/06-follow.webp",
+   "shownHeight": 1212
+  }
+ ],
+ "errs": []
+}

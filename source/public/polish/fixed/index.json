@@ -1,0 +1,96 @@
+{
+ "base": "http://localhost:5177",
+ "at": "2026-10-22T15:18:35.380Z",
+ "pages": [
+  {
+   "url": "/",
+   "slug": "home",
+   "title": "IAQ Group · Total Facility Solutions · Brand Method",
+   "height": 12185,
+   "ext": "webp",
+   "errs": 0,
+   "ms": 25988
+  },
+  {
+   "url": "/services/tool-installation",
+   "slug": "services-tool-installation",
+   "title": "IAQ Group · PCU & TTI · Brand Method",
+   "height": 7051,
+   "ext": "webp",
+   "errs": 0,
+   "ms": 6627
+  },
+  {
+   "url": "/services/energy-management",
+   "slug": "services-energy-management",
+   "title": "IAQ Group · EFM · Brand Method",
+   "height": 8369,
+   "ext": "webp",
+   "errs": 0,
+   "ms": 8835
+  },
+  {
+   "url": "/markets/semiconductor",
+   "slug": "markets-semiconductor",
+   "title": "IAQ Group · Semiconductor · Brand Method",
+   "height": 5108,
+   "ext": "webp",
+   "errs": 0,
+   "ms": 6339
+  },
+  {
+   "url": "/markets/data-centre",
+   "slug": "markets-data-centre",
+   "title": "IAQ Group · Data Centre · Brand Method",
+   "height": 4165,
+   "ext": "webp",
+   "errs": 0,
+   "ms": 6140
+  },
+  {
+   "url": "/markets/ev-battery",
+   "slug": "markets-ev-battery",
+   "title": "IAQ Group · EV Battery · Brand Method",
+   "height": 4148,
+   "ext": "webp",
+   "errs": 0,
+   "ms": 6003
+  },
+  {
+   "url": "/markets/photovoltaics",
+   "slug": "markets-photovoltaics",
+   "title": "IAQ Group · Photovoltaics · Brand Method",
+   "height": 4188,
+   "ext": "webp",
+   "errs": 0,
+   "ms": 6059
+  },
+  {
+   "url": "/markets/district-cooling",
+   "slug": "markets-district-cooling",
+   "title": "IAQ Group · District Cooling & Heating · Brand Method",
+   "height": 4117,
+   "ext": "webp",
+   "errs": 0,
+   "ms": 5996
+  },
+  {
+   "url": "/markets/bio-lifescience",
+   "slug": "markets-bio-lifescience",
+   "title": "IAQ Group · Bio LifeScience · Brand Method",
+   "height": 4148,
+   "ext": "webp",
+   "errs": 0,
+   "ms": 6117
+  },
+  {
+   "url": "/markets/food-beverage",
+   "slug": "markets-food-beverage",
+   "title": "IAQ Group · Food & Beverage · Brand Method",
+   "height": 4144,
+   "ext": "webp",
+   "errs": 0,
+   "ms": 5967
+  }
+ ]
+}

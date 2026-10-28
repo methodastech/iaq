@@ -1,0 +1,99 @@
+{
+ "url": "/about/commitment",
+ "slug": "about-commitment",
+ "title": "IAQ Group \u00b7 Corporate Commitment \u00b7 Brand Method",
+ "at": "2026-10-22T23:07:26.415Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Corporate Commitment",
+   "tag": "header",
+   "cls": "pg-head.pg-head-hero",
+   "top": 84,
+   "height": 444,
+   "text": "Aerial view of an IAQ facility under construction\nHOME\n\u203a\nABOUT\nCorporate Commitment\nCertified to ISO 9001, ISO 14001 and ISO 45001 and registered CIDB G7. The certificates, the policies and the safety record are published here in full.",
+   "img": "about-commitment/01-hero.webp",
+   "shownHeight": 444,
+   "changed": false,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 0
+   }
+  },
+  {
+   "i": 1,
+   "key": "sustainability-and-responsibility-our-commitment",
+   "heading": "Sustainability and responsibility, our commitment",
+   "tag": "section",
+   "cls": "cc-sec",
+   "top": 527,
+   "height": 830,
+   "text": "Sustainability and responsibility,\nour commitment\nOur corporate commitments guide how we work with our people, customers, partners and the wider environment. We aim to conduct our business responsibly, with attention to safety, integrity, operational discipline and continual improvement.\nEnvironmental responsibility\nIAQ is dedicated to minimising its environmental footprint through sustainable design and construction practices. It continuously seeks energy-efficient solutions and prioritises eco-friendly technologies.\nSocial accountability\nThe well-being and safety of employees and communities come first. IAQ promotes a diverse and inclusive work environment and upholds ethical labour practices.\nCorporate governance\nGovernance practices ensure transparency, accountability and ethical decision-making. IAQ adheres to the highest standards in compliance, fostering trust and credibility with clients, partners and stakeholders.",
+   "img": "about-commitment/02-sustainability-and-responsibility-our-commitment.webp",
+   "shownHeight": 830,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 29,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 2,
+   "key": "quality-environment-health-and-safety",
+   "heading": "Quality, environment, health and safety",
+   "tag": "section",
+   "cls": "cc-sec",
+   "top": 1357,
+   "height": 837,
+   "text": "Quality, environment, health and safety\nThe IAQ Group is committed to environment, safety and health as a core business function, promoting safe and healthy working conditions without risk of harm to its employees or others affected by its undertakings, and without harm to assets or the environment.\nIAQ has established the highest levels of EHS standards and applies proactive EHS management through responsible planning and implementation. Every incident is preventable, and no task is so important that it is worth endangering the health and well-being of employees and partners.\nIAQ Quality Policy\nThe commitment behind ISO 9001:2015: meet customer, statutory and regulatory requirements, enhance customer satisfaction and continually improve the quality management system.\nSigned by the Chief Executive Officer, 15 November 2024\nOpen the policy (PDF)\nDownload\nIAQ EHS Policy\nThe commitment behind ISO 14001:2015 and ISO 45001:2018: healthy and safe working conditions, hazards eliminated and risks reduced, and sustainable engineering, procurement and construction practice.\nSigned by the Chief Executive Officer, 15 November 2024\nOpen the policy (PDF)\nDownload",
+   "img": "about-commitment/03-quality-environment-health-and-safety.webp",
+   "shownHeight": 837,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 1,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 3,
+   "key": "environment-and-sustainability-responsibility",
+   "heading": "Environment and sustainability responsibility",
+   "tag": "section",
+   "cls": "cc-sec.tint",
+   "top": 2194,
+   "height": 897,
+   "text": "Environment and sustainability\nresponsibility\nIAQ is dedicated to minimising its environmental impact through sustainable design, procurement and construction practices. It continuously seeks energy-efficient solutions and prioritises eco-friendly technologies.\nCSR \u00b7 10 April 2025\nEmpowering Communities Through Compassion: IAQ Visits PDK Kota Raja\nCSR \u00b7 10 April 2025\nSupporting Compassion and Community at the Charity Luncheon for House of Love\nCSR \u00b7 19 February 2025\nSpreading Love and Joy This Chinese New Year: IAQ Reaffirms Its Commitment to Community",
+   "img": "about-commitment/04-environment-and-sustainability-responsibility.webp",
+   "shownHeight": 897,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 1,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 4,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 3092,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "about-commitment/05-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
 import FooterNav from '../components/FooterNav.jsx'
-import CloseAmbient from '../components/CloseAmbient.jsx'
 import CareersPromo from '../components/CareersPromo.jsx'
 import CultureCollage from '../components/CultureCollage.jsx'
 import { useMomentum } from '../lib/momentum.js'
@@ -343,7 +342,7 @@ export default function Culture() {
           <div className="cu-w cu-origin-in">
             <div className="cu-year-big cu-rv" aria-hidden="true">1995</div>
             <div className="cu-origin-copy">
-              <h2 id="cu-origin-h" className="cu-h2 cu-rv">It started with <em>indoor air quality.</em></h2>
+              <h2 id="cu-origin-h" className="cu-h2 cu-rv">It started with <em>indoor air quality</em></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>
                 Ir. Tiew Soon Aik founded IAQ in Malaysia in 1995, as a cleanroom specialist. Today it builds in seven countries.
               </p>
@@ -362,7 +361,7 @@ export default function Culture() {
         <section className="cu-sec cu-values" id="cu-values" aria-labelledby="cu-values-h">
           <div className="cu-w">
             <div className="cu-head">
-              <h2 id="cu-values-h" className="cu-h2 cu-rv">Six values, <em>on the record.</em></h2>
+              <h2 id="cu-values-h" className="cu-h2 cu-rv">Six values, <br /><em>on the record</em></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>The values are IAQ&rsquo;s own words. Beside each one is where the record already shows it.</p>
             </div>
             <div className="cu-vgrid">
@@ -394,7 +393,7 @@ export default function Culture() {
         <section className="cu-sec cu-safety" id="cu-safety" aria-labelledby="cu-safety-h">
           <div className="cu-w">
             <div className="cu-head">
-              <h2 id="cu-safety-h" className="cu-h2 cu-rv">Everybody goes <em>home safe.</em></h2>
+              <h2 id="cu-safety-h" className="cu-h2 cu-rv">Everybody goes <em>home safe</em></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>
                 An injury free workplace is the aim of IAQ&rsquo;s <abbr title="Environment, Health and Safety">EHS</abbr> policy.
               </p>
@@ -450,7 +449,7 @@ export default function Culture() {
         <section className="cu-sec cu-life" id="cu-life" aria-labelledby="cu-life-h">
           <div className="cu-w">
             <div className="cu-head">
-              <h2 id="cu-life-h" className="cu-h2 cu-rv">What IAQ <em>looks like.</em></h2>
+              <h2 id="cu-life-h" className="cu-h2 cu-rv">What IAQ <em>looks like</em></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>Three moments IAQ published: on site, in the office and in the community.</p>
             </div>
             {/* 15 Sep (Bazil: "2 column top, 1 column bottom"): the three moments side by side, the third full width */}
@@ -475,7 +474,7 @@ export default function Culture() {
         <section className="cu-sec cu-grow" id="cu-grow" aria-labelledby="cu-grow-h">
           <div className="cu-w">
             <div className="cu-head">
-              <h2 id="cu-grow-h" className="cu-h2 cu-rv">Where engineers <em>start and grow.</em></h2>
+              <h2 id="cu-grow-h" className="cu-h2 cu-rv">Where engineers <em>start and grow</em></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>IAQ trains its engineers in house and coaches its leaders. It also takes the work into universities.</p>
             </div>
             <h3 className="cu-h3 cu-sub cu-rv">Training and coaching</h3>
@@ -519,7 +518,7 @@ export default function Culture() {
           <div className="cu-w">
             {/* 25 Sep (Bazil: "remove this info"): the People, by name head and its two named cards are off; the care cards lead the section */}
             <div className="cu-head">
-              <h2 id="cu-voices-h" className="cu-h2 cu-rv">Recognition, health <em>and time together.</em></h2>
+              <h2 id="cu-voices-h" className="cu-h2 cu-rv">Recognition, health <em>and time together</em></h2>
             </div>
             <div className="cu-care">
               {CARE.map((c, i) => (
@@ -542,7 +541,7 @@ export default function Culture() {
           <div className="cu-w">
             <div className="cu-head cu-head-row">
               <div>
-                <h2 id="cu-places-h" className="cu-h2 cu-rv">Seven countries, <em>one standard.</em></h2>
+                <h2 id="cu-places-h" className="cu-h2 cu-rv">Seven countries, <br /><em>one standard</em></h2>
                 <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>Hiring today is in Shah Alam and Penang. The group&rsquo;s offices take the work further.</p>
               </div>
               <Link className="cu-link cu-rv" to="/global-presence">Global presence <Arrow /></Link>
@@ -573,7 +572,7 @@ export default function Culture() {
         <section className="cu-sec cu-hire" id="cu-hire" aria-labelledby="cu-hire-h">
           <div className="cu-w">
             <div className="cu-head">
-              <h2 id="cu-hire-h" className="cu-h2 cu-rv">How hiring <em>works.</em></h2>
+              <h2 id="cu-hire-h" className="cu-h2 cu-rv">How hiring <em>works</em></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>Four steps, from your CV to your first day on the team.</p>
             </div>
             <ol className="cu-steps cu-rv">
@@ -607,7 +606,9 @@ export default function Culture() {
             <div className="crow is-static"><span className="ref">HQ &middot; Shah Alam</span><b className="adr">No.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor</b></div>
           </div>
         </div>
-        <CloseAmbient />
+        {/* 26 Oct (IAQ review, NR, page 001: "To remove all the dust particle !"): the particle field (CloseAmbient's canvas) is off the band;
+            its ground stays, the same navy gradient and scrim, so only the particles go. The component stays on disk */}
+        <div className="close-viz" aria-hidden="true"><div className="close-scrim"></div></div>
         <Footer note="Culture page concept · Brand Method" nav={false} />
       </section>
     </>

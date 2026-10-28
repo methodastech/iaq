@@ -1,0 +1,117 @@
+{
+ "url": "/markets/bio-lifescience",
+ "slug": "markets-bio-lifescience",
+ "title": "IAQ Group \u00b7 Bio LifeScience \u00b7 Brand Method",
+ "at": "2026-10-27T02:00:45.133Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "BioLife Science",
+   "tag": "header",
+   "cls": "pg-head",
+   "top": 84,
+   "height": 403,
+   "text": "BioLife Science\nEnabling Innovation Through Controlled Environments",
+   "img": "markets-bio-lifescience/01-hero.webp",
+   "shownHeight": 403,
+   "changed": false,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 0
+   }
+  },
+  {
+   "i": 1,
+   "key": "industry-overview",
+   "heading": "Industry Overview",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 487,
+   "height": 762,
+   "text": "Industry Overview\nThe BioLife Science sector continues to drive innovation across healthcare, biotechnology, pharmaceuticals and research. Facilities within this sector demand highly controlled environments, reliable utility infrastructure and consistent operational performance to support research, development and manufacturing activities. As regulatory and technological advancement evolve, facility reliability and environmental control have become increasingly important to long-term success.\nIAQ Key Capabilities\nControlled Environment\nResearch Facilities\nManufacturing Facilities\nUtility Infrastructure\nEPC Delivery",
+   "img": "markets-bio-lifescience/02-industry-overview.webp",
+   "shownHeight": 762,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -133,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 2,
+   "key": "why-precision-matters",
+   "heading": "Why Precision Matters",
+   "tag": "section",
+   "cls": "pg-sec.calm",
+   "top": 1249,
+   "height": 294,
+   "text": "Why Precision Matters\nLife science environments depend on reliable infrastructure, environmental control and operational consistency.",
+   "img": "markets-bio-lifescience/03-why-precision-matters.webp",
+   "shownHeight": 294,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 1.52
+   }
+  },
+  {
+   "i": 3,
+   "key": "mk-band",
+   "heading": "",
+   "tag": "section",
+   "cls": "mk-band",
+   "top": 1543,
+   "height": 617,
+   "text": "",
+   "img": "markets-bio-lifescience/04-mk-band.webp",
+   "shownHeight": 617,
+   "changed": false,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 0.21
+   }
+  },
+  {
+   "i": 4,
+   "key": "delivered-in-this-market",
+   "heading": "Delivered in this market",
+   "tag": "section",
+   "cls": "pg-sec.calm",
+   "top": 2160,
+   "height": 537,
+   "text": "Delivered in this market\nPublished Bio LifeScience projects from the sample registry, from small volume parenteral through to tissue culture laboratories.\nOpen the registry, filtered to Bio LifeScience\n\u2192\nPharmaceutical manufacturing plant, small volume parenteral\nPharmaceutical manufacturer, Malaysia\nISO 5, 7, 8\n\u2192\nHealthcare manufacturing plant, medical device greenfield\nMedical device manufacturer, Malaysia\nISO 8\n\u2192\nTissue culture laboratory, class 1K to 10K cleanroom\nUniversity research institute, Singapore\nISO 6 to 7\n\u2192",
+   "img": "markets-bio-lifescience/05-delivered-in-this-market.webp",
+   "shownHeight": 537,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -105,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 5,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 2697,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nQuestions clients ask\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "markets-bio-lifescience/06-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

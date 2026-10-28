@@ -60,13 +60,13 @@ function ProofCard({ i }) {
 /* 25 Sep (IAQ, 24 Sep review: "merge all the description pages for each service into one"): the cover and the scope
    are exported so the single page /services/all can stack the six stages in order; this page still renders them */
 const SLUG = 'procurement'
-export const META = { slug: SLUG, eyebrow: "Stage 02 · Procurement", title: <>The right materials, the right partners, <em>right on time.</em></>, lede: "Tracked, organised sourcing aligned to project requirements, quality standards and budget constraints." }
+export const META = { slug: SLUG, eyebrow: "Stage 02 · Procurement", title: <>The right materials, the right partners, <br /><em>right on time</em></>, lede: "Tracked, organised sourcing aligned to project requirements, quality standards and budget constraints." }
 export function Cover() {
   return (
       <section className="pg-sec" aria-labelledby={"cov-h-"+SLUG}>
         <div className="pg-in">
           <span className="pg-k">What it covers</span>
-          <h2 id={"cov-h-"+SLUG}>The design intent, held all the way to site.</h2>
+          <h2 id={"cov-h-"+SLUG}>The design intent, held all the way to site</h2>
           <div className="pg-split">
             <div>
               <p className="pg-body">
@@ -92,7 +92,7 @@ export function Scope() {
       <section className="pg-sec calm" aria-labelledby={"scope-h-"+SLUG}>
         <div className="pg-in">
           <span className="pg-k">Scope</span>
-          <h2 id={"scope-h-"+SLUG}>What IAQ carries at this stage.</h2>
+          <h2 id={"scope-h-"+SLUG}>What IAQ carries at this stage</h2>
           {/* the scope as a diagram (2 Sep): one custom mark per item on a rail that draws in */}
           <DetailDiagram variant="flow" items={SCOPE.map(s => ({ label: s }))} ariaLabel="Scope at this stage" />
           <CarriedBy service="procure" />
@@ -113,7 +113,7 @@ export default function ServiceProcurement() {
           rather than on the same render the ring and the hub already showed. */}
       <PageHead crumbs={[{ label: 'Services', to: '/services' }]}
         eyebrow="Stage 02 · Procurement"
-        title={<>The right materials, the right partners, <em>right on time.</em></>}
+        title={<>The right materials, the right partners, <br /><em>right on time</em></>}
         lede="Tracked, organised sourcing aligned to project requirements, quality standards and budget constraints."
         chips={['Supply chain', 'Stage 2 of 6']}
         /* 21 Oct (Bazil: "replace this image with related"): goods receiving, the equipment checked against the order */
@@ -130,7 +130,7 @@ export default function ServiceProcurement() {
       <section className="pg-sec" aria-labelledby="run-h">
         <div className="pg-in">
           <span className="pg-k">How it runs</span>
-          <h2 id="run-h">Three things have to be true before it moves on.</h2>
+          <h2 id="run-h">Three things have to be true before it moves on</h2>
           {/* the process as a diagram (2 Sep, Bazil: "a whole good process with custom icons") */}
           <GateList items={BEATS} ariaLabel="How it runs" />
 
@@ -150,7 +150,7 @@ export default function ServiceProcurement() {
       <section className="pg-sec calm" aria-labelledby="proof-h">
         <div className="pg-in">
           <span className="pg-k">Proof</span>
-          <h2 id="proof-h">Plant and equipment heavy, delivered to programme.</h2>
+          <h2 id="proof-h">Plant and equipment heavy, delivered to programme</h2>
           <p className="pg-lede">
             One process, six stages: every project below ran the full cycle. These are drawn from the
             published registry, chosen because their programme was set by plant and long-lead equipment.

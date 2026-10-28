@@ -113,6 +113,9 @@ export default function initFabReal(root, opts = {}) {
   /* 14 Oct (the home build's look): at rest every mesh wears the 3D team's own material, as the home build draws it; a
      pick swaps in the layer's lit or slate material (paint). One clipped copy per source material per layer. */
   const OUTSIDE = /^(shell|structure|detail-envelope|detail-louvres|detail-frame|detail-support)$/
+  /* 23 Oct (rule 37): the building's skin never ghosts. The envelope IS the facade, so tinting its hidden far side and roof
+     through the near wall made the whole building read as glass with shards in it. The systems inside still show through. */
+  const SKIN = /^(shell|detail-envelope|detail-louvres)$/
   const owns = new Map()   /* layer key → Map(source material → clipped copy) */
   const ownFor = (key, src) => {
     /* the building's outside (skin, envelope, louvres, frame, structure) keeps the home build's greys (PALETTE; the skin
@@ -136,11 +139,15 @@ export default function initFabReal(root, opts = {}) {
   /* 14 Oct: the home build's cladding (its "detail-clad" shader, public/build3d/assets/app.js): on every wall, a joint at
      each 1 m course and panels 3 m long, staggered by half a panel row to row; roofs and soffits stay plain */
   const clad = m => {
+    /* 23 Oct (Polishing, rule 37): uClad switches the joints off when a pick dims the building */
+    m.userData.uClad = { value: 1 }
     m.onBeforeCompile = sh => {
+      sh.uniforms.uClad = m.userData.uClad
       sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vDetPos; varying vec3 vDetNrm;')
         .replace('#include <begin_vertex>', '#include <begin_vertex>\nvDetPos = (modelMatrix * vec4(transformed, 1.0)).xyz; vDetNrm = mat3(modelMatrix) * objectNormal;')
       sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
 varying vec3 vDetPos; varying vec3 vDetNrm;
+uniform float uClad;
 float detLine(float p, float w) {
   float f = abs(fract(p) - 0.5);
   float aa = max(fwidth(p), 1e-5);
@@ -156,7 +163,14 @@ vec3 detN() { vec3 n = vDetNrm; if (dot(n, n) < 1e-10) n = cross(dFdx(vDetPos), 
       float course = detLine(vDetPos.y / 1.0, 0.035);
       float row = floor(vDetPos.y / 1.0);
       float panel = detLine((along + 1.5 * mod(row, 2.0)) / 3.0, 0.012);
-      diffuseColor.rgb *= 1.0 - 0.32 * max(course, panel);
+      /* 23 Oct (Polishing, rule 37, Bazil: the front face "cracked, messy"): at the resting distance a 1 m course was
+         three to six pixels, so the joints drew as a one-pixel hatch over the whole wall and read as cracks. The
+         joints now fade out as a course falls under about twelve pixels on screen (fwidth is metres per pixel), draw
+         at a third of the old weight close up, and go out altogether when a pick dims the building (uClad). */
+      /* 23 Oct, later (Bazil: "why the visual not clear"): the joints stay readable at the resting distance as a soft
+         panel rhythm (a third of the 22 Oct weight, anti-aliased), and only fade when a course falls under four pixels */
+      float fade = 1.0 - smoothstep(0.16, 0.34, max(fwidth(vDetPos.y), 1e-5));
+      diffuseColor.rgb *= 1.0 - 0.10 * uClad * fade * max(course, panel);
     }
   }`)
     }
@@ -166,9 +180,15 @@ vec3 detN() { vec3 n = vDetNrm; if (dot(n, n) < 1e-10) n = cross(dFdx(vDetPos), 
     if (!mats.has(key)) {
       /* the lite layers are decimated with flat normals (their manifests say so): flat shading keeps their facets crisp
          instead of smeared (Bazil: "solid quality, no breakage") */
-      mats.set(key, new THREE.MeshStandardMaterial({ color: REST_COLOR.clone(), roughness: .72, metalness: .06, clippingPlanes: key === 'shell' ? CLIP_SHELL : CLIP, flatShading: /-lite$|^ceiling$|envelope|cleanroomwalls/.test(key) }))
+      /* 23 Oct (rule 37): the layers inside and on the building sit a hair off the shell's own skin (the envelope IS the
+         facade), so the dimmed shell and the lit layer fought for the same pixels: the fragments Bazil circled. A polygon
+         offset on every layer but the shell lets the lit layer win where they are coplanar; the ghost carries the same
+         offset so it never tints its own visible face. */
+      mats.set(key, new THREE.MeshStandardMaterial({ color: REST_COLOR.clone(), roughness: .72, metalness: .06, polygonOffset: key !== 'shell', polygonOffsetFactor: -1.5, polygonOffsetUnits: -2, clippingPlanes: key === 'shell' ? CLIP_SHELL : CLIP, flatShading: /-lite$|^ceiling$|envelope|cleanroomwalls/.test(key) }))
       if (REST.includes(key)) clad(mats.get(key))
-      ghosts.set(key, new THREE.MeshStandardMaterial({ color: REST_COLOR.clone(), roughness: 1, metalness: 0, clippingPlanes: CLIP, transparent: true, opacity: .34, depthWrite: false }))
+      /* 23 Oct (rule 37): the ghost is flat and faint, and passes the depth test only where it is HIDDEN (GreaterDepth), so
+         it never piles on top of what is already in view; see renderPasses */
+      ghosts.set(key, new THREE.MeshBasicMaterial({ color: REST_COLOR.clone(), clippingPlanes: CLIP, transparent: true, opacity: .16, depthWrite: false, depthTest: true, depthFunc: THREE.GreaterDepth, polygonOffset: key !== 'shell', polygonOffsetFactor: -1.5, polygonOffsetUnits: -2 }))
     }
     return mats.get(key)
   }
@@ -205,7 +225,15 @@ vec3 detN() { vec3 n = vDetNrm; if (dot(n, n) < 1e-10) n = cross(dFdx(vDetPos), 
 
   /* the rest pose: the whole building in frame from the front right, a little above */
   let home = null
-  const DIR = new THREE.Vector3(-.68, .36, .64).normalize()   /* the app's own view: the long facade to the viewer, a little above */
+  /* 23 Oct (Bazil: "default the building in this view and not show the back"): the resting view is the SIGN side, the north
+     face with the IAQ logo and the west end, from the north-west a little above; the south face (loading doors, no sign)
+     was what the map opened on. ?frdir=x,y,z on the URL tries another direction (the Polishing record used it). */
+  const Q_DIR = (() => { try { const q = new URLSearchParams(location.search).get('frdir'); if (!q) return null; const v = q.split(',').map(Number); return v.length === 3 && v.every(n => isFinite(n)) ? new THREE.Vector3(...v).normalize() : null } catch (e) { return null } })()
+  const DIR = Q_DIR || new THREE.Vector3(-.68, .36, -.64).normalize()
+  /* the key light stands on the camera's side of the building, the fill opposite and the rim behind, whichever side that is */
+  sun.position.set(DIR.x < 0 ? -160 : 160, 260, DIR.z < 0 ? -160 : 160)
+  fill.position.set(DIR.x < 0 ? 220 : -220, 90, DIR.z < 0 ? 160 : -160)
+  rim.position.set(DIR.x < 0 ? 60 : -60, 120, DIR.z < 0 ? 260 : -260)
   /* the rest pose: the whole building fills 90% of the box. The eight corners of the world box are projected from a
      trial distance and the distance is scaled by the widest overshoot, twice, so the fit holds for any box shape. */
   function frame() {
@@ -330,9 +358,10 @@ vec3 detN() { vec3 n = vDetNrm; if (dot(n, n) < 1e-10) n = cross(dFdx(vDetPos), 
     for (const [key, m] of mats) {
       const on = anyLit && lit.has(key)
       const pal = new THREE.Color(PALETTE[key] || '#D3DAE3')
-      if (on) { m.color.copy(pal).lerp(new THREE.Color('#FFFFFF'), .12); m.emissive.copy(pal).multiplyScalar(.12); m.roughness = .6; const gh = ghosts.get(key); gh.color.copy(pal); gh.emissive.copy(pal).multiplyScalar(.35); gh.needsUpdate = true }
+      if (on) { m.color.copy(pal).lerp(new THREE.Color('#FFFFFF'), .12); m.emissive.copy(pal).multiplyScalar(.12); m.roughness = .8; const gh = ghosts.get(key); gh.color.copy(pal).lerp(new THREE.Color('#FFFFFF'), .4); gh.needsUpdate = true }
       else if (anyLit) { m.color.copy(DIM_COLOR); m.emissive.set(0); m.roughness = .9 }
       else { m.color.copy(pal); m.emissive.set(0); m.roughness = .82 }
+      if (m.userData.uClad) m.userData.uClad.value = anyLit ? 0 : 1   /* 23 Oct (rule 37): no joint lines on the dimmed building */
       m.opacity = 1; m.transparent = false; m.depthWrite = true; m.depthTest = true; m.needsUpdate = true
     }
     /* at rest every loaded layer shows, in its colour (the app's Overall); with a pick, the building and the lit layers */
@@ -343,22 +372,27 @@ vec3 detN() { vec3 n = vDetNrm; if (dot(n, n) < 1e-10) n = cross(dFdx(vDetPos), 
     mark()
   }
   /* pass one: the building AND the lit layers with true depth, so every lit part in view is solid and correctly
-     occluded; pass two: the lit layers again over a cleared depth buffer in a see-through tint, so the parts behind
-     walls still show where they are. Solid where you can see it, a glow where you cannot: nothing reads broken. */
+     occluded; pass two: the lit layers again, against the KEPT depth and only where they are hidden, in a flat faint
+     tint, so the parts behind walls still show where they are. Solid where you can see it, a quiet tint where you
+     cannot: nothing reads broken.
+     23 Oct (Polishing, rule 37, Bazil on the picked state: "like this wtf"): the second pass used to clear the depth
+     and draw every lit mesh at a third opacity with a glow, so the whole building piled up into a white haze of
+     shards. It now runs inside the same target as the scene (before the occlusion composite), with GreaterDepth. */
   function renderPasses() {
     const ao = aoPass.active()
     renderer.autoClear = true
     if (ao) aoPass.begin()
     renderer.render(scene, camera)
+    if (anyLit) {
+      renderer.autoClear = false
+      const swapped = []
+      for (const [k, g] of groups) { const on = lit.has(k) && !SKIN.test(k); g.visible = on; if (on) g.traverse(o => { if (o.isMesh) { swapped.push(o); o.material = ghosts.get(k) } }) }
+      renderer.render(scene, camera)
+      swapped.forEach(o => { o.material = mats.get(o.userData.layer) })
+      for (const [k, g] of groups) g.visible = REST.includes(k) || lit.has(k)
+      renderer.autoClear = true
+    }
     if (ao) aoPass.end(camera)
-    if (!anyLit) return
-    renderer.autoClear = false; renderer.clearDepth()
-    const swapped = []
-    for (const [k, g] of groups) { const on = lit.has(k); g.visible = on; if (on) g.traverse(o => { if (o.isMesh) { swapped.push(o); o.material = ghosts.get(k) } }) }
-    renderer.render(scene, camera)
-    swapped.forEach(o => { o.material = mats.get(o.userData.layer) })
-    for (const [k, g] of groups) g.visible = REST.includes(k) || lit.has(k)
-    renderer.autoClear = true
   }
   /* the lit set's colour for the host's pins stays the kind colour; the model keeps the palette */
   /* every other layer is fetched in the background on a wide screen once the building stands, smallest first, two at

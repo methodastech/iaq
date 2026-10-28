@@ -191,6 +191,19 @@ export function MapBand({ autoTour = false, scrollCue = !autoTour } = {}) {
             {/* 26 Sep (Bazil: "where's the zoom in zoom out button and play button"): the view tools are a row of the left
                 column, between the model and the reading panel, never under anything */}
             <div className="sm-map-tools" role="group" aria-label="View" ref={toolsRef}>
+              {/* 22 Oct, Polishing walk-through, note 21 (Bazil: "the scroll to explore is on another line, put it in the same line as
+                  play the tour plus minus, at the left"): the cue leads the tools row */}
+              {scrollCue && (
+                <button type="button" className="sm-cue sm-cue-row" aria-label="Scroll down to the next section"
+                  onClick={e => { let nx = e.currentTarget.closest('section')?.nextElementSibling
+                    while (nx && (nx.tagName !== 'SECTION' || getComputedStyle(nx).position === 'sticky')) nx = nx.nextElementSibling
+                    if (!nx) return
+                    const off = -((document.querySelector('.nav')?.offsetHeight || 0) + (document.querySelector('.ssb')?.offsetHeight || 0))
+                    window.__lenis ? window.__lenis.scrollTo(nx, { offset: off }) : nx.scrollIntoView({ behavior: 'smooth' }) }}>
+                  <i aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20"><path d="M10 4v11M5 10.5l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg></i>
+                  <span>Scroll to explore</span>
+                </button>
+              )}
               <button type="button" onClick={() => fabApi.current && fabApi.current.zoom(1)} aria-label="Zoom in">+</button>
               <button type="button" onClick={() => fabApi.current && fabApi.current.zoom(-1)} aria-label="Zoom out">&minus;</button>
               <button type="button" onClick={() => fabApi.current && fabApi.current.reset()} aria-label="Reset view">&#8635;</button>
@@ -206,7 +219,7 @@ export function MapBand({ autoTour = false, scrollCue = !autoTour } = {}) {
       </div>
       {/* 9 Oct ("can you make like scroll down indicator"): a cue at the foot of the first screen; it takes the visitor to
           the next section and fades once the page has moved (services-map.css .sm-cue). Off in the booth loop. */}
-      {scrollCue && (
+      {false && scrollCue && (   /* 22 Oct, note 21: the cue is in the tools row above */
         <button type="button" className="sm-cue" aria-label="Scroll down to the next section"
           onClick={e => { let nx = e.currentTarget.closest('section')?.nextElementSibling
             while (nx && (nx.tagName !== 'SECTION' || getComputedStyle(nx).position === 'sticky')) nx = nx.nextElementSibling   /* past the sticky section bar */
@@ -236,7 +249,7 @@ export function FlowBand() {
   return (
     <section className="pg-sec sm-flow" aria-labelledby="sm-flow-h">
       <div className="pg-in">
-        <h2 id="sm-flow-h" data-reveal="">Units, services, work and systems, <em>in one flow.</em></h2>
+        <h2 id="sm-flow-h" data-reveal="">Units, services, work and systems, <br /><em>in one flow</em></h2>
         <p className="pg-lede" data-reveal="">Pick a business unit and the row draws its flow: the services it carries, the work it does, and the systems that work builds.</p>
         <OneFlow />
       </div>
@@ -255,7 +268,7 @@ export function QuestionsBand() {
         <div className="pg-in">
           <div className="sm-qs-txt">
             {/* 25 Sep (Bazil: "a better, friendly and professional title rather than forced info") */}
-            <h2 id="sm-qs-h" data-reveal="">Three choices <em>shape your quote.</em></h2>
+            <h2 id="sm-qs-h" data-reveal="">Three choices <em>shape your quote</em></h2>
             <p className="pg-lede" data-reveal="">The model, the scope and the work. Pick each one, and the quote follows.</p>
           </div>
           {/* 25 Sep (Bazil: "create a better image visual for this banner, make the visual part of the layout", "create it in
@@ -291,7 +304,7 @@ export function WorkBand() {
   return (
     <section ref={ref} className={'pg-sec sm-work' + (inView ? ' in' : '')} aria-labelledby="sm-work-h">
       <div className="pg-in">
-        <h2 id="sm-work-h" data-reveal="">The three kinds of work, <em>and what each one builds.</em></h2>
+        <h2 id="sm-work-h" data-reveal="">The three kinds of work, <br /><em>and what each one builds</em></h2>
         <p className="pg-lede" data-reveal="">Most contractors do one. IAQ does all three in house.</p>
         <div className="sm-wgrid">
         <FabLayers hot={hot} onHot={setHot} />

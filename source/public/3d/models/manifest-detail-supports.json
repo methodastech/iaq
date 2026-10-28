@@ -1,0 +1,52 @@
+{
+  "layer": "detail-supports",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -59.15392054693376,
+      8.497564315795898,
+      -29.73700583112688
+    ],
+    "max": [
+      37.02547703607405,
+      13,
+      30.670251248951246
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      97.08360290527344,
+      8.497564315795898,
+      -33.29563903808594
+    ],
+    "max": [
+      193.26300048828125,
+      13,
+      27.111618041992188
+    ]
+  },
+  "storeys": [
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-supports-1-gf.glb",
+      "triangles": 35996,
+      "sizeKB": 262
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-supports-2-1f.glb",
+      "triangles": 399040,
+      "sizeKB": 2249
+    }
+  ]
+}

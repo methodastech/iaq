@@ -1,0 +1,1454 @@
+{
+ "at": "2026-10-27T01:49:02.587Z",
+ "base": "http://localhost:5177",
+ "pages": {
+  "/": {
+   "title": "IAQ Group · Total Facility Solutions · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.hero.dark-band > div.hero-video.live",
+     "h": 900,
+     "vh": 1,
+     "bg": "rgb(7, 12, 24)"
+    },
+    "crumb": null
+   }
+  },
+  "/about": {
+   "title": "IAQ Group · About · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "1 Safety commitment An injury free workplace where everybody goes home safe.",
+      "lines": 4,
+      "stub": [
+       "1: 1"
+      ],
+      "w": 399,
+      "at": "div.vc > div.vc-stage > ul.vc-deck > li.vc-card.is-front",
+      "tag": "li",
+      "cls": "vc-card is-front"
+     },
+     {
+      "t": "2 Quality consistency The skills to bring excellence to your project, managed through an established QMS.",
+      "lines": 6,
+      "stub": [
+       "1: 2",
+       "6: QMS."
+      ],
+      "w": 354,
+      "at": "div.vc > div.vc-stage > ul.vc-deck > li.vc-card",
+      "tag": "li",
+      "cls": "vc-card"
+     },
+     {
+      "t": "3 Honesty and integrity Transparent communication of accurate information, with openness and sincerity in ever",
+      "lines": 8,
+      "stub": [
+       "1: 3",
+       "2: Honesty and",
+       "3: integrity",
+       "4: Transparent",
+       "5: communication of"
+      ],
+      "w": 320,
+      "at": "div.vc > div.vc-stage > ul.vc-deck > li.vc-card",
+      "tag": "li",
+      "cls": "vc-card"
+     },
+     {
+      "t": "4 Engineering capabilities An experienced multi-disciplinary in-house team, integrating technology and value e",
+      "lines": 7,
+      "stub": [
+       "1: 4",
+       "5: and value"
+      ],
+      "w": 300,
+      "at": "div.vc > div.vc-stage > ul.vc-deck > li.vc-card.is-out",
+      "tag": "li",
+      "cls": "vc-card is-out"
+     },
+     {
+      "t": "5 Efficiency and proficiency Flexible fast-track execution and contractual approaches, fitted to the client’s ",
+      "lines": 6,
+      "stub": [
+       "1: 5",
+       "4: Flexible",
+       "5: client’s needs."
+      ],
+      "w": 320,
+      "at": "div.vc > div.vc-stage > ul.vc-deck > li.vc-card",
+      "tag": "li",
+      "cls": "vc-card"
+     },
+     {
+      "t": "6 Pursuit of excellence Delivering on our commitments with the highest degree of engineering excellence.",
+      "lines": 7,
+      "stub": [
+       "1: 6",
+       "2: excellence",
+       "3: Pursuit of"
+      ],
+      "w": 354,
+      "at": "div.vc > div.vc-stage > ul.vc-deck > li.vc-card",
+      "tag": "li",
+      "cls": "vc-card"
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.ab-hero > div.plx-back",
+     "h": 725,
+     "vh": 0.81,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/about/history": {
+   "title": "IAQ Group · History of IAQ · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [
+     {
+      "t": "ACHIEVEMENT",
+      "at": "li.hx-item > div.hx-txt > span.hx-yr > i.hx-kind"
+     }
+    ],
+    "hover": [],
+    "banner": {
+     "at": "div > header.vb > div.vb-media",
+     "h": 816,
+     "vh": 0.91,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/about/commitment": {
+   "title": "IAQ Group · Corporate Commitment · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.pg-head.pg-head-hero > div.pg-hero-bg",
+     "h": 550,
+     "vh": 0.61,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/about/esg": {
+   "title": "IAQ Group · ESG · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "STANDARD ISO 14001:2015 environmental management, certified by Intertek.",
+      "lines": 2,
+      "stub": [
+       "2: Standard"
+      ],
+      "w": 609,
+      "at": "div.pg-split > div > ul.cp-facts > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "STANDARD ISO 45001:2018 occupational health and safety, certified by Intertek.",
+      "lines": 2,
+      "stub": [
+       "2: Standard"
+      ],
+      "w": 609,
+      "at": "div.pg-split > div > ul.cp-facts > li",
+      "tag": "li",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.pg-head > div.pg-in",
+     "h": 283,
+     "vh": 0.31,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": {
+     "top": 0,
+     "share": 0
+    }
+   }
+  },
+  "/global-presence": {
+   "title": "IAQ Group · Global Presence · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Seven countries, pinned where they are",
+      "lines": 2,
+      "stub": [
+       "1: Seven countries,"
+      ],
+      "w": 851,
+      "at": "section.cp-globe-band.cp-map-band > div.pg-in > div.cp-globe-copy.cp-map-copy > h2",
+      "tag": "h2",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.pg-head > div.pg-in",
+     "h": 287,
+     "vh": 0.32,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": {
+     "top": 0,
+     "share": 0
+    }
+   }
+  },
+  "/services": {
+   "title": "IAQ Group · Services · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Architectural Roof trusses · purlins · roof deck · wall envelope",
+      "lines": 3,
+      "stub": [
+       "1: Architectural"
+      ],
+      "w": 312,
+      "at": "section > div.h-left > ol.h-rail > li.done",
+      "tag": "li",
+      "cls": "done"
+     },
+     {
+      "t": "Fire Protection Sprinkler mains · risers · branch lines",
+      "lines": 3,
+      "stub": [
+       "1: Fire Protection"
+      ],
+      "w": 312,
+      "at": "section > div.h-left > ol.h-rail > li.done",
+      "tag": "li",
+      "cls": "done"
+     },
+     {
+      "t": "Cleanroom Ceiling grid · FFU field · air handlers · partitions · exhaust stacks",
+      "lines": 4,
+      "stub": [
+       "1: Cleanroom"
+      ],
+      "w": 312,
+      "at": "section > div.h-left > ol.h-rail > li.done",
+      "tag": "li",
+      "cls": "done"
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > section.pg-sec.sm-map",
+     "h": 839,
+     "vh": 0.93,
+     "bg": "rgb(15, 19, 25)"
+    },
+    "crumb": null
+   }
+  },
+  "/services/all": {
+   "title": "IAQ Group · The six services · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.pg-head.pg-head-hero > div.pg-hero-bg",
+     "h": 550,
+     "vh": 0.61,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/services/epc-construction": {
+   "title": "IAQ Group · EPC · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > div.un-page.un-armed",
+     "h": 4346,
+     "vh": 4.83,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/services/tool-installation": {
+   "title": "IAQ Group · PCU & TTI · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Process Critical Utilities (PCU) & Total Tool Installation (TTI)",
+      "lines": 3,
+      "stub": [
+       "1: Process Critical"
+      ],
+      "w": 873,
+      "at": "header.un-hero > div.pg-in.un-hero-in > div.un-hero-copy > h1.un-h1.in",
+      "tag": "h1",
+      "cls": "un-h1 in"
+     },
+     {
+      "t": "STAGE 01 Facilitisation Preparing facility infrastructure and utility systems for equipment installation",
+      "lines": 5,
+      "stub": [
+       "1: Stage 01",
+       "2: Facilitisation"
+      ],
+      "w": 305,
+      "at": "div.pg-in > div.un-jrny > ol.un-jrny-steps > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "STAGE 02 Move-In & Installation Positioning and installing manufacturing equipment",
+      "lines": 4,
+      "stub": [
+       "1: Stage 02"
+      ],
+      "w": 305,
+      "at": "div.pg-in > div.un-jrny > ol.un-jrny-steps > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "STAGE 03 Utility Integration Connecting tools to critical utilities and support systems",
+      "lines": 4,
+      "stub": [
+       "1: Stage 03"
+      ],
+      "w": 305,
+      "at": "div.pg-in > div.un-jrny > ol.un-jrny-steps > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "STAGE 04 Testing & Commissioning Verifying system performance and operational readiness",
+      "lines": 4,
+      "stub": [
+       "1: Stage 04"
+      ],
+      "w": 305,
+      "at": "div.pg-in > div.un-jrny > ol.un-jrny-steps > li.in",
+      "tag": "li",
+      "cls": "in"
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > div.un-page.un-armed",
+     "h": 4915,
+     "vh": 5.46,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/services/energy-management": {
+   "title": "IAQ Group · EFM · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Energy Audit Comprehensive assessments that identify opportunities to improve energy efficiency, system perfor",
+      "lines": 7,
+      "stub": [
+       "1: Energy Audit",
+       "2: Comprehensive"
+      ],
+      "w": 268,
+      "at": "section.un-sec.un-svc7 > div.pg-in > ol.un-svc7-grid > li.is-wide.in",
+      "tag": "li",
+      "cls": "is-wide in"
+     },
+     {
+      "t": "Energy Performance Contracting Performance-based solutions that enable energy efficiency improvements through ",
+      "lines": 7,
+      "stub": [
+       "2: Contracting"
+      ],
+      "w": 268,
+      "at": "section.un-sec.un-svc7 > div.pg-in > ol.un-svc7-grid > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "District Cooling System Integrated solutions spanning feasibility, development, operation and long-term lifecy",
+      "lines": 7,
+      "stub": [
+       "1: District Cooling",
+       "2: System",
+       "6: and long-term"
+      ],
+      "w": 268,
+      "at": "section.un-sec.un-svc7 > div.pg-in > ol.un-svc7-grid > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "Operations & Maintenance Structured maintenance programmes designed to enhance reliability, optimise performan",
+      "lines": 7,
+      "stub": [
+       "1: Operations &",
+       "2: Maintenance"
+      ],
+      "w": 268,
+      "at": "section.un-sec.un-svc7 > div.pg-in > ol.un-svc7-grid > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "01 Assess Evaluate existing infrastructure and identify opportunities for improvement.",
+      "lines": 5,
+      "stub": [
+       "1: 01",
+       "2: Assess",
+       "5: for improvement."
+      ],
+      "w": 336,
+      "at": "section.un-sec.un-proc > div.pg-in > ol.un-proc-steps > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "02 Optimise Develop strategies to improve efficiency, performance and energy consumption.",
+      "lines": 5,
+      "stub": [
+       "1: 02",
+       "2: Optimise"
+      ],
+      "w": 336,
+      "at": "section.un-sec.un-proc > div.pg-in > ol.un-proc-steps > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "03 Implement Deliver upgrades, retrofits and infrastructure improvements through proven engineering solutions.",
+      "lines": 6,
+      "stub": [
+       "1: 03",
+       "2: Implement"
+      ],
+      "w": 336,
+      "at": "section.un-sec.un-proc > div.pg-in > ol.un-proc-steps > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "04 Operate Support long-term performance through monitoring, maintenance and operational management.",
+      "lines": 5,
+      "stub": [
+       "1: 04",
+       "2: Operate"
+      ],
+      "w": 336,
+      "at": "section.un-sec.un-proc > div.pg-in > ol.un-proc-steps > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "01 One central plant Chillers make the chilled water. Towers shed the heat.",
+      "lines": 4,
+      "stub": [
+       "2: 01"
+      ],
+      "w": 460,
+      "at": "div.dcs3-wrap > div.dcs3-side > ol.dcs3-steps > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "02 Thermal energy storage A tank stores cooling for the peak.",
+      "lines": 3,
+      "stub": [
+       "2: 02"
+      ],
+      "w": 460,
+      "at": "div.dcs3-wrap > div.dcs3-side > ol.dcs3-steps > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "03 The chilled water network Chilled water out, warmer water back.",
+      "lines": 3,
+      "stub": [
+       "2: 03"
+      ],
+      "w": 460,
+      "at": "div.dcs3-wrap > div.dcs3-side > ol.dcs3-steps > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "04 An energy transfer station at each building It meters each building’s cooling.",
+      "lines": 3,
+      "stub": [
+       "2: 04"
+      ],
+      "w": 460,
+      "at": "div.dcs3-wrap > div.dcs3-side > ol.dcs3-steps > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "05 Cooling in every building Every building runs its air-conditioning on it.",
+      "lines": 3,
+      "stub": [
+       "2: 05"
+      ],
+      "w": 460,
+      "at": "div.dcs3-wrap > div.dcs3-side > ol.dcs3-steps > li",
+      "tag": "li",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > div.un-page.un-armed",
+     "h": 7187,
+     "vh": 7.99,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/markets": {
+   "title": "IAQ Group · Markets · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Semiconductor Supporting advanced manufacturing facilities from infrastructure development to manufacturing re",
+      "lines": 7,
+      "stub": [
+       "1: Semiconductor",
+       "6: →"
+      ],
+      "w": 336,
+      "at": "section.pg-sec.tight > div.pg-in > ol.mk-gx > li.mk-gx-c.is-lead",
+      "tag": "li",
+      "cls": "mk-gx-c is-lead"
+     },
+     {
+      "t": "Data Centres Delivering resilient infrastructure that supports uptime, scalability and operational continuity.",
+      "lines": 6,
+      "stub": [
+       "1: Data Centres",
+       "5: →"
+      ],
+      "w": 336,
+      "at": "section.pg-sec.tight > div.pg-in > ol.mk-gx > li.mk-gx-c",
+      "tag": "li",
+      "cls": "mk-gx-c"
+     },
+     {
+      "t": "EV Battery Enabling next-generation battery manufacturing through specialised facility solutions. EXPLORE THE ",
+      "lines": 6,
+      "stub": [
+       "1: EV Battery",
+       "5: →"
+      ],
+      "w": 336,
+      "at": "section.pg-sec.tight > div.pg-in > ol.mk-gx > li.mk-gx-c",
+      "tag": "li",
+      "cls": "mk-gx-c"
+     },
+     {
+      "t": "Photovoltaics Delivering infrastructure solutions for solar manufacturing and clean energy production. EXPLORE",
+      "lines": 6,
+      "stub": [
+       "1: Photovoltaics",
+       "5: →"
+      ],
+      "w": 336,
+      "at": "section.pg-sec.tight > div.pg-in > ol.mk-gx > li.mk-gx-c",
+      "tag": "li",
+      "cls": "mk-gx-c"
+     },
+     {
+      "t": "District Cooling & Heating Supporting sustainable energy infrastructure through engineering and lifecycle expe",
+      "lines": 7,
+      "stub": [
+       "1: District Cooling",
+       "2: & Heating",
+       "6: →"
+      ],
+      "w": 336,
+      "at": "section.pg-sec.tight > div.pg-in > ol.mk-gx > li.mk-gx-c",
+      "tag": "li",
+      "cls": "mk-gx-c"
+     },
+     {
+      "t": "BioLife Science Creating controlled environments that support innovation, research and production. EXPLORE THE",
+      "lines": 6,
+      "stub": [
+       "1: BioLife Science",
+       "5: →"
+      ],
+      "w": 336,
+      "at": "section.pg-sec.tight > div.pg-in > ol.mk-gx > li.mk-gx-c",
+      "tag": "li",
+      "cls": "mk-gx-c"
+     },
+     {
+      "t": "Food & Beverage Supporting safe, efficient and reliable manufacturing environments. EXPLORE THE MARKET →",
+      "lines": 5,
+      "stub": [
+       "4: →"
+      ],
+      "w": 336,
+      "at": "section.pg-sec.tight > div.pg-in > ol.mk-gx > li.mk-gx-c",
+      "tag": "li",
+      "cls": "mk-gx-c"
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [
+     {
+      "t": "ISO 6 TO 7",
+      "at": "a.pg-pc > div.pg-pc-in > span.pg-ref > span.iso"
+     },
+     {
+      "t": "COOLING",
+      "at": "a.pg-pc > div.pg-pc-in > span.pg-ref > span.iso"
+     },
+     {
+      "t": "ISO 7",
+      "at": "a.pg-pc > div.pg-pc-in > span.pg-ref > span.iso"
+     },
+     {
+      "t": "ISO 6",
+      "at": "a.pg-pc > div.pg-pc-in > span.pg-ref > span.iso"
+     },
+     {
+      "t": "ENERGY",
+      "at": "a.pg-pc > div.pg-pc-in > span.pg-ref > span.iso"
+     },
+     {
+      "t": "ISO 5, 7, 8",
+      "at": "a.pg-pc > div.pg-pc-in > span.pg-ref > span.iso"
+     },
+     {
+      "t": "HYGIENIC",
+      "at": "a.pg-pc > div.pg-pc-in > span.pg-ref > span.iso"
+     }
+    ],
+    "hover": [],
+    "banner": {
+     "at": "div > div.mk-hub-head",
+     "h": 492,
+     "vh": 0.55,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/markets/semiconductor": {
+   "title": "IAQ Group · Semiconductor · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > div.mkb",
+     "h": 487,
+     "vh": 0.54,
+     "bg": "rgb(7, 12, 24)"
+    },
+    "crumb": null
+   }
+  },
+  "/markets/data-centre": {
+   "title": "IAQ Group · Data Centre · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Data centre campus phase 1, chilled and condenser water piping Hyperscale data centre operator, Kuala Lumpur C",
+      "lines": 4,
+      "stub": [
+       "3: Cooling →"
+      ],
+      "w": 690,
+      "at": "section.pg-sec.calm > div.pg-in > ul.mk-dl-list > li",
+      "tag": "li",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > div.mkb",
+     "h": 487,
+     "vh": 0.54,
+     "bg": "rgb(7, 12, 24)"
+    },
+    "crumb": null
+   }
+  },
+  "/markets/ev-battery": {
+   "title": "IAQ Group · EV Battery · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Lithium-ion battery gigafactory dry room, 62,000 m² Battery manufacturer, Europe Dry room →",
+      "lines": 4,
+      "stub": [
+       "3: Dry room"
+      ],
+      "w": 690,
+      "at": "section.pg-sec.calm > div.pg-in > ul.mk-dl-list > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "EV battery gigafab phase 1, 8,000 m² dry room system Battery manufacturer, Europe Dry room →",
+      "lines": 4,
+      "stub": [
+       "3: Dry room"
+      ],
+      "w": 690,
+      "at": "section.pg-sec.calm > div.pg-in > ul.mk-dl-list > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "Lithium cell facility, 79,000 m² air-conditioning system Battery manufacturer, China ISO 7 →",
+      "lines": 4,
+      "stub": [
+       "2: system →",
+       "3: ISO 7"
+      ],
+      "w": 690,
+      "at": "section.pg-sec.calm > div.pg-in > ul.mk-dl-list > li",
+      "tag": "li",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > div.mkb",
+     "h": 487,
+     "vh": 0.54,
+     "bg": "rgb(7, 12, 24)"
+    },
+    "crumb": null
+   }
+  },
+  "/markets/photovoltaics": {
+   "title": "IAQ Group · Photovoltaics · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Solar panel manufacturing plant, KMW building M&E works Solar module manufacturer, the northern corridor, Keda",
+      "lines": 6,
+      "stub": [
+       "2: M&E works",
+       "3: →",
+       "4: ISO 6"
+      ],
+      "w": 690,
+      "at": "section.pg-sec.calm > div.pg-in > ul.mk-dl-list > li",
+      "tag": "li",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > div.mkb",
+     "h": 487,
+     "vh": 0.54,
+     "bg": "rgb(7, 12, 24)"
+    },
+    "crumb": null
+   }
+  },
+  "/markets/district-cooling": {
+   "title": "IAQ Group · District Cooling & Heating · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "District cooling centre, Malaysia's largest District cooling operator, Kuala Lumpur Energy →",
+      "lines": 4,
+      "stub": [
+       "2: →",
+       "3: Energy"
+      ],
+      "w": 690,
+      "at": "section.pg-sec.calm > div.pg-in > ul.mk-dl-list > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "Co-generative plant, first in Southeast Asia Energy technology group, Malaysia Energy →",
+      "lines": 4,
+      "stub": [
+       "2: →",
+       "3: Energy"
+      ],
+      "w": 690,
+      "at": "section.pg-sec.calm > div.pg-in > ul.mk-dl-list > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "Cool energy centre District cooling operator, Malaysia Energy →",
+      "lines": 4,
+      "stub": [
+       "2: →",
+       "3: Energy"
+      ],
+      "w": 690,
+      "at": "section.pg-sec.calm > div.pg-in > ul.mk-dl-list > li",
+      "tag": "li",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > div.mkb",
+     "h": 487,
+     "vh": 0.54,
+     "bg": "rgb(7, 12, 24)"
+    },
+    "crumb": null
+   }
+  },
+  "/markets/bio-lifescience": {
+   "title": "IAQ Group · Bio LifeScience · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Healthcare manufacturing plant, medical device greenfield Medical device manufacturer, Malaysia ISO 8 →",
+      "lines": 4,
+      "stub": [
+       "3: ISO 8"
+      ],
+      "w": 690,
+      "at": "section.pg-sec.calm > div.pg-in > ul.mk-dl-list > li",
+      "tag": "li",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > div.mkb",
+     "h": 487,
+     "vh": 0.54,
+     "bg": "rgb(7, 12, 24)"
+    },
+    "crumb": null
+   }
+  },
+  "/markets/food-beverage": {
+   "title": "IAQ Group · Food & Beverage · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Flavour manufacturing plant Flavour manufacturer, Malaysia Hygienic →",
+      "lines": 4,
+      "stub": [
+       "2: →",
+       "3: Hygienic"
+      ],
+      "w": 690,
+      "at": "section.pg-sec.calm > div.pg-in > ul.mk-dl-list > li",
+      "tag": "li",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > div.mkb",
+     "h": 487,
+     "vh": 0.54,
+     "bg": "rgb(7, 12, 24)"
+    },
+    "crumb": null
+   }
+  },
+  "/projects": {
+   "title": "IAQ Group · Projects · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Silicon wafer manufacturing, multi-class greenfield with full MEP",
+      "lines": 3,
+      "stub": [
+       "1: Silicon wafer"
+      ],
+      "w": 293,
+      "at": "div.reg > a.pc > div.pc-in > h3",
+      "tag": "h3",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [
+     {
+      "t": "ISO 6 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 5",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 6 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 5 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 3 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "DRY ROOM",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "DRY ROOM",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 5, 7, 8",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 8",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 6 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ENERGY",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ENERGY",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ENERGY",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "HYGIENIC",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "HYGIENIC",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "COOLING",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 6",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     }
+    ],
+    "hover": [],
+    "banner": {
+     "at": "div > section.rb",
+     "h": 531,
+     "vh": 0.59,
+     "bg": "rgb(23, 33, 58)"
+    },
+    "crumb": null
+   }
+  },
+  "/projects/1": {
+   "title": "IAQ Group · Wafer fab facility and expansion, cleanroom package with utilities · Semiconductor · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [
+     {
+      "t": "ISO 6 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 6 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 5 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     }
+    ],
+    "hover": [],
+    "banner": {
+     "at": "div > div.prj-hero",
+     "h": 627,
+     "vh": 0.7,
+     "bg": "rgb(11, 18, 32)"
+    },
+    "crumb": {
+     "top": 0,
+     "share": 0
+    }
+   }
+  },
+  "/news": {
+   "title": "IAQ Group · News & Insights · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.nb > div.nb-field",
+     "h": 476,
+     "vh": 0.53,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/careers": {
+   "title": "IAQ Group · Careers · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Why build your career at IAQ",
+      "lines": 2,
+      "stub": [
+       "2: at IAQ"
+      ],
+      "w": 1135,
+      "at": "div > section.pg-sec.cr-why > div.wrap > h2",
+      "tag": "h2",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [
+     {
+      "t": "IAQ-ENG-01",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-02",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-03",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-04",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-05",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-06",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-07",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-08",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-PRJ-01",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-PRJ-02",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-PRJ-03",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-PRJ-04",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-PRJ-05",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-COM-01",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-FIN-01",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-FIN-02",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     }
+    ],
+    "hover": [],
+    "banner": {
+     "at": "div > div.cu-page.cu-armed",
+     "h": 4284,
+     "vh": 4.76,
+     "bg": "rgb(255, 255, 255)"
+    },
+    "crumb": null
+   }
+  },
+  "/contact": {
+   "title": "IAQ Group · Start a Project · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Seven countries, one point of contact",
+      "lines": 2,
+      "stub": [
+       "1: Seven countries,"
+      ],
+      "w": 656,
+      "at": "section.offices > div.wrap > div.off-head > h2",
+      "tag": "h2",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.cban > div.cban-viz",
+     "h": 567,
+     "vh": 0.63,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/enquiry": {
+   "title": "IAQ Group · Cleanroom and facility projects",
+   "F": {
+    "fullstop": [],
+    "stub": [],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > main.lp",
+     "h": 1883,
+     "vh": 2.09,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/faq": {
+   "title": "IAQ Group · Questions clients ask · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "A live fab Bringing tools into a fab that keeps running. 4",
+      "lines": 3,
+      "stub": [
+       "2: 4"
+      ],
+      "w": 408,
+      "at": "div.faq.in > aside.faq-ix > ul > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "After handover Running and maintaining what was built. 3",
+      "lines": 3,
+      "stub": [
+       "1: After handover",
+       "2: 3"
+      ],
+      "w": 408,
+      "at": "div.faq.in > aside.faq-ix > ul > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "Working with IAQ Standards, reach, and how to start. 4",
+      "lines": 3,
+      "stub": [
+       "2: 4"
+      ],
+      "w": 408,
+      "at": "div.faq.in > aside.faq-ix > ul > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "Choosing a model How IAQ is engaged, and who answers for what. 4",
+      "lines": 3,
+      "stub": [
+       "2: 4"
+      ],
+      "w": 919,
+      "at": "div.faq.in > div.faq-list > section.faq-g > h3",
+      "tag": "h3",
+      "cls": ""
+     },
+     {
+      "t": "Time and cost How long each engagement runs, and what is paid when. 4",
+      "lines": 3,
+      "stub": [
+       "2: 4"
+      ],
+      "w": 919,
+      "at": "div.faq.in > div.faq-list > section.faq-g > h3",
+      "tag": "h3",
+      "cls": ""
+     },
+     {
+      "t": "A live fab Bringing tools into a fab that keeps running. 4",
+      "lines": 3,
+      "stub": [
+       "2: 4"
+      ],
+      "w": 919,
+      "at": "div.faq.in > div.faq-list > section.faq-g > h3",
+      "tag": "h3",
+      "cls": ""
+     },
+     {
+      "t": "After handover Running and maintaining what was built. 3",
+      "lines": 3,
+      "stub": [
+       "1: After handover",
+       "2: 3"
+      ],
+      "w": 919,
+      "at": "div.faq.in > div.faq-list > section.faq-g > h3",
+      "tag": "h3",
+      "cls": ""
+     },
+     {
+      "t": "Working with IAQ Standards, reach, and how to start. 4",
+      "lines": 3,
+      "stub": [
+       "2: 4"
+      ],
+      "w": 919,
+      "at": "div.faq.in > div.faq-list > section.faq-g > h3",
+      "tag": "h3",
+      "cls": ""
+     },
+     {
+      "t": "Technical: EPCC and EPCM The two contract models side by side, point by point. 5",
+      "lines": 3,
+      "stub": [
+       "2: 5"
+      ],
+      "w": 919,
+      "at": "div.faq.in > div.faq-list > section.faq-g > h3",
+      "tag": "h3",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.pg-head.pg-head-hero > div.pg-hero-bg",
+     "h": 550,
+     "vh": 0.61,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/policies": {
+   "title": "IAQ Group · Policies · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Everything IAQ commits to, in writing",
+      "lines": 2,
+      "stub": [
+       "2: in writing"
+      ],
+      "w": 1084,
+      "at": "header.pg-head > div.pg-in > div.pg-head-copy > h1",
+      "tag": "h1",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.pg-head > div.pg-in",
+     "h": 215,
+     "vh": 0.24,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  }
+ }
+}

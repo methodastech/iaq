@@ -38,18 +38,18 @@
 
 /* facet labels */
 .flabel{display:flex;align-items:center;gap:7px;font-family: var(--label);
-  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);
+  font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--soft);
   font-weight:600;width:112px;flex:none}
 .flabel svg{width:14px;height:14px;color:var(--blue);flex:none}
 
 /* chips */
 .chips{display:flex;gap:6px;flex-wrap:wrap;flex:1;min-width:0}
-.fchip{font-family: var(--label);font-size:10.5px;letter-spacing:.06em;
+.fchip{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;padding:7px 11px;border:0;
   background:rgba(23,33,58,.06);color:var(--soft);cursor:pointer;transition:all .2s;user-select:none}   /* 26 Sep (IAQ graphic rules): a filled slim box, no grey outline */
 .fchip:hover{background:rgba(236,35,38,.08);color:var(--blue-bright);transform:translateY(-1px)}
 .fchip.on{background:var(--blue-bright);border-color:var(--blue-bright);color:#fff}
-.fchip .ct{font-size:9px;color:var(--soft);margin-left:6px;font-weight:600;letter-spacing:0}
+.fchip .ct{font-size:13px;color:var(--soft);margin-left:6px;font-weight:600;letter-spacing:0}
 .fchip.on .ct{color:#fff}
 .fchip:hover .ct{color:inherit}
 .fchip.zero{opacity:.4}
@@ -65,14 +65,14 @@
 @media (hover:none), (max-width:960px){.search input{font-size:16px}}/* 16px stops iOS/iPad zoom-on-focus */
 
 /* readout and reset */
-.readout{font-family: var(--label);font-size:10.5px;letter-spacing:.1em;
+.readout{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--blue-bright);font-weight:600;margin-left:auto;white-space:nowrap}
 .readout .rd-n,.readout .rn{display:inline-block}
 .readout .rd-n.tick,.readout .rn.tick{animation:consoleTick .24s var(--e1)}
 @keyframes consoleTick{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 /* Reset is a control a filtering visitor has to be able to find: it used to be the
    faintest thing in the console at 9px --faint */
-.clearbtn{font-family: var(--label);font-size:10.5px;letter-spacing:.08em;
+.clearbtn{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--soft);background:none;border:0;cursor:pointer;
   text-decoration:underline;padding:6px;font-weight:600}
 .clearbtn:hover{color:var(--blue-bright)}
@@ -84,7 +84,7 @@
 .empty p{color:var(--soft);font-size:14px;margin-top:8px}
 
 /* the page footnote under a filtered list */
-.note{font-family: var(--label);font-size:10.5px;letter-spacing:.08em;
+.note{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--soft);padding:18px 0 56px;line-height:2}
 
 @media(max-width:640px){

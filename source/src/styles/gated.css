@@ -47,34 +47,34 @@
 .ggate-panel > * { position: relative; z-index: 1; }
 .ggate-lock { width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border: 0; background: rgba(236, 32, 39, .16); color: #FF6A70; }
 .ggate-lock svg { width: 22px; height: 22px; }
-.ggate-k { display: block; font-family: var(--label); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: #FF6A70; font-weight:600; margin-top: 22px; }
+.ggate-k { display: block; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: #FF6A70; font-weight:600; margin-top: 22px; }
 .ggate-panel h2 { font-size: clamp(23px, 3.4vw, 34px); color: #fff; margin-top: 14px; max-width: 34ch; }
 .ggate-panel p { font-size: 15px; line-height: 1.68; color: #AAB6CE; max-width: 50ch; margin-top: 14px; }
 
 .ggate-form { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-.ggate-form label { display: block; font-family: var(--label); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #7A87A2; font-weight:600; margin-bottom: 8px; }
+.ggate-form label { display: block; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: #7A87A2; font-weight:600; margin-bottom: 8px; }
 .ggate-field { flex: 1 1 240px; min-width: 0; }
-.ggate-form input { width: 100%; height: 48px; font-family: var(--label); font-size: 16px; letter-spacing: .16em; text-transform: uppercase; color: #fff; background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .2); padding: 0 14px; border-radius: 0; -webkit-appearance: none; appearance: none; transition: border-color .25s, background .25s; }
-.ggate-form input::placeholder { color: #5B6780; letter-spacing: .16em; }
+.ggate-form input { width: 100%; height: 48px; font-family: var(--label); font-size: 16px; letter-spacing:.04em; text-transform: uppercase; color: #fff; background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .2); padding: 0 14px; border-radius: 0; -webkit-appearance: none; appearance: none; transition: border-color .25s, background .25s; }
+.ggate-form input::placeholder { color: #5B6780; letter-spacing:.04em; }
 .ggate-form input:focus { outline: none; border-color: var(--blue); background: rgba(255, 255, 255, .08); }
-.ggate-form button { align-self: flex-end; height: 48px; min-width: 132px; font-family: var(--label); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight:600; color: #fff; background: var(--blue); border: 0; cursor: pointer; padding: 0 20px; transition: background .25s; }
+.ggate-form button { align-self: flex-end; height: 48px; min-width: 132px; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: #fff; background: var(--blue); border: 0; cursor: pointer; padding: 0 20px; transition: background .25s; }
 .ggate-form button:hover { background: var(--blue-bright); }
 .ggate-form button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
-.ggate-err { min-height: 18px; margin-top: 12px; font-family: var(--label); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: #FF6A70; font-weight:600; line-height: 1.6; }
-.ggate-demo { margin-top: 18px; border-top: 1px solid rgba(236, 35, 38, .4); padding-top: 16px; font-family: var(--label); font-size: 10.5px; letter-spacing: .07em; line-height: 1.9; color: #7A87A2; text-transform: uppercase; }
-.ggate-demo b { color: #fff; font-weight:600; letter-spacing: .16em; }
+.ggate-err { min-height: 18px; margin-top: 12px; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: #FF6A70; font-weight:600; line-height: 1.6; }
+.ggate-demo { margin-top: 18px; border-top: 1px solid rgba(236, 35, 38, .4); padding-top: 16px; font-family: var(--label); font-size: 13px; letter-spacing:.04em; line-height: 1.9; color: #7A87A2; text-transform: uppercase; }
+.ggate-demo b { color: #fff; font-weight:600; letter-spacing:.04em; }
 
 .ggate-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; background: none; border: 0; margin-top: 28px; }
 .ggate-meta div { background: #0A101F; padding: 14px 16px; min-width: 0; }
-.ggate-meta span { display: block; font-family: var(--label); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #7A87A2; font-weight:600; }
+.ggate-meta span { display: block; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: #7A87A2; font-weight:600; }
 .ggate-meta b { display: block; font-size: 13.5px; font-weight: 600; color: #EAF0FB; margin-top: 7px; line-height: 1.4; overflow-wrap: anywhere; }
 
 /* the unlocked banner */
 .gopen { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; border: 0; background: var(--bg2); padding: 12px 16px; }
 .gopen .gdot { width: 8px; height: 8px; background: var(--blue); flex: none; }
-.gopen p { font-family: var(--label); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); line-height: 1.8; min-width: 0; }
-.gopen button { margin-left: auto; min-height: 40px; font-family: var(--label); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight:600; color: var(--soft); background: rgba(23, 33, 58, .06); border: 1px solid transparent; padding: 0 14px; cursor: pointer; transition: color .25s, border-color .25s; }
+.gopen p { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--soft); line-height: 1.8; min-width: 0; }
+.gopen button { margin-left: auto; min-height: 40px; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--soft); background: rgba(23, 33, 58, .06); border: 1px solid transparent; padding: 0 14px; cursor: pointer; transition: color .25s, border-color .25s; }
 .gopen button:hover { color: var(--blue-bright); background: rgba(23, 33, 58, .1); }
 
 /* ----------------------------------- mode tiles: 2-up minimum on phones */
@@ -86,12 +86,12 @@
 @media (max-width: 900px) { .gtiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .gtiles { grid-template-columns: minmax(0, 1fr); } }
 .gtile { background: var(--bg2); padding: clamp(16px, 2.2vw, 24px); min-width: 0; }
-.gtile .gk { display: flex; align-items: center; gap: 9px; font-family: var(--label); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--blue-bright); font-weight:600; }
+.gtile .gk { display: flex; align-items: center; gap: 9px; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--blue-bright); font-weight:600; }
 .gtile .gk svg { width: 14px; height: 14px; flex: none; }
 .gtile h3 { font-size: 15.5px; font-weight: 600; margin-top: 12px; line-height: 1.2; }
 .gtile p { font-size: 13.5px; color: var(--soft); margin-top: 9px; line-height: 1.55; }
 @media (max-width: 720px) { .gtiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 400px) { .gtile { padding: 13px 12px; } .gtile h3 { font-size: 14px; } .gtile p { font-size: 12.5px; } }
+@media (max-width: 400px) { .gtile { padding: 13px 12px; } .gtile h3 { font-size: 14px; } .gtile p { font-size: 13px; } }
 
 /* --------------------------------------------------------- the policy index */
 .gindex { border-top: 1px solid var(--line); margin-top: 24px; }
@@ -99,7 +99,7 @@
 .grow:hover { background: var(--bg2); padding-left: 12px; }
 .grow[aria-selected="true"] { background: var(--bg2); box-shadow: inset 2px 0 0 var(--blue); padding-left: 12px; }
 .grow:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
-.grow .gn { font-family: var(--label); font-size: 10.5px; letter-spacing: .08em; color: var(--faint); font-weight:600; }
+.grow .gn { font-family: var(--label); font-size: 13px; letter-spacing:.04em; color: var(--faint); font-weight:600; }
 .grow h3 { font-size: 16px; font-weight: 500; letter-spacing: -.005em; }
 .grow .gsub { display: block; font-size: 13px; color: var(--soft); margin-top: 4px; line-height: 1.5; }
 @media (max-width: 560px) {
@@ -118,7 +118,7 @@
 .gcerts { display: grid; grid-template-columns: repeat(auto-fit, minmax(168px, 1fr)); gap: clamp(10px, 1.2vw, 14px); background: none; border: 0; margin-top: 26px; }
 .gcert { background: var(--bg2); padding: 18px clamp(13px, 2vw, 20px); min-width: 0; }
 .gcert b { display: block; font-family: "Switzer", sans-serif; font-size: 15px; font-weight: 600; letter-spacing: -.015em; overflow-wrap: anywhere; }
-.gcert span { display: block; font-family: var(--label); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin-top: 9px; line-height: 1.7; }
+.gcert span { display: block; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--faint); margin-top: 9px; line-height: 1.7; }
 @media (max-width: 720px) { .gcerts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* --------------------------------------------- exhibition: guided stop rail */
@@ -126,7 +126,7 @@
 .gstop { display: grid; grid-template-columns: 76px minmax(0, 1fr); border: 0; background: var(--bg2); }   /* 26 Sep, 06:10 (Bazil: "cannot have too many lines"): blocks, not outlines */
 .gstop-n { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-right: 0; background: var(--panel); padding: 18px 8px; }   /* 26 Sep: no vertical rule */
 .gstop-n b { font-family: var(--label); font-size: 17px; font-weight:600; color: var(--blue); letter-spacing: .04em; }
-.gstop-n span { font-family: var(--label); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); font-weight:600; text-align: center; }
+.gstop-n span { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--faint); font-weight:600; text-align: center; }
 .gstop-b { min-width: 0; padding: clamp(16px, 2.2vw, 24px); }
 .gstop-b h3 { font-size: 17px; font-weight: 600; letter-spacing: -.012em; line-height: 1.2; }
 .gstop-b p { font-size: 14px; color: var(--soft); margin-top: 9px; max-width: 58ch; line-height: 1.6; }
@@ -140,8 +140,8 @@
 /* -------------------------- fact grid inside the dark primary action band */
 .gfacts { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; background: none; border: 0; }
 .gfacts div { background: #070C18; padding: 13px 15px; min-width: 0; }
-.gfacts span { display: block; font-family: var(--label); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #7A87A2; font-weight:600; }
-.gfacts b { display: block; font-size: 12.5px; font-weight: 600; color: #EAF0FB; margin-top: 7px; line-height: 1.45; overflow-wrap: anywhere; }
+.gfacts span { display: block; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: #7A87A2; font-weight:600; }
+.gfacts b { display: block; font-size: 13px; font-weight: 600; color: #EAF0FB; margin-top: 7px; line-height: 1.45; overflow-wrap: anywhere; }
 
 /* ------------------------------------------------------------- small pieces */
 .ghair { height: 1px; background: var(--line); margin: clamp(26px, 4vh, 42px) 0; }
@@ -154,25 +154,25 @@
 .gdr-doc h3 { font-size: clamp(20px, 2.2vw, 26px); font-weight: 600; letter-spacing: -.015em; margin-top: 10px; line-height: 1.15; }
 .gdr-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 14px); background: none; border: 0; margin-top: 18px; }
 .gdr-facts div { background: var(--bg); padding: 12px 14px; min-width: 0; }
-.gdr-facts dt { font-family: var(--label); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); font-weight:600; }
+.gdr-facts dt { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--faint); font-weight:600; }
 .gdr-facts dd { font-size: 15px; font-weight: 600; margin-top: 6px; line-height: 1.3; }
 .gdr-sec { margin-top: 18px; }
 .gdr-sec b { display: block; font-size: 14px; font-weight: 600; }
 .gdr-sec p { font-size: 13.5px; color: var(--soft); margin-top: 6px; line-height: 1.6; max-width: 62ch; }
 .gdr-doc .pg-slot-tag { margin-top: 18px; }
 .gdr-side { display: flex; flex-direction: column; gap: 10px; }
-.gdr-badge { align-self: flex-start; font-family: var(--label); font-size: 10.5px; letter-spacing: .16em; font-weight:600; color: #fff; background: var(--blue); padding: 6px 9px; }
+.gdr-badge { align-self: flex-start; font-family: var(--label); font-size: 13px; letter-spacing:.04em; font-weight:600; color: #fff; background: var(--blue); padding: 6px 9px; }
 .gdr-side b { font-size: 16px; font-weight: 600; }
 .gdr-side p { font-size: 13.5px; color: var(--soft); line-height: 1.6; }
 .gdr-btn { display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; padding: 12px 18px; font-size: 13px; font-weight: 600; color: #fff; background: var(--ink); opacity: .55; cursor: not-allowed; }
-.gdr-note { font-size: 12.5px; }
+.gdr-note { font-size: 13px; }
 @media (max-width: 860px) { .gdr { grid-template-columns: minmax(0, 1fr); } }
 
 /* ------------------------------------------------------ draft policy wording (10 Sep) */
 .gdraft { margin-top: 18px; border: 0; padding: 4px 16px 6px; background: var(--bg2); }
-.gdraft summary { cursor: pointer; font-family: var(--label); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); font-weight:600; padding: 10px 0; }
+.gdraft summary { cursor: pointer; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--blue); font-weight:600; padding: 10px 0; }
 .gdraft p { font-size: 13.5px; line-height: 1.65; color: var(--ink); margin: 0 0 12px; max-width: 68ch; }
-.gdraft .gdraft-note { font-size: 12px; color: var(--soft); border-top: 1px solid var(--line); padding-top: 10px; }
+.gdraft .gdraft-note { font-size: 13px; color: var(--soft); border-top: 1px solid var(--line); padding-top: 10px; }
 
 /* 15 Sep (launch gate): the public Policies page reads the document in full, one column */
 .is-launch .gdetail { grid-template-columns: minmax(0, 1fr); }
@@ -188,7 +188,7 @@
 a.gcert-th:hover img { transform: scale(1.03); }
 a.gcert-th:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .gcert-meta { margin: 12px 0 0; padding: 0; display: grid; gap: 6px; }
-.gcert-meta div { display: flex; justify-content: space-between; gap: 10px; font-size: 12.5px; line-height: 1.35; }
+.gcert-meta div { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; line-height: 1.35; }
 .gcert-meta dt { color: var(--soft); font-weight: 500; text-transform: none; letter-spacing: 0; font-family: "Instrument Sans", sans-serif; }
 .gcert-meta dd { margin: 0; color: var(--ink); font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
 .gcert-file { margin-top: auto; padding-top: 14px; display: inline-flex; align-items: center; gap: 8px; font: 600 13px/1.2 "Switzer", sans-serif; color: var(--blue); text-decoration: none; }

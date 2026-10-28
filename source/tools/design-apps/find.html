@@ -1,0 +1,25 @@
+<style>
+/* 30 Sep (Bazil: "and a search bar to find items inside"): one search for the whole tab, in the sidebar on a wide screen and
+   at the start of the chip bar below 1100 px. It reads every heading, rule, caption and table cell, lists the pieces that
+   match, and takes the reader to the exact line, marked for a moment with a red tint (no zoom, no movement). */
+.dsf{position:relative;margin:0 10px 16px}
+.dsf-f{display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;background:#EEF1F5;cursor:text}
+.dsf-f svg{width:15px;height:15px;flex:none;fill:none;stroke:#5A5F6B;stroke-width:1.7;stroke-linecap:butt;stroke-linejoin:miter}
+.dsf-in{flex:1;min-width:0;height:100%;margin:0;padding:0;border:0;outline:0;background:transparent;font:500 13px/1 "Switzer",sans-serif;letter-spacing:0;text-transform:none;color:#231F20}
+.dsf-in::placeholder{color:#8A8F9A}
+.dsf-f:focus-within{background:#fff;box-shadow:inset 0 0 0 2px #EC2027}
+.dsf-res{list-style:none;margin:8px 0 0;padding:0;max-height:52vh;overflow:auto;background:#fff}
+.dsf-res[hidden]{display:none}
+.dsf-res li{margin:0;padding:0}
+.dsf-res a{display:block;padding:9px 10px;color:#231F20;text-decoration:none;text-transform:none;letter-spacing:0;white-space:normal;font:inherit}
+.dsf-res a b{display:block;font:600 13px/1.25 "Switzer",sans-serif}
+.dsf-res a span{display:block;margin-top:2px;font:500 11.5px/1.3 "Switzer",sans-serif;color:#5A5F6B}
+.dsf-res a small{display:block;margin-top:4px;font:400 12.5px/1.45 "Instrument Sans",sans-serif;color:#48536A}
+.dsf-res a:hover,.dsf-res a.on{background:#F4F6F9}
+.dsf-res mark{background:rgba(236,32,39,.14);color:inherit;padding:0}
+.dsf-none{padding:9px 10px;font:400 12.5px/1.45 "Instrument Sans",sans-serif;color:#5A5F6B}
+.dsf-hit{background-color:rgba(236,32,39,.12)!important;box-shadow:0 0 0 6px rgba(236,32,39,.12);transition:background-color .6s ease,box-shadow .6s ease}
+.snav .dsf-bar{flex:none;width:min(240px,46vw);margin:0 10px 0 0}
+.snav .dsf-bar .dsf-f{height:30px}
+.dsf-res.dsf-res-bar{position:fixed;left:var(--gut,16px);right:var(--gut,16px);top:calc(var(--barh,46px) + 50px);z-index:60;margin:0;max-height:62vh;box-shadow:0 24px 50px -20px rgba(12,18,32,.35)}
+</style>

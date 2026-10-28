@@ -77,8 +77,8 @@ export default function CapTool() {
       bandRep={false}
       art="hookup"
       /* 25 Sep (Bazil: "wouldn't this be better replaced with picture 2"): IAQ's Services Scope slide in place of the work cards */
-      /* 27 Oct (client: "Remove this section, redundant information"): "The services scope, from plant to tool." (ToolScope) is off
-         this page, and no work cards stand in its place */
+      /* 26 Oct (IAQ review, NR, page 008: "Remove this section, redundant information."): "The services scope, from plant to tool"
+         (ToolScope) is off the page; works={false} so the generic work cards do not take its place */
       works={false}
       /* 19 Oct (client feedback, PCU & TTI · "Direct header, no explanation"; IAQ: "Remove phrases that cannot be explained
          plainly"): the hero is the header and its line only; the 6 / 4 / 1 figures (marked wrong in the 13 Oct review) and
@@ -91,7 +91,7 @@ export default function CapTool() {
          lede and the first `what` paragraph); the TTI line is the hero's, moved here as the client asked. */
       /* 19 Oct (client feedback, PCU & TTI · Introduction to PCU & TTI): IAQ's heading and paragraph, in place of "What PCU &
          TTI is." and its PCU and TTI halves (29 Sep). Spelling slip only corrected ("competion"). */
-      whatHead={<>Manufacturing Readiness <em>Start Here</em></>}
+      whatHead={<>Manufacturing Readiness <br /><em>Start Here</em></>}
       whatParts={[
         { t: 'A production facility is only ready when its manufacturing equipment and utility systems operate as one. IAQ delivers integrated PCU and TTI solutions that connect critical utility infrastructure with manufacturing tools, enabling a seamless transition from facility completion to operational readiness.' },
       ]}
@@ -131,7 +131,7 @@ export default function CapTool() {
             ] },
         ],
       }}
-      servicesHead={<>Process critical utilities, <em>run as one system.</em></>}
+      servicesHead={<>Process critical utilities, <br /><em>run as one system</em></>}
       /* 26 Sep: the five utility steps run in sequence, drawn as a process strip; the pair below reads as a change */
       servicesFlow
       modelsJoin="arrow"
@@ -205,7 +205,7 @@ export default function CapTool() {
       filter={p => p.ind === 'semiconductor'}
       proofNote="Published by scope and location only. Client names are withheld where the contract requires it."
       /* the note restates the Survey step above */
-      cta={{ label: 'Plan a tool hook-up', route: '/contact', title: 'Plan the hook-up before the tool lands.', note: 'Send the tool list and the move-in date. Discrepancies are found at survey, not on the day the tool arrives.' }}
+      cta={{ label: 'Plan a tool hook-up', route: '/contact', title: 'Plan the hook-up before the tool lands', note: 'Send the tool list and the move-in date. Discrepancies are found at survey, not on the day the tool arrives.' }}
     />
   )
 }

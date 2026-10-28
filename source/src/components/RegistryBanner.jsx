@@ -40,34 +40,29 @@ const STATS = [
   { k: '7', v: 'Countries' },
 ]
 
-/* 28 Oct (Bazil: "generate other than this, dont copy ... related image for that hero image"): a new picture, made in
-   ChatGPT, in place of the backend plant aerial: a completed high-tech manufacturing campus from a drone at blue hour, the
-   production building, the central utility building with its tanks and the lit office block. Not a specific IAQ project, so
-   no project name sits on it. prj-003.webp stays on its project card. */
-/* 28 Oct, later (Bazil: "dont make it open window glass like"): the office block at the entrance is now solid panel walls
-   with narrow strip windows, no see-through glass; the rest of the picture is unchanged (prj-hero-campus-dusk-v2.webp) */
+/* 26 Oct (IAQ review, NR, page 018: "Change this layout, to distracting. Maybe use one spotlight photo as a highlight on this
+   header."): the drifting three-column wall is gone. The right block is one project in the spotlight, still and in full
+   colour, with its name on a white block at the foot linking to its record (type on a photograph only on a block). The
+   spotlight is the Kedah wafer fab facility and expansion: semiconductor, IAQ's core, and the sharpest photograph in the set. */
+/* 28 Oct: the spotlight is now the campus at dusk (prj-hero-campus-dusk-v2.webp, carried over from the 26 Sep project): a
+   generated picture of a completed high-tech manufacturing campus, not a specific IAQ project, so no project name sits on it. */
 const SPOT = {
   img: '/assets/projects/prj-hero-campus-dusk-v2.webp',
   alt: 'A completed high-tech manufacturing campus from the air at dusk: the production building, the central utility building and the lit office block',
-  cap: 'Semiconductor backend plant, 43,000 m² test, probe and assembly',
 }
 
-export default function RegistryBanner({ shown = 18 }) {
-
+export default function RegistryBanner() {
   return (
     <section className="rb" aria-labelledby="rbH">
-      {/* 27 Oct (client: "Change this layout, too distracting. Maybe use one spotlight photo as a highlight on this header"): the
-          moving wall of every project photo gives way to one still spotlight, IAQ's semiconductor backend plant from the air */}
       <figure className="rb-spot">
-        <img src={SPOT.img} alt={SPOT.alt} decoding="async" fetchpriority="high" />
-        {/* 28 Oct (Bazil: "remove that"): the "Spotlight" label and project name over the photo are gone; the photo stands alone */}
+        <img src={SPOT.img} alt={SPOT.alt} decoding="async" fetchPriority="high" />
       </figure>
 
       {/* 26 Sep: no scrim and no grid; the words sit on their own navy block (registry-banner.css) */}
 
       <header className="rb-head wrap">
         <span className="eyebrow">Project registry</span>
-        <h1 id="rbH">250+ projects, <em>on the record.</em></h1>
+        <h1 id="rbH">250+ projects, <br /><em>on the record</em></h1>
         {/* The second sentence used to read "One registry powers filtering, search, related
             projects and SEO" — written to the client buying the site, not to the visitor
             using it. */}

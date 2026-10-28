@@ -6,7 +6,7 @@
 .cms-login{max-width:420px;margin:140px auto 120px;border:1px solid rgba(12,18,32,.12);border-radius:0;padding:34px 32px;background:#fff;box-shadow:0 18px 50px rgba(12,18,32,.08)}
 .cms-login h1{font-size:24px;margin:10px 0 6px}
 .cms-login p{font-size:14px;color:#48536A;line-height:1.55}
-.cms-k{font-family: var(--label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#B5121B;font-weight:600}
+.cms-k{font-family: var(--label);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:#B5121B;font-weight:600}
 .cms-login form{margin-top:18px;display:flex;flex-direction:column;gap:10px}
 .cms-login input{border:1px solid rgba(12,18,32,.18);border-radius:0;padding:11px 13px;font-size:14px;font-family: var(--label)}
 .cms-login button{background:#EC2027;color:#fff;border:0;border-radius:0;padding:12px;font-weight:600;font-size:14px;cursor:pointer}
@@ -36,7 +36,7 @@
 .cms-add:hover{background:#1F2940}
 .cms-reset{background:none;border:1px solid rgba(12,18,32,.18);border-radius:0;padding:8px 13px;font-size:12.5px;cursor:pointer;color:#48536A}
 .cms-reset:hover{border-color:#B5121B;color:#B5121B}
-.cms-state{margin-left:auto;font-family: var(--label);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#828B9E}
+.cms-state{margin-left:auto;font-family: var(--label);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:#828B9E}
 .cms-state.dirty{color:#B5121B}
 
 .cms-list{display:flex;flex-direction:column;gap:10px}
@@ -48,7 +48,7 @@
 .cms-del{background:none;border:0;color:#828B9E;cursor:pointer;font-size:16px;line-height:1;padding:4px}
 .cms-del:hover{color:#B5121B}
 .cms-form{padding:4px 16px 16px;border-top:1px dashed rgba(12,18,32,.12);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.cms-form label{display:flex;flex-direction:column;gap:4px;font-family: var(--label);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#828B9E}
+.cms-form label{display:flex;flex-direction:column;gap:4px;font-family: var(--label);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:#828B9E}
 .cms-form input,.cms-form select,.cms-form textarea{border:1px solid rgba(12,18,32,.16);border-radius:0;padding:9px 11px;font-size:13.5px;font-family:Inter,system-ui,sans-serif;background:#fff;color:#0C1220}
 .cms-form textarea{min-height:120px;resize:vertical;grid-column:1/-1;line-height:1.6}
 .cms-form .full{grid-column:1/-1}
@@ -68,13 +68,13 @@
 .cms-dl .gd-list{margin-top:16px}
 .cms-dl-act{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:20px}
 .cms-dl-act .cta[aria-disabled="true"]{opacity:.55;cursor:not-allowed;pointer-events:none}
-.cms-dl-note{font-family:"Switzer","Instrument Sans",sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#66708A;line-height:1.6}
+.cms-dl-note{font-family:"Switzer","Instrument Sans",sans-serif;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:#66708A;line-height:1.6}
 .cms-files{list-style:none;margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
 .cms-file{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid rgba(12,18,32,.12);background:#fff;padding:14px 16px;text-decoration:none;color:inherit;transition:border-color .2s}
 .cms-file:hover{border-color:#EC2027}
 .cms-file b{display:block;font-family:"Switzer",sans-serif;font-weight:600;font-size:14.5px;letter-spacing:-.01em}
 .cms-file small{display:block;margin-top:3px;font-size:12.5px;color:#66708A}
-.cms-file span.dl{font-family:"Switzer","Instrument Sans",sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#B5121B;white-space:nowrap}
+.cms-file span.dl{font-family:"Switzer","Instrument Sans",sans-serif;font-size:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:#B5121B;white-space:nowrap}
 @media(max-width:760px){.cms-dl{grid-template-columns:1fr}.cms-dl .gate-doc{display:none}}
 
 /* ============================================================================

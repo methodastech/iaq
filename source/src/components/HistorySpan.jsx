@@ -186,7 +186,8 @@ export default function HistorySpan() {
             <span className="hx-read-n">{live + 1} of {SPAN.length}</span>
           </aside>
 
-          <ol className="hx-list">
+          {/* 22 Oct, note 15: the axis fills to the live era (history-span.css .hx-list::after) */}
+          <ol className="hx-list" style={{ '--hxp': (100 * live / Math.max(1, SPAN.length - 1)) + '%' }}>
             {SPAN.map((m, i) => {
               const next = SPAN[i + 1]
               /* years to the next entry; zero when two entries share a year */

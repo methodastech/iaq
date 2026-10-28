@@ -1,6 +1,7 @@
-import React from 'react'
-import { DIRECTION as D } from '../../data/booth.js'
+import React, { useState } from 'react'
+import { DIRECTION as D, DIRECTIONS } from '../../data/booth.js'
 import { Mark, Stripes, IsoFab, DotMap, Ic, C } from './Art.jsx'
+import { DIRS, LIVE, REJECTED, DEFAULT_DIR, SETS, statusOf } from './sets.js'
 
 /* The booth's design direction (22 Sep 2026): the colours and where each goes, the one blue, the type and
    its scale per surface, the mark, the stripes, where lines are and are not used, spacing, imagery, and the
@@ -10,6 +11,9 @@ const FD = "'Poppins','Switzer',sans-serif", FB = "'Urbanist','Instrument Sans',
 export default function Direction() {
   return (
     <div className="dd">
+      {/* 29 Sep: the directions first (30 Sep: five, compared, one shown in full); then Direction A's full rulebook */}
+      <section className="dd-sec"><Directions /></section>
+      <h3 className="dd-rules-h">Direction A, White cleanroom: the full rules</h3>
       <section className="dd-idea">
         <div>
           <h3>{D.idea.h.split(', ')[0]}, <em>{D.idea.h.split(', ')[1]}</em></h3>
@@ -76,7 +80,7 @@ export default function Direction() {
         <h4 className="dd-h4">Sizes, by surface</h4>
         <table className="dd-tbl">
           <thead><tr><th>Surface</th><th>Headline</th><th>Figures and names</th><th>Text</th><th>Labels</th></tr></thead>
-          <tbody>{D.scale.map(r => <tr key={r[0]}>{r.map((c, i) => i ? <td key={i}>{c || '·'}</td> : <th key={i}>{c}</th>)}</tr>)}</tbody>
+          <tbody>{D.scale.map(r => <tr key={r[0]}>{r.map((c, i) => i ? <td key={i}>{c}</td> : <th key={i}>{c}</th>)}</tr>)}</tbody>
         </table>
       </section>
 
@@ -180,6 +184,80 @@ const PAIRS = [
   { k: 'Red is one signal', ok: <><rect width="200" height="130" fill="#fff" />{T(18, 40, 16, 'Controlled')}{T(18, 60, 16, 'environments,')}{T(18, 80, 16, 'built to class.', C.red)}<rect y="110" width="200" height="20" fill={C.navy} /></>, bad: <><rect width="200" height="130" fill={C.red} />{T(18, 40, 16, 'Controlled', '#fff')}{T(18, 60, 16, 'environments,', '#fff')}<rect x="18" y="68" width="118" height="22" fill="#fff" />{T(24, 84, 14, 'built to class.', C.red)}</> },
   { k: 'Separate with space and the plinth', ok: <><rect width="200" height="130" fill="#fff" />{T(18, 40, 15, 'Headline')}{T(18, 70, 11, 'Text sits one headline height below.', C.soft, FB, 500)}<rect y="108" width="200" height="22" fill={C.navy} /></>, bad: <><rect width="200" height="130" fill="#fff" />{T(18, 40, 15, 'Headline')}<rect x="18" y="50" width="164" height="2" fill={C.ink} />{T(18, 74, 11, 'Text under a rule.', C.soft, FB, 500)}<rect x="10" y="88" width="180" height="30" fill="none" stroke={C.ink} strokeWidth="1.5" /></> },
   { k: 'One blue: Deep Navy', ok: <><rect width="200" height="130" fill="#fff" /><rect y="100" width="200" height="30" fill={C.navy} /><Mark x={18} y={20} w={70} /></>, bad: <><rect width="200" height="130" fill="#fff" /><rect y="100" width="200" height="30" fill="#2B45B8" /><rect x="0" width="10" height="100" fill="#3D6BFF" /><Mark x={26} y={20} w={70} /></> },
-  { k: 'Headlines in sentence case', ok: <><rect width="200" height="130" fill="#fff" />{T(18, 60, 18, 'Every layer,')}{T(18, 84, 18, 'built to class.', C.red)}</>, bad: <><rect width="200" height="130" fill="#fff" />{T(18, 60, 14, 'EVERY LAYER, BUILT', C.ink, "'JetBrains Mono',monospace", 700)}{T(18, 82, 14, 'TO CLASS', C.ink, "'JetBrains Mono',monospace", 700)}</> },
+  { k: 'Headlines in sentence case', ok: <><rect width="200" height="130" fill="#fff" />{T(18, 60, 18, 'Every layer,')}{T(18, 84, 18, 'built to class.', C.red)}</>, bad: <><rect width="200" height="130" fill="#fff" />{T(18, 60, 14, 'EVERY LAYER, BUILT', C.ink, FL, 700)}{T(18, 82, 14, 'TO CLASS', C.ink, FL, 700)}</> },
   { k: 'Keep the logo as supplied', ok: <><rect width="200" height="130" fill="#fff" /><Mark x={50} y={40} w={100} /></>, bad: <><rect width="200" height="130" fill="#fff" /><g transform="translate(20 30) scale(1.6 .7)"><Mark x={0} y={20} w={100} /></g></> },
 ]
+
+/* ============================================================================
+   29 Sep 2026: the two directions side by side (Bazil: "complete the exhibition with 2 choices of direction").
+   30 Sep: five (A to E). Two columns stopped working, so: Compare, the five stands at one scale in a grid, each with its
+   name and one line (a card chooses it); then the chosen direction in full, row by row: the idea, the colours by share,
+   the type, the graphic device, do and do not. Content: data/booth.js DIRECTIONS; art: sets.js. Controlled by the booth
+   page's chooser (d, setD) or by its own state on the Direction page.
+   ============================================================================ */
+const SIZE = { w1: [310, 3472], w2: [2852, 3472], w3: [2046, 3472], ct: [600, 1170] }
+const FACE = { Poppins: FD, Urbanist: FB, League: FL, Switzer: "'Switzer',sans-serif", Instrument: "'Instrument Sans',sans-serif" }
+function Stand({ d }) {
+  return (
+    <span className="dx-stand" aria-label={`Direction ${d}: the aisle column, the side wall, the back wall and the counter, at one scale`}>
+      {['w1', 'w2', 'w3', 'ct'].map(k => { const A = SETS[d].walls[k], [w, h] = SIZE[k]; return <span key={k} style={{ flexGrow: w, aspectRatio: `${w} / ${h}` }}><A /></span> })}
+    </span>
+  )
+}
+/* the status tag, as the Design tab's decisions record shows it: a cross and "Rejected", a tick and "Preferred" */
+export function DirStatus({ d }) {
+  const st = statusOf(d)
+  if (st === 'rejected') return <em className="bt-tag bt-tag-x">Rejected, {DIRECTIONS[d].when}</em>
+  if (st === 'preferred') return <em className="bt-tag bt-tag-y">Preferred, {DIRECTIONS[d].when}</em>
+  if (st === 'new') return <em className="bt-tag bt-tag-n">New, {DIRECTIONS[d].when}</em>
+  return null
+}
+export function Directions({ d: dIn, setD: setDIn }) {
+  const [dOwn, setDOwn] = useState(() => { const q = typeof window !== 'undefined' && (window.location.search.match(/[?&]dir=([a-f][23]?)/i) || [])[1]; return q && DIRS.includes(q.toUpperCase()) ? q.toUpperCase() : DEFAULT_DIR })
+  const d = dIn || dOwn, setD = setDIn || setDOwn
+  const x = DIRECTIONS[d]
+  const card = k => (
+    <button type="button" key={k} className={'dx-card' + (k === d ? ' on' : '') + (statusOf(k) === 'rejected' ? ' rej' : '')} aria-pressed={k === d} onClick={() => setD(k)}>
+      <Stand d={k} />
+      <span className="dx-card-t"><b>Direction {k}, <em>{DIRECTIONS[k].name}</em></b><DirStatus d={k} /><span>{DIRECTIONS[k].line}</span></span>
+    </button>
+  )
+  return (
+    <div className="dx">
+      <h3 className="dx-k">Compare the live options</h3>
+      <div className="dx-cmp">{LIVE.map(card)}</div>
+      <h3 className="dx-k dx-k-r">Rejected on 30 Sep, still viewable</h3>
+      <div className="dx-cmp dx-cmp-r">{REJECTED.map(card)}</div>
+      <div className="dx-tabs" role="group" aria-label="Show the rules of">
+        {DIRS.map(k => <button type="button" key={k} className={(k === d ? 'on' : '') + (statusOf(k) === 'rejected' ? ' rej' : '')} aria-pressed={k === d} onClick={() => setD(k)}><b>{k}</b>{DIRECTIONS[k].tab || DIRECTIONS[k].name}</button>)}
+      </div>
+      <article className={'dx-col dx-one dx-' + d.toLowerCase()}>
+        <header className="dx-h">
+          <h3>Direction {d}, <em>{x.name}</em> <DirStatus d={d} /></h3>
+          <p>{x.line}</p>
+        </header>
+        <div className="dx-row">
+          <h4>The idea</h4>
+          <p><b>{x.idea.h}</b> {x.idea.t}</p>
+        </div>
+        <div className="dx-row">
+          <h4>Colours, by share of a surface</h4>
+          <div className="dd-share" aria-hidden="true">{x.colours.map(c => <span key={c.k} style={{ flexGrow: c.share, background: c.hex }} />)}</div>
+          <ul className="dx-sw">{x.colours.map(c => <li key={c.k}><i style={{ background: c.hex }} /><div><b>{c.k}</b><span>{c.hex}, {c.share} %</span><small>{c.use}</small></div></li>)}</ul>
+        </div>
+        <div className="dx-row">
+          <h4>Type</h4>
+          <ul className="dx-kv">{x.type.map(([k, v]) => <li key={k}><b style={{ fontFamily: FACE[k.split(' ')[0]] }}>{k}</b><span>{v}</span></li>)}</ul>
+        </div>
+        <div className="dx-row">
+          <h4>Graphic device, logo and pictures</h4>
+          <ul className="dx-kv">{x.device.map(([k, v]) => <li key={k}><b>{k}</b><span>{v}</span></li>)}</ul>
+        </div>
+        <div className="dx-row dx-dd">
+          <div className="yes"><h4>Do</h4><ul>{x.dos.map(t => <li key={t}>{t}</li>)}</ul></div>
+          <div className="no"><h4>Do not</h4><ul>{x.donts.map(t => <li key={t}>{t}</li>)}</ul></div>
+        </div>
+      </article>
+    </div>
+  )
+}

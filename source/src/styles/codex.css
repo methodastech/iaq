@@ -290,7 +290,7 @@
 .cx-gate-card{max-width:520px;background:var(--bg2);border:1px solid var(--line);padding:clamp(22px,3vw,36px)}
 .cx-gate-card h2{margin-top:0}
 .cx-gate-card form{display:grid;gap:8px;margin-top:20px}
-.cx-gate-card label{font-family:var(--label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.cx-gate-card label{font-family:var(--label);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint)}
 .cx-gate-card input{border:1px solid var(--line2);background:var(--bg);padding:12px 13px;font:inherit;font-size:15px;color:var(--ink)}
 .cx-gate-card input:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
 .cx-gate-act{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:stretch;margin-top:8px}

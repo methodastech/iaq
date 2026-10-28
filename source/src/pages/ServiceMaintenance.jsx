@@ -63,13 +63,13 @@ function ProofCard({ i }) {
 /* 25 Sep (IAQ, 24 Sep review: "merge all the description pages for each service into one"): the cover and the scope
    are exported so the single page /services/all can stack the six stages in order; this page still renders them */
 const SLUG = 'maintenance'
-export const META = { slug: SLUG, eyebrow: "Stage 05 · Maintenance", title: <>Protecting your investment, <em>long after handover.</em></>, lede: "Planned maintenance that protects asset lifespan, minimises downtime and keeps facilities compliant." }
+export const META = { slug: SLUG, eyebrow: "Stage 05 · Maintenance", title: <>Protecting your investment, <br /><em>long after handover</em></>, lede: "Planned maintenance that protects asset lifespan, minimises downtime and keeps facilities compliant." }
 export function Cover() {
   return (
       <section className="pg-sec" aria-labelledby={"cov-h-"+SLUG}>
         <div className="pg-in">
           <span className="pg-k">What it covers</span>
-          <h2 id={"cov-h-"+SLUG}>The facility, kept at the standard it was handed over at.</h2>
+          <h2 id={"cov-h-"+SLUG}>The facility, kept at the standard it was handed over at</h2>
           <div className="pg-split">
             <div>
               <p className="pg-body">
@@ -96,7 +96,7 @@ export function Scope() {
       <section className="pg-sec calm" aria-labelledby={"scope-h-"+SLUG}>
         <div className="pg-in">
           <span className="pg-k">Scope</span>
-          <h2 id={"scope-h-"+SLUG}>What IAQ carries at this stage.</h2>
+          <h2 id={"scope-h-"+SLUG}>What IAQ carries at this stage</h2>
           {/* the scope as a diagram (2 Sep): one custom mark per item on a rail that draws in */}
           <DetailDiagram variant="flow" items={SCOPE.map(s => ({ label: s }))} ariaLabel="Scope at this stage" />
           <CarriedBy service="maintain" />
@@ -117,7 +117,7 @@ export default function ServiceMaintenance() {
           rather than on the same render the ring and the hub already showed. */}
       <PageHead crumbs={[{ label: 'Services', to: '/services' }]}
         eyebrow="Stage 05 · Maintenance"
-        title={<>Protecting your investment, <em>long after handover.</em></>}
+        title={<>Protecting your investment, <br /><em>long after handover</em></>}
         lede="Planned maintenance that protects asset lifespan, minimises downtime and keeps facilities compliant."
         chips={['Lifecycle', 'Stage 5 of 6']}
         figure={{ src: '/assets/banners/svc-maintain.jpg', alt: 'Maintenance: a filter change on an air handling unit in the plant room', hero: true }}
@@ -133,7 +133,7 @@ export default function ServiceMaintenance() {
       <section className="pg-sec" aria-labelledby="run-h">
         <div className="pg-in">
           <span className="pg-k">How it runs</span>
-          <h2 id="run-h">Three things run continuously.</h2>
+          <h2 id="run-h">Three things run continuously</h2>
           {/* the process as a diagram (2 Sep, Bazil: "a whole good process with custom icons") */}
           <GateList items={BEATS} ariaLabel="How it runs" />
 
@@ -153,7 +153,7 @@ export default function ServiceMaintenance() {
       <section className="pg-sec calm" aria-labelledby="proof-h">
         <div className="pg-in">
           <span className="pg-k">Proof</span>
-          <h2 id="proof-h">Assets that have to run every day.</h2>
+          <h2 id="proof-h">Assets that have to run every day</h2>
           <p className="pg-lede">
             One process, six stages: every project below ran the full cycle. These are drawn from the
             published registry, chosen because they are continuously operated plant. Operation and

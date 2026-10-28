@@ -64,10 +64,10 @@ export default function CapEpc() {
          drawing to final handover" went with it: it implied every project runs every phase */
       title={<>Engineering, Procurement &amp; Construction <em style={{ whiteSpace: 'nowrap' }}>(EPC)</em></>}
       /* Q-EPC-B: one-stop solution; design, procurement, construction; the system operates as intended. HUB: single contract. 15 words. */
-      /* 27 Oct (IAQ amended copywriting sheet, EPC · Headline and value proposition): IAQ's line, as given */
-      /* 27 Oct (Bazil: "the sub heading make it two line"): the same line, broken after "delivery" so it sits on two lines */
-      /* 28 Oct: break moved to after "development", so the two lines sit closer in length */
-      lede={<>Integrated project delivery from concept development<br />through commissioning.</>}
+      /* 27 Oct: "under one contract" off the line (IAQ asked on 24 Sep). IAQ's 26 Oct note asks for the description in its amended copy
+         sheet; the sheet gives the EPC headline only, so the rest of the line stays until IAQ sends the text */
+      /* 28 Oct: the description as given */
+      lede="Integrated project delivery from concept development through commissioning."
       /* LIVE-EPCC and LIVE-EPCM; single point of contact Q-EPC-B; 12 to 24 months Q-EPC-B */
       /* 19 Oct (IAQ feedback, EPC · Metrics: "No blanket duration claim"): "Typically 12 to 24 months" is gone */
       chips={['EPCC · EPCM', 'Single point of contact']}
@@ -142,7 +142,7 @@ export default function CapEpc() {
       /* 17 Sep: the nine LIVE-EPCC scope lines moved onto their stage above (client: merge with
          the lifecycle and remove the section). They are the `covers` arrays in steps. */
       /* 21 Oct (IAQ amendment sheet, EPC · Why IAQ): IAQ's five reasons, in its order and words, in place of "Why owners choose it." */
-      whyHead={<>Why Integrated Project <em>Delivery Matters</em></>}
+      whyHead={<>Why Integrated Project <br /><em>Delivery Matters</em></>}
       whyAfterScope   /* 21 Oct: after Our EPC Capabilities, the sheet's order */
       why={[
         { k: 'Enhanced Coordination', icon: 'link', t: 'Improved collaboration between design, procurement and construction teams throughout the project lifecycle.' },
@@ -168,9 +168,9 @@ export default function CapEpc() {
       /* title and note: single point of contact Q-EPC-B; the reply line is the site's own promise */
       /* 21 Oct (IAQ amendment sheet, EPC · CTA): IAQ's heading and line as a section of its own above the footer. Spelling
          slips only corrected ("Discuss", "operationally"). */
-      ctaBand={{ title: <>Let&rsquo;s Discuss Your <em>Project Goals</em></>, label: 'Discuss your project', route: '/contact',
+      ctaBand={{ title: <>Let&rsquo;s Discuss Your <br /><em>Project Goals</em></>, label: 'Discuss your project', route: '/contact',
         lede: 'Whether planning a new facility, expanding existing operations or upgrading critical infrastructure, IAQ delivers integrated EPC solutions that transform complex requirements into operationally ready facilities.' }}
-      cta={{ label: 'Discuss an EPC project', route: '/contact', title: 'One contract for the whole facility.', note: 'Tell us the facility and the programme. One point of contact carries it from design to handover.' }}
+      cta={{ label: 'Discuss an EPC project', route: '/contact', title: 'One contract for the whole facility', note: 'Tell us the facility and the programme. One point of contact carries it from design to handover.' }}
     />
   )
 }

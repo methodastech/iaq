@@ -9,6 +9,7 @@ const P = {
   home:     <><path d="M4 11 12 4l8 7" /><path d="M6 10v10h12V10" /><path d="M10 20v-6h4v6" /></>,
   building: <><rect x="4" y="4" width="16" height="16" /><path d="M8 8h2M14 8h2M8 12h2M14 12h2M8 16h2M14 16h2" /></>,
   clock:    <><circle cx="12" cy="12" r="8" /><path d="M12 7v5l3 2" /></>,
+  question: <><circle cx="12" cy="12" r="8" /><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.6v.7" /><path d="M12 16.2v1.3" /></>,   /* 28 Oct: the FAQ row in the About menu */
   people:   <><circle cx="9" cy="9" r="3" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><path d="M16 6.5a3 3 0 0 1 0 5.9" /><path d="M18 14.5c1.8.9 3 2.7 3 5.5" /></>,
   /* food & beverage is a production line, not a dinner service: a filled bottle, not a cloche */
   bottle:   <><path d="M10 3h4" /><path d="M10.5 3v2.6c0 1-.6 1.6-1.3 2.4C8.4 8.9 8 9.8 8 11v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-8c0-1.2-.4-2.1-1.2-3-.7-.8-1.3-1.4-1.3-2.4V3" /><path d="M8 14c1.3 0 1.3 1 2.7 1s1.3-1 2.7-1 1.3 1 2.6 1" /></>,

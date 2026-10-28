@@ -48,7 +48,7 @@
 .mk-facts-w { position: relative; z-index: 1; padding: 0 var(--gut) clamp(26px, 4vh, 42px); }
 .mk-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; background: none; border: 0; }   /* 26 Sep, 06:10 (Bazil: "cannot have too many lines"): blocks on space, no grid lines */
 .mk-fact { background: rgba(255,255,255,.05); padding: 15px 16px; min-width: 0; }
-.mk-fact .k { display: block; font-family: var(--label); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #7A87A2; font-weight:600; }
+.mk-fact .k { display: block; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: #7A87A2; font-weight:600; }
 .mk-fact .v { display: block; margin-top: 8px; font-family: "Switzer", sans-serif; font-weight: 600; font-size: 17px; line-height: 1.18; letter-spacing: -.015em; color: #EDF2FC; overflow-wrap: break-word; }
 .mk-fact .v small { display: block; margin-top: 6px; font-family: "Instrument Sans", sans-serif; font-weight: 500; font-size: 13px; line-height: 1.5; letter-spacing: 0; color: #C2CCDD; }
 a.mk-fact { text-decoration: none; transition: background .25s; min-height: 40px; }
@@ -100,9 +100,9 @@ a.mk-fact .v small { color: #AAB6CE; }
 .mk-card:hover .mk-cv img { transform: scale(1.06); }
 /* the frame is 55% of the card and used to carry only the numeral. It states the
    market's strongest published fact instead. */
-.mk-flag { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 16px 13px 9px; font-family: var(--label); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight:600; color: #fff; background: linear-gradient(180deg, rgba(9,14,26,0), rgba(9,14,26,.82)); }
+.mk-flag { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 16px 13px 9px; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: #fff; background: linear-gradient(180deg, rgba(9,14,26,0), rgba(9,14,26,.82)); }
 .mk-cv::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(12,18,32,.05), transparent 34%); }
-.mk-cv .no { position: absolute; top: 11px; left: 13px; z-index: 1; font-family: var(--label); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #0C1220; text-shadow: 0 1px 3px rgba(255,255,255,.85), 0 0 2px rgba(255,255,255,.9); }
+.mk-cv .no { position: absolute; top: 11px; left: 13px; z-index: 1; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: #0C1220; text-shadow: 0 1px 3px rgba(255,255,255,.85), 0 0 2px rgba(255,255,255,.9); }
 .mk-cb { flex: 1; display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto auto 1fr; column-gap: 12px; row-gap: 9px; padding: 16px 17px 17px; }
 /* 4 Sep (client: "and when hover animated the icons"): the mark lifts, grows a little, and a
    soft halo opens behind it. Deliberately NOT a spin — these are engineering marks, and a mark
@@ -130,21 +130,21 @@ a.mk-fact .v small { color: #AAB6CE; }
 .mk-more:hover { border-color: rgba(110, 86, 230, .45); background: rgba(110, 86, 230, .04); }
 .mk-more b { font-family: "Switzer", "Instrument Sans", system-ui, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: -.012em; color: var(--ink); line-height: 1.25; }
 .mk-more span { font-size: 13px; line-height: 1.5; color: var(--soft); }
-.mk-more i { font-style: normal; font-family: var(--label); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; font-weight:600; color: var(--mk-t); }
+.mk-more i { font-style: normal; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--mk-t); }
 @media (max-width: 900px) { .mk-more { display: none; } }
 /* two lines reserved, so all seven descriptions start on the same baseline whatever the
    market name's length */
 .mk-cb h3 { grid-column: 2; grid-row: 1; align-self: center; font-size: 17px; line-height: 1.15; overflow-wrap: break-word; min-height: 2.3em; min-height: 2lh; display: flex; align-items: center; }
-.mk-cb p { grid-column: 1 / -1; grid-row: 2; font-size: 12.5px; line-height: 1.5; color: var(--soft); }
+.mk-cb p { grid-column: 1 / -1; grid-row: 2; font-size: 13px; line-height: 1.5; color: var(--soft); }
 /* 10px and --soft: this line is load-bearing (the class and the registry count) and it
    was 8.5px on --faint, 3.4:1 on the card ground */
-.mk-cb .cls { grid-column: 1 / -1; grid-row: 3; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; font-family: var(--label); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--soft); font-weight:600; overflow-wrap: anywhere; }
+.mk-cb .cls { grid-column: 1 / -1; grid-row: 3; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--soft); font-weight:600; overflow-wrap: anywhere; }
 .mk-cb .cls b { color: var(--mk-t); }
-.mk-cb .cls i { font-style: normal; font-weight: 600; font-size: 9px; color: var(--soft); opacity: .9; }
+.mk-cb .cls i { font-style: normal; font-weight: 600; font-size: 13px; color: var(--soft); opacity: .9; }
 
 /* the action row: the market page, and the registry already filtered to this market */
 .mk-acts { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; padding: 0 17px 15px; }
-.mk-go, .mk-alt { font-family: var(--label); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight:600; text-decoration: none; }
+.mk-go, .mk-alt { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; text-decoration: none; }
 .mk-go { color: var(--mk-t); }
 .mk-alt { color: var(--soft); border-bottom: 1px solid var(--line2); padding-bottom: 2px; }
 .mk-alt:hover { color: var(--mk-t); border-bottom-color: currentColor; }
@@ -158,8 +158,8 @@ a.mk-fact .v small { color: #AAB6CE; }
   .mk-cb .ic { width: 25px; height: 25px; }
   /* no 8px override: this label is load-bearing at every width */
   .mk-acts { padding: 0 11px 12px; }
-  .mk-go, .mk-alt { font-size: 9px; }
-  .mk-flag { font-size: 9px; padding: 14px 11px 8px; }
+  .mk-go, .mk-alt { font-size: 13px; }
+  .mk-flag { font-size: 13px; padding: 14px 11px 8px; }
 }
 
 /* one or two published projects in a market would otherwise sit at half width
@@ -186,14 +186,14 @@ a.mk-fact .v small { color: #AAB6CE; }
 .mk-tw { margin-top: clamp(26px, 3.4vw, 40px); overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .mk-tbl { width: 100%; border-collapse: collapse; min-width: 720px; }
 .mk-tbl th, .mk-tbl td { text-align: left; padding: 13px 16px 13px 0; vertical-align: top; }
-.mk-tbl thead th { font-family: var(--label); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; font-weight:600; color: rgba(255,255,255,.66); padding-bottom: 11px; white-space: nowrap; }
+.mk-tbl thead th { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: rgba(255,255,255,.66); padding-bottom: 11px; white-space: nowrap; }
 .mk-tbl tbody tr + tr th, .mk-tbl tbody tr + tr td { border-top: 0; }   /* 26 Sep, 06:10 (Bazil: "cannot have too many lines"): no rule per row, see below */
 .mk-tbl tbody th { font-family: "Switzer", sans-serif; font-weight: 600; font-size: 14.5px; line-height: 1.3; white-space: nowrap; }
 .mk-tbl tbody th a { color: #fff; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }
 .mk-tbl tbody th a:hover, .mk-tbl tbody th a:focus-visible { color: var(--mk-l); border-bottom-color: currentColor; }
 .mk-tbl td { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.78); }
 .mk-tbl td b { color: #fff; font-weight: 600; }
-.mk-tbl td.num { font-family: var(--label); font-size: 12px; color: var(--mk-l); font-weight:600; text-align: right; padding-right: 0; }
+.mk-tbl td.num { font-family: var(--label); font-size: 13px; color: var(--mk-l); font-weight:600; text-align: right; padding-right: 0; }
 .mk-tbl tbody tr:hover td, .mk-tbl tbody tr:hover th { background: rgba(255,255,255,.035); }
 @media (max-width: 640px) { .mk-tbl th, .mk-tbl td { padding: 11px 13px 11px 0; } }
 
@@ -209,15 +209,15 @@ a.mk-fact .v small { color: #AAB6CE; }
 /* 24 Sep · the clean board on the deep band */
 .mk-board { display: grid; gap: 6px; margin-top: clamp(26px, 3.4vw, 40px); }
 .mk-bh, .mk-br { display: grid; grid-template-columns: minmax(210px, 1.3fr) minmax(0, 1.1fr) minmax(0, .9fr) minmax(0, 1.4fr) auto; gap: 18px; align-items: center; }
-.mk-bh { padding: 0 18px 6px; font: 600 12px/1.2 "Switzer", sans-serif; color: rgba(255,255,255,.55); }
+.mk-bh { padding: 0 18px 6px; font: 600 13px/1.2 "Switzer", sans-serif; color: rgba(255,255,255,.55); }
 .mk-br { padding: 14px 18px; background: rgba(255,255,255,.055); color: rgba(255,255,255,.8); text-decoration: none; font: 400 14px/1.4 "Instrument Sans", sans-serif; transition: background .25s, transform .25s; }
 .mk-br:hover, .mk-br:focus-visible { background: rgba(255,255,255,.11); transform: translateX(4px); }
 .mk-bm { display: flex; align-items: center; gap: 12px; color: #fff; }
 .mk-bm svg { width: 30px; height: 30px; flex: none; color: #fff; }
 .mk-bm b { font: 600 15.5px/1.2 "Switzer", sans-serif; letter-spacing: -.01em; }
-.mk-spec { font-style: normal; display: inline-block; padding: 6px 8px; background: rgba(255,255,255,.1); color: #fff; font: 600 12.5px/1 "Switzer", sans-serif; white-space: nowrap; }
-.mk-n { display: inline-flex; align-items: center; gap: 7px; justify-self: end; font: 500 12.5px/1 "Instrument Sans", sans-serif; color: rgba(255,255,255,.7); white-space: nowrap; }
-.mk-n i { font-style: normal; padding: 6px 7px; background: var(--mk); color: #fff; font: 600 12.5px/1 "Switzer", sans-serif; }
+.mk-spec { font-style: normal; display: inline-block; padding: 6px 8px; background: rgba(255,255,255,.1); color: #fff; font: 600 13px/1 "Switzer", sans-serif; white-space: nowrap; }
+.mk-n { display: inline-flex; align-items: center; gap: 7px; justify-self: end; font: 500 13px/1 "Instrument Sans", sans-serif; color: rgba(255,255,255,.7); white-space: nowrap; }
+.mk-n i { font-style: normal; padding: 6px 7px; background: var(--mk); color: #fff; font: 600 13px/1 "Switzer", sans-serif; }
 .pg-sec.deep .pg-stats { gap: 8px; background: transparent; border: 0; margin-top: clamp(28px, 4vh, 44px); }
 .pg-sec.deep .pg-stat { background: rgba(255,255,255,.06); padding: 22px 20px 20px; }
 .pg-sec.deep .pg-stat b { color: #fff; }
@@ -262,7 +262,7 @@ a.mk-fact .v small { color: #AAB6CE; }
    labels in sentence case, values one size, the note held to two lines so the four read level */
 .mk-facts{gap:12px;background:none;border:0}
 .mk-fact{background:rgba(10,16,31,.86);padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px}
-.mk-fact .k{font-family:"Switzer","Instrument Sans",system-ui,sans-serif;font-size:12.5px;letter-spacing:0;text-transform:none;color:#9AA6BF;font-weight:600}
+.mk-fact .k{font-family:"Switzer","Instrument Sans",system-ui,sans-serif;font-size:13px;letter-spacing:0;text-transform:none;color:#9AA6BF;font-weight:600}
 .mk-fact .v{margin-top:2px;font-size:18px;line-height:1.2}
 .mk-fact .v small{margin-top:8px;font-size:13.5px;line-height:1.5;color:#B8C2D6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 @media(max-width:640px){.mk-facts{gap:8px}.mk-fact{padding:14px 14px 16px}}
@@ -285,7 +285,7 @@ a.mk-fact:hover,a.mk-fact:focus-visible{background:none}
 .mkb-ico{width:clamp(250px,24vw,340px)}
 .mkb .pg-in-aside{column-gap:clamp(22px,3vw,44px);align-items:center}
 .mkb .pg-head-aside{align-self:center;margin-top:8px}
-.mm .mm-st{font-size:7.2px}
+.mm .mm-st{font-size:13px}
 
 /* the market photograph band: full bleed, the caption in a white chip at the foot, Representation where it is generated */
 /* 15 Oct ("fix that", the band stopping short of the right edge): with an auto width the 560px height cap passes through
@@ -313,9 +313,9 @@ a.mk-fact:hover,a.mk-fact:focus-visible{background:none}
 .mk-cd-top svg{width:36px;height:36px;flex:none;color:var(--mk-m)}
 .mk-cd-top b{font:600 18px/1.15 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:-.02em}
 .mk-cd-row{display:flex;flex-direction:column;gap:3px}
-.mk-cd-row small{font:500 12px/1.3 "Instrument Sans",system-ui,sans-serif;color:rgba(255,255,255,.55)}
+.mk-cd-row small{font:500 13px/1.3 "Instrument Sans",system-ui,sans-serif;color:rgba(255,255,255,.55)}
 .mk-cd-v{font:600 15px/1.3 "Switzer","Instrument Sans",system-ui,sans-serif;color:#fff}
-.mk-cd .mk-spec{display:inline-block;align-self:flex-start;padding:5px 9px;background:var(--mk);color:#fff;font:600 12.5px/1 "Switzer","Instrument Sans",system-ui,sans-serif;font-style:normal}
+.mk-cd .mk-spec{display:inline-block;align-self:flex-start;padding:5px 9px;background:var(--mk);color:#fff;font:600 13px/1 "Switzer","Instrument Sans",system-ui,sans-serif;font-style:normal}
 .mk-cd-n span:last-child{font:500 13px/1.3 "Instrument Sans",system-ui,sans-serif;color:rgba(255,255,255,.8)}
 .mk-cd-sq{display:flex;gap:4px;margin:2px 0 3px}
 .mk-cd-sq i{width:12px;height:12px;background:var(--mk-m);display:block}
@@ -350,7 +350,7 @@ a.mk-fact:hover,a.mk-fact:focus-visible{background:none}
 .mk-tbl-wrap{margin-top:clamp(24px,3.5vh,36px);background:rgba(255,255,255,.05);padding:6px 8px 8px}
 .mk-tbl{width:100%;border-collapse:collapse;color:#fff;font:400 15px/1.4 "Instrument Sans",sans-serif}
 .mk-tbl th,.mk-tbl td{text-align:left;vertical-align:middle;padding:15px 16px}
-.mk-tbl thead th{font:500 12.5px/1.2 "Instrument Sans",sans-serif;color:rgba(255,255,255,.55);padding-top:14px;padding-bottom:10px}
+.mk-tbl thead th{font:500 13px/1.2 "Instrument Sans",sans-serif;color:rgba(255,255,255,.55);padding-top:14px;padding-bottom:10px}
 /* 26 Sep, 06:10 (Bazil: "cannot have too many lines"): one red line under the head row, then a tint on every other row, not a rule each */
 .mk-tbl tbody tr{border-top:0;transition:background .3s}
 .mk-tbl thead tr{border-bottom:1px solid rgba(236,35,38,.6)}
@@ -359,7 +359,7 @@ a.mk-fact:hover,a.mk-fact:focus-visible{background:none}
 .mk-tbl tbody th{font-weight:400}
 .mk-tbl-name{display:inline-flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font:600 15.5px/1.2 "Switzer","Instrument Sans",sans-serif}
 .mk-tbl-name svg{width:26px;height:26px;flex:none}
-.mk-tbl .mk-spec{display:inline-block;padding:5px 9px;background:var(--mk);color:#fff;font:600 12.5px/1 "Switzer","Instrument Sans",sans-serif;font-style:normal;white-space:nowrap}
+.mk-tbl .mk-spec{display:inline-block;padding:5px 9px;background:var(--mk);color:#fff;font:600 13px/1 "Switzer","Instrument Sans",sans-serif;font-style:normal;white-space:nowrap}
 .mk-tbl .mk-cd-sq{display:inline-flex;gap:4px;margin:0 10px 0 0;vertical-align:middle}
 .mk-tbl .mk-cd-sq i{width:11px;height:11px;background:var(--mk-m);display:block}
 .mk-tbl-n{color:rgba(255,255,255,.8);white-space:nowrap}
@@ -382,7 +382,7 @@ a.mk-fact:hover,a.mk-fact:focus-visible{background:none}
 .mk-facts-w{padding-bottom:0}
 .mk-facts{gap:10px;background:none;border:0}
 .mk-fact{background:rgba(8,13,26,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:18px 20px 20px;display:flex;flex-direction:column}
-.mk-fact .k{font:500 12.5px/1.2 "Instrument Sans",sans-serif;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.62)}
+.mk-fact .k{font:500 13px/1.2 "Instrument Sans",sans-serif;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.62)}
 .mk-fact .v{margin-top:8px}
 a.mk-fact .v{color:var(--mk-l)}
 @media(max-width:900px){.mk-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -434,7 +434,7 @@ a.mk-fact:hover{background:rgba(16,26,48,.86)}
 .mk-caps .dd-n{display:grid!important;grid-template-columns:1fr auto;grid-template-rows:auto auto;align-items:start;row-gap:18px;column-gap:12px;padding:clamp(20px,2vw,26px)!important}
 .mk-caps .dd-ic{grid-column:1;grid-row:1;width:44px!important;height:44px!important;display:grid;place-items:center;color:var(--mk-c,#6D5BD0)}
 .mk-caps .dd-ic svg{width:26px!important;height:26px!important}
-.mk-caps .dd-no{grid-column:2;grid-row:1;align-self:start;margin:0!important;font:600 12px/1 "Switzer",sans-serif;letter-spacing:.06em;color:var(--faint,#9aa3b2)}
+.mk-caps .dd-no{grid-column:2;grid-row:1;align-self:start;margin:0!important;font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;color:var(--faint,#9aa3b2)}
 .mk-caps .dd-lb{grid-column:1 / -1;grid-row:2;margin:0!important}
 .mk-caps .dd-ic{width:auto!important;height:auto!important;place-items:start;background:none!important;border:0!important;box-shadow:none!important;transform:none!important}
 .mk-caps .dd-ic svg{width:32px!important;height:32px!important}
@@ -464,7 +464,7 @@ a.mk-fact:hover{background:rgba(16,26,48,.86)}
 .mk-caps .dd-n:hover{transform:translateY(-3px);border-color:rgba(12,18,32,.1)!important;box-shadow:0 22px 44px -28px rgba(12,18,32,.28)!important}
 .mk-caps .dd-n:hover::after{transform:scaleX(1)}
 .mk-caps .dd-no{font-size:0!important;line-height:1}
-.mk-caps .dd-no::before{content:counter(cap,decimal-leading-zero);font:600 11px/1 "Switzer",sans-serif;letter-spacing:.18em;color:#9AA3B2}
+.mk-caps .dd-no::before{content:counter(cap,decimal-leading-zero);font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;color:#9AA3B2}
 .mk-caps .dd-ic{color:#7C86A0!important;opacity:.85;transition:color .4s ease,opacity .4s ease}
 .mk-caps .dd-ic svg{width:26px!important;height:26px!important;stroke-width:1.25}
 .mk-caps .dd-n:hover .dd-ic{color:var(--mk-c,#6D5BD0)!important;opacity:1}
@@ -490,14 +490,14 @@ a.mk-fact:hover{background:rgba(16,26,48,.86)}
 .mk-gx-a::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,12,24,.5) 0%,rgba(7,12,24,.06) 30%,rgba(7,12,24,.18) 52%,rgba(7,12,24,.9) 100%);transition:background .6s ease}
 .mk-gx-a::after{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:#EC2027;transform:scaleX(0);transform-origin:0 50%;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
 .mk-gx-top{display:flex;align-items:center;justify-content:space-between;padding:clamp(16px,1.6vw,22px)}
-.mk-gx-n{font:600 12px/1 "Switzer",sans-serif;letter-spacing:.16em;color:rgba(255,255,255,.82)}
+.mk-gx-n{font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;color:rgba(255,255,255,.82)}
 .mk-gx-ic{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.28);background:rgba(7,12,24,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;transition:background .4s ease,border-color .4s ease}
 .mk-gx-ic svg{width:20px;height:20px;stroke-width:1.3}
 .mk-gx-foot{display:grid;gap:8px;padding:clamp(18px,1.8vw,26px)}
 .mk-gx-foot b{font:600 clamp(20px,1.7vw,26px)/1.12 "Switzer","Instrument Sans",sans-serif;letter-spacing:-.02em;color:#fff}
 .mk-gx-c.is-lead .mk-gx-foot b{font-size:clamp(26px,2.4vw,36px)}
 .mk-gx-t{font-size:14px;line-height:1.5;color:rgba(255,255,255,.8);max-width:52ch}   /* IAQ's card lines are short: shown in full */
-.mk-gx-go{display:inline-flex;align-items:center;gap:10px;margin-top:6px;font:600 12px/1 "Switzer",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:.72;transition:opacity .4s ease}
+.mk-gx-go{display:inline-flex;align-items:center;gap:10px;margin-top:6px;font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#fff;opacity:.72;transition:opacity .4s ease}
 .mk-gx-go i{font-style:normal;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.4);letter-spacing:0;transition:background .4s ease,border-color .4s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
 .mk-gx-a:hover .mk-gx-img,.mk-gx-a:focus-visible .mk-gx-img{transform:scale(1);filter:saturate(1) brightness(1)}
 .mk-gx-a:hover::after,.mk-gx-a:focus-visible::after{transform:scaleX(1)}
@@ -556,3 +556,82 @@ a.mk-fact:hover{background:rgba(16,26,48,.86)}
 @media(prefers-reduced-motion:reduce){.pg-sec .mk-caps .dd-ic::after{animation:none}.pg-sec .mk-caps .dd-n,.pg-sec .mk-caps .dd-lb::after{transition:none!important}}
 @media(max-width:640px){.pg-sec .mk-caps .dd-no::before{font-size:44px!important}.pg-sec .mk-caps .dd-no{right:12px;top:12px}}
 .mk-gx-top{ justify-content:flex-end; }   /* 22 Oct ("remove the numbering"): the mark alone in the corner */
+
+/* 22 Oct, Polishing fix (Bazil the same day on the market marks: "remove the numbering"; IAQ graphic rules: no numbering): the
+   outlined 01 to 06 numeral in the corner of each capability card is off. The violet panel, the pointer light and the orbit
+   stay, they answered the client's "plain, no color". The numeral's rules are in _backups/polish-fixes-1022/markets.css. */
+.pg-sec .mk-caps .dd-no{display:none!important}
+
+/* 22 Oct, Polishing walk-through, note 24 (Bazil, the markets grid): seven equal tiles, no outsized first one (four across, the
+   second row of three centred); the drawn market mark in the corner with no tile behind it; the arrow without its circle;
+   no zoom on hover, the picture rests a little grey and comes to full colour under the pointer; the red rule draws along
+   the FOOT of the tile, the house line for every hover rule from now on (rule 31). */
+.mk-gx{ grid-template-columns:repeat(24,minmax(0,1fr)); gap:14px; }
+.mk-gx-c, .mk-gx-c.is-lead, .mk-gx-c:nth-child(-n+3){ grid-column:span 6; min-height:clamp(300px,23vw,352px); }
+.mk-gx-c:nth-child(5){ grid-column:4 / span 6; }
+.mk-gx-c.is-lead .mk-gx-foot b{ font-size:clamp(20px,1.7vw,26px); }
+.mk-gx-c .mk-gx-t{ min-height:4.5em; }
+.mk-gx-img{ transform:none; filter:saturate(.3) brightness(.86); transition:filter .55s ease; }
+.mk-gx-a:hover .mk-gx-img, .mk-gx-a:focus-visible .mk-gx-img{ transform:none; filter:saturate(1) brightness(1); }
+.mk-gx-a::after{ top:auto; bottom:0; }
+.mk-gx-ic{ width:64px; height:64px; border:0; background:none; -webkit-backdrop-filter:none; backdrop-filter:none; }
+.mk-gx-ic svg, .mk-gx-ic .mk-gx-mk{ width:100%; height:100%; }
+.mk-gx-a:hover .mk-gx-ic, .mk-gx-a:focus-visible .mk-gx-ic{ background:none; border:0; }
+.mk-gx-go i{ width:auto; height:auto; border:0; border-radius:0; font-size:18px; line-height:1; }
+.mk-gx-a:hover .mk-gx-go i, .mk-gx-a:focus-visible .mk-gx-go i{ background:none; border:0; transform:translateX(6px); }
+@media(max-width:1100px){ .mk-gx-c, .mk-gx-c.is-lead, .mk-gx-c:nth-child(-n+3){ grid-column:span 12; } .mk-gx-c:nth-child(5){ grid-column:span 12; } .mk-gx-c:nth-child(7){ grid-column:7 / span 12; } }
+@media(max-width:640px){ .mk-gx-c, .mk-gx-c.is-lead, .mk-gx-c:nth-child(-n+3), .mk-gx-c:nth-child(5), .mk-gx-c:nth-child(7){ grid-column:span 24; min-height:260px; } }
+/* rule 31 on the other hover rules: the unit capability cards and the market capability cards draw theirs at the foot too */
+.pg-sec .mk-caps .dd-n::after, .mk-caps .dd-n::after{ top:auto !important; bottom:-1px; }
+/* 22 Oct, rule 35: the capability cards are not links, so they keep still under the pointer (the violet panel stays) */
+.mk-caps .dd-n:hover, .pg-sec .mk-caps .dd-n:hover{ transform:none !important; box-shadow:0 30px 60px -44px rgba(40,24,120,.7) !important; border-color:rgba(157,140,245,.18) !important; }
+.mk-caps .dd-n:hover::after, .pg-sec .mk-caps .dd-n:hover::after{ transform:scaleX(0) !important; }
+.pg-sec .mk-caps .dd-n:hover::before{ opacity:0; }
+.mk-caps .dd-n:hover .dd-ic, .pg-sec .mk-caps .dd-n:hover .dd-ic{ background:rgba(110,86,230,.22) !important; color:#D9D2FF !important; }
+/* 22 Oct, note 27 (Bazil, the market overview picture: "why the purple line is there and icon in a box within a box"): the
+   violet rule and the boxed mark are off; the picture keeps its dark foot scrim only. Rule 34. */
+.mk-ov-fig::after{ display:none; }
+.mk-ov-mark{ display:none; }
+.mk-ov-fig::before{ background:linear-gradient(0deg,rgba(7,12,24,.42) 0%,rgba(7,12,24,0) 45%); }
+.mk-ov-fig img{ transform:none; }
+.mk-ov-fig:hover img{ transform:none; }
+/* 22 Oct, Polishing walk-through, note 30 (Bazil, the capability cards: "the circles, the animations and the lines were put so it
+   doesn't look empty, but it looks messy; never have a design that does not have a function"; "the client does not like too
+   much white space"): the orbit ring, the circle behind the icon and the underline are off; the card is the mark beside the
+   name in one row, compact, the violet panel kept for the colour the client asked for. Rules 34, 42. */
+.pg-sec .mk-caps .dd-n{ min-height:0 !important; grid-template-columns:auto minmax(0,1fr) !important; grid-template-rows:auto !important; align-items:center !important; column-gap:16px !important; row-gap:0 !important; padding:clamp(18px,1.6vw,24px) clamp(18px,1.8vw,26px) !important; }
+.pg-sec .mk-caps .dd-ic{ grid-column:1 !important; grid-row:1 !important; width:40px !important; height:40px !important; border-radius:0; background:none !important; border:0 !important; align-self:center !important; }
+.pg-sec .mk-caps .dd-ic::after{ display:none; }
+.pg-sec .mk-caps .dd-ic svg{ width:32px !important; height:32px !important; }
+.pg-sec .mk-caps .dd-lb{ grid-column:2 !important; grid-row:1 !important; align-self:center !important; padding-bottom:0; max-width:none; }
+.pg-sec .mk-caps .dd-lb::after{ display:none; }
+.mk-caps .dd{ gap:12px !important; }
+
+/* 26 Oct (IAQ review, NR, page 011): "Delivered in this market" links its projects as a named list: every project one equal
+   row (rule 33), two across, a small picture resting a little grey (32), the red rule drawing along the row's foot on hover
+   (31), colour only, never scale; and one way into the registry filtered to the market. No code, no numbering, no bullets. */
+.mk-dl-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px 48px;flex-wrap:wrap}
+.mk-dl-head .pg-lede{max-width:62ch}
+.mk-dl-all{flex:none;display:inline-flex;gap:8px;align-items:center;padding-bottom:6px;font:600 15px/1.3 "Switzer",sans-serif;color:var(--ink);text-decoration:none}
+.mk-dl-all i{font-style:normal;transition:transform .3s ease}
+.mk-dl-all:hover{color:var(--mk,#6E56E6)}
+.mk-dl-all:hover i{transform:translateX(4px)}
+.mk-dl-list{list-style:none;margin:clamp(22px,3vh,32px) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mk-dl-row{position:relative;display:grid;grid-template-columns:132px minmax(0,1fr) auto auto;gap:18px;align-items:center;height:100%;
+  padding:10px 20px 10px 10px;background:#fff;color:var(--ink);text-decoration:none;box-sizing:border-box}
+.mk-dl-row::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#EC2027;transform:scaleX(0);transform-origin:left center;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.mk-dl-row:hover::after,.mk-dl-row:focus-visible::after{transform:scaleX(1)}
+.mk-dl-th{display:block;aspect-ratio:3/2;overflow:hidden;background:#EEF1F5}
+.mk-dl-th img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.3) brightness(.9);transition:filter .5s ease}
+.mk-dl-row:hover .mk-dl-th img,.mk-dl-row:focus-visible .mk-dl-th img{filter:none}
+.mk-dl-rt{display:flex;flex-direction:column;gap:5px;min-width:0}
+.mk-dl-rt b{font:600 16px/1.3 "Switzer",sans-serif;letter-spacing:-.01em;text-wrap:pretty}
+.mk-dl-rt small{font-size:14px;line-height:1.4;color:var(--soft)}
+.mk-dl-iso{font:600 13px/1.2 "Switzer",sans-serif;letter-spacing:.04em;color:#B5121B;white-space:nowrap}
+.mk-dl-row i{font-style:normal;color:var(--soft);transition:transform .3s ease}
+.mk-dl-row:hover b{color:var(--mk,#6E56E6)}
+.mk-dl-row:hover i{color:var(--mk,#6E56E6);transform:translateX(4px)}
+@media(max-width:1100px){.mk-dl-list{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){.mk-dl-row{grid-template-columns:88px minmax(0,1fr) auto;gap:12px;padding-right:14px}.mk-dl-iso{grid-column:2;grid-row:2;margin-top:-6px}.mk-dl-row i{grid-row:1 / span 2;grid-column:3}}
+/* 27 Oct (UI/UX sweep): row names and their lines balance, so no word sits alone on a last line (rule 21) */
+.mk-dl-rt b,.mk-dl-rt small{text-wrap:balance}

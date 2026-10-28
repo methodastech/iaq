@@ -9,7 +9,7 @@
 .mm .wk{fill:#fff}
 .mm .o5{opacity:.5}
 .mm .w08{stroke-width:.8}.mm .w22{stroke-width:2.2}
-.mm .mm-st{font:600 6.4px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:.16em;fill:var(--mk-l);text-anchor:middle}
+.mm .mm-st{font:600 13px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:.04em;fill:var(--mk-l);text-anchor:middle}
 /* rest states: the finished drawing */
 .mm .draw{stroke-dasharray:1;stroke-dashoffset:0}
 .mm .flow{stroke-dasharray:6 7}

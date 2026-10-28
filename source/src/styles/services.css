@@ -53,16 +53,16 @@
    rule separates the summary from the scope, where six markers would have added six new marks to
    a page that already carries the cycle, the discs and the marks in the chips. */
 .sv-pts { list-style: none; margin: 4px 0 0; padding: 9px 0 0; border-top: 1px solid var(--line); display: grid; gap: 6px; }
-.sv-pts li { position: relative; padding-left: 13px; font-size: 12.5px; line-height: 1.45; color: var(--faint); }
+.sv-pts li { position: relative; padding-left: 13px; font-size: 13px; line-height: 1.45; color: var(--faint); }
 .sv-pts li::before { content: ""; position: absolute; left: 0; top: .52em; width: 4px; height: 1px; background: var(--line2); }
 .sv-card:hover .sv-pts li::before { background: var(--blue); }
 
 /* the foot: the affordance on the left, the scope label on the right, on one hairline. margin-top
    auto pins it to the bottom of the tallest card, so six cards of unequal copy still line up. */
 .sv-foot { margin-top: auto; padding-top: 13px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-.sv-tag { font-family: var(--label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--faint); text-align: right; }
+.sv-tag { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight: 600; color: var(--faint); text-align: right; }
 /* the one affordance: an arrow that draws right on hover, same grammar as .pg-more */
-.sv-go { font-family: var(--label); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.sv-go { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
 .sv-go::after { content: "\2192"; transition: transform .3s var(--e1); }
 .sv-card:hover .sv-go::after { transform: translateX(4px); }
 

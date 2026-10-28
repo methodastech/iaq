@@ -10,16 +10,20 @@ import React, { useEffect, useRef, useState } from 'react'
    Textures are the print artwork itself (public/booth/tex, baked by tools/render-booth-art-0922.mjs
    --print), so what is seen here is what is sent to print. The screen cycles the six chapters of the loop.
    Drag to turn, scroll or pinch to zoom; the buttons jump to the three views that matter.
+   29 Sep: `option` is 'w2' or 'w2b' (Direction A, with either side wall) or 'b' (Direction B, public/booth/tex/*-b.jpg,
+   baked from components/booth/ArtB.jsx with tools/render-booth-art-0922.mjs --print).
+   30 Sep: five directions, `option` 'a' to 'e' ('w2' still means A); textures public/booth/tex/<wall>[-b|-c|-d|-e].jpg. A has
+   one side wall now (w2b retired). The screen is raised: its bottom edge at 1.9 m (was 1.5 m), in every direction.
    ============================================================================ */
 
 const VIEWS = [
   { k: 'From the aisle', pos: [-1.1, 1.7, 6.8], at: [0.9, 1.6, 1.1] },
   { k: 'At the counter', pos: [0.1, 1.62, 4.5], at: [1.05, 1.35, 1.3] },
-  { k: 'The screen wall', pos: [0.87, 1.88, 2.5], at: [0.87, 1.88, 0] },
+  { k: 'The screen wall', pos: [0.87, 2.05, 2.7], at: [0.87, 2.05, 0] },
   { k: 'From above', pos: [-2.0, 6.6, 6.6], at: [0.7, 0.8, 1.2] },
 ]
 
-export default function BoothModel({ option = 'w2' }) {
+export default function BoothModel({ option = 'a' }) {
   const host = useRef(null)
   const api = useRef(null)
   const [ready, setReady] = useState(false)
@@ -46,7 +50,7 @@ export default function BoothModel({ option = 'w2' }) {
       <div className="bm3-views" role="group" aria-label="Views">
         {VIEWS.map((v, i) => <button type="button" key={v.k} className={i === view ? 'on' : undefined} onClick={() => go(i)}>{v.k}</button>)}
       </div>
-      <p className="bm3-hint">Drag to turn · scroll or pinch to zoom</p>
+      <p className="bm3-hint">Drag to turn, scroll or pinch to zoom</p>
     </div>
   )
 }
@@ -104,7 +108,15 @@ function build(THREE, OrbitControls, RoomEnvironment, el, api, onReady) {
   ge.position.set(-1.984, Y, -0.025); ge.receiveShadow = true; ge.castShadow = true; scene.add(ge)
 
   /* the back wall: wall 3 across its full 2046 mm, the last 310 mm inside the side wall */
-  const w3 = new THREE.Mesh(new THREE.PlaneGeometry(2.046, T), art(tex('/booth/tex/w3.jpg')))
+  /* 29 Sep: both directions' walls and counter; setOption swaps the set (A with either side wall, or B) */
+  /* each direction's set loads when it is first shown */
+  /* 30 Sep: C2 is C with its own red front column; F is the renders direction */
+  const SUF = { a: '', b: '-b', c: '-c', c2: '-c', c3: '-c', d: '-d', e: '-e', f: '-f' }
+  const OWN = { c2: { w1: '-c2' }, c3: { w1: '-c3', w3: '-c3' } }   /* 30 Sep: C3, C with the loop column and the red back wall */
+  const TEX = {}
+  const texFor = o => { const k = SUF[o] !== undefined ? o : 'a'; if (!TEX[k]) TEX[k] = Object.fromEntries(['w1', 'w2', 'w3', 'ct'].map(w => [w, tex(`/booth/tex/${w}${(OWN[k] || {})[w] ?? SUF[k]}.jpg`)])); return TEX[k] }
+  texFor('a')
+  const w3 = new THREE.Mesh(new THREE.PlaneGeometry(2.046, T), art(TEX.a.w3))
   w3.position.set(1.023, Y, 0.001); w3.receiveShadow = true; scene.add(w3)
   const back = new THREE.Mesh(new THREE.BoxGeometry(2.046, T, 0.05), matte())
   back.position.set(1.023, Y, -0.026); back.castShadow = true; scene.add(back)
@@ -113,19 +125,18 @@ function build(THREE, OrbitControls, RoomEnvironment, el, api, onReady) {
   const D = 2.852
   const side = new THREE.Mesh(new THREE.BoxGeometry(0.31, T, D), matte())
   side.position.set(1.736 + 0.155, Y, D / 2); side.castShadow = true; side.receiveShadow = true; scene.add(side)
-  const w2Tex = { w2: tex('/booth/tex/w2.jpg'), w2b: tex('/booth/tex/w2b.jpg') }
-  const w2 = new THREE.Mesh(new THREE.PlaneGeometry(D, T), art(w2Tex.w2))
+  const w2 = new THREE.Mesh(new THREE.PlaneGeometry(D, T), art(TEX.a.w2))
   w2.rotation.y = -Math.PI / 2; w2.position.set(1.7355, Y, D / 2); w2.receiveShadow = true; scene.add(w2)
-  const w1 = new THREE.Mesh(new THREE.PlaneGeometry(0.31, T), art(tex('/booth/tex/w1.jpg')))
+  const w1 = new THREE.Mesh(new THREE.PlaneGeometry(0.31, T), art(TEX.a.w1))
   w1.position.set(1.736 + 0.155, Y, D + 0.0005); scene.add(w1)
 
-  /* the 55 inch screen: 1238 x 709, bottom edge 1.5 m, 249 mm in from the wall's left edge */
+  /* the 55 inch screen: 1238 x 709, bottom edge 1.9 m (30 Sep, was 1.5 m), 249 mm in from the wall's left edge */
   const shots = [1, 2, 3, 4, 5, 6].map(i => tex(`/booth/screen-${i}.webp`))
   const bezel = new THREE.Mesh(new THREE.BoxGeometry(1.258, 0.729, 0.04), new THREE.MeshStandardMaterial({ color: '#111318', roughness: 0.4, metalness: 0.3 }))
-  bezel.position.set(0.249 + 0.619, 0.04 + 1.5 + 0.3545, 0.021); bezel.castShadow = true; scene.add(bezel)
+  bezel.position.set(0.249 + 0.619, 0.04 + 1.9 + 0.3545, 0.021); bezel.castShadow = true; scene.add(bezel)
   const panelMat = new THREE.MeshBasicMaterial({ map: shots[1], toneMapped: false })
   const panel = new THREE.Mesh(new THREE.PlaneGeometry(1.238, 0.709), panelMat)
-  panel.position.set(0.868, 0.04 + 1.5 + 0.3545, 0.042); scene.add(panel)
+  panel.position.set(0.868, 0.04 + 1.9 + 0.3545, 0.042); scene.add(panel)
 
   /* the counter: front 600 x 1170 with the 170 mm corner, 450 deep, the red side the render shows */
   const cw = 0.6, ch = 1.17, cr = 0.17, cd = 0.45
@@ -136,7 +147,7 @@ function build(THREE, OrbitControls, RoomEnvironment, el, api, onReady) {
   body.castShadow = true; body.receiveShadow = true; counter.add(body)
   const frontGeo = new THREE.ShapeGeometry(shape, 18)
   const uv = frontGeo.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) / cw, uv.getY(i) / ch)
-  const front = new THREE.Mesh(frontGeo, art(tex('/booth/tex/ct.jpg')))
+  const front = new THREE.Mesh(frontGeo, art(TEX.a.ct))
   front.position.z = cd + 0.0008; counter.add(front)
   counter.position.set(0.85, 0.04, 1.75); counter.rotation.y = 0.18
   scene.add(counter)
@@ -172,7 +183,11 @@ function build(THREE, OrbitControls, RoomEnvironment, el, api, onReady) {
 
   api.current = {
     goto: v => { if (typeof v === 'number') v = VIEWS[v]; anim = { t0: performance.now(), p0: camera.position.clone(), p1: new THREE.Vector3(...v.pos), a0: controls.target.clone(), a1: new THREE.Vector3(...v.at) } },
-    setOption: o => { w2.material.map = w2Tex[o] || w2Tex.w2; w2.material.needsUpdate = true; render() },
+    setOption: o => {
+      const t = texFor(o === 'w2' || o === 'w2b' ? 'a' : o)
+      ;[[w1, t.w1], [w2, t.w2], [w3, t.w3], [front, t.ct]].forEach(([m, x]) => { m.material.map = x; m.material.needsUpdate = true })
+      render()
+    },
     shotAt: (i, s) => { const v = typeof i === 'number' ? VIEWS[i] : i; camera.position.set(...v.pos); controls.target.set(...v.at); controls.update(); if (s != null) { panelMat.map = shots[s]; panelMat.needsUpdate = true } render(); return renderer.domElement.toDataURL('image/jpeg', 0.9) },
   }
   window.__boothModel = api.current
@@ -181,6 +196,7 @@ function build(THREE, OrbitControls, RoomEnvironment, el, api, onReady) {
   return () => {
     cancelAnimationFrame(raf); clearInterval(tick); ro.disconnect(); controls.dispose()
     scene.traverse(o => { if (o.geometry) o.geometry.dispose(); if (o.material) [].concat(o.material).forEach(m => { if (m.map) m.map.dispose(); m.dispose() }) })
+    Object.values(TEX).forEach(set => Object.values(set).forEach(t => t.dispose()))
     pmrem.dispose(); renderer.dispose(); renderer.forceContextLoss && renderer.forceContextLoss()
     if (renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement)
     delete window.__boothModel

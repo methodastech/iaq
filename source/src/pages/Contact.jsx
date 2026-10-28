@@ -45,18 +45,7 @@ const OFFICES = [
   { id: 'my-hq', img: '/assets/iaq/hq-front-4595.webp', cap: 'Headquarters, Shah Alam', cc: 'MY', country: 'Malaysia', city: 'Shah Alam', hq: true, entity: 'IAQ Technology International Sdn. Bhd.',
     addr: 'No. 12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor, Malaysia',
     tel: '+603 5124 8319', hours: 'Mon to Fri · 9:00 to 18:00 · GMT +8' },
-  /* 26 Oct (client: "Use office building photo"; Bazil: "remove the car and cone. maybe expand bit image"): the Penang
-     building from its Google Maps listing, in place of the grand opening photo. Car, cone and a neighbour's sign removed and
-     the frame widened in Higgsfield (GPT Image 2.5, outpaint); the signboard and the facade logo are the photograph's own
-     pixels, put back over the edit so no letter or number is altered. The opening photo stays in the newsroom.
-     Then (Bazil: "should be have like gate not open like that. use chatgpt to edit the image"): the widened right side
-     ended in open car park; edited in ChatGPT so the compound closes with a white pillared fence and a shut sliding gate,
-     like the real site and the fence on the left. Signboard and facade logo put back from the photograph again.
-     Then (Bazil: "already perfect, but ... besides signboard should be fence"): the strip right of the signboard is closed
-     with the same white pillared fence along the kerb; only that strip is taken from a further ChatGPT edit. */
-  /* 26 Oct: v3 showed a pale curved patch on the signboard where the real sign pixels met the edited corner; the board
-     tone and grain are now matched, kept as penang-office-building-v4.webp */
-  { id: 'my-penang', img: '/assets/iaq/penang-office-building-v4.webp', cap: 'Penang office', cc: 'MY', country: 'Malaysia', city: 'Penang', entity: 'IAQ Technology International Sdn. Bhd. · northern branch, opened July 2025',
+  { id: 'my-penang', img: '/assets/culture/offices/my-penang.webp', cap: 'IAQ Penang office', cc: 'MY', country: 'Malaysia', city: 'Penang', entity: 'IAQ Technology International Sdn. Bhd. · northern branch, opened July 2025',
     addr: '9, Lorong Valdor Jaya 2, Kawasan Perindustrian Valdor, 14200 Jawi, Pulau Pinang, Malaysia', hours: 'Mon to Fri · 9:00 to 18:00 · GMT +8' },
   { id: 'sg', img: '/assets/culture/sg-office-boardroom-2026.webp', cap: 'IAQ Engineering (SG) office, August 2026', cc: 'SG', country: 'Singapore', city: 'Singapore', entity: 'IAQ Engineering (SG) Pte. Ltd.',
     addr: '1 Tai Seng Avenue #04-03, Tai Seng Exchange, Singapore 536464',
@@ -93,7 +82,7 @@ const INTENTS = [
 ]
 
 export default function Contact() {
-  const [intent, setIntent] = useState('project')
+  const [intent] = useState('project')   /* 26 Oct: no intent step on the form; every enquiry here is a project enquiry */
   /* 21 Sep: the closing band asks what is being built and hands the answer over. Router state first,
      then the sessionStorage copy (read once, then cleared, so it never sticks to a later visit). */
   const loc = useLocation()
@@ -163,8 +152,8 @@ export default function Contact() {
         <div className="cban-in wrap">
           <span className="eyebrow">Contact</span>
           {/* 20 Oct (client review, Sunny: "should be 'planning', build is already half way") */}
-          {/* 27 Oct (client: "We Love Talking to Visionaries Like You.") */}
-          <h1>We Love Talking to <em>Visionaries Like You.</em></h1>
+          {/* 26 Oct (IAQ review, NR, page 021): "We Love Talking to Visionaries Like You.", IAQ's line and capitals, no full stop (rule 8) */}
+          <h1>We Love Talking to <em>Visionaries Like You</em></h1>
           {/* 19 Oct (client feedback, Contact · Contact form wording; IAQ: "Do not promise response times unless IAQ has approved an
               SLA"): IAQ's wording for the form, and no reply time anywhere on the page (the "1 working day" fact is gone) */}
           <p className="cban-lede">Tell us about your project. Share a brief introduction to your company, your project requirements and the stage you are at: planning, design, construction or operations. Our team will review your enquiry and direct it to the appropriate contact.</p>
@@ -202,8 +191,8 @@ export default function Contact() {
             </div>
           )}
 
-          {/* 27 Oct (client: "Remove this section!"): the "What brings you here?" choice is off the form; an enquiry from this
-              page is a project enquiry (intent stays 'project', as before), and the steps renumber from 1 */}
+          {/* 26 Oct (IAQ review, NR, page 021: "Remove this section!"): step 1, "What brings you here?" (project, join the team,
+              media), is off the form; the enquiry is a project enquiry (intent stays 'project') and the steps renumber */}
 
           <fieldset className="cx-step">
             <legend><i>1</i>About you</legend>
@@ -257,7 +246,7 @@ export default function Contact() {
         </form>
 
         <aside className="cx-side" aria-label="Reach IAQ directly">
-          <h2>Or reach us <em>directly.</em></h2>
+          <h2>Or reach us <em>directly</em></h2>
           <ul className="cx-lines">
             <li>
               <span className="cx-ic"><Icon name="mail" /></span>
@@ -274,7 +263,7 @@ export default function Contact() {
                 <span className="cx-links"><a href="#find-us">See it on the map &rarr;</a><a href="#offices">All seven offices &rarr;</a></span></div>
             </li>
           </ul>
-          {/* 27 Oct (client: "Remove this section."): the "What happens next" steps are off the page */}
+          {/* 26 Oct (IAQ review, NR, page 021: "Remove this section."): "What happens next" and its three steps are off the side */}
         </aside>
       </section>
 
@@ -286,7 +275,7 @@ export default function Contact() {
         <span className="hqm-veil" aria-hidden="true" />
         <div className="wrap hqm-in">
           <div className="hqm-copy">
-            <h2 id="hqm-h">The head office, <em>Shah Alam.</em></h2>
+            <h2 id="hqm-h">The head office, <br /><em>Shah Alam</em></h2>
             <p className="hqm-addr">{HQ_ADDR}</p>
             <ul className="hqm-facts">
               <li><Icon name="route" />Beside Lebuhraya Shah Alam (E5), off Jalan Bukit Rimau</li>
@@ -313,7 +302,7 @@ export default function Contact() {
           <div className="off-head">
             {/* 15 Sep: the old heading claimed an office in every country IAQ builds in. It is false:
                 IAQ has built in China, Poland, France and Morocco with no office there. */}
-            <h2 id="offices-h">Seven countries, <em>one point of contact.</em></h2>
+            <h2 id="offices-h">Seven countries, <br /><em>one point of contact</em></h2>
             <p className="off-lede">Our offices serve projects across Asia and Europe. Send the brief to the nearest team. Every office can take it.</p>
           </div>
           <div className="of-grid">

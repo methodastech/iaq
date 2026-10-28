@@ -61,7 +61,7 @@
 .un-hard{ margin:22px 0 0; padding:20px 22px; background:var(--bg); font-size:15.5px; line-height:1.55; color:var(--soft); max-width:56ch; }
 .un-hard b{ display:block; margin-bottom:6px; font:600 18px/1.25 "Switzer",sans-serif; letter-spacing:-.015em; color:var(--ink); }
 .un-figure{ margin:0; padding:clamp(18px, 2.4vw, 34px); background:var(--bg); }
-.un-figure figcaption{ margin-top:12px; font-size:12.5px; color:var(--faint); }
+.un-figure figcaption{ margin-top:12px; font-size:13px; color:var(--faint); }
 .un-art{ display:block; width:100%; height:auto; }
 /* the drawing: strokes with pathLength=1 draw when the figure is in; nodes pop after their line */
 .un-art .un-draw{ stroke-dasharray:1; stroke-dashoffset:1; }
@@ -99,7 +99,7 @@
 .un-model:hover{ translate:0 -4px; box-shadow:0 26px 50px -34px rgba(12,18,32,.3); }
 .un-model-n{ font:600 13px/1 "Switzer",sans-serif; color:var(--blue); }
 .un-model h3{ margin:14px 0 0; font:600 clamp(22px, 2vw, 30px)/1.1 "Switzer",sans-serif; letter-spacing:-.025em; }
-.un-model-s{ display:inline-block; margin-top:10px; padding:6px 10px; background:var(--bg); font:600 12.5px/1.2 "Switzer",sans-serif; color:var(--ink); }
+.un-model-s{ display:inline-block; margin-top:10px; padding:6px 10px; background:var(--bg); font:600 13px/1.2 "Switzer",sans-serif; color:var(--ink); }
 .un-model p{ margin:16px 0 0; font-size:15.5px; line-height:1.6; color:var(--soft); max-width:52ch; }
 .un-model ul{ list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column; gap:7px; }
 .un-model li{ position:relative; padding-left:16px; font-size:14.5px; line-height:1.45; color:var(--soft); }
@@ -110,7 +110,7 @@
    in src/_backups/units-0917/unit.css. */
 .un-pick{ margin-top:clamp(20px, 2.6vh, 32px); background:#fff; padding:clamp(18px, 2vw, 26px); }
 .un-pick-top{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
-.un-pick-k{ font-family:var(--label); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--faint); }
+.un-pick-k{ font-family:var(--label); font-size:13px; letter-spacing:.04em; text-transform:uppercase; font-weight:700; color:var(--faint); }
 .un-pick-tabs{ display:flex; gap:4px; }
 .un-pick-tab{ padding:9px 16px; border:0; background:var(--bg2); cursor:pointer;
   font:600 13px/1.2 "Switzer",sans-serif; letter-spacing:-.01em; color:var(--soft);
@@ -148,7 +148,7 @@
 /* the locator under the drawing: the stage's number and title, announced as it changes */
 .un-cycle-fig .un-cycle-now{ display:flex; align-items:baseline; gap:8px; margin-top:14px; font:600 14px/1.2 "Switzer",sans-serif; color:var(--ink); }
 .un-cycle-fig .un-cycle-now b{ font-size:22px; letter-spacing:-.03em; font-variant-numeric:tabular-nums; }
-.un-cycle-fig .un-cycle-now em{ font-style:normal; font-size:12.5px; color:var(--faint); }
+.un-cycle-fig .un-cycle-now em{ font-style:normal; font-size:13px; color:var(--faint); }
 .un-cycle-fig .un-cycle-now span{ margin-left:6px; color:var(--soft); }
 .un-steps{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px; }
 .un-step-in{ padding:18px 20px 20px; transition:background .35s var(--e1); }
@@ -169,7 +169,7 @@
    own under the same words (client: "merge this information with lifecycle and remove this
    section"). Quiet chips: the stage's sentence is the statement, these are its parts. */
 .un-covers{ list-style:none; margin:12px 0 0 102px; padding:0; display:flex; flex-wrap:wrap; gap:6px; }
-.un-covers li{ padding:6px 10px; background:var(--bg); font:600 12.5px/1.25 "Switzer",sans-serif; letter-spacing:-.005em; color:var(--soft); transition:background .35s var(--e1); }
+.un-covers li{ padding:6px 10px; background:var(--bg); font:600 13px/1.25 "Switzer",sans-serif; letter-spacing:-.005em; color:var(--soft); transition:background .35s var(--e1); }
 .un-step.on .un-covers li{ background:#fff; }
 
 /* ---- 5 · delivers and why ---- */
@@ -224,12 +224,12 @@
 .un-pc-fig img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.1s var(--e1); }
 .un-pc:hover .un-pc-fig img{ transform:scale(1.05); }
 .un-pc-in{ display:flex; flex-direction:column; gap:6px; padding:18px 20px 20px; }
-.un-pc-ref{ display:flex; justify-content:space-between; gap:10px; font-size:12.5px; color:var(--faint); }
+.un-pc-ref{ display:flex; justify-content:space-between; gap:10px; font-size:13px; color:var(--faint); }
 .un-pc-ref b{ color:var(--blue-bright); font-weight:600; }
 .un-pc-t{ font:600 17px/1.25 "Switzer",sans-serif; letter-spacing:-.015em; color:var(--ink); }
 .un-pc-c{ font-size:13.5px; color:var(--soft); }
 .un-pc-tags{ display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
-.un-pc-tags span{ padding:5px 9px; background:#fff; font:600 12px/1.2 "Switzer",sans-serif; color:var(--soft); }
+.un-pc-tags span{ padding:5px 9px; background:#fff; font:600 13px/1.2 "Switzer",sans-serif; color:var(--soft); }
 .un-pc-tags .is-b{ color:var(--blue-bright); }
 .un-note{ margin:18px 0 0; font-size:13px; line-height:1.5; color:var(--faint); max-width:70ch; }
 
@@ -275,7 +275,7 @@
   .un-art .un-st, .un-art .un-line, .un-art .un-chip, .un-art .un-chip-n, .un-art .un-chip-t{ transition:none; }
 }
 /* generated photographs carry the same label the office visuals do */
-.un-rep{ position:absolute; left:12px; bottom:12px; z-index:2; padding:5px 8px; background:rgba(10,16,32,.55); font:600 11px/1.2 "Switzer",sans-serif; letter-spacing:.02em; color:rgba(255,255,255,.85); }
+.un-rep{ position:absolute; left:12px; bottom:12px; z-index:2; padding:5px 8px; background:rgba(10,16,32,.55); font:600 13px/1.2 "Switzer",sans-serif; letter-spacing:.02em; color:rgba(255,255,255,.85); }
 .un-rep-band{ left:auto; right:var(--gut); bottom:14px; }
 
 /* 17 Sep: the problems the unit is bought to solve, from IAQ's own EFM page. Four short labels on
@@ -343,12 +343,12 @@
 .un-svc.is-on{ background:#FFF8F8; box-shadow:inset 0 0 0 1px rgba(236,32,39,.35); }
 .un-svc.is-ask{ box-shadow:inset 0 0 0 1px rgba(236,32,39,.35); }
 .un-svc.is-off{ opacity:.45; }
-.un-svc-n{ font:600 12px/1 "Switzer",sans-serif; color:var(--blue); }
+.un-svc-n{ font:600 13px/1 "Switzer",sans-serif; color:var(--blue); }
 .un-svc-mark{ width:28px; height:28px; display:grid; place-items:center; background:#fff; color:var(--blue); flex:none; }
 .un-svc-mark svg{ width:15px; height:15px; }
 .un-svc b{ font:600 14.5px/1.2 "Switzer",sans-serif; letter-spacing:-.01em; }
-.un-svc-l{ font-size:12.5px; line-height:1.45; color:var(--soft); }
-.un-svc-tag{ font-style:normal; align-self:flex-start; font:600 11px/1 "Switzer",sans-serif; color:var(--blue-bright); background:#FDECEA; padding:4px 7px; }
+.un-svc-l{ font-size:13px; line-height:1.45; color:var(--soft); }
+.un-svc-tag{ font-style:normal; align-self:flex-start; font:600 13px/1 "Switzer",sans-serif; color:var(--blue-bright); background:#FDECEA; padding:4px 7px; }
 .un-scope-h3{ margin:clamp(30px, 4vh, 48px) 0 0; font:600 clamp(20px, 1.9vw, 26px)/1.1 "Switzer",sans-serif; letter-spacing:-.025em; }
 .un-scope-h3 em{ font-style:normal; color:var(--blue); }
 .un-works{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:10px; margin-top:18px; }
@@ -357,15 +357,15 @@
 .un-work.is-off{ opacity:.45; }
 .un-work-top{ display:grid; grid-template-columns:auto auto minmax(0, 1fr); align-items:center; gap:10px; }
 .un-work-top b{ font:600 17px/1.1 "Switzer",sans-serif; letter-spacing:-.02em; }
-.un-work-full{ font-size:12.5px; color:var(--soft); }
+.un-work-full{ font-size:13px; color:var(--soft); }
 .un-systems{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:5px; }
-.un-systems li{ font-size:12.5px; line-height:1.35; padding:5px 9px; background:#fff; color:var(--ink); }
+.un-systems li{ font-size:13px; line-height:1.35; padding:5px 9px; background:#fff; color:var(--ink); }
 @media(max-width:1100px){ .un-svcs{ grid-template-columns:repeat(3, minmax(0, 1fr)); } }
 @media(max-width:760px){ .un-works{ grid-template-columns:1fr; } .un-work-top{ grid-template-columns:auto minmax(0, 1fr); } .un-work-full{ grid-column:2; } }
 @media(max-width:560px){ .un-svcs{ grid-template-columns:1fr; } }
 /* 24 Sep · when to call this unit, under the hero lede */
 .un-when{margin:14px 0 0;max-width:52ch;font:500 15px/1.45 "Instrument Sans",sans-serif;color:#0C1220}
-.un-when span{display:block;margin-bottom:3px;font:600 11.5px/1.3 "Switzer",sans-serif;color:var(--unit-t,#C8141D)}
+.un-when span{display:block;margin-bottom:3px;font:600 13px/1.3 "Switzer",sans-serif;color:var(--unit-t,#C8141D)}
 .un-hero .un-when{color:#fff}.un-hero .un-when span{color:#FF6B70}
 
 /* ---- 24 Sep client review ---- */
@@ -423,7 +423,7 @@
 .un-dcs-grid{ display:grid; grid-template-columns:minmax(0, 1.2fr) minmax(0, .8fr); gap:clamp(24px, 4vw, 64px); align-items:center; margin-top:clamp(24px, 3.4vh, 40px); }
 .un-dcs-fig{ position:relative; margin:0; background:#fff; padding:clamp(10px, 1.6vw, 22px); }
 .un-dcs-fig img{ display:block; width:100%; height:auto; }
-.un-dcs-tag{ position:absolute; left:0; bottom:0; padding:5px 8px; background:rgba(245,247,250,.92); font:600 11px/1.2 "Switzer",sans-serif; color:var(--soft); }
+.un-dcs-tag{ position:absolute; left:0; bottom:0; padding:5px 8px; background:rgba(245,247,250,.92); font:600 13px/1.2 "Switzer",sans-serif; color:var(--soft); }
 .un-dcs-steps{ list-style:none; margin:0; padding:0; display:grid; gap:20px; }
 .un-dcs-steps li{ display:grid; grid-template-columns:34px minmax(0, 1fr); column-gap:10px; row-gap:4px; align-items:baseline; }
 .un-dcs-steps b{ font:600 18px/1.2 "Switzer",sans-serif; letter-spacing:-.02em; color:var(--ink); }
@@ -510,7 +510,7 @@
 .un-page .un-svc7-grid .un-svc-mark svg{ width:26px; height:26px; }
 .un-flow{ list-style:none; margin:clamp(28px, 4vh, 44px) 0 0; padding:0; display:grid; grid-template-columns:repeat(var(--n, 5), minmax(0, 1fr)); gap:12px; }
 .un-flow li{ position:relative; display:flex; flex-direction:column; gap:10px; padding:64px clamp(16px, 1.6vw, 22px) 24px; background:var(--card); }
-.un-flow .un-svc7-n{ position:absolute; z-index:2; top:20px; left:clamp(16px, 1.6vw, 22px); width:30px; height:30px; border-radius:50%; display:grid; place-items:center; background:var(--unit, #0B8FD8); color:#fff; font:600 12.5px/1 "Switzer",sans-serif; box-shadow:0 0 0 4px var(--card); }
+.un-flow .un-svc7-n{ position:absolute; z-index:2; top:20px; left:clamp(16px, 1.6vw, 22px); width:30px; height:30px; border-radius:50%; display:grid; place-items:center; background:var(--unit, #0B8FD8); color:#fff; font:600 13px/1 "Switzer",sans-serif; box-shadow:0 0 0 4px var(--card); }
 .un-flow li:not(:last-child)::after{ content:""; position:absolute; z-index:1; top:34px; left:calc(clamp(16px, 1.6vw, 22px) + 30px); right:calc(-12px - clamp(16px, 1.6vw, 22px)); height:1.5px; background:linear-gradient(90deg, var(--unit, #0B8FD8), color-mix(in srgb, var(--unit, #0B8FD8) 30%, transparent)); }
 .un-flow .un-svc-mark{ width:26px; height:26px; background:none; color:var(--unit, #0B8FD8); }
 .un-flow .un-svc-mark svg{ width:24px; height:24px; }
@@ -536,7 +536,7 @@
 .un-page .un-cycle-fig{ background:var(--card); }
 .un-page .un-cycle-fig:has(.un-cyc){ background:transparent; }
 .un-now-covers{ list-style:none; margin:12px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:6px; animation:unCov .5s var(--e1) both; }
-.un-now-covers li{ padding:6px 10px; background:color-mix(in srgb, #0C1220 6%, transparent); color:var(--ink); font:500 12.5px/1.3 "Switzer",sans-serif; letter-spacing:-.005em; }
+.un-now-covers li{ padding:6px 10px; background:color-mix(in srgb, #0C1220 6%, transparent); color:var(--ink); font:500 13px/1.3 "Switzer",sans-serif; letter-spacing:-.005em; }
 @keyframes unCov{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
 .un-page .un-step-d{ max-width:48ch; }
 
@@ -681,7 +681,7 @@
 .un-proc-steps{list-style:none;margin:clamp(28px,4vh,44px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;position:relative}
 .un-proc-steps li{position:relative;display:grid;grid-template-columns:auto 1fr;grid-template-areas:"n ic" "t t" "d d";align-items:center;row-gap:16px;padding:clamp(22px,2vw,28px);background:#fff;border:1px solid rgba(12,18,32,.07);box-shadow:0 1px 2px rgba(12,18,32,.03);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease}
 .un-proc-steps li:hover{transform:translateY(-3px);box-shadow:0 22px 44px -28px rgba(12,18,32,.28)}
-.un-proc-n{grid-area:n;font:600 11px/1 "Switzer",sans-serif;letter-spacing:.18em;color:#EC2027}
+.un-proc-n{grid-area:n;font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;color:#EC2027}
 .un-proc-ic{grid-area:ic;justify-self:end;width:26px;height:26px;color:#7C86A0}
 .un-proc-ic svg{width:26px;height:26px;stroke-width:1.25}
 .un-proc-steps li:hover .un-proc-ic{color:var(--unit,#0B8FD8)}
@@ -706,7 +706,7 @@
 .un-ctab-sweep{position:absolute;z-index:-1;inset:-40% auto -40% -30%;width:40%;pointer-events:none;
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.05),transparent);transform:skewX(-14deg);animation:unSweep 9s ease-in-out infinite}
 @keyframes unSweep{0%,55%{left:-40%}100%{left:130%}}
-.un-ctab-k{display:inline-flex;align-items:center;gap:10px;font:600 11px/1 "Switzer",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.un-ctab-k{display:inline-flex;align-items:center;gap:10px;font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 .un-ctab-k i{width:22px;height:1px;background:#EC2027}
 .un-ctab .un-ctab-h{margin:18px 0 0;color:#fff;font-size:clamp(30px,3.4vw,50px)}
 .un-ctab .un-ctab-h em{color:#FF4D55}
@@ -714,7 +714,7 @@
 .un-ctab-act{display:grid;gap:18px;justify-items:start}
 .un-ctab .un-ctab-btn{box-shadow:0 20px 44px -18px rgba(236,32,39,.75)}
 .un-ctab-tel{display:grid;gap:4px;color:#fff;text-decoration:none;font:500 16px/1.2 "Switzer",sans-serif;padding-left:2px;border-bottom:1px solid transparent;transition:border-color .3s ease}
-.un-ctab-tel small{font:600 10.5px/1 "Switzer",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.un-ctab-tel small{font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.5)}
 .un-ctab-tel:hover{border-bottom-color:#EC2027}
 @media(max-width:860px){.un-ctab-card{grid-template-columns:1fr;align-items:start}}
 @media(prefers-reduced-motion:reduce){.un-ctab-sweep{animation:none;display:none}}
@@ -747,7 +747,7 @@
   14%{box-shadow:0 0 0 16px rgba(236,32,39,0),0 18px 36px -20px rgba(236,32,39,.45)}
   34%,100%{color:#5B6680;border-color:rgba(12,18,32,.1);box-shadow:0 0 0 0 rgba(236,32,39,0),0 18px 36px -24px rgba(12,18,32,.35)}}
 .un-jrny-steps li:hover .un-jrny-node{color:#EC2027;border-color:rgba(236,32,39,.5)}
-.un-jrny-n{margin-top:26px;font:600 10.5px/1 "Switzer",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#EC2027}
+.un-jrny-n{margin-top:26px;font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#EC2027}
 .un-page .un-jrny-steps li > b,.un-jrny-steps b{margin-top:12px;font:600 clamp(18px,1.45vw,21px)/1.2 "Switzer","Instrument Sans",sans-serif!important;letter-spacing:-.015em;color:#0C1220}
 .un-jrny-t{margin-top:10px;max-width:27ch;font-size:14.5px;line-height:1.55;color:var(--soft)}
 @media(max-width:860px){
@@ -778,7 +778,7 @@
 .un-stmt-grid{position:absolute;inset:0;z-index:-1;opacity:.5;pointer-events:none;
   background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:44px 44px;
   -webkit-mask-image:radial-gradient(70% 90% at 80% 50%,#000,transparent 75%);mask-image:radial-gradient(70% 90% at 80% 50%,#000,transparent 75%)}
-.un-stmt-k{display:inline-flex;align-items:center;gap:10px;font:600 11px/1 "Switzer",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.un-stmt-k{display:inline-flex;align-items:center;gap:10px;font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 .un-stmt-k i{width:22px;height:1px;background:#EC2027}
 .un-stmt-t{margin:22px 0 0;max-width:36ch;font:500 clamp(22px,2.2vw,33px)/1.34 "Switzer","Instrument Sans",sans-serif;letter-spacing:-.02em;color:#fff;text-wrap:pretty}
 .un-stmt-t em{font-style:normal;color:#FF6B71}
@@ -788,7 +788,7 @@
 .un-stmt-ic{grid-area:ic;align-self:start;display:grid;place-items:center;width:40px;height:40px;border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.85);transition:border-color .35s ease,color .35s ease}
 .un-stmt-ic svg{width:20px;height:20px;stroke-width:1.25}
 .un-stmt-items li:hover .un-stmt-ic{border-color:#EC2027;color:#FF6B71}
-.un-stmt-n{grid-area:n;padding-top:4px;font:600 10px/1 "Switzer",sans-serif;letter-spacing:.2em;color:#FF6B71}
+.un-stmt-n{grid-area:n;padding-top:4px;font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;color:#FF6B71}
 .un-page .un-stmt-items li > b,.un-stmt-items b{grid-area:t;font:500 15.5px/1.25 "Switzer",sans-serif!important;color:#fff;letter-spacing:-.005em}
 .un-wafer{width:100%;max-width:340px;justify-self:center;overflow:visible}
 .un-wafer .wf-orbit{fill:none;stroke:rgba(255,255,255,.22);stroke-width:.8;stroke-dasharray:.6 1.4;transform-origin:0 0}
@@ -829,11 +829,11 @@
   background-image:linear-gradient(rgba(12,18,32,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(12,18,32,.045) 1px,transparent 1px);background-size:28px 28px}
 .un-cap2-fig img{position:absolute;left:4%;top:6%;width:92%;height:88%;object-fit:contain;mix-blend-mode:multiply;transform:scale(1.04);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
 .un-cap2-c:hover .un-cap2-fig img{transform:scale(1)}
-.un-cap2-n{position:absolute;left:18px;top:16px;font:600 12px/1 "Switzer",sans-serif;letter-spacing:.18em;color:#EC2027}
+.un-cap2-n{position:absolute;left:18px;top:16px;font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;color:#EC2027}
 .un-cap2-body{display:flex;flex-direction:column;padding:clamp(24px,2.4vw,36px)}
 .un-page .un-cap2-body h3{margin:0;font:600 clamp(22px,1.9vw,28px)/1.15 "Switzer","Instrument Sans",sans-serif;letter-spacing:-.02em;color:#0C1220}
 .un-cap2-body p{margin:12px 0 0;font-size:15px;line-height:1.6;color:var(--soft);max-width:52ch}
-.un-cap2-k{margin-top:clamp(22px,3vh,30px);font:600 11px/1 "Switzer",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C86A0}
+.un-cap2-k{margin-top:clamp(22px,3vh,30px);font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#7C86A0}
 .un-cap2-list{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .un-cap2-list li{display:flex;align-items:center;gap:12px;padding:10px 12px 10px 10px;background:#F6F8FB;border:1px solid rgba(12,18,32,.05);font:500 14px/1.3 "Switzer","Instrument Sans",sans-serif;color:#0C1220;transition:background .35s ease,border-color .35s ease}
 .un-cap2-ic{flex:none;display:grid;place-items:center;width:36px;height:36px;background:#fff;border:1px solid rgba(236,32,39,.22);color:#EC2027;transition:background .35s ease,color .35s ease}
@@ -854,8 +854,95 @@
 @media(min-width:861px){ .un-page[data-unit="cap-tool"] .un-hero-in{ grid-template-columns:minmax(0, 1.3fr) minmax(0, .7fr); } }
 .un-page[data-unit="cap-tool"] .un-h1{ max-width:none; }
 @media(max-width:860px){ .un-h1 .un-h1-line{ white-space:normal; } }
-/* 28 Oct (EPC sub heading on two lines, broken after "development"): the first line runs past the 46ch lede measure, so
-   this page's lede takes the full copy column and the break holds; phones still wrap it */
-.un-page[data-unit="cap-epc"] .un-lede{ max-width:none; }
 
 .un-cap2-n.un-cap2-n-in{ position:static; display:block; margin-bottom:16px; }   /* 22 Oct: the number heads the card when it has no picture */
+
+/* 22 Oct, Polishing fix (IAQ graphic rules: no icons in boxes; the sheet asked for "minimal text, premium icons"): the capability
+   lists on the What We Deliver cards are plain rows, a hairline between them, the mark on the line with no tile behind it.
+   The chip boxes and the bordered icon tiles are in _backups/polish-fixes-1022/unit.css. */
+.un-page .un-cap2-list{grid-template-columns:1fr;gap:0;margin-top:10px}
+.un-page .un-cap2-list li{padding:11px 0;background:none;border:0;border-top:1px solid rgba(12,18,32,.08);font-size:15px}
+.un-page .un-cap2-list li:last-child{border-bottom:1px solid rgba(12,18,32,.08)}
+.un-page .un-cap2-list li:hover{background:none;border-color:rgba(12,18,32,.08)}
+.un-page .un-cap2-ic{width:26px;height:26px;background:none;border:0;color:#EC2027}
+.un-page .un-cap2-ic svg{width:20px;height:20px}
+.un-page .un-cap2-list li:hover .un-cap2-ic{background:none;color:#EC2027}
+/* 22 Oct, Polishing fix (IAQ graphic rules: no numbering on a list that is not a sequence): the EFM solutions grid drops its
+   01 to 05 numerals; the mark leads each card. The Energy as a Service steps keep theirs, they are an order. */
+.un-page .un-svc7-grid .un-svc7-n{display:none}
+/* 22 Oct, rule 31: the hover rule draws at the foot of a card, as on the markets grid */
+.un-cap2-c::before{ top:auto; bottom:-1px; }
+
+/* 22 Oct, Polishing walk-through, note 26 (Bazil, PCU & TTI: "not have the icon in a circle", "don't put double lines, circle,
+   dot dot dot", "anything that you're not supposed to click, do not have any effect when hovered", "it's already animating,
+   then you hover and it raises the card, for what"): the journey icons stand on the line with no disc and no dashed ring;
+   every card on the unit pages that is not a link keeps still under the pointer. Rules 35 and 36. */
+.un-jrny-node{ background:transparent; border:0; box-shadow:none; }
+.un-jrny-node::before{ display:none; }
+.un-jrny-node svg{ width:34px; height:34px; }
+.un-jrny-steps li:hover .un-jrny-node{ color:#5B6680; border-color:transparent; }
+.un-bento-c:hover{ translate:0 0; box-shadow:none; }
+.un-inds-grid li:hover{ transform:none; box-shadow:0 1px 2px rgba(12,18,32,.04); }
+.un-inds-grid li:hover .un-inds-ic{ color:#7C86A0; }
+.un-proc-steps li:hover{ transform:none; box-shadow:none; }
+.un-proc-steps li:hover .un-proc-ic{ color:inherit; }
+.un-stmt-items li:hover .un-stmt-ic{ border-color:rgba(255,255,255,.16); color:rgba(255,255,255,.85); }
+.un-whyv-c:hover{ border-color:rgba(12,18,32,.08); box-shadow:none; }
+.un-cap2-c:hover{ transform:none; box-shadow:0 30px 60px -48px rgba(12,18,32,.35); }
+.un-cap2-c:hover::before{ transform:scaleX(0); }
+.un-cap2-c:hover .un-cap2-fig img{ transform:scale(1.04); }
+.un-caps-grid li:hover{ transform:none; box-shadow:none; }
+
+/* 22 Oct, Polishing walk-through, notes 28 and 29 (Bazil, the EFM call-to-action band: "like this eyebrow, unnecessary";
+   "shouldn't the button be at the bottom and the information on top? the button is the anchor point at the bottom right"):
+   no kicker; one column, the title and the line on top, then a row with the phone at the left and the button anchored
+   bottom right. Rules 38 and 39. */
+.un-ctab-k{ display:none; }
+.un-ctab-card{ grid-template-columns:minmax(0,1fr); align-items:start; }
+.un-ctab-act{ display:flex; flex-direction:row-reverse; justify-content:space-between; align-items:flex-end; width:100%; margin-top:clamp(28px,4vh,44px); gap:24px; }
+.un-ctab-tel{ margin:0; }
+@media (max-width:640px){ .un-ctab-act{ flex-direction:column; align-items:flex-start; } }
+
+/* 23 Oct, Polishing sweep, rule 11 (equal tiles; Bazil on the markets grid: "why is semiconductor the biggest"): the five
+   solution cards no longer open on one double-width card. Five across on a wide screen, three and two below 1280 px. */
+.un-page .un-svc7-grid li.is-wide{ grid-column:auto; }
+.un-page .un-svc7-grid li.is-wide b{ font-size:inherit; }
+@media (min-width:1101px){ .un-page .un-svc7-grid:has(> li:nth-child(5):last-child){ grid-template-columns:repeat(5, minmax(0,1fr)); } }
+@media (min-width:1101px) and (max-width:1279px){ .un-page .un-svc7-grid:has(> li:nth-child(5):last-child){ grid-template-columns:repeat(3, minmax(0,1fr)); } }
+/* 23 Oct, Polishing sweep, rules 11 and 42 (the why cards): the first card no longer spans two columns with a bigger title and
+   a radial glow in its corner; five cards stand five across on a wide screen, equal, the first still dark. */
+.un-bento-c.is-wide{ grid-column:auto; }
+.un-bento-c.is-lead b{ font-size:inherit; }
+.un-bento-c.is-lead::after{ display:none; }
+@media (min-width:1280px){ .un-bento:has(> li:nth-child(5):last-child){ --cols:5; } }
+@media (min-width:1101px) and (max-width:1279px){ .un-bento:has(> li:nth-child(5):last-child){ --cols:3; } }
+
+/* 23 Oct, Polishing sweep, rules 35 and 22: the four process cards lifted and shadowed under the pointer though nothing
+   in them is a link; still now. Their lines balanced. And the five why-cards' columns set directly (the component writes
+   --cols inline, which the earlier rule could not beat). */
+.un-proc-steps li:hover{ transform:none; box-shadow:none; }
+.un-proc-steps li > *{ text-wrap:balance; }
+@media (min-width:1280px){ .un-bento:has(> li:nth-child(5):last-child){ grid-template-columns:repeat(5, minmax(0,1fr)); } }
+@media (min-width:1101px) and (max-width:1279px){ .un-bento:has(> li:nth-child(5):last-child){ grid-template-columns:repeat(3, minmax(0,1fr)); } }
+
+/* 23 Oct, evening: five across, the titles sized for the narrow card (the lead card's title had fallen to body size, and
+   the others broke into three lines); one size for all five */
+@media (min-width:1280px){
+  .un-bento:has(> li:nth-child(5):last-child) .un-bento-c b, .un-bento:has(> li:nth-child(5):last-child) .un-bento-c.is-lead b{ font-size:clamp(17px,1.35vw,20px); line-height:1.2; }
+  .un-page .un-svc7-grid:has(> li:nth-child(5):last-child) li b{ font-size:clamp(16px,1.3vw,19px); line-height:1.2; }
+}
+/* 23 Oct, night (Bazil, of the delivery approach journey: "shouldn't cross the icon as well"): the 22 Oct pass took the white
+   disc off each stage icon (rule 26), and with it went the mask that hid the track behind the icon, so the red line ran
+   straight through the drawings. A thin band in the panel's own colour sits behind each icon on the line's row, so the
+   line stops at the icon and starts again after it; the icon rides above it. And the live-stage halo (a pink ring
+   pulsing out of the icon) was a circle by another name (rules 26 and 42): the stage now lights by colour alone as
+   the pulse passes. */
+.un-jrny-node::after{ content:""; position:absolute; left:-10px; right:-10px; top:50%; height:7px; margin-top:-3.5px; background:#F6F8FB; z-index:0; }
+.un-jrny-node svg{ position:relative; z-index:1; }
+@keyframes jrNodeInk{ 0%{ color:#EC2027 } 34%,100%{ color:#5B6680 } }
+.un-jrny:has(li.in) .un-jrny-node{ animation-name:jrNodeInk; box-shadow:none; }
+@media(max-width:900px){ .un-jrny-node::after{ left:50%; right:auto; top:-10px; bottom:-10px; width:7px; height:auto; margin:0 0 0 -3.5px; } }
+
+
+/* 28 Oct ("make it center the animation on mobile"): on a phone the wafer above the statement sits in the middle of the card */
+@media(max-width:960px){.un-stmt-card .un-wafer{justify-self:center}}

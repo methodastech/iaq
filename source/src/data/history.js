@@ -92,10 +92,8 @@ export const SPAN = [
     /* 29 Sep: supplied as "ChatGPT Image Sep 29, 2026, 02_15_34 PM.png" (it replaced 02_10_21), kept as assets/history/2009-wafer-fab-ipoh.webp.
        Generated, so it carries the representation label. It shows a client's name on the facade, used as supplied */
     /* 22 Oct (Bazil: "please remove the signage"): the occupier's name is painted out of the facade, same photograph */
-    /* 27 Oct (client: "can we remove the electric pole in front of the building?"): the poles, the street lamps and the
-       overhead wires are taken out of the photograph; the original stays beside it */
-    /* 26 Oct: the -clear version showed smudges on the roofline and louvres where the poles were; redone in ChatGPT from the
-       original photo, all lines straight, kept as 2009-wafer-fab-building-v3.webp */
+    /* 26 Oct (IAQ review, NR, page 003: "can we remove the electric pole infront of the building ?"): the supplied v3 has the poles
+       and overhead cables taken out. The registry photo of the same building (prj-005) took the same picture. */
     fig: { img: '/assets/history/2009-wafer-fab-building-v3.webp', rep: true, kind: 'Representation', ar: '1727 / 911',
            alt: 'A white two-storey wafer fab building with blue roofs behind a green fence and palms',
            cap: 'Shown for illustration.' },

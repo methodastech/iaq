@@ -1,0 +1,82 @@
+/* DevBuild3D (components/DevBuild3D.jsx), 26 Sep 2026. The developer's 3D in a frame pinned for one viewport (under the
+   sticky nav) inside a section whose height is the page's share of the frame's own runway. Contained, so nothing the
+   frame does reflows the page. */
+/* 25 Sep (Bazil: "the size screen must be responsive, don't cut anything"): the page zooms its root 1.12 on desktop, so a
+   plain 100vh here rendered 12% taller than the window and the bottom of the frame (speed row, mini-map, controls) was
+   always off-screen; every viewport height is divided by --zoomf, which base.css sets beside the zoom */
+section.db3,.db3{position:relative;height:calc((100vh - var(--sticktop,0px)) / var(--zoomf,1) + var(--db3-runway,0px));background:#070C18;margin:0;padding:0;contain:layout paint}
+/* 26 Sep (Bazil, after a 20% cut: "don't cut off, it needs to go maximum the responsive screen size"): the pinned frame is the full viewport under the nav */
+.db3-pin{position:relative;position:sticky;top:var(--sticktop,0px);height:calc((100vh - var(--sticktop,0px)) / var(--zoomf,1));overflow:hidden;background:#070C18;contain:strict}
+.db3-frame{display:block;width:100%;height:100%;border:0;background:#070C18;opacity:0;transition:opacity .8s var(--e1,ease)}
+.db3.is-ready .db3-frame{opacity:1}
+/* the first second: 880px wide, so the app caps its pixel ratio at 1.5 (its own rule, read once at start) */
+.db3.is-warm .db3-frame{width:min(100%,880px)}
+/* off screen by more than a viewport: two pixels tall, never narrower, so the app keeps its mode */
+.db3.is-far .db3-frame{height:2px;opacity:0;transition:none}
+/* the page's way through the build */
+.db3-line{position:absolute;left:0;top:0;height:2px;width:calc(var(--db3-p,0) * 100%);background:#EC2027;z-index:3;pointer-events:none;transition:width .12s linear}
+/* the loading screen: the mark filling, the count, the app's own status */
+.db3-load{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:#070C18;color:#fff;pointer-events:none;transition:opacity .7s var(--e1,ease),visibility 0s linear .7s}
+.db3-load.is-done{opacity:0;visibility:hidden}
+.db3-logo{display:block;width:min(240px,60vw);aspect-ratio:668/276;-webkit-mask:url(/assets/iaq-logo.webp) center/contain no-repeat;mask:url(/assets/iaq-logo.webp) center/contain no-repeat;background:linear-gradient(to top,#EC2027 var(--fill,0%),#2A3142 calc(var(--fill,0%) + 2%));transition:background .3s linear}
+.db3-pct{font:600 15px/1 "Switzer","Instrument Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums;color:#fff;letter-spacing:.01em}
+.db3-st{font:500 13.5px/1.4 "Instrument Sans",system-ui,sans-serif;color:rgba(255,255,255,.62);text-align:center;max-width:32ch}
+@media (prefers-reduced-motion: reduce){.db3{height:calc((100vh - var(--sticktop,0px)) / var(--zoomf,1))}.db3-frame,.db3-load{transition:none}}
+/* a load that runs long after the first ready: a light veil over the model with the mark breathing and the app's words */
+.db3-slow{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(7,12,24,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);color:#fff;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .45s var(--e1,ease),visibility 0s linear .45s}
+.db3-slow.is-on{opacity:1;visibility:visible;transition:opacity .45s var(--e1,ease)}
+.db3-logo-s{width:min(180px,44vw);background:linear-gradient(to top,#EC2027 0%,#EC2027 100%);animation:db3Breathe 1.6s ease-in-out infinite}
+@keyframes db3Breathe{0%,100%{opacity:.55}50%{opacity:1}}
+@media (prefers-reduced-motion: reduce){.db3-logo-s{animation:none}}
+
+/* 25 Sep, afternoon (Bazil: "during the intro it cannot be blank, something must be seen first somehow and it animates to
+   this UI"): the finished facility, cut from the app's own end state, stands over the canvas region of the empty stage
+   (right of the app's list, under its skin switch: the crop's own box, in fractions of the frame) and dissolves as the
+   build starts. Under the loader, over the frame, never in the way of a pointer. */
+.db3-intro{position:absolute;left:32.64%;top:8.89%;right:6.25%;bottom:0;z-index:3;pointer-events:none;opacity:0;transition:opacity .9s var(--e1,ease)}   /* the crop's own box: x 470 to 1350 of 1440, y 80 of 900 */
+.db3-intro.is-in{opacity:var(--ghost,1);transition:opacity .5s var(--e1,ease)}
+.db3-intro.is-gone{visibility:hidden;transition:opacity .35s linear,visibility 0s .4s}
+/* 25 Sep, later (Bazil, on the V2 skin: "what the heck"): the ghost carries alpha (its ground keyed out), so it stands on either skin's
+   ground with no panel edge; a soft mask at the frame's edges is the second guard */
+.db3-ghost{display:block;width:100%;height:100%;object-fit:cover;object-position:left top;-webkit-mask:radial-gradient(ellipse 78% 74% at 50% 52%,#000 62%,transparent 100%);mask:radial-gradient(ellipse 78% 74% at 50% 52%,#000 62%,transparent 100%)}
+/* 29 Sep (Bazil: "zoom in zoom out animation haram"): no scale */
+.db3-ghost-cap{position:absolute;right:clamp(16px,2.4vw,34px);bottom:clamp(16px,2.4vw,34px);font:500 13px/1.4 "Instrument Sans",system-ui,sans-serif;color:rgba(255,255,255,.7);background:rgba(7,12,24,.55);padding:7px 10px}
+@media(max-width:900px){.db3-intro{left:0;top:40%;right:0}   /* under the app's phone list and buttons, over its canvas only */.db3-ghost{object-fit:contain;object-position:center;-webkit-mask:radial-gradient(ellipse 62% 58% at 50% 50%,#000 60%,transparent 100%);mask:radial-gradient(ellipse 62% 58% at 50% 50%,#000 60%,transparent 100%)}}   /* the desktop crop on a phone frame: its edges fade, so no band shows against the app's ground */
+
+/* ============================================================================
+   25 Sep, 17:00 (Bazil: "make a better loading screen, not weird, and the loading bar to get to 100", "can the experience
+   in the beginning loading be better"). The loader is the stage in waiting: on the left, where the rail will stand, the
+   IAQ mark, one line, a bar and the count; on the right, where the model will stand, the finished facility sharpening
+   from a blur as the count rises (--k, 0 to 1). At 100 it holds a beat and lifts, and the same image is already on the
+   stage underneath (.db3-intro), so the hand-off is seamless. The logo fill is gone.
+   ============================================================================ */
+.db3-load{justify-content:center;align-items:stretch;background:#0A101F}
+.db3-load .db3-logo,.db3-load>.db3-pct,.db3-load>.db3-st{display:none}
+.db3-load-ghost{position:absolute;left:32.64%;top:8.89%;width:61.11%;height:91.11%;max-width:none;object-fit:cover;object-position:left top;opacity:calc(.14 + var(--k,0) * .86);filter:blur(calc((1 - var(--k,0)) * 10px)) saturate(calc(.3 + var(--k,0) * .7));-webkit-mask:radial-gradient(ellipse 78% 74% at 50% 52%,#000 62%,transparent 100%);mask:radial-gradient(ellipse 78% 74% at 50% 52%,#000 62%,transparent 100%);transition:opacity .3s linear,filter .3s linear}
+.db3-load-in{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:14px;width:min(360px,calc(100% - 48px));margin-left:clamp(24px,4vw,58px)}
+.db3-load-logo{display:block;width:92px;aspect-ratio:668/276;background:#fff;-webkit-mask:url(/assets/iaq-logo.webp) left center/contain no-repeat;mask:url(/assets/iaq-logo.webp) left center/contain no-repeat;opacity:.92}
+.db3-load-t{font:600 clamp(24px,2.2vw,34px)/1.1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:-.03em;color:#fff}
+.db3-bar{position:relative;display:block;width:100%;height:3px;background:rgba(255,255,255,.12);overflow:hidden}
+.db3-bar i{position:absolute;inset:0;background:#EC2027;transform-origin:0 50%;transform:scaleX(var(--k,0))}
+.db3-load-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;width:100%}
+.db3-load-row .db3-st{display:block;font:500 13.5px/1.4 "Instrument Sans",system-ui,sans-serif;color:rgba(255,255,255,.62);text-align:left;max-width:none;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.db3-load-row .db3-pct{display:block;flex:none;font:600 15px/1 "Switzer","Instrument Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums;color:#fff}
+.db3-load.is-done{transition:opacity .8s var(--e1,ease),visibility 0s linear .8s}
+@media(max-width:900px){
+  .db3-load{justify-content:flex-start;padding-top:clamp(48px,12vh,96px)}
+  .db3-load-ghost{left:0;top:40%;width:100%;height:60%;object-fit:contain;object-position:center}
+  .db3-load-in{margin-left:20px;width:calc(100% - 40px)}
+}
+@media (prefers-reduced-motion: reduce){.db3-load-ghost{filter:none;transform:none}}
+
+/* 25 Sep (Bazil: "ui is more to white modern theme", then "proceed"): the light build view, on when DevBuild3D's LIGHT_BUILD
+   is true (the section carries .is-light). The frame's own HUD is themed from inside the frame (#iaq-light-style). */
+.db3.is-light,.db3.is-light .db3-pin,.db3.is-light .db3-frame{background:#EEF2F7}
+.db3.is-light .db3-load{background:#EEF2F7;color:#0C1220}
+.db3.is-light .db3-logo{background:linear-gradient(to top,#EC2027 var(--fill,0%),#C9D1DC calc(var(--fill,0%) + 2%))}
+.db3.is-light .db3-pct,.db3.is-light .db3-load-row .db3-pct,.db3.is-light .db3-load-t{color:#0C1220}
+.db3.is-light .db3-st,.db3.is-light .db3-load-row .db3-st{color:#66708A}
+.db3.is-light .db3-load-logo{background:#EC2027;opacity:1}
+.db3.is-light .db3-bar{background:rgba(12,18,32,.1)}
+.db3.is-light .db3-slow{background:rgba(238,242,247,.72);color:#0C1220}
+.db3.is-light .db3-ghost-cap{color:#48536A;background:rgba(255,255,255,.88)}

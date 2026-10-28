@@ -1,0 +1,33 @@
+{
+  "layer": "detail-envelope-phone",
+  "source": "detail-envelope-phone from detail-envelope: make-lite --error 0.03 --prune --normals flat",
+  "needsNormals": false,
+  "flatShading": true,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -69.28536224365234,
+      4.054535865783691,
+      -36.729766845703125
+    ],
+    "max": [
+      69.53755187988281,
+      29.325037002563477,
+      38.81010055541992
+    ]
+  },
+  "storeys": [
+    {
+      "index": 0,
+      "key": "all",
+      "name": "ALL",
+      "elevation": 4.2,
+      "file": "detail-envelope-phone-0-all.glb",
+      "triangles": 91086,
+      "sizeKB": 407
+    }
+  ]
+}

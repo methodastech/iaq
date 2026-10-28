@@ -1,0 +1,68 @@
+{
+  "layer": "detail-electrical",
+  "source": "fbx: IAQ electrical.fbx",
+  "needsNormals": true,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -82.42098261968766,
+      3.5099999915518563,
+      -36.20619354236858
+    ],
+    "max": [
+      68.76940024367599,
+      25.83000010986328,
+      38.19907564550539
+    ]
+  },
+  "storeys": [
+    {
+      "index": 0,
+      "key": "apron",
+      "name": "APRON",
+      "elevation": 4.2,
+      "file": "detail-electrical-0-apron.glb",
+      "triangles": 48,
+      "sizeKB": 2
+    },
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-electrical-1-gf.glb",
+      "triangles": 100252,
+      "sizeKB": 260
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-electrical-2-1f.glb",
+      "triangles": 257419,
+      "sizeKB": 651
+    },
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-electrical-3-2f.glb",
+      "triangles": 231443,
+      "sizeKB": 571
+    },
+    {
+      "index": 4,
+      "key": "3f",
+      "name": "3F",
+      "elevation": 21.05,
+      "file": "detail-electrical-4-3f.glb",
+      "triangles": 264056,
+      "sizeKB": 681
+    }
+  ]
+}

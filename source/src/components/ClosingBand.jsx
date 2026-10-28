@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import FooterNav, { FooterBrand, FooterSocial } from './FooterNav.jsx'
-import CloseAmbient from './CloseAmbient.jsx'
 import Footer from './Footer.jsx'
 import FooterB from './FooterB.jsx'
 import '../styles/closing-band.css'
@@ -79,7 +78,7 @@ export default function ClosingBand({ note, ask }) {
           </div>
           <div className="cb-right">
             <div className="cb-ask">
-              <h2 className="close-h cb-h">{(ask && ask.title) || <>Tell us what you are <em>building.</em></>}</h2>
+              <h2 className="close-h cb-h">{(ask && ask.title) || <>Tell us what you are <em>building</em></>}</h2>
               <p className="lede cb-lede">{(ask && ask.lede) || 'Feasibility to handover, one accountable team.'   /* 19 Oct (IAQ: "Do not promise response times unless IAQ has approved an SLA") */}</p>
 
               <div className="cb-go">
@@ -100,7 +99,9 @@ export default function ClosingBand({ note, ask }) {
           </div>
         </div>
 
-        <CloseAmbient />
+        {/* 26 Oct (IAQ review, NR, page 001: "To remove all the dust particle !"): the particle field (CloseAmbient's canvas) is off the band;
+            its ground stays, the same navy gradient and scrim, so only the particles go. The component stays on disk */}
+        <div className="close-viz" aria-hidden="true"><div className="close-scrim"></div></div>
       </div>
       {!B && <Footer note={note} nav={false} />}
     </section>

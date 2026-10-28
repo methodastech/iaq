@@ -1,0 +1,33 @@
+{
+ "url": "/enquiry",
+ "slug": "enquiry",
+ "title": "IAQ Group · Cleanroom and facility projects",
+ "at": "2026-10-22T15:32:29.062Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "tell-us-what-you-are-planning-one-team-delivers-",
+   "heading": "Tell us what you are planning. One team delivers it.",
+   "tag": "section",
+   "cls": "lp-hero",
+   "top": 85,
+   "height": 775,
+   "text": "Tell us what you are planning. One team delivers it.\nCleanrooms, dry rooms and the systems that hold them in spec, designed, built and maintained by one accountable team since 1995. Send the brief and our team will direct it to the appropriate contact.\nDesign, procurement and construction under one contract\nISO 3 to 7 cleanrooms and dry rooms to a specified dew point\nProcess critical utilities and tool hook-up\nTesting, commissioning and maintenance after handover\nSend your project brief",
+   "img": "enquiry/01-tell-us-what-you-are-planning-one-team-delivers-.webp",
+   "shownHeight": 775
+  },
+  {
+   "i": 1,
+   "key": "tell-us-about-the-project",
+   "heading": "Tell us about the project",
+   "tag": "section",
+   "cls": "lp-form-wrap",
+   "top": 860,
+   "height": 1171,
+   "text": "Tell us about the project\nA few lines are enough to start. Our team will review your enquiry and direct it to the appropriate contact.\nWHAT HAPPENS NEXT\nYou send the brief\nA few lines are enough to start.\nOur team reviews it\nEvery enquiry is read.\nIt reaches the right contact\nAt the email or phone you give.\nPREFER TO TALK\nbusiness@iaqtechnology.com.my\n+603 5124 8319\nLEAVE THIS EMPTY\n01\nCONTACT\nName\nCompany\nWork email\nPhone\n02\nPROJECT\nMarket\nChoose one\nTiming\nChoose one\nWhat you need\nChoose one\nThe project optional\nSend the brief\nYour details are used only to reply to this enquiry.",
+   "img": "enquiry/02-tell-us-about-the-project.webp",
+   "shownHeight": 1171
+  }
+ ],
+ "errs": []
+}

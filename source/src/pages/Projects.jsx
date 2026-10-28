@@ -7,7 +7,6 @@ import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
 import RegistryBanner from '../components/RegistryBanner.jsx'
 import FooterNav from '../components/FooterNav.jsx'
-import CloseAmbient from '../components/CloseAmbient.jsx'
 import initProjectsPage from '../scenes/projects.js'
 import '../styles/pages.css'
 import '../styles/console.css'   /* the shared filter console; must load before the page sheet */
@@ -23,7 +22,7 @@ export default function Projects() {
     <>
       <Nav />
 
-      <RegistryBanner shown={18} />
+      <RegistryBanner />
 
       <div className="console" id="console"><div className="wrap">
         <div className="row">

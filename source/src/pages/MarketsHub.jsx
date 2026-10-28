@@ -8,6 +8,10 @@ import Icon from '../components/FlowIcon.jsx'
 import { TYPLBL, fmtSize, pad3 } from '../data/projects.js'
 import { MARKETS } from '../data/markets.js'
 import { HERO_LINE } from '../components/HeroLineMarks.jsx'
+/* 22 Oct, Polishing walk-through, note 24 (Bazil: "more detailed premium polished icons for each section", "I really do not like icons
+   on a square within a square"): the drawn market marks (MarketMarks.jsx, the home record set) on the tiles, no tile */
+import { MkSem, MkDat, MkEv, MkPv, MkDch, MkBio, MkFnb } from '../components/MarketMarks.jsx'
+const TILE_MARK = { 'mkt-semiconductor': MkSem, 'mkt-data-centre': MkDat, 'mkt-ev-battery': MkEv, 'mkt-photovoltaics': MkPv, 'mkt-district-cooling': MkDch, 'mkt-bio-lifescience': MkBio, 'mkt-food-beverage': MkFnb }
 import { cmsProjects, live } from '../lib/cms.js'
 const PROJECTS = live(cmsProjects)
 import '../styles/pages.css'
@@ -76,7 +80,7 @@ function MarketIndex() {
           <Link to={m.to} className="mk-gx-a">
             <img className="mk-gx-img" src={PIC[m.id] || m.img} alt="" loading="lazy" decoding="async" />
             <span className="mk-gx-top">
-              <span className="mk-gx-ic" aria-hidden="true"><Icon name={m.icon} /></span>
+              <span className="mk-gx-ic" aria-hidden="true">{TILE_MARK[m.id] ? React.createElement(TILE_MARK[m.id], { className: 'mk-gx-mk' }) : <Icon name={m.icon} />}</span>
             </span>
             <span className="mk-gx-foot">
               <b>{(CARD[m.id] || [m.name])[0]}</b>
@@ -105,7 +109,7 @@ export default function MarketsHub() {
         /* 20 Oct (client review, Sunny: "what is that standard of clean?", "The metrics all change"): a plain heading, and the
            chips carry IAQ's own figures from the home page (16 Oct sheet) in place of 250+ projects and 1,050,000 m2 */
         /* 22 Oct (IAQ amendment sheet, Markets overview · Landing Page for Industry We Serve): IAQ's heading and paragraph, as given */
-        title={<>Supporting the Facilities Behind <em>Tomorrow&rsquo;s Industries</em></>}
+        title={<>Supporting the Facilities Behind <br /><em>Tomorrow&rsquo;s Industries</em></>}
         lede="IAQ partners with clients across advanced manufacturing and critical infrastructure sectors, delivering engineering, procurement, construction, manufacturing readiness and energy management solutions tailored to the unique requirements of each industry."
         chips={['7 markets', '235+ projects completed', '7 global offices', '31 years of experience']}
         figure={{ src: '/assets/banners/mkt-hub.jpg', alt: 'A hi-tech industrial campus at dusk: facility blocks, rooftop plant, a data hall and a solar roof', hero: true }}

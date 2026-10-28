@@ -1,0 +1,46 @@
+/* ============================================================================
+   Exhibition codex downloads (30 Sep 2026): components/booth/CodexDownload.jsx. Kept apart from booth.css and
+   portal.css so those files are never touched for it. Dark slim buttons with the house download icon, as the Design
+   tab's own download (public/design/apps.css .dl-page, .dsb-dl).
+   ============================================================================ */
+.cdx-ic { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: butt; stroke-linejoin: miter; }
+
+/* the booth page's head, under "See the booth screen" and "The stand in 3D" */
+.cdx { margin-top: 12px; }
+.cdx-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.cdx-a { display: inline-flex; align-items: center; gap: 9px; padding: 11px 15px; background: #231F20; color: #fff; text-decoration: none; font: 600 13.5px/1 "Switzer", "Instrument Sans", sans-serif; white-space: nowrap; transition: background .2s; }
+.cdx-a:hover, .cdx-a:focus-visible { background: #EC2027; color: #fff; }
+.bt-head .cdx-note { margin: 10px 0 0; max-width: 62ch; font-size: 13px; line-height: 1.5; color: var(--soft, #5A5F6B); }
+
+/* the floating direction bar: at its left end */
+.bt-dmini .cdx-mini { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 12px; margin: 0 10px 0 -8px; background: #231F20; color: #fff; text-decoration: none; font: 600 12.5px/1 "Switzer", sans-serif; white-space: nowrap; transition: background .2s; }
+.bt-dmini .cdx-mini:hover, .bt-dmini .cdx-mini:focus-visible { background: #EC2027; color: #fff; }
+@media (max-width: 560px) {
+  /* on a phone the bar is full width: the download becomes an icon (its name stays for screen readers and as a title),
+     the direction's name gives way, and the direction buttons narrow so the row fits 343 px */
+  .bt-dmini .cdx-mini { width: 34px; padding: 0; justify-content: center; margin: 0 4px 0 -4px; }
+  .bt-dmini .cdx-mini span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .bt-dmini .cdx-mini ~ small { display: none; }
+  .bt-dmini .cdx-mini ~ button { width: 31px; }
+}
+
+/* the portal sidebar, last in the Exhibition group: a download, not a page */
+.pt-side .cdx-side { position: relative; margin-top: 4px; }
+/* the portal's items are nowrap and short; this label is longer, so it wraps inside the item */
+.pt-side .cdx-side, .pt-side .cdx-side b, .pt-side .cdx-side em { white-space: normal; }
+.pt-side .cdx-side span { min-width: 0; }
+.pt-side .cdx-side .pt-ic { color: #EC2027; opacity: 1; }
+.pt-side .cdx-side .cdx-ic { width: 18px; height: 18px; }
+.pt-side .cdx-side:hover .pt-ic { color: #fff; }
+/* phones: the portal hides item icons; the download keeps its icon, hung in the left gutter so the text stays aligned */
+@media (max-width: 760px) {
+  .pt-side .cdx-side .pt-ic { display: grid; position: absolute; left: 14px; top: 9px; }
+}
+
+/* 30 Sep: the whole exhibition ZIP, first in the head and at the head of every part */
+.cdx-a.cdx-all{background:#EC2027;color:#fff}
+.cdx-a.cdx-all:hover{background:#B5121B;color:#fff}
+.cdx-part{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:9px 13px;background:#231F20;color:#fff;text-decoration:none;font:600 13px/1 "Switzer",sans-serif}
+.cdx-part:hover{background:#EC2027;color:#fff}
+.cdx-part em{font-style:normal;font-weight:500;color:rgba(255,255,255,.7)}
+.cdx-part .cdx-ic{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7}

@@ -1,0 +1,93 @@
+{
+ "url": "/services/epc-construction",
+ "slug": "services-epc-construction",
+ "title": "IAQ Group · EPC · Brand Method",
+ "at": "2026-10-22T15:30:37.367Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Engineering, Procurement & Construction (EPC)",
+   "tag": "header",
+   "cls": "un-hero",
+   "top": 84,
+   "height": 631,
+   "text": "Engineering, Procurement & Construction (EPC)\nEngineering, procurement and construction under one contract, scoped to what each project needs. IAQ answers for the system working as intended.",
+   "img": "services-epc-construction/01-hero.webp",
+   "shownHeight": 631
+  },
+  {
+   "i": 1,
+   "key": "integrated-project-delivery",
+   "heading": "Integrated Project Delivery",
+   "tag": "section",
+   "cls": "un-sec.un-what",
+   "top": 715,
+   "height": 672,
+   "text": "Integrated Project Delivery\nComplex facilities require more than technical expertise. They demand seamless coordination across engineering, procurement and construction to ensure every element is aligned from concept to commissioning. Through an integrated project delivery approach, IAQ combines multidisciplinary expertise, meticulous planning and disciplined execution to deliver facilities that meet the highest standards of quality.",
+   "img": "services-epc-construction/02-integrated-project-delivery.webp",
+   "shownHeight": 672
+  },
+  {
+   "i": 2,
+   "key": "our-epc-capabilities",
+   "heading": "Our EPC Capabilities",
+   "tag": "section",
+   "cls": "un-sec.un-scope",
+   "top": 1387,
+   "height": 625,
+   "text": "Our EPC Capabilities\nIAQ delivers EPC solutions through a multidisciplinary team of engineers, project managers and construction professionals. Our capabilities span the full project lifecycle, enabling efficient coordination and successful project delivery across complex industrial environments.\nEngineering & Design\nProcurement\nConstruction\nProcess Utilities\nTool Installation\nTesting & Commissioning",
+   "img": "services-epc-construction/03-our-epc-capabilities.webp",
+   "shownHeight": 625
+  },
+  {
+   "i": 3,
+   "key": "why-integrated-project-delivery-matters",
+   "heading": "Why Integrated Project Delivery Matters",
+   "tag": "section",
+   "cls": "un-sec.un-deliver",
+   "top": 2012,
+   "height": 909,
+   "text": "Why Integrated Project Delivery Matters\nEnhanced Coordination\nImproved collaboration between design, procurement and construction teams throughout the project lifecycle.\nReduced Project Complexity\nA structured delivery framework that helps streamline decision-making and project execution.\nImproved Schedule Certainty\nEarly planning and coordinated execution help minimise delays and improve delivery confidence.\nQuality & Safety Focus\nConsistent management of quality and safety standards across all phases of the project.\nOperational Readiness\nA lifecycle approach that supports a smoother transition from project completion to facility operation.",
+   "img": "services-epc-construction/04-why-integrated-project-delivery-matters.webp",
+   "shownHeight": 909
+  },
+  {
+   "i": 4,
+   "key": "delivered-this-way",
+   "heading": "Delivered this way.",
+   "tag": "section",
+   "cls": "un-sec.un-proof",
+   "top": 2921,
+   "height": 898,
+   "text": "Delivered this way.\nSee all published projects\nthe northern corridor, Kedah\nISO 5\nWafer fab facility and expansion, cleanroom package with utilities\nWafer foundry\nSemiconductor\nEPCC\nMalaysia\nISO 6 to 7\nSemiconductor backend plant, 43,000 m² test, probe and assembly\nSemiconductor manufacturer\nSemiconductor\nEPCM\nProjects tagged EPCC or EPCM in IAQ’s registry, published by scope and location only. Client names are withheld where the contract requires it.",
+   "img": "services-epc-construction/05-delivered-this-way.webp",
+   "shownHeight": 898
+  },
+  {
+   "i": 5,
+   "key": "let-s-discuss-your-project-goals",
+   "heading": "Let’s Discuss Your Project Goals",
+   "tag": "section",
+   "cls": "un-ctab",
+   "top": 3819,
+   "height": 574,
+   "text": "START A CONVERSATION\nLet’s Discuss Your Project Goals\nWhether planning a new facility, expanding existing operations or upgrading critical infrastructure, IAQ delivers integrated EPC solutions that transform complex requirements into operationally ready facilities.\nDiscuss your project\n→\nOR CALL US\n+603 5124 8319",
+   "img": "services-epc-construction/06-let-s-discuss-your-project-goals.webp",
+   "shownHeight": 574
+  },
+  {
+   "i": 6,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 4393,
+   "height": 1212,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building.\nFeasibility to handover, one accountable team.\nStart a project\n→\nEMAIL\nbusiness@iaqtechnology.com.my\n→\nPHONE\n+603 5124 8319\n→\nHQ · SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n→\n© 2026 IAQ GROUP · IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) · ISO 9001 / 14001 / 45001 · CIDB G7\nPROTOTYPE · BRAND METHOD\nBACK TO TOP ↑",
+   "img": "services-epc-construction/07-follow.webp",
+   "shownHeight": 1212
+  }
+ ],
+ "errs": []
+}

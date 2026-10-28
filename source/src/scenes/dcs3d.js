@@ -516,7 +516,8 @@ export function initDCS(root, { onReady, onHover, onPick } = {}) {
     tesCharge: ['', 'note'], supply: ['Chilled water out', 'flow s'], ret: ['Warmer water back', 'flow r'],
   }
   anchors.tesCharge = new THREE.Vector3(SX + SR + 1, SH * 0.5, SZ + 3)
-  for (const k of Object.keys(ETS_AT)) LBL['ets-' + k] = ['Energy transfer station', 'note ets']
+  /* 23 Oct (Polishing, rule 33, say a thing once): each station is named with its building, not the same words three times */
+  for (const k of Object.keys(ETS_AT)) LBL['ets-' + k] = ['Energy transfer station, ' + (LBL[k] ? LBL[k][0].toLowerCase() : k), 'note ets']
   const labels = {}
   for (const [k, [t, cls]] of Object.entries(LBL)) {
     const el = document.createElement('span'); el.className = 'dcs3-lb ' + cls.split(' ').map(c => 'is-' + c).join(' '); el.textContent = t
@@ -586,13 +587,13 @@ export function initDCS(root, { onReady, onHover, onPick } = {}) {
     plant: ['chillers', 'pumps', 'towers'],
     tes: ['tes', 'tesCharge'],
     net: ['plant', 'supply', 'ret'],   /* 26 Sep (Bazil: "clean"): the network step names the pipes; the buildings speak in the others */
-    ets: ['ets-hotel', 'ets-hospital', 'ets-univ', 'hotel', 'hospital'],
+    ets: ['ets-hotel', 'ets-hospital', 'ets-univ'],   /* 23 Oct (rule 33): the station labels carry the building names */
     bld: ['offices', 'hotel', 'univ', 'hospital', 'mall', 'plant'],
     epc: ['chillers', 'epc-up'],
     bot: ['bot-own', 'plant', 'tes'],
     om: ['om-ch', 'om-tw', 'om-pu', 'om-tes', 'om-ets'],
   }
-  let step = 'all', stepT = 0
+  let step = 'all', stepT = 0, stepToken = 0
   const tw = { from: null, to: null, t: 1, dur: 1 }
   const startTween = (k) => {
     tw.from = { t: controls.target.clone(), zoom: cam.zoom, pos: cam.position.clone() }
@@ -617,7 +618,12 @@ export function initDCS(root, { onReady, onHover, onPick } = {}) {
     glow.coolW = (k === 'bld') ? 1 : 0
     glow.epcW = (k === 'epc') ? 1 : 0
     const on = new Set(SHOW[k] || [])
-    for (const [lk, el] of Object.entries(labels)) el.classList.toggle('on', on.has(lk))
+    /* 23 Oct (Polishing, rule 41, Bazil: "timing and everything"): the labels of the step before go at once; the new
+       step's wait for the camera to arrive (they used to pop in at the first frame and ride the move), then come in
+       one after another in the order the list names them, so a step with three notes reads in sequence */
+    for (const [lk, el] of Object.entries(labels)) if (!on.has(lk)) el.classList.remove('on')
+    const token = ++stepToken, wait = (REDUCED || k === 'all') ? 0 : 950, gap = REDUCED ? 0 : 380
+    ;[...on].forEach((lk, i) => setTimeout(() => { if (token === stepToken && labels[lk]) labels[lk].classList.add('on') }, wait + i * gap))
     needShadow = true
   }
   let needShadow = true
@@ -728,9 +734,16 @@ export function initDCS(root, { onReady, onHover, onPick } = {}) {
     tesCut.v += (tesCut.want - tesCut.v) * Math.min(1, dt * 3)
     shellMat.opacity = 1 - tesCut.v * 0.78; shellMat.depthWrite = shellMat.opacity > 0.6
     inner.visible = tesCut.v > 0.05
-    const cyc = (Math.sin(T * 0.5) + 1) / 2          /* one full charge and draw in about 12 s */
-    setLevel(0.25 + cyc * 0.6)
-    if (labels.tesCharge) { const rising = Math.cos(T * 0.5) > 0; const txt = rising ? 'Charging: cold water stored while demand is low' : 'Drawn on: cold water released at the peak'; if (labels.tesCharge.textContent !== txt) labels.tesCharge.textContent = txt }
+    /* 23 Oct (Polishing, rule 41): the tank runs on the STEP's clock, not the scene's. It used to sit on a free-running
+       twelve-second sine, so the caption flipped from charging to drawn on at any moment of the step. Now the storage
+       step opens on a low tank that charges, holds full, then is drawn on: one charge and one draw in the step's nine
+       seconds, the caption changing with the water. */
+    const ph = (step === 'tes' || step === 'om') ? (stepT % 9) / 9 : ((T * 0.08) % 1)
+    const easeIO = x => x < .5 ? 2 * x * x : 1 - (-2 * x + 2) ** 2 / 2
+    const rising = ph < .5
+    const lvl = rising ? easeIO(Math.min(1, ph / .42)) : 1 - easeIO(Math.min(1, (ph - .5) / .42))
+    setLevel(0.25 + lvl * 0.6)
+    if (labels.tesCharge) { const txt = rising ? 'Charging: cold water stored while demand is low' : 'Drawn on: cold water released at the peak'; if (labels.tesCharge.textContent !== txt) labels.tesCharge.textContent = txt }
     /* stations pulse in their step; the buildings' loops brighten */
     const pulse = 0.5 + 0.5 * Math.sin(T * 3.2)
     M.etsBand.emissiveIntensity = glow.ets * (0.4 + 0.6 * pulse)

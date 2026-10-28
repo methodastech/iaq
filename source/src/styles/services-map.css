@@ -5,8 +5,8 @@
 .sm-units h2 em,.sm-map h2 em,.sm-qs h2 em,.sm-work h2 em,.sm-faq h2 em{font-style:normal;color:var(--blue);white-space:nowrap}
 .sm-note{margin-top:14px;font-size:13px;color:var(--faint)}
 /* chips */
-.sm-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;font:600 12.5px/1.15 "Switzer","Instrument Sans",sans-serif;letter-spacing:-.005em;white-space:nowrap}
-.sm-chip i{font-style:normal;display:grid;place-items:center;width:16px;height:16px;font-size:10.5px;background:rgba(255,255,255,.55)}
+.sm-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;font:600 13px/1.15 "Switzer","Instrument Sans",sans-serif;letter-spacing:-.005em;white-space:nowrap}
+.sm-chip i{font-style:normal;display:grid;place-items:center;width:16px;height:16px;font-size:13px;background:rgba(255,255,255,.55)}
 .sm-chip.u{background:var(--unit);color:#fff}
 .sm-chip.m{background:#fff;color:#0C1220;box-shadow:inset 0 0 0 1.5px #0C1220}
 .sm-chip.s{background:color-mix(in srgb,var(--svc) 14%,#fff);color:var(--svc-t)}
@@ -22,17 +22,17 @@
 .sm-uc-pic{position:relative;aspect-ratio:16/9;overflow:hidden;background:#E9EDF3}
 .sm-uc-pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--e1)}
 .sm-uc:hover .sm-uc-pic img{transform:scale(1.05)}
-.sm-uc-no{position:absolute;left:12px;top:12px;padding:5px 9px;background:var(--unit);color:#fff;font:600 12px/1 "Switzer",sans-serif}
+.sm-uc-no{position:absolute;left:12px;top:12px;padding:5px 9px;background:var(--unit);color:#fff;font:600 13px/1 "Switzer",sans-serif}
 .sm-uc-body{display:flex;flex-direction:column;flex:1;padding:20px 22px 22px}
 .sm-uc h3{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center;margin:0;font:600 22px/1.1 "Switzer",sans-serif;letter-spacing:-.025em}
-.sm-uc h3 small{grid-column:2;font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:var(--soft);letter-spacing:0;margin-top:3px}
+.sm-uc h3 small{grid-column:2;font:500 13px/1.3 "Instrument Sans",sans-serif;color:var(--soft);letter-spacing:0;margin-top:3px}
 .sm-uc-mark{grid-row:span 2;display:grid;place-items:center;width:40px;height:40px;background:var(--unit);color:#fff}
 .sm-uc-mark svg{width:20px;height:20px}
 .sm-uc-line{margin:14px 0 0;font:600 15.5px/1.3 "Switzer",sans-serif;color:var(--ink)}
 .sm-uc-what{margin:8px 0 0;font-size:14px;line-height:1.55;color:var(--soft)}
 .sm-uc-spec{display:grid;gap:10px;margin:18px 0 0;padding:0}
 .sm-uc-spec>div{display:grid;grid-template-columns:70px minmax(0,1fr);gap:8px;align-items:start}
-.sm-uc-spec dt{font:600 12px/1.6 "Switzer",sans-serif;color:var(--faint)}
+.sm-uc-spec dt{font:600 13px/1.6 "Switzer",sans-serif;color:var(--faint)}
 .sm-uc-spec dd{margin:0;display:flex;flex-wrap:wrap;gap:6px}
 .sm-uc-term{font:600 14px/1.6 "Switzer",sans-serif;color:var(--ink)}
 .sm-uc-go{margin-top:auto;padding-top:20px;font:600 14.5px/1.2 "Switzer",sans-serif;color:var(--ink);text-decoration:none;display:inline-flex;gap:8px;align-items:center}
@@ -52,7 +52,7 @@
 .sm-q:hover{transform:translateY(-3px)}
 .sm-q-n{grid-area:n;font:600 40px/.9 "Switzer",sans-serif;letter-spacing:-.04em;color:var(--blue)}
 .sm-q b{grid-area:q;font:600 clamp(19px,1.8vw,24px)/1.1 "Switzer",sans-serif;letter-spacing:-.02em}
-.sm-q-l{grid-area:l;font:600 12px/1.4 "Switzer",sans-serif}
+.sm-q-l{grid-area:l;font:600 13px/1.4 "Switzer",sans-serif}
 .sm-q.k-m .sm-q-l{color:#0C1220}.sm-q.k-s .sm-q-l{color:var(--svc-t)}.sm-q.k-w .sm-q-l{color:var(--work-t)}
 .sm-q p{grid-area:p;margin:6px 0 0;font-size:14px;line-height:1.55;color:var(--soft)}
 .sm-h3{margin:clamp(36px,5vh,56px) 0 0;font:600 clamp(20px,1.9vw,28px)/1.15 "Switzer",sans-serif;letter-spacing:-.02em}
@@ -60,15 +60,15 @@
 .sm-wcols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:clamp(24px,3.4vh,40px)}
 .sm-wc{background:#fff;padding:22px}
 .sm-wc h3{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:0}
-.sm-wc h3 small{font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:var(--soft)}
+.sm-wc h3 small{font:500 13px/1.3 "Instrument Sans",sans-serif;color:var(--soft)}
 .sm-wc ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px;font-size:14px;line-height:1.4;color:var(--ink)}
 .sm-cmp{margin-top:14px;background:#fff;padding:6px 6px 8px}
 .sm-cmp-h,.sm-cmp-r{display:grid;grid-template-columns:minmax(0,2fr) repeat(5,minmax(0,1fr));align-items:center;gap:6px;padding:10px 14px}
-.sm-cmp-h{font:600 12px/1.2 "Switzer",sans-serif;color:var(--faint)}
+.sm-cmp-h{font:600 13px/1.2 "Switzer",sans-serif;color:var(--faint)}
 .sm-cmp-h span:not(:first-child),.sm-cmp-r span:not(:first-child){text-align:center}
 .sm-cmp-r{background:var(--bg)}.sm-cmp-r+.sm-cmp-r{margin-top:4px}
 .sm-cmp-r.me{background:rgba(236,32,39,.07)}
-.sm-cmp-r b{font:600 14.5px/1.2 "Switzer",sans-serif}.sm-cmp-r small{display:block;font-size:12px;color:var(--faint);margin-top:2px}
+.sm-cmp-r b{font:600 14.5px/1.2 "Switzer",sans-serif}.sm-cmp-r small{display:block;font-size:13px;color:var(--faint);margin-top:2px}
 .sm-cmp-r span i{display:inline-block;width:12px;height:12px}
 .sm-cmp-r .on i{background:var(--unit)}.sm-cmp-r.me .on i{background:var(--unit)}.sm-cmp-r .off i{background:rgba(12,18,32,.12)}
 /* faq */
@@ -84,7 +84,7 @@
 /* reveal stagger */
 .sm-uc[data-reveal],.sm-q[data-reveal],.sm-ask[data-reveal],.sm-wc[data-reveal],.sm-faq-i[data-reveal]{transition-delay:calc(var(--i,0) * 70ms)}
 @media(max-width:1100px){.sm-ucards,.sm-q3,.sm-wcols{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:720px){.sm-ucards,.sm-q3,.sm-wcols,.sm-faq-grid{grid-template-columns:1fr}.sm-cmp-h,.sm-cmp-r{grid-template-columns:minmax(0,1.6fr) repeat(5,minmax(0,1fr));padding:8px 10px;font-size:12px}}
+@media(max-width:720px){.sm-ucards,.sm-q3,.sm-wcols,.sm-faq-grid{grid-template-columns:1fr}.sm-cmp-h,.sm-cmp-r{grid-template-columns:minmax(0,1.6fr) repeat(5,minmax(0,1fr));padding:8px 10px;font-size:13px}}
 
 /* ===== 24 Sep, the flow pass (Bazil: "animation, amazing flow, perfect diagrams, premium flow") ===== */
 /* the life of a facility: three stages on one rail that fills left to right when the band arrives */
@@ -95,7 +95,7 @@
 .sm-units.in .sm-life-bar i{transform:scaleX(1)}
 .sm-life .sm-chip{grid-area:chip;align-self:start}
 .sm-life b{grid-area:k;font:600 16px/1.2 "Switzer",sans-serif;letter-spacing:-.015em}
-.sm-life small{grid-area:t;font:600 12.5px/1.3 "Switzer",sans-serif;color:var(--unit-t)}
+.sm-life small{grid-area:t;font:600 13px/1.3 "Switzer",sans-serif;color:var(--unit-t)}
 .sm-life p{grid-area:p;margin:8px 0 0;font-size:13.5px;line-height:1.5;color:var(--soft)}
 .sm-life li>*:not(.sm-life-bar){opacity:0;transform:translateY(8px);transition:opacity .6s var(--e1) calc(.35s + var(--i,0) * .32s),transform .7s var(--e1) calc(.35s + var(--i,0) * .32s)}
 .sm-units.in .sm-life li>*:not(.sm-life-bar){opacity:1;transform:none}
@@ -110,11 +110,11 @@
 .sm-asks{display:grid;gap:6px;margin-top:18px}
 .sm-ask{display:grid;grid-template-columns:minmax(200px,.95fr) 92px 210px minmax(0,1.7fr) minmax(0,1.05fr) minmax(0,1.3fr);gap:8px 14px;align-items:center;padding:12px 18px;background:#fff;transition:background .3s}
 .sm-ask:hover{background:#FBFCFE}
-.sm-ask-h{background:transparent;padding-top:0;padding-bottom:2px;font:600 12px/1.2 "Switzer",sans-serif}
+.sm-ask-h{background:transparent;padding-top:0;padding-bottom:2px;font:600 13px/1.2 "Switzer",sans-serif}
 .sm-ask-h .k-u{color:var(--unit-t)}.sm-ask-h .k-m{color:#0C1220}.sm-ask-h .k-s{color:var(--svc-t)}.sm-ask-h .k-w{color:var(--work-t)}.sm-ask-h .k-y{color:var(--sys-t)}
 .sm-ask-q{margin:0;font:600 15px/1.3 "Switzer",sans-serif;letter-spacing:-.015em}
 .sm-cell{position:relative;display:flex;flex-wrap:wrap;gap:4px;align-items:center;min-width:0}
-.sm-cell::before{content:"\2192";position:absolute;left:-12px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--faint)}
+.sm-cell::before{content:"\2192";position:absolute;left:-12px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--faint)}
 .sm-cell.sm-pgroup{gap:4px}
 .sm-cell .sm-chip{white-space:normal}
 .sm-cell>*{opacity:0;transform:translateX(-6px);transition:opacity .45s var(--e1) calc(.2s + var(--i,0) * .12s + var(--k,0) * .11s),transform .5s var(--e1) calc(.2s + var(--i,0) * .12s + var(--k,0) * .11s)}
@@ -148,17 +148,17 @@
 .sm-units:hover .sm-sel-b.on .sm-sel-rail i{animation-play-state:paused}
 @keyframes smRail{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .sm-sel-top{grid-area:top;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.sm-sel-top small{font:600 12px/1 "Switzer",sans-serif;color:var(--faint)}
+.sm-sel-top small{font:600 13px/1 "Switzer",sans-serif;color:var(--faint)}
 .sm-sel-b b{grid-area:k;margin-top:8px;font:600 17px/1.2 "Switzer",sans-serif;letter-spacing:-.015em}
 .sm-sel-line{grid-area:line;font-size:13.5px;line-height:1.45;color:var(--soft)}
-.sm-sel-term{grid-area:term;margin-top:6px;font:600 12.5px/1.3 "Switzer",sans-serif;color:var(--unit-t)}
+.sm-sel-term{grid-area:term;margin-top:6px;font:600 13px/1.3 "Switzer",sans-serif;color:var(--unit-t)}
 .sm-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,1fr);background:#fff;overflow:hidden;opacity:0;transform:translateY(16px);transition:opacity .8s var(--e1) .3s,transform .9s var(--e1) .3s}
 .sm-units.in .sm-stage{opacity:1;transform:none}
 .sm-stage-pic{position:relative;min-height:420px;background:#E9EDF3;overflow:hidden}
 .sm-stage-pic .sm-mo{opacity:0;transition:opacity .9s var(--e1)}
 .sm-stage-pic .sm-mo.on{opacity:1}
 .sm-stage-pic img{width:100%;height:100%;object-fit:cover}
-.sm-stage-no{position:absolute;left:14px;top:14px;padding:6px 10px;background:var(--unit);color:#fff;font:600 12.5px/1 "Switzer",sans-serif;z-index:1}
+.sm-stage-no{position:absolute;left:14px;top:14px;padding:6px 10px;background:var(--unit);color:#fff;font:600 13px/1 "Switzer",sans-serif;z-index:1}
 .sm-stage-body{display:flex;flex-direction:column;padding:clamp(22px,2.4vw,34px);animation:smIn .6s var(--e1) both}
 @keyframes smIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .sm-stage-body h3{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center;margin:0;font:600 clamp(24px,2.2vw,32px)/1.05 "Switzer",sans-serif;letter-spacing:-.025em}
@@ -231,8 +231,8 @@
 .sm-model{display:block}
 .sm-model>.sm-chip{display:inline-flex}
 .sm-model small{display:block;margin-top:5px}
-.sm-model small{font:400 12.5px/1.4 "Instrument Sans",sans-serif;color:var(--soft)}
-.sm-svc6-key{grid-column:1/-1;flex-basis:100%;width:100%;margin-top:4px;font:400 12.5px/1.4 "Instrument Sans",sans-serif;color:var(--soft)}
+.sm-model small{font:400 13px/1.4 "Instrument Sans",sans-serif;color:var(--soft)}
+.sm-svc6-key{grid-column:1/-1;flex-basis:100%;width:100%;margin-top:4px;font:400 13px/1.4 "Instrument Sans",sans-serif;color:var(--soft)}
 
 /* 24 Sep (Bazil: "make the background grey light to differentiate this section") */
 .sm-faq{background:#EDF0F4}
@@ -275,16 +275,16 @@
   /* the map in a narrower column: tighter gaps, smaller cards, the same lines */
   .rx-compact .rx{padding:clamp(12px,1.2vw,18px)}
   .rx-compact .rx-heads,.rx-compact .rx-cols{column-gap:clamp(16px,1.6vw,26px);grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr) minmax(0,.9fr) minmax(0,1.05fr)}
-  .rx-compact .rx-heads span{font-size:12px}
+  .rx-compact .rx-heads span{font-size:13px}
   .rx-compact .rx-n{padding:7px 9px;gap:7px}
-  .rx-compact .rx-s .rx-n span{font-size:12.5px}
+  .rx-compact .rx-s .rx-n span{font-size:13px}
   .rx-compact .rx-n .rx-mk{width:30px;height:30px}.rx-compact .rx-n .rx-mk svg{width:24px;height:24px}
   .rx-compact .rx-u .rx-n{padding:10px 12px;gap:4px}
   .rx-compact .rx-u .rx-n b{font-size:13.5px}
-  .rx-compact .rx-u-line,.rx-compact .rx-u-full{font-size:11.5px}
-  .rx-compact .rx-models em{font-size:10.5px;padding:4px 6px}
-  .rx-compact .rx-w .rx-n b{font-size:13.5px}.rx-compact .rx-w .rx-n small{font-size:11px}
-  .rx-compact .rx-y .rx-n{padding:5px 8px;font-size:11.5px}
+  .rx-compact .rx-u-line,.rx-compact .rx-u-full{font-size:13px}
+  .rx-compact .rx-models em{font-size:13px;padding:4px 6px}
+  .rx-compact .rx-w .rx-n b{font-size:13.5px}.rx-compact .rx-w .rx-n small{font-size:13px}
+  .rx-compact .rx-y .rx-n{padding:5px 8px;font-size:13px}
   .rx-compact .rx-read{padding:12px 14px}.rx-compact .rx-read p{font-size:13.5px}
   .rx-compact .rx-vis{width:170px}.rx-compact .rx-vis img,.rx-compact .rx-vis-mk{height:96px}
 }
@@ -293,7 +293,7 @@
    24 Sep · units: the short card, the iconised models, and the detail panel with its diagram
    ============================================================================ */
 .sm-uc-body .sm-uc-spec{margin-top:16px}
-.sm-mi{display:inline-flex;align-items:center;gap:8px;padding:7px 10px 7px 8px;background:#fff;color:var(--ink);font:600 12.5px/1.2 "Switzer",sans-serif;letter-spacing:-.005em;box-shadow:inset 0 0 0 1.5px #0C1220}
+.sm-mi{display:inline-flex;align-items:center;gap:8px;padding:7px 10px 7px 8px;background:#fff;color:var(--ink);font:600 13px/1.2 "Switzer",sans-serif;letter-spacing:-.005em;box-shadow:inset 0 0 0 1.5px #0C1220}
 .sm-mi .mdl-ic{width:18px;height:18px;flex:none;color:var(--unit-t)}
 .sm-uc-acts{margin-top:auto;padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px}
 .sm-uc-acts .sm-uc-go{margin-top:0;padding-top:0}
@@ -312,27 +312,27 @@
 .sm-ud-dg h4{margin:0 0 10px;font:600 14px/1.2 "Switzer",sans-serif;color:var(--soft)}
 .ud-svg{width:100%;height:auto;display:block;background:#fff}
 .ud-svg .ud-t{font:600 13px "Switzer",sans-serif}
-.ud-svg .ud-s{font:500 10.5px "Instrument Sans",sans-serif}
+.ud-svg .ud-s{font:500 13px "Instrument Sans",sans-serif}
 .ud-svg .ud-h{font:600 14px "Switzer",sans-serif}
 .sm-ud-what{margin:0;font-size:15px;line-height:1.55;color:var(--ink)}
 .sm-ud-spec{display:grid;gap:14px;margin:18px 0 0;padding:0}
 .sm-ud-spec>div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;align-items:start}
-.sm-ud-spec dt{font:600 12px/1.6 "Switzer",sans-serif;color:var(--faint)}
+.sm-ud-spec dt{font:600 13px/1.6 "Switzer",sans-serif;color:var(--faint)}
 .sm-ud-spec dd{margin:0;font-size:14px;line-height:1.5;color:var(--ink);display:flex;flex-wrap:wrap;gap:6px}
 .sm-ud-when{font:600 15px/1.4 "Switzer",sans-serif}
 .sm-ud-models{display:grid!important;gap:10px}
 .sm-ud-model{display:grid;gap:5px;justify-items:start}
 .sm-ud-model small{font-size:13px;line-height:1.45;color:var(--soft)}
-.sm-ud-note{flex-basis:100%;font-size:12.5px;color:var(--soft);margin-top:2px}
+.sm-ud-note{flex-basis:100%;font-size:13px;color:var(--soft);margin-top:2px}
 .sm-ud-work{display:grid!important;gap:10px}
 .sm-ud-w{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;align-items:baseline}
-.sm-ud-w small{font-size:12.5px;color:var(--soft)}
+.sm-ud-w small{font-size:13px;color:var(--soft)}
 .sm-ud-sys{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px}
-.sm-ud-sys i{font-style:normal;font:500 11.5px/1.2 "Switzer",sans-serif;padding:4px 7px;background:color-mix(in srgb,var(--sys) 12%,#fff);color:var(--sys-t)}
+.sm-ud-sys i{font-style:normal;font:500 13px/1.2 "Switzer",sans-serif;padding:4px 7px;background:color-mix(in srgb,var(--sys) 12%,#fff);color:var(--sys-t)}
 .sm-ud-asks{display:grid!important;gap:8px}
 .sm-ud-asks span{display:grid;gap:2px}
 .sm-ud-asks q{font:600 14px/1.4 "Switzer",sans-serif;quotes:"“" "”"}
-.sm-ud-asks small{font-size:12.5px;color:var(--soft)}
+.sm-ud-asks small{font-size:13px;color:var(--soft)}
 .sm-ud .sm-uc-go{margin-top:22px;padding-top:0}
 @media(max-width:1100px){.sm-ud-grid{grid-template-columns:1fr}}
 @media(max-width:640px){.sm-ud-spec>div{grid-template-columns:1fr;gap:4px}.sm-uc-acts{flex-direction:column;align-items:stretch}.sm-uc-more{justify-content:center}}
@@ -345,7 +345,7 @@
 /* the model's key: a list under the model, never a card over it */
 .sm-map-duo .fv .fab-legend{position:static;inset:auto;transform:none;width:auto;max-width:none;margin:0;padding:10px 12px;background:#fff;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px 6px;border-radius:0;box-shadow:inset 0 1px 0 rgba(12,18,32,.08);backdrop-filter:none}
 .sm-map-duo .fv .fab-legend li{padding:0;margin:0;background:none;box-shadow:none;border:0}
-.sm-map-duo .fv .fab-legend li button{width:100%;padding:6px 6px;font-size:11.5px}
+.sm-map-duo .fv .fab-legend li button{width:100%;padding:6px 6px;font-size:13px}
 .sm-map-duo .fv .fab-legend li button span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sm-map-read{margin-top:12px;padding:14px 16px;background:#F3F6FB;display:flex;gap:14px;align-items:flex-start;min-height:96px}
 .sm-map-read .rx-vis{width:150px}
@@ -361,7 +361,7 @@
 
 /* the model's key: two columns, full names */
 .sm-map-duo .fv .fab-legend{grid-template-columns:repeat(2,minmax(0,1fr))}
-.sm-map-duo .fv .fab-legend li button{font-size:12.5px;padding:7px 8px}
+.sm-map-duo .fv .fab-legend li button{font-size:13px;padding:7px 8px}
 .sm-map-duo .fv .fab-legend li button span{white-space:normal;overflow:visible;text-overflow:clip}
 .sm-map-stage,.sm-map-read,.sm-map-duo .fv{min-width:0;max-width:100%}
 
@@ -382,7 +382,7 @@
 .sm-map-mk svg{width:52px;height:52px;display:block}
 .sm-map-read p{font-size:13.5px;line-height:1.55;color:#48536A}
 /* heads */
-.rx-compact .rx-heads span{font:600 11.5px/1 "Switzer",sans-serif;color:#66708A;padding-bottom:12px}
+.rx-compact .rx-heads span{font:600 13px/1 "Switzer",sans-serif;color:#66708A;padding-bottom:12px}
 .rx-compact .rx-heads i{width:7px;height:7px}
 /* nodes: white, hairline, ink; lit: a coloured hairline; picked: filled */
 .rx-compact .rx-n,.rx-compact .rx-n.on{background:#fff;box-shadow:inset 0 0 0 1px #E3E8F0;transition:opacity .25s,box-shadow .25s,background .25s,color .25s}
@@ -435,7 +435,7 @@
 .sm-map-dark .sm-map-read p b{color:#fff}
 .sm-map-dark .sm-map-read .c-u{color:#FF6A70}.sm-map-dark .sm-map-read .c-s{color:#5CBCF5}.sm-map-dark .sm-map-read .c-w{color:#F2B705}.sm-map-dark .sm-map-read .c-y{color:#4DDB93}.sm-map-dark .sm-map-read .c-m{color:#fff}
 .sm-map-dark .sm-map-hint{color:rgba(255,255,255,.6)}
-.sm-map-more{margin-top:6px!important;font-size:12.5px!important;color:rgba(255,255,255,.55)!important}
+.sm-map-more{margin-top:6px!important;font-size:13px!important;color:rgba(255,255,255,.55)!important}
 .sm-map-ic{display:grid;place-items:center;flex:none;width:40px;height:40px;background:#242A34;color:#5CBCF5}
 .sm-map-ic svg{width:20px;height:20px}
 /* the map on the dark ground: dark cards, light type, the same coloured lines, brighter tints of the key colours */
@@ -459,7 +459,7 @@
 .rx-n>span,.rx-n b,.rx-n small{min-width:0;overflow-wrap:anywhere}
 .rx-compact .rx-s .rx-n{padding:7px 8px;gap:7px}
 .rx-compact .rx-s .rx-n svg{width:15px;height:15px}
-.rx-compact .rx-s .rx-n span{font-size:12px}
+.rx-compact .rx-s .rx-n span{font-size:13px}
 @media(min-width:1280px){.sm-map-dark .sm-map-duo{grid-template-columns:minmax(0,.46fr) minmax(0,.54fr)}}
 /* the flow band */
 .sm-flow{background:#fff}
@@ -474,16 +474,16 @@
 .sm-uc3-dg figure{margin:0;padding:12px;background:#F7F9FC}
 .sm-uc3-dg figcaption{display:flex;align-items:center;gap:10px;margin-bottom:10px;font:600 15px/1.2 "Switzer",sans-serif;color:var(--ink)}
 .sm-uc3-dg figcaption .sm-uc-mark{width:30px;height:30px}.sm-uc3-dg figcaption .sm-uc-mark svg{width:16px;height:16px}
-.sm-uc3-dg figcaption small{font:500 12px/1.2 "Instrument Sans",sans-serif;color:var(--soft)}
+.sm-uc3-dg figcaption small{font:500 13px/1.2 "Instrument Sans",sans-serif;color:var(--soft)}
 .sm-uc3-wrap{overflow-x:auto;margin-top:clamp(18px,2.6vh,28px)}
 .sm-uc3-t{width:100%;min-width:820px;border-collapse:separate;border-spacing:0;font-size:13.5px;line-height:1.5}
 .sm-uc3-t th,.sm-uc3-t td{padding:12px 14px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line,#E3E8F0)}
 .sm-uc3-t thead th{background:#F7F9FC;vertical-align:middle}
 .sm-uc3-t thead th b{display:block;font:600 17px/1.15 "Switzer",sans-serif;letter-spacing:-.015em;color:var(--ink);margin-top:8px}
-.sm-uc3-t thead th small{display:block;font:500 12px/1.3 "Instrument Sans",sans-serif;color:var(--soft);margin-top:2px}
+.sm-uc3-t thead th small{display:block;font:500 13px/1.3 "Instrument Sans",sans-serif;color:var(--soft);margin-top:2px}
 .sm-uc3-t thead th .sm-uc-mark{width:34px;height:34px}.sm-uc3-t thead th .sm-uc-mark svg{width:18px;height:18px}
-.sm-uc3-corner{font:500 12.5px/1.2 "Switzer",sans-serif;color:var(--soft)}
-.sm-uc3-t tbody th{width:132px;font:600 12.5px/1.5 "Switzer",sans-serif;color:var(--faint);background:#F7F9FC;white-space:nowrap}
+.sm-uc3-corner{font:500 13px/1.2 "Switzer",sans-serif;color:var(--soft)}
+.sm-uc3-t tbody th{width:132px;font:600 13px/1.5 "Switzer",sans-serif;color:var(--faint);background:#F7F9FC;white-space:nowrap}
 .sm-uc3-t td{color:var(--ink)}
 .sm-uc3-t td .sm-svc6,.sm-uc3-t td .sm-ud-work,.sm-uc3-t td .sm-ud-asks,.sm-uc3-t td .sm-uc3-models{display:grid;gap:6px}
 .sm-uc3-t td .sm-svc6{display:flex;flex-wrap:wrap}
@@ -533,7 +533,7 @@
 .rx-iso-y{width:26px;height:26px}
 .rx-compact .rx-iso{width:38px;height:38px}.rx-compact .rx-iso-u{width:44px;height:44px}.rx-compact .rx-iso-y{width:26px;height:26px}
 .rx-compact .rx-s .rx-n{padding:8px 10px;gap:9px}
-.rx-compact .rx-s .rx-n span{font-size:12.5px}
+.rx-compact .rx-s .rx-n span{font-size:13px}
 
 /* ============================================================================
    24 Sep · the units as one board (components/UnitsBoard.jsx); 25 Sep: no label column, each cell captioned, calm
@@ -543,13 +543,13 @@
 .sm-ub-top{border-top:0}
 .sm-ub-cell{padding:18px 22px;min-width:0;font-size:14.5px;line-height:1.55;color:var(--ink)}
 .sm-ub-cell+.sm-ub-cell{border-left:1px solid var(--line,#E3E8F0)}
-.sm-ub-k{display:block;font:600 12px/1.3 "Switzer",sans-serif;color:var(--faint);margin-bottom:6px}
+.sm-ub-k{display:block;font:600 13px/1.3 "Switzer",sans-serif;color:var(--faint);margin-bottom:6px}
 .sm-ub-head{padding:0 0 22px}
 .sm-ub-head .sm-uc-pic{aspect-ratio:16/9;margin:0}
 .sm-ub-head .sm-uc-pic img{width:100%;height:100%;object-fit:cover;display:block}
 .sm-ub-head>.sm-ub-k{margin:16px 22px 6px}
 .sm-ub-head h3{margin:0 22px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center;font:600 22px/1.1 "Switzer",sans-serif;letter-spacing:-.025em}
-.sm-ub-head h3 small{grid-column:2;font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:var(--soft);letter-spacing:0;margin-top:3px}
+.sm-ub-head h3 small{grid-column:2;font:500 13px/1.3 "Instrument Sans",sans-serif;color:var(--soft);letter-spacing:0;margin-top:3px}
 .sm-ub-head .sm-uc-line{margin:12px 22px 0}
 .sm-ub .sm-uc3-when{font-weight:600}
 .sm-ub-models{display:flex;flex-wrap:wrap;gap:8px}
@@ -560,10 +560,10 @@
 .sm-ub-dg{background:#F7F9FC;padding:12px}
 .sm-ub .ud-svg{width:100%;height:auto;display:block}
 .sm-ub .sm-svc6{display:flex;flex-wrap:wrap;gap:6px}
-.sm-ub .sm-ud-note{display:block;width:100%;margin-top:6px;font-size:12.5px;color:var(--soft)}
+.sm-ub .sm-ud-note{display:block;width:100%;margin-top:6px;font-size:13px;color:var(--soft)}
 .sm-ub .sm-ud-work,.sm-ub .sm-ud-asks{display:grid;gap:10px}
 .sm-ub .sm-ud-asks q{quotes:"\201C" "\201D";display:block;font-weight:600}
-.sm-ub .sm-ud-asks small{color:var(--soft);font-size:12.5px}
+.sm-ub .sm-ud-asks small{color:var(--soft);font-size:13px}
 .sm-ub-foot .sm-ub-cell{padding:14px 22px}
 .sm-ub-foot .sm-uc-go{margin:0;padding:0}
 .sm-ub-more{display:flex;justify-content:center;padding:16px;border-top:1px solid var(--line,#E3E8F0);background:#F7F9FC}
@@ -656,10 +656,10 @@
 .sm-ub-head h3 .sm-uc-mark{grid-row:auto;width:44px;height:44px;background:transparent;color:var(--unit,#0B8FD8)}
 .sm-ub-head h3 .sm-uc-mark svg{width:40px;height:40px;stroke-width:1.05}
 .sm-ub-nm{display:grid;gap:5px}
-.sm-ub-head h3 small{grid-column:auto;display:block;font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:var(--soft);letter-spacing:0;margin:0;min-height:2.6em}
+.sm-ub-head h3 small{grid-column:auto;display:block;font:500 13px/1.3 "Instrument Sans",sans-serif;color:var(--soft);letter-spacing:0;margin:0;min-height:2.6em}
 .sm-ub-head .sm-uc-line{margin:14px 22px 0;font:600 19px/1.3 "Switzer",sans-serif;letter-spacing:-.015em;color:var(--ink)}
 .sm-ub-cell{padding:22px 22px 24px}
-.sm-ub-k{font:600 12px/1.3 "Switzer",sans-serif;color:var(--faint);margin-bottom:10px}
+.sm-ub-k{font:600 13px/1.3 "Switzer",sans-serif;color:var(--faint);margin-bottom:10px}
 .sm-ub .sm-uc3-when{font:500 16px/1.5 "Instrument Sans",sans-serif;color:var(--ink)}
 .sm-ub .sm-mi{background:transparent;box-shadow:inset 0 0 0 1px rgba(12,18,32,.14);color:var(--ink);padding:8px 12px 8px 10px}
 .sm-ub .sm-mi svg{color:var(--unit,#0B8FD8)}
@@ -696,22 +696,22 @@
 /* the flows (components/UnitFlows.jsx): boxes of text that wrap, arrows by CSS, the unit's colour on the active steps */
 .uf{display:grid;gap:18px}
 .uf-t{margin:0 0 8px;font:600 13.5px/1.35 "Switzer",sans-serif;color:var(--ink)}
-.uf-t span{display:block;font:400 12.5px/1.4 "Instrument Sans",sans-serif;color:var(--soft);margin-top:2px}
+.uf-t span{display:block;font:400 13px/1.4 "Instrument Sans",sans-serif;color:var(--soft);margin-top:2px}
 .uf-steps{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:stretch;gap:8px 22px}
 .uf-step{position:relative;display:grid;gap:3px;padding:8px 10px;background:#F1F4F8;min-width:0;max-width:100%}
-.uf-step b{font:600 12.5px/1.25 "Switzer",sans-serif;color:var(--ink)}
-.uf-step small{font:400 11.5px/1.35 "Instrument Sans",sans-serif;color:var(--soft)}
+.uf-step b{font:600 13px/1.25 "Switzer",sans-serif;color:var(--ink)}
+.uf-step small{font:400 13px/1.35 "Instrument Sans",sans-serif;color:var(--soft)}
 .uf-step.on{background:var(--unit,#0B8FD8);color:#fff}
 .uf-step.on b,.uf-step.on small{color:#fff}.uf-step.on small{color:rgba(255,255,255,.78)}
 .uf-step.dashed{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(12,18,32,.18);outline:1.5px dashed rgba(12,18,32,.3);outline-offset:-1.5px}
 .uf-step+.uf-step::before,.uf-group+.uf-step::before,.uf-step+.uf-group::before{content:"";position:absolute;left:-16px;top:50%;width:10px;height:1.5px;background:#9AA3AF}
 .uf-step+.uf-step::after,.uf-group+.uf-step::after,.uf-step+.uf-group::after{content:"";position:absolute;left:-9px;top:50%;width:5px;height:5px;border-right:1.5px solid #9AA3AF;border-top:1.5px solid #9AA3AF;transform:translateY(-50%) rotate(45deg)}
 .uf-group{position:relative;display:grid;gap:4px;padding:16px 8px 8px;box-shadow:inset 0 0 0 1.5px var(--unit,#0B8FD8)}
-.uf-group-l{position:absolute;left:8px;top:2px;font:600 10.5px/1.2 "Switzer",sans-serif;color:var(--unit-t,#0772AE)}
+.uf-group-l{position:absolute;left:8px;top:2px;font:600 13px/1.2 "Switzer",sans-serif;color:var(--unit-t,#0772AE)}
 .uf-inner{gap:8px 18px}
 .uf-inner .uf-step+.uf-step::before{left:-13px;width:8px}.uf-inner .uf-step+.uf-step::after{left:-8px}
 .uf-gains{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
-.uf-gains li{padding:6px 10px;font:500 12.5px/1.2 "Instrument Sans",sans-serif;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(12,18,32,.14)}
+.uf-gains li{padding:6px 10px;font:500 13px/1.2 "Instrument Sans",sans-serif;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(12,18,32,.14)}
 .sm-ub .uf{--unit:#0B8FD8;--unit-t:#0772AE}
 
 /* 25 Sep, night (Bazil: "don't put icon in a box", "should have icon for each", "refine all the icons") */
@@ -787,7 +787,7 @@
 .sm-ub-head .sm-uc-pic::after{background:linear-gradient(180deg,rgba(12,18,32,0) 62%,rgba(12,18,32,.32) 100%)}
 .sm-ub-head .sm-uc-pic img{transform:none;transition:none}
 .sm-ub-head:hover .sm-uc-pic img{transform:none}
-.sm-ub-head .sm-ub-no{position:absolute;left:auto;right:12px;top:auto;bottom:12px;z-index:2;display:inline-flex;align-items:center;gap:8px;margin:0;padding:8px 11px;background:#fff;color:var(--ink,#0C1220);font:600 12.5px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none;border-radius:0;box-shadow:none}
+.sm-ub-head .sm-ub-no{position:absolute;left:auto;right:12px;top:auto;bottom:12px;z-index:2;display:inline-flex;align-items:center;gap:8px;margin:0;padding:8px 11px;background:#fff;color:var(--ink,#0C1220);font:600 13px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none;border-radius:0;box-shadow:none}
 .sm-ub-head .sm-ub-no i{font-style:normal;font-weight:500;color:var(--soft,#48536A)}
 .sm-ub-head h3{margin:0 10px 0;display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:14px;align-items:start;min-height:0;padding-top:10px}
 .sm-ub-head h3 .sm-uc-mark{grid-row:auto;width:64px;height:64px;margin-top:-42px;background:#fff;color:var(--uc);display:grid;place-items:center;box-shadow:0 0 0 4px var(--uc);position:relative;z-index:3}
@@ -829,7 +829,7 @@
 .sm-ub-head .sm-uc-pic::after{background:linear-gradient(180deg,rgba(12,18,32,.32) 0%,rgba(12,18,32,.05) 30%,rgba(12,18,32,.1) 50%,rgba(12,18,32,.9) 100%)}
 .sm-ub-head .sm-uc-pic img{transition:transform 2.2s var(--e1)}
 .sm-ub-head:hover .sm-uc-pic img{transform:scale(1.05)}
-.sm-ub-no{top:20px;left:22px;bottom:auto;font:600 12.5px/1 "Switzer",sans-serif;letter-spacing:.02em;color:#fff}
+.sm-ub-no{top:20px;left:22px;bottom:auto;font:600 13px/1 "Switzer",sans-serif;letter-spacing:.02em;color:#fff}
 .sm-ub-no i{color:rgba(255,255,255,.7)}
 .sm-ub-head h3{position:absolute;left:22px;right:22px;bottom:22px;z-index:1;margin:0;display:block;min-height:0;color:#fff;font:600 30px/1 "Switzer",sans-serif;letter-spacing:-.03em}
 .sm-ub-head h3 .sm-uc-mark{position:absolute;right:0;bottom:calc(100% + 44px);width:36px;height:36px;color:#fff;background:transparent}
@@ -845,7 +845,7 @@
 .sm-ub-cell{background:transparent;padding:20px 0 22px}
 .sm-ub-row+.sm-ub-row .sm-ub-cell{border-top:1px solid rgba(12,18,32,.1)}
 .sm-ub-top .sm-ub-cell{border-top:0}
-.sm-ub-k{font:500 12px/1.3 "Instrument Sans",sans-serif;color:var(--faint);margin-bottom:8px;letter-spacing:0}
+.sm-ub-k{font:500 13px/1.3 "Instrument Sans",sans-serif;color:var(--faint);margin-bottom:8px;letter-spacing:0}
 .sm-ub .sm-uc3-when{font:400 16px/1.5 "Instrument Sans",sans-serif;color:var(--ink)}
 .sm-ub .sm-mi{box-shadow:none;background:#EEF3FA;color:#0F2D57;padding:8px 12px 8px 10px;font-weight:600}
 .sm-ub .sm-mi svg{color:#0B8FD8}
@@ -888,7 +888,7 @@
 .sm-map-dark .sm-map-ic svg{width:40px;height:40px;stroke-width:1.05}
 
 .sm-ub-head{position:relative}
-.sm-ub-head .sm-ub-no{left:22px;right:auto;top:20px;bottom:auto;padding:0;background:transparent;color:#fff;box-shadow:none;font:600 12.5px/1 "Switzer",sans-serif}
+.sm-ub-head .sm-ub-no{left:22px;right:auto;top:20px;bottom:auto;padding:0;background:transparent;color:#fff;box-shadow:none;font:600 13px/1 "Switzer",sans-serif}
 .sm-ub-head .sm-ub-no i{color:rgba(255,255,255,.7)}
 .sm-ub-head h3 .sm-uc-mark{box-shadow:none;margin:0;background:transparent;color:#fff}
 .sm-ub-head .sm-uc-pic{aspect-ratio:4/4.4}
@@ -1013,13 +1013,13 @@
 .sm-ub-head .sm-uc-pic::after{display:none}
 .sm-ub-head .sm-uc-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:none;transform:none;transition:none;mix-blend-mode:normal}
 .sm-ub-head:hover .sm-uc-pic img{transform:none}
-.sm-ub-head .sm-ub-no{position:absolute;left:auto;right:14px;top:auto;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;margin:0;padding:8px 11px;background:var(--ub);color:#fff;font:600 12.5px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none;border-radius:0;box-shadow:none}
+.sm-ub-head .sm-ub-no{position:absolute;left:auto;right:14px;top:auto;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;margin:0;padding:8px 11px;background:var(--ub);color:#fff;font:600 13px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none;border-radius:0;box-shadow:none}
 .sm-ub-head .sm-ub-no i{font-style:normal;font-weight:500;color:rgba(255,255,255,.78)}
 .sm-ub-head h3{position:static;top:auto;bottom:auto;left:auto;right:auto;z-index:auto;margin:0 22px;padding:0;display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:14px;align-items:start;min-height:0;font:600 24px/1.05 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:-.025em;color:var(--ink,#0C1220);transform:none}
 .sm-ub-head h3 .sm-uc-mark{position:relative;top:auto;bottom:auto;left:auto;right:auto;grid-row:auto;width:56px;height:56px;margin:-30px 0 0;align-self:start;background:var(--ub);color:#fff;display:grid;place-items:center;box-shadow:0 0 0 4px #fff;z-index:3;transform:none}
 .sm-ub-head h3 .sm-uc-mark svg{width:30px;height:30px;stroke-width:1.15;color:#fff}
 .sm-ub-head h3 .sm-ub-nm{display:block;padding-top:10px;gap:0;color:var(--ink,#0C1220)}
-.sm-ub-head h3 small{display:block;min-height:0;margin:4px 0 0;font:500 12.5px/1.35 "Instrument Sans",sans-serif;letter-spacing:0;color:var(--soft,#48536A)}
+.sm-ub-head h3 small{display:block;min-height:0;margin:4px 0 0;font:500 13px/1.35 "Instrument Sans",sans-serif;letter-spacing:0;color:var(--soft,#48536A)}
 .sm-ub-head .sm-uc-line{position:static;top:auto;bottom:auto;left:auto;right:auto;z-index:auto;margin:14px 22px 0;padding:0;font:600 17px/1.3 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:-.015em;color:var(--ink,#0C1220);transform:none}
 @media(max-width:900px){.sm-ub-top .sm-ub-cell.sm-ub-head,.sm-ub-head{padding:5px 0 22px}.sm-ub-head h3{margin:0 16px;font-size:22px}.sm-ub-head .sm-uc-line{margin:12px 16px 0}}
 @media(max-width:719px){.sm-ub-head .sm-uc-pic{aspect-ratio:16/9}.sm-ub-head h3{font-size:22px}}
@@ -1075,7 +1075,7 @@
    "card should be white colour overall")
    ============================================================================ */
 .sm-map-dark .rx-heads i,.sm-key i{display:none}
-.sm-map-dark .rx-heads span{gap:8px;font-size:12.5px;letter-spacing:.01em;color:rgba(255,255,255,.72)}
+.sm-map-dark .rx-heads span{gap:8px;font-size:13px;letter-spacing:.01em;color:rgba(255,255,255,.72)}
 .sm-map-dark .rx-heads svg{width:20px;height:20px;opacity:1}
 .sm-map-dark .rx-heads .c-s svg{color:var(--svc-t)}.sm-map-dark .rx-heads .c-u svg{color:var(--unit-t)}.sm-map-dark .rx-heads .c-w svg{color:var(--work-t)}.sm-map-dark .rx-heads .c-y svg{color:var(--sys-t)}
 /* the map's rest icons in their kind's colour, the picked card's in white */
@@ -1088,7 +1088,7 @@
 /* a more modern surface: cards with a hair of radius off, a quieter number, tighter type; the reading with a hairline
    top and the mark larger; the zoom buttons as one quiet group */
 .sm-map-dark .rx-compact .rx-n{padding:10px 12px}
-.sm-map-dark .rx-compact .rx-no{font-size:11px;opacity:.6}
+.sm-map-dark .rx-compact .rx-no{font-size:13px;opacity:.6}
 .sm-map-dark .sm-map-read-b{background:rgba(255,255,255,.035);border-top:1px solid rgba(255,255,255,.08)}
 .fr-tools{gap:1px;background:rgba(255,255,255,.06);padding:1px}
 .fr-tools button{background:transparent;width:36px;height:34px}
@@ -1107,7 +1107,7 @@
 .sm-ub-dg{background:#F7F9FC;padding:14px 14px 10px;overflow:visible}
 .sm-ub-dg .ud-svg-v{width:100%;min-width:0;height:auto;display:block}
 .ud-svg-v .ud-t{font:600 13px "Switzer",sans-serif}
-.ud-svg-v .ud-s{font:400 11px "Instrument Sans",sans-serif}
+.ud-svg-v .ud-s{font:400 13px "Instrument Sans",sans-serif}
 .ud-svg-v .ud-h{font:600 14px "Switzer",sans-serif;letter-spacing:-.01em}
 
 /* 25 Sep, night, the banner as the canvas (Bazil: "the canvas should be the whole banner", "don't cut the building") */
@@ -1123,7 +1123,7 @@
 .sm-map-full .fr-tools{right:auto;left:var(--gut);top:16px;bottom:auto;pointer-events:auto}
 .sm-map-full .fr-lab{pointer-events:auto}
 .sm-map-full .fr-hint{left:var(--gut);top:60px;bottom:auto}
-.fr-tools .fr-play{font-size:12px}
+.fr-tools .fr-play{font-size:13px}
 .fr-tools .fr-play.on{background:var(--svc,#EC2027);color:#fff}
 .sm-map-dark .sm-map-head-r h1 em{font-style:normal;color:#FF4D55}
 @media(max-width:1279px){
@@ -1144,12 +1144,12 @@
 .sm-map-dark .rx-compact .rx-s .rx-n span{font-size:13px;line-height:1.2}
 .sm-map-dark .rx-compact .rx-u .rx-n{height:172px;min-height:0;padding:12px 14px;gap:5px;box-sizing:border-box;justify-content:flex-start;overflow:hidden}
 .sm-map-dark .rx-compact .rx-u .rx-n b{font-size:15px;line-height:1.15}
-.sm-map-dark .rx-compact .rx-u-full{font-size:11.5px;line-height:1.25;margin-top:-2px}
-.sm-map-dark .rx-compact .rx-u-line{font-size:12.5px;line-height:1.3}
+.sm-map-dark .rx-compact .rx-u-full{font-size:13px;line-height:1.25;margin-top:-2px}
+.sm-map-dark .rx-compact .rx-u-line{font-size:13px;line-height:1.3}
 .sm-map-dark .rx-compact .rx-models{margin-top:auto}
 .sm-map-dark .rx-compact .rx-w .rx-n{height:172px;min-height:0;box-sizing:border-box;align-items:flex-start;padding:14px 14px}
 .sm-map-dark .rx-compact .rx-y{gap:4px}
-.sm-map-dark .rx-compact .rx-y .rx-n{height:34px;min-height:0;padding:0 9px;box-sizing:border-box;font-size:12px;line-height:1.15;align-items:center}
+.sm-map-dark .rx-compact .rx-y .rx-n{height:34px;min-height:0;padding:0 9px;box-sizing:border-box;font-size:13px;line-height:1.15;align-items:center}
 .sm-map-dark .rx-compact .rx-y .rx-n span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sm-map-full{min-height:0}
 .sm-map-full .sm-map-spacer{min-height:clamp(240px,38vh,400px)}
@@ -1376,7 +1376,7 @@ html.nav-under .sm-map-dark.sm-map-full{margin-top:calc(-1 * var(--navh,78px));p
 .sm-ub-row+.sm-ub-row .sm-ub-cell,.sm-ub-foot .sm-ub-cell,.sm-ub-dgcell{border-top:0}
 .sm-ub-cell{padding:18px 24px 6px}
 .sm-ub-top+.sm-ub-row .sm-ub-cell{padding-top:22px}
-.sm-ub-k{font:500 12px/1.2 "Instrument Sans",sans-serif;color:rgba(12,18,32,.5);letter-spacing:.01em}
+.sm-ub-k{font:500 13px/1.2 "Instrument Sans",sans-serif;color:rgba(12,18,32,.5);letter-spacing:.01em}
 .sm-ub-v{font-size:15.5px;line-height:1.5}
 .sm-ub .sm-mi,.sm-ub .sm-mi:hover{background:color-mix(in srgb,var(--unit) 9%,#fff);color:var(--unit-t);box-shadow:none;border:0}
 .sm-ub-head h3 .sm-uc-mark{background:transparent;color:var(--ub,var(--unit));width:48px;height:48px;box-shadow:none}
@@ -1456,8 +1456,8 @@ html.nav-under .sm-map-dark.sm-map-full{margin-top:calc(-1 * var(--navh,78px));p
 /* 9 Oct ("can you make like scroll down indicator"): the facility map fills the first screen, so a cue at its foot says
    there is more below. A label over a thin track with a red bead running down it; it fades as soon as the page scrolls. */
 .sm-cue{position:absolute;left:50%;bottom:clamp(16px,3vh,30px);z-index:3;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;
-  padding:6px 10px;border:0;background:none;color:rgba(230,234,240,.82);font:600 11.5px/1 "Switzer","Instrument Sans",system-ui,sans-serif;
-  letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:opacity .4s,color .25s}
+  padding:6px 10px;border:0;background:none;color:rgba(230,234,240,.82);font:600 13px/1 "Switzer","Instrument Sans",system-ui,sans-serif;
+  letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:opacity .4s,color .25s}
 .sm-cue:hover{color:#fff}
 .sm-cue i{position:relative;display:block;width:2px;height:38px;background:rgba(230,234,240,.22);overflow:hidden}
 .sm-cue i::after{content:"";position:absolute;left:0;top:-12px;width:2px;height:12px;background:#EC2027;animation:smCue 1.8s cubic-bezier(.6,0,.3,1) infinite}
@@ -1484,7 +1484,38 @@ html.sm-scrolled .sm-cue{opacity:0;pointer-events:none}
    goes below the answer: title, label and answer start on the same lines in every card. */
 .sm-q{grid-template-rows:auto auto 1fr;align-content:start}
 .sm-q-n{align-self:start}
-.sm-ub-head .sm-ub-desc{margin:12px 22px 22px;font-size:15px;line-height:1.6;color:var(--soft)}   /* 27 Oct: the short description under each unit name */
-/* 27 Oct ("dont make it hover"): the unit cards hold still under the pointer: no lift, no shadow, no picture zoom */
-.sm-ub-head:hover{transform:none!important;box-shadow:none!important}
-.sm-ub-head:hover .sm-uc-pic img{transform:none!important}
+
+/* 22 Oct, Polishing walk-through, note 21 (Bazil: "scroll to explore in the same line as play the tour, at the left"; "the
+   spacing at the bottom of the banner a lot bigger than the top, unbalanced; a bit more space, not too tall"): the cue is
+   the first item of the tools row, flush left, the view buttons stay right; the first screen carries the same air above
+   the title as below the row. */
+.sm-map-tools .sm-cue.sm-cue-row{ position:static; transform:none; flex-direction:row; align-items:center; gap:12px; margin:0 auto 0 0; padding:0; background:none; border:0; color:rgba(255,255,255,.85); font:500 14px/1 "Switzer","Instrument Sans",system-ui,sans-serif; }
+.sm-map-tools .sm-cue.sm-cue-row i{ display:grid; place-items:center; width:38px; height:38px; background:rgba(255,255,255,.12); animation:smCueBob 2.2s ease-in-out infinite; }
+.sm-map-tools .sm-cue.sm-cue-row:hover{ color:#fff; }
+.sm-map-tools .sm-cue.sm-cue-row:hover i{ background:#EC2027; }
+@keyframes smCueBob{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(4px) } }
+.sm-map-full .sm-map-tools{ margin-bottom:0; }
+.sm-map-full .sm-map-left{ padding-bottom:clamp(28px,4vh,44px); }
+.sm-map-full .sm-map-head-tl{ padding-top:clamp(28px,4vh,44px); }
+.sm-map-full .sm-map-spacer{ min-height:clamp(320px,48vh,560px); }
+@media (prefers-reduced-motion: reduce){ .sm-map-tools .sm-cue.sm-cue-row i{ animation:none; } }
+/* 22 Oct, note 21: the first screen's own bottom padding equal to the top */
+.sm-map-dark.sm-map-full{ padding-top:clamp(20px,3vh,36px); padding-bottom:clamp(20px,3vh,36px); }
+
+/* 26 Oct (IAQ review, NR): the unit board is picture, name, a short description and "Learn more about"; body type at 16 px */
+.sm-ub-head .sm-uc-desc{margin:14px 22px 0;font:400 16px/1.55 "Instrument Sans",sans-serif;color:var(--soft);text-wrap:pretty}
+@media(max-width:719px){.sm-ub-head .sm-uc-desc{margin-left:16px;margin-right:16px}}
+/* 26 Oct: the FAQ on its own page (/faq) */
+.faq-page{padding-top:clamp(40px,6vh,72px)}
+/* 27 Oct (UI/UX sweep): the board is three cards, each with its own link at its foot; one column on a phone, all three shown */
+.sm-ub3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;background:transparent;box-shadow:none}
+.sm-ub3 .sm-ub-card{display:flex;flex-direction:column;padding-bottom:22px;background:#fff}
+.sm-ub3 .sm-ub-card+.sm-ub-card{border-left:0}   /* separate white cards with a gap, no rules between them (IAQ: fewer lines) */
+.sm-ub3 .sm-uc-desc{text-wrap:balance}
+.sm-ub3 .sm-uc-go{margin:auto 22px 0;padding:20px 0 0}
+@media(max-width:719px){
+  .sm-ub3{grid-template-columns:minmax(0,1fr)}
+  .sm-ub3 .sm-ub-cell:not(.on){display:flex}
+  .sm-ub3 .sm-ub-card+.sm-ub-card{border-left:0;border-top:0}
+  .sm-ub3 .sm-uc-go{margin-left:16px;margin-right:16px}
+}

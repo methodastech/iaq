@@ -1,0 +1,117 @@
+{
+ "url": "/markets/data-centre",
+ "slug": "markets-data-centre",
+ "title": "IAQ Group \u00b7 Data Centre \u00b7 Brand Method",
+ "at": "2026-10-27T02:00:19.166Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Data Centres",
+   "tag": "header",
+   "cls": "pg-head",
+   "top": 84,
+   "height": 403,
+   "text": "Data Centres\nEnabling Resilient Digital Infrastructure",
+   "img": "markets-data-centre/01-hero.webp",
+   "shownHeight": 403,
+   "changed": false,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 0
+   }
+  },
+  {
+   "i": 1,
+   "key": "industry-overview",
+   "heading": "Industry Overview",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 487,
+   "height": 789,
+   "text": "Industry Overview\nAs demand for cloud computing, artificial intelligence and digital services continues to grow, data centres require highly reliable infrastructure capable of supporting uninterrupted operations.\nIAQ Key Capabilities\nMission Critical Infrastructure\nCooling Systems\nUtility Infrastructure\nEPC Delivery\nEnergy Optimisation",
+   "img": "markets-data-centre/02-industry-overview.webp",
+   "shownHeight": 789,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -106,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 2,
+   "key": "why-infrastructure-reliability-matters",
+   "heading": "Why Infrastructure Reliability Matters",
+   "tag": "section",
+   "cls": "pg-sec.calm",
+   "top": 1276,
+   "height": 294,
+   "text": "Why Infrastructure Reliability Matters\nData centre performance depends on resilient power, cooling and support infrastructure designed to maintain uptime and operational continuity.",
+   "img": "markets-data-centre/03-why-infrastructure-reliability-matters.webp",
+   "shownHeight": 294,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 1.07
+   }
+  },
+  {
+   "i": 3,
+   "key": "mk-band",
+   "heading": "",
+   "tag": "section",
+   "cls": "mk-band",
+   "top": 1570,
+   "height": 617,
+   "text": "",
+   "img": "markets-data-centre/04-mk-band.webp",
+   "shownHeight": 617,
+   "changed": false,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 0.51
+   }
+  },
+  {
+   "i": 4,
+   "key": "delivered-in-this-market",
+   "heading": "Delivered in this market",
+   "tag": "section",
+   "cls": "pg-sec.calm",
+   "top": 2187,
+   "height": 405,
+   "text": "Delivered in this market\nPublished data centre work from the sample registry. The hyperscale project stands on the record by scale alone, 160 MW, held under client confidentiality.\nOpen the registry, filtered to Data Centre\n\u2192\nData centre campus phase 1, chilled and condenser water piping\nHyperscale data centre operator, Kuala Lumpur\nCooling\n\u2192",
+   "img": "markets-data-centre/05-delivered-in-this-market.webp",
+   "shownHeight": 405,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -255,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 5,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 2592,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nQuestions clients ask\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "markets-data-centre/06-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

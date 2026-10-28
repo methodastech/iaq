@@ -53,7 +53,7 @@ export default function GlobalPresence() {
 
       <PageHead crumbs={[{ label: 'About', to: '/about' }]}
         eyebrow="Where we are"
-        title={<>Rooted in Malaysia, <em>building across borders.</em></>}
+        title={<>Rooted in Malaysia, <br /><em>building across borders</em></>}
         lede="Founded in Malaysia in 1995. Today a total facility solutions provider with offices in seven countries, measured in the programmes those offices run and the projects handed over."
       />
 
@@ -63,7 +63,7 @@ export default function GlobalPresence() {
         <div className="pg-in">
           <div className="cp-globe-copy cp-map-copy">
             <span className="eyebrow">The footprint</span>
-            <h2>Seven countries, <em>pinned where they are.</em></h2>
+            <h2>Seven countries, <br /><em>pinned where they are</em></h2>
             <p>
               Each flag marks an IAQ office, and each office supports clients locally while drawing on the group&rsquo;s full
               regional engineering capability. The grey marks are countries IAQ has built in.
@@ -77,7 +77,7 @@ export default function GlobalPresence() {
       <section className="pg-sec">
         <div className="pg-in">
           <span className="eyebrow">Offices</span>
-          <h2>The addresses <em>that answer.</em></h2>
+          <h2>The addresses <em>that answer</em></h2>
 
           <p className="pg-lede">Every office&rsquo;s address, phone and hours are on the <Link to="/contact#offices">Contact page</Link>.</p>
 
@@ -104,7 +104,7 @@ export default function GlobalPresence() {
       <section className="pg-sec calm">
         <div className="pg-in">
           <span className="eyebrow">By country</span>
-          <h2>Reach, <em>as evidence.</em></h2>
+          <h2>Reach, <br /><em>as evidence</em></h2>
           <p className="pg-lede">
             The publishable record, grouped by where it was built. Every entry opens the full project.
           </p>
@@ -136,7 +136,7 @@ export default function GlobalPresence() {
       <section className="pg-sec">
         <div className="pg-in">
           <span className="eyebrow">Enquiries</span>
-          <h2>A facility in any <em>of these countries.</em></h2>
+          <h2>A facility in any <em>of these countries</em></h2>
           <div className="cp-act">
             <Link className="cta" to="/contact">Start a project</Link>
             <span className="cp-hint">

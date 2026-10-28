@@ -1,0 +1,70 @@
+{
+  "layer": "detail-ceiling",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -65.0652593530861,
+      8.649999618530273,
+      -33.55659353864641
+    ],
+    "max": [
+      38.1902109227928,
+      21.356000900268555,
+      2.2567830072596564
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      91.1722640991211,
+      8.649999618530273,
+      -37.11522674560547
+    ],
+    "max": [
+      194.427734375,
+      21.356000900268555,
+      -1.3018501996994019
+    ]
+  },
+  "storeys": [
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-ceiling-1-gf.glb",
+      "triangles": 54572,
+      "sizeKB": 348
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-ceiling-2-1f.glb",
+      "triangles": 4608,
+      "sizeKB": 33
+    },
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-ceiling-3-2f.glb",
+      "triangles": 5023924,
+      "sizeKB": 31646
+    },
+    {
+      "index": 4,
+      "key": "3f",
+      "name": "3F",
+      "elevation": 21.05,
+      "file": "detail-ceiling-4-3f.glb",
+      "triangles": 221568,
+      "sizeKB": 1627
+    }
+  ]
+}

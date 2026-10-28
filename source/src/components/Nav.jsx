@@ -24,7 +24,7 @@ const MENUS = [
        client listed, exactly those, and the removed blocks stay out of it. */
     hub: 'about', label: 'About',
     /* EXACTLY three items, per the client's own mock (WhatsApp, 24 Aug: "Yes 3 only"):
-       Overview, History of IAQ, Corporate Commitment. Nothing else goes in here. */
+       Overview, History of IAQ, Corporate Commitment. Nothing else goes in here. 28 Oct: the FAQ joins as a fourth. */
     /* 15 Sep (Bazil: "this dropdown looks saddest compared to others"): the same SET shape as the other
        wings, a count header and red marks, still exactly the three items. */
     cols: [
@@ -39,6 +39,9 @@ const MENUS = [
         { label: 'Overview', hash: '', icon: 'building', sub: 'Who IAQ is, at a glance', section: true, tag: 'Main page', pitch: 'The group in one page: what it builds, where, and the scale behind the claim.' },
         { label: 'History of IAQ', hash: '', route: '/about/history', icon: 'clock', img: 'about-history', sub: 'The record since 1995', pitch: 'Thirty years to scale, from an indoor air quality specialist to a total facility solutions provider.' },
         { label: 'Corporate Commitment', hash: '', route: '/about/commitment', icon: 'file', img: 'about-commitment', sub: 'Policies, certificates, ISO and the awards', pitch: 'The policies IAQ signs its name to, and the certificates and awards that back them.' },
+        /* 28 Oct ("add faq"): a fourth row, the FAQ's own page (/faq), previewing the Shah Alam office its banner opens on */
+        /* 28 Oct ("change the question client ask . maybe faq", then "long term"): the row reads Frequently Asked Questions */
+        { label: 'Frequently Asked Questions', hash: '', route: '/faq', icon: 'question', img: 'about-faq', sub: 'Answers before you engage IAQ', pitch: 'The questions facility owners ask before they engage IAQ, answered. Any other question, ask.' },
       ] },
     ],
   },
@@ -46,7 +49,10 @@ const MENUS = [
     hub: 'services-hub', label: 'Services',
     /* 7 Oct (on the live wing: "this still need services overview button"; a row across the top "looks unclean"; asked
        where, the answer was a bar along the bottom): the main Services page as one slim bar under both columns. */
-    /* 27 Oct ("remove that"): the Services overview row at the foot of the wing is gone; the wing's lead card opens the page */
+    /* 22 Oct, Polishing walk-through, note 6 (Bazil: "repetitive information ... one page, check all services, and then another
+       line at the bottom, services overview"): the bar is off; the lead panel's Open the page is the one route to the hub.
+       The row's text stays here for the record. */
+    // overview: { label: 'Services overview', sub: 'All three business units and the six services, on one page' },
     /* 2 Sep (Bazil): ONE main services page and a page per service. The wing therefore
        lists the six services of the delivery cycle in order, the same six the homepage ring
        and the hub diagram show, and the hub itself sits in the lead panel. The three
@@ -89,7 +95,7 @@ const MENUS = [
          the list lights the services it always carries, marks the ones it carries when asked, and lets the
          rest go quiet. `core` and `ask` are data/codex.js UNITS, as indices into the six. */
       { head: 'Business units', kind: 'segs', links: [
-        { label: 'EPC', sub: 'Builds the facility, under one contract.', route: '/services/epc-construction', icon: 'epcUnit', img: 'u-epc',
+        { label: 'EPC', sub: 'Builds the facility.',   /* 27 Oct: "under one contract" off (IAQ, 24 Sep) */ route: '/services/epc-construction', icon: 'epcUnit', img: 'u-epc',
           pitch: 'One contract carrying design, procurement and construction, with single point accountability.',
           full: 'Engineering, Procurement and Construction', core: [0, 1, 2, 3], ask: []   /* 25 Sep (Bazil): EPC carries design to commissioning */,
           /* 19 Oct (client feedback, EPC: contract models "Remove this section entirely"): the EPCC and EPCM links went with it */
@@ -290,9 +296,11 @@ export default function Nav() {
   const { pathname } = useLocation()
   /* 25 Sep (Bazil: "the navigation bar should not be white, it should disappear like the homepage when we are at the top"):
      the services page opens on the dark facility map, so the bar runs clear over it too */
-  /* 27 Oct ("nav bar should be white", on /services): the bar is solid white over the facility map again; only the home
-     page's hero still runs it clear */
-  const overlap = pathname === '/'
+  /* 22 Oct, Polishing walk-through, note 13 (Bazil, on About: "when I go up the navigation bar still white and not like
+     disappear like the homepage"): every page that opens on a dark banner runs the bar clear at the top: About, the three
+     unit pages, the markets hub and its seven pages, Contact (their banner wrappers are listed in base.css, nav-under) */
+  const overlap = pathname === '/' || pathname === '/services' || pathname === '/about' || pathname === '/contact' || /^\/markets(\/|$)/.test(pathname) ||
+    /^\/services\/(epc-construction|tool-installation|energy-management)$/.test(pathname)
   useEffect(() => {
     const nav = navRef.current
     if (!nav) return
@@ -418,17 +426,19 @@ export default function Nav() {
                     /* 18 Sep: the six services as one numbered strip */
                     if (c.kind === 'strip') return (
                       <div className="nm-col nm-set nm-strip" key={ci} style={{ '--si': ci }}>
-                        <span className="nm-gl" key={unit ? unit.label : 'rest'}>{unit ? (unit.full ? `What ${unit.label} carries` : 'What this unit carries') : c.head}</span>
+                        <span className="nm-gl">{c.head}</span>{/* 22 Oct, note 20: the column keeps its own name */}
                         <div className="nm-strip-grid">
                           {rows.map((r, ri) => {
                             /* the unit in play, if the pointer is on one: its services light, the rest go quiet */
-                            const st = !unit ? '' : unit.core.includes(ri) ? ' carried' : unit.ask.includes(ri) ? ' asked' : ' quiet'
+                            /* 22 Oct, Polishing walk-through, note 20 (Bazil: "remove the when asked and any weird complications when
+                               hovering"): no carried, asked or quiet states; the six stay one plain list whatever the pointer is on */
+                            const st = ''
                             return (
                               <Link key={r.key} to={r.to} className={'nm-st' + (lit === ri ? ' lit' : '') + st} style={{ '--ri': ri }} {...pk(ri)} onClick={() => setOpenMenu(null)}>
                                 <span className="nm-st-n">{ri + 1}</span>
                                 <i className="nm-ict s" aria-hidden="true"><Icon name={r.icon} /></i>
                                 <em>{r.label}</em>
-                                {/* 27 Oct ("when asked remove"): no "When asked" label beside a service in the wing */}
+                                <span className="nm-st-k" aria-hidden="true">{st === ' asked' ? 'When asked' : ''}</span>
                                 <span className="nm-go" aria-hidden="true">&rarr;</span>
                               </Link>
                             )
@@ -516,7 +526,8 @@ export default function Nav() {
               three business units, the seven markets, Global presence) were reachable only by
               landing on a hub first. Each hub now lists its pages under it, from the same MENUS. */}
           <Link to="/about" onClick={close}><span className="nn">1</span>About</Link>
-          <div className="nd-sub">{subOf('about').map(l => <Link key={l.label} to={l.to} onClick={close}>{l.label}</Link>)}<Link to="/global-presence" onClick={close}>Global presence</Link></div>
+          {/* 28 Oct ("remove global presense"): Global presence is off the phone menu */}
+          <div className="nd-sub">{subOf('about').map(l => <Link key={l.label} to={l.to} onClick={close}>{l.label}</Link>)}</div>
           <Link to="/services" onClick={close}><span className="nn">2</span>Services</Link>
           <div className="nd-sub">{subOf('services-hub').map(l => <Link key={l.label} to={l.to} onClick={close}>{l.label}</Link>)}</div>
           <Link to="/markets" onClick={close}><span className="nn">3</span>Markets</Link>

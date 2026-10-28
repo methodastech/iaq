@@ -84,7 +84,7 @@ export default function Leadership() {
 
       <PageHead crumbs={[{ label: 'About', to: '/about' }]}
         eyebrow="Leadership"
-        title={<>The people <em>accountable.</em></>}
+        title={<>The people <em>accountable</em></>}
         lede="The people who lead IAQ, grouped by position. Names beyond the founder are published as IAQ confirms them."
         chips={['Founder on record', 'Further names from IAQ', 'Portraits to follow']}
       />
@@ -93,7 +93,7 @@ export default function Leadership() {
       <section className="pg-sec">
         <div className="pg-in">
           <span className="eyebrow">Board</span>
-          <h2>Founder, chief executive, <em>board of directors.</em></h2>
+          <h2>Founder, chief executive, <br /><em>board of directors</em></h2>
           <p className="pg-lede">
             Grouped by position. Open any entry for that person&rsquo;s professional experience. The founder
             is on the record today, and each further name is added as IAQ confirms it.
@@ -130,7 +130,7 @@ export default function Leadership() {
       <section className="pg-sec calm">
         <div className="pg-in">
           <span className="eyebrow">Executive team</span>
-          <h2>The layer that <em>runs delivery.</em></h2>
+          <h2>The layer that <em>runs delivery</em></h2>
           <p className="pg-lede">
             The C-suite and the managerial level, in the same format as the board. Names are added as
             IAQ confirms each entry.
@@ -150,7 +150,7 @@ export default function Leadership() {
       <section className="pg-sec">
         <div className="pg-in">
           <span className="eyebrow">Governance</span>
-          <h2>Doing business <em>the right way.</em></h2>
+          <h2>Doing business <em>the right way</em></h2>
           <div className="pg-split">
             <div>
               <p className="pg-body u-mt0">
@@ -185,7 +185,7 @@ export default function Leadership() {
       <section className="pg-sec calm">
         <div className="pg-in">
           <span className="eyebrow">Join us</span>
-          <h2>Careers <em>with the group.</em></h2>
+          <h2>Careers <em>with the group</em></h2>
           <p className="pg-lede">
             IAQ has 31 years of engineering behind it, and offices in Singapore, Germany, India, Sweden,
             the USA and Ireland. Engineers here get hands-on experience and a long career runway, on

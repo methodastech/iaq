@@ -36,7 +36,7 @@ export const UNITS = [
        lists them as EPC stages 5 and 6), no longer shown as outside the unit; the 12 to 24 months term is gone */
     id: 'epc', no: 1, name: 'EPC', full: 'Engineering, Procurement & Construction', icon: 'epcUnit',
     line: 'Builds the facility.',
-    what: 'Engineering, procurement and construction for a hi-tech facility under one contract, scoped to what each project needs. IAQ answers for the system working as intended.',
+    what: 'Engineering, procurement and construction for a hi-tech facility, scoped to what each project needs. IAQ answers for the system working as intended.',   /* 27 Oct: "under one contract" off (IAQ asked to remove it, 24 Sep) */
     models: [
       { t: 'EPCC', s: 'IAQ delivers the whole project, commissioning included.' },
       { t: 'EPCM', s: 'IAQ manages it; the owner holds the construction contracts. Engaged by large multinationals on the biggest programmes.' },
@@ -75,7 +75,7 @@ export const UNITS = [
        achieved"; "IAQ fund the implementation of energy saving solutions including equipment upgrading, operation and
        maintenance". The contract lengths (10 to 20, 5 to 10 years) and "registered ESCO" are NOT in IAQ's papers:
        kept from the 17 Sep review, flagged in HANDOVER for Nabilah to confirm. */
-    what: 'A registered Energy Service Company (ESCO). IAQ funds and runs the energy upgrade and is paid from the savings, or supplies cooling under a tariff; it also audits energy use, upgrades chiller plants and HVAC, and operates and maintains them.',
+    what: 'IAQ helps organisations optimise energy infrastructure, improve reliability and create measurable long-term value across their facilities.',   /* 27 Oct: IAQ's own EFM line (amendment sheet, Energy Management introduction); the ESCO claim is off, IAQ asked for no unverified ESCO claims */
     models: [
       { t: 'Cooling as a Service', s: 'IAQ finances, builds and operates the chiller plant. A fixed tariff, 10 to 20 years.' },
       { t: 'Energy Performance Contracting', s: 'IAQ funds the upgrades and is paid from measured savings, 5 to 10 years.' },

@@ -38,6 +38,10 @@ const STEPS = [
   { k: 'bld', t: 'Cooling in every building', d: 'Every building runs its air-conditioning on it.' },
 ]
 
+/* 23 Oct (Polishing, rule 41, Bazil: "timing and everything"): each step dwells for its own content. The plant has three
+   notes that come in one after another; the tank charges and is drawn on once in nine seconds; the rest hold eight. */
+const DWELL = { plant: 9000, tes: 10000, net: 8000, ets: 8000, bld: 8000 }
+
 const SHOW_MODELS = false   /* 21 Oct, client: the three models read as IAQ's own slides; see the note in the render */
 const MODELS = [
   {
@@ -175,15 +179,20 @@ export default function DistrictCooling3D({ intro }) {
   }, [go])
   const pickRef = useRef(() => {})
   const pick = (k, stopTour = true) => { if (stopTour) setPlaying(false); setStep(k); api.current && api.current.setStep(k || 'all') }
-  /* the tour: one step every seven seconds, only when Play is pressed (Bazil on the Services 3D: "it shouldn't move
-     automatically unless you play it") */
+  /* the tour: step by step, only when Play is pressed (Bazil on the Services 3D: "it shouldn't move automatically unless
+     you play it"). 23 Oct (rule 41): each step holds for its own dwell (DWELL), and the tour ENDS after the last step,
+     back on the overview with Play offered again, instead of looping round for ever. */
   useEffect(() => {
     if (!playing) return
     const order = STEPS.map(s => s.k)
-    const next = () => { const i = order.indexOf(step); const k = order[(i + 1) % order.length]; setStep(k); api.current && api.current.setStep(k) }
-    if (!step || !order.includes(step)) { next(); }
-    const t = setInterval(next, 7000)
-    return () => clearInterval(t)
+    const go = k => { setStep(k); api.current && api.current.setStep(k) }
+    if (!step || !order.includes(step)) { go(order[0]); return }
+    const i = order.indexOf(step)
+    const t = setTimeout(() => {
+      if (i + 1 >= order.length) { setPlaying(false); setStep(null); api.current && api.current.setStep('all'); return }
+      go(order[i + 1])
+    }, DWELL[step] || 8000)
+    return () => clearTimeout(t)
   }, [playing, step])
   pickRef.current = k => pick(k)
   const cur = STEPS.find(s => s.k === step)
@@ -191,7 +200,7 @@ export default function DistrictCooling3D({ intro }) {
   return (
     <section className="un-sec un-dcs dcs3" aria-labelledby="un-dcs-h" ref={sec}>
       <div className="pg-in">
-        <h2 id="un-dcs-h" className="un-h2" data-rv="">How district cooling <em>works.</em></h2>
+        <h2 id="un-dcs-h" className="un-h2" data-rv="">How district cooling <br /><em>works</em></h2>
         <p className="un-dcs-lede" data-rv="" style={{ '--d': '.06s' }}>Chilled water is made at one central plant and piped to every building on the network. Each building cools on it, with no chiller plant of its own.</p>
 
         <div className="dcs3-wrap">
@@ -226,6 +235,8 @@ export default function DistrictCooling3D({ intro }) {
                     <b>{s.t}</b>
                     <span className="d">{s.d}</span>
                   </button>
+                  {/* 23 Oct (rule 41): the running step shows its time, a hairline filling over the dwell */}
+                  {playing && step === s.k && <i className="dcs3-prog" key={'p' + s.k} style={{ '--dwell': (DWELL[s.k] || 8000) + 'ms' }} aria-hidden="true" />}
                 </li>
               ))}
             </ol>
@@ -237,7 +248,7 @@ export default function DistrictCooling3D({ intro }) {
             carries IAQ's own "Energy as a Service" steps from the amendment sheet (CapEnergy `process`). MODELS and the figures
             are kept in this file; SHOW_MODELS brings the block back. */}
         {SHOW_MODELS && <div className="dcs3-eaas">
-          <h3 className="dcs3-h3" data-rv="">Energy as a Service, <em>in three models.</em></h3>
+          <h3 className="dcs3-h3" data-rv="">Energy as a Service, <br /><em>in three models</em></h3>
           <div className="dcs3-models">
             {MODELS.map((m, i) => (
               <article key={m.k} className={'dcs3-m' + (step === m.k ? ' on' : '')} data-rv="" style={{ '--d': `${.06 * i}s` }}>

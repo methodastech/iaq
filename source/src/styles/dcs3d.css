@@ -14,7 +14,7 @@
 
 /* labels on the model */
 .dcs3-labels{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
-.dcs3-lb{ position:absolute; left:0; top:0; white-space:nowrap; padding:6px 9px; background:rgba(255,255,255,.96); color:#0C1220; font:600 12.5px/1.15 "Switzer", sans-serif; letter-spacing:-.005em; box-shadow:0 10px 24px -14px rgba(12,18,32,.45); opacity:0; transition:opacity .45s ease; will-change:transform; }
+.dcs3-lb{ position:absolute; left:0; top:0; white-space:nowrap; padding:6px 9px; background:rgba(255,255,255,.96); color:#0C1220; font:600 13px/1.15 "Switzer", sans-serif; letter-spacing:-.005em; box-shadow:0 10px 24px -14px rgba(12,18,32,.45); opacity:0; transition:opacity .45s ease; will-change:transform; }
 .dcs3-lb.on{ opacity:1; }
 .dcs3-lb::after{ content:""; position:absolute; left:50%; bottom:-5px; width:8px; height:8px; margin-left:-4px; background:inherit; transform:rotate(45deg); box-shadow:3px 3px 6px -4px rgba(12,18,32,.35); }
 .dcs3-lb.is-note{ color:#0772AE; }
@@ -23,18 +23,18 @@
 .dcs3-lb.is-ets{ background:#0C1220; color:#fff; }
 .dcs3-lb.is-pin{ display:inline-flex; align-items:center; gap:7px; }
 .dcs3-lb.is-pin i{ width:8px; height:8px; border-radius:50%; background:#0B8FD8; box-shadow:0 0 0 3px rgba(11,143,216,.2); }
-.dcs3-tip{ position:absolute; left:0; top:0; padding:6px 9px; background:#0C1220; color:#fff; font:600 12px/1.1 "Switzer", sans-serif; white-space:nowrap; opacity:0; transition:opacity .2s ease; pointer-events:none; }
+.dcs3-tip{ position:absolute; left:0; top:0; padding:6px 9px; background:#0C1220; color:#fff; font:600 13px/1.1 "Switzer", sans-serif; white-space:nowrap; opacity:0; transition:opacity .2s ease; pointer-events:none; }
 .dcs3-tip.on{ opacity:1; }
 
 .dcs3-tools{ position:absolute; top:14px; right:14px; display:grid; gap:6px; z-index:2; }
 .dcs3-tools button{ width:38px; height:38px; display:grid; place-items:center; border:0; background:rgba(255,255,255,.96); color:#0C1220; cursor:pointer; box-shadow:0 10px 24px -16px rgba(12,18,32,.5); transition:background .2s, color .2s; }
 .dcs3-tools button:hover{ background:#0C1220; color:#fff; }
 .dcs3-tools svg, .dcs3-play svg{ width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-.dcs3-legend{ position:absolute; left:14px; bottom:14px; z-index:2; display:flex; flex-wrap:wrap; gap:6px 16px; margin:0; padding:9px 12px; list-style:none; background:rgba(255,255,255,.94); font:500 12.5px/1.2 "Instrument Sans", sans-serif; color:#48536A; box-shadow:0 10px 24px -18px rgba(12,18,32,.45); }
+.dcs3-legend{ position:absolute; left:14px; bottom:14px; z-index:2; display:flex; flex-wrap:wrap; gap:6px 16px; margin:0; padding:9px 12px; list-style:none; background:rgba(255,255,255,.94); font:500 13px/1.2 "Instrument Sans", sans-serif; color:#48536A; box-shadow:0 10px 24px -18px rgba(12,18,32,.45); }
 .dcs3-legend li{ display:inline-flex; align-items:center; gap:7px; }
 .dcs3-legend i{ width:18px; height:6px; display:inline-block; }
 .dcs3-legend i.s{ background:var(--dc-s); } .dcs3-legend i.r{ background:var(--dc-r); } .dcs3-legend i.e{ width:10px; height:10px; background:#fff; box-shadow:inset 0 -3px 0 var(--dc-s), 0 0 0 1px rgba(12,18,32,.18); }
-.dcs3-hint{ position:absolute; right:16px; bottom:14px; margin:0; font:500 12px/1 "Instrument Sans", sans-serif; color:#7B8599; pointer-events:none; }
+.dcs3-hint{ position:absolute; right:16px; bottom:14px; margin:0; font:500 13px/1 "Instrument Sans", sans-serif; color:#7B8599; pointer-events:none; }
 
 /* ---- the tour ---- */
 .dcs3-side{ display:flex; flex-direction:column; gap:12px; min-width:0; }
@@ -60,32 +60,32 @@
 .dcs3-m.on{ background:color-mix(in srgb, #0B8FD8 5%, #fff); box-shadow:0 0 0 1.5px rgba(11,143,216,.45), 0 24px 48px -38px rgba(12,18,32,.4); }
 .dcs3-m header{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
 .dcs3-mi svg{ width:30px; height:30px; fill:none; stroke:#0B8FD8; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; display:block; }
-.dcs3-dur{ padding:5px 9px; background:rgba(11,143,216,.09); color:#0772AE; font:600 12.5px/1 "Switzer", sans-serif; }
+.dcs3-dur{ padding:5px 9px; background:rgba(11,143,216,.09); color:#0772AE; font:600 13px/1 "Switzer", sans-serif; }
 .dcs3-m h4{ margin:16px 0 0; font:600 19px/1.22 "Switzer", sans-serif; letter-spacing:-.018em; color:#0C1220; }
 .dcs3-md{ margin:8px 0 0; font-size:14.5px; line-height:1.5; color:#48536A; }
 .dcs3-ms{ list-style:none; margin:16px 0 0; padding:0; display:grid; gap:7px; }
 .dcs3-ms li{ display:flex; align-items:center; gap:10px; font-size:14px; line-height:1.35; color:#0C1220; }
-.dcs3-ms li span{ flex:none; width:22px; height:22px; display:inline-grid; place-items:center; background:#F1F5FA; color:#0772AE; font:700 11.5px/1 "Switzer", sans-serif; }
+.dcs3-ms li span{ flex:none; width:22px; height:22px; display:inline-grid; place-items:center; background:#F1F5FA; color:#0772AE; font:700 13px/1 "Switzer", sans-serif; }
 .dcs3-fig{ margin:20px 0 0; padding:14px 12px 10px; background:#F7F9FC; }
-.dcs3-fig figcaption{ margin-top:8px; font-size:12px; line-height:1.4; color:#7B8599; }
+.dcs3-fig figcaption{ margin-top:8px; font-size:13px; line-height:1.4; color:#7B8599; }
 .dcs3-bars, .dcs3-bot{ display:block; width:100%; height:auto; }
-.dcs3-bv{ font:700 11px/1 "Switzer", sans-serif; fill:#fff; }
-.dcs3-bl{ font:600 12px/1 "Switzer", sans-serif; fill:#48536A; }
-.dcs3-dg{ font:600 12.5px/1 "Switzer", sans-serif; fill:#0C1220; }
+.dcs3-bv{ font:700 13px/1 "Switzer", sans-serif; fill:#fff; }
+.dcs3-bl{ font:600 13px/1 "Switzer", sans-serif; fill:#48536A; }
+.dcs3-dg{ font:600 13px/1 "Switzer", sans-serif; fill:#0C1220; }
 .dcs3-dg.is-w{ fill:#fff; }
-.dcs3-ds{ font:500 11.5px/1 "Instrument Sans", sans-serif; fill:#48536A; }
-.dcs3-key{ list-style:none; margin:8px 0 0; padding:0; display:grid; gap:4px; font-size:12.5px; line-height:1.35; color:#48536A; }
+.dcs3-ds{ font:500 13px/1 "Instrument Sans", sans-serif; fill:#48536A; }
+.dcs3-key{ list-style:none; margin:8px 0 0; padding:0; display:grid; gap:4px; font-size:13px; line-height:1.35; color:#48536A; }
 .dcs3-key li{ display:flex; align-items:center; gap:8px; }
 .dcs3-key i{ flex:none; width:10px; height:10px; }
 .dcs3-pk table{ width:100%; border-collapse:collapse; font-size:13.5px; }
 .dcs3-pk th, .dcs3-pk td{ padding:9px 8px; text-align:center; font-weight:500; color:#0C1220; }
-.dcs3-pk thead th{ font:600 12.5px/1.25 "Switzer", sans-serif; color:#48536A; vertical-align:bottom; }
+.dcs3-pk thead th{ font:600 13px/1.25 "Switzer", sans-serif; color:#48536A; vertical-align:bottom; }
 .dcs3-pk tbody th{ text-align:left; font-weight:500; }
 .dcs3-pk tbody tr:nth-child(odd){ background:#fff; }
 .dcs3-pk i{ display:inline-block; width:12px; height:12px; border-radius:50%; }
 .dcs3-pk i.y{ background:var(--dc-g); box-shadow:0 0 0 3px rgba(39,165,96,.18); }
 .dcs3-pk i.n{ background:transparent; box-shadow:inset 0 0 0 1.5px #B7C0CD; }
-.dcs3-pk-h{ margin:14px 0 0; font:600 12.5px/1 "Switzer", sans-serif; color:#48536A; }
+.dcs3-pk-h{ margin:14px 0 0; font:600 13px/1 "Switzer", sans-serif; color:#48536A; }
 .dcs3-cov{ list-style:none; margin:8px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:6px; }
 .dcs3-cov li{ display:inline-flex; align-items:center; gap:7px; padding:7px 10px; background:#fff; font:600 13px/1 "Switzer", sans-serif; color:#0C1220; }
 .dcs3-cov li::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--dc-g); }
@@ -104,7 +104,7 @@
 .dcs3-view button:hover:not([aria-pressed=true]){ color:#0C1220; }
 .dcs3-anim{ position:absolute; inset:0; z-index:2; margin:0; background:#FAFAFA; display:grid; place-items:center; }
 .dcs3-anim video{ width:100%; height:100%; object-fit:contain; display:block; }
-.dcs3-anim figcaption{ position:absolute; left:14px; bottom:14px; padding:6px 9px; background:rgba(255,255,255,.94); font:600 12px/1.2 "Switzer", sans-serif; color:#48536A; }
+.dcs3-anim figcaption{ position:absolute; left:14px; bottom:14px; padding:6px 9px; background:rgba(255,255,255,.94); font:600 13px/1.2 "Switzer", sans-serif; color:#48536A; }
 .dcs3-stage.is-anim .dcs3-labels, .dcs3-stage.is-anim .dcs3-tools, .dcs3-stage.is-anim .dcs3-legend, .dcs3-stage.is-anim .dcs3-hint{ display:none; }
 
 @media (max-width:1100px){
@@ -117,11 +117,11 @@
   .dcs3-steps .d{ display:none; }
   .dcs3-steps li.on .d{ display:block; }
   .dcs3-hint{ display:none; }
-  .dcs3-legend{ font-size:11.5px; gap:4px 12px; padding:7px 9px; left:10px; bottom:10px; right:60px; }
+  .dcs3-legend{ font-size:13px; gap:4px 12px; padding:7px 9px; left:10px; bottom:10px; right:60px; }
 }
 @media (max-width:640px){
   .dcs3-models{ grid-template-columns:minmax(0, 1fr); }
-  .dcs3-lb{ font-size:11px; padding:5px 7px; }
+  .dcs3-lb{ font-size:13px; padding:5px 7px; }
 }
 @media (prefers-reduced-motion: reduce){ .dcs3-spin{ animation:none; } .dcs3-stage canvas, .dcs3-lb{ transition:none; } }
 
@@ -135,7 +135,7 @@
 @keyframes dcsPing{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.5);opacity:0}}
 @media (prefers-reduced-motion:reduce){.dcs3-num::after{animation:none}}
 /* the list's numbers read as the same markers */
-.dcs3-steps .n{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#0C1220;color:#fff;font:600 11.5px/1 "Switzer",sans-serif}
+.dcs3-steps .n{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#0C1220;color:#fff;font:600 13px/1 "Switzer",sans-serif}
 .dcs3-steps li.on .n{background:#0B8FD8}
 
 /* 26 Sep (Bazil: "make sure the interface is clean and beautiful"): a quiet marker is white with an ink number, not a grey
@@ -157,3 +157,18 @@
 .dcs3-legend i.e{box-shadow:inset 0 -3px 0 var(--dc-s);background:#DCE9F7}
 /* 26 Sep, graphic-rules audit: the loading mark is a square in IAQ red, not a blue ring */
 .dcs3-spin{border-radius:0;width:22px;height:22px;border:2px solid rgba(236,32,39,.2);border-top-color:#EC2027}
+
+/* 23 Oct, Polishing, rule 41 (Bazil: "polish the 3D and animation, timing and everything"): the running step shows its
+   time, a hairline that fills over the step's dwell, so the visitor sees when the tour moves on (a function, not a
+   flourish; it is there only while the tour plays) */
+.dcs3-steps li{ position:relative; }
+.dcs3-prog{ position:absolute; left:14px; right:14px; bottom:0; height:2px; background:#0B8FD8; transform-origin:left; transform:scaleX(0); animation:dcs3prog var(--dwell, 8s) linear forwards; }
+@keyframes dcs3prog{ to{ transform:scaleX(1) } }
+@media (prefers-reduced-motion: reduce){ .dcs3-prog{ animation:none; transform:none; opacity:.4; } }
+
+/* 23 Oct, Polishing, rules 26 and 42 (no icon or number in a circle, no decoration without a function): the step markers on
+   the district and the numbers in the list are square, like the facility map's pins, and the pinging ring round the
+   live marker is gone (the blue fill already says which step is live) */
+.dcs3-num, .dcs3-num.on, .dcs3-steps .n, .dcs3-steps li.on .n{ border-radius:0; }
+.dcs3-num::after{ display:none; }
+

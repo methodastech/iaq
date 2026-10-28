@@ -427,7 +427,7 @@ export default function Commitment () {
                 design", "dont use globe"): the office globe is off this page (EarthGlobe is kept in this file, unused); each pillar is a
                 drawn scene now, as on the Careers values, and none of them shows a target or a result. */}
             <div className="cc-esg-head">
-              <h2 className="cc-h2" data-cc>Sustainability and responsibility, <em>our commitment.</em></h2>
+              <h2 className="cc-h2" data-cc>Sustainability and responsibility, <br /><em>our commitment</em></h2>
               <p className="cc-lede" data-cc>Our corporate commitments guide how we work with our people, customers, partners and the wider environment. We aim to conduct our business responsibly, with attention to safety, integrity, operational discipline and continual improvement.</p>
             </div>
             {/* 22 Oct ("on mobile, make like slider and indicator rather than vertical scroll"): under 960px the three pillars
@@ -453,7 +453,7 @@ export default function Commitment () {
         {/* 3 · quality, environment, health and safety, with both policies attached as PDFs */}
         <section className="cc-sec" id="qehs">
           <div className="cc-in">
-            <h2 className="cc-h2" data-cc>Quality, environment, health <em>and safety.</em></h2>
+            <h2 className="cc-h2" data-cc>Quality, environment, health <em>and safety</em></h2>
             <div className="cc-split">
               <div className="cc-copy" data-cc>
                 <p>The IAQ Group is committed to environment, safety and health as a core business function, promoting safe and healthy working conditions without risk of harm to its employees or others affected by its undertakings, and without harm to assets or the environment.</p>
@@ -489,7 +489,7 @@ export default function Commitment () {
             certificates between them are gone), so the page still alternates. */}
         <section className="cc-sec tint" id="environment">
           <div className="cc-in">
-            <h2 className="cc-h2" data-cc>Environment and sustainability <em>responsibility.</em></h2>
+            <h2 className="cc-h2" data-cc>Environment and sustainability <br /><em>responsibility</em></h2>
             <p className="cc-lede" data-cc>IAQ is dedicated to minimising its environmental impact through sustainable design, procurement and construction practices. It continuously seeks energy-efficient solutions and prioritises eco-friendly technologies.</p>
             <div className="cc-news">
               {CSR.map(s => <NewsCard slug={s} key={s} />)}

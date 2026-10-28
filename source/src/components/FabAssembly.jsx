@@ -77,7 +77,7 @@ export default function FabAssembly() {
 
           <div className="fab-rail">
             <span className="eyebrow u-sig"><span data-scramble="">Built from the BIM</span></span>
-            <h2>The facility, <em>layer by layer.</em></h2>
+            <h2>The facility, <br /><em>layer by layer</em></h2>
             <p className="fab-lede">
               Nine systems, in the order they are built on site, modelled to IAQ&rsquo;s own Revit
               coordination model of a working fab. Drag it, zoom it, scroll to build it.

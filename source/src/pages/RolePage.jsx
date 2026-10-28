@@ -151,7 +151,7 @@ export default function RolePage() {
       <>
         <Nav />
         <PageHead crumbs={[{ label: 'Careers', to: '/careers' }]}
-          title={<>That role is <em>not open.</em></>}
+          title={<>That role is <em>not open</em></>}
           lede="It may have closed, or the link may be old. The current openings are on the careers page." />
         <section className="pg-sec"><div className="pg-in">
           <Link className="cta" to="/careers">See the open roles</Link>

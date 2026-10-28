@@ -10,7 +10,11 @@
    position:fixed, and they fill the stage rather than the window. */
 .b3d{position:relative;display:block;background:#0a101f;zoom:calc(1 / var(--zoomf,1));min-height:100vh}
 .b3d>.b3d-stage{position:sticky;top:0;height:100vh;overflow:hidden;contain:layout paint;z-index:1}
-.b3d>#scroll-runway{display:block!important;margin-top:-100vh;pointer-events:none}
+.b3d>#scroll-runway{display:block!important;margin-top:-100vh;pointer-events:none;
+  /* 22 Oct, Polishing fix: the app sets the runway from its beat count (about 21 screens at 1x); eight screens is the cap. The
+     build still runs every step, the scrub is faster, the skip button (12 Oct, IAQ) stays. The span the app reads is this
+     element's height, so the cap and the app agree. The uncapped rule is in _backups/polish-fixes-1022/build3d.css. */
+  max-height:800vh}
 /* phones and tablets build by tapping, not scrolling: one window, no runway, and a vertical swipe on the model
    scrolls the page past it rather than holding the visitor inside the section */
 html.click-build .b3d>#scroll-runway{display:none!important}
@@ -28,7 +32,7 @@ html.b3d-pin .nav{transform:translateY(-105%)}
    carry .b3d-stage so they outrank app.css, which loads after this file. */
 .b3d .b3d-stage .b3d-ld-label{display:none}
 .b3d .b3d-stage #overlay:has(#enter:disabled) .b3d-ld-label{display:block;position:absolute;left:50%;top:calc(50% + min(62px,9vw));transform:translateX(-50%);z-index:3;
-  font:600 12px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5A6478;white-space:nowrap}
+  font:600 13px/1 "Switzer","Instrument Sans",system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5A6478;white-space:nowrap}
 
 /* 12 Oct (client: a button to skip the 3D, centre bottom, straight to the markets): over the model and its loading
    screen, the site's dark CTA, square; hidden during the walkthrough, which has its own exit. .b3d-stage keeps the
@@ -40,3 +44,17 @@ html.b3d-pin .nav{transform:translateY(-105%)}
 .b3d .b3d-stage .b3d-skip:focus-visible{outline:2px solid #EC2027;outline-offset:3px}
 .b3d .b3d-stage .b3d-skip svg{flex:none}
 body.room .b3d .b3d-stage .b3d-skip{display:none}
+
+/* 23 Oct, the type floor (rule 14): the 3D stage's own buttons and labels (view toggles, zoom labels) sat at 12.5 to 12.8 px */
+.b3d-stage button, .b3d-stage .xt-label, .b3d-stage span.xt-label{ font-size:13px; }
+
+/* 23 Oct, later: the 3D bundle's own stylesheet loads after this one, so the floor needs its weight here */
+.b3d-stage button, .b3d-stage .xt-label, .b3d-stage button span{ font-size:13px !important; }
+
+/* 23 Oct, the responsive audit (tools/overlap-audit-1023.mjs). The 3D bundle's HUD rules are !important at id specificity,
+   so the floor and the layout fixes are written at a higher specificity (html .b3d #hud2 ...), also !important.
+   (1) Type floor, rule 14: the speed row, the rail readouts, the skin switch, the part chip and the foot at 12 to 12.5 px.
+   (2) Between 900 and 1300 px wide the left column is about 290 px and the two action buttons share one row, so
+       "Enter cleanroom" clipped by 20 to 44 px; the buttons stack there. */
+html .b3d #hud2 .h-speed, html .b3d #hud2 .h-speed button, html .b3d #hud2 .h-ctrl .h-speed button, html .b3d #hud2 .h-rail .rd-seq, html .b3d #hud2 .h-rail .rd-ct, html .b3d #hud2 .h-foot, html .b3d #skin-switch button, html .b3d #part-chip, html .b3d #view-tools .vt-zoom button .xt-label, html .b3d-stage button{ font-size:13px !important; }
+@media (min-width:900px) and (max-width:1299px){ html .b3d #hud2 .h-play, html .b3d #hud2 .h-play.three, html .b3d #hud2 .h-play.three.narrow{ grid-template-columns:minmax(0,1fr) !important; } }

@@ -1,0 +1,81 @@
+{
+ "url": "/about",
+ "slug": "about",
+ "title": "IAQ Group · About · Brand Method",
+ "at": "2026-10-22T15:29:40.224Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Advancing Industry Since 1995",
+   "tag": "header",
+   "cls": "ab-hero",
+   "top": 84,
+   "height": 816,
+   "text": "1995\nAdvancing Industry Since 1995\nIAQ Group supports the world’s evolving industries through integrated engineering, construction and facility solutions. We combine technical expertise with disciplined execution to deliver facilities that perform today and adapt for tomorrow.",
+   "img": "about/01-hero.webp",
+   "shownHeight": 816
+  },
+  {
+   "i": 1,
+   "key": "manifesto-man-light",
+   "heading": "",
+   "tag": "section",
+   "cls": "manifesto.man-light",
+   "top": 900,
+   "height": 662,
+   "text": "31 years of technical excellence through various service model with global presence across 7 countries\nIAQ is a leading ISO 9001, ISO 14001 and ISO 45001 certified Malaysian owned company that delivers engineering and design consultation, procurement, construction, commissioning and testing, tool installation and maintenance services of plants and on-board project management services to client in diverse industries both locally and globally.",
+   "img": "about/02-manifesto-man-light.webp",
+   "shownHeight": 662
+  },
+  {
+   "i": 2,
+   "key": "what-iaq-stands-for-and-where-it-is-going",
+   "heading": "What IAQ stands for, and where it is going.",
+   "tag": "section",
+   "cls": "vm",
+   "top": 1562,
+   "height": 674,
+   "text": "What IAQ stands for, and where it is going.\nVision\nWhere IAQ is going\nTo be a regional facility solutions provider with engineering excellence, facilitating technological innovation and advancement in quality of life.\nMission\nWhat IAQ does every day\nProviding innovative and sustainable facility and engineering solutions that benefit our clients and stakeholders, driven by our leadership, employees, and partners globally.",
+   "img": "about/03-what-iaq-stands-for-and-where-it-is-going.webp",
+   "shownHeight": 674
+  },
+  {
+   "i": 3,
+   "key": "six-values-held-on-every-site",
+   "heading": "Six values, held on every site.",
+   "tag": "section",
+   "cls": "vg",
+   "top": 2236,
+   "height": 813,
+   "text": "WHAT WE HOLD\nSix values, held on every site.\n1\nSafety commitment\nAn injury free workplace where everybody goes home safe.\n2\nQuality consistency\nThe skills to bring excellence to your project, managed through an established QMS.\n3\nHonesty and integrity\nTransparent communication of accurate information, with openness and sincerity in every interaction.\n4\nEngineering capabilities\nAn experienced multi-disciplinary in-house team, integrating technology and value engineering for advanced hi-tech facilities.\n5\nEfficiency and proficiency\nFlexible fast-track execution and contractual approaches, fitted to the client’s needs.\n6\nPursuit of excellence\nDelivering on our commitments with the highest degree of engineering excellence.\n1\n2\n3\n4\n5\n6",
+   "img": "about/04-six-values-held-on-every-site.webp",
+   "shownHeight": 813
+  },
+  {
+   "i": 4,
+   "key": "what-we-ve-achieved",
+   "heading": "What we’ve achieved",
+   "tag": "section",
+   "cls": "ab-awards",
+   "top": 3049,
+   "height": 533,
+   "text": "What we’ve achieved\nWe are proud to be recognised by important organisations for our contribution towards the community and, more importantly, our clients.\nPolicies and certificates\n→",
+   "img": "about/05-what-we-ve-achieved.webp",
+   "shownHeight": 533
+  },
+  {
+   "i": 5,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 3582,
+   "height": 1042,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building.\nFeasibility to handover, one accountable team.\nStart a project\n→\nEMAIL\nbusiness@iaqtechnology.com.my\n→\nPHONE\n+603 5124 8319\n→\nHQ · SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n→\n© 2026 IAQ GROUP · IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) · ISO 9001 / 14001 / 45001 · CIDB G7\nPROTOTYPE · BRAND METHOD\nBACK TO TOP ↑",
+   "img": "about/06-follow.webp",
+   "shownHeight": 1042
+  }
+ ],
+ "errs": []
+}

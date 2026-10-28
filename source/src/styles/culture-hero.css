@@ -8,7 +8,7 @@
 .cuh-mo { position: absolute; inset: 0; display: block; will-change: transform; }
 .cuh-mo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--e1); }
 .cuh-f:hover .cuh-mo img { transform: scale(1.04); }
-.cuh-f figcaption { position: absolute; left: 12px; bottom: 12px; z-index: 1; padding: 6px 10px; background: rgba(9, 14, 26, .74); color: #fff; font: 500 12.5px/1.25 "Instrument Sans", system-ui, sans-serif; letter-spacing: .005em; }
+.cuh-f figcaption { position: absolute; left: 12px; bottom: 12px; z-index: 1; padding: 6px 10px; background: rgba(9, 14, 26, .74); color: #fff; font: 500 13px/1.25 "Instrument Sans", system-ui, sans-serif; letter-spacing: .005em; }
 
 /* reveal: the set is its own reveal item; the frames wipe up in turn and the captions follow */
 .cu-armed .cuh.cu-rv:not(.cu-in) { opacity: 1; transform: none; }
@@ -24,9 +24,22 @@
   .cuh-a { aspect-ratio: 16 / 10; }
   .cuh-b, .cuh-c { aspect-ratio: 4 / 3; }
 }
-@media (max-width: 640px) { .cuh-f figcaption { left: 8px; bottom: 8px; font-size: 11.5px; padding: 5px 8px; } }
+@media (max-width: 640px) { .cuh-f figcaption { left: 8px; bottom: 8px; font-size: 13px; padding: 5px 8px; } }
 @media (prefers-reduced-motion: reduce) { .cuh .cuh-f, .cuh figcaption, .cuh-mo img { transition: none; } }
 
 /* 25 Sep: the tag on a generated frame, top right so it never meets the caption */
-.cuh-rep { position: absolute; right: 12px; top: 12px; z-index: 1; padding: 5px 8px; background: rgba(9, 14, 26, .55); color: #fff; font: 600 11px/1.2 "Switzer", sans-serif; letter-spacing: .02em; }
+.cuh-rep { position: absolute; right: 12px; top: 12px; z-index: 1; padding: 5px 8px; background: rgba(9, 14, 26, .55); color: #fff; font: 600 13px/1.2 "Switzer", sans-serif; letter-spacing: .02em; }
 @media (max-width: 640px) { .cuh-rep { right: 8px; top: 8px; } }
+
+/* 23 Oct, Polishing sweep, rules 12 and 35: the Careers banner stood at 80% of the window (the photo set 547 px tall plus
+   the banner's air); the set comes down and the air with it, toward the half-window rule. The photos no longer zoom
+   under the pointer: they are not links (nothing non-clickable reacts to hover). */
+@media (min-width: 981px){
+  .cu-hero{ padding-block: clamp(22px, 3.6vh, 44px) clamp(28px, 4.5vh, 56px); }
+  .cuh{ height: clamp(400px, 31vw, 500px); }
+  .cu-stats{ margin-top: clamp(24px, 4vh, 44px); }
+}
+.cuh-f:hover .cuh-mo img{ transform: none; }
+
+/* 23 Oct, later: the photo set a step lower still (the banner stood at 623 px after the first trim) */
+@media (min-width: 981px){ .cuh{ height: clamp(380px, 29vw, 460px); } }

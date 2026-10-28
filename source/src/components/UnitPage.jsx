@@ -532,7 +532,7 @@ export default function UnitPage(props) {
                   this be better replaced with picture 2"); on EFM the cards are off ("this one can remove"). `scope` is a
                   page's own block, `works={false}` drops the cards. */}
               {scope ? scope : works && (<>
-              <h2 id="un-scope-h" className="un-h2">The work, <em>and the systems inside it.</em></h2>
+              <h2 id="un-scope-h" className="un-h2">The work, <br /><em>and the systems inside it</em></h2>
               <div className="un-works">
                 {CX_WORK.map(w => (
                   <div key={w.id} className={'un-work' + (cxUnit.work.includes(w.id) ? ' is-on' : ' is-off')}>
@@ -692,7 +692,7 @@ export default function UnitPage(props) {
           <section className="un-sec un-proof" aria-labelledby="un-proof-h">
             <div className="pg-in">
               <div className="un-proof-head">
-                <h2 id="un-proof-h" className="un-h2" data-rv="">Delivered <em>this way.</em></h2>
+                <h2 id="un-proof-h" className="un-h2" data-rv="">Delivered <em>this way</em></h2>
                 <Link className="un-more" to={(proofLink && proofLink.to) || '/projects'} data-rv="">{(proofLink && proofLink.label) || 'See all published projects'}</Link>
               </div>
               <div className="un-proof-grid" data-n={proof.length}>

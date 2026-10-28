@@ -125,7 +125,9 @@ export default function GroupRecord() {
               descriptor now, the one the footer and the company profile both carry, with the founding year on it. */}
           {/* 24 Sep (Bazil: "no , and ."): no comma, no full stop */}
           {/* 19 Oct (client feedback, Home · Metrics): IAQ's heading and description for the block */}
-          <h2>Engineering Excellence <em>in Numbers</em></h2>
+          {/* 22 Oct, Polishing walk-through, note 2 (Bazil: "there is no meaning to the title", "in numbers?", "something like
+              IAQ global success"): a statement the globe beside it proves. IAQ's 19 Oct heading is in the Polishing record. */}
+          <h2>Where the industry builds, <br /><em>IAQ is there</em></h2>
         </div>
 
         <div className="glance-body">
@@ -135,9 +137,11 @@ export default function GroupRecord() {
               the single accountable team from design to handover. */}
           {/* 23 Sep (Bazil: "not too long"): four lines cut to two. 1995 moved into the heading and the three
               ISO certificates are already a card in this block, so neither is said twice. */}
+          {/* 22 Oct, note 2: the lede carries the figures as one sentence, so the six tiles under it are the proof, not the
+              point. IAQ's 19 Oct description is in the Polishing record. */}
           <p className="lede">
-            Our track record reflects the expertise, scale and commitment behind IAQ&rsquo;s integrated facility solutions,
-            serving hi-tech industries across international markets.
+            Seven offices sit in the world&rsquo;s hi-tech clusters, from Penang to Dresden to Phoenix. 530 people,
+            85 percent of them engineers, have delivered 235 facilities since 1995.
           </p>
           {/* Bazil, 21 Sep: "number and icons same line". The drawing and the number share one row, the
               label sits under both, and there is no card round them. */}

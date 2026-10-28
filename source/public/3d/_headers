@@ -1,0 +1,6 @@
+# Netlify: cache the models and built assets. (The models are gzipped in place
+# and unpacked by the app itself; no content-type override is needed.)
+/models/*
+  Cache-Control: public, max-age=604800
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

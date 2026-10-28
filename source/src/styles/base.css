@@ -42,7 +42,7 @@ body{font-family:"Instrument Sans",system-ui,sans-serif;background:var(--bg);col
    reading the zoom from JS must use getComputedStyle, not the 1.12 constant. */
 @media(min-width:2240px){:root{zoom:1.5;--zoomf:1.5}}
 @media(min-width:3200px){:root{zoom:2.1;--zoomf:2.1}}
-h1,h2,h3{font-family:"Switzer",sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.06;text-wrap:pretty}
+h1,h2,h3{font-family:"Switzer",sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.06;text-wrap:balance}   /* 23 Oct, rule 22/23: titles balanced (was pretty) */
 /* 3 Sep (client: "aren't the titles of the pages a bit too small"): the rule above set the family
    and nothing else, so any section heading that did not carry its own clamp fell back to the UA
    default of 1.5em. On a 15px body that is 22px, which is why "Milestones that define us" and
@@ -53,7 +53,7 @@ h3{font-size:clamp(18px,1.5vw,23px)}
 h1 em{font-style:normal;color:var(--blue-bright)}
 a{color:inherit}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
-.eyebrow{font-family: var(--label);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-bright);display:inline-flex;align-items:center;gap:10px;font-weight:600}
+.eyebrow{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--blue-bright);display:inline-flex;align-items:center;gap:10px;font-weight:600}
 
 
 .topbar{background:#0B1020;color:#EAF0FB;position:sticky;top:0;z-index:90;border-bottom:1px solid #1d2438;transition:transform .34s var(--e1)}
@@ -61,10 +61,10 @@ a{color:inherit}
 .topbar-in{display:flex;align-items:center;justify-content:space-between;padding:9px var(--gut);max-width:var(--maxw);margin:0 auto;gap:12px;flex-wrap:wrap}
 .wscrumb{display:flex;flex-direction:column;line-height:1.3;white-space:nowrap}
 .wscrumb b{font-size:13px;font-weight:700;color:#fff;letter-spacing:.01em}
-.wscrumb span{font-family: var(--label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7C87A6}
+.wscrumb span{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#7C87A6}
 .wsw{display:flex;align-items:center;border:1px solid rgba(255,255,255,.22);border-radius:0;overflow:auto;max-width:100%;margin-left:auto;padding:3px;gap:3px;background:rgba(255,255,255,.04)}
-.wsw a{font-family: var(--label);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#C7D3EE;text-decoration:none;padding:7px 13px;border-radius:0;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;transition:background .25s,color .25s}
-.wsw a i{font-style:normal;color:#7C87A6;font-size:9px;font-weight:700}
+.wsw a{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#C7D3EE;text-decoration:none;padding:7px 13px;border-radius:0;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;transition:background .25s,color .25s}
+.wsw a i{font-style:normal;color:#7C87A6;font-size:13px;font-weight:700}
 .wsw a:hover{background:rgba(255,255,255,.09);color:#fff}
 .wsw a.on{background:#E8232B;color:#fff;font-weight:700}
 .wsw a.on i{color:rgba(255,255,255,.72)}
@@ -107,7 +107,7 @@ html.nav-off{--sticktop:0px}
 .nav.nav-clear .logo3d .lface{opacity:0}
 @keyframes logoIdle{0%,74%{transform:rotateY(0deg) rotateX(0deg)}80%{transform:rotateY(16deg) rotateX(-5deg)}86%{transform:rotateY(-10deg) rotateX(3deg)}92%,100%{transform:rotateY(0deg) rotateX(0deg)}}
 @media(prefers-reduced-motion:reduce){.logo3d-in{animation:none;transform:rotateY(-6deg) rotateX(2deg)}.logo3d:hover .logo3d-in{transform:rotateY(-6deg) rotateX(2deg)}}
-.wordmark span{font-family: var(--label);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint)}
+.wordmark span{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint)}
 /* 4 Sep (client: "aren't the tabs supposed to be to the right not the left"). .nav-in is
    space-between, but .nav-act takes margin-left:auto, which absorbs all the free space and left
    the tabs parked against the logo. The auto margin here claims that space first, so the tabs
@@ -134,7 +134,7 @@ html.nav-off{--sticktop:0px}
 .nav-links a.here{color:var(--blue);font-weight:600}
 .nav-links a.here:hover{color:var(--blue-bright)}
 .nav-dis{position:relative;display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:500;color:#AEB6C6;padding:7px 11px;white-space:nowrap;cursor:not-allowed;user-select:none}
-.nav-dis i{font-style:normal;font-family: var(--label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#98A2B6;border:1px solid rgba(12,18,32,.16);padding:2.5px 5px;background:rgba(12,18,32,.035)}
+.nav-dis i{font-style:normal;font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:#98A2B6;border:1px solid rgba(12,18,32,.16);padding:2.5px 5px;background:rgba(12,18,32,.035)}
 
 /* grouped wings: hover reveals the pages inside Services and Markets */
 .nav-has{position:relative;display:inline-flex}
@@ -189,9 +189,9 @@ html.nav-off{--sticktop:0px}
   .nav-act .cta{display:none}
   .nav-drawer{display:block;position:absolute;left:0;right:0;top:100%;z-index:94;background:#0A101F;border-bottom:1px solid #1d2438;box-shadow:0 30px 60px rgba(4,8,18,.45);padding:6px var(--gut) 18px;opacity:0;transform:translateY(-10px);visibility:hidden;pointer-events:none;transition:opacity .32s ease,transform .4s var(--e1),visibility 0s .4s}
   .nav.menu-open .nav-drawer{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .32s ease,transform .4s var(--e1)}
-  .nav-drawer .nd-k{display:block;font-family: var(--label);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#7A87A2;font-weight:600;padding:14px 2px 6px}
+  .nav-drawer .nd-k{display:block;font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#7A87A2;font-weight:600;padding:14px 2px 6px}
   .nav-drawer a{display:flex;align-items:center;gap:14px;padding:16px 2px;font-size:17.5px;font-weight:600;color:#C7D3EE;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);transition:color .25s,padding-left .3s var(--e1)}
-  .nav-drawer a .nn{font-family: var(--label);font-size:10.5px;letter-spacing:.14em;color:#FF6A70;font-weight:600}
+  .nav-drawer a .nn{font-family: var(--label);font-size:13px;letter-spacing:.04em;color:#FF6A70;font-weight:600}
   .nav-drawer a:active{color:#fff}
   .nav-drawer a.here{color:#fff;box-shadow:inset 2px 0 0 #EC2027;padding-left:12px}
   /* 4 Sep (client: "standardize the button font"). This was the only BUTTON on the site set in
@@ -200,7 +200,7 @@ html.nav-off{--sticktop:0px}
   .nav-drawer .nd-cta{margin-top:16px;border-bottom:0;background:#EC2027;color:#fff;justify-content:center;font-family:"Switzer","Instrument Sans",system-ui,sans-serif;font-size:13px;line-height:1.35;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:14px}
   .nav-drawer .nd-dis{display:flex;align-items:center;gap:14px;padding:16px 2px;font-size:17.5px;font-weight:600;color:#5B6780;border-bottom:1px solid rgba(255,255,255,.08);cursor:not-allowed}
   .nav-drawer .nd-dis .nn{color:#55617C}
-  .nav-drawer .nd-dis i{font-style:normal;font-family: var(--label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#7A87A2;border:1px solid rgba(255,255,255,.14);padding:3px 6px;margin-left:auto;margin-right:2px}
+  .nav-drawer .nd-dis i{font-style:normal;font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:#7A87A2;border:1px solid rgba(255,255,255,.14);padding:3px 6px;margin-left:auto;margin-right:2px}
 }
 
 .head{padding:clamp(44px,7vh,80px) 0 10px}
@@ -280,15 +280,15 @@ footer.sitefoot .f-in{position:relative;max-width:var(--maxw);margin:0 auto;padd
   .f-brand{max-width:34ch}}
 /* the sitemap block is styled by CLASS, not by its ancestor: it renders inside the closing
    grid on most pages and inside <footer> everywhere else, and must look identical in both. */
-.sitefoot .wm span,.f-nav .wm span{display:block;font-family: var(--label);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7A87A2;font-weight:600}
+.sitefoot .wm span,.f-nav .wm span{display:block;font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#7A87A2;font-weight:600}
 .sitefoot p,.f-nav p{margin-top:12px;line-height:1.65;max-width:40ch}
-.ft-soon{display:block;font-family: var(--label);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#5A6580;opacity:.75;margin-top:6px;cursor:default}
-.sitefoot h4,.f-nav h4,.sitefoot .f-h4,.f-nav .f-h4,footer .f-h4{font-family: var(--label);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7A87A2;font-weight:600;margin-bottom:12px}
+.ft-soon{display:block;font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#5A6580;opacity:.75;margin-top:6px;cursor:default}
+.sitefoot h4,.f-nav h4,.sitefoot .f-h4,.f-nav .f-h4,footer .f-h4{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#7A87A2;font-weight:600;margin-bottom:12px}
 .sitefoot a,.f-nav a{color:#AAB6CE;text-decoration:none;display:block;padding:4px 0;transition:color .2s}
 .sitefoot a:hover,.f-nav a:hover{color:#fff}
 /* the legal strip signs off UNDER the wordmark (Palantir order, 28 Aug): slim, one hairline,
    and tight to the logo band so the two read as one sign-off block. */
-.sitefoot .f-base{position:relative;max-width:var(--maxw);margin:0 auto;padding:18px var(--gut) 0;border-top:0;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family: var(--label);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5b6685}
+.sitefoot .f-base{position:relative;max-width:var(--maxw);margin:0 auto;padding:18px var(--gut) 0;border-top:0;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#5b6685}
 /* 2 Sep wide footer (standalone <footer> only): brand | company | what we do | conversation,
    on one row across the full measure, each column opening on the same hairline. The Follow
    chips take the fourth column's foot. The closing-section variant is untouched. */
@@ -331,7 +331,7 @@ footer.sitefoot .f-in{position:relative;max-width:var(--maxw);margin:0 auto;padd
 /* the closing band's own button (3 Sep): square, red, mono, the same shape as the nav CTA */
 .close-cta{display:inline-flex;align-items:center;gap:10px;margin-top:clamp(18px,2.4vh,26px);
   background:var(--blue);color:#fff;text-decoration:none;padding:14px 20px;
-  font-family: var(--label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;
   transition:background-color .25s var(--e1),transform .3s var(--e1)}
 .close-cta i{font-style:normal;display:inline-block;transition:transform .3s var(--e1)}
 .close-cta:hover{background:var(--blue-bright)}
@@ -363,7 +363,7 @@ footer.sitefoot .f-in{position:relative;max-width:var(--maxw);margin:0 auto;padd
   .close-in > .f-nav{order:2}
 }
 /* 2 Sep: a mono "back to top" at the right end of the legal strip */
-.f-top{font-family: var(--label);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7A87A2;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:color .2s;padding:0}
+.f-top{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#7A87A2;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:color .2s;padding:0}
 .f-top i{font-style:normal;display:inline-block;transition:transform .3s var(--e1)}
 .f-top:hover{color:#fff}
 .f-top:hover i{transform:translateY(-3px)}
@@ -404,7 +404,7 @@ footer.sitefoot .f-in{position:relative;max-width:var(--maxw);margin:0 auto;padd
 .bm-footrib-strip{position:relative;z-index:1;background:transparent;padding:0 0 clamp(18px,3vh,34px)}
 .bm-footrib{display:flex;justify-content:center;padding:clamp(22px,3.4vh,38px) 0 .4rem;pointer-events:none}
 .bm-footrib canvas{width:min(460px,88vw);height:auto;display:block}
-.bm-footrib-fb{font-family:var(--mono,monospace);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,#1421B8,#2536F5);padding:.5rem 1.4rem;clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,10px 100%,0 50%)}
+.bm-footrib-fb{font-family:var(--mono,monospace);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,#1421B8,#2536F5);padding:.5rem 1.4rem;clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,10px 100%,0 50%)}
 .bm-footrib-fb[hidden]{display:none}
 
 /* larger tap targets + no brandmark clip on touch / narrow screens (final QA pass) */
@@ -414,7 +414,7 @@ footer.sitefoot .f-in{position:relative;max-width:var(--maxw);margin:0 auto;padd
   .sortseg .ss{padding:12px 12px}
   .clearbtn{padding:11px 10px}
 }
-@media (max-width:380px){ .brandmark{font-size:10.3px;letter-spacing:.03em} }
+@media (max-width:380px){ .brandmark{font-size:13px;letter-spacing:.03em} }
 
 /* mobile: compact footer */
 @media(max-width:640px){
@@ -453,25 +453,25 @@ footer.sitefoot .f-in{position:relative;max-width:var(--maxw);margin:0 auto;padd
 .nl-pop[hidden]{display:none}
 .nav-member.open .nl-pop{opacity:1;transform:none}
 .nl-pop form{display:flex;flex-direction:column;gap:8px}
-.nl-k{font-family: var(--label);font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--blue)}
+.nl-k{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--blue)}
 .nl-pop b{font-family:"Switzer",sans-serif;font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.015em;line-height:1.2}
-.nl-pop p{font-size:12.5px;color:var(--soft);line-height:1.5}
-.nl-lb{font-family: var(--label);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:6px}
+.nl-pop p{font-size:13px;color:var(--soft);line-height:1.5}
+.nl-lb{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);margin-top:6px}
 .nl-pop input{border:1px solid var(--line2);background:var(--bg);padding:11px 12px;font:inherit;font-size:14px;color:var(--ink);width:100%}
 .nl-pop input:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
-.nl-err{color:var(--blue-bright);font-size:12.5px}
+.nl-err{color:var(--blue-bright);font-size:13px}
 .nl-cta{justify-content:center;margin-top:6px;width:100%;border:0;cursor:pointer;display:inline-flex}
-.nl-out{align-self:flex-start;background:none;border:0;padding:6px 0 0;font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--soft);cursor:pointer;border-bottom:1px solid transparent}
+.nl-out{align-self:flex-start;background:none;border:0;padding:6px 0 0;font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--soft);cursor:pointer;border-bottom:1px solid transparent}
 .nl-out:hover{color:var(--blue-bright);border-bottom-color:var(--blue)}
-.nl-tab{display:inline-flex;justify-content:center;width:100%;border:1px solid var(--line2);background:var(--bg);padding:11px 14px;font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .2s,color .2s}
+.nl-tab{display:inline-flex;justify-content:center;width:100%;border:1px solid var(--line2);background:var(--bg);padding:11px 14px;font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .2s,color .2s}
 .nl-tab:hover{border-color:var(--blue);color:var(--blue-bright)}
 /* 18 Sep (Bazil): emergency access for testing, under the passcode field. A quiet bordered
    square, not a second filled button, so the passcode stays the primary route in. */
 .nl-emerg{display:flex;flex-direction:column;align-items:center;gap:3px;width:100%;border:1px solid var(--line2);background:var(--bg);padding:9px 12px;cursor:pointer;color:var(--ink);transition:border-color .2s,color .2s;text-align:center}
-.nl-emerg span{font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
-.nl-emerg small{font-size:11px;color:var(--faint);line-height:1.35}
+.nl-emerg span{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.nl-emerg small{font-size:13px;color:var(--faint);line-height:1.35}
 .nl-emerg:hover{border-color:var(--blue);color:var(--blue-bright)}
-.nl-hint{font-size:12px;color:var(--faint);margin-top:2px}
+.nl-hint{font-size:13px;color:var(--faint);margin-top:2px}
 .nl-hint a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line2)}
 .nl-hint a:hover{color:var(--blue-bright);border-bottom-color:var(--blue)}
 .us-overlay{position:fixed;inset:0;z-index:400;background:rgba(7,12,24,.52);backdrop-filter:blur(9px) saturate(1.2);-webkit-backdrop-filter:blur(9px) saturate(1.2);opacity:0;pointer-events:none;transition:opacity .3s ease}
@@ -482,21 +482,21 @@ footer.sitefoot .f-in{position:relative;max-width:var(--maxw);margin:0 auto;padd
 .us-bar>svg{width:18px;height:18px;color:var(--blue);flex:none}
 .us-bar input{flex:1;border:0;outline:0;background:none;font:600 17px/1.3 inherit;font-family:inherit;color:var(--ink);min-width:0}
 .us-bar input::placeholder{color:var(--faintest);font-weight:500}
-.us-esc{font-family: var(--label);font-size:10.5px;letter-spacing:.1em;color:var(--faint);border:0;background:rgba(23,33,58,.07);padding:4px 7px;flex:none;cursor:pointer}
+.us-esc{font-family: var(--label);font-size:13px;letter-spacing:.04em;color:var(--faint);border:0;background:rgba(23,33,58,.07);padding:4px 7px;flex:none;cursor:pointer}
 .us-results{max-height:56vh;overflow-y:auto;overscroll-behavior:contain}
-.us-group{font-family: var(--label);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);padding:13px 20px 6px;font-weight:600}
+.us-group{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);padding:13px 20px 6px;font-weight:600}
 .us-row{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:10px 20px;border:0;background:none;cursor:pointer;text-decoration:none;transition:background .15s}
 .us-row.sel,.us-row:hover{background:rgba(236,35,38,.07)}   /* 26 Sep: a tint, never a left stripe (IAQ rules: no vertical line) */
 .us-row .us-tx{min-width:0;flex:1}
 .us-row .us-t{display:block;font-size:14px;font-weight:600;color:var(--ink);line-height:1.35}
 .us-row .us-t mark{background:none;color:var(--blue-bright);text-decoration:underline;text-underline-offset:2px}
 .us-row .us-d{display:block;font-size:13px;color:var(--soft);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.us-row .us-k{font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);border:0;background:rgba(23,33,58,.07);padding:3px 6px;flex:none;white-space:nowrap}
+.us-row .us-k{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);border:0;background:rgba(23,33,58,.07);padding:3px 6px;flex:none;white-space:nowrap}
 .us-row .us-go{color:var(--faintest);flex:none;width:13px;height:13px;transition:transform .2s,color .2s}
 .us-row.sel .us-go,.us-row:hover .us-go{color:var(--blue-bright);transform:translateX(2px)}
 .us-none{padding:30px 20px;font-size:13.5px;color:var(--soft)}
 .us-none b{color:var(--ink)}
-.us-foot{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;border-top:0;background:#F4F6F9;font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.us-foot{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;border-top:0;background:#F4F6F9;font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint)}
 .us-foot .us-n{color:var(--blue-bright);font-weight:600}
 html.us-lock,html.us-lock body{overflow:hidden}
 @media(max-width:640px){.us-panel{margin-top:14px}.us-results{max-height:62vh}.us-foot .us-keys{display:none}}
@@ -506,9 +506,9 @@ html.us-lock,html.us-lock body{overflow:hidden}
   /* nothing may push the page sideways */
   html,body{max-width:100%;overflow-x:clip}
   /* the smallest mono labels were below comfortable reading size on a phone */
-  .eyebrow,.svc-tag,.lp-step,.lp-kick,.fm-k,.nd-k,.ph-cap,.note,.tag,.ref,.iso{font-size:10.5px!important}
-  .lp-tag .nm{font-size:10.5px!important}
-  .lp-tag .no{font-size:10px!important}
+  .eyebrow,.svc-tag,.lp-step,.lp-kick,.fm-k,.nd-k,.ph-cap,.note,.tag,.ref,.iso{font-size:13px!important}
+  .lp-tag .nm{font-size:13px!important}
+  .lp-tag .no{font-size:13px!important}
   /* tap targets: nothing interactive under 40px */
   .lp-tag{min-height:40px;padding:9px 8px!important}
   .lp-steps button{min-height:44px}
@@ -566,7 +566,7 @@ html.us-lock,html.us-lock body{overflow:hidden}
 .nm-lead-ic{flex:none;width:28px;height:28px;color:#fff;opacity:.92;margin-bottom:14px;
   filter:drop-shadow(0 2px 6px rgba(4,8,16,.6))}
 .nm-lead-ic svg{width:100%;height:100%;display:block}
-.nm-eyeb{font-family: var(--label);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+.nm-eyeb{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;
   font-weight:600;color:#FF8A90}
 /* 24 Sep (Bazil: "improve all the vertical visuals for each dropdown"): the panel's type is the site's, Switzer in
    sentence case, no mono and no eyebrow; the photograph is IAQ's own (LEAD_BG in Nav.jsx) under a scrim that is
@@ -588,7 +588,7 @@ html.us-lock,html.us-lock body{overflow:hidden}
 .nav-mega.one .nm-cols{grid-template-columns:1fr}
 .nm-col{min-width:0}
 /* 10 Sep: a titled column, so the six services and the three business units read as two lists */
-.nm-colh{display:block;font-family:var(--label);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-weight:600;padding:10px 12px 4px}
+.nm-colh{display:block;font-family:var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);font-weight:600;padding:10px 12px 4px}
 .nm-col a{display:flex;gap:12px;align-items:center;padding:11px 12px;text-decoration:none;
   transition:background .18s}
 .nm-col a:hover,.nm-col a:focus-visible{background:rgba(12,18,32,.045)}
@@ -630,7 +630,7 @@ html.us-lock,html.us-lock body{overflow:hidden}
 .nm-setn{font:600 30px/1 "Switzer",sans-serif;letter-spacing:-.04em;color:var(--blue);font-variant-numeric:tabular-nums}
 .nm-sett{min-width:0}
 .nm-sett b{display:block;font:600 14.5px/1.2 "Switzer",sans-serif;color:var(--ink);letter-spacing:-.01em}
-.nm-sett small{display:block;font-size:12px;line-height:1.35;color:var(--soft);margin-top:3px}
+.nm-sett small{display:block;font-size:13px;line-height:1.35;color:var(--soft);margin-top:3px}
 /* the rows: one grid, so icon, number and label align down the set */
 .nm-set .nm-rows{display:flex;flex-direction:column;flex:1}
 .nm-set .nm-rows>a{position:relative;display:grid;align-items:center;gap:12px;text-decoration:none;
@@ -639,12 +639,12 @@ html.us-lock,html.us-lock body{overflow:hidden}
 .nm-cycle .nm-rows>a>i{width:34px;height:34px;display:grid;place-items:center;background:#EEF1F6;color:var(--ink);
   transition:background .25s,color .25s,transform .35s var(--e1)}
 .nm-set .nm-rows>a>i svg{width:17px;height:17px;display:block}
-.nm-no{font:600 11.5px/1 "Switzer",sans-serif;font-variant-numeric:tabular-nums;color:var(--faint);letter-spacing:.02em;transition:color .2s}
+.nm-no{font:600 13px/1 "Switzer",sans-serif;font-variant-numeric:tabular-nums;color:var(--faint);letter-spacing:.02em;transition:color .2s}
 .nm-txt{display:flex;flex-direction:column;min-width:0}
 .nm-set .nm-rows>a em{font-style:normal;font-size:14px;font-weight:600;color:var(--ink);letter-spacing:-.01em;line-height:1.25;
   transition:transform .35s var(--e1)}
 .nm-units .nm-rows>a em{white-space:normal}
-.nm-txt small{font-size:12px;line-height:1.35;color:var(--soft);margin-top:3px}
+.nm-txt small{font-size:13px;line-height:1.35;color:var(--soft);margin-top:3px}
 .nm-set .nm-rows>a:hover,.nm-set .nm-rows>a.lit,.nm-set .nm-rows>a:focus-visible{background:rgba(12,18,32,.035)}
 .nm-cycle .nm-rows>a.lit>i{background:var(--blue);color:#fff;transform:translateY(-1px)}
 .nm-set .nm-rows>a.lit .nm-no{color:var(--blue)}
@@ -664,14 +664,14 @@ html.us-lock,html.us-lock body{overflow:hidden}
 .nm-units .nm-rows>a.lit .nm-thumb img{transform:scale(1.1)}
 .nm-units .nm-rows>a em{font-size:15px;transition:color .2s,transform .35s var(--e1)}
 .nm-units .nm-rows>a.lit em{color:var(--blue)}
-.nm-units .nm-txt small{font-size:12.5px;line-height:1.4;margin-top:4px}
+.nm-units .nm-txt small{font-size:13px;line-height:1.4;margin-top:4px}
 /* ---- 14 Sep: Markets as a structured list (Bazil: "list more structured", "and clear"). One row
    per market under column heads: photograph, red mark and name, what the market is measured by,
    its class or specification. The columns are one grid template shared by the head and the rows,
    so everything lines up down the list. ---- */
 .nm-mlist{--mcols:72px minmax(0,1.25fr) minmax(0,1fr) 128px 14px}
 .nm-mhead{display:grid;grid-template-columns:var(--mcols);column-gap:16px;padding:0 10px 8px;
-  font-size:11.5px;font-weight:600;color:var(--faint);letter-spacing:.01em}
+  font-size:13px;font-weight:600;color:var(--faint);letter-spacing:.01em}
 .nm-mhead span:first-child{grid-column:1/3}
 .nm-mhead span:last-child{grid-column:4/6}
 .nm-mlist .nm-rows{gap:2px}
@@ -716,9 +716,9 @@ html.us-lock,html.us-lock body{overflow:hidden}
    it; a set of filters or anchors has no count. Section rows carry a small grey tag in place of the
    arrow and sit flat, so a filter or an anchor never reads as another page. ---- */
 .nm-setn{display:flex;flex-direction:column;align-items:center;line-height:1}
-.nm-setn small{font:600 9.5px/1.1 "Instrument Sans",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-top:5px;white-space:nowrap}
+.nm-setn small{font:600 13px/1.1 "Instrument Sans",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);margin-top:5px;white-space:nowrap}
 .nm-seth.nosub{grid-template-columns:1fr}
-.nm-tag{margin-left:auto;flex:none;justify-self:end;font:600 10px/1 "Instrument Sans",sans-serif;letter-spacing:.06em;text-transform:uppercase;
+.nm-tag{margin-left:auto;flex:none;justify-self:end;font:600 13px/1 "Instrument Sans",sans-serif;letter-spacing:.04em;text-transform:uppercase;
   color:var(--faint);padding:5px 7px;background:rgba(12,18,32,.055);white-space:nowrap}
 .nm-set .nm-rows>a.lit .nm-tag{color:var(--ink)}
 .nm-set .nm-rows>a.sec em{font-weight:500}
@@ -800,7 +800,7 @@ html.nav-under .hero{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--na
 .close3d .crow{position:relative;display:flex;flex-direction:column;gap:5px;padding:11px 40px 11px 0;text-decoration:none;transition:padding-left .35s var(--e1)}
 /* the rows carried a hairline top and bottom; the client wants them gone, so the rhythm is
    held by the spacing alone (28 Aug). Padding is unchanged so nothing reflows. */
-.close3d .crow .ref{font-family: var(--label);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#7C8CAC}
+.close3d .crow .ref{font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:#7C8CAC}
 .close3d .crow b{font-family:"Switzer",sans-serif;font-weight:600;letter-spacing:-.015em;font-size:clamp(19px,1.6vw,25px);line-height:1.3;color:#fff;transition:color .3s}
 .close3d .crow b.adr{font-family:"Instrument Sans",system-ui,sans-serif;font-size:15px;font-weight:500;line-height:1.55;color:#C7D3EE;max-width:46ch}
 .close3d .crow i{position:absolute;right:8px;top:50%;transform:translate(-8px,-50%);font-style:normal;font-size:21px;color:var(--blue);opacity:0;transition:opacity .3s ease,transform .35s var(--e1)}
@@ -861,7 +861,7 @@ html.nav-under .hero{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--na
    under 11px below 640px. */
 @media(max-width:640px){
   /* !important on purpose: this is a floor, and the page sheets set these sizes with more specific selectors */
-  .tag,.us-k,.pg-tag,.lab,.lpn-lb,.iso,.rg-route,.emp-alt,.sv-tag,.pg-no,.pg-chip,.pg-full,.hx-yr,.hx-gap-n,.nl-k,.ref,.pg-note,.pg-k,.eyebrow,.globe-cap,.sv-go,.pg-more,.cp-tag,.nw-lk,.nw-lm,.off-k,.off-rep,.gstat .lab,.stamp,.k,dt,dd,.pg-slot-tag,.gslot .pg-slot-tag,.f-h4,.f-base,.globe-tag,.ld-tag,.us-group,.hm-row span,.fab-lab b,.un-k,.gd-k,.pg-kick,.nl-lb,.rb-note,.lp-kick,.fab-st-ct,.meta span,.nm-eyeb,.nm-colh,.fchip .ct,.gd-foot i,.pg-cta-meta a,.pg-list b,li>b,label,.fbtn,.clearbtn,.readout,.rd-x,.note,.gd-sub,.gate-note,.lp-more,.close-cta,.us-esc{font-size:11px !important}
+  .tag,.us-k,.pg-tag,.lab,.lpn-lb,.iso,.rg-route,.emp-alt,.sv-tag,.pg-no,.pg-chip,.pg-full,.hx-yr,.hx-gap-n,.nl-k,.ref,.pg-note,.pg-k,.eyebrow,.globe-cap,.sv-go,.pg-more,.cp-tag,.nw-lk,.nw-lm,.off-k,.off-rep,.gstat .lab,.stamp,.k,dt,dd,.pg-slot-tag,.gslot .pg-slot-tag,.f-h4,.f-base,.globe-tag,.ld-tag,.us-group,.hm-row span,.fab-lab b,.un-k,.gd-k,.pg-kick,.nl-lb,.rb-note,.lp-kick,.fab-st-ct,.meta span,.nm-eyeb,.nm-colh,.fchip .ct,.gd-foot i,.pg-cta-meta a,.pg-list b,li>b,label,.fbtn,.clearbtn,.readout,.rd-x,.note,.gd-sub,.gate-note,.lp-more,.close-cta,.us-esc{font-size:13px !important}
 }
 
 /* 15 Sep (Bazil: "remove pictures, icons only; left part can have picture and icon"): the wing rows lost their
@@ -944,7 +944,7 @@ html.nav-under .hero{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--na
 .nm-col a i.nm-ict svg,.nm-set .nm-rows>a>i.nm-ict svg{width:22px;height:22px;display:block;stroke-width:1.5}
 .nm-col a i.nm-ict.s{width:32px;height:32px}
 .nm-col a i.nm-ict.s svg{width:17px;height:17px}
-.nm-gl{display:block;font:600 11.5px/1 "Switzer",sans-serif;color:var(--faint);padding:0 2px 10px}
+.nm-gl{display:block;font:600 13px/1 "Switzer",sans-serif;color:var(--faint);padding:0 2px 10px}
 
 /* rows as separate cards (About, Careers and any unit-style set) */
 .nm-units,.nm-life{background:#EDF0F5}
@@ -972,7 +972,7 @@ html.nav-under .hero{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--na
 .nm-col .nm-seg.lit a i.nm-ict,.nm-col .nm-seg:hover a i.nm-ict{background:var(--blue);color:#fff}
 .nm-seg.lit a.nm-seg-a em,.nm-seg:hover a.nm-seg-a em{color:var(--blue-bright)}
 .nm-seg-sub{display:flex;flex-wrap:wrap;gap:5px;padding:0 16px 16px}
-.nm-col .nm-seg-sub a,.nm-seg-sub span{display:inline-block;padding:6px 9px;font:600 11.5px/1.15 "Switzer",sans-serif;gap:0}
+.nm-col .nm-seg-sub a,.nm-seg-sub span{display:inline-block;padding:6px 9px;font:600 13px/1.15 "Switzer",sans-serif;gap:0}
 .nm-col .nm-seg-sub a{background:#FDECEA;color:var(--blue-bright);text-decoration:none;transition:background .2s,color .2s}
 .nm-col .nm-seg-sub a:hover{background:var(--blue);color:#fff}
 .nm-seg-sub span{background:#F2F4F8;color:var(--soft)}
@@ -981,7 +981,7 @@ html.nav-under .hero{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--na
 .nm-col a.nm-st{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:12px 12px 13px;background:#F6F8FB;min-width:0;transition:background .2s,box-shadow .25s}
 .nm-col a.nm-st:hover,.nm-col a.nm-st.lit{background:#fff;box-shadow:inset 0 0 0 1px rgba(236,32,39,.45)}
 .nm-st-t{display:flex;align-items:center;justify-content:space-between;width:100%}
-.nm-st-n{font:600 12px/1 "Switzer",sans-serif;color:var(--blue-bright);font-variant-numeric:tabular-nums}
+.nm-st-n{font:600 13px/1 "Switzer",sans-serif;color:var(--blue-bright);font-variant-numeric:tabular-nums}
 .nm-col a.nm-st em{font-style:normal;font:600 13px/1.22 "Switzer",sans-serif;letter-spacing:-.01em;color:var(--ink);white-space:normal;overflow:visible;text-overflow:clip;min-height:2.44em}
 .nm-col a.nm-st.lit i.nm-ict,.nm-col a.nm-st:hover i.nm-ict{background:var(--blue);color:#fff}
 .nav-mega.sets.wide:has(.nm-segs){width:min(1080px,calc((100vw - 32px) / var(--zoomf,1)))}
@@ -1007,7 +1007,7 @@ html.nav-under .hero{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--na
    ============================================================================ */
 .nm-units,.nm-life,.nm-segs,.nm-strip{background:transparent}
 .nm-set{padding:10px 30px 12px}
-.nm-gl{padding:0 0 14px;font-size:12.5px;color:var(--faint)}
+.nm-gl{padding:0 0 14px;font-size:13px;color:var(--faint)}
 
 /* rows: About, Careers and every unit-style set */
 .nm-units .nm-rows,.nm-life .nm-rows{gap:0}
@@ -1035,7 +1035,7 @@ html.nav-under .hero{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--na
 .nm-set .nm-rows>a:hover em,.nm-set .nm-rows>a.lit em{color:var(--blue-bright);transform:none}
 .nm-set .nm-rows>a:hover .nm-go,.nm-set .nm-rows>a.lit .nm-go{opacity:1;transform:none}
 /* the level is said in words, not in a chip */
-.nm-tag{background:none;padding:0;font:500 12.5px/1 "Instrument Sans",sans-serif;letter-spacing:0;text-transform:none;color:var(--faint)}
+.nm-tag{background:none;padding:0;font:500 13px/1 "Instrument Sans",sans-serif;letter-spacing:0;text-transform:none;color:var(--faint)}
 .nm-set .nm-rows>a.lit .nm-tag,.nm-set .nm-rows>a:hover .nm-tag{color:var(--ink)}
 /* the lead photograph carries words, so the preview keeps enough scrim under them to read */
 .nm-lead.peek .nm-lead-scrim{background:linear-gradient(180deg,rgba(7,12,24,.84) 0%,rgba(7,12,24,.62) 46%,rgba(7,12,24,.42) 66%,rgba(7,12,24,.88) 100%)}
@@ -1057,7 +1057,7 @@ html.nav-under .hero{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--na
 /* short name and full name share the first line, so a card is three lines and its routes, not five */
 .nm-seg-t{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;min-width:0;flex:1}
 .nm-col a.nm-seg-a em{margin:0;min-height:0;display:block;font-size:17px;line-height:1.2}
-.nm-seg-t b{margin:0;font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:var(--faint)}
+.nm-seg-t b{margin:0;font:500 13px/1.3 "Instrument Sans",sans-serif;color:var(--faint)}
 .nm-col a.nm-seg-a small{flex:0 0 100%;min-height:0;margin-top:4px;font-size:13.5px}
 .nm-col a.nm-seg-a .nm-go{margin:4px 0 0 auto}
 .nm-seg.lit .nm-go,.nm-seg:hover .nm-seg-a .nm-go{opacity:1;transform:none}
@@ -1072,13 +1072,13 @@ html.nav-under .hero{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--na
 .nm-col a.nm-st,.nm-col a.nm-st:hover,.nm-col a.nm-st.lit{display:grid;grid-template-columns:14px 24px minmax(0,1fr) auto 16px;align-items:center;gap:14px;padding:12px 0;background:transparent;box-shadow:none;transition:opacity .35s var(--e1)}
 .nm-col a.nm-st:first-child{padding-left:0}
 .nm-col a.nm-st+a.nm-st{border-left:0;border-top:0}
-.nm-st-n{font:600 12.5px/1 "Switzer",sans-serif;color:var(--faint);font-variant-numeric:tabular-nums;transition:color .25s}
+.nm-st-n{font:600 13px/1 "Switzer",sans-serif;color:var(--faint);font-variant-numeric:tabular-nums;transition:color .25s}
 .nm-col a.nm-st em{min-height:0;font-size:15px;line-height:1.25;transition:color .2s}
 .nm-col a.nm-st .nm-go{margin:0}
 .nm-col a.nm-st:hover .nm-go,.nm-col a.nm-st.lit .nm-go{opacity:1;transform:none}
 .nm-col a.nm-st:hover em,.nm-col a.nm-st.lit em{color:var(--blue-bright)}
 .nm-col a.nm-st:hover .nm-st-n,.nm-col a.nm-st.lit .nm-st-n{color:var(--blue)}
-.nm-st-k{font:500 12px/1 "Instrument Sans",sans-serif;color:var(--faint);white-space:nowrap}
+.nm-st-k{font:500 13px/1 "Instrument Sans",sans-serif;color:var(--faint);white-space:nowrap}
 /* the list answering to a unit */
 .nm-col a.nm-st.carried .nm-st-n,.nm-col a.nm-st.carried i.nm-ict{color:var(--blue)}
 .nm-col a.nm-st.asked em{color:var(--soft)}
@@ -1167,7 +1167,7 @@ html body .close3d footer { background: transparent !important; }   /* the foote
    does, and its routes in one quiet row, with no rule between them */
 .nm-col a.nm-seg-a{padding:14px 18px 6px}
 .nm-seg-sub{border-top:0;margin:0 18px 0 64px;padding:0 0 12px;gap:2px 16px}
-.nm-col .nm-seg-sub a,.nm-seg-sub span{padding:3px 0;font:500 12.5px/1.3 "Instrument Sans",sans-serif;color:var(--soft)}
+.nm-col .nm-seg-sub a,.nm-seg-sub span{padding:3px 0;font:500 13px/1.3 "Instrument Sans",sans-serif;color:var(--soft)}
 .nm-col .nm-seg-sub a:hover{color:var(--blue-bright)}
 .nm-lead[data-hub="careers"] .nm-lead-bg{object-position:50% 88%}
 
@@ -1183,10 +1183,10 @@ html body .close3d footer { background: transparent !important; }   /* the foote
   .nm-col a.nm-seg-a { padding: 16px 18px 8px; }
   .nm-seg-t { display: block; }
   .nm-col a.nm-seg-a em { display: block; font-size: 16.5px; }
-  .nm-seg-t b { display: block; margin-top: 3px; font-size: 12px; line-height: 1.35; }
+  .nm-seg-t b { display: block; margin-top: 3px; font-size: 13px; line-height: 1.35; }
   .nm-col a.nm-seg-a small { display: block; margin-top: 8px; font-size: 13.5px; }
   .nm-seg-sub { margin: 0 18px 0 64px; padding: 2px 0 16px; gap: 6px; }
-  .nm-col .nm-seg-sub a { padding: 5px 9px; background: #F1F3F7; font: 500 12px/1.2 "Instrument Sans", sans-serif; color: var(--soft); }
+  .nm-col .nm-seg-sub a { padding: 5px 9px; background: #F1F3F7; font: 500 13px/1.2 "Instrument Sans", sans-serif; color: var(--soft); }
   .nm-col .nm-seg-sub a::after { content: none; }
   .nm-col .nm-seg-sub a:hover { background: #FDECEA; color: var(--blue-bright); }
   .nm-strip { padding: 24px 30px 24px 26px; }
@@ -1195,7 +1195,7 @@ html body .close3d footer { background: transparent !important; }   /* the foote
 }
 @media (min-width: 861px) {
   .nm-seg-sub { gap: 5px; margin-right: 12px; }
-  .nm-col .nm-seg-sub a { padding: 5px 8px; font-size: 11.5px; }
+  .nm-col .nm-seg-sub a { padding: 5px 8px; font-size: 13px; }
 }
 
 /* ============================================================================
@@ -1277,7 +1277,7 @@ html body .close3d footer { background: transparent !important; }   /* the foote
    name. The margin is zeroed and the indent is the row's own: 30px mark + 14px gap + 2px. */
 .nm-seg-sub { margin: 0; padding: 0 2px 14px 46px; gap: 3px 14px; justify-content: flex-start; border-top: 0; }
 .nm-col .nm-seg-sub a, .nm-seg-sub span {
-  background: none; padding: 0; font: 500 12px/1.35 "Instrument Sans", sans-serif; color: var(--soft);
+  background: none; padding: 0; font: 500 13px/1.35 "Instrument Sans", sans-serif; color: var(--soft);
 }
 .nm-col .nm-seg-sub a { color: var(--soft); }
 .nm-col .nm-seg-sub a:hover { background: none; color: var(--blue-bright); }
@@ -1316,8 +1316,8 @@ html body .close3d footer { background: transparent !important; }   /* the foote
 @media (max-width: 640px) {
   .f-brand .wm span, .us-foot span, .gstat .lab, .hchip span, .hx-cap b, i.hx-kind, .cp-globe-legend span, .cp-chips .lbl,
   .cp-row .c, .cp-row .v, .cp-pk, .sysm-stages .sysm-st span, .sysm-ret span, .pg-ref span, .pg-more-go, .nb-wire-k, .nb-wire-m,
-  .nb-wire-m time, .nb-wire-go, .nb-wire-next li span, .gcert span, .un-pick-k, .pg-note { font-size: 11px !important; }
-  .pg-loop, .fchip, .flabel, details.gdraft summary { font-size: 11.5px !important; }
+  .nb-wire-m time, .nb-wire-go, .nb-wire-next li span, .gcert span, .un-pick-k, .pg-note { font-size: 13px !important; }
+  .pg-loop, .fchip, .flabel, details.gdraft summary { font-size: 13px !important; }
   /* tap targets: 32px is the floor, 40 where the control is the only way to act */
   .pc-save, .sl-save.pc-save { padding: 12px !important; }
   .nb-rail-b { height: 32px !important; }
@@ -1331,7 +1331,7 @@ html body .close3d footer { background: transparent !important; }   /* the foote
    inline links the sweep flagged at 16 to 22px: footer columns, contact lines, the policy files, the culture links.
    Vertical padding on an inline link widens what a thumb can hit without moving the lines around it. */
 @media (max-width: 640px) {
-  .dept-h .n { font-size: 11px !important; }
+  .dept-h .n { font-size: 13px !important; }
   .f-cols a, .f-brand a, .f-nav a, .cx-v, .cx-lines a, .cx-row a, .gcert-file, .cu-link, .nb-wire-next a, .hx-txt a, .cc-pol-a a { padding-top: 8px; padding-bottom: 8px; }
 }
 /* 25 Sep, phone pass, last: the breadcrumb links were 18px tall targets */
@@ -1364,4 +1364,76 @@ h1,h2,h3{font-weight:500!important}   /* every page's own heading rule (unit her
 .nm-ovbar:hover i{transform:translateX(4px)}
 .nm-ovbar:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 @media(max-width:860px){.nm-ovbar{padding:14px 16px}.nm-ovbar span{display:none}}
+
+/* 22 Oct, Polishing walk-through, note 7 (Bazil: "when we hover on the fonts there's a dot that appears. I prefer the font to
+   become just a bit thicker and have the color red instead"): the hover dot is off; the word reads a touch heavier (a
+   hairline text shadow, so the width does not jump) and red, on the light nav and over the hero. */
+.nav-links a::before, .nav-links a:hover::before, .nav.nav-clear .nav-links a::before{ display:none !important; }
+.nav-links a:hover, .nav-links a.here, .nav-links a.here:hover, .nav-has:focus-within > a{ color:#EC2027; text-shadow:.3px 0 0 currentColor; }
+.nav.nav-clear .nav-links a:hover, .nav.nav-clear .nav-links a.here, .nav.nav-clear .nav-has:focus-within > a{ color:#FF5157; text-shadow:.3px 0 0 currentColor; }
+
+/* 22 Oct, Polishing walk-through, note 7 (Bazil, on the dropdown: "are we supposed to have an outline like that?"): the mega
+   panel's edge was the red hairline token (--line2); it is a neutral hairline now, the caret with it, the shadow does the
+   lifting. */
+.nav-mega{ border-color:rgba(12,18,32,.1); }
+.nav-mega::after{ border-left-color:rgba(12,18,32,.1); border-top-color:rgba(12,18,32,.1); }
+/* 22 Oct, note 8 (Bazil: "when I hover on the buttons or on the icon, it doesn't interact with me"): the search and member
+   icons answer in red and lift a pixel, on the light nav and over the hero (where the white rule had outranked the hover);
+   the Start a project button darkens and lifts. */
+.nav-search, .nav-login{ transition:color .25s, transform .25s; }
+.nav-search:hover, .nav-login:hover, .nav.nav-clear .nav-search:hover, .nav.nav-clear .nav-login:hover{ color:#EC2027; transform:translateY(-1px); }
+.nav.nav-clear .nav-search:hover, .nav.nav-clear .nav-login:hover{ color:#FF5157; }
+.nav .cta{ transition:background .25s, transform .25s, box-shadow .25s; }
+.nav .cta:hover{ background:#C8151C; transform:translateY(-1px); box-shadow:0 10px 22px -12px rgba(236,32,39,.6); }
+/* 22 Oct, Polishing walk-through, rule 1 (Bazil, twice: "balance the lines", "same problem, you didn't balance the description"):
+   every lede that runs to more than one line is balanced, site wide. */
+.lede, .head .lede, .pg-lede, .un-lede, .mk-lede{ text-wrap:balance; }
+/* 22 Oct, note 13: the inner banners run up behind the clear bar, as the home hero does (Nav.jsx `overlap`) */
+html.nav-under .ab-hero, html.nav-under .mkb, html.nav-under .un-hero, html.nav-under .cban{ margin-top:calc(-1 * var(--navh,78px)); padding-top:var(--navh,78px); }
+/* 28 Oct (Bazil, on /markets: "why market nav bar like that"): the markets hub opens on PageHead's photo banner, not .mkb,
+   so it stayed under the bar and the clear bar's white links sat on the light page. It runs up behind the bar too, its own
+   top space kept below it (pages.css .pg-head-hero) */
+html.nav-under .mk-hub-head .pg-head-hero{ margin-top:calc(-1 * var(--navh,78px));
+  padding-top:calc(clamp(64px, 9vh, 110px) + var(--navh,78px)); min-height:calc(clamp(340px, 44vh, 520px) + var(--navh,78px)); }
+@media (max-width: 640px){ html.nav-under .mk-hub-head .pg-head-hero{ padding-top:calc(56px + var(--navh,78px)); min-height:calc(clamp(300px, 46vh, 400px) + var(--navh,78px)); } }
+/* 22 Oct, note 9 (Bazil: "make sure you have already designed all the parts here, whether login, logout and everything"):
+   the member popover's secondary actions in sentence case at reading size, no tracking caps (the house: sentence-case
+   actions); the signed-in title without its full stop (rule 8). */
+.nl-tab, .nl-out, .nl-emerg span{ text-transform:none; letter-spacing:0; font-family:"Switzer","Instrument Sans",system-ui,sans-serif; font-size:13.5px; font-weight:600; }
+.nl-out{ font-size:13px; }
+
+/* 22 Oct, Polishing walk-through, the ORPHAN WRAP (Bazil, on a History caption that broke "illustration." onto its own line:
+   "just put everything in a straight line, why do you need even 2 lines", "name this bug and make sure it doesn't happen in
+   any page"): a caption, a label or a one-sentence line runs the full width of what it sits under and wraps pretty, so a
+   line never breaks into a stub of one or two words. Rule 21. */
+figcaption, .hx-cap, .cap, .fig-cap, .pg-cap, .mk-cap, .un-cap, .gr-cap, .lp-cap, .cu-cap, .cr-cap, .ab-cap{ max-width:none !important; width:100%; text-wrap:pretty; }
+.lede, .pg-body, .pg-lede, .hx-body-t, .hx-lede, .un-lede, .mk-lede, .lp-lede, .ig-copy, .ab-awards-p{ text-wrap:pretty; }
+/* 22 Oct, rule 14 settled (Bazil, twice, Tony Robbins' site as the reference: paragraphs 20 px there): the body a step up,
+   16 px (about 18 on screen at the 1.12 zoom), the ledes and the body paragraphs with it, captions and labels at 14. */
+body{ font-size:16px; }
+.lede{ font-size:clamp(17px,1.8vw,19.5px); }
+.pg-body{ font-size:clamp(15.5px,1.6vw,17px); }
+figcaption, .hx-cap, .cap, .fig-cap, .pg-cap{ font-size:14px; }
+/* 22 Oct, Polishing walk-through, notes 18 and 19 (Commitment: "why can't you just put Sustainability and responsibility,
+   and then our commitment", "the description is bad with one long and one short"): a title that breaks before its red
+   phrase (the <br /> the sweep put in) is not boxed to a narrow measure, and no paragraph ends on a stub line. Rule 28. */
+h1:has(> br), h2:has(> br), h3:has(> br){ max-width:none; }
+h1 br + em, h2 br + em, h3 br + em{ display:inline-block; }
+p{ text-wrap:pretty; }
+/* 22 Oct, Polishing walk-through, notes 22 and 23 (Bazil, the markets hub lede and the market cards: "same problem for lines,
+   check every page and fix", "so many have one word in one line"): every paragraph, list line, definition and caption
+   balances its lines, so no line is left with one or two words; long-form article text wraps pretty instead, which keeps
+   the last line whole without reshaping a long column. Rules 21 and 28, site wide. */
+p, li, dd, figcaption, .lede, .pg-body, .pg-lede{ text-wrap:balance; }
+.nf-body p, .ar-body p, .pg-article p{ text-wrap:pretty; }   /* 23 Oct: the exception is for long reads only; "article p" caught every card built as an <article> (contact offices, the six services), and the History entries are short */
+/* 22 Oct, Polishing walk-through, rule 38 (Bazil: "try not to have eyebrows at unnecessary placement"): the eyebrow labels
+   above section titles are off site wide (the page head eyebrow, the section kickers, the statement kicker, the contact
+   kickers). A label that carries a fact (Reading, on the timeline; the stage line under the cycle's name) stays. */
+.eyebrow, .pg-k, .pg-eyebrow, .un-stmt-k, .cx-k, .pg-kick{ display:none !important; }
+
+/* 23 Oct, Polishing sweep of the remaining pages (rules 22 and 23, the rules audit tools/rules-audit-1023.mjs): the card
+   titles and short texts the audit found breaking into a stub line are balanced: project and news card titles, the
+   project page's prompt, office addresses, the energy process cards, the History entries. */
+.nf-card-t, .pg-card h3, .pj-card h3, .prj-card h3, .pd-prompt, .off-addr, .hx-body-t, .mk-gx-c h3, .mk-gx-t{ text-wrap:balance; }
+
 .sitefoot .f-base .f-credit,.f-base .f-credit{flex-basis:100%;order:9;font-size:10.5px;letter-spacing:.02em;opacity:.55;text-transform:none}   /* 27 Oct: the 3D credits, a quiet line under the base row */

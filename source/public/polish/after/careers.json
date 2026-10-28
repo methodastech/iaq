@@ -1,0 +1,190 @@
+{
+ "url": "/careers",
+ "slug": "careers",
+ "title": "IAQ Group \u00b7 Careers \u00b7 Brand Method",
+ "at": "2026-10-27T02:01:05.661Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Build your career with IAQ Group",
+   "tag": "header",
+   "cls": "cu-hero",
+   "top": 84,
+   "height": 623,
+   "text": "Build your career\nwith IAQ Group\nBe part of teams delivering engineering and total facility solutions across complex project environments. Explore opportunities to contribute, learn and grow with a multidisciplinary organisation.\nSee open roles\n1995\nFounded in Malaysia\n450\nPeople\n7\nCountries\n16\nRoles open now",
+   "img": "careers/01-hero.webp",
+   "shownHeight": 623,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -102,
+    "pixels": 0
+   }
+  },
+  {
+   "i": 1,
+   "key": "built-on-engineering-excellence",
+   "heading": "Built on engineering excellence",
+   "tag": "section",
+   "cls": "cu-sec.cu-origin",
+   "top": 707,
+   "height": 530,
+   "text": "1995\nBuilt on engineering excellence\nIr. Tiew Soon Aik founded IAQ in Malaysia in 1995, as a cleanroom specialist. Today it builds in seven countries.\nThe record since 1995\n\u201c\nNone of this would have been possible without the incredible dedication and hard work of our remarkable team.\nIr. Tiew Soon Aik\nFounder and Chief Executive Officer, January 2024\nRead the story",
+   "img": "careers/02-built-on-engineering-excellence.webp",
+   "shownHeight": 530,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 0,
+    "pixels": 1.92
+   },
+   "reason": "fullstop"
+  },
+  {
+   "i": 2,
+   "key": "six-values-on-the-record",
+   "heading": "Six values, on the record",
+   "tag": "section",
+   "cls": "cu-sec.cu-values",
+   "top": 1237,
+   "height": 1303,
+   "text": "Six values,\non the record\nThe values are IAQ\u2019s own words. Beside each one is where the record already shows it.\n1\nSafety commitment\nAn injury free workplace where everybody goes home safe.\n2.6 million safe manhours on the East Malaysia wafer fab expansion.\nISO\n9001\n2\nQuality consistency\nThe skills to bring excellence to your project, managed through an established QMS.\nISO 9001:2015 quality management, certified by Intertek and audited.\n3\nHonesty and integrity\nTransparent communication of accurate information, with openness and sincerity in every interaction.\nA written Whistleblowing Policy, published beside the Quality and Environment, Health and Safety policies.\n4\nEngineering capabilities\nAn experienced multi-disciplinary in-house team, integrating technology and value engineering for advanced hi-tech facilities.\nAn ISO Class 1 cleanroom, the highest class IAQ has built, delivered for a semiconductor client.\n5\nEfficiency and proficiency\nFlexible fast-track execution and contractual approaches, fitted to the client\u2019s needs.\nA green certified plant delivered ahead of schedule, through the pandemic.\n6\nPursuit of excellence\nDelivering on our commitments with the highest degree of engineering excellence.\nBuilder of the Year at the 2024 Malaysian Construction Industry Excellence Awards, by CIDB.",
+   "img": "careers/03-six-values-on-the-record.webp",
+   "shownHeight": 1303,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 58,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 3,
+   "key": "where-engineers-start-and-grow",
+   "heading": "Where engineers start and grow",
+   "tag": "section",
+   "cls": "cu-sec.cu-grow",
+   "top": 2540,
+   "height": 1828,
+   "text": "Where engineers start and grow\nIAQ trains its engineers in house and coaches its leaders. It also takes the work into universities.\nTraining and coaching\nIn-house technical training\nIntroduction to Wafer Fabrication for Design & Construction\nFour modules for the engineering team. They cover fab technology, manufacturing, automation and fab construction design.\nFebruary 2025\nRead the story\nLeadership\nLeader as a Coach, for the Penang team\nThe training set coaching apart from mentoring. Leaders learn to ask the right questions rather than give answers.\nSeptember 2024\nRead the story\nCoaching\nCoaching models, processes and practices\nTeam members joined coaching training programmes. The aim is peers who inspire each other to reach their goals.\nMay 2024\nRead the story\nWith universities\nIAQ signed a strategic collaboration with University of Malaya in May 2025. Its engineers also meet students on campus.\nMay to June 2025\nA strategic collaboration with University of Malaya, then a workshop for its students\nRead the story\nMarch 2025\nUTAR Engineering Science and Fiesta 2025\nMeeting future engineers on campus\nJune 2024\nAsian Physics Olympiad 2024\nIAQ backed the young physicists\nMay 2024\nMATRADE Paris\nTalent development with the trade office in France\nMarch 2024\nUMEnGinE Career Day 2024\nIAQ took part as a sponsor",
+   "img": "careers/04-where-engineers-start-and-grow.webp",
+   "shownHeight": 1828,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 1,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 4,
+   "key": "open-roles-by-department",
+   "heading": "Open roles, by department",
+   "tag": "header",
+   "cls": "head.wrap",
+   "top": 4368,
+   "height": 455,
+   "text": "Open roles,\nby department\nEngineering, project delivery, commercial and finance roles, on facilities that have to work to the micron.\n16\nOPEN ROLES\n2\nHIRING LOCATIONS\n4\nDEPARTMENTS\n450\nPEOPLE",
+   "img": "careers/05-open-roles-by-department.webp",
+   "shownHeight": 455,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 4,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 5,
+   "key": "engineering",
+   "heading": "Engineering",
+   "tag": "section",
+   "cls": "dept",
+   "top": 5058,
+   "height": 613,
+   "text": "Engineering\n8 open\nIAQ-ENG-01\nEngineer, Mechanical\nShah Alam, Selangor\nIAQ-ENG-02\nSenior Engineer, Mechanical\nShah Alam, Selangor\nIAQ-ENG-03\nSenior Engineer, Electrical\nShah Alam, Selangor\nIAQ-ENG-04\nEngineer, Electrical\nShah Alam, Selangor\nIAQ-ENG-05\nEngineer, Process\nSimpang Ampat, Penang\nIAQ-ENG-06\nSenior Engineer, Process\nSimpang Ampat, Penang\nIAQ-ENG-07\nBIM Coordinator\nShah Alam, Selangor\nIAQ-ENG-08\nEngineer, QAQC\nShah Alam, Selangor",
+   "img": "careers/06-engineering.webp",
+   "shownHeight": 613,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 1,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 6,
+   "key": "project",
+   "heading": "Project",
+   "tag": "section",
+   "cls": "dept",
+   "top": 5700,
+   "height": 398,
+   "text": "Project\n5 open\nIAQ-PRJ-01\nManager, Project\nShah Alam, Selangor\nIAQ-PRJ-02\nBIM Modeler\nShah Alam, Selangor\nIAQ-PRJ-03\nManager, Construction\nShah Alam, Selangor\nIAQ-PRJ-04\nSite Safety Supervisor\nShah Alam, Selangor\nIAQ-PRJ-05\nDocument Controller\nShah Alam, Selangor",
+   "img": "careers/07-project.webp",
+   "shownHeight": 398,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 1,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 7,
+   "key": "finance-accounts",
+   "heading": "Finance & Accounts",
+   "tag": "section",
+   "cls": "dept",
+   "top": 6268,
+   "height": 183,
+   "text": "Finance & Accounts\n2 open\nIAQ-FIN-01\nManager, Finance\nShah Alam, Selangor\nIAQ-FIN-02\nSenior Executive, Accounts\nShah Alam, Selangor",
+   "img": "careers/08-finance-accounts.webp",
+   "shownHeight": 183,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 1,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 8,
+   "key": "why-build-your-career-at-iaq",
+   "heading": "Why build your career at IAQ",
+   "tag": "section",
+   "cls": "pg-sec.cr-why",
+   "top": 6574,
+   "height": 533,
+   "text": "Why build your career\nat IAQ\nEngineering & Construction Profession\nBuild your career in the engineering and construction industry, working on diverse and challenging projects.\nCareer and Professional Growth\nOpportunities for career development, training and professional certificates such as PMP, PE and more.\nGlobal Opportunities\nGain international exposures and opportunities to work across different countries, markets and cultures.\nPeople and Cultures\nBe part of a vibrant and inclusive workplace where we celebrate together, give back through CSR and create meaningful connections across global offices.",
+   "img": "careers/09-why-build-your-career-at-iaq.webp",
+   "shownHeight": 533,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 47,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 9,
+   "key": "the-company",
+   "heading": "The Company",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 7108,
+   "height": 1114,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nQuestions clients ask\nStart a project\nFOLLOW\nLinkedIn\nSend a CV\nSixteen roles are open across four departments. For a role that is missing here, send the CV to HR; every application is read.\nCONTACT US\nRECRUITMENT\nrecruit@iaqtechnology.com.my\n\u2192\nNO ROLE FITS\nSend a speculative CV\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "careers/10-the-company.webp",
+   "shownHeight": 1114,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 65,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

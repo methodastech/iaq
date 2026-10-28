@@ -230,6 +230,14 @@ export const PAGES = [
     linksOut: ['article', 'markets-hub', 'about', 'contact'],
   },
   {
+    /* 26 Oct (IAQ review, NR): the Services page's FAQ moved to a page of its own */
+    id: 'faq', group: 'momentum', label: 'Questions clients ask', route: '/faq', icon: 'file', status: 'new',
+    purpose: 'The questions facility owners ask before they engage IAQ, answered.',
+    blocks: ['Header', 'Questions by group', 'Ask the team'],
+    cta: { label: 'Start a project', route: '/contact' },
+    linksOut: ['contact', 'services-hub'],
+  },
+  {
     id: 'article', group: 'momentum', label: 'Article', route: '/news/:slug', icon: 'file', status: 'new', dynamic: true,
     purpose: 'One story, with the market and capability it belongs to linked underneath.',
     blocks: ['Header', 'Body', 'Related market', 'Related projects', 'More articles'],
@@ -300,5 +308,5 @@ export const NAV_PRIMARY = ['about', 'services-hub', 'markets-hub', 'projects', 
    pair reads as one balanced block instead of a ragged third column. */
 export const FOOTER_COLUMNS = [
   { title: 'The Company', pages: ['about', 'esg', 'global-presence', 'careers', 'policies'] },
-  { title: 'What we do', pages: ['services-hub', 'markets-hub', 'projects', 'news', 'contact'] },
+  { title: 'What we do', pages: ['services-hub', 'markets-hub', 'projects', 'news', 'faq', 'contact'] },   /* 26 Oct: FAQ added (IAQ review, NR) */
 ]

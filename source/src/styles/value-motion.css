@@ -18,8 +18,8 @@ span.vm .w08 { stroke-width: .8; } span.vm .w12 { stroke-width: 1.2; } span.vm .
 span.vm .w2 { stroke-width: 2; } span.vm .w22 { stroke-width: 2.2; } span.vm .w3 { stroke-width: 3; } span.vm .w5 { stroke-width: 5; }
 span.vm .dash { stroke-dasharray: 2 2; }
 span.vm [pathLength] { stroke-dasharray: 1; stroke-dashoffset: 0; }
-span.vm .st { font: 600 9.5px/1 "Switzer", sans-serif; letter-spacing: .06em; fill: var(--blue); text-anchor: middle; }
-span.vm .st2 { font: 600 5.6px/1 "Switzer", sans-serif; letter-spacing: .16em; fill: var(--blue); text-anchor: middle; }
+span.vm .st { font: 600 13px/1 "Switzer", sans-serif; letter-spacing:.04em; fill: var(--blue); text-anchor: middle; }
+span.vm .st2 { font: 600 13px/1 "Switzer", sans-serif; letter-spacing:.04em; fill: var(--blue); text-anchor: middle; }
 
 /* resting geometry (the still) */
 .vm-01 .head { transform-box: view-box; transform-origin: 120px 80px; }

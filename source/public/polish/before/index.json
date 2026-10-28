@@ -1,0 +1,204 @@
+{
+ "base": "http://localhost:5177",
+ "at": "2026-10-22T15:33:04.057Z",
+ "pages": [
+  {
+   "url": "/",
+   "slug": "home",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/about",
+   "slug": "about",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/about/history",
+   "slug": "about-history",
+   "sections": 4,
+   "errs": 0
+  },
+  {
+   "url": "/about/commitment",
+   "slug": "about-commitment",
+   "sections": 5,
+   "errs": 0
+  },
+  {
+   "url": "/about/leadership",
+   "slug": "about-leadership",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/about/esg",
+   "slug": "about-esg",
+   "sections": 8,
+   "errs": 0
+  },
+  {
+   "url": "/global-presence",
+   "slug": "global-presence",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/services",
+   "slug": "services",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/services/all",
+   "slug": "services-all",
+   "sections": 14,
+   "errs": 0
+  },
+  {
+   "url": "/services/epc-construction",
+   "slug": "services-epc-construction",
+   "sections": 7,
+   "errs": 0
+  },
+  {
+   "url": "/services/tool-installation",
+   "slug": "services-tool-installation",
+   "sections": 9,
+   "errs": 0
+  },
+  {
+   "url": "/services/energy-management",
+   "slug": "services-energy-management",
+   "sections": 11,
+   "errs": 0
+  },
+  {
+   "url": "/markets",
+   "slug": "markets",
+   "sections": 4,
+   "errs": 0
+  },
+  {
+   "url": "/markets/semiconductor",
+   "slug": "markets-semiconductor",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/markets/data-centre",
+   "slug": "markets-data-centre",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/markets/ev-battery",
+   "slug": "markets-ev-battery",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/markets/photovoltaics",
+   "slug": "markets-photovoltaics",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/markets/district-cooling",
+   "slug": "markets-district-cooling",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/markets/bio-lifescience",
+   "slug": "markets-bio-lifescience",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/markets/food-beverage",
+   "slug": "markets-food-beverage",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/projects",
+   "slug": "projects",
+   "sections": 2,
+   "errs": 0
+  },
+  {
+   "url": "/projects/0",
+   "slug": "projects-0",
+   "sections": 9,
+   "errs": 0
+  },
+  {
+   "url": "/news",
+   "slug": "news",
+   "sections": 4,
+   "errs": 0
+  },
+  {
+   "url": "/news/pdk-kota-raja-community-visit",
+   "slug": "news-pdk-kota-raja-community-visit",
+   "sections": 4,
+   "errs": 0
+  },
+  {
+   "url": "/careers",
+   "slug": "careers",
+   "sections": 11,
+   "errs": 0
+  },
+  {
+   "url": "/contact",
+   "slug": "contact",
+   "sections": 5,
+   "errs": 0
+  },
+  {
+   "url": "/enquiry",
+   "slug": "enquiry",
+   "sections": 2,
+   "errs": 0
+  },
+  {
+   "url": "/investors",
+   "slug": "investors",
+   "sections": 3,
+   "errs": 0
+  },
+  {
+   "url": "/policies",
+   "slug": "policies",
+   "sections": 4,
+   "errs": 0
+  },
+  {
+   "url": "/exhibition",
+   "slug": "exhibition",
+   "sections": 5,
+   "errs": 0
+  },
+  {
+   "url": "/shortlist",
+   "slug": "shortlist",
+   "sections": 3,
+   "errs": 0
+  },
+  {
+   "url": "/semicon",
+   "slug": "semicon",
+   "sections": 6,
+   "errs": 0
+  },
+  {
+   "url": "/booth/screen",
+   "slug": "booth-screen",
+   "sections": 1,
+   "errs": 0
+  }
+ ]
+}

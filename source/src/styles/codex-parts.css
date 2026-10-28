@@ -12,7 +12,7 @@
 .fs-halo{position:absolute;inset:6% 10%;background:radial-gradient(closest-side,rgba(11,143,216,.14),rgba(110,86,230,.06) 60%,transparent 78%);filter:blur(18px)}
 .fs-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
 .fs-now{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.92);padding:8px 12px 8px 8px;font:600 14px/1 "Switzer",sans-serif;color:var(--ink);box-shadow:0 10px 24px -14px rgba(12,18,32,.45)}
-.fs-now i{display:grid;place-items:center;width:24px;height:24px;border-radius:0;background:var(--unit);color:#fff;font-style:normal;font-size:12px}
+.fs-now i{display:grid;place-items:center;width:24px;height:24px;border-radius:0;background:var(--unit);color:#fff;font-style:normal;font-size:13px}
 .fs-ctrl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center}
 .fs-play{display:inline-flex;align-items:center;gap:9px;height:44px;padding:0 16px 0 12px;border:0;background:var(--ink);color:#fff;font:600 13px/1 "Switzer",sans-serif;cursor:pointer;transition:background .2s}
 .fs-play svg{width:18px;height:18px;fill:currentColor}
@@ -31,9 +31,9 @@
 .fs-track input:focus-visible{outline:2px solid var(--unit);outline-offset:2px}
 .fs-steps{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
 .fs-steps button{width:100%;height:100%;display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding:10px 10px 11px;border:0;background:#fff;text-align:left;cursor:pointer;font:inherit;color:var(--ink);box-shadow:0 1px 2px rgba(12,18,32,.05);transition:box-shadow .25s,transform .3s var(--e1)}
-.fs-steps button i{font-style:normal;font:600 12px/1 "Switzer",sans-serif;color:var(--unit-t)}
+.fs-steps button i{font-style:normal;font:600 13px/1 "Switzer",sans-serif;color:var(--unit-t)}
 .fs-steps button span{font:600 13px/1.2 "Switzer",sans-serif;letter-spacing:-.01em}
-.fs-steps button em{font-style:normal;margin-top:auto;font:600 11.5px/1 "Switzer",sans-serif;color:var(--unit-t);background:rgba(11,143,216,.08);padding:4px 7px}
+.fs-steps button em{font-style:normal;margin-top:auto;font:600 13px/1 "Switzer",sans-serif;color:var(--unit-t);background:rgba(11,143,216,.08);padding:4px 7px}
 .fs-steps button:hover{transform:translateY(-2px)}
 .fs-steps button.on{box-shadow:inset 0 0 0 1.5px var(--unit),0 14px 28px -18px rgba(236,32,39,.8)}
 .fs-steps button:focus-visible{outline:2px solid var(--unit);outline-offset:2px}
@@ -44,11 +44,11 @@
 .fs-step small{font:600 13px/1 "Switzer",sans-serif;color:var(--faint)}
 .fs-panel h3{font:600 clamp(22px,2.1vw,30px)/1.1 "Switzer",sans-serif;letter-spacing:-.025em;margin:0}
 .fs-t{font-size:16px;line-height:1.6;color:var(--soft)}
-.fs-lb{display:block;font:600 12px/1 "Switzer",sans-serif;color:var(--faint);margin-bottom:7px}
+.fs-lb{display:block;font:600 13px/1 "Switzer",sans-serif;color:var(--faint);margin-bottom:7px}
 .fs-who{margin-top:auto}
 .fs-unit{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;padding:12px 14px;background:linear-gradient(180deg,#EC2027,#CC121B);color:#fff;font:500 14px/1.3 "Switzer",sans-serif;box-shadow:0 14px 26px -18px rgba(12,18,32,.35)}
 .fs-unit b{font:600 20px/1 "Switzer",sans-serif;letter-spacing:-.02em}
-.fs-unit small{font-size:12.5px;line-height:1.3;color:#FFE3E4}
+.fs-unit small{font-size:13px;line-height:1.3;color:#FFE3E4}
 .fs-unit span{flex-basis:100%}
 .fs-chips i small{font-weight:500;font-size:.88em;opacity:.85}
 .fs-chips{display:flex;flex-wrap:wrap;gap:6px}
@@ -57,14 +57,14 @@
 .fs-chips.s i{background:rgba(236,32,39,.1);color:var(--svc-t)}
 .fs-print{display:none}
 @media(max-width:980px){.fs{grid-template-columns:1fr}.fs-steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:560px){.fs-steps{grid-template-columns:1fr 1fr}.fs-now{font-size:12.5px}}
+@media(max-width:560px){.fs-steps{grid-template-columns:1fr 1fr}.fs-now{font-size:13px}}
 @media(prefers-reduced-motion:reduce){.fs-steps button{transition:none}.fs-steps button:hover{transform:none}}
 @media print{
   .fs{grid-template-columns:1.15fr 1fr;break-inside:avoid;margin-top:3mm;align-items:center}
   .fs-frame{box-shadow:none}
   .fs-now{display:none}
   .fs-ctrl,.fs-steps,.fs-panel{display:none}
-  .fs-print{display:grid;gap:8px;list-style:none;font-size:12.5px;line-height:1.45;color:#48536A}
+  .fs-print{display:grid;gap:8px;list-style:none;font-size:13px;line-height:1.45;color:#48536A}
   .fs-print b{color:#0C1220}.fs-print em{font-style:normal;font-weight:600;color:#C8141D}
 }
 
@@ -95,32 +95,32 @@
 .rx-n.me{background:var(--c);color:#fff}
 .rx-n.me svg,.rx-n.me .rx-no,.rx-n.me small,.rx-n.me i{color:#fff!important}
 .n-s{--c:var(--svc);--c-t:var(--svc-t)}.n-u{--c:var(--unit);--c-t:var(--unit-t)}.n-w{--c:var(--work);--c-t:var(--work-t)}.n-y{--c:var(--sys);--c-t:var(--sys-t)}
-.rx-no{font-style:normal;font:600 12px/1 "Switzer",sans-serif;color:var(--svc-t);min-width:10px}
+.rx-no{font-style:normal;font:600 13px/1 "Switzer",sans-serif;color:var(--svc-t);min-width:10px}
 .rx-s .rx-n span{font:600 13.5px/1.25 "Switzer",sans-serif}
 .rx-u .rx-n{flex-direction:column;align-items:flex-start;gap:6px;padding:14px 16px}
 .rx-u-top{display:flex;align-items:center;justify-content:space-between;width:100%}
 .rx-u-top svg{width:22px;height:22px}
-.rx-u-top i{font-style:normal;font:600 11.5px/1 "Switzer",sans-serif;color:var(--unit-t)}
+.rx-u-top i{font-style:normal;font:600 13px/1 "Switzer",sans-serif;color:var(--unit-t)}
 .rx-u .rx-n b{font:600 16px/1.2 "Switzer",sans-serif;letter-spacing:-.015em}
-.rx-u-full{font-size:12px;line-height:1.3;color:#66708A;margin-top:-3px}
+.rx-u-full{font-size:13px;line-height:1.3;color:#66708A;margin-top:-3px}
 .rx-n.me .rx-u-full{color:#FFE3E4!important}
 .rx-u-line{font-size:13px;color:#48536A}
 .rx-n.me .rx-u-line{color:#FFE3E4}
 .rx-models{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
-.rx-models em{font-style:normal;font:600 11.5px/1 "Switzer",sans-serif;padding:5px 8px;border-radius:99px;background:#fff;color:#0C1220;box-shadow:inset 0 0 0 1.2px #0C1220}
+.rx-models em{font-style:normal;font:600 13px/1 "Switzer",sans-serif;padding:5px 8px;border-radius:99px;background:#fff;color:#0C1220;box-shadow:inset 0 0 0 1.2px #0C1220}
 .rx-w .rx-n span{display:flex;flex-direction:column;gap:3px}
 .rx-w .rx-n b{font:600 15px/1.15 "Switzer",sans-serif}
-.rx-w .rx-n small{font-size:12px;line-height:1.3;color:#66708A}
+.rx-w .rx-n small{font-size:13px;line-height:1.3;color:#66708A}
 .rx-y{gap:5px}
-.rx-y .rx-n{padding:7px 10px;font:500 12.5px/1.25 "Switzer",sans-serif}
+.rx-y .rx-n{padding:7px 10px;font:500 13px/1.25 "Switzer",sans-serif}
 .rx-y .rx-n::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--sys);flex:none}
 .rx-n.me::before{background:#fff;box-shadow:none}
 .rx-read{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;background:#F3F6FB;padding:14px 18px;min-height:64px}
 .rx-read p{font-size:15px;line-height:1.55;color:#48536A;max-width:90ch}
 .rx-read p b{font-family:"Switzer",sans-serif;font-weight:600;color:var(--c-t)}
 .rx-hint{color:#66708A!important}
-.rx-gl{flex-basis:100%;font-size:12.5px!important;line-height:1.5!important;color:#66708A!important;max-width:none!important}
-.rx-key{display:flex;align-items:center;gap:8px;font:500 12px/1 "Switzer",sans-serif;color:#66708A;white-space:nowrap}
+.rx-gl{flex-basis:100%;font-size:13px!important;line-height:1.5!important;color:#66708A!important;max-width:none!important}
+.rx-key{display:flex;align-items:center;gap:8px;font:500 13px/1 "Switzer",sans-serif;color:#66708A;white-space:nowrap}
 .rx-key i{display:inline-block;width:22px;height:0;border-top:2px solid #66708A}
 .rx-key i.dash{border-top-style:dashed;margin-left:8px}
 @media(max-width:980px){
@@ -168,15 +168,15 @@
 .wt-btn svg{width:24px;height:24px;fill:#fff;margin-left:3px}
 .wt-play:hover .wt-btn{background:#C4141B}
 .wt-play:focus-visible{outline:3px solid #EC2027;outline-offset:-3px}
-.wt-dur{position:absolute;right:8px;bottom:8px;background:rgba(12,18,32,.85);color:#fff;font:600 12px/1 "Switzer",sans-serif;padding:5px 7px}
+.wt-dur{position:absolute;right:8px;bottom:8px;background:rgba(12,18,32,.85);color:#fff;font:600 13px/1 "Switzer",sans-serif;padding:5px 7px}
 .wt-txt{display:flex;flex-direction:column;gap:6px;padding:14px 16px 16px;flex:1}
-.wt-topic{font:600 12.5px/1.2 "Switzer",sans-serif;color:#C8141D}
+.wt-topic{font:600 13px/1.2 "Switzer",sans-serif;color:#C8141D}
 .wt-txt h4{margin:0;font:600 16px/1.3 "Switzer",sans-serif;letter-spacing:-.01em;color:#0C1220}
 .wt-txt p{margin:0;font-size:14px;line-height:1.5;color:#48536A;flex:1}
 .wt-src{font:600 13px/1.2 "Switzer",sans-serif;color:#0772AE;text-decoration:none}
 .wt-src:hover{text-decoration:underline}
 .wt-print{display:none}
-@media print{.wt-grid{display:none}.wt-print{display:block;margin:10px 0 0;padding-left:18px;font-size:11px;line-height:1.5;color:#333}.wt{break-inside:avoid}}
+@media print{.wt-grid{display:none}.wt-print{display:block;margin:10px 0 0;padding-left:18px;font-size:13px;line-height:1.5;color:#333}.wt{break-inside:avoid}}
 
 /* 24 Sep (Bazil: "I need visual representing this", then "not in the diagram"): the nodes stay clean; the services keep
    their isometric marks in a disc, the systems an icon each. The picture of the picked thing sits in the reading panel. */
@@ -189,7 +189,7 @@
 .rx-vis img{display:block;width:100%;height:112px;object-fit:cover;background:#fff;filter:saturate(.85)}
 .rx-vis-mk{display:grid;place-items:center;width:100%;height:112px;background:#fff}
 .rx-vis-mk svg{width:84px;height:84px}
-.rx-vis figcaption{font:500 11.5px/1.2 "Switzer",sans-serif;color:#66708A}
+.rx-vis figcaption{font:500 13px/1.2 "Switzer",sans-serif;color:#66708A}
 .rx-read p{flex:1 1 320px}
 @media(max-width:640px){.rx-vis{width:100%}.rx-vis img,.rx-vis-mk{height:140px}}
 @media print{.rx-vis{display:none}}
@@ -198,3 +198,9 @@
    swapped in place; this note is the record. */
 /* 26 Sep: the unit-page anatomy's "why owners choose it" part */
 .sm3-ap-why{display:grid;gap:6px}
+
+/* 23 Oct, the type floor (rule 14): the chip notes on the SEMICON page's fab stack were .8em, under 13 px */
+.fs-chips small, .fs-row small{ font-size:13px; }
+
+/* 23 Oct, later: the chip note's own em rule outranked the floor; said with its own weight */
+.fs-chips i small, .fs-row i small, .fs-chips.w > i > small{ font-size:13px !important; }

@@ -27,7 +27,7 @@ import '../styles/semicon.css'
    ============================================================================ */
 
 const SVC_ROUTE = { design: '/services/all#design', procure: '/services/all#procurement', construct: '/services/all#construction', commission: '/services/all#commissioning', maintain: '/services/all#maintenance', hookup: '/services/tool-installation' }
-const UNIT_LINE = { epc: 'Builds the facility, under one contract.', hookup: 'Re-equips a live fab: the process utilities, and every tool connected.', efm: 'Runs and maintains it, and cuts the energy bill.' }
+const UNIT_LINE = { epc: 'Builds the facility.',   /* 27 Oct: "under one contract" off (IAQ, 24 Sep) */ hookup: 'Re-equips a live fab: the process utilities, and every tool connected.', efm: 'Runs and maintains it, and cuts the energy bill.' }
 const MEET = { service: 'Not sure yet', message: 'We would like to meet the IAQ team at SEMICON Europa in Munich (10 to 13 November 2026). The project, and the days that suit us: ' }
 
 /* a calendar entry for the four days, made in the browser */
@@ -54,7 +54,7 @@ export default function Semicon() {
         <div className="pg-in sm-hero-in">
           <div className="sm-hero-copy">
             <p className="sm-kick">SEMICON Europa 2026 · Munich</p>
-            <h1>{h1},<br /><em>{h2}</em></h1>
+            <h1>{h1},<br /><em>{h2.replace(/\.$/, '')}</em></h1>{/* 23 Oct, rule 4: no full stop at a title; the booth art keeps the printed line */}
             <p className="sm-lede">IAQ designs, builds and commissions cleanrooms and the whole hi-tech facility around them, then hooks up the tools inside. Meet the IAQ team on the stand in Munich.</p>
             <dl className="sm-facts">
               <div><dt><Icon name="calendar" /></dt><dd><b>10 to 13 November 2026</b><span>Tuesday to Friday</span></dd></div>
@@ -75,7 +75,7 @@ export default function Semicon() {
       <section className="sm-sec sm-story">
         <div className="pg-in">
           <div className="sm-h">
-            <h2>A fab, built <em>layer by layer.</em></h2>
+            <h2>A fab, built <em>layer by layer</em></h2>
             <p>IAQ’s own model of a fab, from the piles to the running plant. Play it, or drag through it: each moment says what is being built and which IAQ unit builds it.</p>
           </div>
           <div className="cx3 sm-fs"><FabStory /></div>
@@ -85,8 +85,8 @@ export default function Semicon() {
       <section className="sm-sec">
         <div className="pg-in">
           <div className="sm-h">
-            <h2>Three units, <em>one accountable team.</em></h2>
-            <p>Bought together or one at a time, under one contract.</p>
+            <h2>Three units, <br /><em>one accountable team</em></h2>
+            <p>Bought together or one at a time.</p>{/* 27 Oct: "under one contract" off (IAQ, 24 Sep) */}
           </div>
           <div className="sm-units">
             {UNITS.map(u => (
@@ -105,7 +105,7 @@ export default function Semicon() {
       <section className="sm-sec sm-svc">
         <div className="pg-in">
           <div className="sm-h">
-            <h2>Six services, <em>from the first drawing.</em></h2>
+            <h2>Six services, <br /><em>from the first drawing</em></h2>
             <p>The full cycle, so one team answers for the facility working as intended.</p>
           </div>
           <ol className="sm-svcs">
@@ -126,7 +126,7 @@ export default function Semicon() {
       <section className="sm-sec sm-eu">
         <div className="pg-in sm-eu-in">
           <div>
-            <h2>In Europe, <em>a team in Dresden.</em></h2>
+            <h2>In Europe, <br /><em>a team in Dresden</em></h2>
             <p className="sm-p">Offices in seven countries. In Germany, IAQ Engineering (DE) GmbH works from Dresden, a short trip from Munich and from Europe’s growing chip cluster.</p>
             <div className="sm-office">
               <b>IAQ Engineering (DE) GmbH</b>

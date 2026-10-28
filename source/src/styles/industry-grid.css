@@ -59,8 +59,8 @@
   text-decoration: none;
   white-space: nowrap;
   font-family: var(--label);
-  font-size: 11px;
-  letter-spacing: .1em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   font-weight:600;
   transition: background-color .3s var(--e1), transform .3s var(--e1);
@@ -105,8 +105,8 @@
   padding: 0 var(--gut);
   margin-bottom: clamp(28px, 3.4vw, 44px);
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .22em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   font-weight:600;
   color: var(--faint);
@@ -170,8 +170,8 @@
   opacity: 0;
   transition: opacity .4s var(--e1);
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .14em;
+  font-size: 13px;
+  letter-spacing:.04em;
   font-weight:600;
   color: rgba(255, 255, 255, .55);
   pointer-events: none;
@@ -347,7 +347,7 @@
   white-space: nowrap;
   /* buttons are Switzer site-wide (see .cta in base.css); this was the last mono one */
   font-family: "Switzer", "Instrument Sans", system-ui, sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: .01em;
   text-transform: none;
   font-weight: 600;
@@ -377,7 +377,7 @@
    width the accordion leaves it — about 8px in a 68px collapsed card, 11px capped when open. */
 .ig-card { container-type: inline-size; container-name: igcard; }
 @container igcard (min-width: 1px) {
-  .ig-title { font-size: clamp(10.5px, 13cqw, 13.5px); letter-spacing: -.01em; }
+  .ig-title { font-size: clamp(13px, 13cqw, 13.5px); letter-spacing: -.01em; }
 }
 
 /* seven panels across a smaller desktop leave each one narrow, and the longest label
@@ -392,7 +392,7 @@
   .ig-ic { width: 26px; height: 26px; }
 }
 @container igrow (max-width: 1150px) {
-  .ig-title { font-size: 12px; letter-spacing: -.008em; }
+  .ig-title { font-size: 13px; letter-spacing: -.008em; }
 }
 
 /* ---- tablet: wrap into rows, no accordion (the stretch needs room) ---- */
@@ -650,3 +650,8 @@
   .ig-card.is-vready:hover .ig-vid, .ig-card.is-vready:focus-within .ig-vid { transform: none; }
 }
 .ig-card .ig-vid { filter: contrast(1.06) saturate(1.06); }
+
+/* 22 Oct, Polishing walk-through, note 4 (Bazil, on the markets lede: "you put how at the top, it's really bad ... put at the
+   bottom how IAQ instead, so the fullness of each line makes sense"): the dark lead line stands on its own line, so the
+   second line begins with how IAQ builds it, a whole thought each. */
+.ig-copy .lead{ display:block; }

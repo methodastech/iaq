@@ -1,0 +1,81 @@
+{
+ "url": "/markets/food-beverage",
+ "slug": "markets-food-beverage",
+ "title": "IAQ Group · Food & Beverage · Brand Method",
+ "at": "2026-10-22T15:31:43.828Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Food & Beverage",
+   "tag": "header",
+   "cls": "pg-head",
+   "top": 84,
+   "height": 403,
+   "text": "Food & Beverage\nSupporting Safe and Reliable Production Environments",
+   "img": "markets-food-beverage/01-hero.webp",
+   "shownHeight": 403
+  },
+  {
+   "i": 1,
+   "key": "industry-overview",
+   "heading": "Industry Overview",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 487,
+   "height": 895,
+   "text": "Industry Overview\nFood and beverage manufacturing facilities must balance production efficiency, product quality and operational reliability while meeting stringent hygiene and safety requirements. As consumer expectations, sustainability priorities and production demands continue to evolve, organisations require manufacturing environments that support consistent operations, supply chain resilience and long-term growth.\nIAQ Key Capabilities\n1\nManufacturing facilities\n2\nUtility Infrastructure\n3\nProcess Environments\n4\nEnergy Management\n5\nEPC Delivery",
+   "img": "markets-food-beverage/02-industry-overview.webp",
+   "shownHeight": 895
+  },
+  {
+   "i": 2,
+   "key": "why-operational-continuity-matters",
+   "heading": "Why Operational Continuity Matters",
+   "tag": "section",
+   "cls": "pg-sec.calm",
+   "top": 1382,
+   "height": 294,
+   "text": "Why Operational Continuity Matters\nFood and beverage production relies on reliable infrastructure that supports product quality, efficiency and uninterrupted operations.",
+   "img": "markets-food-beverage/03-why-operational-continuity-matters.webp",
+   "shownHeight": 294
+  },
+  {
+   "i": 3,
+   "key": "mk-band",
+   "heading": "",
+   "tag": "section",
+   "cls": "mk-band",
+   "top": 1677,
+   "height": 617,
+   "text": "",
+   "img": "markets-food-beverage/04-mk-band.webp",
+   "shownHeight": 617
+  },
+  {
+   "i": 4,
+   "key": "delivered-in-this-market",
+   "heading": "Delivered in this market",
+   "tag": "section",
+   "cls": "pg-sec.calm",
+   "top": 2294,
+   "height": 638,
+   "text": "Delivered in this market\nPublished food and beverage work from the sample registry, both flavour manufacturing plants.\nPRJ · 014\nHYGIENIC\nFlavour manufacturing plant\nFlavour manufacturer · Malaysia\nCLEANROOM\nPRJ · 015\nHYGIENIC\nFlavour manufacturing plant\nFlavour manufacturer · Malaysia\nCLEANROOM",
+   "img": "markets-food-beverage/05-delivered-in-this-market.webp",
+   "shownHeight": 638
+  },
+  {
+   "i": 5,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 2932,
+   "height": 1212,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building.\nFeasibility to handover, one accountable team.\nStart a project\n→\nEMAIL\nbusiness@iaqtechnology.com.my\n→\nPHONE\n+603 5124 8319\n→\nHQ · SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n→\n© 2026 IAQ GROUP · IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) · ISO 9001 / 14001 / 45001 · CIDB G7\nPROTOTYPE · BRAND METHOD\nBACK TO TOP ↑",
+   "img": "markets-food-beverage/06-follow.webp",
+   "shownHeight": 1212
+  }
+ ],
+ "errs": []
+}

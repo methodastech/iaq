@@ -1,0 +1,462 @@
+/* 29 Sep night: the whole tab, structure and clarity pass (note 8): static sections, website sections, In use.
+   Scope: mark, colour, type, icons, photography, illustration, direction, voice, websections, components, ui, data, motion,
+   a11y, inuse, provenance, tokens. Every section reads the same way: the heading, one line of intent, the rule as a Do and
+   Don't pair, then the examples; long developer detail sits under a "Technical notes" disclosure. New classes: ps29-.
+   IAQ rules held here: no grey or black lines (space and tint blocks hold rows apart), no outlined boxes or pills, sentence
+   case labels (no tracked capitals), square corners, no numbering, field red #C8161D for large red areas. */
+
+/* ------------------------------------------------------------------ shared pieces */
+.ps29-h{margin-top:clamp(56px,5vw,76px);font-size:clamp(19px,1.7vw,23px);letter-spacing:-.015em}
+.ps29-h + .note,.ps29-h + p{margin-top:10px}
+.ps29-sub{margin-top:28px;font:600 15px/1.3 "Switzer",sans-serif;letter-spacing:-.01em;color:var(--ink)}
+
+/* the technical notes disclosure: a white slim box, square, the plus drawn in CSS (no icon in a box) */
+details.ps29-tech{margin-top:40px}
+details.ps29-tech>summary{list-style:none;display:inline-flex;align-items:center;gap:12px;cursor:pointer;padding:.72em 1.1em .74em;
+  background:#fff;font:600 14px/1 "Switzer",sans-serif;color:var(--ink);user-select:none}
+details.ps29-tech>summary::-webkit-details-marker{display:none}
+details.ps29-tech>summary::after{content:"";width:11px;height:11px;flex:none;
+  background:linear-gradient(currentColor,currentColor) center/11px 1.6px no-repeat,linear-gradient(currentColor,currentColor) center/1.6px 11px no-repeat}
+details.ps29-tech[open]>summary::after{background:linear-gradient(currentColor,currentColor) center/11px 1.6px no-repeat}
+details.ps29-tech>summary:hover{background:#231F20;color:#fff}
+details.ps29-tech>summary:focus-visible{outline:2px solid #EC2027;outline-offset:2px}
+.ps29-tech-in{margin-top:20px;max-width:80ch;display:grid;gap:12px}
+.ps29-tech-in p{font-size:14px;line-height:1.62;color:var(--soft)}
+.ps29-tech-in p b{color:var(--ink);font-weight:600}
+.ps29-tech-in code{font-family:"Switzer",sans-serif;font-size:12.5px;color:var(--red-deep)}
+details.ps29-tech .ps29-tech-wide{max-width:none}
+
+/* a fact list: label then sentence, rows held apart by space and alternate tint (no line per row) */
+.ps29-facts{list-style:none;margin:24px 0 0;padding:0;display:grid;max-width:980px}
+.ps29-facts li{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:18px;padding:11px 16px;font-size:14px;line-height:1.55;color:var(--soft)}
+.ps29-facts li:nth-child(odd){background:#fff}
+.ps29-facts li b{font:600 14px/1.45 "Switzer",sans-serif;color:var(--ink)}
+.ps29-facts li span{min-width:0}
+@media(max-width:640px){.ps29-facts li{grid-template-columns:1fr;gap:3px;padding:11px 14px}}
+
+/* ------------------------------------------------------------------ Colour on screen */
+#colour .sw figure{border:0}
+#colour .sw code{text-transform:none;letter-spacing:0}
+#colour .sw small code{display:inline;margin:0;font-size:12px;color:var(--red-deep)}
+.ps29-reds{margin-top:22px}
+.ps29-rp{padding:0!important;min-height:0!important;place-items:stretch!important;background:#F4F5F7;container-type:inline-size}
+.ps29-rw,.ps29-rf{aspect-ratio:4/3;display:grid;align-content:start;justify-items:start;gap:6cqw;padding:9cqw}
+.ps29-rw{background:#fff}
+.ps29-rw img,.ps29-rf img{width:36cqw;height:auto;display:block}
+.ps29-rw b,.ps29-rf b{font:600 max(12px,6.6cqw)/1.1 "Switzer",sans-serif;letter-spacing:-.02em;max-width:74cqw;color:var(--ink)}
+.ps29-rf{background:#C8161D;color:#fff}
+.ps29-rf b{color:#fff}
+.ps29-rf small{font:400 max(10px,3.6cqw)/1.45 "Instrument Sans",sans-serif;color:#fff;max-width:70cqw;margin-top:-3cqw}
+.ps29-rb{background:#EC2027}
+.ps29-l1{display:block;width:100%;height:max(2px,.7cqw);background:#EC2027}
+.ps29-btn{display:inline-flex;align-items:center;padding:.62em 1.05em .64em;background:#EC2326;color:#fff;font:600 14px/1 "Switzer",sans-serif;white-space:nowrap}
+.ps29-rw .ps29-btn{font-size:max(10px,4.2cqw);background:#EC2027}
+.ps29-rw b{margin-top:-2cqw}
+.ps29-rw .ps29-btn{margin-top:-2cqw}
+
+/* contrast of white words on the two reds: two bars on one scale, AA shaded from 4.5 (a tint zone, no vertical rule) */
+.ps29-cr{position:relative;margin-top:26px;max-width:980px;background:#fff;padding:22px 24px 20px;display:grid;gap:14px}
+.ps29-cr-aa{position:absolute;top:0;bottom:0;right:calc(24px + 210px + 18px);left:calc(24px + 190px + 18px + (100% - 48px - 190px - 18px - 210px - 18px) * 4.5 / 7);background:rgba(11,132,82,.07);pointer-events:none}
+.ps29-cr-aa span{position:absolute;left:10px;bottom:9px;font:500 11.5px/1.2 "Switzer",sans-serif;color:#0B8452;white-space:nowrap}
+.ps29-cr-r{position:relative;display:grid;grid-template-columns:190px minmax(0,1fr) 210px;gap:18px;align-items:center}
+.ps29-cr-r b{font:600 13.5px/1.3 "Switzer",sans-serif;color:var(--ink)}
+.ps29-cr-bar{display:block;height:22px;background:transparent}
+.ps29-cr-bar i{display:block;height:100%}
+.ps29-cr-r em{font:500 13px/1.35 "Switzer",sans-serif;color:var(--soft);font-style:normal}
+.ps29-cr{padding-bottom:40px}
+@media(max-width:760px){
+  .ps29-cr-r{grid-template-columns:1fr;gap:6px}
+  .ps29-cr-aa{left:calc(24px + (100% - 48px) * 4.5 / 7)}
+}
+
+/* the model's system colours: filled chips in their own colour, sentence case, no outline */
+.ps29-sys{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:18px;max-width:980px}
+.ps29-sys span{display:flex;align-items:flex-end;min-height:64px;padding:10px 12px;background:var(--c);color:var(--t,#231F20);font:600 13.5px/1.25 "Switzer",sans-serif}
+@media(max-width:640px){.ps29-sys{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ------------------------------------------------------------------ Photography */
+.ps29-php{padding:0!important;min-height:0!important;place-items:stretch!important;background:#fff}
+.ps29-phx{position:relative;aspect-ratio:16/10;overflow:hidden}
+.ps29-phx img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* the words on a photograph: a white block flush to the top left corner, no gap, square */
+.ps29-blk{position:absolute;left:0;top:0;z-index:2;display:grid;gap:4px;padding:.72em 1.05em .8em;background:#fff;max-width:78%}
+.ps29-blk b{font:600 14px/1.2 "Switzer",sans-serif;color:var(--ink);letter-spacing:-.01em}
+.ps29-blk small{font:400 12px/1.3 "Instrument Sans",sans-serif;color:var(--soft)}
+.ps29-scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,16,31,.86) 0%,rgba(10,16,31,0) 66%)}
+.ps29-onimg{position:absolute;left:16px;bottom:14px;z-index:2;font:600 16px/1.2 "Switzer",sans-serif;color:#fff}
+#photography .be-grid{margin-top:28px}
+/* the Do and Don't flags move to the top right here, so the block keeps the top left corner it is about */
+.ps29-ph .be-plate::before,.ps29-flagr .be-plate::before{left:auto!important;right:0!important;justify-self:end!important}
+
+/* ------------------------------------------------------------------ In use (note 11: every mockup reviewed) */
+/* website: words beside the photograph, the one long red line under the head and over the figures, marks on the services */
+#inuse#inuse .ps29-iu-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;align-items:center;padding:30px 22px 26px}
+#inuse#inuse .ps29-iu-hero-t{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+#inuse#inuse .ps29-iu-ph{display:block;height:236px;overflow:hidden;background:#E9ECF1}
+#inuse#inuse .ps29-iu-ph img{display:block;width:100%;height:100%;object-fit:cover}
+#inuse#inuse .iu-ledger{padding:0!important;margin:0 22px;border-top:1.5px solid #EC2027}
+#inuse#inuse .iu-ledger > div{border:0!important;padding:14px 0 12px}
+#inuse#inuse .ps29-iu-mk{display:block;width:34px;height:34px;margin:0 0 6px -2px}
+#inuse#inuse .iu-cards{padding-top:18px}
+/* app: the progress track is a pale red, not a grey line; the live row carries a filled chip; labels one step larger */
+#inuse#inuse .iu-prog{background:rgba(236,35,38,.16)}
+#inuse#inuse .ps29-iu-live{align-self:center;font-size:8.5px;padding:4px 7px}
+#inuse#inuse .iu-stat i,#inuse#inuse .iu-spec i{font-size:8.5px;color:#6B7486}
+#inuse#inuse .iu-list small{color:#6B7486}
+/* print: one sheet of equal cells, each piece standing on its row's baseline, the roll up across two rows */
+#inuse#inuse .ps29-iu-print{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,.86fr);grid-auto-rows:auto;gap:34px 26px;align-items:stretch;max-width:1180px;margin-top:22px}
+#inuse#inuse .ps29-iu-print>figure{display:flex;flex-direction:column;justify-content:flex-end;gap:10px;min-width:0}
+#inuse#inuse .ps29-iu-print>figure>div{flex:none}
+#inuse#inuse .ps29-iu-print .iu-a4-in{width:212px;max-width:100%}
+#inuse#inuse .ps29-iu-print .iu-card-in{width:262px;max-width:100%}
+#inuse#inuse .ps29-iu-print .iu-sign-in{width:262px;max-width:100%}
+#inuse#inuse .ps29-iu-print .iu-tile-in{width:224px;max-width:100%}
+#inuse#inuse .ps29-iu-print .iu-banner{grid-column:4;grid-row:1 / span 2}
+#inuse#inuse .ps29-iu-print .iu-banner-in{width:100%;max-width:236px}
+#inuse#inuse .ps29-iu-print .ps29-iu-cap{margin:0;align-self:end;max-width:34ch}
+#inuse#inuse .ps29-iu-a4t{max-width:none;white-space:nowrap;font-size:15px;margin-top:6px}
+/* the site sign is a large red area: field red, the words at sign size */
+#inuse#inuse .iu-sign-in{background:#C8161D;padding:16px 18px}
+#inuse#inuse .iu-sign-in b{font:600 17px/1.1 "Switzer",sans-serif;letter-spacing:-.01em}
+#inuse#inuse .iu-sign-in .iu-arw{width:22px;height:22px}
+/* the roll up: logo across the top, the claim, one wide photograph to the line above the foot */
+#inuse#inuse .ps29-iu-ru{gap:12px;padding:18px 16px 12px}
+#inuse#inuse .ps29-iu-ru-logo{height:auto!important;width:64%;max-width:none;align-self:flex-start}
+#inuse#inuse .ps29-iu-ru b{font-size:14px;line-height:1.18;margin-top:2px}
+#inuse#inuse .ps29-iu-ru-ph{display:block;flex:1;min-height:0;margin:4px -16px 0;overflow:hidden;background:#E9ECF1}
+#inuse#inuse .ps29-iu-ru-ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+#inuse#inuse .ps29-iu-ru .iu-banner-foot{font-size:8px}
+@media(max-width:1100px){
+  #inuse#inuse .ps29-iu-print{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #inuse#inuse .ps29-iu-print .iu-banner{grid-column:auto;grid-row:auto}
+  #inuse#inuse .ps29-iu-print .iu-banner-in{max-width:200px}
+}
+@media(max-width:560px){
+  #inuse#inuse .ps29-iu-print{grid-template-columns:minmax(0,1fr)}
+  #inuse#inuse .ps29-iu-hero{grid-template-columns:1fr}
+  #inuse#inuse .ps29-iu-ph{height:180px}
+}
+/* captions take two lines everywhere in the sheet, so the pieces of one row stand on one baseline */
+#inuse#inuse .ps29-iu-print>figure>figcaption{min-height:3em}
+
+/* ------------------------------------------------------------------ The mark */
+#mark .mk{border:0;gap:16px}
+#mark .mk figure{border:0;background:#fff}
+#mark .mk figcaption{border-top:0}
+#mark .mk .plate.gd{background:#231F20}
+#mark .ps29-facts em{color:var(--red-deep)}
+
+/* ------------------------------------------------------------------ Type */
+#type .tsc-fam,#type .tsc-lad,#type .tsc-fl{border-top:0}
+#type .tsc-fam>div{background:#fff;padding:20px 22px 22px}
+#type#type .tsc-row{border-bottom:0;padding:34px 24px!important;gap:40px!important}
+#type .tsc-row:nth-child(odd){background:#fff}
+#type .tsc-k{text-transform:none;letter-spacing:0;font:600 13.5px/1.3 "Switzer",sans-serif;color:var(--ink)}
+#type .tsc-btn{text-transform:none;letter-spacing:-.006em;font-size:14.5px;height:44px;padding:0 22px;background:#EC2326}
+#type .tsc-eyeb,#type .tsc-lbl{text-transform:none;letter-spacing:0;font:600 12.5px/1.3 "Switzer",sans-serif}
+#type .tsc-eyeb{color:var(--red-deep)}#type .tsc-eyeb::before{display:none}
+#type .tsc-lbl{color:var(--soft)}
+#type .tsc-tag{text-transform:none;letter-spacing:0;border:0;background:rgba(23,33,58,.07);color:var(--soft);font:500 12px/1 "Switzer",sans-serif;padding:6px 9px}
+#type .tsc-pin{text-transform:none;letter-spacing:0;font:600 12px/1.2 "Switzer",sans-serif}
+#type .tsc-n5{letter-spacing:0;font-weight:600}
+#type .tsc-flr{border-bottom:0;padding:11px 16px}
+#type .tsc-flr:nth-child(even){background:#fff}
+#type .tsc-flr:first-child{padding-bottom:6px}
+#type .tsc-flr>span.tsc-k{font:600 12.5px/1.3 "Switzer",sans-serif;color:var(--ink)}
+#type .tsc-flr>span.tsc-up{padding-left:0}
+#type .tsc-flr>span.tsc-up::before{display:none}
+#type .tsc-pull{border-left:0!important}
+/* measure, drawn: every cap as a bar on one scale (82ch the full width) */
+.ps29-meas{margin-top:22px;display:grid;gap:6px;max-width:1060px}
+.ps29-meas>div{display:grid;grid-template-columns:150px minmax(0,1fr) 92px minmax(0,190px);gap:16px;align-items:center;padding:8px 14px;background:#fff}
+.ps29-meas b{font:600 13.5px/1.3 "Switzer",sans-serif;color:var(--ink)}
+.ps29-meas em{font:600 14px/1 "Switzer",sans-serif;font-style:normal;color:var(--ink);font-variant-numeric:tabular-nums}
+.ps29-meas code{font-size:12px!important;line-height:1.35}
+.ps29-meas-bar{display:block;height:14px;position:relative;background:#F1F2F4}
+.ps29-meas-bar i{position:absolute;left:0;top:0;bottom:0;width:calc(var(--ch) / 82 * 100%);background:#231F20}
+.ps29-meas-bar i[style*="--from"]{background:linear-gradient(90deg,#231F20 0 calc(var(--from) / var(--ch) * 100%),#8A8F98 calc(var(--from) / var(--ch) * 100%))}
+@media(max-width:760px){.ps29-meas>div{grid-template-columns:minmax(0,1fr) auto;row-gap:6px}.ps29-meas-bar{grid-column:1 / -1;grid-row:2}.ps29-meas code{grid-column:1 / -1}}
+
+/* ------------------------------------------------------------------ Icons */
+#icons .ilx-grid-sc figcaption{margin-top:6px;font:600 14px/1.3 "Switzer",sans-serif;color:#fff}
+#icons .ilx-grid-sc .mm-cap{font:500 12px/1.35 "Switzer",sans-serif;opacity:.8}
+
+/* ------------------------------------------------------------------ Illustration */
+#illustration .ps29-two{margin-top:18px}
+#illustration .two div,#illustration .rules div{border-top:0;background:#fff;padding:16px 18px 18px}
+#illustration .two b,#illustration .rules b{text-transform:none;letter-spacing:0;font:600 14px/1.3 "Switzer",sans-serif;color:var(--ink)}
+#illustration .two span{font-size:14px;color:var(--soft)}
+#illustration .rules{gap:8px}
+#illustration .rules span{font-size:13.5px;color:var(--soft)}
+#illustration .glcap{border-top:0;text-transform:none;letter-spacing:0;font:500 13px/1.45 "Switzer",sans-serif;color:var(--soft)}
+#illustration .glcap b{font-weight:600}
+#illustration .glwrap{margin-top:34px}
+#illustration .pal{border:0}
+#illustration .pal-k span{text-transform:none;letter-spacing:0;font:500 11px/1.3 "Switzer",sans-serif}
+
+/* ------------------------------------------------------------------ tables in the pass sections: no row lines, alternate tint */
+:is(#voice,#data,#a11y,#provenance,#tokens,#motion) table:not(.dv-tbl) th,
+:is(#voice,#data,#a11y,#provenance,#tokens,#motion) table:not(.dv-tbl) td{border:0!important}
+:is(#voice,#data,#a11y,#provenance,#tokens,#motion) table:not(.dv-tbl) th{text-transform:none;letter-spacing:0;font:600 13px/1.3 "Switzer",sans-serif;color:var(--ink);padding:10px 16px 10px 14px}
+:is(#voice,#data,#a11y,#provenance,#tokens,#motion) table:not(.dv-tbl) td{padding:12px 16px 12px 14px}
+:is(#voice,#data,#a11y,#provenance,#tokens,#motion) table:not(.dv-tbl) tbody tr:nth-child(odd) :is(td,th){background:#fff}
+
+/* ------------------------------------------------------------------ Voice */
+#voice .vc-k{text-transform:none;letter-spacing:0;font:600 13.5px/1.3 "Switzer",sans-serif;color:var(--ink)}
+#voice .vc-ba{border-top:0;display:grid;gap:8px;margin-top:20px}
+#voice .vc-ba>div{border-bottom:0!important;background:#fff;padding:18px 20px}
+#voice .vc-ba .vc-was i,#voice .vc-ba .vc-now i{text-transform:none;letter-spacing:0;font:600 12px/1 "Switzer",sans-serif;width:40px}
+#voice .vc-ba .vc-was{text-decoration:line-through;text-decoration-color:rgba(215,20,28,.55);text-decoration-thickness:1.5px}
+#voice .vc-ba .vc-was i{text-decoration:none;display:inline-block}
+#voice .vc-cs{border:0;gap:12px;margin-top:20px}
+#voice .vc-cs>div{border:0!important;background:#fff;padding:18px 20px 20px!important}
+#voice .vc-q{border-left:0!important;padding-left:0}
+#voice .ps29-vc-btn{display:inline-flex;align-items:center;padding:.62em 1.05em .64em;background:#EC2326;color:#fff;font:600 14px/1 "Switzer",sans-serif}
+#voice .vc-cl{border-top:0;display:grid;gap:8px;margin-top:20px}
+#voice .vc-cl li{border-bottom:0!important;background:#fff;padding:18px 20px;grid-template-columns:132px minmax(0,1fr);gap:20px}
+#voice .ps29-vc-st{align-self:start;justify-self:start;display:inline-flex;padding:.5em .8em .52em;background:#231F20;color:#fff;
+  font:600 12px/1 "Switzer",sans-serif;letter-spacing:0;white-space:nowrap}
+#voice .vc-cl li:nth-child(2) .ps29-vc-st{background:#17213A}
+#voice .vc-cl li:nth-child(3) .ps29-vc-st{background:#48536A}
+#voice .vc-cl li:nth-child(4) .ps29-vc-st{background:#C8161D}
+#voice .vc-cl li:nth-child(5) .ps29-vc-st{background:#8C8C8C}
+#voice .vc-str{border-left:0!important;padding-left:0;background:none}
+#voice .vc-nm{border:0;gap:12px;margin-top:20px}
+#voice .vc-nm>div{border:0!important;background:#fff;padding:18px 20px 20px!important}
+#voice .vc-nm li{grid-template-columns:minmax(0,1fr);border-top:0!important;padding:7px 0}
+#voice .vc-rule{border-top:0;padding-top:0}
+#voice .ps29-tbl code{font-size:13px}
+@media(max-width:760px){#voice .vc-cl li{grid-template-columns:1fr;gap:10px}}
+#voice#voice .vc-str,#voice#voice .vc-q{padding:0!important;background:none!important;margin-top:10px}
+#voice#voice .vc-str{font-size:15.5px;color:var(--ink)}
+
+/* ------------------------------------------------------------------ Components and interface: filled boxes, sentence case, no outlines */
+.ps29-arw{display:inline-block;width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:butt;stroke-linejoin:miter}
+.ps29-cb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+@media(max-width:1000px){.ps29-cb{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.ps29-cb{grid-template-columns:1fr}}
+.ps29-cb article{background:#fff;padding:22px 22px 24px;display:flex;flex-direction:column}
+.ps29-cb h3{font-size:17px;letter-spacing:-.015em}
+.ps29-cb article>p{font-size:13.5px;line-height:1.55;color:var(--soft);margin-top:8px}
+.ps29-demo{margin-top:auto;padding-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
+.ps29-demo-dk{background:#0A101F;color:#fff;margin:22px -22px -24px;padding:20px 22px 22px}
+.ps29-btn-l{font-size:14.5px}
+.ps29-lnk{display:inline-flex;align-items:center;gap:10px;font:600 14.5px/1 "Switzer",sans-serif;color:var(--ink)}
+.ps29-crow{display:grid;grid-template-columns:minmax(0,1fr) 18px;gap:2px 14px;width:100%;align-items:center}
+.ps29-crow i{grid-column:1;font:500 12px/1.3 "Switzer",sans-serif;font-style:normal;color:#8A96AE}
+.ps29-crow b{grid-column:1;font:600 16px/1.3 "Switzer",sans-serif;color:#fff;overflow-wrap:anywhere}
+.ps29-crow .ps29-arw{grid-column:2;grid-row:1 / span 2;color:#fff}
+.ps29-vx{display:grid;gap:12px;width:100%}
+.ps29-vx .ps29-l1{height:2px;background:#EC2027;margin-bottom:4px}
+.ps29-vx b{font:600 16px/1.25 "Switzer",sans-serif;letter-spacing:-.01em;color:var(--ink)}
+.ps29-lab{font:600 12.5px/1.2 "Switzer",sans-serif;color:var(--red-deep)}
+.ps29-chip{display:inline-flex;align-items:center;padding:.62em 1.05em .64em;background:rgba(23,33,58,.07);color:var(--soft);font:500 13px/1 "Switzer",sans-serif;white-space:nowrap}
+.ps29-chip.on{background:#EC2326;color:#fff}
+.ps29-demo:has(.ps29-chip){gap:8px}
+.ps29-band{flex-direction:column;align-items:flex-start;gap:14px}
+.ps29-band b{font:600 20px/1.15 "Switzer",sans-serif;letter-spacing:-.02em;color:#fff}
+.ps29-band b em{color:#EC2027}
+.ps29-ui{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+@media(max-width:1000px){.ps29-ui{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.ps29-ui{grid-template-columns:1fr}}
+.ps29-cell{background:#fff;padding:20px 22px 22px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.ps29-cell>p{font-size:13px;line-height:1.55;color:var(--soft);margin-top:auto}
+.ps29-k{font:600 13.5px/1.3 "Switzer",sans-serif;color:var(--ink)}
+.ps29-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.ps29-col{display:flex;flex-direction:column;align-items:stretch}
+.ps29-btn.ps29-hov{background:#B5121B}
+.ps29-btn.ps29-dis{background:#E4E5E8;color:#8C8F96}
+.ps29-btn-k{background:#231F20}
+.ps29-fl{display:block;font:500 12px/1.3 "Switzer",sans-serif;color:var(--soft);margin-bottom:7px}
+.ps29-f{display:block;background:#F1F2F4;padding:11px 13px;font:400 14px/1.3 "Instrument Sans",sans-serif;color:var(--ink)}
+.ps29-f.ps29-foc{box-shadow:0 0 0 2px #EC2027;background:#fff}
+.ps29-f.ps29-err{background:#FFF1F1;color:#B5121B}
+.ps29-fe{display:block;margin-top:6px;font:500 12px/1.3 "Switzer",sans-serif;color:#B5121B}
+.ps29-ticks{gap:11px}
+.ps29-tick{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--ink)}
+.ps29-tick i{width:16px;height:16px;flex:none;background:#E4E5E8;position:relative}
+.ps29-tick i.rd{border-radius:50%}
+.ps29-tick i.on{background:#EC2326}
+.ps29-tick i.on:not(.rd)::after{content:"";position:absolute;left:5px;top:2px;width:4px;height:8px;border:solid #fff;border-width:0 1.8px 1.8px 0;transform:rotate(45deg)}
+.ps29-tick i.rd.on::after{content:"";position:absolute;inset:5px;background:#fff;border-radius:50%}
+.ps29-sw{width:36px;height:18px;background:#E4E5E8;position:relative;flex:none}
+.ps29-sw i{position:absolute;left:3px;top:3px;width:12px;height:12px;background:#fff}
+.ps29-sw.on{background:#EC2326}.ps29-sw.on i{left:21px}
+.ps29-swl{font-size:14px;margin-right:8px}
+.ps29-tabs{display:flex;gap:22px;font:600 14px/1 "Switzer",sans-serif;color:var(--soft)}
+.ps29-tabs span{padding-bottom:10px}
+.ps29-tabs .on{color:var(--ink);box-shadow:inset 0 -2px 0 #EC2027}
+.ps29-pag{display:flex;gap:6px}
+.ps29-pag span{display:grid;place-items:center;width:34px;height:34px;background:#F1F2F4;font:600 13px/1 "Switzer",sans-serif;color:var(--ink)}
+.ps29-pag span.on{background:#231F20;color:#fff}
+.ps29-pag .ps29-arw{width:16px;height:16px}
+.ps29-note{display:block;background:#F4F5F7;padding:14px 16px;font-size:13.5px;line-height:1.5;color:var(--soft)}
+.ps29-note b{display:block;font:600 13.5px/1.3 "Switzer",sans-serif;color:var(--red-deep);margin-bottom:4px}
+.ps29-prog{display:block;height:2px;background:rgba(236,35,38,.16)}
+.ps29-prog i{display:block;width:62%;height:100%;background:#EC2027}
+.ps29-crumb{gap:8px;font:500 13.5px/1 "Switzer",sans-serif;color:var(--soft)}
+.ps29-crumb b{font-weight:600;color:var(--ink)}
+.ps29-crumb .ps29-arw{width:14px;height:14px;color:var(--soft)}
+.ps29-l1{display:block;height:2px;background:#EC2027}
+.ps29-lines .ps29-l1{margin:12px 0 9px}
+.ps29-lines .tag{align-self:flex-start}
+.ps29-lines .tag.no{margin-top:10px}
+.ps29-lx{display:block;height:13px;margin:12px 0 9px;background:linear-gradient(#C9CCD2,#C9CCD2) 0 0/100% 1px no-repeat,repeating-linear-gradient(90deg,#C9CCD2 0 6px,transparent 6px 10px) 0 12px/100% 1px no-repeat}
+.ps29-flx{color:#B5121B;margin-top:7px}
+.ps29-spec>span:not(.ps29-l1){display:flex;justify-content:space-between;gap:12px;padding:10px 12px;font-size:13.5px}
+.ps29-spec>span:nth-child(even){background:#F4F5F7}
+.ps29-spec i{font-style:normal;color:var(--soft)}
+.ps29-spec b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.ps29-num{font:500 34px/1 "Switzer",sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink);margin-bottom:8px}
+
+/* ------------------------------------------------------------------ Data */
+.ps29-dvmap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:20px}
+@media(max-width:1000px){.ps29-dvmap{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.ps29-dvmap{grid-template-columns:1fr}}
+.ps29-dvmap>div{background:#fff;padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px}
+.ps29-dvmap>div::before{content:"";display:block;height:2px;background:#EC2027;margin-bottom:8px}
+.ps29-dvmap b{font:600 16px/1.2 "Switzer",sans-serif;color:var(--ink)}
+.ps29-dvmap p{font-size:13.5px;line-height:1.5;color:var(--soft)}
+.ps29-dvmap i{margin-top:auto;padding-top:6px;font:500 12px/1.3 "Switzer",sans-serif;font-style:normal;color:var(--red-deep)}
+.ps29-dvmap-n{margin-top:14px}
+#data .dv-b{border-top:0;padding-top:0;margin-top:clamp(56px,5vw,76px)}
+#data .dv-k{text-transform:none;letter-spacing:0;font:600 clamp(19px,1.7vw,23px)/1.2 "Switzer",sans-serif;color:var(--ink)}
+#data .dv-src{text-transform:none;letter-spacing:0;font:500 12px/1.3 "Switzer",sans-serif;color:var(--soft)}
+#data .dv-cap{text-transform:none;letter-spacing:0;font:500 12.5px/1.45 "Switzer",sans-serif;color:var(--soft)}
+#data .dv-plate{border:0}
+#data .dv-ref{text-transform:none;letter-spacing:0;font:500 12px/1.3 "Switzer",sans-serif}
+#data .dv-spec{border-top:2px solid #EC2027}
+#data .dv-row{border-bottom:0!important;padding:9px 10px}
+#data .dv-row:nth-child(even){background:#F4F5F7}
+#data .dv-row dt{text-transform:none;letter-spacing:0;font:600 12px/1.4 "Switzer",sans-serif;color:var(--ink)}
+#data .dv-stats{background:none;gap:12px;border:0}
+#data .dv-stat span{text-transform:none;letter-spacing:0;font:500 12.5px/1.35 "Switzer",sans-serif}
+#data .dv-stat b{font-variant-numeric:tabular-nums}
+#data .dv-tbl thead th{text-transform:none;letter-spacing:0;font:600 12.5px/1.3 "Switzer",sans-serif}
+#data .dv-tbl tbody tr + tr th,#data .dv-tbl tbody tr + tr td{border-top:0}
+#data .dv-tbl tbody tr:nth-child(odd) th,#data .dv-tbl tbody tr:nth-child(odd) td{background:rgba(255,255,255,.045)}
+#data .dv-tbl th:first-child,#data .dv-tbl td:first-child{padding-left:12px}
+#data .dv-tbl tbody th{text-transform:none!important;letter-spacing:0!important}
+#data .dv-tbl td.dv-num{font-variant-numeric:tabular-nums;letter-spacing:0;padding-right:12px;text-align:right}
+#data .dv-f{border-top:0}
+#data .dv-f>div{border-bottom:0!important;padding:10px 14px}
+#data .dv-f>div:nth-child(odd){background:#fff}
+#data .dv-f dt{text-transform:none;letter-spacing:0;font:600 13px/1.4 "Switzer",sans-serif;color:var(--ink)}
+#data .ps29-tech-in .dv-p{max-width:80ch}
+
+/* ------------------------------------------------------------------ Motion */
+#motion .mo-hd{border-bottom:0;padding-bottom:0;margin-top:clamp(56px,5vw,76px);flex-direction:column;align-items:flex-start;gap:10px}
+#motion .mo-hd b{text-transform:none;letter-spacing:-.015em;font:600 clamp(19px,1.7vw,23px)/1.2 "Switzer",sans-serif;color:var(--ink)}
+#motion .mo-hd span{font-size:14.5px;line-height:1.6;color:var(--soft);max-width:78ch}
+#motion .mo-cv,#motion .mo-lad,#motion .mo-tr,#motion .mo-rm{margin-top:20px;display:grid;gap:8px}
+#motion .mo-cv-r,#motion .mo-lad-r,#motion .mo-tr-r,#motion .mo-rm-r{border-bottom:0!important;background:#fff;padding:18px 20px}
+#motion .mo-tok{text-transform:none;letter-spacing:0;font:600 14px/1.3 "Switzer",sans-serif}
+#motion .mo-use,#motion .mo-sp i,#motion .mo-rm-r>b span{text-transform:none;letter-spacing:0;font:500 12px/1.4 "Switzer",sans-serif;color:var(--soft)}
+#motion .mo-key{text-transform:none;letter-spacing:0;font:600 14px/1.3 "Switzer",sans-serif;color:var(--red-deep)}
+#motion .mo-track::before{background:rgba(236,35,38,.18)}
+#motion .mo-bt{background:rgba(236,35,38,.14)}
+#motion .mo-plot .mo-fr{stroke:none;fill:#F4F5F7}
+#motion .dsc-rules{gap:10px}
+#motion .dsc-rules>div{background:#fff;padding:14px 16px}
+
+/* ------------------------------------------------------------------ Accessibility */
+.ps29-gaps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
+@media(max-width:1000px){.ps29-gaps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.ps29-gaps{grid-template-columns:1fr}}
+.ps29-gaps>div{background:#fff;padding:18px 18px 16px;display:flex;flex-direction:column;gap:7px}
+.ps29-gaps>div::before{content:"";display:block;height:2px;background:#EC2027;margin-bottom:8px}
+.ps29-gaps b{font:600 15.5px/1.25 "Switzer",sans-serif;color:var(--ink)}
+.ps29-gaps p{font-size:13.5px;line-height:1.5;color:var(--soft)}
+.ps29-gaps em{margin-top:auto;padding-top:6px;font:500 12.5px/1.35 "Switzer",sans-serif;font-style:normal;color:#0B8452}
+#a11y .ax-sub{border-top:0;padding-top:0;margin-top:clamp(56px,5vw,76px);font-size:clamp(19px,1.7vw,23px)}
+#a11y .ax-k{text-transform:none;letter-spacing:0;font:600 13px/1.3 "Switzer",sans-serif;color:var(--ink)}
+#a11y .ax-demo{border:0;background:#fff;padding:20px 22px 22px}
+#a11y .ax-btn,#a11y .ax-ghost,#a11y .ax-dbtn{text-transform:none;letter-spacing:-.006em;font:600 14.5px/1 "Switzer",sans-serif;height:44px;padding:0 22px;border:0}
+#a11y .ax-btn{background:#EC2326}
+#a11y .ax-ghost{background:#231F20;color:#fff}
+#a11y .ax-dbtn{background:#EC2326;color:#fff}
+#a11y .ax-card{border:0;background:#F4F5F7}
+#a11y .ax-field{border:0;background:#F1F2F4}
+#a11y .ax-fl{text-transform:none;letter-spacing:0;font:500 12px/1.3 "Switzer",sans-serif;color:var(--soft)}
+#a11y .ax-t th{text-transform:none;letter-spacing:0;font:600 13px/1.3 "Switzer",sans-serif;color:var(--ink)}
+#a11y .ax-tag{text-transform:none;letter-spacing:0;font:600 12px/1 "Switzer",sans-serif}
+#a11y .ax-p{border:0!important}
+#a11y .ax-tt{border-top:0}
+#a11y .ax-box{border:0;background:rgba(236,35,38,.16)}
+#a11y .ax-box i{border:0;background:#EC2027}
+#a11y .ax-p{box-shadow:none}
+#a11y .ax-k.ax-dk{color:#B7C2D6}
+
+/* ------------------------------------------------------------------ Provenance */
+#provenance .pvn-cap{text-transform:none;letter-spacing:0;font:600 13.5px/1.3 "Switzer",sans-serif;color:var(--ink);border-bottom:0;padding-bottom:0}
+#provenance .pvn-src{text-transform:none;letter-spacing:0;font:500 12.5px/1.45 "Switzer",sans-serif;color:var(--soft)}
+#provenance .pvn-slot{background:#F4F5F7}
+#provenance .pvn-slot-in{border:0}
+#provenance .pvn-tag{text-transform:none;letter-spacing:0;font:600 12.5px/1 "Switzer",sans-serif;color:#fff;background:#C8161D;border:0;padding:.62em 1.05em .64em}
+#provenance .pvn-slot li::before{display:none}
+#provenance .pvn-slot li{padding-left:0}
+#provenance .pvn-h{border-top:0;padding-top:0;margin-top:clamp(56px,5vw,76px)}
+#provenance .pvn-vals,#provenance .pvn-rules,#provenance .pvn-led{border-top:0}
+#provenance .pvn-vals>div,#provenance .pvn-rules li,#provenance .pvn-r{border-bottom:0!important}
+#provenance .pvn-vals>div{padding:10px 14px}
+#provenance .pvn-vals>div:nth-child(odd){background:#fff}
+#provenance .pvn-vals dt{text-transform:none;letter-spacing:0;font:600 13px/1.4 "Switzer",sans-serif;color:var(--ink)}
+#provenance .pvn-rules{display:grid;gap:8px}
+#provenance .pvn-rules li{grid-template-columns:minmax(0,1fr);background:#fff;padding:18px 20px}
+#provenance .pvn-r{padding:11px 14px;grid-template-columns:236px minmax(0,1fr) 190px}
+#provenance .pvn-r:nth-child(even){background:#fff}
+#provenance .pvn-hd .pvn-rt,#provenance .pvn-hd .pvn-rw,#provenance .pvn-hd .pvn-rn{text-transform:none;letter-spacing:0;font:600 13px/1.3 "Switzer",sans-serif;color:var(--ink)}
+/* slots per route, drawn: a bar on one scale (15 the longest) beside the count */
+#provenance .pvn-rn{display:flex;align-items:center;justify-content:flex-start;gap:10px;text-align:left}
+#provenance .ps29-rnn{display:inline-block;min-width:20px;text-align:right;font:600 14px/1 "Switzer",sans-serif;color:var(--red-deep);font-variant-numeric:tabular-nums}
+#provenance .pvn-hd .pvn-rn{justify-content:flex-start}
+#provenance .pvn-rn .ps29-bar{display:block;height:10px;width:calc(var(--n) / 15 * 130px);background:#EC2027;flex:none}
+.ps29-src{margin-top:18px}
+@media(max-width:760px){#provenance .pvn-r{grid-template-columns:minmax(0,1fr) auto}}
+
+/* ------------------------------------------------------------------ Tokens */
+#tokens .tk-g{border-bottom:0;padding-bottom:0;margin-top:clamp(56px,5vw,76px)}
+#tokens .tk-g h3{font-size:clamp(19px,1.7vw,23px)}
+#tokens .tk-k,#tokens .tk-sw var,#tokens .tk-sw b,#tokens .tk-hl u,#tokens .tk-m span,#tokens .tk-rows var,#tokens .tk-rows u,
+#tokens .tk-rows .tk-hd code,#tokens .tk-rows .tk-hd var,#tokens .tk-rows .tk-hd p,#tokens .tk-rows .tk-hd u{text-transform:none!important;letter-spacing:0!important}
+#tokens .tk-k{font:500 13px/1.3 "Switzer",sans-serif;color:var(--soft)}
+#tokens .tk-sw{border:0!important;gap:12px}
+#tokens .tk-sw figure{border:0!important}
+#tokens .tk-sw b{border-top:0;padding-top:0;font:500 12px/1.3 "Switzer",sans-serif;color:var(--soft)}
+#tokens .tk-sw i.tk-lt{box-shadow:inset 0 0 0 1px rgba(12,18,32,.09)}
+#tokens .tk-hl{border:0;background:none;display:grid;gap:8px}
+#tokens .tk-hl>div{background:#fff;border-bottom:0!important}
+#tokens .tk-ty{border-top:0;display:grid;gap:8px}
+#tokens .tk-ty>div{background:#fff;padding:22px 22px;border-bottom:0!important}
+#tokens .tk-spec-lab{text-transform:none;letter-spacing:0;font:600 13px/1.3 "Switzer",sans-serif}
+#tokens .tk-cv{background:#fff;border:0!important;padding:22px}
+#tokens .tk-dsh{border-top:1.4px dashed rgba(236,35,38,.5)}
+#tokens .tk-rows{border-top:0}
+#tokens .tk-rows>div{border-bottom:0!important;padding:11px 14px}
+#tokens .tk-rows>div:nth-child(even){background:#fff}
+#tokens .tk-thin>div:nth-child(odd){background:#fff}
+#tokens .tk-thin>div:nth-child(even){background:none}
+#tokens .tk-rows .tk-hd code,#tokens .tk-rows .tk-hd var,#tokens .tk-rows .tk-hd p,#tokens .tk-rows .tk-hd u{font:600 13px/1.3 "Switzer",sans-serif!important;color:var(--ink)!important}
+/* the curve plot: a pale ground, no grey frame and no grid lines (no vertical line anywhere) */
+#tokens .tk-cv svg rect{fill:#F4F5F7;stroke:none}
+#tokens .tk-cv svg line{display:none}
+#tokens .tk-cv svg path[stroke-dasharray]{stroke:rgba(236,35,38,.45)}
+
+/* ------------------------------------------------------------------ Icons: one sub heading size, one rhythm */
+#icons>h3[style],#icons>.smk-wrap>h3[style]{font-size:clamp(19px,1.7vw,23px)!important;margin-top:clamp(56px,5vw,76px)!important;letter-spacing:-.015em}
+#icons>h3[style]+.note,#icons>.smk-wrap>h3[style]+.note{margin-top:10px}
+#illustration .ill figure{border:0}
+#illustration .ill figcaption{border-top:0;text-transform:none;letter-spacing:0;font:500 13px/1.45 "Switzer",sans-serif;color:var(--soft)}
+@media(max-width:760px){.ps29-cr-aa{right:24px!important}.ps29-cr-aa span{white-space:normal;left:8px;right:6px;bottom:8px}.ps29-cr{padding-bottom:66px}}
+@media(max-width:560px){#inuse#inuse .iu-phones{justify-items:center}#inuse#inuse .iu-phone{width:100%;max-width:280px}}
+#type .tsc-fam b,.ps29-cb h3,.ps29-rw b,.ps29-rf b{text-wrap:balance}
+/* phones: the tab's global stacked-table rule hid every th, so the registry lost its market names; it stays a real table in
+   its own sideways scroll. The other tables in these sections stack as white blocks held apart by space, no grey rule. */
+@media(max-width:760px){
+  #data .dv-tbl{display:table}#data .dv-tbl thead{display:table-header-group}#data .dv-tbl tbody{display:table-row-group}
+  #data .dv-tbl tr{display:table-row;border:0;margin:0;padding:0}#data .dv-tbl th,#data .dv-tbl td{display:table-cell}
+  :is(#voice,#a11y,#provenance,#tokens,#motion) table:not(.dv-tbl) tr{border-bottom:0;background:#fff;padding:10px 14px;margin-bottom:8px}
+  :is(#voice,#a11y,#provenance,#tokens,#motion) table:not(.dv-tbl) tbody tr :is(td,th){background:none!important;padding:3px 0}
+}
+#inuse#inuse .iu-phone{aspect-ratio:9/17}
+#inuse .ps29-iu-ru b{text-wrap:balance}

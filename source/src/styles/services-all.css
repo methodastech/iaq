@@ -2,13 +2,13 @@
 .sa-jump{position:sticky;top:var(--sticktop,78px);z-index:30;background:rgba(247,249,252,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .sa-jump .pg-in{display:flex;gap:4px;overflow-x:auto;padding:8px var(--gut)}
 .sa-jump a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;white-space:nowrap;text-decoration:none;color:var(--ink);font:500 13px/1 "Switzer",sans-serif}
-.sa-jump a .n{font:600 11px/1 "Switzer",sans-serif;color:#fff;background:var(--svc,#EC2027);padding:3px 5px}
+.sa-jump a .n{font:600 13px/1 "Switzer",sans-serif;color:#fff;background:var(--svc,#EC2027);padding:3px 5px}
 .sa-jump a:hover{background:#fff}
 .sa-stage{scroll-margin-top:calc(var(--sticktop,78px) + 52px)}
 .sa-stage+.sa-stage{border-top:0}
 .sa-head{padding:clamp(40px,6vh,72px) var(--gut) 0}
 .sa-head .pg-k{display:inline-flex;align-items:center;gap:10px}
-.sa-no{font:600 12px/1 "Switzer",sans-serif;color:#fff;background:var(--svc,#EC2027);padding:4px 6px}
+.sa-no{font:600 13px/1 "Switzer",sans-serif;color:#fff;background:var(--svc,#EC2027);padding:4px 6px}
 .sa-head h2{font-size:clamp(28px,3.6vw,46px);margin-top:12px;max-width:26ch}
 .sa-head h2 em{font-style:normal;color:var(--svc,#EC2027)}
 .sa-head .pg-lede{max-width:60ch}
@@ -19,12 +19,13 @@
 .sa-head h2{max-width:18ch}
 .sa-fig{margin:0;aspect-ratio:16/9;overflow:hidden;background:#EEF1F5}
 .sa-fig img{width:100%;height:100%;object-fit:cover;display:block}
-.thb-sub{font:600 13px/1.2 "Switzer",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin:0 0 14px}
+.thb-sub{font:600 13px/1.2 "Switzer",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--soft);margin:0 0 14px}
 @media(max-width:820px){.sa-head-in{grid-template-columns:1fr}}
 
-/* 27 Oct (client: "Need to restructure the layout, a bit messy"): each stage is one block, its text in one column and its
-   picture beside it, alternating sides; a hairline between stages. Inside the text the stage's own paragraphs follow the
-   one line directly: their section padding, their kicker, their second heading and the pull quote are not drawn. */
+/* 28 Oct (from the 27 Oct layout, client: "Need to restructure the layout, a bit messy"): each stage is one block, its text
+   in one column and its picture beside it, alternating sides; a hairline between stages. Inside the text the stage's own
+   paragraphs follow the one line directly: their section padding, their kicker, their second heading and the pull quote
+   are not drawn. The pinned bar lights the stage in view. */
 .sa-head{padding:clamp(48px,7vh,88px) var(--gut)}
 .sa-stage+.sa-stage .sa-head{border-top:1px solid rgba(12,18,32,.08)}
 .sa-head-in{align-items:start;gap:clamp(28px,5vw,80px)}
@@ -40,3 +41,4 @@
 .sa-body .pg-body{margin:0 0 14px;max-width:62ch;font-size:15.5px;line-height:1.65;color:var(--soft)}
 .sa-body .pg-body:last-child{margin-bottom:0}
 @media(max-width:820px){.sa-head.is-flip .sa-copy{order:0}.sa-head .sa-fig{position:static;aspect-ratio:16/9}}
+.sa-jump a.on{background:#fff;color:var(--svc,#EC2027);font-weight:600}

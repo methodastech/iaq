@@ -60,13 +60,13 @@ function ProofCard({ i }) {
 /* 25 Sep (IAQ, 24 Sep review: "merge all the description pages for each service into one"): the cover and the scope
    are exported so the single page /services/all can stack the six stages in order; this page still renders them */
 const SLUG = 'commissioning'
-export const META = { slug: SLUG, eyebrow: "Stage 04 · Testing & Commissioning", title: <>Proven performance <em>before you move in.</em></>, lede: "Established testing and commissioning programmes that prove every facility operates as intended, at its optimum, before handover." }
+export const META = { slug: SLUG, eyebrow: "Stage 04 · Testing & Commissioning", title: <>Proven performance <em>before you move in</em></>, lede: "Established testing and commissioning programmes that prove every facility operates as intended, at its optimum, before handover." }
 export function Cover() {
   return (
       <section className="pg-sec" aria-labelledby={"cov-h-"+SLUG}>
         <div className="pg-in">
           <span className="pg-k">What it covers</span>
-          <h2 id={"cov-h-"+SLUG}>The stage that turns a specification into a number.</h2>
+          <h2 id={"cov-h-"+SLUG}>The stage that turns a specification into a number</h2>
           <div className="pg-split">
             <div>
               <p className="pg-body">
@@ -94,7 +94,7 @@ export function Scope() {
       <section className="pg-sec calm" aria-labelledby={"scope-h-"+SLUG}>
         <div className="pg-in">
           <span className="pg-k">Scope</span>
-          <h2 id={"scope-h-"+SLUG}>What IAQ carries at this stage.</h2>
+          <h2 id={"scope-h-"+SLUG}>What IAQ carries at this stage</h2>
           {/* the scope as a diagram (2 Sep): one custom mark per item on a rail that draws in */}
           <DetailDiagram variant="flow" items={SCOPE.map(s => ({ label: s }))} ariaLabel="Scope at this stage" />
           <CarriedBy service="commission" />
@@ -115,7 +115,7 @@ export default function ServiceCommissioning() {
           rather than on the same render the ring and the hub already showed. */}
       <PageHead crumbs={[{ label: 'Services', to: '/services' }]}
         eyebrow="Stage 04 · Testing & Commissioning"
-        title={<>Proven performance <em>before you move in.</em></>}
+        title={<>Proven performance <em>before you move in</em></>}
         lede="Established testing and commissioning programmes that prove every facility operates as intended, at its optimum, before handover."
         chips={['Validation', 'Stage 4 of 6']}
         /* 19 Oct (IAQ feedback: "one approved image that actually depicts the service"): an engineer testing in a cleanroom,
@@ -133,7 +133,7 @@ export default function ServiceCommissioning() {
       <section className="pg-sec" aria-labelledby="run-h">
         <div className="pg-in">
           <span className="pg-k">How it runs</span>
-          <h2 id="run-h">Three things have to be true before handover.</h2>
+          <h2 id="run-h">Three things have to be true before handover</h2>
           {/* the process as a diagram (2 Sep, Bazil: "a whole good process with custom icons") */}
           <GateList items={BEATS} ariaLabel="How it runs" />
 
@@ -153,7 +153,7 @@ export default function ServiceCommissioning() {
       <section className="pg-sec calm" aria-labelledby="proof-h">
         <div className="pg-in">
           <span className="pg-k">Proof</span>
-          <h2 id="proof-h">Classified, tested, handed over.</h2>
+          <h2 id="proof-h">Classified, tested, handed over</h2>
           <p className="pg-lede">
             One process, six stages: every project below ran the full cycle. These are drawn from the
             published registry, chosen for the tightness of the classification they were proven against.

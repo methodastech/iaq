@@ -1,0 +1,81 @@
+{
+ "url": "/services",
+ "slug": "services",
+ "title": "IAQ Group \u00b7 Services \u00b7 Brand Method",
+ "at": "2026-10-27T01:59:59.079Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "the-iaq-facility-map",
+   "heading": "The IAQ facility map",
+   "tag": "section",
+   "cls": "pg-sec.sm-map",
+   "top": 0,
+   "height": 839,
+   "text": "Loading the facility model\nThe IAQ facility map\nScroll to explore\n+\n\u2212\n\u21bb\n\u25b6 Play the tour\nWork\nSystem\nCSA\n(Civil, Structural and Architectural)\nThe building itself.\nMEP\n(Mechanical, Electrical and Plumbing)\nWhat makes the building run.\nProcess utilities\nThe utilities a production tool consumes\nWhat the tool runs on.\nPiling and foundations\nStructural frame and roof\nCleanroom envelope\nArchitectural finishes\nAir conditioning and ventilation (HVAC, ACMV), fan filter units\nProcess cooling water (PCW)\nChiller plant and district cooling\nFire protection\nElectrical, high and low voltage\nPlumbing and drainage\nClean dry air (CDA)\nSpecialty gases and chemical delivery\nUltrapure water (UPW)\nProcess vacuum (PV) and exhaust\nWaste treatment",
+   "img": "services/01-the-iaq-facility-map.webp",
+   "shownHeight": 839,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -38,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 1,
+   "key": "3-business-units",
+   "heading": "3 business units",
+   "tag": "section",
+   "cls": "pg-sec.sm-units",
+   "top": 839,
+   "height": 926,
+   "text": "3 business units\nOur services bring together the capabilities needed to plan, deliver and support technical facilities. The exact scope is tailored to each project and may include engineering, procurement, construction, process-critical utilities, total tool installation and energy facility management.\nUnit 1\nDesign and build\nEPC\nEngineering, Procurement & Construction\nEngineering, procurement and construction for a hi-tech facility, scoped to what each project needs. IAQ answers for the system working as intended.\nLearn more about EPC\n\u2192\nUnit 2\nTools in, fab live\nPCU & TTI\nProcess Critical Utilities & Total Tool Installation Solutions\nProcess Critical Utilities builds the gas, chemical, water and exhaust systems. Total Tool Installation connects each tool to them, inside a fab that keeps running. Semiconductor only.\nLearn more about PCU & TTI\n\u2192\nUnit 3\nRun and maintain\nEFM\nEnergy Facility Management\nIAQ helps organisations optimise energy infrastructure, improve reliability and create measurable long-term value across their facilities.\nLearn more about EFM\n\u2192",
+   "img": "services/02-3-business-units.webp",
+   "shownHeight": 926,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -306,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 2,
+   "key": "piling",
+   "heading": "Piling",
+   "tag": "section",
+   "cls": "b3d",
+   "top": 1765,
+   "height": 7200,
+   "text": "Environment\nClassic\n+\nZoom in\n\u2212\nZoom out\n\u21ba\nReset view\nExploded view\nLoading the systems\u2026 6 of 6 floors\nResume\nSkip the 3D\nThe Facilities\nCivil and Structural\nPiles\u00a0\u00b7 pile caps\u00a0\u00b7 ground beams\u00a0\u00b7 sub-fab slab\u00a0\u00b7 columns\u00a0\u00b7 waffle floor\nArchitectural\nRoof trusses\u00a0\u00b7 purlins\u00a0\u00b7 roof deck\u00a0\u00b7 wall envelope\nFire Protection\nSprinkler mains\u00a0\u00b7 risers\u00a0\u00b7 branch lines\nHT & LV Electrical\nTransformer\u00a0\u00b7 switchboards\u00a0\u00b7 busbar\u00a0\u00b7 cable trays\u00a0\u00b7 cabling\nAir-conditioning and Mechanical Ventilation\nFresh-air intake\u00a0\u00b7 supply main\u00a0\u00b7 drops to plenum\u00a0\u00b7 return main\u00a0\u00b7 return out\nCleanroom\nCeiling grid\u00a0\u00b7 FFU field\u00a0\u00b7 air handlers\u00a0\u00b7 partitions\u00a0\u00b7 exhaust stacks\nProcess Utilities\nPipe rack\u00a0\u00b7 PCW header\u00a0\u00b7 UPW header\u00a0\u00b7 risers to tools\u00a0\u00b7 gas cabinets\n28 / 28 placed\nComplete the build\nReplay build\nEnter cleanroom\nX-ray view\nSpeed\n0.5\u00d7\n1\u00d7\n1.5\u00d7\n2\u00d7",
+   "img": "services/03-piling.webp",
+   "shownHeight": 7200,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 6299,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 3,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 8965,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nQuestions clients ask\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "services/04-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

@@ -19,8 +19,8 @@
 .a2-k {
   display: block;
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .17em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: var(--h2-red);
 }
@@ -137,8 +137,8 @@
   display: block;
   margin-top: 16px;
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .15em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: var(--h2-soft);
 }
@@ -166,8 +166,8 @@
 .a2-cert figcaption {
   margin-top: 16px;
   font-family: var(--label);
-  font-size: 10px;
-  letter-spacing: .12em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: var(--h2-soft);
   line-height: 1.6;
@@ -211,8 +211,8 @@
   align-items: flex-start;
   gap: 12px;
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .1em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, .6);
   line-height: 1.7;
@@ -241,8 +241,8 @@
   bottom: 4px;
   transform: translateX(-50%);
   font-family: var(--label);
-  font-size: 10px;
-  letter-spacing: .18em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, .42);
   opacity: 0;
@@ -273,8 +273,8 @@
   align-items: center;
   gap: 12px;
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .14em;
+  font-size: 13px;
+  letter-spacing:.04em;
   color: var(--h2-faint);
   transition: color .4s;
 }
@@ -287,8 +287,8 @@
 .a2-spine-dot em {
   grid-column: 2;
   font-style: normal;
-  font-size: 9px;
-  letter-spacing: .1em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: var(--h2-faint);
   opacity: 0;
@@ -316,8 +316,8 @@
   display: block;
   margin-top: 12px;
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .16em;
+  font-size: 13px;
+  letter-spacing:.04em;
   text-transform: uppercase;
   color: var(--h2-red);
 }

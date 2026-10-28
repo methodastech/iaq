@@ -1,0 +1,208 @@
+{
+ "url": "/services/energy-management",
+ "slug": "services-energy-management",
+ "title": "IAQ Group \u00b7 EFM \u00b7 Brand Method",
+ "at": "2026-10-26T11:03:40.166Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Energy Facility Management",
+   "tag": "header",
+   "cls": "un-hero",
+   "top": 0,
+   "height": 645,
+   "text": "Energy Facility Management\nOptimising Performance. Advancing Sustainability.",
+   "img": "services-energy-management/01-hero.webp",
+   "shownHeight": 645,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 14,
+    "pixels": 0
+   }
+  },
+  {
+   "i": 1,
+   "key": "driving-sustainable-facility-performance",
+   "heading": "Driving Sustainable Facility Performance",
+   "tag": "section",
+   "cls": "un-sec.un-what",
+   "top": 645,
+   "height": 672,
+   "text": "Driving Sustainable Facility Performance\nBy combining technical expertise, innovative commercial models and lifecycle support services, IAQ helps organisations optimise energy infrastructure, improve reliability and create measurable long-term value across their facilities.",
+   "img": "services-energy-management/02-driving-sustainable-facility-performance.webp",
+   "shownHeight": 672,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 4.27
+   }
+  },
+  {
+   "i": 2,
+   "key": "the-problems-efm-solves",
+   "heading": "The problems EFM solves",
+   "tag": "section",
+   "cls": "un-sec.un-probs",
+   "top": 1317,
+   "height": 407,
+   "text": "The problems EFM solves\nHigh electricity bills\nInefficient cooling driving operating cost up year after year.\nRising carbon emissions\nCompliance risk against regulation and sustainability targets.\nAgeing infrastructure\nChiller plants past their best, and a capital bill to replace them.\nOperational disruption\nDowntime and inefficiency from poor maintenance and old systems.",
+   "img": "services-energy-management/03-the-problems-efm-solves.webp",
+   "shownHeight": 407,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 0,
+    "pixels": 0.42
+   },
+   "reason": "fullstop"
+  },
+  {
+   "i": 3,
+   "key": "our-solutions",
+   "heading": "Our Solutions",
+   "tag": "section",
+   "cls": "un-sec.un-svc7",
+   "top": 1724,
+   "height": 611,
+   "text": "Our Solutions\nEnergy Audit\nComprehensive assessments that identify opportunities to improve energy efficiency, system performance and investment planning.\nEnergy Performance Contracting\nPerformance-based solutions that enable energy efficiency improvements through measurable operational outcomes.\nCooling-as-a-Service\nA utility-based approach that provides efficient cooling infrastructure while reducing upfront capital investment and operational complexity.\nDistrict Cooling System\nIntegrated solutions spanning feasibility, development, operation and long-term lifecycle management.\nOperations & Maintenance\nStructured maintenance programmes designed to enhance reliability, optimise performance and extend asset life.",
+   "img": "services-energy-management/04-our-solutions.webp",
+   "shownHeight": 611,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -185,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 4,
+   "key": "energy-as-a-service",
+   "heading": "Energy as a Service",
+   "tag": "section",
+   "cls": "un-sec.un-proc",
+   "top": 2335,
+   "height": 663,
+   "text": "Energy as a Service\nIAQ\u2019s Energy-as-a-Service approach enables organisations to improve energy performance through innovative delivery models that minimise capital expenditure while creating long-term operational and sustainability benefits.\n01\nAssess\nEvaluate existing infrastructure and identify opportunities for improvement.\n02\nOptimise\nDevelop strategies to improve efficiency, performance and energy consumption.\n03\nImplement\nDeliver upgrades, retrofits and infrastructure improvements through proven engineering solutions.\n04\nOperate\nSupport long-term performance through monitoring, maintenance and operational management.",
+   "img": "services-energy-management/05-energy-as-a-service.webp",
+   "shownHeight": 663,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 2.03
+   }
+  },
+  {
+   "i": 5,
+   "key": "why-energy-performance-matters",
+   "heading": "Why Energy Performance Matters",
+   "tag": "section",
+   "cls": "un-sec.un-deliver",
+   "top": 2998,
+   "height": 859,
+   "text": "Why Energy Performance\nMatters\nEngineering-Led Solutions\nBacked by multidisciplinary engineering expertise and decades of project delivery experience.\nPerformance-Focused Approach\nFocused on improving operational efficiency, system reliability and long-term asset value.\nInnovative Business Models\nFlexible Energy-as-a-Service solutions that support energy transition initiatives while reducing investment barriers.\nSustainability Commitment\nHelping organisations advance energy efficiency, carbon reduction and broader sustainability objectives.",
+   "img": "services-energy-management/06-why-energy-performance-matters.webp",
+   "shownHeight": 859,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": -24,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 6,
+   "key": "industries-we-serve",
+   "heading": "Industries We Serve",
+   "tag": "section",
+   "cls": "un-sec.un-inds",
+   "top": 3857,
+   "height": 609,
+   "text": "Industries We Serve\nIndustrial & Manufacturing\nCommercial Developments\nData Centres\nHealthcare\nHospitality\nEducation Campuses\nDistrict Cooling Infrastructure",
+   "img": "services-energy-management/07-industries-we-serve.webp",
+   "shownHeight": 609,
+   "changed": false,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 0.33
+   }
+  },
+  {
+   "i": 7,
+   "key": "how-district-cooling-works",
+   "heading": "How district cooling works",
+   "tag": "section",
+   "cls": "un-sec.un-dcs",
+   "top": 4466,
+   "height": 1137,
+   "text": "How district cooling\nworks\nChilled water is made at one central plant and piped to every building on the network. Each building cools on it, with no chiller plant of its own.\nDistrict cooling plant\nThermal energy storage\nOffices\nHotel\nUniversities\nHospital\nShopping mall\nChillers make the chilled water\nPumps send it out\nCooling towers release the heat\nCharging: cold water stored while demand is low\nChilled water out\nWarmer water back\nEnergy transfer station, offices\nEnergy transfer station, hotel\nEnergy transfer station, universities\nEnergy transfer station, hospital\nEnergy transfer station, shopping mall\n1\n2\n3\n4\n5\nChillers\nCooling towers\nPumps\nStorage tank\nTransfer stations\nUpgraded, funded by IAQ\nBuilt, run, then handed over\nBuilding the district\nChilled water out\nWarmer water back\nEnergy transfer station\nDrag to turn\nPlay the tour\n01\nOne central plant\nChillers make the chilled water. Towers shed the heat.\n02\nThermal energy storage\nA tank stores cooling for the peak.\n03\nThe chilled water network\nChilled water out, warmer water back.\n04\nAn energy transfer station at each building\nIt meters each building\u2019s cooling.\n05\nCooling in every building\nEvery building runs its air-conditioning on it.\nIAQ delivers district cooling end to end, from feasibility study to operation and maintenance. Its work includes Malaysia\u2019s largest district cooling centre, in Kuala Lumpur.\nDistrict cooling on the markets page",
+   "img": "services-energy-management/08-how-district-cooling-works.webp",
+   "shownHeight": 1137,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 51,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 8,
+   "key": "delivered-this-way",
+   "heading": "Delivered this way",
+   "tag": "section",
+   "cls": "un-sec.un-proof",
+   "top": 5602,
+   "height": 768,
+   "text": "Delivered this way\nSee all district cooling projects\nKuala Lumpur\nEnergy\nDistrict cooling centre, Malaysia's largest\nDistrict cooling operator\nDistrict Cooling & Heating\nDistrict Cooling\nMalaysia\nEnergy\nCo-generative plant, first in Southeast Asia\nEnergy technology group\nDistrict Cooling & Heating\nDistrict Cooling\nMalaysia\nEnergy\nCool energy centre\nDistrict cooling operator\nDistrict Cooling & Heating\nDistrict Cooling\nPublished by scope and location only. Savings on individual contracts are held in confidence, at IAQ\u2019s request.",
+   "img": "services-energy-management/09-delivered-this-way.webp",
+   "shownHeight": 768,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 2,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 9,
+   "key": "let-s-discuss-your-energy-goals",
+   "heading": "Let\u2019s Discuss Your Energy Goals",
+   "tag": "section",
+   "cls": "un-ctab",
+   "top": 6371,
+   "height": 817,
+   "text": "Let\u2019s Discuss Your\nEnergy Goals\nWhether you are evaluating energy optimisation opportunities, exploring sustainable cooling solutions or modernising existing infrastructure, IAQ can help identify practical pathways towards greater efficiency, resilience and long-term value.\nDiscuss your energy goals\n\u2192\nOR CALL US\n+603 5124 8319",
+   "img": "services-energy-management/10-let-s-discuss-your-energy-goals.webp",
+   "shownHeight": 817,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 212,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 10,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 7187,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nQuestions clients ask\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "services-energy-management/11-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

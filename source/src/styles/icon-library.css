@@ -4,13 +4,13 @@
 .il-g{margin-top:clamp(26px,3.6vh,40px)}
 .il-g h3{display:flex;align-items:center;gap:10px;margin:0 0 14px;font:600 17px/1.2 "Switzer",sans-serif;color:#0C1220}
 .il-g h3 i{width:10px;height:10px;display:block}
-.il-g h3 small{font:500 12px/1 "Instrument Sans",sans-serif;color:rgba(12,18,32,.45)}
+.il-g h3 small{font:500 13px/1 "Instrument Sans",sans-serif;color:rgba(12,18,32,.45)}
 .il-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:22px 14px}
 .il-grid-lg{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
 .il-it{margin:0;display:grid;justify-items:center;gap:10px;text-align:center}
 .il-ic{display:grid;place-items:center;width:44px;height:44px}
 .il-ic svg{width:36px;height:36px}
-.il-it figcaption{font:500 12px/1.3 "Instrument Sans",sans-serif;color:rgba(12,18,32,.66);text-transform:none}
+.il-it figcaption{font:500 13px/1.3 "Instrument Sans",sans-serif;color:rgba(12,18,32,.66);text-transform:none}
 .il-dark{background:#17213A;padding:22px 22px 26px}
 .il-dark h3{color:#fff}.il-dark h3 small{color:rgba(255,255,255,.5)}
 .il-dark .il-it figcaption{color:rgba(255,255,255,.7);}

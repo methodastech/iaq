@@ -1,0 +1,118 @@
+{
+ "url": "/global-presence",
+ "slug": "global-presence",
+ "title": "IAQ Group \u00b7 Global Presence \u00b7 Brand Method",
+ "at": "2026-10-22T23:07:46.279Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Rooted in Malaysia, building across borders",
+   "tag": "header",
+   "cls": "pg-head",
+   "top": 84,
+   "height": 384,
+   "text": "HOME\n\u203a\nABOUT\nRooted in Malaysia,\nbuilding across borders\nFounded in Malaysia in 1995. Today a total facility solutions provider with offices in seven countries, measured in the programmes those offices run and the projects handed over.",
+   "img": "global-presence/01-hero.webp",
+   "shownHeight": 384,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 3,
+    "pixels": 0
+   }
+  },
+  {
+   "i": 1,
+   "key": "seven-countries-pinned-where-they-are",
+   "heading": "Seven countries, pinned where they are",
+   "tag": "section",
+   "cls": "cp-globe-band.cp-map-band",
+   "top": 468,
+   "height": 876,
+   "text": "Seven countries,\npinned where they are\nEach flag marks an IAQ office, and each office supports clients locally while drawing on the group\u2019s full regional engineering capability. The grey marks are countries IAQ has built in.\nMalaysia\nShah Alam \u00b7 Headquarters\nMalaysia\nPenang\nSingapore\nSingapore\nGermany\nDresden\nIndia\nAhmedabad\nSweden\nSkellefte\u00e5\nUnited States\nPhoenix\nIreland\nDublin\nChina\nPoland\nFrance\nMorocco",
+   "img": "global-presence/02-seven-countries-pinned-where-they-are.webp",
+   "shownHeight": 876,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 40,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 2,
+   "key": "the-addresses-that-answer",
+   "heading": "The addresses that answer",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 1344,
+   "height": 508,
+   "text": "The addresses that answer\nEvery office\u2019s address, phone and hours are on the Contact page.\nOFFICE ADDRESSES \u00b7 SUPPLIED BY IAQ\nSeven countries confirmed \u00b7 street addresses outstanding\nThe country list is settled: Malaysia, Singapore, Germany, India, Sweden, USA, and Ireland from 10 September 2026. Still needed from IAQ before launch:\nThe street address for the USA office\nThe Ireland office: entity name and phone\nThe HQ street number: the profile prints 9, every other source prints 12",
+   "img": "global-presence/03-the-addresses-that-answer.webp",
+   "shownHeight": 508,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 6,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 3,
+   "key": "reach-as-evidence",
+   "heading": "Reach, as evidence",
+   "tag": "section",
+   "cls": "pg-sec.calm",
+   "top": 1852,
+   "height": 2207,
+   "text": "Reach,\nas evidence\nThe publishable record, grouped by where it was built. Every entry opens the full project.\nMALAYSIA \u00b7 14 PROJECTS\nSEMICONDUCTOR MANUFACTURER\nTesting manufacturing plant, 25,000 m\u00b2 greenfield\nMALAYSIA\nWAFER FOUNDRY\nWafer fab facility and expansion, cleanroom package with utilities\nTHE NORTHERN CORRIDOR, KEDAH\nSEMICONDUCTOR MANUFACTURER\nSemiconductor backend plant, 43,000 m\u00b2 test, probe and assembly\nMALAYSIA\nSEMICONDUCTOR MANUFACTURER\nDLP cleanroom facility\nMALAYSIA\nSILICON WAFER MANUFACTURER\nSilicon wafer manufacturing, multi-class greenfield with full MEP\nIPOH, PERAK\nPHARMACEUTICAL MANUFACTURER\nPharmaceutical manufacturing plant, small volume parenteral\nMALAYSIA\nMEDICAL DEVICE MANUFACTURER\nHealthcare manufacturing plant, medical device greenfield\nMALAYSIA\nDISTRICT COOLING OPERATOR\nDistrict cooling centre, Malaysia's largest\nKUALA LUMPUR\nENERGY TECHNOLOGY GROUP\nCo-generative plant, first in Southeast Asia\nMALAYSIA\nDISTRICT COOLING OPERATOR\nCool energy centre\nMALAYSIA\nFLAVOUR MANUFACTURER\nFlavour manufacturing plant\nMALAYSIA\nFLAVOUR MANUFACTURER\nFlavour manufacturing plant\nMALAYSIA\nHYPERSCALE DATA CENTRE OPERATOR\nData centre campus phase 1, chilled and condenser water piping\nKUALA LUMPUR\nSOLAR MODULE MANUFACTURER\nSolar panel manufacturing plant, KMW building M&E works\nTHE NORTHERN CORRIDOR, KEDAH\nSINGAPORE \u00b7 1 PROJECT\nUNIVERSITY RESEARCH INSTITUTE\nTissue culture laboratory, class 1K to 10K cleanroom\nSINGAPORE\nCHINA \u00b7 1 PROJECT\nBATTERY MANUFACTURER\nLithium cell facility, 79,000 m\u00b2 air-conditioning system\nCHINA\nEUROPE \u00b7 2 PROJECTS\nBATTERY MANUFACTURER\nLithium-ion battery gigafactory dry room, 62,000 m\u00b2\nEUROPE\nBATTERY MANUFACTURER\nEV battery gigafab phase 1, 8,000 m\u00b2 dry room system\nEUROPE\n18 PROJECTS PUBLISHED AT CONCEPT STAGE \u00b7 IAQ CONFIRMS THE DEFINITIVE LAUNCH LIST BEFORE GO LIVE \u00b7 PROFILE-ONLY REFERENCES STAY OFF THE PAGE WHILE THEIR CLIENT NAMES REMAIN CONFIDENTIAL",
+   "img": "global-presence/04-reach-as-evidence.webp",
+   "shownHeight": 2207,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 197,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 4,
+   "key": "a-facility-in-any-of-these-countries",
+   "heading": "A facility in any of these countries",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 4059,
+   "height": 242,
+   "text": "A facility in any of these countries\nStart a project\nTell us the country, the class and the programme. One accountable team from feasibility to handover.",
+   "img": "global-presence/05-a-facility-in-any-of-these-countries.webp",
+   "shownHeight": 242,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 0,
+    "pixels": 1.29
+   },
+   "reason": "fullstop"
+  },
+  {
+   "i": 5,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 4301,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "global-presence/06-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

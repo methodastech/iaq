@@ -1,0 +1,60 @@
+{
+  "layer": "detail-tools-phone",
+  "source": "detail-tools-phone from detail-tools-lite: make-lite --error 0.04 --prune --normals flat",
+  "needsNormals": false,
+  "origin": {
+    "x": 156.2375234522072,
+    "z": -3.5586332069590583
+  },
+  "bounds": {
+    "min": [
+      -66.46061375988293,
+      -7.765601136129715,
+      -34.86984674299212
+    ],
+    "max": [
+      38.79422702742008,
+      18.829999995851527,
+      2.590718958874036
+    ]
+  },
+  "storeys": [
+    {
+      "index": 0,
+      "key": "apron",
+      "name": "APRON",
+      "elevation": 4.2,
+      "file": "detail-tools-phone-0-apron.glb",
+      "triangles": 58,
+      "sizeKB": 4
+    },
+    {
+      "index": 1,
+      "key": "gf",
+      "name": "GF",
+      "elevation": 5.9,
+      "file": "detail-tools-phone-1-gf.glb",
+      "triangles": 702417,
+      "sizeKB": 1818
+    },
+    {
+      "index": 2,
+      "key": "1f",
+      "name": "1F",
+      "elevation": 10.25,
+      "file": "detail-tools-phone-2-1f.glb",
+      "triangles": 374928,
+      "sizeKB": 990
+    },
+    {
+      "index": 3,
+      "key": "2f",
+      "name": "2F",
+      "elevation": 14.6,
+      "file": "detail-tools-phone-3-2f.glb",
+      "triangles": 240468,
+      "sizeKB": 647
+    }
+  ],
+  "flatShading": true
+}

@@ -176,7 +176,7 @@ const FACTS = [
 ]
 const GLANCE_UNITS = [
   { no: 1, name: 'EPC', line: 'Builds the facility.', pills: ['EPCC', 'EPCM'], img: '/assets/iaq/site-aerial-build.webp', pos: '50% 40%',
-    pts: ['Design, procurement, construction and commissioning under one contract', 'Cleanrooms, dry rooms and hi-tech facilities', 'CSA, MEP and process utilities, in house'] },
+    pts: ['Design, procurement, construction and commissioning', 'Cleanrooms, dry rooms and hi-tech facilities', 'CSA, MEP and process utilities, in house'] },
   { no: 2, name: 'Process Critical Utilities & Total Tool Installation Solutions', line: 'Re-equips a live semiconductor fab.', pills: ['Standalone', 'EPC or EPCM model'], img: '/assets/iaq/cr-utilities-p1010242.webp', pos: '50% 35%',
     pts: ['Utilities: gas, chemical and slurry, water, process exhaust', 'Tool installation: facilitize, rig in, hook up, commission', 'Semiconductor fabs, front end to back end'] },
   { no: 3, name: 'EFM', line: 'Runs and maintains it.', pills: ['Cooling as a Service', 'Energy Performance Contracting'], img: '/assets/iaq/plant-dusk-01.webp', pos: '50% 70%',
@@ -221,7 +221,7 @@ function S2() {
       <div className="s2">
         <div className="s2-spans">
           <div className="s2-span" style={{ gridColumn: '1 / 5' }}>
-            <div><i>Business unit 1</i><b>EPC</b><span>Builds the facility, under one contract.</span></div>
+            <div><i>Business unit 1</i><b>EPC</b><span>Builds the facility.</span></div>
             <div className="s2-pills"><span className="cxs-pill">EPCC · IAQ delivers</span><span className="cxs-pill">EPCM · IAQ manages</span></div>
           </div>
           <div className="s2-span" style={{ gridColumn: '5 / 6' }}><div><i>Business unit 2</i><b>PCU &amp; TTI</b><span>Process Critical Utilities &amp; Total Tool Installation</span></div></div>

@@ -1,0 +1,81 @@
+{
+ "url": "/policies",
+ "slug": "policies",
+ "title": "IAQ Group \u00b7 Policies \u00b7 Brand Method",
+ "at": "2026-10-22T23:10:08.578Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Everything IAQ commits to, in writing",
+   "tag": "header",
+   "cls": "pg-head",
+   "top": 84,
+   "height": 313,
+   "text": "Everything IAQ commits to,\nin writing\nEvery IAQ policy at its own permanent address. Approved text and signed PDFs publish here as each one is issued.",
+   "img": "policies/01-hero.webp",
+   "shownHeight": 313,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 66,
+    "pixels": 0
+   }
+  },
+  {
+   "i": 1,
+   "key": "six-documents-one-place",
+   "heading": "Six documents, one place",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 397,
+   "height": 757,
+   "text": "Six documents, one place\nSelect a document to see what it must contain and where it stands today. Each one gets a permanent address, so a client, an auditor or a regulator can link straight to it.\n6 TO PUBLISH\n1\nPrivacy Policy\nHow personal data from the site and from enquiries is handled\nAWAITING TEXT\n2\nTerms of Use\nThe terms that govern use of the website itself\nAWAITING TEXT\n3\nCookie and consent notice\nWhat is set, why, and how a visitor refuses it\nAWAITING SCOPE DECISION\n4\nQuality Policy\nThe quality commitment behind the ISO 9001:2015 certification\nPUBLISHED, SIGNED PDF\n5\nEHS Policy\nEnvironment, health and safety, behind ISO 14001 and ISO 45001\nPUBLISHED, SIGNED PDF\n6\nWhistleblowing Policy\nThe protected route for raising a concern\nAWAITING TEXT",
+   "img": "policies/02-six-documents-one-place.webp",
+   "shownHeight": 757,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 1.28
+   }
+  },
+  {
+   "i": 2,
+   "key": "privacy-policy",
+   "heading": "Privacy Policy",
+   "tag": "section",
+   "cls": "pg-sec.calm",
+   "top": 1154,
+   "height": 598,
+   "text": "Privacy Policy\nHow personal data from the site and from enquiries is handled.\nAWAITING TEXT\nWhat the document must contain. The document must set out what personal data the site and the enquiry form collect, the lawful basis for holding it, how long it is kept, which processors it is shared with, any transfer outside Malaysia, and the route for a person to request access, correction or deletion.\nA Privacy Policy link already exists in the footer of the current live site. The text behind it was never captured and does not appear in any supplied document.\nDRAFT WORDING FOR IAQ'S APPROVAL, NOT YET A PUBLISHED POLICY\nFormat: a page on this site, plus a signed PDF where the policy is a controlled document.\nVersion control: issue date and revision number printed on the document and shown on this page.\nOwner: named on publication, so an auditor knows who to ask.\nPrivacy Policy\nThis slot carries the published document. It is reserved for the approved wording exactly as IAQ issues it, so a client, an auditor or a regulator reads the authoritative text in full.\nPRIVACY POLICY TEXT, PDPA ALIGNED \u00b7 SUPPLIED BY IAQ LEGAL COUNSEL",
+   "img": "policies/03-privacy-policy.webp",
+   "shownHeight": 598,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 5,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 3,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 1752,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "policies/04-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

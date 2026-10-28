@@ -46,8 +46,8 @@
 .nb-facts dt{ font-family:"Switzer","Instrument Sans",sans-serif; font-weight:600;
   font-size:clamp(19px,1.9vw,27px); letter-spacing:-.025em; line-height:1; color:#fff;
   font-variant-numeric:tabular-nums; }
-.nb-facts dd{ margin:8px 0 0; font-family: var(--label); font-size:10px;
-  font-weight:600; letter-spacing:.17em; text-transform:uppercase; color:#8E9BB4; }
+.nb-facts dd{ margin:8px 0 0; font-family: var(--label); font-size:13px;
+  font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:#8E9BB4; }
 
 /* ---- the wire ---------------------------------------------------------- */
 
@@ -57,7 +57,7 @@
   display:flex; flex-direction:column; }
 
 .nb-wire-k{ display:flex; align-items:center; gap:9px;
-  font-family: var(--label); font-size:10px; font-weight:600; letter-spacing:.2em;
+  font-family: var(--label); font-size:13px; font-weight:600; letter-spacing:.04em;
   text-transform:uppercase; color:#8E9BB4; }
 /* the live dot stops blinking whenever the wire is paused, so the state is always honest */
 .nb-live{ width:6px; height:6px; background:#6C7893; flex:none; }
@@ -70,14 +70,14 @@
 @keyframes nbIn{ from{ opacity:0; transform:translateY(12px) } to{ opacity:1; transform:none } }
 
 .nb-wire-m{ display:flex; align-items:center; gap:9px; flex-wrap:wrap;
-  font-family: var(--label); font-size:10px; font-weight:600; letter-spacing:.16em;
+  font-family: var(--label); font-size:13px; font-weight:600; letter-spacing:.04em;
   text-transform:uppercase; color:#FF8A90; --nm-accent:#FF4D55; }
 .nb-wire-m .nm{ width:16px; height:16px; flex:none; }
 .nb-wire-m time{ color:#7C88A2; }
 .nb-wire-t{ display:block; margin-top:13px; color:#fff; font-family:"Switzer",sans-serif;
   font-weight:600; font-size:clamp(17px,1.5vw,22px); line-height:1.28; letter-spacing:-.015em; }
 .nb-wire-go{ display:inline-flex; align-items:center; gap:8px; margin-top:16px;
-  font-family: var(--label); font-size:10px; font-weight:600; letter-spacing:.16em;
+  font-family: var(--label); font-size:13px; font-weight:600; letter-spacing:.04em;
   text-transform:uppercase; color:#C2CCDD; transition:color .25s, gap .3s var(--e1); }
 .nb-wire-item:hover .nb-wire-go{ color:#fff; gap:13px; }
 .nb-wire-item:focus-visible{ outline:2px solid #FF4D55; outline-offset:6px; }
@@ -98,7 +98,7 @@
 /* the queue behind the current item */
 .nb-wire-next{ list-style:none; margin:14px 0 0; padding:0; display:flex; gap:16px; flex-wrap:wrap; }
 .nb-wire-next li{ display:inline-flex; align-items:center; gap:6px;
-  font-family: var(--label); font-size:10.5px; font-weight:600; letter-spacing:.14em;
+  font-family: var(--label); font-size:13px; font-weight:600; letter-spacing:.04em;
   text-transform:uppercase; color:#6C7893; }
 .nb-wire-next .nm{ width:13px; height:13px; --nm-accent:#8E5257; }
 

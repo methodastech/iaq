@@ -66,7 +66,7 @@ export default function Shortlist() {
         eyebrow={isReceived ? 'Shared shortlist' : 'Your shortlist'}
         title={isReceived
           ? <>A colleague sent you <em>these projects.</em></>
-          : <>The projects you <em>saved.</em></>}
+          : <>The projects you <em>saved</em></>}
         lede={isReceived
           ? 'This list was put together by someone else and is shown read only. Add it to your own shortlist to edit it, or send it straight to IAQ as it is.'
           : 'Saved projects stay here between visits. Send the list to a colleague, or attach it to an enquiry.'}

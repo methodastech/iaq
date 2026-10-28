@@ -42,7 +42,7 @@
 }
 .nw-cb{display:flex;flex-direction:column;gap:9px;min-width:0}
 .nw-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.nw-meta time{font-family: var(--label);font-size:10.5px;letter-spacing:.13em;
+.nw-meta time{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--soft)}
 .nw-card h3{font-family:"Switzer",sans-serif;font-weight:600;font-size:15.5px;line-height:1.34;
   letter-spacing:-.01em;color:var(--ink);transition:color .22s}
@@ -51,7 +51,7 @@
 .nw-card:hover h2,.nw-card:hover h3{color:var(--blue-bright)}
 .nw-card:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
 .nw-go{display:inline-flex;align-items:center;gap:9px;margin-top:2px;
-  font-family: var(--label);font-size:10.5px;letter-spacing:.13em;
+  font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;font-weight:600;color:var(--blue-bright)}
 .nw-go i{font-style:normal;transition:transform .3s var(--e1)}
 .nw-card:hover .nw-go i{transform:translateX(5px)}
@@ -65,7 +65,7 @@
 @media(max-width:720px){.nw-sub{grid-template-columns:1fr}}
 
 /* ── latest rail ────────────────────────────────────────────────────────── */
-.nw-lk{font-family: var(--label);font-size:10.5px;letter-spacing:.2em;
+.nw-lk{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--blue);padding-bottom:12px}
 .nw-latest{list-style:none}
 /* no row rule: five stacked hairlines in one 340px column is exactly the pattern the client
@@ -76,7 +76,7 @@
 .nw-latest a:hover .nw-lt{color:var(--blue-bright)}
 .nw-latest a:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 .nw-lm{display:flex;align-items:center;gap:9px}
-.nw-lm time{font-family: var(--label);font-size:10px;letter-spacing:.12em;
+.nw-lm time{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--soft)}
 
 /* ── filter bar ─────────────────────────────────────────────────────────── */
@@ -102,24 +102,24 @@
   background:linear-gradient(180deg,var(--bg2),rgba(255,255,255,0));z-index:-1;pointer-events:none}
 .nw-chips{display:flex;gap:6px;flex-wrap:wrap}
 .nw-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(23,33,58,.06);border:1px solid transparent;
-  color:var(--soft);padding:8px 13px;font-family: var(--label);font-size:10.5px;
-  letter-spacing:.1em;text-transform:uppercase;font-weight:600;cursor:pointer;
+  color:var(--soft);padding:8px 13px;font-family: var(--label);font-size:13px;
+  letter-spacing:.04em;text-transform:uppercase;font-weight:600;cursor:pointer;
   transition:border-color .2s,color .2s,background .2s}
-.nw-chip b{font-size:9px;color:var(--soft);font-weight:600}
+.nw-chip b{font-size:13px;color:var(--soft);font-weight:600}
 .nw-chip:hover{background:rgba(23,33,58,.1);color:var(--ink)}
 .nw-chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
 .nw-chip[aria-pressed="true"] b{color:rgba(255,255,255,.74)}
 .nw-chip:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 /* --faint (#828B9E) is 3.42:1 on white and banned for micro-type; --soft is 7.7:1 */
-.nw-count{font-family: var(--label);font-size:10.5px;letter-spacing:.13em;
+.nw-count{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--soft);display:flex;align-items:center;gap:5px}
 .nw-clear{background:none;border:0;padding:0;font:inherit;color:var(--blue);cursor:pointer;
-  text-transform:uppercase;letter-spacing:.13em}
+  text-transform:uppercase;letter-spacing:.04em}
 .nw-clear:hover{color:var(--blue-bright);text-decoration:underline}
 .nw-clear:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
 /* the year facet reads as a second axis, not a second set of topics: no mark, no count */
-.nw-chip-y{letter-spacing:.12em}
+.nw-chip-y{letter-spacing:.04em}
 /* the search shares the Projects/Careers treatment so all three consoles behave alike */
 .nw-search{max-width:280px;flex:1 1 190px}
 
@@ -230,7 +230,7 @@
 .ar-pn a:hover{background:color-mix(in srgb,var(--blue) 5%,var(--bg))}
 .ar-pn a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .ar-pn .nx{grid-column:2;text-align:right}
-.ar-pn-k{font-family:var(--label);font-size:12.5px;font-weight:500;color:var(--soft)}
+.ar-pn-k{font-family:var(--label);font-size:13px;font-weight:500;color:var(--soft)}
 .ar-pn-t{font-family:"Switzer",sans-serif;font-weight:600;font-size:16px;line-height:1.35;letter-spacing:-.01em;color:var(--ink);transition:color .25s}
 .ar-pn a:hover .ar-pn-t{color:var(--blue-bright)}
 

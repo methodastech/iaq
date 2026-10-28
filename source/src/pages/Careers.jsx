@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
 import FooterNav from '../components/FooterNav.jsx'
-import CloseAmbient from '../components/CloseAmbient.jsx'
 import CultureCollage from '../components/CultureCollage.jsx'
 import Icon from '../components/FlowIcon.jsx'
 import ValueMotion from '../components/ValueMotion.jsx'
@@ -264,7 +263,7 @@ export default function Careers() {
                   intentional, approved phrase"): IAQ's message in place of "The people behind the cleanest rooms." */}
               <h1 className="cu-h1 cu-rv">
                 <span className="cu-ln"><span>Build your career</span></span>{' '}
-                <span className="cu-ln"><em>with IAQ Group.</em></span>
+                <span className="cu-ln"><em>with IAQ Group</em></span>
               </h1>
               <p className="cu-lede cu-rv" style={{ '--d': '.12s' }}>
                 Be part of teams delivering engineering and total facility solutions across complex project environments. Explore opportunities to contribute, learn and grow with a multidisciplinary organisation.
@@ -297,7 +296,7 @@ export default function Careers() {
               <div className="cu-year-big cu-rv" aria-hidden="true">1995</div>
               {/* 20 Oct (client review, Sunny: "what a poor representation of our brand albeit the reason behind is correct"): the
                   heading says what IAQ was built on, in its own vision's words, in place of "It started with indoor air quality." */}
-              <h2 id="cu-origin-h" className="cu-h2 cu-rv">Built on <em>engineering excellence.</em></h2>
+              <h2 id="cu-origin-h" className="cu-h2 cu-rv">Built on <em>engineering excellence</em></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>
                 Ir. Tiew Soon Aik founded IAQ in Malaysia in 1995, as a cleanroom specialist. Today it builds in seven countries.
               </p>
@@ -316,7 +315,7 @@ export default function Careers() {
         <section className="cu-sec cu-values" id="cu-values" aria-labelledby="cu-values-h">
           <div className="cu-w">
             <div className="cu-head">
-              <h2 id="cu-values-h" className="cu-h2 cu-rv">Six values, <em>on the record.</em></h2>
+              <h2 id="cu-values-h" className="cu-h2 cu-rv">Six values, <br /><em>on the record</em></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>The values are IAQ&rsquo;s own words. Beside each one is where the record already shows it.</p>
             </div>
             <div className="cu-vgrid">
@@ -339,74 +338,15 @@ export default function Careers() {
           </div>
         </section>
 
-        {/* ── 1.4 · Safety record ────────────────────────────────────────────
-            Two separate claims, each with its own figure, date and photograph:
-              · 2.6 million: crossed 28 February 2025 on the XFAB 40K Expansion Project (newsroom 28 Feb 2025)
-              · DOSH Kuching: July 2025, banner "2.74 million Safe Manhours without LTI" (newsroom 3 Jul 2025)
-            Zero LTI: the client wafer fab building IAQ delivered with zero lost time injury (newsroom 1 Jun 2023). */}
-        {/* 27 Oct (client: "Remove this section, not relevant on the career page"): the safety record is off Careers */}
-        {false && (
-        <section className="cu-sec cu-safety" id="cu-safety" aria-labelledby="cu-safety-h">
-          <div className="cu-w">
-            <div className="cu-head">
-              <h2 id="cu-safety-h" className="cu-h2 cu-rv">Everybody goes <em>home safe.</em></h2>
-              <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>
-                An injury free workplace is the aim of IAQ&rsquo;s <abbr title="Environment, Health and Safety">EHS</abbr> policy.
-              </p>
-            </div>
-            <div className="cu-sf">
-              <div className="cu-sf-big cu-rv">
-                <Photo className="cu-sf-fig" src="/assets/newsroom/safe-manhours-2-6-million-2025.webp" pos="50% 45%" mo={0.6}
-                  alt="The XFAB 40K Expansion Project site team holding their 2.6 million safe manhours banner"
-                  cap="XFAB 40K Expansion Project team, February 2025" />
-                <span className="cu-sf-panel">
-                  <span className="cu-sf-num"><span data-count="2.6" data-dec="1">2.6</span></span>
-                  <span className="cu-sf-unit">million safe manhours</span>
-                  <span className="cu-sf-sub">Crossed on 28 February 2025 on the XFAB 40K Expansion Project, with no lost time injury.</span>
-                  <span className="cu-sf-dosh">
-                    <img src="/assets/newsroom/dosh-kuching-safety-benchmark-2025.webp" alt="The IAQ team at DOSH Kuching with a banner reading 2.74 million safe manhours without LTI" loading="lazy" decoding="async" />
-                    <span>
-                      A separate record: in July 2025, the Sarawak project team presented 2.74 million safe manhours
-                      without <abbr title="lost time injury">LTI</abbr> to <abbr title="Department of Occupational Safety and Health">DOSH</abbr> Kuching.
-                    </span>
-                  </span>
-                </span>
-              </div>
-              <ul className="cu-sf-tiles">
-                <li className="cu-rv" style={{ '--d': '.05s' }}>
-                  <Photo className="cu-sf-vis is-photo" src="/assets/culture/moshpa-osh-gold-2024.webp" mo={0.45} alt="IAQ receiving the Gold award on stage at the MOSHPA OSH Excellence Award 2024" />
-                  <span className="cu-sf-txt"><strong>Gold</strong><span className="cu-sf-c"><abbr title="Occupational Safety and Health">OSH</abbr> Management, MOSHPA 2024</span></span>
-                </li>
-                <li className="cu-rv" style={{ '--d': '.1s' }}>
-                  <span className="cu-sf-vis is-badge"><img src="/assets/badge-highwire-gold-2024.webp" alt="Highwire Safety Gold 2024 badge" loading="lazy" decoding="async" /></span>
-                  <span className="cu-sf-txt"><strong>Gold</strong><span className="cu-sf-c">Highwire Safety Award 2024</span></span>
-                </li>
-                <li className="cu-rv" style={{ '--d': '.15s' }}>
-                  <span className="cu-sf-vis is-badge">
-                    <img src="/assets/badge-iso.webp" alt="Intertek certification mark for ISO 9001, ISO 14001 and ISO 45001" loading="lazy" decoding="async" />
-                    <img src="/assets/badge-ukas.webp" alt="UKAS Management Systems accreditation mark" loading="lazy" decoding="async" />
-                  </span>
-                  <span className="cu-sf-txt"><strong>ISO 45001</strong><span className="cu-sf-c">Intertek certified, UKAS accredited</span></span>
-                </li>
-                <li className="cu-rv" style={{ '--d': '.2s' }}>
-                  <Photo className="cu-sf-vis is-photo" src="/assets/newsroom/fab1e-building-opening.webp" mo={0.45} alt="The IAQ team at the opening of a client's wafer fab building" />
-                  <span className="cu-sf-txt"><strong>Zero LTI</strong><span className="cu-sf-c">Client wafer fab building, 2023</span></span>
-                </li>
-              </ul>
-            </div>
-            <blockquote className="cu-sf-q cu-rv">
-              We believe every incident is preventable. No task is worth risking someone&rsquo;s safety.
-              <cite>IAQ safety commitment</cite>
-            </blockquote>
-          </div>
-        </section>
-        )}
+        {/* 26 Oct (IAQ review, NR, page 020: "Remove this section, not relevant on the career page"): 1.4, the safety record
+            ("Everybody goes home safe", 2.6 million safe manhours, the OSH awards, ISO 45001, the safety pledge), is off Careers.
+            The ESG Commitment page carries the safety record; the markup is in _backups/nr-open-1026/src_pages_Careers.jsx */}
 
         {/* ── 1.5 · Learning and growth ──────────────────────────────────── */}
         <section className="cu-sec cu-grow" id="cu-grow" aria-labelledby="cu-grow-h">
           <div className="cu-w">
             <div className="cu-head">
-              <h2 id="cu-grow-h" className="cu-h2 cu-h2-mk cu-rv"><RfLrn className="cu-hmk cu-hmk-ln" /><span>Where engineers <em>start and grow.</em></span></h2>
+              <h2 id="cu-grow-h" className="cu-h2 cu-h2-mk cu-rv"><RfLrn className="cu-hmk cu-hmk-ln" /><span>Where engineers <em>start and grow</em></span></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>IAQ trains its engineers in house and coaches its leaders. It also takes the work into universities.</p>
             </div>
             <h3 className="cu-h3 cu-sub cu-rv">Training and coaching</h3>
@@ -463,7 +403,7 @@ export default function Careers() {
           same size (careers.css .head-h1). */}
       <div className="headband cr-band"><div className="hb" aria-hidden="true"><img src="/assets/photo-awards.webp" alt=""  loading="lazy" decoding="async" /></div><header className="head wrap" data-mo-skip="">
         <span className="eyebrow">Careers</span>
-        <h2 className="head-h1">Open roles, <em>by department.</em></h2>
+        <h2 className="head-h1">Open roles, <br /><em>by department</em></h2>
         <p className="lede">Engineering, project delivery, commercial and finance roles, on facilities that have to work to the micron.</p>
         <div className="head-stats">
           <div className="hchip"><b id="totRoles">{nRoles}</b><span>Open roles</span></div>
@@ -522,7 +462,7 @@ export default function Careers() {
       <section className="pg-sec cr-why" aria-labelledby="cr-why-h">
         <div className="wrap">
           <span className="eyebrow">Working culture</span>
-          <h2 id="cr-why-h">Why build your career <em>at IAQ.</em></h2>
+          <h2 id="cr-why-h">Why build your career <br /><em>at IAQ</em></h2>
           <div className="cr-why-grid">
             {WHY_JOIN.map((w, i) => (
               <article className="cr-why-c" key={w.t}>
@@ -561,7 +501,9 @@ export default function Careers() {
             <div className="crow is-static"><span className="ref">HQ &middot; Shah Alam</span><b className="adr">No.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor</b></div>
           </div>
         </div>
-        <CloseAmbient />
+        {/* 26 Oct (IAQ review, NR, page 001: "To remove all the dust particle !"): the particle field (CloseAmbient's canvas) is off the band;
+            its ground stays, the same navy gradient and scrim, so only the particles go. The component stays on disk */}
+        <div className="close-viz" aria-hidden="true"><div className="close-scrim"></div></div>
         <Footer note="Career page concept · Brand Method" nav={false} />
       </section>
     </>

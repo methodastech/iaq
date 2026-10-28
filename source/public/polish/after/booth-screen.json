@@ -1,0 +1,27 @@
+{
+ "url": "/booth/screen",
+ "slug": "booth-screen",
+ "title": "IAQ Group \u00b7 Booth screen \u00b7 SEMICON Europa 2026",
+ "at": "2026-10-22T23:10:31.646Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "controlled-environments-built-to-class",
+   "heading": "Controlled environments, built to class.",
+   "tag": "section",
+   "cls": "bs-open",
+   "top": 129,
+   "height": 726,
+   "text": "YOUR TOTAL FACILITY SOLUTIONS PROVIDER\nControlled environments, built to class.\n31\nyears building controlled environments\n7\ncountries with an IAQ office, Germany among them\n250+\nprojects completed\nWatch a fab being built\nBook a meeting",
+   "img": "booth-screen/01-controlled-environments-built-to-class.webp",
+   "shownHeight": 726,
+   "changed": false,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 0.48
+   }
+  }
+ ],
+ "errs": []
+}

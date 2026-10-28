@@ -124,8 +124,8 @@
   right: 0; top: 7px;
   font-style: normal;
   font-family: var(--label);
-  font-size: 10.5px;
-  letter-spacing: .2em;
+  font-size: 13px;
+  letter-spacing:.04em;
   font-weight:600;
   color: var(--faint);
   opacity: 1;
@@ -188,7 +188,7 @@
   transition: background .35s var(--e1); }
 .vx-i:hover .vx-rule { background: var(--blue); }
 .vx-top { display: flex; align-items: center; justify-content: space-between; }
-.vx-ix { font-family: var(--label); font-size: 10px; letter-spacing: .16em; color: var(--faint); }
+.vx-ix { font-family: var(--label); font-size: 13px; letter-spacing:.04em; color: var(--faint); }
 .vx-mark { width: 20px; height: 20px; color: var(--soft); transition: color .3s var(--e1), transform .35s var(--e1); }
 .vx-mark svg { width: 100%; height: 100%; display: block; }
 .vx-i:hover .vx-mark { color: var(--blue); transform: translateY(-2px); }
@@ -238,7 +238,7 @@
 @keyframes viDrive { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-1.6px) } }
 @media (prefers-reduced-motion: reduce) { .vi-art .a-drive { animation: none } }
 
-.vi-ix { display: block; font-family: var(--num); font-size: 10px; letter-spacing: .18em;
+.vi-ix { display: block; font-family: var(--num); font-size: 13px; letter-spacing:.04em;
   font-weight:600; color: var(--faint); }
 .vi-i h3 { margin-top: 9px; font-size: clamp(17px, 1.5vw, 21px); line-height: 1.18;
   letter-spacing: -.018em; }
@@ -283,9 +283,9 @@ div.vb{ position:relative; margin-top:clamp(30px,4.5vh,56px); }   /* 22 Oct: div
 /* 29 Sep (Bazil: "zoom in zoom out animation haram"): no depth push; the card fades in and its shadow deepens on hover */
 @keyframes vbIn{ to{ opacity:1 } }
 .vb-card:hover{ box-shadow:34px 40px 54px -26px rgba(12,18,32,.5); }
-.vb-ix{ position:absolute; left:20px; top:16px; font-family:var(--num); font-size:10px; letter-spacing:.18em; color:var(--faint); font-weight:600; }
+.vb-ix{ position:absolute; left:20px; top:16px; font-family:var(--num); font-size:13px; letter-spacing:.04em; color:var(--faint); font-weight:600; }
 .vb-t{ position:absolute; left:20px; bottom:44px; font-family:"Switzer",sans-serif; font-size:19px; font-weight:600; letter-spacing:-.018em; line-height:1.15; color:var(--ink); max-width:62%; }
-.vb-l{ position:absolute; left:20px; bottom:18px; font-size:12.5px; line-height:1.4; color:var(--soft); max-width:64%; }
+.vb-l{ position:absolute; left:20px; bottom:18px; font-size:13px; line-height:1.4; color:var(--soft); max-width:64%; }
 /* the object stands on the card: foot at the plate, body counter-rotated to face the camera */
 .vb-obj{ position:absolute; right:8px; bottom:50%; width:156px; height:163px;
   transform-origin:50% 100%; transform:rotateZ(30deg) rotateX(-48deg); pointer-events:none; }
@@ -326,3 +326,5 @@ div.vb{ position:relative; margin-top:clamp(30px,4.5vh,56px); }   /* 22 Oct: div
 .vg .vx-ix { color: #FF8A90; }
 .vg .vx-mark { color: rgba(255, 255, 255, .75); }
 .vg .vx-rule { background: rgba(255, 255, 255, .16); }
+/* 27 Oct (UI/UX sweep): the value's line is a block so it can balance; no word alone on its last line (rule 21) */
+.vg .vc-line{display:block;text-wrap:balance}

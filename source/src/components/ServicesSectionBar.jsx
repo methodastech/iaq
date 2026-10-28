@@ -13,9 +13,9 @@ const PARTS = [
   { k: 'units', n: '3', label: 'business units', sel: '.sm-units', id: 'business-units', c: '#0B8FD8' },
   /* 15 Oct: the six-services section left the page, and its tab with it */
   /* 28 Sep (client): the 4 works and Tools hookup sections left the page, and their tabs with them */
-  /* 27 Oct: the "Who does what" matrix is off the page (the 3D build stands there), so its tab goes too */
-  { k: 'quote', n: '', label: 'Your quote', sel: '.sm-qs', id: 'your-quote', c: '#0C1220' },
-  { k: 'faq', n: '', label: 'Questions', sel: '.sm-faq', id: 'questions', c: '#0C1220' },
+  /* 27 Oct (IAQ review, NR): the matrix and the quote section left the page; the 3D build took the matrix's place */
+  { k: 'build', n: '', label: 'The facility, built', sel: '.b3d', id: 'build3d', c: '#1C4F9C' },
+  /* 26 Oct (IAQ review, NR): the FAQ left the page for /faq, and its tab with it */
 ]
 
 export default function ServicesSectionBar () {

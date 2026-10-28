@@ -1,0 +1,118 @@
+{
+ "url": "/about/leadership",
+ "slug": "about-leadership",
+ "title": "IAQ Group \u00b7 Board & Leadership \u00b7 Brand Method",
+ "at": "2026-10-22T23:07:32.649Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "The people accountable",
+   "tag": "header",
+   "cls": "pg-head",
+   "top": 84,
+   "height": 347,
+   "text": "HOME\n\u203a\nABOUT\nThe people accountable\nThe people who lead IAQ, grouped by position. Names beyond the founder are published as IAQ confirms them.\nFOUNDER ON RECORD\nFURTHER NAMES FROM IAQ\nPORTRAITS TO FOLLOW",
+   "img": "about-leadership/01-hero.webp",
+   "shownHeight": 347,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 9,
+    "pixels": 0
+   }
+  },
+  {
+   "i": 1,
+   "key": "founder-chief-executive-board-of-directors",
+   "heading": "Founder, chief executive, board of directors",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 431,
+   "height": 1429,
+   "text": "Founder, chief executive,\nboard of directors\nGrouped by position. Open any entry for that person\u2019s professional experience. The founder is on the record today, and each further name is added as IAQ confirms it.\nPORTRAIT \u00b7 FOUNDER\nIr. Tiew Soon Aik\nFOUNDER\nPROFESSIONAL EXPERIENCE\nPORTRAIT \u00b7 CEO\nName to be confirmed\nCHIEF EXECUTIVE OFFICER\nPROFESSIONAL EXPERIENCE\nPORTRAITS \u00b7 BOARD\nLine-up to be confirmed\nBOARD OF DIRECTORS\nPROFESSIONAL EXPERIENCE\nBOARD LINE-UP \u00b7 SUPPLIED BY IAQ\nEvery entry above other than the founder is a position ready for IAQ to name\nFilling this page takes four things per individual and nothing less. Until they arrive, no name is guessed and no biography is written.\nFull name, with the correct honorific\nExact position title\nPublishable portrait\nProfessional experience, for the drop-down\nTHE FOUNDER\u2019S HONORIFIC SITS WITH IAQ TO CONFIRM. IAQ\u2019S OWN WORDING GIVES MR. TIEW SOON AIK, THE BUILT PAGES GIVE IR. TIEW SOON AIK, AND IAQ\u2019S CONFIRMATION SETS THE FORM ACROSS THE SITE.",
+   "img": "about-leadership/02-founder-chief-executive-board-of-directors.webp",
+   "shownHeight": 1429,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 89,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 2,
+   "key": "the-layer-that-runs-delivery",
+   "heading": "The layer that runs delivery",
+   "tag": "section",
+   "cls": "pg-sec.calm",
+   "top": 1860,
+   "height": 1032,
+   "text": "The layer that runs delivery\nThe C-suite and the managerial level, in the same format as the board. Names are added as IAQ confirms each entry.\nPORTRAITS \u00b7 C-SUITE\nLine-up to be confirmed\nC-SUITE\nPROFESSIONAL EXPERIENCE\nPORTRAITS \u00b7 MANAGEMENT\nLine-up to be confirmed\nMANAGERIAL LEVEL\nPROFESSIONAL EXPERIENCE\nPORTRAITS BELONG TO THE LEADERSHIP PHOTOGRAPHY PACKAGE, STILL TO BE SCHEDULED WITH IAQ",
+   "img": "about-leadership/03-the-layer-that-runs-delivery.webp",
+   "shownHeight": 1032,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 13,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 3,
+   "key": "doing-business-the-right-way",
+   "heading": "Doing business the right way",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 2892,
+   "height": 482,
+   "text": "Doing business the right way\nTransparency and accountability guide every decision, backed by our published Quality and environment, health and safety (EHS) policies.\nIAQ\u2019s governance practice is built for transparency, accountability and ethical decision-making. It is held to the compliance standards clients, partners and stakeholders expect, and to the bar a public company is judged by.\nREAD NEXT\nPolicies\nESG commitment\nON THE RECORD\nENTITY\nIAQ Technology International Sdn. Bhd. is the entity intended to list. The listing board will be confirmed ahead of the listing.\nPOLICIES\nQuality Policy and EHS Policy, published in the policy index.\nSTANDARDS\nISO 9001:2015, ISO 14001:2015 and ISO 45001:2018, certified by Intertek.\nLICENCE\nCIDB Grade G7.",
+   "img": "about-leadership/04-doing-business-the-right-way.webp",
+   "shownHeight": 482,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 5,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 4,
+   "key": "careers-with-the-group",
+   "heading": "Careers with the group",
+   "tag": "section",
+   "cls": "pg-sec.calm",
+   "top": 3373,
+   "height": 349,
+   "text": "Careers with the group\nIAQ has 31 years of engineering behind it, and offices in Singapore, Germany, India, Sweden, the USA and Ireland. Engineers here get hands-on experience and a long career runway, on projects that matter to hi-tech industries worldwide.\nJoin the team\nOpen roles across engineering, project management, quality assurance and control (QAQC), finance and more.",
+   "img": "about-leadership/05-careers-with-the-group.webp",
+   "shownHeight": 349,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 0,
+    "pixels": 1.51
+   },
+   "reason": "fullstop"
+  },
+  {
+   "i": 5,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 3723,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "about-leadership/06-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

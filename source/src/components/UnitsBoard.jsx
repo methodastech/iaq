@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import Icon from './FlowIcon.jsx'
-import ModelIcon from './ModelIcon.jsx'
-import { UNITS, SERVICES, WORK } from '../data/business.js'
-import { SCENARIOS, LIFE } from '../data/codex.js'
-import { UNIT_DIAGRAM_V } from './UnitDiagramsV.jsx'
-import { sysIcon } from './codex/RelExplorer.jsx'   /* 25 Sep (Bazil: "you can add icons for each tag"): the same flat system marks the facility map draws */
+import { UNITS } from '../data/business.js'
+import { LIFE } from '../data/codex.js'
 
 /* ============================================================================
    UnitsBoard · the three business units as one board (24 Sep 2026, Bazil: "both these need to combine"; 25 Sep: "can this
@@ -28,59 +25,23 @@ import { sysIcon } from './codex/RelExplorer.jsx'   /* 25 Sep (Bazil: "you can a
    empty factory hall; PCU & TTI, a completed utility hookup along a row of tools, no people; EFM, engineers watching the
    plant's energy and chilled water trends in a control room, the chiller plant behind the glass. */
 const PHOTO = { epc: '/assets/units/unit-card-epc-v3.webp', hookup: '/assets/units/unit-card-pcu-v3.webp', efm: '/assets/units/unit-card-efm-v2.webp' }
-const MARKETS = { epc: 'All seven markets: semiconductor, data centre, EV battery, photovoltaics, district cooling, bio lifescience, food and beverage.', hookup: 'Semiconductor fabs only.', efm: 'Any facility with a cooling or energy bill worth cutting: chiller plants, district cooling, industrial plant.' }
-const workById = id => WORK.find(w => w.id === id)
-const svcById = id => SERVICES.find(s => s.id === id)
-const DETAIL = [
-  /* 21 Oct (IAQ feedback, Services overview · repeated business model: "Keep the business-model diagram in one agreed
-     location only"): the per-unit "How it works" diagram and the six-services row are off the Read more. The "Who does
-     what" chart below the units is the one place the business model is drawn on this page. */
-  ['What it is', u => u.what],
-  ['What you buy', u => u.bought],
-  ['Bought as, in detail', u => <span className="sm-ub-models">{u.models.map(m => <span className="sm-ud-model" key={m.t}><span className="sm-mi"><ModelIcon name={m.t} />{m.t}</span><small>{m.s}</small></span>)}</span>],
-  ['Work and systems', u => <span className="sm-ud-work">{u.work.map(w => { const wk = workById(w); return <span key={w} className="sm-ud-w"><b className="sm-chip w"><Icon name={wk.icon} className="sm-ti" />{wk.name}</b><small>{wk.full}</small><span className="sm-ud-sys">{wk.systems.map(t => <i key={t}><Icon name={sysIcon(t)} className="sm-ti" />{t}</i>)}</span></span> })}</span>],
-  ['Term', u => <b>{u.term}</b>],
-  ['Markets', u => MARKETS[u.id]],
-  ['Typical requests', u => <span className="sm-ud-asks">{SCENARIOS.filter(a => a.unit === u.id).map(a => <span key={a.ask}><q>{a.ask}</q><small>{a.model} · {a.services.map(id => svcById(id).short).join(', ')}</small></span>)}</span>],
-]
-
-/* 27 Oct: each unit's short description, the opening of IAQ's own introduction on its page (CapEpc, CapTool, CapEnergy) */
-const DESC = {
-  epc: 'Complex facilities require more than technical expertise. They demand seamless coordination across engineering, procurement and construction to ensure every element is aligned from concept to commissioning.',
-  hookup: 'A production facility is only ready when its manufacturing equipment and utility systems operate as one. IAQ delivers integrated PCU and TTI solutions that connect critical utility infrastructure with manufacturing tools.',
-  efm: 'By combining technical expertise, innovative commercial models and lifecycle support services, IAQ helps organisations optimise energy infrastructure, improve reliability and create measurable long-term value across their facilities.',
-}
-
+/* 26 Oct (IAQ review, NR, page 005: "Remove this section just replace with short description of each business units. And keep
+   the open EPC, PCU & TTi and EFM button but rephrase to “Learn More About EPC”…"): each card is the picture, the unit's name and
+   a short description (its `what` line in data/business.js, the one the Codex and the slides read), then "Learn more about
+   EPC". The one-liner, "Call when", "Bought as" and the Read more fold that repeated the unit pages are off the board. */
+/* 27 Oct (UI/UX sweep): one card per unit, its link inside it, so on a phone each card stacks whole; the phone tabs that
+   picked a unit are gone (they no longer hid anything and the links sat in a separate row under all three cards) */
 export default function UnitsBoard() {
-  const [open, setOpen] = useState(false)
-  const [mob, setMob] = useState(0)
-  const cell = i => 'sm-ub-cell' + (i === mob ? ' on' : '')
-  const Row = ({ label, get, k }) => (
-    <div className="sm-ub-row" role="row" key={k}>
-      {UNITS.map((u, i) => <div className={cell(i)} role="cell" key={u.id}><small className="sm-ub-k">{label}</small><div className="sm-ub-v">{get(u)}</div></div>)}
-    </div>
-  )
   return (
-    <div className={'sm-ub' + (open ? ' is-open' : '')} role="table" aria-label="The three business units" data-mob={mob}>
-      <div className="sm-ub-tabs" role="tablist" aria-label="Business unit">
-        {UNITS.map((u, i) => <button type="button" role="tab" key={u.id} aria-selected={i === mob} className={i === mob ? 'on' : ''} onClick={() => setMob(i)}>{u.short || u.name}</button>)}
-      </div>
-      <div className="sm-ub-row sm-ub-top" role="row">
-        {UNITS.map((u, i) => (
-          <div className={cell(i) + ' sm-ub-head'} role="cell" key={u.id} style={{ '--i': i }}>
-            <div className="sm-uc-pic"><img src={PHOTO[u.id]} alt="" loading="lazy" decoding="async" /><span className="sm-ub-no">Unit {u.no}<i>{LIFE[i].k}</i></span></div>
-            <h3><span className="sm-uc-mark" aria-hidden="true"><Icon name={u.icon} /></span><span className="sm-ub-nm">{u.short || u.name}<small>{u.id === 'hookup' ? u.name : u.full}</small></span></h3>
-            {/* 27 Oct (client: "Remove this section just replace with short description of each business units"): the tagline,
-                Call when and Bought as rows give way to one short description each, IAQ's own words from each unit's page */}
-            <p className="sm-ub-desc">{DESC[u.id]}</p>
-          </div>
-        ))}
-      </div>
-      {open && DETAIL.map(([label, get]) => <Row key={label} k={label} label={label} get={get} />)}
-      <div className="sm-ub-row sm-ub-foot" role="row">
-        {UNITS.map((u, i) => <div className={cell(i)} role="cell" key={u.id}><Link className="sm-uc-go" to={u.route}>Learn More About {u.short || u.name} <i aria-hidden="true">&rarr;</i></Link></div>)}
-      </div>
-      {/* 27 Oct ("remove the read more"): the "Read more: the three in detail" button and its rows are off the board */}
+    <div className="sm-ub sm-ub3" aria-label="The three business units">
+      {UNITS.map((u, i) => (
+        <article className="sm-ub-cell sm-ub-head sm-ub-card" key={u.id} style={{ '--i': i }}>
+          <div className="sm-uc-pic"><img src={PHOTO[u.id]} alt="" loading="lazy" decoding="async" /><span className="sm-ub-no">Unit {u.no}<i>{LIFE[i].k}</i></span></div>
+          <h3><span className="sm-uc-mark" aria-hidden="true"><Icon name={u.icon} /></span><span className="sm-ub-nm">{u.short || u.name}<small>{u.id === 'hookup' ? u.name : u.full}</small></span></h3>
+          <p className="sm-uc-desc">{u.what}</p>
+          <Link className="sm-uc-go" to={u.route}>Learn more about {u.short || u.name} <i aria-hidden="true">&rarr;</i></Link>
+        </article>
+      ))}
     </div>
   )
 }

@@ -10,7 +10,7 @@ const DEFAULT_IMG = '/assets/hero-campus.webp'
 /* description per route. Keys are matched longest-first, so '/services/all#design' wins over '/services'. */
 export const META = {
   '/': ['IAQ Technology: design, procurement, construction, commissioning and maintenance of cleanrooms and hi-tech facilities across Asia.', '/assets/hero-campus.webp'],
-  '/about': ['A Malaysian cleanroom specialist since 1995, now a total facility solutions provider operating across seven countries.', '/assets/about-hero-dusk.webp'],
+  '/about': ['A Malaysian cleanroom specialist since 1995, now a total facility solutions provider operating across seven countries.', '/assets/hero-campus-dusk-clean.webp'],
   '/about/history': ['Three decades of IAQ, from a 1995 indoor air quality workshop to a group delivering across seven countries.', '/assets/tl-2025-global.webp'],
   '/about/leadership': ['The people accountable for how IAQ designs, builds and maintains process-critical facilities.', '/assets/photo-team.webp'],
   '/about/esg': ['How IAQ measures safety, carbon and governance across the group.', '/assets/about-2013-energy.webp'],
@@ -18,6 +18,7 @@ export const META = {
   '/services': ['Engineering design, procurement, construction, testing and commissioning, and lifetime maintenance, delivered by one accountable team.', '/assets/ph-blueprint.webp'],
   '/services/epc-construction': ['The turnkey model: engineering, procurement, construction and commissioning under a single contract, with single-point accountability.', '/assets/ph-crane.webp'],
   '/services/process-critical-utilities': ['Specialty gases, chemical delivery, ultrapure water and process exhaust: the utilities a production tool cannot run without.', '/assets/ph-boiler.webp'],
+  '/faq': ['The questions facility owners ask before they engage IAQ, answered: models, time and cost, live fabs, handover and working with IAQ.', '/assets/iaq/site-office-4660.webp'],
   '/services/all': ['The six services on one page: each stage, what it covers and what IAQ carries at that stage.', '/assets/ph-blueprint.webp'],
   '/services/tool-installation': ['Total tool installation and hook-up: connecting production equipment precisely into the facility it sits in.', '/assets/ph-electrical.webp'],
   '/services/energy-management': ['Energy audits, retrofits and district cooling with no upfront cost, paid from the savings or through a fixed cooling tariff.', '/assets/about-2013-energy.webp'],

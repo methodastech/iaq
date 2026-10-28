@@ -66,7 +66,7 @@ export default function MemberLogin({ onNavigate }) {
         {authed ? (
           <>
             <span className="nl-k">Member area &middot; signed in</span>
-            <b>You are signed in.</b>
+            <b>You are signed in</b>{/* 22 Oct, rule 8: no full stop at a title */}
             <p>The Codex sets out the IAQ structure. The portal holds the newsroom, the open roles, the project registry and the downloads.</p>
             <button className="cta nl-cta" type="button" onClick={() => go('/portal/codex')}>Open the Codex</button>
             <button className="nl-tab" type="button" onClick={() => go('/portal/newsroom')}>Open the portal</button>

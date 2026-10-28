@@ -78,7 +78,7 @@ export default function NewsBanner({ compact = false }) {
           <span className="eyebrow">News and insights</span>
           {/* 22 Sep (Bazil, on the full stop after the name: "no dots very messy"): "IAQ." read like a
               stray mark after the wordmark, so this headline closes without one. */}
-          <h1>News <em>from the group.</em></h1>
+          <h1>News <em>from the group</em></h1>
           <p className="nb-lede">
             Project milestones, industry insight and company updates from across the group.
           </p>

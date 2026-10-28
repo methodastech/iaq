@@ -1,0 +1,360 @@
+{
+ "at": "2026-10-27T01:49:13.377Z",
+ "base": "http://localhost:5177",
+ "widths": [
+  1280,
+  1024
+ ],
+ "pages": {
+  "/": {
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.b3d-stage > div > div.panel > p.sub",
+      "t": "Loading the systems… 0 of 6 floors",
+      "cut": 233,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/services": {
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/services/all": {
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > header.pg-head.pg-head-hero > span.u-visually-hidden",
+      "t": "A finished ballroom cleanroom by IAQ: perforated r",
+      "cut": 636,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > header.pg-head.pg-head-hero > span.u-visually-hidden",
+      "t": "A finished ballroom cleanroom by IAQ: perforated r",
+      "cut": 636,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/services/epc-construction": {
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/services/tool-installation": {
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/services/energy-management": {
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/markets/semiconductor": {
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/projects": {
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/careers": {
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/contact": {
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/enquiry": {
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.lpf-panel > form > p.lp-hp > label",
+      "t": "LEAVE THIS EMPTY",
+      "cut": 196,
+      "side": "right",
+      "by": "div.lp-form-in.lpf-two > div.lpf-panel > form > p.lp-hp"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div.lpf-panel > form > p.lp-hp > label",
+      "t": "LEAVE THIS EMPTY",
+      "cut": 219,
+      "side": "right",
+      "by": "div.lp-form-in.lpf-two > div.lpf-panel > form > p.lp-hp"
+     }
+    ],
+    "overlap": [],
+    "small": []
+   }
+  },
+  "/faq": {
+   "1024": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > header.pg-head.pg-head-hero > span.u-visually-hidden",
+      "t": "The IAQ office in Shah Alam: open desks with red c",
+      "cut": 402,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"What is the difference betwe\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "h3 > button.faq-gb > span.faq-gt > small \"How long each engagement run\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "section.faq-g > h3 > button.faq-gb > span.faq-gn \"4\"",
+      "pct": 100
+     },
+     {
+      "a": "div.faq-a > div > a.faq-more > i \"→\"",
+      "b": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"Can I buy one service on its\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"How long does a facility tak\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "h3 > button.faq-gb > span.faq-gt > b \"A live fab\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "h3 > button.faq-gb > span.faq-gt > small \"Bringing tools into a fab th\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "section.faq-g > h3 > button.faq-gb > span.faq-gn \"4\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Yes. Procurement only, desig\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"Who answers for a system’s p\"",
+      "pct": 100
+     }
+    ],
+    "small": []
+   },
+   "1280": {
+    "overflow": null,
+    "wide": [],
+    "clipped": [
+     {
+      "at": "div > header.pg-head.pg-head-hero > span.u-visually-hidden",
+      "t": "The IAQ office in Shah Alam: open desks with red c",
+      "cut": 402,
+      "side": "own",
+      "by": "own box"
+     }
+    ],
+    "overlap": [
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"What is the difference betwe\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC when you want one party\"",
+      "b": "h3 > button.faq-gb > span.faq-gt > small \"How long each engagement run\"",
+      "pct": 100
+     },
+     {
+      "a": "div.faq-a > div > a.faq-more > i \"→\"",
+      "b": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"Can I buy one service on its\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"How long does a facility tak\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "h3 > button.faq-gb > span.faq-gt > b \"A live fab\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"EPCC is EPC plus Commissioni\"",
+      "b": "h3 > button.faq-gb > span.faq-gt > small \"Bringing tools into a fab th\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Yes. Procurement only, desig\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"Who answers for a system’s p\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Yes. Procurement only, desig\"",
+      "b": "ul > li.faq-i > button.faq-q > span \"How is tools hookup priced?\"",
+      "pct": 100
+     },
+     {
+      "a": "li.faq-i > div.faq-a > div > p \"Yes. Procurement only, desig\"",
+      "b": "h3 > button.faq-gb > span.faq-gt > small \"Bringing tools into a fab th\"",
+      "pct": 100
+     }
+    ],
+    "small": []
+   }
+  }
+ }
+}

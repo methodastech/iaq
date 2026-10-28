@@ -4,7 +4,7 @@
 
 .sl-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:26px}
 .sl-ghost{
-  font-family: var(--label);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;
   font-weight:600;color:var(--soft);background:none;border:1px solid var(--line2);
   padding:11px 16px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;
   transition:border-color .22s,color .22s,background .22s;
@@ -33,7 +33,7 @@
 /* ---- the save control, used on the registry and on project pages ---- */
 .sl-save{
   display:inline-flex;align-items:center;gap:8px;background:rgba(23,33,58,.06);border:0;   /* 26 Sep: a filled slim box */
-  font-family: var(--label);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  font-family: var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;
   font-weight:600;color:var(--soft);padding:9px 13px;cursor:pointer;
   transition:border-color .22s,color .22s,background .22s;
 }
@@ -46,7 +46,7 @@
 .sl-count{
   display:inline-flex;align-items:center;justify-content:center;min-width:17px;height:17px;
   padding:0 5px;background:var(--blue);color:#fff;border-radius:0;
-  font-family: var(--label);font-size:10px;font-weight:600;line-height:1;
+  font-family: var(--label);font-size:13px;font-weight:600;line-height:1;
 }
 
 @media(max-width:640px){

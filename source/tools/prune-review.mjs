@@ -10,19 +10,19 @@ import fs from 'node:fs'
 const D = process.argv[2] || 'dist-review'
 if (!fs.existsSync(D)) { console.error('prune-review: no ' + D); process.exit(1) }
 
-const gone = ['checklist.html', 'assets/videos/hero-hasegawa-walk.mp4', 'assets/newsroom/SOURCES.md', 'assets/iaq/SOURCES.md',
+const gone = ['checklist.html', /* 22 Oct: the Polishing tab (ratings and reasons for the team, not the client) and its captures */ 'polish.html', 'polish', 'assets/videos/hero-hasegawa-walk.mp4', 'assets/newsroom/SOURCES.md', 'assets/iaq/SOURCES.md',
   'assets/culture/SOURCES.md', 'assets/culture/offices/SOURCES.md', 'assets/iaq/model3d/README.txt']
 for (const p of gone) if (fs.existsSync(D + '/' + p)) { fs.rmSync(D + '/' + p, { recursive: true, force: true }); console.log('removed', p) }
 
 /* the Amendments tab in the static pages' copies of the bar: <a href="/checklist.html"><i>03</i>Amendments</a> */
-const TAB = /<a href="\/checklist\.html"[^>]*>(?:(?!<\/a>)[\s\S])*<\/a>/g
+const TAB = /<a href="\/(?:checklist|polish)\.html"[^>]*>(?:(?!<\/a>)[\s\S])*<\/a>/g   /* 22 Oct: and the Polishing tab */
 let pages = 0
 for (const f of fs.readdirSync(D)) {
   if (!f.endsWith('.html')) continue
   const s = fs.readFileSync(D + '/' + f, 'utf8'), t = s.replace(TAB, '')
   if (t !== s) { fs.writeFileSync(D + '/' + f, t); pages++ }
 }
-console.log('Amendments tab removed from', pages, 'static pages')
+console.log('Amendments and Polishing tabs removed from', pages, 'static pages')
 
 fs.writeFileSync(D + '/robots.txt', 'User-agent: *\nDisallow: /\n')
 console.log('review build pruned · robots.txt set to disallow all')

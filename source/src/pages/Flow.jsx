@@ -109,7 +109,7 @@ export default function Flow() {
     <div className="fw">
       <header className="fw-head">
         <span className="eyebrow">Website framework</span>
-        <h1>Every page, and where it sends people next.</h1>
+        <h1>Every page, and where it sends people next</h1>
         <p className="fw-lede">
           The whole site as one tree: the homepage at the top, the six groups beneath it, and every page
           hanging off its group. Click any page to draw the routes it sends people down. Pick an audience

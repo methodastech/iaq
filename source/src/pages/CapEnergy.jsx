@@ -46,7 +46,7 @@ export default function CapEnergy() {
       /* high electricity bill Q-EM-A pain point a; "no upfront costs" LIVE-CC; zero upfront investment Q-EM-A differentiator a. The em holds one line. */
       /* 19 Oct (client feedback, Energy Management · Hero Banner): IAQ's header and line, in place of "Lower energy bills, with
          no upfront cost." */
-      /* 27 Oct (client: "Energy Facility Management"): the unit's full name as the header */
+      /* 26 Oct (IAQ review, NR, page 009): the title is the unit's full name, "Energy Facility Management"; it breaks before the blue word */
       title={<>Energy Facility <em>Management</em></>}
       /* IAQ funds implementation, upgrading, operation and maintenance Q-EM-C; payment on actual savings, or a fixed tariff, Q-EM-C. 18 words. */
       lede="Optimising Performance. Advancing Sustainability."
@@ -94,7 +94,7 @@ export default function CapEnergy() {
       hideWhen
       /* 21 Oct (IAQ amendment sheet, Energy Management · CTA): its own section above the footer. Spelling slip only
          corrected ("infrastructure"). */
-      ctaBand={{ title: <>Let&rsquo;s Discuss Your <em>Energy Goals</em></>, label: 'Discuss your energy goals', route: '/contact',
+      ctaBand={{ title: <>Let&rsquo;s Discuss Your <br /><em>Energy Goals</em></>, label: 'Discuss your energy goals', route: '/contact',
         lede: 'Whether you are evaluating energy optimisation opportunities, exploring sustainable cooling solutions or modernising existing infrastructure, IAQ can help identify practical pathways towards greater efficiency, resilience and long-term value.' }}
       servicesHead={<>Our <em>Solutions</em></>}
       services={[
@@ -113,7 +113,7 @@ export default function CapEnergy() {
       whatParts={[
         { t: 'By combining technical expertise, innovative commercial models and lifecycle support services, IAQ helps organisations optimise energy infrastructure, improve reliability and create measurable long-term value across their facilities.' },
       ]}
-      painsHead={<>The problems <em>EFM solves.</em></>}
+      painsHead={<>The problems <em>EFM solves</em></>}
       /* 24 Sep (client: "This section can replace with brief introduction of district cooling system"): stands where the
          six-services list stood. First line is what a district cooling system is; the rest is IAQ's own wording from the
          markets page and the live EFM page, and the flagship the site already carries. */
@@ -129,7 +129,7 @@ export default function CapEnergy() {
          (components/DistrictCooling3D.jsx). The fields below stay as the fallback and keep the IAQ line and the link. */
       intro={{
         scene: 'dcs',
-        head: <>District cooling, <em>in brief.</em></>,
+        head: <>District cooling, <br /><em>in brief</em></>,
         lede: 'One central plant cools a whole district or campus, through a shared network of pipes.',
         fig: { src: '/assets/iaq/dcs-illustration.webp', alt: 'Illustration of a district cooling system: a central plant with cooling towers and a storage tank pipes chilled water to offices, a hospital, a university and a mall' },
         steps: [
@@ -168,7 +168,7 @@ export default function CapEnergy() {
          lifecycle and remove the section). */
       /* 21 Oct (IAQ amendment sheet, Energy Management · Why IAQ): IAQ's four reasons, in its order and words, in place of
          "Why owners choose it.", after Energy as a Service */
-      whyHead={<>Why Energy Performance <em>Matters</em></>}
+      whyHead={<>Why Energy Performance <br /><em>Matters</em></>}
       whyAfterServices
       why={[
         { k: 'Engineering-Led Solutions', icon: 'compass', t: 'Backed by multidisciplinary engineering expertise and decades of project delivery experience.' },
@@ -201,7 +201,7 @@ export default function CapEnergy() {
       proofLink={{ label: 'See all district cooling projects', to: '/projects#district-cooling' }}
       /* energy audit is service c in Q-EM-C; Q-EM-A: a visitor contacts the PIC */
       /* the note restates steps 1 and 2 above (FLOW-EPC, FLOW-CAAS) */
-      cta={{ label: 'Request an energy audit', route: '/contact', title: 'Find out where your plant loses energy.', note: 'The audit examines your existing HVAC and chiller plant, then plans the upgrades that save the most.' }}
+      cta={{ label: 'Request an energy audit', route: '/contact', title: 'Find out where your plant loses energy', note: 'The audit examines your existing HVAC and chiller plant, then plans the upgrades that save the most.' }}
     />
   )
 }

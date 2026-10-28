@@ -158,7 +158,7 @@ export default function ValuesGrid() {
     <section className="vg" id="values" ref={ref}>
       <div className="wrap">
         <span className="eyebrow">What we hold</span>
-        <h2>Six values, held on every site.</h2>
+        <h2>Six values, held on every site</h2>
         <ValuesCarousel />
       </div>
     </section>

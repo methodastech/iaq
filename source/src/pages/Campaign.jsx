@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link, useParams, Navigate } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
 import { bySlug } from '../data/campaigns.js'
 import { INDLBL, INDUSTRIES } from '../data/projects.js'
 import { cmsProjects, live } from '../lib/cms.js'
@@ -148,11 +148,14 @@ export default function Campaign({ slug }) {
         <div className="lp-hero-tx">
           {/* 29 Sep ("remove eyebrow tag"): the small red label over the headline is gone; the eyebrow text still names
               the page in the browser tab */}
-          <h1>{c.title}</h1>
-          <p className="lp-lede">{c.lede}</p>
-          <ul className="lp-pts">
-            {c.points.map((t, i) => <li key={i}>{t}</li>)}
-          </ul>
+          {/* 26 Oct: a long title (IAQ's "We Love Talking To Visionaries Like You") steps down a size so it sets in two balanced lines, never three with two words alone (rule 21) */}
+          <h1 className={c.title.length > 32 ? 'is-long' : undefined}>{c.title}</h1>
+          {c.heroCopy !== false && <>
+            <p className="lp-lede">{c.lede}</p>
+            <ul className="lp-pts">
+              {c.points.map((t, i) => <li key={i}>{t}</li>)}
+            </ul>
+          </>}
           <a className="lp-jump cta" href="#lp-form">{ask}</a>
         </div>
         <div className="lp-hero-fig">
@@ -174,7 +177,7 @@ export default function Campaign({ slug }) {
           the stats lead straight into the form. The market campaigns (semiconductor, data-centre, ev-battery) keep theirs */}
       {!project && proof.length > 0 && (
         <section className="lp-proof" aria-labelledby="lp-proof-h">
-          <h2 id="lp-proof-h">Delivered, not proposed.</h2>
+          <h2 id="lp-proof-h">Delivered, not proposed</h2>
           <div className="lp-proof-g">
             {proof.map(({ p, i }) => (
               <article className="lp-pc" key={i}>
@@ -317,7 +320,7 @@ export default function Campaign({ slug }) {
         </div>
       </section>
 
-      {/* 28 Oct ("remove that white bar"): the light footer strip under the form is off the campaign pages; the page ends on the form band */}
+      {/* 28 Oct ("remove the white"): the light footer strip under the form is off the campaign pages; the page ends on the form band */}
     </main>
   )
 }

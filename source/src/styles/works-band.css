@@ -13,13 +13,13 @@
 .wk-head h3 small{display:block;margin-top:4px;font:400 13px/1.3 "Instrument Sans",sans-serif;color:rgba(12,18,32,.6)}
 .wk-line{margin:0;font:600 15.5px/1.35 "Switzer",sans-serif;color:#0C1220}
 .wk-row{display:grid;gap:6px}
-.wk-k{font:500 12px/1.2 "Instrument Sans",sans-serif;color:rgba(12,18,32,.55)}
+.wk-k{font:500 13px/1.2 "Instrument Sans",sans-serif;color:rgba(12,18,32,.55)}
 .wk-sys{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:5px}
-.wk-sys li{padding:5px 8px;background:color-mix(in srgb,var(--sys) 13%,#fff);color:var(--sys-t);font:600 12px/1.25 "Switzer",sans-serif}
+.wk-sys li{padding:5px 8px;background:color-mix(in srgb,var(--sys) 13%,#fff);color:var(--sys-t);font:600 13px/1.25 "Switzer",sans-serif}
 .wk-units{display:flex;flex-wrap:wrap;gap:5px}
-.wk-units b{padding:5px 8px;background:var(--ub,var(--unit));color:#fff;font:600 12px/1.2 "Switzer",sans-serif}
+.wk-units b{padding:5px 8px;background:var(--ub,var(--unit));color:#fff;font:600 13px/1.2 "Switzer",sans-serif}
 .wk-pins{display:flex;flex-wrap:wrap;gap:5px}
-.wk-pins b{display:grid;place-items:center;width:24px;height:24px;background:var(--work);color:#fff;font:600 11.5px/1 "Switzer",sans-serif}
+.wk-pins b{display:grid;place-items:center;width:24px;height:24px;background:var(--work);color:#fff;font:600 13px/1 "Switzer",sans-serif}
 .wk-pins b.p-s{background:var(--svc)}
 @media(max-width:1100px){.wk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.wk-grid{grid-template-columns:1fr;gap:10px}.wk-card{padding:18px}}
@@ -46,12 +46,12 @@
 .wk-head h3 small{margin-top:6px;font-size:13px;line-height:1.35}
 .wk-line{font-size:16px;line-height:1.35;letter-spacing:-.005em}
 .wk-row{gap:9px;align-content:start}
-.wk-k{font:500 12px/1.2 "Instrument Sans",sans-serif;color:rgba(12,18,32,.5)}
+.wk-k{font:500 13px/1.2 "Instrument Sans",sans-serif;color:rgba(12,18,32,.5)}
 .wk-sys{display:grid;gap:8px}
 .wk-sys li{display:grid;grid-template-columns:6px minmax(0,1fr);gap:10px;align-items:baseline;padding:0;background:none;color:#0C1220;font:500 13.5px/1.35 "Instrument Sans",sans-serif}
 .wk-sys li::before{content:"";width:6px;height:6px;background:var(--sys);transform:translateY(-1px)}
 .wk-units b{padding:6px 9px}
-.wk-pins b{width:26px;height:26px;background:color-mix(in srgb,var(--work) 20%,#fff);color:var(--work-t);font-size:12px}
+.wk-pins b{width:26px;height:26px;background:color-mix(in srgb,var(--work) 20%,#fff);color:var(--work-t);font-size:13px}
 .wk-pins b.p-s{background:color-mix(in srgb,var(--svc) 10%,#fff);color:var(--svc-t)}
 .wk-why{display:grid;grid-template-columns:40px minmax(0,auto) minmax(0,1fr);gap:4px 18px;align-items:center;margin:16px 0 0;padding:18px 26px;background:#fff;
   box-shadow:0 1px 0 rgba(12,18,32,.04),0 22px 44px -34px rgba(12,18,32,.45);font:400 14.5px/1.5 "Instrument Sans",sans-serif;color:rgba(12,18,32,.75)}

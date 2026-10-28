@@ -25,7 +25,7 @@ export default function CareersPromo({ variant = 'culture' }) {
       <section className="cpr cpr-roles" aria-labelledby="cpr-h">
         <div className="wrap cpr-in">
           <div className="cpr-copy" data-reveal>
-            <h2 id="cpr-h"><span data-count={nRoles}>{nRoles}</span> roles open, <em>{depts.length} departments.</em></h2>
+            <h2 id="cpr-h"><span data-count={nRoles}>{nRoles}</span> roles open, <em>{depts.length} departments</em></h2>
             <p>Engineering, project delivery, commercial and finance, in Shah Alam and Penang. Every opening is on one list, filterable by location and department.</p>
             <div className="cpr-ctas">
               <Link className="cpr-btn" to="/careers#roles">See open roles <Arrow /></Link>
@@ -45,7 +45,7 @@ export default function CareersPromo({ variant = 'culture' }) {
     <section className="cpr cpr-life" aria-labelledby="cpr-h">
       <div className="wrap cpr-in">
         <div className="cpr-copy" data-reveal>
-          <h2 id="cpr-h">Life at IAQ, <em>before the job title.</em></h2>
+          <h2 id="cpr-h">Life at IAQ, <br /><em>before the job title</em></h2>
           <p>How the team works, how safety is held, where engineers start and grow, and the offices in seven countries. Read it before you apply.</p>
           <div className="cpr-ctas">
             <Link className="cpr-btn" to="/careers/culture">See how the team works <Arrow /></Link>

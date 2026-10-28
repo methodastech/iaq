@@ -1,0 +1,57 @@
+{
+ "url": "/markets",
+ "slug": "markets",
+ "title": "IAQ Group · Markets · Brand Method",
+ "at": "2026-10-22T15:30:58.702Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "Supporting the Facilities Behind Tomorrow’s Industries",
+   "tag": "header",
+   "cls": "pg-head.pg-head-hero",
+   "top": 84,
+   "height": 487,
+   "text": "A hi-tech industrial campus at dusk: facility blocks, rooftop plant, a data hall and a solar roof\nSupporting the Facilities Behind Tomorrow’s Industries\nIAQ partners with clients across advanced manufacturing and critical infrastructure sectors, delivering engineering, procurement, construction, manufacturing readiness and energy management solutions tailored to the unique requirements of each industry.\n7 MARKETS\n235+ PROJECTS COMPLETED\n7 GLOBAL OFFICES\n31 YEARS OF EXPERIENCE",
+   "img": "markets/01-hero.webp",
+   "shownHeight": 487
+  },
+  {
+   "i": 1,
+   "key": "pg-sec-tight",
+   "heading": "",
+   "tag": "section",
+   "cls": "pg-sec.tight",
+   "top": 571,
+   "height": 911,
+   "text": "Semiconductor\nSupporting advanced manufacturing facilities from infrastructure development to manufacturing readiness.\nEXPLORE THE MARKET\n→\nData Centres\nDelivering resilient infrastructure that supports uptime, scalability and operational continuity.\nEXPLORE THE MARKET\n→\nEV Battery\nEnabling next-generation battery manufacturing through specialised facility solutions.\nEXPLORE THE MARKET\n→\nPhotovoltaics\nDelivering infrastructure solutions for solar manufacturing and clean energy production.\nEXPLORE THE MARKET\n→\nDistrict Cooling & Heating\nSupporting sustainable energy infrastructure through engineering and lifecycle expertise.\nEXPLORE THE MARKET\n→\nBioLife Science\nCreating controlled environments that support innovation, research and production.\nEXPLORE THE MARKET\n→\nFood & Beverage\nSupporting safe, efficient and reliable manufacturing environments.\nEXPLORE THE MARKET\n→",
+   "img": "markets/02-pg-sec-tight.webp",
+   "shownHeight": 911
+  },
+  {
+   "i": 2,
+   "key": "one-project-from-each-market",
+   "heading": "One project from each market",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 1481,
+   "height": 1050,
+   "text": "One project from each market\nOne project from each market, from the published registry. The full record follows at launch.\nSEMICONDUCTOR\nISO 6 TO 7\nSemiconductor backend plant, 43,000 m² test, probe and assembly\nSemiconductor manufacturer · Malaysia\n43,000 M²\nEPCM\nDATA CENTRE\nCOOLING\nData centre campus phase 1, chilled and condenser water piping\nHyperscale data centre operator · Kuala Lumpur\nHVAC / M&E\nEV BATTERY\nISO 7\nLithium cell facility, 79,000 m² air-conditioning system\nBattery manufacturer · China\n79,000 M²\nHVAC / M&E\nPHOTOVOLTAICS\nISO 6\nSolar panel manufacturing plant, KMW building M&E works\nSolar module manufacturer · the northern corridor, Kedah\nHVAC / M&E\nDISTRICT COOLING & HEATING\nENERGY\nDistrict cooling centre, Malaysia's largest\nDistrict cooling operator · Kuala Lumpur\nDISTRICT COOLING\nBIO LIFESCIENCE\nISO 5, 7, 8\nPharmaceutical manufacturing plant, small volume parenteral\nPharmaceutical manufacturer · Malaysia\nCLEANROOM\nFOOD & BEVERAGE\nHYGIENIC\nFlavour manufacturing plant\nFlavour manufacturer · Malaysia\nCLEANROOM\nSearch the whole record\nEvery project tagged by market, location, delivery model and cleanroom class.\nSEARCH ALL PROJECTS →",
+   "img": "markets/03-one-project-from-each-market.webp",
+   "shownHeight": 1050
+  },
+  {
+   "i": 3,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 2532,
+   "height": 1212,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building.\nFeasibility to handover, one accountable team.\nStart a project\n→\nEMAIL\nbusiness@iaqtechnology.com.my\n→\nPHONE\n+603 5124 8319\n→\nHQ · SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n→\n© 2026 IAQ GROUP · IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) · ISO 9001 / 14001 / 45001 · CIDB G7\nPROTOTYPE · BRAND METHOD\nBACK TO TOP ↑",
+   "img": "markets/04-follow.webp",
+   "shownHeight": 1212
+  }
+ ],
+ "errs": []
+}

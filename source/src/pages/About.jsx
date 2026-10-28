@@ -6,11 +6,8 @@ import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
 import FooterNav from '../components/FooterNav.jsx'
-import CloseAmbient from '../components/CloseAmbient.jsx'
 import initAbout from '../scenes/about.js'
 import ValuesGrid from '../components/ValuesGrid.jsx'
-import { QuestionsBand, FaqBand } from '../components/ServicesMap.jsx'
-import '../styles/pages.css'   /* 28 Oct: the section frame (.pg-sec, .pg-in) the quote and question bands sit in */
 import '../styles/about.css'
 
 export default function About() {
@@ -33,10 +30,9 @@ export default function About() {
         line factory, should just leave that one here"): the campus-at-dusk clip with the red band at the eaves stays on
         this hero by his instruction. It is the site's concept footage, not a photograph of an IAQ site: the client's
         24 Sep rule on generated footage is on record, and this is the one place it is set aside on purpose. */}
-    {/* 26 Oct (client: "To remove this power plant as it emitting gas to environment. Not compliance to our environmental
-        sustainability commitment"): the cooling towers, stacks and every plume behind the plant are gone, forested hillside
-        in their place, the plant, roads, light and camera move unchanged. Seedance 2.5 video edit in Higgsfield, played
-        forward then back; the still is its first frame. The old clip and still stay in the folder. */}
+    {/* 26 Oct (IAQ review, NR, page 002): "To remove this power plant as it emitting gas to environment. Not compliance to our
+        environmental sustainability commitment". The campus film and its poster are the supplied versions with the cooling
+        towers and their plumes taken out (hero-campus-dusk-clean.*). The same clip runs in the home reel and the deck reel. */}
     <div className="ph-slot dark"><img className="hero-img" src="/assets/hero-campus-dusk-clean.webp" alt="" /></div>
     <div className="ab-video" aria-hidden="true"><video id="abVid" muted loop playsInline autoPlay preload="metadata" poster="/assets/hero-campus-dusk-clean.webp"><source src="/assets/hero-campus-dusk-clean.mp4" type="video/mp4" /></video></div>
     <div className="ab-scrim" aria-hidden="true"></div>
@@ -101,18 +97,14 @@ export default function About() {
 
 <ValuesGrid />
 
-{/* 28 Oct ("can you move this section to maybe at about below Six values, held on every site."): the quote choices and the
-    client questions, moved here from the Services page (components/ServicesMap.jsx, unchanged) */}
-<QuestionsBand />
-<FaqBand />
-
 {/* 30 Sep (client, on the footer's "Registered, certified and recognised" row: "this should be under this about us page",
     with their old site's "What We've Achieved" band as the reference): the four marks leave the footer and stand here, below
     the values, in their issued colours on white, all four at one height. */}
 <section className="ab-awards" id="recognition">
   <div className="wrap">
     <span className="eyebrow">Awards &amp; recognition</span>
-    <h2>What we&rsquo;ve <em>achieved</em></h2>
+    {/* 22 Oct, walk-through, note 14 (Bazil: "just say achievement and put the title in the middle") */}
+    <h2><em>Achievements</em></h2>
     <ul className="ab-awards-row">
       <li><img src="/assets/certs/iso.webp" alt="Intertek ISO 9001, 14001 and 45001 certification" loading="lazy" decoding="async" /></li>
       <li><img src="/assets/certs/ukas.webp" alt="UKAS management systems accreditation" loading="lazy" decoding="async" /></li>

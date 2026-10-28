@@ -1,0 +1,674 @@
+{
+ "at": "2026-10-22T23:24:35.952Z",
+ "base": "http://localhost:5177",
+ "pages": {
+  "/": {
+   "title": "IAQ Group · Total Facility Solutions · Brand Method",
+   "F": {
+    "fullstop": [
+     {
+      "t": "Engineering Precision. Delivering Excellence.",
+      "at": "div > header.hero.dark-band > div.hero-inner > h1"
+     }
+    ],
+    "stub": [
+     {
+      "t": "Architectural Roof trusses · purlins · roof deck · wall envelope",
+      "lines": 3,
+      "stub": [
+       "1: Architectural"
+      ],
+      "w": 312,
+      "at": "section > div.h-left > ol.h-rail > li.done",
+      "tag": "li",
+      "cls": "done"
+     },
+     {
+      "t": "Fire Protection Sprinkler mains · risers · branch lines",
+      "lines": 2,
+      "stub": [
+       "1: Fire Protection"
+      ],
+      "w": 312,
+      "at": "section > div.h-left > ol.h-rail > li.done",
+      "tag": "li",
+      "cls": "done"
+     },
+     {
+      "t": "Cleanroom Ceiling grid · FFU field · air handlers · partitions · exhaust stacks",
+      "lines": 3,
+      "stub": [
+       "1: Cleanroom"
+      ],
+      "w": 312,
+      "at": "section > div.h-left > ol.h-rail > li.done",
+      "tag": "li",
+      "cls": "done"
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [
+     {
+      "t": "Environment",
+      "px": 12.5,
+      "at": "section.b3d > div.b3d-stage > div > button"
+     },
+     {
+      "t": "Classic",
+      "px": 12.5,
+      "at": "section.b3d > div.b3d-stage > div > button"
+     },
+     {
+      "t": "Zoom in",
+      "px": 12.8,
+      "at": "div > div.vt-zoom > button > span.xt-label"
+     },
+     {
+      "t": "Zoom out",
+      "px": 12.8,
+      "at": "div > div.vt-zoom > button > span.xt-label"
+     },
+     {
+      "t": "Reset view",
+      "px": 12.8,
+      "at": "div > div.vt-zoom > button > span.xt-label"
+     },
+     {
+      "t": "Exploded view",
+      "px": 12.8,
+      "at": "div > div.vt-zoom > button > span.xt-label"
+     },
+     {
+      "t": "Piles · pile caps · ground beams · sub-fab slab · ",
+      "px": 12.5,
+      "at": "ol.h-rail > li.done > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "sub-fab",
+      "px": 12.5,
+      "at": "li.done > span.rd-b > span.rd-seq > span"
+     },
+     {
+      "t": "Roof trusses · purlins · roof deck · wall envelope",
+      "px": 12.5,
+      "at": "ol.h-rail > li.done > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "Sprinkler mains · risers · branch lines",
+      "px": 12.5,
+      "at": "ol.h-rail > li.done > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "Transformer · switchboards · busbar · cable trays ",
+      "px": 12.5,
+      "at": "ol.h-rail > li.done > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "Fresh-air intake · supply main · drops to plenum ·",
+      "px": 12.5,
+      "at": "ol.h-rail > li.done > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "Fresh-air",
+      "px": 12.5,
+      "at": "li.done > span.rd-b > span.rd-seq > span"
+     },
+     {
+      "t": "Ceiling grid · FFU field · air handlers · partitio",
+      "px": 12.5,
+      "at": "ol.h-rail > li.done > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "Pipe rack · PCW header · UPW header · risers to to",
+      "px": 12.5,
+      "at": "ol.h-rail > li.on > span.rd-b > span.rd-seq"
+     },
+     {
+      "t": "28 / 28 placed",
+      "px": 12,
+      "at": "ol.h-rail > li.on > span.rd-b > span.rd-ct"
+     },
+     {
+      "t": "Speed",
+      "px": 12,
+      "at": "div.h-left > div.h-ctrl > div.h-speed > span.h-speed-l"
+     },
+     {
+      "t": "0.5×",
+      "px": 12.5,
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button"
+     },
+     {
+      "t": "1×",
+      "px": 12.5,
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button"
+     },
+     {
+      "t": "1.5×",
+      "px": 12.5,
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button"
+     },
+     {
+      "t": "2×",
+      "px": 12.5,
+      "at": "div.h-left > div.h-ctrl > div.h-speed > button"
+     }
+    ],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.hero.dark-band > div.hero-video.live",
+     "h": 900,
+     "vh": 1,
+     "bg": "rgb(7, 12, 24)"
+    },
+    "crumb": null
+   }
+  },
+  "/careers": {
+   "title": "IAQ Group · Careers · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "ISO 45001 Intertek certified, UKAS accredited",
+      "lines": 2,
+      "stub": [
+       "1: ISO 45001"
+      ],
+      "w": 329,
+      "at": "div.cu-w > div.cu-sf > ul.cu-sf-tiles > li.cu-rv.cu-in",
+      "tag": "li",
+      "cls": "cu-rv cu-in"
+     },
+     {
+      "t": "Zero LTI Client wafer fab building, 2023",
+      "lines": 2,
+      "stub": [
+       "1: Zero LTI"
+      ],
+      "w": 329,
+      "at": "div.cu-w > div.cu-sf > ul.cu-sf-tiles > li.cu-rv.cu-in",
+      "tag": "li",
+      "cls": "cu-rv cu-in"
+     },
+     {
+      "t": "Why build your career at IAQ",
+      "lines": 2,
+      "stub": [
+       "2: at IAQ"
+      ],
+      "w": 1135,
+      "at": "div > section.pg-sec.cr-why > div.wrap > h2",
+      "tag": "h2",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [
+     {
+      "t": "IAQ-ENG-01",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-02",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-03",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-04",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-05",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-06",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-07",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-ENG-08",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-PRJ-01",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-PRJ-02",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-PRJ-03",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-PRJ-04",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-PRJ-05",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-COM-01",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-FIN-01",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     },
+     {
+      "t": "IAQ-FIN-02",
+      "at": "section.dept > div.job.ri-in > button.job-head > span.ref"
+     }
+    ],
+    "hover": [],
+    "banner": {
+     "at": "div > div.cu-page.cu-armed",
+     "h": 5750,
+     "vh": 6.39,
+     "bg": "rgb(255, 255, 255)"
+    },
+    "crumb": null
+   }
+  },
+  "/projects": {
+   "title": "IAQ Group · Projects · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Silicon wafer manufacturing, multi-class greenfield with full MEP",
+      "lines": 3,
+      "stub": [
+       "1: Silicon wafer"
+      ],
+      "w": 293,
+      "at": "div.reg > a.pc > div.pc-in > h3",
+      "tag": "h3",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [
+     {
+      "t": "ISO 6 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 5",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 6 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 5 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 3 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "DRY ROOM",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "DRY ROOM",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 5, 7, 8",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 8",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 6 TO 7",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ENERGY",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ENERGY",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ENERGY",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "HYGIENIC",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "HYGIENIC",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "COOLING",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     },
+     {
+      "t": "ISO 6",
+      "at": "a.pc > div.pc-in > div.ref > span.iso"
+     }
+    ],
+    "hover": [],
+    "banner": {
+     "at": "div > section.rb",
+     "h": 531,
+     "vh": 0.59,
+     "bg": "rgb(23, 33, 58)"
+    },
+    "crumb": null
+   }
+  },
+  "/semicon": {
+   "title": "IAQ Group · SEMICON Europa 2026 · Munich",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Six services, from the first drawing",
+      "lines": 2,
+      "stub": [
+       "1: Six services,"
+      ],
+      "w": 746,
+      "at": "section.sm-sec.sm-svc > div.pg-in > div.sm-h > h2",
+      "tag": "h2",
+      "cls": ""
+     },
+     {
+      "t": "In Europe, a team in Dresden",
+      "lines": 2,
+      "stub": [
+       "1: In Europe,"
+      ],
+      "w": 531,
+      "at": "section.sm-sec.sm-eu > div.pg-in.sm-eu-in > div > h2",
+      "tag": "h2",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [
+     {
+      "t": "(Civil, Structural and Architectural)",
+      "px": 11.4,
+      "at": "div.fs-row > span.fs-chips.w > i > small"
+     },
+     {
+      "t": "(Mechanical, Electrical and Plumbing)",
+      "px": 11.4,
+      "at": "div.fs-row > span.fs-chips.w > i > small"
+     }
+    ],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.sm-hero > div.pg-in.sm-hero-in",
+     "h": 717,
+     "vh": 0.8,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/contact": {
+   "title": "IAQ Group · Start a Project · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Seven countries, one point of contact",
+      "lines": 2,
+      "stub": [
+       "1: Seven countries,"
+      ],
+      "w": 656,
+      "at": "section.offices > div.wrap > div.off-head > h2",
+      "tag": "h2",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > header.cban > div.cban-viz",
+     "h": 567,
+     "vh": 0.63,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/services/energy-management": {
+   "title": "IAQ Group · EFM · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [
+     {
+      "t": "Energy Audit Comprehensive assessments that identify opportunities to improve energy efficiency, system perfor",
+      "lines": 7,
+      "stub": [
+       "1: Energy Audit",
+       "2: Comprehensive"
+      ],
+      "w": 268,
+      "at": "section.un-sec.un-svc7 > div.pg-in > ol.un-svc7-grid > li.is-wide.in",
+      "tag": "li",
+      "cls": "is-wide in"
+     },
+     {
+      "t": "Energy Performance Contracting Performance-based solutions that enable energy efficiency improvements through ",
+      "lines": 7,
+      "stub": [
+       "2: Contracting"
+      ],
+      "w": 268,
+      "at": "section.un-sec.un-svc7 > div.pg-in > ol.un-svc7-grid > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "District Cooling System Integrated solutions spanning feasibility, development, operation and long-term lifecy",
+      "lines": 7,
+      "stub": [
+       "1: District Cooling",
+       "2: System",
+       "6: and long-term"
+      ],
+      "w": 268,
+      "at": "section.un-sec.un-svc7 > div.pg-in > ol.un-svc7-grid > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "Operations & Maintenance Structured maintenance programmes designed to enhance reliability, optimise performan",
+      "lines": 7,
+      "stub": [
+       "1: Operations &",
+       "2: Maintenance"
+      ],
+      "w": 268,
+      "at": "section.un-sec.un-svc7 > div.pg-in > ol.un-svc7-grid > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "01 Assess Evaluate existing infrastructure and identify opportunities for improvement.",
+      "lines": 5,
+      "stub": [
+       "1: 01",
+       "2: Assess",
+       "5: for improvement."
+      ],
+      "w": 336,
+      "at": "section.un-sec.un-proc > div.pg-in > ol.un-proc-steps > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "02 Optimise Develop strategies to improve efficiency, performance and energy consumption.",
+      "lines": 5,
+      "stub": [
+       "1: 02",
+       "2: Optimise"
+      ],
+      "w": 336,
+      "at": "section.un-sec.un-proc > div.pg-in > ol.un-proc-steps > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "03 Implement Deliver upgrades, retrofits and infrastructure improvements through proven engineering solutions.",
+      "lines": 6,
+      "stub": [
+       "1: 03",
+       "2: Implement"
+      ],
+      "w": 336,
+      "at": "section.un-sec.un-proc > div.pg-in > ol.un-proc-steps > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "04 Operate Support long-term performance through monitoring, maintenance and operational management.",
+      "lines": 5,
+      "stub": [
+       "1: 04",
+       "2: Operate"
+      ],
+      "w": 336,
+      "at": "section.un-sec.un-proc > div.pg-in > ol.un-proc-steps > li.in",
+      "tag": "li",
+      "cls": "in"
+     },
+     {
+      "t": "01 One central plant Chillers make the chilled water. Towers shed the heat.",
+      "lines": 4,
+      "stub": [
+       "2: 01"
+      ],
+      "w": 460,
+      "at": "div.dcs3-wrap > div.dcs3-side > ol.dcs3-steps > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "02 Thermal energy storage A tank stores cooling for the peak.",
+      "lines": 3,
+      "stub": [
+       "2: 02"
+      ],
+      "w": 460,
+      "at": "div.dcs3-wrap > div.dcs3-side > ol.dcs3-steps > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "03 The chilled water network Chilled water out, warmer water back.",
+      "lines": 3,
+      "stub": [
+       "2: 03"
+      ],
+      "w": 460,
+      "at": "div.dcs3-wrap > div.dcs3-side > ol.dcs3-steps > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "04 An energy transfer station at each building It meters each building’s cooling.",
+      "lines": 3,
+      "stub": [
+       "2: 04"
+      ],
+      "w": 460,
+      "at": "div.dcs3-wrap > div.dcs3-side > ol.dcs3-steps > li",
+      "tag": "li",
+      "cls": ""
+     },
+     {
+      "t": "05 Cooling in every building Every building runs its air-conditioning on it.",
+      "lines": 3,
+      "stub": [
+       "2: 05"
+      ],
+      "w": 460,
+      "at": "div.dcs3-wrap > div.dcs3-side > ol.dcs3-steps > li",
+      "tag": "li",
+      "cls": ""
+     }
+    ],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > div.un-page.un-armed",
+     "h": 7188,
+     "vh": 7.99,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  },
+  "/services/epc-construction": {
+   "title": "IAQ Group · EPC · Brand Method",
+   "F": {
+    "fullstop": [],
+    "stub": [],
+    "circle": [],
+    "dashed": [],
+    "tracking": [],
+    "small": [],
+    "eyebrow": [],
+    "hover": [],
+    "banner": {
+     "at": "div > div.un-page.un-armed",
+     "h": 4356,
+     "vh": 4.84,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "crumb": null
+   }
+  }
+ }
+}

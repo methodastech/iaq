@@ -63,6 +63,7 @@ const Projects = lazy(() => import('./pages/Projects.jsx'))
 const FabLab = lazy(() => import('./pages/FabLab.jsx'))
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail.jsx'))
 const Careers = lazy(() => import('./pages/Careers.jsx'))
+const FaqPage = lazy(() => import('./pages/FaqPage.jsx'))   /* 26 Oct: the FAQ's own page (IAQ review, NR) */
 /* 17 Sep (client asked which way applications should run): one page per vacancy, carrying the
    description and the application form. See pages/RolePage.jsx. */
 const RolePage = lazy(() => import('./pages/RolePage.jsx'))
@@ -103,6 +104,7 @@ const CapTool = lazy(() => import('./pages/CapTool.jsx'))
 const CapEnergy = lazy(() => import('./pages/CapEnergy.jsx'))
 const Shortlist = lazy(() => import('./pages/Shortlist.jsx'))
 const Campaign = lazy(() => import('./pages/Campaign.jsx'))
+const Prospect = lazy(() => import('./pages/Prospect.jsx'))   /* 7 Oct: the booth's one-page prospect form, opened by the deck's QR code (re-wired 22 Oct) */
 /* 18 Sep: `import.meta.env.MODE` is a literal at build time, so in the launch build this whole
    branch folds away and no portal or Codex chunk is emitted at all (LAUNCH alone is a runtime
    check, which kept the chunks in the bundle). */
@@ -122,6 +124,13 @@ const NotFound = lazy(() => import('./pages/NotFound.jsx'))
 
 watchTitle()
 
+/* 22 Oct: inside a frame (the Web flow board, public/webflow.html) the site posts its route on every change, so the board
+   can mark the screen in view; outside a frame it does nothing */
+function FramePing () {
+  const { pathname } = useLocation()
+  useEffect(() => { try { if (window.parent !== window) window.parent.postMessage({ iaqPage: pathname }, '*') } catch (e) {} }, [pathname])
+  return null
+}
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
   /* 25 Sep (Bazil: "this should be in the same page", "make sure not laggy"): the portal's booth is one page whose
@@ -200,6 +209,7 @@ const root = container.__reactRoot || (container.__reactRoot = createRoot(contai
 root.render(
   <BrowserRouter>
     <ScrollToTop />
+    <FramePing />
     {/* 9 Sep. Two bars were stacked, so one had to go, and I removed the wrong one.
         This .bmws bar is the SHARED Brand Method workspace bar, byte-identical to the one on
         tenthpin and to public/bmws.css, and it is the only bar that carries tab 04 Design.
@@ -228,6 +238,8 @@ root.render(
           <Route path="/careers/culture" element={<Navigate to="/careers#culture" replace />} />
           <Route path="/careers/role/:ref" element={<RolePage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/faq" element={<FaqPage />} />
+          <Route path="/prospect" element={<Prospect />} />
           {import.meta.env.MODE !== 'launch' && <Route path="/flow" element={<Flow />} />}
           <Route path="/services" element={<ServicesHub />} />
           {/* 25 Sep (IAQ: "merge all the description pages for each service into one"): one page; the five old addresses land on their stage */}

@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>IAQ &middot; Web flow &middot; Brand Method</title>
+<meta name="description" content="The IAQ website as a flow board: every page a numbered picture, every click a labelled line, the live page beside it.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/favicon.ico" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="/bmws.css">
+<style>
+:root{--ink:#0E1733;--soft:#46506A;--faint:#646E84;--line:#E3E8F0;--bg:#F3F6FA;--tint:#E7EFF8;--blue:#EC2027;--navy:#0C1220;--grey:#8A93A6;
+--head:"Instrument Sans",system-ui,sans-serif;--text:"Instrument Sans",system-ui,sans-serif;--e:cubic-bezier(.25,1,.5,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--text);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+#split{position:fixed;left:0;right:0;bottom:0;top:var(--bmws-h,62px);display:grid;grid-template-columns:var(--lw,380px) minmax(0,1fr);grid-template-rows:minmax(0,1fr);transition:grid-template-columns .5s var(--e)}
+body.desk{--lw:640px}
+#left{background:#fff;box-shadow:1px 0 0 var(--line);display:flex;flex-direction:column;gap:14px;padding:16px;overflow-y:auto;min-width:0;position:relative;z-index:4}
+.seg{display:flex;gap:3px;background:var(--bg);padding:3px;border-radius:6px}
+.seg button,.seg a{flex:1;height:32px;border-radius:4px;font-size:13.5px;font-weight:600;color:var(--soft);display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;white-space:nowrap;padding:0 12px;transition:background .3s var(--e),color .3s var(--e)}
+.seg button:hover,.seg a:hover{color:var(--blue)}
+.seg .on,.seg .on:hover{background:var(--blue);color:#fff}
+.seg svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.7}
+.acts{display:flex;gap:8px}
+.btn,.btn-o{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:34px;padding:0 14px;border-radius:6px;font-size:13.5px;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .3s var(--e),color .3s var(--e),box-shadow .3s var(--e)}
+.btn{background:var(--blue);color:#fff}
+.btn:hover{background:#C8151C}
+.btn-o{background:#fff;color:var(--blue);box-shadow:0 0 0 1px rgba(236,32,39,.35) inset}
+.btn-o:hover{box-shadow:0 0 0 1px var(--blue) inset;background:var(--tint)}
+.acts .btn,.acts .btn-o{flex:1}
+.ctl{display:grid;gap:8px}
+.dev{position:relative;margin:0 auto;width:100%}
+.dev .frm{position:relative;overflow:hidden;background:#fff}
+body:not(.desk) .dev{max-width:330px;padding:0 11px}
+body:not(.desk) .dev .frm{border-radius:36px;box-shadow:0 0 0 10px #0E1733,0 0 0 11px #2B3554,0 40px 80px -40px rgba(14,23,51,.55)}
+body.desk .dev .frm{border-radius:0 0 8px 8px;box-shadow:0 0 0 1px var(--line),0 30px 60px -35px rgba(14,23,51,.5)}
+body.desk .dev .bar{display:flex}
+.dev .bar{display:none;align-items:center;gap:6px;padding:9px 12px;background:#E8EDF4;border-radius:8px 8px 0 0}
+.dev .bar i{width:9px;height:9px;border-radius:50%;background:#C6CFDC}
+.dev .bar span{flex:1;margin-left:8px;background:#fff;border-radius:4px;padding:3px 10px;font-size:13px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dev iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;background:#fff}
+.cap{text-align:center;font-size:14px;color:var(--faint);line-height:1.45}
+.cap b{color:var(--ink);font-weight:600}
+#right{position:relative;min-width:0;min-height:0;display:flex;flex-direction:column;overflow:hidden;container-type:inline-size}
+@container (max-width:860px){.head h1 span{display:none}.ks{min-width:190px}}
+.head{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;padding:14px 18px 12px;background:#fff;position:relative;z-index:3;box-shadow:0 1px 0 var(--line)}
+.head h1{font:700 22px/1.1 var(--head);letter-spacing:-.02em;display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.head h1 span{font:500 15px var(--text);color:var(--faint);letter-spacing:0}
+.ks{display:flex;align-items:center;gap:8px;height:34px;padding:0 10px;border-radius:6px;background:var(--bg);font-size:13.5px;color:var(--faint);min-width:220px;transition:background .3s var(--e)}
+.ks:hover{background:var(--tint)}
+.ks svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8}
+.ks kbd{margin-left:auto;font:600 13px var(--text);padding:0 6px;border-radius:4px;background:#fff;color:var(--soft)}
+.zoom{margin-left:auto;display:flex;gap:6px;align-items:center}
+.zoom .btn-o{min-width:34px;padding:0 10px;font-size:15px}
+.zoom .btn{padding:0 14px}
+.zoom span{font-size:13px;color:var(--faint);min-width:40px;text-align:right}
+.legend{display:flex;flex-wrap:wrap;gap:6px;flex-basis:100%}
+.legend button{display:flex;align-items:center;gap:7px;height:30px;padding:0 11px 0 4px;border-radius:6px;background:var(--bg);font-size:13px;font-weight:600;color:var(--soft);transition:background .3s var(--e),color .3s var(--e)}
+.legend button:hover{background:var(--tint);color:var(--ink)}
+.legend button.on{background:var(--blue);color:#fff}
+.legend button.on .lti{box-shadow:0 0 0 1.5px #fff}
+.lti{display:grid;place-items:center;width:22px;height:22px;border-radius:5px;background:var(--c);flex:none}
+.lti svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+#stage{position:relative;flex:1;overflow:hidden;cursor:grab;touch-action:none;background-color:var(--bg);background-image:radial-gradient(rgba(14,23,51,.14) 1px,transparent 1.2px);background-size:22px 22px}
+#stage.drag{cursor:grabbing}
+#world{position:absolute;left:0;top:0;transform-origin:0 0}
+#wires{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+#wires path{fill:none;stroke:#A8B4C6;stroke-width:1.7;stroke-linejoin:round}
+#wires path.off{stroke-dasharray:6 6}
+#wires path.ah{fill:#A8B4C6;stroke:none}
+#wires path.hot{stroke:var(--blue);stroke-width:2.8}
+#wires path.ah.hot{fill:var(--blue);stroke:none}
+#elabels{position:absolute;left:0;top:0}
+.el{position:absolute;transform:translate(-50%,-50%);font-size:13px;font-weight:600;line-height:1.3;color:var(--soft);background:#fff;padding:3px 9px;border-radius:4px;white-space:nowrap;pointer-events:none;box-shadow:0 0 0 1px #D8E0EB}
+.el.r{transform:translate(-100%,-50%)}
+.el.off{color:var(--faint)}
+.el.hot{color:#fff;background:var(--blue);box-shadow:none}
+.frame{position:absolute;border-radius:10px;background:rgba(255,255,255,.7);box-shadow:0 0 0 1px rgba(14,23,51,.07)}
+.frame .fh{position:absolute;left:16px;top:14px;display:flex;align-items:center;gap:9px;font:700 16px var(--head);letter-spacing:-.01em;white-space:nowrap}
+.frame .fh small{font:500 14px var(--text);color:var(--faint);letter-spacing:0}
+.node{position:absolute;width:300px;cursor:pointer;text-align:left;display:block}
+.node .im{position:relative;display:block;width:300px;height:188px;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(14,23,51,.12),0 14px 30px -18px rgba(14,23,51,.45);transition:box-shadow .35s var(--e)}
+.node .im img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left}
+.node .im .ph{position:absolute;inset:0;display:grid;place-content:center;text-align:center;gap:6px;color:var(--blue);font:700 17px var(--head);background:var(--tint)}
+.node .im .ph small{font:500 13px var(--text);color:var(--faint)}
+.node .no{position:absolute;left:8px;top:8px;display:grid;place-items:center;min-width:28px;height:28px;padding:0 7px;border-radius:6px;background:var(--c,var(--blue));color:#fff;font:700 13.5px var(--head);box-shadow:0 2px 8px rgba(14,23,51,.28)}
+.node .nm{display:flex;align-items:baseline;gap:7px;margin-top:10px;font:700 16px/1.25 var(--head);letter-spacing:-.01em}
+.node .nm i{font-style:normal;color:var(--c,var(--blue))}
+.node .ds{display:block;font-size:14px;color:var(--soft);line-height:1.45;margin-top:3px}
+.node:hover .im{box-shadow:0 0 0 1px rgba(0,87,163,.45),0 24px 40px -20px rgba(14,23,51,.5)}
+.node.on .im{box-shadow:0 0 0 3px var(--blue),0 24px 40px -20px rgba(14,23,51,.5)}
+.node.off .im img{filter:grayscale(1);opacity:.45}
+.node.off .nm{color:var(--soft)}
+.node .tag{position:absolute;right:8px;top:8px;height:26px;display:flex;align-items:center;padding:0 9px;border-radius:4px;background:#fff;color:var(--soft);font-size:13px;font-weight:600;box-shadow:0 1px 6px rgba(14,23,51,.18)}
+#gallery{display:none;overflow-y:auto;padding:22px;background:var(--bg);min-height:0}
+#right.screens #gallery{display:flex;flex-wrap:wrap;align-content:flex-start;gap:26px 34px;flex:1}
+#right.screens .zoom{visibility:hidden}
+#right.screens #stage{display:none}
+.gx{min-width:0;max-width:100%}
+.gl{font:700 16px var(--head);margin:0 0 12px;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.gl small{font:500 14px var(--text);color:var(--faint)}
+.gg{display:flex;flex-wrap:wrap;gap:22px 18px}
+.gg .node{position:relative;width:250px;max-width:100%}
+.gg .node .im{width:100%;height:auto;aspect-ratio:16/10}
+.foot{position:absolute;left:18px;bottom:12px;z-index:2;font-size:14px;line-height:1.45;color:var(--soft);background:rgba(255,255,255,.94);padding:7px 12px;border-radius:6px;box-shadow:0 0 0 1px var(--line);max-width:calc(100% - 36px)}
+.foot b{color:var(--ink);font-weight:600}
+#detail{position:relative;z-index:3;flex:none;min-height:150px;max-height:min(36vh,300px);overflow-y:auto;background:#fff;padding:14px 56px 14px 18px;display:grid;grid-template-columns:minmax(220px,.75fr) minmax(0,1.5fr);gap:6px 28px;align-items:start;box-shadow:0 -14px 30px -26px rgba(14,23,51,.45)}
+#detail[hidden],#right.screens #detail{display:none}
+@media (min-width:1101px){#right{position:relative}#detail{position:absolute;right:16px;bottom:16px;width:min(360px,34%);max-height:calc(100% - 150px);display:block;padding:18px 48px 18px 18px;border-radius:10px;box-shadow:0 0 0 1px var(--line),0 30px 60px -30px rgba(14,23,51,.35)}#detail>div+div{margin-top:14px}}
+#detail .dx{position:absolute;top:10px;right:12px;width:32px;height:32px;border-radius:6px;display:grid;place-items:center;color:var(--soft);font-size:21px;line-height:1}
+#detail .dx:hover{background:var(--bg);color:var(--ink)}
+#detail .dt{display:flex;align-items:baseline;gap:8px;font:700 19px/1.2 var(--head);letter-spacing:-.015em}
+#detail .dt i{font-style:normal;color:var(--c,var(--blue))}
+#detail .dm{display:block;margin-top:3px;font-size:14px;color:var(--faint)}
+#detail p{font-size:14px;color:var(--soft);line-height:1.5}
+#detail .d1 p{margin-top:8px}
+#detail .d2>*+*{margin-top:8px}
+#detail p b{color:var(--ink);font-weight:600}
+#detail .dn{background:var(--bg);border-radius:6px;padding:8px 11px}
+#detail .go{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px!important}
+#detail .go button{height:32px;padding:0 10px;border-radius:6px;background:#fff;font-size:13px;font-weight:600;color:var(--blue);box-shadow:0 0 0 1px rgba(0,87,163,.3) inset;transition:background .3s var(--e),box-shadow .3s var(--e);white-space:nowrap}
+#detail .go button:hover{background:var(--tint);box-shadow:0 0 0 1px var(--blue) inset}
+#detail .go button em{font-style:normal;color:var(--faint);margin-left:5px}
+#detail .gh{display:block;font-size:13px;font-weight:600;color:var(--faint)}
+#ck{position:fixed;inset:0;z-index:90;display:none;place-items:start center;padding-top:12vh;background:rgba(14,23,51,.28)}
+#ck.on{display:grid}
+.ckb{width:min(560px,calc(100vw - 32px));background:#fff;border-radius:10px;box-shadow:0 30px 70px -30px rgba(14,23,51,.6);overflow:hidden}
+.ckb input{width:100%;height:52px;border:0;box-shadow:0 1px 0 var(--line);padding:0 18px;font:15px var(--text);color:var(--ink);outline:none}
+.ckl{max-height:50vh;overflow-y:auto;padding:6px}
+.ckl button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:9px 12px;border-radius:6px;font-size:14px;color:var(--soft)}
+.ckl button b{font:700 13px var(--head);color:var(--faint);min-width:24px}
+.ckl button.on,.ckl button:hover{background:var(--tint);color:var(--ink)}
+.ckl em{margin-left:auto;font-style:normal;font-size:13px;color:var(--faint);white-space:nowrap}
+.ckl .none{padding:12px;font-size:14px;color:var(--faint)}
+@media(max-width:1100px){
+  body{overflow:auto;height:auto}
+  html{height:auto}
+  #split{position:static;display:block;margin-top:0}
+  #left{box-shadow:none;overflow:visible;padding:16px}
+  body.desk .dev{max-width:none}
+  #right{display:block;overflow:visible}
+  .head{box-shadow:none;padding:16px}
+  #stage{height:min(66vh,620px)}
+  #gallery{padding:16px}
+  .foot{left:12px;bottom:10px;max-width:calc(100% - 24px)}
+  #detail{display:block;max-height:none;padding:16px 56px 24px 16px;box-shadow:none}
+  #detail>div+div{margin-top:12px}
+}
+@media(max-width:560px){.gl{white-space:normal;flex-wrap:wrap}.gx,.gg .node{width:100%}.ks{min-width:0;flex-basis:100%;order:3}.zoom{margin-left:auto}.legend{order:4}.head h1{flex-basis:100%}}
+</style>
+</head>
+<body>
+<!-- WORKSPACE ONLY: the Brand Method bar (public/bmws.css). Not part of the client site. -->
+<div class="bmws" style="--bmws-acc:#2536F5"><div class="bmws-in"><div class="bmws-crumb"><b>IAQ Utility Solutions</b><span>Super Admin</span></div><nav class="bmws-tabs" aria-label="Super admin developer navigation"><span class="bmws-g"><a href="/audit.html"><i>00</i>Web Audit</a><a href="/competitors.html"><i>01</i>Competitors</a><a href="/plan.html"><i>02</i>Web Plan</a><a href="/checklist.html"><i>03</i>Amendments</a><a href="/polish.html"><i>11</i>Polishing</a><a href="/webflow.html" class="on"><i>12</i>Web flow</a><a href="/client-files.html"><i>10</i>Client files</a></span><span class="bmws-g"><a href="/design.html"><i>04</i>Design</a></span><span class="bmws-g"><a href="/web1/index.html" class="rej"><i>05</i>Web 1</a><a href="/home2" class="rej"><i>06</i>Web 2</a><a href="/"><i>07</i>Web 3 &middot; live</a></span></nav><span class="bmws-dd"><a class="bmws-dd-t" href="/portal/codex?admin" aria-haspopup="true"><i>09</i>Codex<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></a><span class="bmws-dd-m" role="menu"><a role="menuitem" href="/portal/codex?admin"><b>Codex</b><small>The rules the site and the brand are built on</small></a><a role="menuitem" href="/portal/newsroom?admin"><b>Edit website</b><small>The CMS: news, careers, projects and pages</small></a></span></span></div></div>
+<!-- END WORKSPACE ONLY -->
+<div id="split">
+<aside id="left" aria-label="The live page">
+  <div class="ctl"><span class="seg" role="group" aria-label="Device"><button type="button" data-dev="phone" class="on" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg>Phone</button><button type="button" data-dev="desk" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M8.5 20h7M12 16.5V20"/></svg>Desktop</button></span><span class="acts"><button type="button" class="btn" id="restart">Back to the start</button><a class="btn-o" id="full" href="index.html" target="_blank" rel="noopener">Open full screen</a></span></div>
+  <div class="dev"><div class="bar"><i></i><i></i><i></i><span id="dvu">iaqgroup.com</span></div><div class="frm" id="frm"><iframe id="dvf" title="IAQ, the live page" src="about:blank"></iframe></div></div>
+  <p class="cap"><b>The live site, on this computer.</b> Click inside it and the board follows.</p>
+</aside>
+<div id="right">
+  <div class="head"><h1>The web flow <span>25 screens</span></h1><span class="seg" role="tablist" aria-label="View"><button type="button" role="tab" data-view="flow" class="on" aria-selected="true">Flow</button><button type="button" role="tab" data-view="screens" aria-selected="false">Screens</button></span><button type="button" class="ks" id="kOpen" aria-label="Search screens"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></svg><span>Search screens</span><kbd>&#8984;K</kbd></button><span class="zoom"><span id="zv">50%</span><button type="button" class="btn-o" id="zOut" aria-label="Zoom out">&minus;</button><button type="button" class="btn-o" id="zIn" aria-label="Zoom in">+</button><button type="button" class="btn" id="zFit">Fit</button></span><nav class="legend" id="legend" aria-label="Lanes"></nav></div>
+  <div id="stage"><div id="world"><svg id="wires"></svg><div id="nodes"></div><div id="elabels"></div></div><div class="foot"><b>Read left to right.</b> Each line is a click, in the words on the page. Drag to move, pinch or ctrl and scroll to zoom.</div></div>
+  <div id="gallery" aria-label="All screens"></div>
+  <div id="detail" role="region" aria-label="Screen detail" aria-live="polite" hidden></div>
+</div>
+</div>
+<div id="ck" role="dialog" aria-modal="true" aria-label="Search screens"><div class="ckb"><input placeholder="Jump to a screen by name or number" aria-label="Search screens"><div class="ckl"></div></div></div>
+<script>
+(function(){
+  var LANES=[["land", "Land", "Where every visitor starts", "home", "#EC2027"], ["learn", "Who IAQ is", "About, the record, the commitment", "home", "#EC2027"], ["buy", "What IAQ sells", "The services and the three units", "home", "#EC2027"], ["prove", "The proof", "Markets, projects, news", "home", "#0C1220"], ["act", "Act", "Contact, the brief, careers", "home", "#0C1220"], ["member", "Members", "Sign in, the portal, the Codex", "home", "#0B8FD8"], ["booth", "Exhibition", "SEMICON Europa 2026", "home", "#0B8FD8"]], NODES=[["home", "Home", "The hero on IAQ’s own film, the record and the world, the delivery cycle, the Scroll to build 3D, the seven markets.", "land", 0, 0, "iaqgroup.com/", "/"], ["about", "About IAQ", "Who IAQ is since 1995: the story, vision and mission, six values, the certificates.", "learn", 1, 0, "iaqgroup.com/about", "/about"], ["history", "History", "Thirty-one years as a timeline with a time axis, IAQ’s 21 milestones.", "learn", 2, 0, "iaqgroup.com/about/history", "/about/history"], ["commitment", "Corporate Commitment", "The three pillars, the QEHS policies as PDFs, the CSR stories.", "learn", 3, 0, "iaqgroup.com/about/commitment", "/about/commitment"], ["global", "Global presence", "Seven countries on a flat map, the delivered-in countries, the registry by country.", "learn", 4, 0, "iaqgroup.com/global-presence", "/global-presence"], ["services", "Services", "The facility map in 3D, the three business units, the units-by-services matrix, three choices, the FAQ.", "buy", 1, 1, "iaqgroup.com/services", "/services"], ["six", "Six services, one page", "The six stages in order, each with its photograph and the house line.", "buy", 2, 1, "iaqgroup.com/services/all", "/services/all"], ["epc", "EPC", "Engineering, Procurement & Construction: the unit page from IAQ’s sheet.", "buy", 3, 1, "iaqgroup.com/services/epc-construction", "/services/epc-construction"], ["tti", "PCU & TTI", "Process Critical Utilities & Total Tool Installation: what is delivered, the four stages, the statement.", "buy", 4, 1, "iaqgroup.com/services/tool-installation", "/services/tool-installation"], ["efm", "Energy Management", "The five solutions, Energy as a Service, the industries, the district cooling 3D.", "buy", 5, 1, "iaqgroup.com/services/energy-management", "/services/energy-management"], ["markets", "Markets", "Seven markets as equal picture tiles, one project from each.", "prove", 1, 2, "iaqgroup.com/markets", "/markets"], ["market", "A market page", "Semiconductor, the pattern of all seven: overview, capabilities, the projects delivered.", "prove", 2, 2, "iaqgroup.com/markets/semiconductor", "/markets/semiconductor"], ["projects", "Project registry", "Every published project with its tags; filter by market, location, model and class.", "prove", 3, 2, "iaqgroup.com/projects", "/projects"], ["project", "A project page", "The brief, the scope, the story, the six stages, class and contract, related projects.", "prove", 4, 2, "iaqgroup.com/projects/0", "/projects/0"], ["news", "Newsroom", "The latest story, the featured four, the list.", "prove", 5, 2, "iaqgroup.com/news", "/news"], ["article", "A story", "IAQ’s own text and photograph, previous and next, more of the work.", "prove", 6, 2, "iaqgroup.com/news/…", "/news/pdk-kota-raja-community-visit"], ["contact", "Contact", "The three-step brief, the direct contacts, the head office map, the seven offices.", "act", 1, 3, "iaqgroup.com/contact", "/contact"], ["enquiry", "Enquiry", "The lead form on its own page: Contact, Project, what happens next.", "act", 2, 3, "iaqgroup.com/enquiry", "/enquiry"], ["careers", "Careers", "Culture on top, the six values, the safety record, the open roles with their filters.", "act", 3, 3, "iaqgroup.com/careers", "/careers"], ["policies", "Policies", "Six documents in one place, each at its own address.", "act", 4, 3, "iaqgroup.com/policies", "/policies"], ["signin", "Sign in", "The member icon’s popover: the passcode, the emergency line, the request link.", "member", 1, 4, "the member icon", "/about"], ["portal", "The portal", "The member portal: Super Admin, Edit website, Enquiries, Design direction, Exhibition, Presentation, Marketing, Documents, Email signature; the Codex first.", "member", 2, 4, "iaqgroup.com/portal/codex", "/portal/codex"], ["gate", "The gate", "What a visitor meets at the portal when signed out.", "member", 3, 4, "iaqgroup.com/portal", "/portal"], ["semicon", "SEMICON Europa", "The stand’s page for Munich: the fab built layer by layer, the three units, Dresden.", "booth", 1, 5, "iaqgroup.com/semicon", "/semicon"], ["screen", "Booth screen", "The touch screen on the stand, full screen, looping.", "booth", 2, 5, "iaqgroup.com/booth/screen", "/booth/screen"]], LINKS=[["home", "about", "More about us", "the hero", "h"], ["home", "services", "Services", "the menu", "g"], ["home", "markets", "Explore the seven markets", "the markets band", "g"], ["home", "contact", "Start a project", "the bar", "g"], ["home", "signin", "The member icon", "the bar", "g"], ["home", "careers", "Careers", "the menu", ""], ["about", "history", "The record since 1995", "the story block", "h"], ["history", "commitment", "Corporate Commitment", "the About menu", "h"], ["commitment", "global", "Global presence", "the About menu", "h"], ["about", "policies", "Policies and certificates", "the achievements", ""], ["services", "six", "See the six services", "the facility map", "h"], ["six", "epc", "EPC", "the units", "h"], ["epc", "tti", "PCU & TTI", "the Services menu", "h"], ["tti", "efm", "Energy Management", "the Services menu", "h"], ["services", "contact", "Start a project", "the bar", ""], ["markets", "market", "Explore the market", "a tile", "h"], ["market", "projects", "See all semiconductor projects", "Delivered in this market", "h"], ["projects", "project", "A project card", "the registry", "h"], ["project", "news", "News", "the menu", "h"], ["news", "article", "Read the story", "the latest story", "h"], ["contact", "enquiry", "Send the brief", "the form", "h"], ["enquiry", "careers", "Careers", "the menu", "h"], ["careers", "policies", "Policies", "the footer", "h"], ["signin", "portal", "Open the portal", "the popover", "h"], ["portal", "gate", "Sign out", "the sidebar", "h"], ["semicon", "screen", "Touch to explore", "the stand", "h"], ["home", "semicon", "SEMICON Europa", "the exhibition page", ""]], SHOTS={"home": "polish/new/home-top.webp", "about": "polish/new/about-top.webp", "history": "polish/new/about-history-top.webp", "commitment": "polish/new/about-commitment-top.webp", "global": "polish/new/global-presence-top.webp", "services": "polish/new/services-top.webp", "six": "polish/new/services-all-top.webp", "epc": "polish/new/services-epc-construction-top.webp", "tti": "polish/new/services-tool-installation-top.webp", "efm": "polish/new/services-energy-management-top.webp", "markets": "polish/new/markets-top.webp", "market": "polish/new/markets-semiconductor-top.webp", "projects": "polish/new/projects-top.webp", "project": "polish/new/projects-0-top.webp", "news": "polish/new/news-top.webp", "article": "polish/new/news-pdk-kota-raja-community-visit-top.webp", "contact": "polish/new/contact-top.webp", "enquiry": "polish/new/enquiry-top.webp", "careers": "polish/new/careers-top.webp", "policies": "polish/new/policies-top.webp", "signin": "polish/before/states/01-signed-out.webp", "portal": "polish/after/states/04-portal-signed-in.webp", "gate": "polish/after/states/05-portal-gate.webp", "semicon": "polish/new/semicon-top.webp", "screen": "polish/new/booth-screen-top.webp"}, NOTES={"signin": "A state, not a page: the popover opens from the member icon on any page. The device shows the About page; press the icon.", "portal": "Review builds only; the launch build carries no portal. Sign in with the member passcode first.", "gate": "The same address signed out.", "market": "One page stands for the seven; each follows the same sections from IAQ’s 20 Oct sheet."}, OFF=[], ICONS={"home": "<path d=\"M4 11l8-6.5 8 6.5\"/><path d=\"M6.5 9.5V19h11V9.5\"/><path d=\"M10 19v-5h4v5\"/>", "ask": "<circle cx=\"11\" cy=\"11\" r=\"6.5\"/><path d=\"M20 20l-4.3-4.3\"/><path d=\"M9.2 9.6a1.9 1.9 0 113 1.5c-.7.5-1.2.9-1.2 1.7\"/><path d=\"M11 14.6h.01\"/>", "cap": "<path d=\"M2.5 9.5L12 5l9.5 4.5L12 14z\"/><path d=\"M6.5 11.6V16c1.6 1.6 3.4 2.2 5.5 2.2s3.9-.6 5.5-2.2v-4.4\"/><path d=\"M21.5 9.5V14\"/>", "keep": "<path d=\"M7 4h10a1 1 0 011 1v15l-6-4-6 4V5a1 1 0 011-1z\"/>", "back": "<path d=\"M5 8h10.5a4.5 4.5 0 010 9H9\"/><path d=\"M8.5 4.5L5 8l3.5 3.5\"/>", "tool": "<circle cx=\"12\" cy=\"12\" r=\"8\"/><path d=\"M15.5 8.5l-2.3 4.7-4.7 2.3 2.3-4.7z\"/>", "hand": "<rect x=\"3.5\" y=\"7\" width=\"17\" height=\"12.5\" rx=\"2\"/><path d=\"M8.5 7V5.5A1.5 1.5 0 0110 4h4a1.5 1.5 0 011.5 1.5V7\"/><path d=\"M3.5 12.5h17\"/>", "off": "<circle cx=\"12\" cy=\"12\" r=\"8\"/><path d=\"M6.5 6.5l11 11\"/>"};
+  var W=300,IH=188,NH=292,CX=400,RY=420,OX=120,OY=160,GAP=106;
+  var $=function(s,r){return (r||document).querySelector(s);}, $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s));};
+  var LN={};LANES.forEach(function(l){LN[l[0]]=l;});
+  var BY={},ALL=[];NODES.forEach(function(n,i){var o={id:n[0],file:n[7],name:n[1],desc:n[2],lane:n[3],x:OX+n[4]*CX,y:OY+n[5]*RY,url:n[6],no:i+1,off:OFF.indexOf(n[0])>-1};BY[o.id]=o;ALL.push(o);});
+  var EDGES=LINKS.map(function(l,i){return {i:i,from:l[0],to:l[1],label:l[2],where:l[3],draw:l[4]};});
+  function pad(n){return (n<10?'0':'')+n;}
+  function colr(n){return LN[n.lane][4];}
+  function lti(l,s){return '<i class="lti" style="--c:'+l[4]+(s?';width:'+s+'px;height:'+s+'px':'')+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+ICONS[l[3]]+'</svg></i>';}
+  function nodeHTML(n,inGrid){
+    var s=SHOTS[n.id];
+    return '<button type="button" class="node'+(n.off?' off':'')+'" data-id="'+n.id+'" style="--c:'+colr(n)+(inGrid?'':';left:'+n.x+'px;top:'+n.y+'px')+'">'+
+      '<span class="im">'+(s?'<img src="'+s+'" alt="" decoding="async"'+(inGrid?' loading="lazy"':'')+'>':'<span class="ph">'+n.name+'<small>Picture on the next shoot</small></span>')+
+      '<span class="no">'+n.no+'</span>'+(n.off?'<span class="tag">Not in this demo</span>':'')+'</span>'+
+      '<span class="nm"><i>'+pad(n.no)+'</i>'+n.name+'</span><span class="ds">'+n.desc+'</span></button>';
+  }
+  /* ---- board */
+  var world=$('#world'),nodesEl=$('#nodes'),wires=$('#wires'),els=$('#elabels'),stage=$('#stage');
+  nodesEl.innerHTML=ALL.map(function(n){return nodeHTML(n);}).join('');
+  var fr='';LANES.forEach(function(l){var ns=ALL.filter(function(n){return n.lane===l[0];});if(!ns.length)return;
+    var x0=Math.min.apply(null,ns.map(function(n){return n.x;}))-22,y0=Math.min.apply(null,ns.map(function(n){return n.y;}))-58,x1=Math.max.apply(null,ns.map(function(n){return n.x;}))+W+22,y1=Math.max.apply(null,ns.map(function(n){return n.y;}))+NH+8;
+    fr+='<div class="frame" data-lane="'+l[0]+'" style="left:'+x0+'px;top:'+y0+'px;width:'+(x1-x0)+'px;height:'+(y1-y0)+'px"><div class="fh">'+lti(l)+l[1]+' <small>'+l[2]+'</small></div></div>';});
+  nodesEl.insertAdjacentHTML('afterbegin',fr);
+  var maxX=0,maxY=0;ALL.forEach(function(n){maxX=Math.max(maxX,n.x+W+OX);maxY=Math.max(maxY,n.y+NH+60);});
+  wires.setAttribute('width',maxX);wires.setAttribute('height',maxY);
+  var R=10,wp='',lab='';
+  function arrowR(x,y){return 'M'+(x-9)+' '+(y-5)+'L'+(x-1)+' '+y+'L'+(x-9)+' '+(y+5)+'Z';}
+  function arrowD(x,y){return 'M'+(x-5)+' '+(y-9)+'L'+x+' '+(y-1)+'L'+(x+5)+' '+(y-9)+'Z';}
+  EDGES.forEach(function(e){if(!e.draw)return;var a=BY[e.from],b=BY[e.to];if(!a||!b)return;
+    var ax=a.x+W,ay=a.y+IH/2,bx=b.x,by=b.y+IH/2,mx=ax+40,d,ah,lx,ly,cls='',lc='';
+    if(e.draw==='h'){
+      if(Math.abs(ay-by)<2){d='M'+ax+' '+ay+'H'+(bx-7);}
+      else{var dn=by>ay?1:-1;d='M'+ax+' '+ay+'H'+(mx-R)+'Q'+mx+' '+ay+' '+mx+' '+(ay+R*dn)+'V'+(by-R*dn)+'Q'+mx+' '+by+' '+(mx+R)+' '+by+'H'+(bx-7);}
+      ah=arrowR(bx,by);lx=(mx+bx)/2;ly=by;
+    }else if(e.draw==='g'){
+      var gy=b.y-GAP,ex=b.x+W/2;
+      d='M'+ax+' '+ay+'H'+(mx-R)+'Q'+mx+' '+ay+' '+mx+' '+(ay+R)+'V'+(gy-R)+'Q'+mx+' '+gy+' '+(mx+R)+' '+gy+'H'+(ex-R)+'Q'+ex+' '+gy+' '+ex+' '+(gy+R)+'V'+(b.y-7);
+      ah=arrowD(ex,b.y);lx=ex-16;ly=gy;lc=' r';
+    }else{ /* o: over the top row */
+      var sx=a.x+W-30,ex2=b.x+W-30,oy=a.y-102;
+      d='M'+sx+' '+(a.y-2)+'V'+(oy+R)+'Q'+sx+' '+oy+' '+(sx+R)+' '+oy+'H'+(ex2-R)+'Q'+ex2+' '+oy+' '+ex2+' '+(oy+R)+'V'+(b.y-7);
+      ah=arrowD(ex2,b.y);lx=(sx+ex2)/2;ly=oy;
+    }
+    if(b.off){cls=' class="off"';lc+=' off';}
+    wp+='<path data-e="'+e.i+'"'+cls+' d="'+d+'"/><path class="ah" data-a="'+e.i+'" d="'+ah+'"/>';
+    lab+='<span class="el'+lc+'" data-e="'+e.i+'" style="left:'+lx+'px;top:'+ly+'px">'+e.label+'</span>';
+  });
+  wires.innerHTML=wp;els.innerHTML=lab;
+  /* pan and zoom */
+  var T={x:0,y:0,k:.5};
+  function apply(){world.style.transform='translate('+T.x+'px,'+T.y+'px) scale('+T.k+')';$('#zv').textContent=Math.round(T.k*100)+'%';}
+  // 21 Oct: fit the drawn pictures, not the world's margins, so the board opens as large as the panel allows
+  var bx0=1e9,by0=1e9,bx1=0,by1=0;ALL.forEach(function(n){bx0=Math.min(bx0,n.x-50);by0=Math.min(by0,n.y-70);bx1=Math.max(bx1,n.x+W+50);by1=Math.max(by1,n.y+NH+16);});
+  // 21 Oct: on a wide screen the detail card floats on the right of the board, so the board keeps its full height; Fit leaves room for it
+  function fit(){var r=stage.getBoundingClientRect();if(!r.width)return;var dd=$('#detail'),side=0,aw=r.width-side,fh=($('.foot').offsetParent===stage?$('.foot').offsetHeight+18:0),bw=bx1-bx0,bh=by1-by0,k=Math.min((aw-40)/bw,(r.height-fh-28)/bh);T.k=Math.max(.12,Math.min(1,k));T.x=(aw-bw*T.k)/2-bx0*T.k;T.y=Math.max(4,(r.height-fh-bh*T.k)/2)-by0*T.k;apply();}
+  function zoomAt(f,cx,cy){var r=stage.getBoundingClientRect();cx=cx==null?r.width/2:cx;cy=cy==null?r.height/2:cy;var k=Math.max(.12,Math.min(1.6,T.k*f));T.x=cx-(cx-T.x)*k/T.k;T.y=cy-(cy-T.y)*k/T.k;T.k=k;apply();}
+  function center(n,k){var r=stage.getBoundingClientRect();if(!r.width)return;if(k)T.k=k;T.x=r.width/2-(n.x+W/2)*T.k;T.y=r.height/2-(n.y+NH/2)*T.k;world.style.transition='transform .6s cubic-bezier(.25,1,.5,1)';apply();setTimeout(function(){world.style.transition='';},650);}
+  function seen(n){var r=stage.getBoundingClientRect(),x=T.x+n.x*T.k,y=T.y+n.y*T.k;return x>-W*T.k*.5&&y>-IH*T.k*.5&&x+W*T.k*.5<r.width&&y+IH*T.k*.5<r.height;}
+  var pts={},drag=null,moved=false,pinch=null;
+  stage.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'&&e.button!==0)return;pts[e.pointerId]={x:e.clientX,y:e.clientY};var ids=Object.keys(pts);
+    if(ids.length===2){var p1=pts[ids[0]],p2=pts[ids[1]];pinch={d:Math.hypot(p1.x-p2.x,p1.y-p2.y),k:T.k};drag=null;moved=true;}
+    else{drag={x:e.clientX,y:e.clientY,tx:T.x,ty:T.y};moved=false;}});
+  addEventListener('pointermove',function(e){if(!pts[e.pointerId])return;pts[e.pointerId]={x:e.clientX,y:e.clientY};var ids=Object.keys(pts);
+    if(pinch&&ids.length===2){var p1=pts[ids[0]],p2=pts[ids[1]],r=stage.getBoundingClientRect(),d=Math.hypot(p1.x-p2.x,p1.y-p2.y);zoomAt((pinch.k*d/pinch.d)/T.k,(p1.x+p2.x)/2-r.left,(p1.y+p2.y)/2-r.top);return;}
+    if(!drag)return;var dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(!moved&&Math.abs(dx)+Math.abs(dy)<5)return;moved=true;stage.classList.add('drag');T.x=drag.tx+dx;T.y=drag.ty+dy;apply();});
+  function up(e){delete pts[e.pointerId];if(Object.keys(pts).length<2)pinch=null;if(!Object.keys(pts).length){drag=null;stage.classList.remove('drag');}}
+  addEventListener('pointerup',up);addEventListener('pointercancel',up);
+  stage.addEventListener('wheel',function(e){e.preventDefault();var r=stage.getBoundingClientRect();if(e.ctrlKey||e.metaKey){zoomAt(Math.exp(-e.deltaY*.0025),e.clientX-r.left,e.clientY-r.top);}else{T.x-=e.deltaX;T.y-=e.deltaY;apply();}},{passive:false});
+  $('#zIn').addEventListener('click',function(){zoomAt(1.2);});$('#zOut').addEventListener('click',function(){zoomAt(1/1.2);});$('#zFit').addEventListener('click',fit);
+  /* lanes */
+  $('#legend').innerHTML=LANES.map(function(l){return '<button type="button" data-lane="'+l[0]+'">'+lti(l)+l[1]+'</button>';}).join('');
+  $$('#legend button').forEach(function(b){b.addEventListener('click',function(){var n=ALL.filter(function(x){return x.lane===b.getAttribute('data-lane');})[0];setView('flow');select(n.id,true);setTimeout(function(){center(n,.62);},30);});});
+  /* screens */
+  $('#gallery').innerHTML=LANES.map(function(l){var ns=ALL.filter(function(n){return n.lane===l[0];});return '<section class="gx" aria-label="'+l[1]+'"><div class="gl">'+lti(l)+l[1]+' <small>'+l[2]+'</small></div><div class="gg">'+ns.map(function(n){return nodeHTML(n,true);}).join('')+'</div></section>';}).join('');
+  function setView(v){$$('[data-view]').forEach(function(b){var on=b.getAttribute('data-view')===v;b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');});$('#right').classList.toggle('screens',v==='screens');}
+  $$('[data-view]').forEach(function(b){b.addEventListener('click',function(){setView(b.getAttribute('data-view'));if(b.getAttribute('data-view')==='flow')setTimeout(fit,30);});});
+  /* device */
+  var dev={mode:'phone'},fr0=$('#dvf'),frm=$('#frm'),url=$('#dvu');
+  var SIZE={phone:[390,844],desk:[1440,900]};
+  function fitDev(){var z=SIZE[dev.mode],w=frm.clientWidth;if(!w)return;var s=w/z[0];fr0.style.width=z[0]+'px';fr0.style.height=z[1]+'px';fr0.style.transform='scale('+s+')';frm.style.height=(z[1]*s)+'px';}
+  var curNode=null;
+  function load(n){fr0.src=n.file+(n.file.indexOf('?')>-1?'&':'?')+'launchview';url.textContent=n.url;$('#full').setAttribute('href',n.file);}
+  function inLinks(n){return EDGES.filter(function(e){return e.to===n.id&&e.from!==n.id;});}
+  function outLinks(n){var seen={};return EDGES.filter(function(e){return e.from===n.id&&e.to!==n.id;}).sort(function(a,b){return (b.draw?1:0)-(a.draw?1:0)||BY[a.to].no-BY[b.to].no;}).filter(function(e){if(seen[e.to])return false;seen[e.to]=1;return true;}).sort(function(a,b){return BY[a.to].no-BY[b.to].no;});}
+  function info(n){
+    var ins=inLinks(n),outs=outLinks(n),l=LN[n.lane];
+    var h='<button type="button" class="dx" id="dX" aria-label="Close the card">&times;</button>'+
+      '<div class="d1"><b class="dt" style="--c:'+l[4]+'"><i>'+pad(n.no)+'</i>'+n.name+'</b><span class="dm">Screen '+n.no+' of '+ALL.length+', '+l[1]+'</span><p>'+n.desc+'</p></div><div class="d2">';
+    if(NOTES[n.id])h+='<p class="dn">'+NOTES[n.id]+'</p>';
+    if(ins.length)h+='<p>You get here by '+ins.map(function(e){var f=BY[e.from];return '<b>'+e.label+'</b>'+(e.where?' in '+e.where:'')+' on '+pad(f.no)+' '+f.name;}).join(', ')+'.</p>';
+    else h+='<p>Where every reader starts: a link, a search, a post.</p>';
+    if(outs.length)h+='<span class="gh">Where it goes</span><div class="go">'+outs.map(function(e){var t=BY[e.to];return '<button type="button" data-to="'+e.to+'" title="'+t.name+'">'+e.label+'<em>'+pad(t.no)+'</em></button>';}).join('')+'</div>';
+    h+='</div>';
+    var d=$('#detail');d.innerHTML=h;d.hidden=(innerWidth>1100&&!window.__wfPicked);   /* 21 Oct: on a wide screen the card opens on the reader's first pick, floating over the board */
+    $('#dX').addEventListener('click',function(){d.hidden=true;fitDev();});
+    $$('#detail [data-to]').forEach(function(b){b.addEventListener('click',function(){var t=BY[b.getAttribute('data-to')];select(t.id,true);center(t);});});
+  }
+  function select(id,doLoad){var n=BY[id];if(!n)return;curNode=n;
+    $$('.node').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-id')===id);});
+    $$('#legend button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lane')===n.lane);});
+    var hot=[];EDGES.forEach(function(e){if(!e.draw)return;var h=e.from===id||e.to===id;$$('[data-e="'+e.i+'"],[data-a="'+e.i+'"]').forEach(function(x){x.classList.toggle('hot',h);if(h&&x.tagName.toLowerCase()==='path')hot.push(x);});});
+    hot.forEach(function(p){wires.appendChild(p);});
+    info(n);if(doLoad)load(n);
+    try{history.replaceState(null,'','#'+id);}catch(e){}
+  }
+  document.addEventListener('click',function(e){var b=e.target.closest('.node');if(!b||moved)return;var id=b.getAttribute('data-id');select(id,true);if(b.closest('#gallery')){setView('flow');setTimeout(function(){center(BY[id],.7);},30);}});
+  $$('[data-dev]').forEach(function(b){b.addEventListener('click',function(){dev.mode=b.getAttribute('data-dev');document.body.classList.toggle('desk',dev.mode==='desk');$$('[data-dev]').forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on?'true':'false');});fitDev();if(curNode)load(curNode);setTimeout(function(){fitDev();fit();},540);});});
+  $('#restart').addEventListener('click',function(){setView('flow');select('home',true);fit();});
+  /* the page inside the device: follow its own clicks, keep ?shell on the next page */
+  fr0.addEventListener('load',function(){
+    var w,doc;try{w=fr0.contentWindow;doc=w.document;}catch(err){return;}
+    if(!doc||!w.location||w.location.protocol==='about:')return;
+    if(!/[?&]shell\b/.test(w.location.search))doc.documentElement.classList.add('iaq-inshell');
+    doc.addEventListener('click',function(ev){var a=ev.target&&ev.target.closest?ev.target.closest('a[href]'):null;if(!a)return;var h=a.getAttribute('href');
+      if(!h||/^(#|[a-z]+:)/i.test(h)||!/\.html(?:[?#]|$)/.test(h)||/[?&]shell\b/.test(h))return;var p=h.split('#');a.setAttribute('href',p[0]+(p[0].indexOf('?')>-1?'&':'?')+'shell'+(p.length>1?'#'+p.slice(1).join('#'):''));},true);
+    var n=ALL.filter(function(x){return x.file.split('?')[0]===w.location.pathname;})[0];
+    if(n){url.textContent=n.url;$('#full').setAttribute('href',n.file);if(!curNode||curNode.id!==n.id){select(n.id,false);if(!$('#right').classList.contains('screens')&&!seen(n))center(n);}}
+  });
+  /* 21 Oct 2026: the same follow by message, for the client zip: opened from the disk, the page in the device is cross origin
+     and cannot be read above, so lc4.js inside it posts its file name and keeps ?shell on its own links */
+  window.addEventListener('message',function(ev){if(ev.source!==fr0.contentWindow)return;var d=ev.data;if(!d||typeof d.iaqPage!=='string')return;
+    var n=ALL.filter(function(x){return x.file.split('?')[0]===d.iaqPage;})[0];
+    if(n){url.textContent=n.url;$('#full').setAttribute('href',n.file);if(!curNode||curNode.id!==n.id){select(n.id,false);if(!$('#right').classList.contains('screens')&&!seen(n))center(n);}}
+  });
+  /* search */
+  var ck=$('#ck'),ci=$('#ck input'),cl=$('#ck .ckl'),cs=0,hits=[];
+  function ckDraw(){var q=ci.value.trim().toLowerCase();hits=ALL.filter(function(n){return !q||(n.no+' '+pad(n.no)+' '+n.name+' '+n.desc+' '+LN[n.lane][1]+' '+n.file).toLowerCase().indexOf(q)>-1;});cs=Math.min(cs,Math.max(0,hits.length-1));
+    cl.innerHTML=hits.length?hits.map(function(n,i){return '<button type="button" data-id="'+n.id+'"'+(i===cs?' class="on"':'')+'><b>'+pad(n.no)+'</b>'+n.name+'<em>'+LN[n.lane][1]+'</em></button>';}).join(''):'<p class="none">No screen by that name. Try a number, or a word like story.</p>';
+    $$('button',cl).forEach(function(b){b.addEventListener('click',function(){go(b.getAttribute('data-id'));});});}
+  function go(id){ck.classList.remove('on');setView('flow');select(id,true);setTimeout(function(){center(BY[id],.7);},30);}
+  function ckOpen(){ck.classList.add('on');ci.value='';cs=0;ckDraw();setTimeout(function(){ci.focus();},20);}
+  $('#kOpen').addEventListener('click',ckOpen);
+  ck.addEventListener('click',function(e){if(e.target===ck)ck.classList.remove('on');});
+  ci.addEventListener('input',function(){cs=0;ckDraw();});
+  ci.addEventListener('keydown',function(e){if(e.key==='ArrowDown'){cs=Math.min(hits.length-1,cs+1);ckDraw();e.preventDefault();}if(e.key==='ArrowUp'){cs=Math.max(0,cs-1);ckDraw();e.preventDefault();}if(e.key==='Enter'&&hits[cs])go(hits[cs].id);if(e.key==='Escape')ck.classList.remove('on');});
+  document.addEventListener('keydown',function(e){if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();ckOpen();}else if(e.key==='Escape'&&ck.classList.contains('on'))ck.classList.remove('on');});
+  /* start */
+  var bm=document.querySelector('.bmws');function bmH(){document.documentElement.style.setProperty('--bmws-h',(bm&&bm.offsetParent!==null?bm.offsetHeight:0)+'px');}
+  bmH();addEventListener('resize',function(){bmH();fitDev();});
+  var h0=location.hash.replace(/^#\/?/,'').replace(/\.html$/,''),start=BY[h0]||BY.home;
+  requestAnimationFrame(function(){fitDev();select(start.id,true);setTimeout(function(){window.__wfPicked=true;},0);requestAnimationFrame(function(){fit();var r=stage.getBoundingClientRect();if(r.width<700&&start.id==='home'){T.k=.42;T.x=14-(OX-22)*T.k;T.y=14-(OY-112)*T.k;apply();}if(start.id!=='index')center(start,.6);});});
+  window.__wf={select:select,center:center,fit:fit,BY:BY,T:T,EDGES:EDGES};
+  setTimeout(function(){ if(!document.querySelector('.node.on')){ fitDev(); select(start.id,true); fit(); } },900);
+})();
+</script>
+</body>
+</html>

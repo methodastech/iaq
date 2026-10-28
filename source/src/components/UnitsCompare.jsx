@@ -32,7 +32,7 @@ export default function UnitsCompare({ onClose }) {
   return (
     <div className="sm-uc3" id="units-compare" role="region" aria-label="The three business units, side by side">
       <header className="sm-uc3-head">
-        <h3>The three units, <em>side by side.</em></h3>
+        <h3>The three units, <br /><em>side by side</em></h3>
         <button type="button" className="sm-ud-close" onClick={onClose}>Close</button>
       </header>
       <div className="sm-uc3-dg">

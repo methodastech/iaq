@@ -1,0 +1,81 @@
+{
+ "url": "/news",
+ "slug": "news",
+ "title": "IAQ Group \u00b7 News & Insights \u00b7 Brand Method",
+ "at": "2026-10-22T23:09:31.616Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "News from the group",
+   "tag": "header",
+   "cls": "nb",
+   "top": 84,
+   "height": 507,
+   "text": "News from the group\nProject milestones, industry insight and company updates from across the group.\nLATEST FROM THE NEWSROOM\nEHS\n8 AUGUST 2025\nIAQ Concludes OSH Week with Safety Pledge Signing Ceremony, Uniting Site Team in Shared Commitment\nREAD THE STORY\n\u2192\n13 AUG 2025\n23 JUL 2025\n9 JUL 2025",
+   "img": "news/01-hero.webp",
+   "shownHeight": 507,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 20,
+    "pixels": 0
+   }
+  },
+  {
+   "i": 1,
+   "key": "featured",
+   "heading": "Featured",
+   "tag": "section",
+   "cls": "nf-sec.nf-feat",
+   "top": 590,
+   "height": 505,
+   "text": "Featured\nCSR\n13 August 2025\nIAQ Brings Joy to Children from House of Love with a Day at Chocolate Museum Malaysia\nRead the story\n\u2192\nEHS\n8 August 2025\nIAQ Concludes OSH Week with Safety Pledge Signing Ceremony, Uniting Site Team in Shared Commitment\nRead the story\n\u2192\nCompany\n23 July 2025\nIAQ Opens Official Branch Office in Penang, Strengthening Commitment to the Northern Region\nRead the story\n\u2192\nCompany\n9 July 2025\nIAQ Joins Prime Minister's High-Level Business Roundtable in France, Representing Malaysia's Growing Global Presence\nRead the story\n\u2192\nEHS\n3 July 2025\nIAQ Sets a New Safety Benchmark in Sarawak: Recognized by DOSH Kuching\nRead the story\n\u2192\nCSR\n13 August 2025\nIAQ Brings Joy to Children from House of Love with a Day at Chocolate Museum Malaysia\nRead the story\n\u2192\nEHS\n8 August 2025\nIAQ Concludes OSH Week with Safety Pledge Signing Ceremony, Uniting Site Team in Shared Commitment\nRead the story\n\u2192\nCompany\n23 July 2025\nIAQ Opens Official Branch Office in Penang, Strengthening Commitment to the Northern Region\nRead the story\n\u2192\nCompany\n9 July 2025\nIAQ Joins Prime Minister's High-Level Business Roundtable in France, Representing Malaysia's Growing Global Presence\nRead the story\n\u2192\nEHS\n3 July 2025\nIAQ Sets a New Safety Benchmark in Sarawak: Recognized by DOSH Kuching\nRead the story\n\u2192",
+   "img": "news/02-featured.webp",
+   "shownHeight": 505,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 0,
+    "pixels": 21.73
+   }
+  },
+  {
+   "i": 2,
+   "key": "latest",
+   "heading": "Latest",
+   "tag": "section",
+   "cls": "nf-sec.nf-latest",
+   "top": 1095,
+   "height": 1295,
+   "text": "Latest\nIndustry\n9 June 2025\nBridging the Gap: IAQ Shares Real-World Engineering Insight at University of Malaya\nIndustry\n29 May 2025\nIAQ and University of Malaya Forge Strategic Collaboration to Advance Innovation in Worksite Environments\nQuality\n8 May 2025\nExcellence Through Integration: IAQ Reinforces Commitment to IMS and Global Standards\nCompany\n2 May 2025\nIAQ Annual Dinner 2025: Hawaiian Night Getaway Strengthens Team Spirit and Togetherness\nCompany\n28 April 2025\nInspiring Future Engineers: IAQ at UMENGINE Career Day 2025\nCompany\n16 April 2025\nCelebrating Unity and Festivity: IAQ Eid Celebration 2025\nShow 6 more stories\n\u2193\n70 STORIES FROM THE IAQ NEWSROOM \u00b7 TEXT AND PHOTOGRAPHS AS IAQ PUBLISHED THEM ON IAQTECHNOLOGY.COM.MY \u00b7 15 STORIES WHOSE POSTS HAD NO IAQ PHOTOGRAPH SHOW NEWSROOM ARTWORK",
+   "img": "news/03-latest.webp",
+   "shownHeight": 1295,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 34,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 3,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 2390,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "news/04-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

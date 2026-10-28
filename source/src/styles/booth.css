@@ -77,7 +77,6 @@
 .bt-renders button, .bt-sheet > button, .bt-file { padding: 0; border: 0; background: var(--bt-g); cursor: zoom-in; display: block; overflow: hidden; }
 .bt-renders button.wide { grid-column: span 2; grid-row: span 2; }
 .bt-renders img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s var(--e1); }
-.bt-renders button:hover img { transform: scale(1.03); }
 .bt-sheet { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 48px); margin-top: clamp(28px, 4vh, 44px); align-items: start; }
 .bt-sheet img { width: 100%; display: block; }
 .bt-tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -465,3 +464,272 @@ figcaption .bt-dlk { display: flex; margin-top: 8px; }
 
 /* 25 Sep (Bazil: "make sure not laggy"): parts off screen are not laid out or painted until they come near */
 .bt-part{content-visibility:auto;contain-intrinsic-size:auto 1400px}
+
+/* ===========================================================================
+   29 Sep (Bazil: "complete the exhibition with 2 choices of direction"): every piece in Direction A and Direction B,
+   side by side and labelled. No lines between things, no outlined cards, no zoom on hover.
+   =========================================================================== */
+.bt-dir { display: grid; gap: 4px; }
+.bt-dir b { font: 600 15px/1.25 "Switzer", sans-serif; color: var(--ink); letter-spacing: -.01em; }
+.bt-dir span { font-size: 13.5px; line-height: 1.5; color: var(--soft); max-width: 62ch; }
+.bt-cap { display: block; margin-top: 6px; font: 500 13.5px/1.5 "Instrument Sans", sans-serif; color: var(--soft); }
+.bt-ab-seg { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+.bt-ab-seg button { padding: 10px 14px; border: 0; background: var(--bt-g); color: var(--ink); font: 600 13px/1 "Switzer", sans-serif; cursor: pointer; transition: background .2s, color .2s; }
+.bt-part:nth-child(odd) .bt-ab-seg button { background: #fff; }
+.bt-ab-seg button.on, .bt-part:nth-child(odd) .bt-ab-seg button.on { background: var(--ink); color: #fff; }
+.bt-ab-seg.sm button { padding: 7px 10px; font-size: 12px; }
+/* walls and counter: one row per surface, what it is, then A and B at one box height */
+.bt-ab-key, .bt-row { display: grid; grid-template-columns: minmax(200px, .62fr) minmax(0, 1fr) minmax(0, 1fr); gap: clamp(16px, 2vw, 32px); }
+.bt-ab-key { margin-top: clamp(28px, 4vh, 44px); align-items: end; }
+.bt-ab-key > :first-child { grid-column: 2; }
+.bt-rows { display: grid; gap: clamp(32px, 5vh, 56px); margin-top: 20px; }
+.bt-row { align-items: start; }
+.bt-row-copy h3 { margin: 0; font-size: 20px; line-height: 1.2; }
+.bt-row-copy > p { margin: 8px 0 0; font-size: 14px; line-height: 1.55; color: var(--soft); }
+.bt-row-copy dl { margin: 14px 0 0; display: grid; gap: 8px; }
+.bt-row-copy dl div { display: grid; grid-template-columns: 52px 1fr; gap: 10px; font-size: 13.5px; line-height: 1.5; }
+.bt-row-copy dt { font-weight: 600; color: var(--faint); }
+.bt-row-copy dd { margin: 0; }
+.bt-ab-fig { margin: 0; min-width: 0; }
+.bt-ab-art { height: clamp(300px, 30vw, 470px); padding: clamp(14px, 1.6vw, 24px); background: var(--bt-g); display: flex; align-items: center; justify-content: center; }
+.bt-part:nth-child(odd) .bt-ab-art { background: #fff; }
+.bt-ab-art > svg { width: auto !important; height: 100% !important; max-width: 100%; }
+.bt-ab-fig figcaption { display: grid; gap: 8px; justify-items: start; margin-top: 12px; }
+.bt-ab-fig figcaption b { font: 600 14.5px/1.25 "Switzer", sans-serif; }
+.bt-ab-fig figcaption > span:not(.bt-ab-seg) { font-size: 13.5px; line-height: 1.5; color: var(--soft); }
+.bt-ab-fig .bt-dlk { margin-top: 2px; }
+/* posts and ads: one row per direction */
+.bt-dirrow + .bt-dirrow { margin-top: clamp(40px, 6vh, 64px); }
+.bt-dirrow > .bt-dir { margin-bottom: 18px; }
+.bt-dirrow > .bt-note { margin-top: 12px; }
+.bt-sigs { display: grid; grid-template-columns: repeat(2, minmax(0, 600px)); gap: clamp(20px, 3vw, 40px); }
+.bt-sigs .bt-sig { max-width: none; }
+.bt-sig figcaption .bt-dlk, .bt-print2 figcaption .bt-dlk { display: flex; }
+.bt-set-h .bt-dir { margin-bottom: 4px; }
+@media (max-width: 900px) {
+  .bt-ab-key { display: none; }
+  .bt-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .bt-row-copy { grid-column: 1 / -1; }
+  .bt-ab-art { height: 300px; }
+  .bt-sigs { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .bt-row { grid-template-columns: 1fr; }
+  .bt-ab-art { height: 340px; }
+}
+
+/* the two directions, as two columns that read row for row (subgrid) */
+.dx { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(16px, 2.4vw, 36px); }
+.dx-col { display: grid; grid-row: span 7; grid-template-rows: subgrid; row-gap: 26px; align-content: start; min-width: 0; background: #fff; padding: clamp(20px, 2.4vw, 34px); }
+.bt-part:nth-child(even) .dx-col { background: var(--bt-g); }
+.dx-h h3 { margin: 0; font-size: clamp(22px, 2vw, 28px); line-height: 1.12; letter-spacing: -.025em; }
+.dx-h h3 em { font-style: normal; color: var(--blue); white-space: nowrap; }
+.dx-h p { margin: 10px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--soft); }
+.dx-stand { display: flex; align-items: flex-end; gap: clamp(4px, .6vw, 8px); padding: clamp(12px, 1.4vw, 18px); background: var(--bt-g); }
+.bt-part:nth-child(even) .dx-stand { background: #fff; }
+.dx-stand > div { flex-basis: 0; min-width: 0; }
+.dx-stand svg { display: block; width: 100%; height: 100%; }
+.dx-row { min-width: 0; }
+.dx-row h4 { margin: 0 0 10px; font: 600 14px/1.25 "Switzer", sans-serif; color: var(--ink); }
+.dx-row > p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--soft); }
+.dx-row > p b { color: var(--ink); font-weight: 600; }
+.dx .dd-share { height: 34px; }
+.dx .dd-share span { box-shadow: inset 0 0 0 1px rgba(12,18,32,.08); }
+/* no runts in the short blocks: they balance (Chrome, Edge, Safari 17.5+) */
+.bt-dir span, .bt-set-h b, .bt-set-h p, .bt-ab-fig figcaption > span, .bt-cap, .dx-h p, .dx-sw small, .dx-kv span, .dx-dd li, .dx-row > p, .bt-row-copy > p, .bt-row-copy dd, .bt-head p, .bt-part-h p, .bt-sec-h p, .bt-posts figcaption span, .bt-qs span, .bt-note, .bt-seg span, .bt-conf span { text-wrap: balance; }
+.dx-sw { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; }
+.dx-sw li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start; }
+.dx-sw i { display: block; width: 28px; height: 28px; box-shadow: inset 0 0 0 1px rgba(12,18,32,.1); }
+.dx-sw b { display: block; font: 600 13.5px/1.25 "Switzer", sans-serif; }
+.dx-sw span { display: block; font-size: 12.5px; color: var(--faint); font-variant-numeric: tabular-nums; }
+.dx-sw small { display: block; margin-top: 3px; font-size: 12.5px; line-height: 1.45; color: var(--soft); }
+.dx-kv { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.dx-kv li { display: grid; grid-template-columns: minmax(110px, .34fr) minmax(0, 1fr); gap: 12px; padding: 10px 12px; background: var(--bt-g); font-size: 13.5px; line-height: 1.5; }
+.bt-part:nth-child(even) .dx-kv li { background: #fff; }
+.dx-kv b { font-weight: 600; color: var(--ink); }
+.dx-kv span { color: var(--soft); }
+.dx-dd { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.dx-dd > div { padding: 14px 16px 16px; background: #F3FAF6; }
+.dx-dd > .no { background: #FFF5F5; }
+.dx-dd h4 { margin: 0 0 10px; color: #0B8452; }
+.dx-dd .no h4 { color: #B5121B; }
+.dx-dd ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.dx-dd li { position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.5; color: var(--ink); }
+.dx-dd li::before { content: "\2713"; position: absolute; left: 0; top: 0; font: 600 13px/1.5 "Switzer", sans-serif; color: #0B8452; }
+.dx-dd .no li::before { content: "\2715"; color: #D7141C; }
+.dd-rules-h { margin: 0; font-size: clamp(24px, 2.4vw, 32px) !important; letter-spacing: -.025em; }
+@media (max-width: 900px) {
+  .dx { grid-template-columns: 1fr; row-gap: 20px; }
+  .dx-col { grid-row: auto; grid-template-rows: none; }
+}
+@media (max-width: 560px) {
+  .dx-sw { grid-template-columns: 1fr; }
+  .dx-kv li { grid-template-columns: 1fr; gap: 2px; }
+}
+/* 29 Sep: the Direction page (?source): the icon library's dark band bleeds 24 px past its column and pushed the page 2 px
+   wider than the window at 1440; clip it to the page (no scroll container, so nothing sticky breaks) */
+.cx-in-dir { overflow-x: clip; }
+
+/* ===========================================================================
+   30 Sep 2026 (Bazil: "make a 4th variation as well", "make a 5th version as well"): five directions, one chooser.
+   The head carries the chooser (five tabs, each with its name and a swatch of its ground); the sticky bar mirrors it in
+   letters; every piece, the 3D stand and the file list follow it. Compare in the Plan: the five stands at one scale.
+   No lines between things, no outlined cards, nothing grows on hover.
+   =========================================================================== */
+.bt-head-in > .bt-dirs { grid-column: 1 / -1; order: 2; }
+.bt-dirs { display: grid; gap: 10px; padding-bottom: clamp(24px, 3.4vh, 36px); }
+.bt-dirs-k { font: 600 13px/1 "Instrument Sans", sans-serif; color: var(--faint); }
+.bt-dirs-t { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.bt-dirs-t button { display: grid; grid-template-columns: 26px minmax(0, 1fr); column-gap: 12px; align-items: center; text-align: left; padding: 14px 16px; border: 0; background: #fff; color: var(--ink); cursor: pointer; transition: background .2s, box-shadow .2s; }
+.bt-dirs-t button b { font: 600 14px/1.2 "Switzer", sans-serif; }
+.bt-dirs-t button span { grid-column: 2; font-size: 13px; line-height: 1.35; color: var(--soft); }
+.bt-dirs-t button i { grid-row: span 2; }
+.bt-dirs-t button.on { box-shadow: inset 0 0 0 2px var(--blue); }
+.bt-dirs-t button.on b { color: var(--blue); }
+.bt-dsw { display: block; width: 26px; height: 26px; box-shadow: inset 0 0 0 1px rgba(12,18,32,.14); }
+.bt-dsw-a { background: linear-gradient(#fff 0 72%, #0A101F 72%); }
+.bt-dsw-b { background: #17213A; }
+.bt-dsw-c { background: #fff; box-shadow: inset 0 0 0 1px rgba(12,18,32,.14), inset 0 -5px 0 #EC2027; }
+.bt-dsw-d { background: #C8161D; }
+.bt-dsw-e { background: linear-gradient(90deg, #fff 0 50%, #C8161D 50%); }
+.bt-dmini { position: fixed; right: 20px; bottom: 20px; z-index: 60; display: flex; align-items: center; gap: 4px; padding: 8px 8px 8px 16px; background: #fff; box-shadow: 0 18px 40px -18px rgba(12,18,32,.45), 0 0 0 1px rgba(12,18,32,.06); opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity .25s, transform .3s var(--e1, ease), visibility 0s .3s; }
+.bt-dmini.show { opacity: 1; visibility: visible; transform: none; transition: opacity .25s, transform .3s var(--e1, ease), visibility 0s; }
+.bt-dmini small { margin-right: 8px; font: 600 13px/1.2 "Switzer", sans-serif; color: var(--ink); white-space: nowrap; }
+.bt-dmini button { width: 34px; height: 34px; padding: 0; border: 0; background: var(--bt-g); color: var(--ink); font: 600 13.5px/1 "Switzer", sans-serif; cursor: pointer; transition: background .2s, color .2s; }
+.bt-dmini button.on { background: var(--ink); color: #fff; }
+@media print { .bt-dmini { display: none; } }
+/* one direction per row now: what the surface is, then its art */
+.bt-row.bt-row1 { grid-template-columns: minmax(200px, .62fr) minmax(0, 1.6fr); }
+.bt-row1 .bt-ab-art { height: clamp(340px, 34vw, 560px); }
+.bt-print1 { grid-template-columns: minmax(0, 1fr); max-width: 440px; }
+.bt-sigs1 { grid-template-columns: minmax(0, 600px); }
+.bt-tools .bt-dir { margin-right: 10px; }
+/* the Directions block: compare the five, then one in full */
+.dx { display: block; }
+.dx-k { margin: 0 0 14px !important; font: 600 15px/1.2 "Switzer", sans-serif !important; color: var(--faint); letter-spacing: 0 !important; }
+.dx-cmp { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: clamp(12px, 1.4vw, 20px); }
+.dx-card { display: grid; gap: 14px; align-content: start; text-align: left; padding: clamp(14px, 1.4vw, 20px); border: 0; background: #fff; color: var(--ink); cursor: pointer; font: inherit; transition: box-shadow .2s; }
+.bt-part:nth-child(even) .dx-card { background: var(--bt-g); }
+.dx-card.on { box-shadow: inset 0 0 0 2px var(--blue); }
+.dx-card .dx-stand { background: var(--bt-g); }
+.bt-part:nth-child(even) .dx-card .dx-stand { background: #fff; }
+.dx-stand > span { display: block; flex-basis: 0; min-width: 0; }
+.dx-card-t { display: grid; gap: 6px; }
+.dx-card-t b { font: 600 16px/1.2 "Switzer", sans-serif; letter-spacing: -.01em; }
+.dx-card-t b em { font-style: normal; color: var(--blue); }
+.dx-card-t > span { font-size: 13.5px; line-height: 1.5; color: var(--soft); text-wrap: balance; }
+.dx-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: clamp(28px, 4vh, 40px) 0 14px; }
+.dx-tabs button { display: inline-flex; align-items: center; gap: 10px; padding: 11px 14px; border: 0; background: #fff; color: var(--ink); font: 600 13.5px/1 "Switzer", sans-serif; cursor: pointer; transition: background .2s, color .2s; }
+.bt-part:nth-child(even) .dx-tabs button { background: var(--bt-g); }
+.dx-tabs button b { font-weight: 600; color: var(--faint); }
+.dx-tabs button.on, .bt-part:nth-child(even) .dx-tabs button.on { background: var(--ink); color: #fff; }
+.dx-tabs button.on b { color: rgba(255,255,255,.6); }
+.dx-col.dx-one { grid-row: auto; grid-template-rows: none; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px clamp(24px, 3vw, 48px); }
+.dx-one > .dx-h, .dx-one > .dx-row:nth-of-type(1) { grid-column: 1 / -1; }
+.dx-one > .dx-row:nth-of-type(1) > p { max-width: 90ch; }
+@media (max-width: 1100px) {
+  .bt-dirs-t { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .bt-row.bt-row1 { grid-template-columns: minmax(0, 1fr); }
+  .dx-col.dx-one { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .bt-dirs-t { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bt-dirs-t button { padding: 12px; column-gap: 10px; }
+  .bt-dmini { left: 16px; right: 16px; bottom: 12px; justify-content: space-between; padding: 8px 8px 8px 12px; }
+  .bt-dmini small { font-size: 12px; overflow: hidden; text-overflow: ellipsis; }
+}
+
+/* 30 Sep, after Bazil's review: live directions first (C preferred), the rejected pair after them, smaller, still
+   viewable; the status tags as the Design tab's decisions record shows them (a cross and "Rejected", a tick) */
+.bt-tag { display: inline-flex; align-items: center; gap: 5px; padding: 5px 8px; font: 600 11.5px/1 "Switzer", sans-serif; font-style: normal; color: #fff; vertical-align: middle; white-space: nowrap; letter-spacing: 0; }
+.bt-tag-x { background: #D7141C; }
+.bt-tag-x::before { content: "\2715"; }
+.bt-tag-y { background: #0B8452; }
+.bt-tag-y::before { content: "\2713"; }
+.bt-dir b .bt-tag, .bt-seg b .bt-tag, .bt-ab-fig figcaption b .bt-tag { margin-left: 8px; }
+.bt-dsw-c2 { background: linear-gradient(90deg, #C8161D 0 34%, #fff 34%); }
+.bt-dsw-f { background: linear-gradient(135deg, #fff 0 46%, #B9BEC6 46%); }
+.bt-dirs-t button { grid-template-rows: auto auto; row-gap: 3px; }
+.bt-dirs-t button .bt-tag { grid-column: 2; justify-self: start; margin-top: 4px; }
+.bt-dirs-r { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.bt-dirs-r > div { display: flex; flex-wrap: wrap; gap: 6px; }
+.bt-dirs-r button { display: grid; grid-template-columns: 18px auto auto; column-gap: 8px; align-items: center; padding: 8px 12px; border: 0; background: rgba(255,255,255,.6); color: var(--soft); cursor: pointer; font: inherit; transition: background .2s, box-shadow .2s; }
+.bt-dirs-r button i { width: 18px; height: 18px; opacity: .7; }
+.bt-dirs-r button b { font: 600 12.5px/1.2 "Switzer", sans-serif; }
+.bt-dirs-r button span { display: none; }
+.bt-dirs-r button .bt-tag { padding: 4px 6px; font-size: 10.5px; }
+.bt-dirs-r button.on { background: #fff; box-shadow: inset 0 0 0 2px var(--ink); color: var(--ink); }
+.bt-dmini button.rej { color: var(--faint); background: transparent; box-shadow: inset 0 0 0 1px rgba(12,18,32,.12); }
+.bt-dmini button.rej.on { background: var(--ink); color: #fff; }
+.bt-seg button.rej { opacity: .72; }
+.bt-seg button.rej.on { opacity: 1; }
+.dx-card-t .bt-tag { justify-self: start; }
+.dx-k-r { margin-top: clamp(28px, 4vh, 40px) !important; }
+.dx-cmp-r { grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); max-width: 460px; }
+.dx-card.rej { padding: 12px; gap: 10px; }
+.dx-card.rej .dx-stand { opacity: .7; }
+.dx-card.rej .dx-card-t b { font-size: 14px; }
+.dx-card.rej .dx-card-t > span { display: none; }
+.dx-tabs button.rej { color: var(--faint); }
+.dx-tabs button.rej.on { color: #fff; }
+.dx-h h3 .bt-tag { margin-left: 10px; font-size: 12px; }
+@media (max-width: 1100px) { .bt-dirs-t { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .bt-dirs-t { grid-template-columns: repeat(2, minmax(0, 1fr)); } .dx-cmp-r { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* the tags are em elements: the page's `.bt em` colour must not reach them */
+.bt em.bt-tag, em.bt-tag { color: #fff; }
+
+/* 30 Sep: the status tags are <em>, and the headline rule "h3 em { red }" painted their words red on the red and green
+   blocks; the tag's own white always wins */
+em.bt-tag, .dx-h h3 em.bt-tag, .dx-card-t em.bt-tag, .bt-dirs-t button em.bt-tag, .bt-dirs-r button em.bt-tag { color: #fff !important; }
+
+/* 30 Sep: the exhibition print, two designs each, flat and straight, both sides */
+.bt-pd { display: grid; gap: clamp(36px, 5vh, 56px); }
+.bt-pd-row { display: grid; grid-template-columns: minmax(200px, .6fr) minmax(0, 1fr) minmax(0, 1fr); gap: clamp(18px, 2.4vw, 36px); align-items: start; }
+.bt-pd-trifold .bt-pd-row { grid-template-columns: minmax(0, 1fr); }
+.bt-pd-h b { display: block; font: 600 20px/1.2 "Switzer", sans-serif; letter-spacing: -.015em; }
+.bt-pd-h span { display: block; margin-top: 8px; font-size: 14px; line-height: 1.55; color: var(--soft); text-wrap: balance; max-width: 70ch; }
+.bt-pd figure { margin: 0; min-width: 0; }
+.bt-pd figure > svg { display: block; width: 100%; height: auto; box-shadow: 0 24px 48px -32px rgba(12,18,32,.5); }
+.bt-pd-trifold figure > svg { max-width: 1100px; }
+.bt-pd figcaption { margin-top: 12px; font: 600 14px/1.4 "Instrument Sans", sans-serif; color: var(--ink); }
+@media (max-width: 900px) { .bt-pd-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .bt-pd-h { grid-column: 1 / -1; } }
+@media (max-width: 560px) { .bt-pd-row { grid-template-columns: minmax(0, 1fr); } }
+/* 30 Sep: C3 joins the live options (six): the new tag, the swatch, the chooser in six */
+.bt-tag-n { background: var(--ink); }
+.bt-dsw-c3 { background: linear-gradient(90deg, #fff 0 60%, #C8161D 60%); }
+.bt-dirs-t { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+@media (max-width: 560px) { .bt-dirs-t { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* six live tabs: the status tag spans the tab under its name, a little smaller */
+.bt-dirs-t button .bt-tag { grid-column: 1 / -1; font-size: 10.5px; padding: 4px 7px; margin-top: 6px; }
+
+/* 30 Sep: the print pieces in 3D (components/booth/PrintViewer.jsx): a light table, the controls as a segmented row, no zoom */
+.pv { position: relative; height: clamp(380px, 56vh, 600px); background: #EEF1F5; overflow: hidden; margin-bottom: clamp(28px, 4vh, 44px); }
+.bt-part:nth-child(even) .pv { background: #EEF1F5; }
+.pv-load { background: #EEF1F5; }
+.pv-stage { position: absolute; inset: 0; }
+.pv-stage canvas { display: block; width: 100%; height: 100%; cursor: grab; }
+.pv-stage canvas:active { cursor: grabbing; }
+.pv-wait { position: absolute; inset: 0; display: grid; place-items: center; color: var(--faint); font: 600 14px/1 "Instrument Sans", sans-serif; }
+.pv-bar { position: absolute; left: 16px; right: 16px; bottom: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; pointer-events: none; }
+.pv-seg { display: inline-flex; flex-wrap: wrap; gap: 4px; pointer-events: auto; }
+.pv-seg button { padding: 10px 14px; border: 0; background: #fff; color: var(--ink); font: 600 13px/1 "Switzer", sans-serif; cursor: pointer; box-shadow: 0 6px 18px -12px rgba(12,18,32,.4); transition: background .2s, color .2s; }
+.pv-seg button.on { background: var(--ink); color: #fff; }
+.pv-hint { position: absolute; right: 16px; top: 14px; margin: 0; font-size: 12.5px; color: var(--faint); }
+@media (max-width: 560px) { .pv { height: 420px; } .pv-bar { left: 10px; right: 10px; bottom: 10px; } .pv-seg button { padding: 9px 11px; font-size: 12.5px; } }
+/* the viewer's controls sit on its top edge, clear of the fixed direction pill at the foot of the window */
+.pv-bar { top: 16px; bottom: auto; }
+.pv-hint { top: auto; bottom: 14px; right: 16px; }
+@media (max-width: 560px) { .pv-bar { top: 10px; bottom: auto; } .pv-hint { bottom: 10px; } }
+
+/* 30 Sep (Bazil, on the Stand part: "where's the download button for this"): the PNG and print PDF links under each piece
+   read as buttons now, the print file first and dark, the PNG beside it; the file table keeps its quiet links */
+.bt-dlk { gap: 8px; margin-top: 14px; }
+.bt-dlk a { padding: 9px 13px; background: #fff; box-shadow: inset 0 0 0 1px rgba(12,18,32,.14); font: 600 13px/1 "Switzer", sans-serif; transition: background .2s ease, color .2s ease; }
+.bt-dlk a svg { color: currentColor; }
+.bt-dlk a:hover { background: #F4F6F9; color: var(--ink); }
+.bt-dlk a + a { background: #231F20; color: #fff; box-shadow: none; order: -1; }
+.bt-dlk a + a:hover { background: #EC2027; color: #fff; }
+.bt-files-t .bt-dlk { gap: 6px; }
+.bt-files-t .bt-dlk a { padding: 6px 9px; font-size: 12px; }

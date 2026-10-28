@@ -1,0 +1,64 @@
+{
+ "url": "/shortlist",
+ "slug": "shortlist",
+ "title": "IAQ Group \u00b7 Project shortlist \u00b7 Brand Method",
+ "at": "2026-10-22T23:23:34.839Z",
+ "sections": [
+  {
+   "i": 0,
+   "key": "hero",
+   "heading": "The projects you saved",
+   "tag": "header",
+   "cls": "pg-head",
+   "top": 84,
+   "height": 308,
+   "text": "The projects you saved\nSaved projects stay here between visits. Send the list to a colleague, or attach it to an enquiry.\n0 PROJECTS\nSAVED ON THIS DEVICE",
+   "img": "shortlist/01-hero.webp",
+   "shownHeight": 308,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 5,
+    "pixels": 0
+   },
+   "reason": "fullstop"
+  },
+  {
+   "i": 1,
+   "key": "saved-projects",
+   "heading": "Saved projects",
+   "tag": "section",
+   "cls": "pg-sec",
+   "top": 392,
+   "height": 395,
+   "text": "Saved projects\nNOTHING SAVED YET\nOpen the project registry and save anything relevant. The list is kept on this device, so it is still here when you come back. Send it to a colleague or attach it to an enquiry in one step.\nSEE THE PROJECT REGISTRY",
+   "img": "shortlist/02-saved-projects.webp",
+   "shownHeight": 395,
+   "changed": true,
+   "diff": {
+    "text": false,
+    "height": 10,
+    "pixels": 99
+   }
+  },
+  {
+   "i": 2,
+   "key": "follow",
+   "heading": "Follow",
+   "tag": "section",
+   "cls": "close3d.dark-band",
+   "top": 786,
+   "height": 1236,
+   "text": "TOTAL FACILITY SOLUTIONS\nEngineering and facility solutions since 1995.\nFOLLOW\nLinkedIn\nTHE COMPANY\nAbout the Group\nESG Commitment\nGlobal Presence\nCareers\nPolicies\nWHAT WE DO\nServices\nMarkets\nProjects\nNews & Insights\nStart a project\nTell us what you are building\nFeasibility to handover, one accountable team.\nStart a project\n\u2192\nEMAIL\nbusiness@iaqtechnology.com.my\n\u2192\nPHONE\n+603 5124 8319\n\u2192\nHQ \u00b7 SHAH ALAM\nNo.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor\n\u2192\n\u00a9 2026 IAQ GROUP \u00b7 IAQ TECHNOLOGY INTERNATIONAL SDN. BHD. 200001031412 (534019-T) \u00b7 ISO 9001 / 14001 / 45001 \u00b7 CIDB G7\nPROTOTYPE \u00b7 BRAND METHOD\nBACK TO TOP \u2191",
+   "img": "shortlist/03-follow.webp",
+   "shownHeight": 1236,
+   "changed": true,
+   "diff": {
+    "text": true,
+    "height": 24,
+    "pixels": 99
+   }
+  }
+ ],
+ "errs": []
+}

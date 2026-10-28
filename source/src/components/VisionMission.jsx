@@ -103,7 +103,7 @@ export default function VisionMission() {
       <div className="wrap">
         <span className="eyebrow">Vision &amp; mission</span>
         {/* 25 Sep (Bazil: "just what is IAQ", then "better title please") */}
-        <h2 className="vm-h">What IAQ stands for, <em>and where it is going.</em></h2>
+        <h2 className="vm-h">What IAQ stands for, <br /><em>and where it is going</em></h2>
 
         <div className="vm-cards">
           {/* 25 Sep, later (Bazil, with the units board and a glass dashboard as references: "do something better

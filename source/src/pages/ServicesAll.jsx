@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import ClosingBand from '../components/ClosingBand.jsx'
@@ -42,16 +42,15 @@ const FIG = {
   maintenance:   { src: '/assets/services/svc-maintenance-check.webp', pos: '0% 40%', alt: 'Two engineers in cleanroom coveralls checking a wall pressure gauge reading against a checklist on a tablet' },
 }
 const nameOf = S => S.META.eyebrow.replace(/^Stage \d+ · /, '')
-/* 27 Oct (client: "Need to restructure the layout, a bit messy"): one block per stage. The number, the name, the one line
-   and the stage's own text sit in one column beside its picture, the picture side alternating down the page. The second
-   heading ("The stage where ...") and the pull quote that repeated the text are not drawn (services-all.css .sa-body). */
+/* 28 Oct (from the 27 Oct layout, client: "Need to restructure the layout, a bit messy"): one block per stage. The name, the
+   one line and the stage's own text sit in one column beside its picture, the picture side alternating down the page. The
+   second heading ("The stage where ...") and the pull quote that repeated the text are not drawn (services-all.css .sa-body). */
 function StageHead({ no, name, line, fig, children }) {
   return (
     <header className={'sa-head' + (no % 2 === 0 ? ' is-flip' : '')}>
       <div className="pg-in sa-head-in">
         <div className="sa-copy">
-          {/* 21 Oct ("already got numbering why repeated?"): the "Service 1 of 6" words are gone; 22 Oct ("where is the
-              numbering"): the red number stays, alone, above each heading */}
+          {/* 21 Oct ("already got numbering why repeated?"): the "Service 1 of 6" words are gone */}
           {/* 28 Oct ("my boss said dont add numbering"): no number above the stage heading; the stage bar at the top keeps its own */}
           <h2>{name}</h2>
           <p className="pg-lede">{line}</p>
@@ -63,35 +62,52 @@ function StageHead({ no, name, line, fig, children }) {
   )
 }
 
+/* 26 Oct (IAQ review, NR, page 006: "Need to restructure the layout, a bit messy", a cross over the empty right half of the head).
+   The page is restructured on one rule, one block per stage: the head is a photo banner like the other service pages (IAQ's
+   own finished ballroom cleanroom, the result the six stages lead to), so no half of it stands empty; the stage bar stays
+   pinned and lights the stage in view; each stage is one block on its own ground, white and grey in turn, its number, name,
+   sentence and picture first, then what it covers under a smaller heading, so the stage name is the one heading that leads.
+   Spacing is the same between every stage (services-all.css). */
 export default function ServicesAll() {
   useEffect(() => { document.title = 'IAQ Group · The six services · Brand Method' }, [])
+  const [on, setOn] = useState('')
+  useEffect(() => {
+    /* the stage whose top has passed 40% of the window is lit; above the first stage nothing is */
+    let raf = 0
+    const read = () => { raf = 0; const line = innerHeight * .4; let cur = ''
+      document.querySelectorAll('.sa-stage').forEach(el => { if (el.getBoundingClientRect().top < line) cur = el.dataset.stage })
+      setOn(cur) }
+    const kick = () => { if (!raf) raf = requestAnimationFrame(read) }
+    read(); addEventListener('scroll', kick, { passive: true }); addEventListener('resize', kick)
+    return () => { removeEventListener('scroll', kick); removeEventListener('resize', kick); cancelAnimationFrame(raf) }
+  }, [])
   return (
     <>
       <Nav />
       <PageHead crumbs={[{ label: 'Services', to: '/services' }]}
-        eyebrow="The six services"
-        title={<>Six stages, <em>one page.</em></>}
-        lede="Each service, what it covers and what IAQ carries at that stage, in the order a facility runs through them." />
+        title={<>Six stages, <br /><em>one page</em></>}
+        lede="Each service, what it covers and what IAQ carries at that stage, in the order a facility runs through them."
+        figure={{ src: '/assets/iaq/cr-ballroom-8575.webp', alt: 'A finished ballroom cleanroom by IAQ: perforated raised floor, ceiling grid and light lines', hero: true }} />
       {/* 21 Oct ("remove"): the six stage tags under the lede are gone; the numbered stage bar below already names them */}
       <nav className="sa-jump" aria-label="Stages">
         <div className="pg-in">
           {/* router links, so the hash lands through ScrollToTop's own offset scroll (a bare anchor is swallowed by the smooth-scroll layer) */}
-          {CYCLE.map(c => <Link key={c.id} to={'#' + (c.route.split('#').pop().split('/').pop())}><span className="n">{c.no}</span>{c.short}</Link>)}
+          {CYCLE.map(c => { const h = c.route.split('#').pop().split('/').pop(); return <Link key={c.id} to={'#' + h} className={on === h ? 'on' : ''} aria-current={on === h ? 'true' : undefined}><span className="n">{c.no}</span>{c.short}</Link> })}
         </div>
       </nav>
       {/* 15 Oct (client review of 13 Oct, Sunny: "Use \"Tool Installation\" and the sequence comes before \"Maintenance\""):
           stage 05 is Tool Installation, by IAQ's name, and Maintenance closes the page as stage 06 */}
       {STAGES.slice(0, 4).map((S, i) => (
-        <article key={S.META.slug} id={S.META.slug} className="sa-stage">
+        <article key={S.META.slug} id={S.META.slug} className="sa-stage" data-stage={S.META.slug}>
           <StageHead no={i + 1} name={nameOf(S)} line={S.META.lede} fig={FIG[S.META.slug]}><S.Cover /></StageHead>
           {/* 21 Oct ("remove this section repeating"): S.Scope, "What IAQ carries at this stage.", is off every stage */}
         </article>
       ))}
       {/* 28 Oct ("when i click Tool Installation should be redirect to this section"): #tool-installation is the stage itself,
-          its head and picture, as the other five stages are; the four phases under it take their own id */}
-      <article className="sa-stage" id="tool-installation">
-        {/* 27 Oct ("this one no description"): the stage carries its own text like the other five, IAQ's description of tool
-            installation from the PCU & TTI page (the SL questionnaire, section D) */}
+          its head and picture, as the other five stages are; the four phases under it take their own id. The stage carries
+          its own text like the other five, IAQ's description of tool installation from the PCU & TTI page (the SL
+          questionnaire, section D) */}
+      <article className="sa-stage" id="tool-installation" data-stage="tool-installation">
         <StageHead no={5} name="Tool Installation" line="Each production tool is connected into the live facility and released to production." fig={FIG.tool}>
           <p className="pg-body">Total Tool Installation connects production equipment fully and precisely into the facility it sits in. IAQ designs, installs and commissions the process critical utilities, then brings each of them to the tool.</p>
           <p className="pg-body">The utilities are built in two sections. The bulk systems are designed and built with the base build. Once the building is complete and the tools arrive, each utility is tapped from its valve manifold and connected into the tool: the hook-up.</p>
@@ -99,7 +115,7 @@ export default function ServicesAll() {
         <ToolsHookupBand embed bare id="tool-installation-phases" />
       </article>
       {STAGES.slice(4).map((S, j) => { const i = j + 5; return (
-        <article key={S.META.slug} id={S.META.slug} className="sa-stage">
+        <article key={S.META.slug} id={S.META.slug} className="sa-stage" data-stage={S.META.slug}>
           <StageHead no={i + 1} name={nameOf(S)} line={S.META.lede} fig={FIG[S.META.slug]}><S.Cover /></StageHead>
           {/* 21 Oct ("remove this section repeating"): S.Scope, "What IAQ carries at this stage.", is off every stage */}
         </article>

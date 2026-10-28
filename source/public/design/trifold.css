@@ -1,0 +1,202 @@
+/* ==================================================================================================================
+   30 Sep 2026 · the trifold brochure (#ap-trifold) and the A5 leaflet (#ap-a5), the contact label and two logo sizes.
+   Bazil: "where's the trifold", "mainly focus on cleanroom", "focusing on construction of clean room", "mention the
+   business units, the three", "and the process of how it works", "make another A5", "contact information just put label
+   soon to receive information from iaq side", "iaq logo too small".
+   Every class here is tf30-. The shared parts (.ab, .pb, .l1, .sb, .pw, .ms, .dd) come from apps.css and are not edited.
+   Each panel is an .ab size container; every position is in millimetres of the printed piece through --mm (one printed
+   millimetre in cqw of the panel) and --pt (one point). --mm is only read by the panel's children, so cqw resolves
+   against the panel. Flat and straight: no tilt, no sheen, no fold drawn on the art.
+   ================================================================================================================== */
+.tf30-p{--mm:calc(100cqw / 99);--pt:calc(.3528 * var(--mm));--k9:calc(9 * var(--mm))}
+.tf30-w97 .tf30-p{--mm:calc(100cqw / 97)}
+
+/* ---------------------------------------------------------------- the stage: the sheet flat, outside then inside */
+.tf30-stage{padding:clamp(26px,4vw,60px) clamp(16px,4vw,60px) clamp(30px,4.4vw,64px)}
+.tf30-side+.tf30-side{margin-top:clamp(34px,4vw,60px)}
+.tf30-sh{display:block;margin:0 0 12px;font:600 13px/1.2 "Switzer",sans-serif;color:var(--ink)}
+.tf30-sh span{color:#555B66;font-weight:500;margin-left:8px}
+.tf30-sheet{display:grid;grid-template-columns:97fr 99fr 99fr;box-shadow:var(--obj);background:#fff}
+.tf30-sheet.tf30-in{grid-template-columns:99fr 99fr 97fr}
+.tf30-pn{position:relative;aspect-ratio:99/210;min-width:0}
+.tf30-pn.tf30-w97{aspect-ratio:97/210}
+.tf30-pn>.ab{position:absolute;inset:0}
+.tf30-cap{display:grid;grid-template-columns:97fr 99fr 99fr;margin-top:10px;font:500 12.5px/1.4 "Switzer",sans-serif;color:#3E434D}
+.tf30-cap.tf30-in{grid-template-columns:99fr 99fr 97fr}
+.tf30-cap span{padding-right:14px}
+
+/* ---------------------------------------------------------------- outside: the front cover */
+.tf30-cov .wm{left:var(--k9);top:var(--k9);width:calc(81 * var(--mm));height:auto}
+.tf30-cov h2{left:var(--k9);right:var(--k9);top:calc(54 * var(--mm));font-size:calc(19 * var(--pt));line-height:1.08;letter-spacing:-.022em;color:var(--k);text-wrap:balance}
+.tf30-cov .tf30-sq{left:var(--k9);width:calc(81 * var(--mm));top:calc(101 * var(--mm));height:calc(81 * var(--mm))}
+.tf30-cov .l1{left:var(--k9);right:var(--k9);top:calc(182 * var(--mm));--lw:max(1px,calc(.5 * var(--mm)));z-index:2}
+.tf30-web{left:var(--k9);bottom:var(--k9);margin:0;font:500 calc(8.5 * var(--pt))/1 "Switzer",sans-serif;color:var(--tx2)}
+
+/* ---------------------------------------------------------------- outside: the flap, figures on field red over a photograph */
+.tf30-flap .tf30-blk{left:0;right:0;top:0;height:calc(96 * var(--mm));background:var(--rf);color:#fff;padding:var(--k9);display:flex;flex-direction:column}
+.tf30-one{margin:0;font:600 calc(11 * var(--pt))/1.25 "Switzer",sans-serif;letter-spacing:-.01em;color:#fff;text-wrap:balance}
+.tf30-figs{margin-top:calc(8 * var(--mm));display:grid;gap:calc(4.4 * var(--mm))}
+.tf30-figs div{display:grid;gap:calc(1 * var(--mm))}
+.tf30-figs b{font:600 calc(18 * var(--pt))/1 "Switzer",sans-serif;letter-spacing:-.03em;white-space:nowrap}
+.tf30-figs span{font:400 calc(8 * var(--pt))/1.25 "Instrument Sans",sans-serif;color:rgba(255,255,255,.92)}
+.tf30-fph{left:0;right:0;top:calc(96 * var(--mm));bottom:0}
+
+/* ---------------------------------------------------------------- outside: the back, how to reach IAQ */
+.tf30-col{left:var(--k9);right:var(--k9);top:var(--k9);bottom:var(--k9);display:flex;flex-direction:column}
+.tf30-bk h2{font-size:calc(15 * var(--pt));line-height:1.08;letter-spacing:-.02em;color:var(--k);text-wrap:balance}
+.tf30-ld{margin:0;font:400 calc(8.5 * var(--pt))/1.42 "Instrument Sans",sans-serif;color:var(--tx2);text-wrap:pretty}
+.tf30-bk .tf30-ld{margin-top:calc(4 * var(--mm))}
+.tf30-cts{margin-top:calc(9 * var(--mm));display:grid;gap:calc(5.5 * var(--mm))}
+.tf30-cts div{display:grid;gap:calc(.9 * var(--mm));justify-items:start}
+.tf30-cts b{font:600 calc(8 * var(--pt))/1.25 "Switzer",sans-serif;color:var(--k)}
+.tf30-cts span{font:400 calc(7.5 * var(--pt))/1.4 "Instrument Sans",sans-serif;color:var(--tx)}
+.tf30-ft{margin-top:auto;display:grid;gap:calc(6 * var(--mm))}
+.tf30-qr{display:flex;align-items:center;gap:calc(4 * var(--mm))}
+.tf30-qr img{width:calc(20 * var(--mm));height:calc(20 * var(--mm));flex:none}
+.tf30-qr div{display:grid;gap:calc(1.2 * var(--mm))}
+.tf30-qr b{font:600 calc(8.5 * var(--pt))/1.2 "Switzer",sans-serif;color:var(--k)}
+.tf30-qr span{font:400 calc(7.5 * var(--pt))/1.3 "Instrument Sans",sans-serif;color:var(--tx2)}
+.tf30-legal{margin:0;font:500 calc(6.5 * var(--pt))/1.3 "Switzer",sans-serif;color:var(--tx2);white-space:nowrap}
+/* personal contact details: one quiet label until IAQ sends them (Bazil, 30 Sep) */
+.tf30-cdl{color:var(--tx2)!important;font-style:normal}
+
+/* ---------------------------------------------------------------- inside: three heads on one line, the one long line under them */
+.tf30-lab{font:600 calc(8 * var(--pt))/1 "Switzer",sans-serif;color:var(--rd);white-space:nowrap}
+.tf30-un .tf30-lab,.tf30-cr .tf30-lab,.tf30-pr .tf30-lab{left:var(--k9);top:var(--k9)}
+.tf30-un h2,.tf30-cr h2,.tf30-pr h2{left:var(--k9);right:var(--k9);top:calc(14 * var(--mm));font-size:calc(14 * var(--pt));line-height:1.06;letter-spacing:-.02em;color:var(--k);white-space:nowrap}
+.tf30-un .l1,.tf30-cr .l1,.tf30-pr .l1{top:calc(25 * var(--mm));--lw:max(1px,calc(.5 * var(--mm)))}
+.tf30-un .l1{left:var(--k9);right:0}.tf30-cr .l1{left:0;right:0}.tf30-pr .l1{left:0;right:var(--k9)}
+.tf30-un>.tf30-ld,.tf30-cr>.tf30-ld,.tf30-pr>.tf30-ld{left:var(--k9);right:var(--k9);top:calc(29.5 * var(--mm))}
+
+/* inside left: the three units, each with its own line icon, never in a box */
+.tf30-units{left:var(--k9);right:var(--k9);top:calc(50 * var(--mm));margin:0;padding:0;list-style:none;display:grid;gap:calc(11 * var(--mm))}
+.tf30-units li{display:grid;grid-template-columns:calc(14 * var(--mm)) minmax(0,1fr);gap:calc(4 * var(--mm));align-items:start}
+.tf30-units svg,.tf30-u3 svg{display:block;fill:none;stroke:var(--r);stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;overflow:visible}
+.tf30-units svg{width:calc(14 * var(--mm));height:calc(14 * var(--mm))}
+.tf30-units li>div{display:grid;gap:calc(1.4 * var(--mm));justify-items:start}
+.tf30-units .sb{font-size:calc(7.5 * var(--pt))}
+.tf30-units b{font:600 calc(8 * var(--pt))/1.25 "Switzer",sans-serif;color:var(--k)}
+.tf30-units li>div>span:not(.sb){font:400 calc(7.5 * var(--pt))/1.4 "Instrument Sans",sans-serif;color:var(--tx2)}
+.tf30-mk{left:var(--k9);right:var(--k9);bottom:var(--k9);display:grid;gap:calc(1.4 * var(--mm))}
+.tf30-mk b{font:600 calc(8 * var(--pt))/1.25 "Switzer",sans-serif;color:var(--k)}
+.tf30-mk span{font:400 calc(8 * var(--pt))/1.42 "Instrument Sans",sans-serif;color:var(--tx);text-wrap:pretty}
+
+/* inside centre: the cleanroom, labelled in words on fine horizontal leaders */
+.tf30-cut{left:var(--k9);right:var(--k9);top:calc(52 * var(--mm));height:calc(70 * var(--mm))}
+.tf30-cut img{position:absolute;left:calc(11 * var(--mm));top:0;width:calc(70 * var(--mm));height:auto}
+.tf30-lb{position:absolute;left:0;top:calc(var(--y) * var(--mm));width:calc(var(--x) * var(--mm));display:flex;align-items:center;gap:calc(1.2 * var(--mm));transform:translateY(-50%)}
+.tf30-lb.tf30-r{left:calc(var(--x) * var(--mm));right:0;width:auto}
+.tf30-lb b{flex:none;font:600 calc(6.8 * var(--pt))/1 "Switzer",sans-serif;color:var(--k);white-space:nowrap}
+.tf30-lb i{flex:1;min-width:calc(2 * var(--mm));height:max(1px,calc(.2 * var(--mm)));background:#8E96A1}
+.tf30-work{left:var(--k9);right:var(--k9);bottom:var(--k9);margin:0;padding:0;list-style:none;display:grid;gap:calc(5.5 * var(--mm))}
+.tf30-work li{display:grid;grid-template-columns:calc(16 * var(--mm)) minmax(0,1fr);gap:calc(3 * var(--mm));align-items:start}
+.tf30-work .sb{justify-self:start;font-size:calc(7 * var(--pt))}
+.tf30-work li>div{display:grid;gap:calc(.9 * var(--mm))}
+.tf30-work b{font:600 calc(8 * var(--pt))/1.25 "Switzer",sans-serif;color:var(--k)}
+.tf30-work li>div>span{font:400 calc(7.5 * var(--pt))/1.4 "Instrument Sans",sans-serif;color:var(--tx2)}
+
+/* inside right: the six services in the order they run, the house objects at one size, no discs, no numbers */
+.tf30-steps{left:var(--k9);right:var(--k9);top:calc(47 * var(--mm));margin:0;padding:0;list-style:none;display:grid;gap:calc(6.5 * var(--mm))}
+.tf30-steps li{display:grid;grid-template-columns:calc(15 * var(--mm)) minmax(0,1fr);gap:calc(4 * var(--mm));align-items:center}
+.tf30-steps img{display:block;width:calc(15 * var(--mm));height:calc(15 * var(--mm));object-fit:contain}
+.tf30-steps li>div{display:grid;gap:calc(.9 * var(--mm))}
+.tf30-steps b{font:600 calc(8 * var(--pt))/1.25 "Switzer",sans-serif;color:var(--k)}
+.tf30-steps li>div>span{font:400 calc(7.5 * var(--pt))/1.4 "Instrument Sans",sans-serif;color:var(--tx2)}
+.tf30-steps li.tf30-then{display:block;font:600 calc(7.5 * var(--pt))/1 "Switzer",sans-serif;color:var(--rd);margin:calc(1.5 * var(--mm)) 0 calc(-1.5 * var(--mm))}
+
+/* ---------------------------------------------------------------- measured: the outside plan with its folds, and the folded brochure */
+.tf30-mg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,280px);gap:20px;align-items:start}
+.tf30-dgw{background:#fff;padding:34px 26px 44px}
+.tf30-dg{position:relative;aspect-ratio:297/210;background:#fff;box-shadow:inset 0 0 0 1px var(--line2);container-type:inline-size}
+.tf30-dc{position:absolute;top:0;bottom:0}
+.tf30-b{position:absolute;display:block;left:9.1%;right:9.1%;background:#E6E9EE}
+.tf30-b.tf30-rf{background:#F6D3D4}.tf30-b.tf30-ph{background:#D7DCE3}.tf30-b.tf30-lk{background:#F6D3D4}.tf30-b.tf30-qrb{background:#CDD2DA}
+.tf30-b.tf30-ln{background:var(--r);min-height:1px}
+.tf30-m{position:absolute;display:block;left:0;right:0;background:rgba(236,35,38,.05)}
+.tf30-dc .t{position:absolute;left:13%;right:8%;transform:translateY(-50%);font:600 max(10px,1.45cqw)/1.15 "Switzer",sans-serif;color:var(--ink)}
+/* the folds, marked outside the sheet only: the art never carries a fold */
+.tf30-fm{position:absolute;top:-16px;bottom:-16px;width:1px;margin-left:-.5px;display:block;pointer-events:none;background:linear-gradient(to bottom,var(--r) 0 10px,transparent 10px calc(100% - 10px),var(--r) calc(100% - 10px) 100%)}
+.tf30-ft1{position:absolute;bottom:-36px;transform:translateX(-50%);font:600 12px/1 "Switzer",sans-serif;color:#B5121B;white-space:nowrap}
+.tf30-fold{margin:0;background:#fff;padding:24px 24px 22px;display:grid;gap:18px;justify-items:start}
+.tf30-fold .tf30-mini{width:128px}
+.tf30-mini{box-shadow:var(--obj)}
+.tf30-fold figcaption{display:grid;gap:6px}
+.tf30-fold figcaption b{font:600 13.5px/1.3 "Switzer",sans-serif;color:var(--ink)}
+.tf30-fold figcaption span{font:400 13px/1.5 "Instrument Sans",sans-serif;color:var(--soft)}
+
+/* ---------------------------------------------------------------- the A5 leaflet, front and back */
+.tf30-a5s{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,3vw,44px);align-items:start}
+.tf30-a5{position:relative;aspect-ratio:148/210;box-shadow:var(--obj)}
+.tf30-a5>.ab{position:absolute;inset:0}
+.tf30-a5 .tf30-p{--mm:calc(100cqw / 148);--k12:calc(12 * var(--mm))}
+.tf30-cap5{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:inherit;margin-top:-8px;font:500 12.5px/1.4 "Switzer",sans-serif;color:#3E434D}
+.tf30-a5f .lk{left:var(--k12);top:var(--k12);width:calc(52 * var(--mm));height:auto}
+.tf30-a5f h2{left:var(--k12);right:var(--k12);top:calc(50 * var(--mm));font-size:calc(22 * var(--pt));line-height:1.06;letter-spacing:-.022em;color:var(--k);text-wrap:balance}
+.tf30-fab{left:calc(28.35 * var(--mm));top:calc(72 * var(--mm));width:calc(91.3 * var(--mm));height:auto}
+.tf30-a5f .l1,.tf30-a5b .l1{left:var(--k12);right:var(--k12);--lw:max(1px,calc(.5 * var(--mm)))}
+.tf30-a5f .l1{top:calc(190 * var(--mm))}
+.tf30-a5f .tf30-web{left:var(--k12);bottom:var(--k12);font-size:calc(9 * var(--pt))}
+.tf30-a5b h2{left:var(--k12);right:var(--k12);top:var(--k12);font-size:calc(15 * var(--pt));line-height:1.1;letter-spacing:-.02em;color:var(--k);text-wrap:balance}
+.tf30-a5b .l1{top:calc(25 * var(--mm))}
+.tf30-a5b .tf30-lab{left:var(--k12)}
+.tf30-a5b .tf30-l1{top:calc(31 * var(--mm))}
+.tf30-a5b .tf30-l2{top:calc(66 * var(--mm))}
+.tf30-row{left:var(--k12);right:var(--k12);top:calc(37 * var(--mm));margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+.tf30-row li{display:grid;justify-items:center;gap:calc(2 * var(--mm));text-align:center}
+.tf30-row img{display:block;width:calc(15 * var(--mm));height:calc(15 * var(--mm));object-fit:contain}
+.tf30-row b{font:600 calc(7 * var(--pt))/1.2 "Switzer",sans-serif;color:var(--k);white-space:nowrap}
+.tf30-u3{left:var(--k12);right:var(--k12);top:calc(72 * var(--mm));margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:calc(7 * var(--mm))}
+.tf30-u3 li{display:grid;justify-items:start;align-content:start;gap:calc(2.2 * var(--mm))}
+.tf30-u3 svg{width:calc(10 * var(--mm));height:calc(10 * var(--mm))}
+.tf30-u3 .sb{font-size:calc(7.5 * var(--pt))}
+.tf30-u3 li>span:not(.sb){font:400 calc(7.5 * var(--pt))/1.4 "Instrument Sans",sans-serif;color:var(--tx2);text-wrap:balance}
+.tf30-f4{left:var(--k12);right:var(--k12);top:calc(119 * var(--mm));display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:calc(4 * var(--mm))}
+.tf30-f4 div{display:grid;gap:calc(1.2 * var(--mm));align-content:start}
+.tf30-f4 b{font:600 calc(14 * var(--pt))/1 "Switzer",sans-serif;letter-spacing:-.025em;color:var(--k);white-space:nowrap}
+.tf30-f4 span{font:400 calc(7 * var(--pt))/1.3 "Instrument Sans",sans-serif;color:var(--tx2);white-space:nowrap}
+.tf30-c3{left:var(--k12);right:var(--k12);top:calc(146 * var(--mm));display:grid;grid-template-columns:1.25fr 1fr .9fr;gap:calc(6 * var(--mm));align-items:start}
+.tf30-c3>div{display:grid;gap:calc(.9 * var(--mm));justify-items:start}
+.tf30-c3 b{font:600 calc(7.5 * var(--pt))/1.25 "Switzer",sans-serif;color:var(--k)}
+.tf30-c3 span{font:400 calc(7 * var(--pt))/1.4 "Instrument Sans",sans-serif;color:var(--tx);text-wrap:balance}
+.tf30-c3 .tf30-yc{margin-top:calc(3 * var(--mm))}
+.tf30-q img{display:block;width:calc(20 * var(--mm));height:calc(20 * var(--mm));margin-bottom:calc(1.4 * var(--mm))}
+.tf30-a5b .tf30-legal{left:var(--k12);bottom:var(--k12)}
+.tf30-reg5{right:var(--k12);bottom:var(--k12);margin:0;font:500 calc(6.5 * var(--pt))/1.3 "Switzer",sans-serif;color:var(--tx2);white-space:nowrap}
+/* the back, measured: A5 margins are 12 of 148 */
+.tf30-pw5{aspect-ratio:148/210}
+.tf30-pw5>i.b{left:8.1%!important;right:8.1%!important}
+.tf30-pw5>span.t{left:11%}
+
+/* ---------------------------------------------------------------- phones: the panels stack, each named above it */
+@media(max-width:760px){
+  .tf30-sheet,.tf30-sheet.tf30-in{grid-template-columns:1fr;gap:44px;box-shadow:none;background:none;padding-top:24px}
+  .tf30-sheet .tf30-pn{box-shadow:var(--obj)}
+  .tf30-sheet .tf30-pn::before{content:attr(data-cap);position:absolute;left:0;bottom:100%;margin-bottom:9px;font:500 12.5px/1.2 "Switzer",sans-serif;color:#3E434D;white-space:nowrap}
+  .tf30-cap{display:none}
+  .tf30-mg{grid-template-columns:1fr}
+  .tf30-dgw{padding:30px 14px 42px}
+  .tf30-a5s{grid-template-columns:1fr}
+  .tf30-cap5{display:none}
+}
+
+/* ==================================================================================================================
+   30 Sep · the slide's wordmark (Bazil: "iaq logo too small"): 160 px of 1920 (8.3%) to 288 px (15%), top left on the
+   104 px margin, with its clear space (x, 42% of its width) before the label; the words move down to keep it.
+   ================================================================================================================== */
+.slc.tf30-slc .wm{width:15cqw}
+.slc.tf30-slc .lab{top:18.6cqw}
+.slc.tf30-slc h2{top:21.6cqw}
+.slc.tf30-slc .ld{top:34.6cqw}
+/* 30 Sep · logos that read small beside their words: card B's front wordmark from the 18 mm floor to 22.5 mm (25%,
+   level with card A's 23 mm lockup); the ad banners' wordmark from 93 to 116 px of 970 (12%), the words under it moved
+   down to keep its clear space */
+.nb29-fb.tf30-fbw .wm{width:25cqw}
+.adb.tf30-ad .wm{width:12cqw}
+.adb.ad-a.tf30-ad h2{top:10.2cqw}
+.adb.ad-b.tf30-ad .lab{top:10.2cqw}
+.adb.ad-b.tf30-ad h2{top:12.2cqw}
+/* the email signature and business cards: the label sits where the personal lines were, on the words' own edge */
+.sg2 .ct li.tf30-cdl{padding-left:4cqw;font-size:1.9cqw}
+/* a sidebar jump lands each piece under the fixed bars, as the brand element sub heads already do (was: under the bar) */
+.ap[id]{scroll-margin-top:calc(var(--barh,46px) + 62px)}
+@media(min-width:1100px){.ap[id]{scroll-margin-top:calc(var(--barh,46px) + 18px)}}

@@ -5,12 +5,12 @@
 .lp{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px) 0}
 .lp-mark{display:flex;align-items:center;gap:14px;padding:26px 0 8px}
 .lp-mark img{height:42px;width:auto;display:block}
-.lp-mark span{font-family: var(--label);font-size:10px;letter-spacing:.2em;
+.lp-mark span{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--faint)}
 
 .lp-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);
   align-items:center;padding:clamp(28px,5vw,64px) 0}
-.lp-k{font-family: var(--label);font-size:10.5px;letter-spacing:.2em;
+.lp-k{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--blue-bright);font-weight:600}
 .lp h1{font-size:clamp(34px,5.4vw,60px);margin-top:16px;letter-spacing:-.025em}
 .lp-lede{font-size:clamp(16px,1.7vw,19px);color:var(--soft);line-height:1.6;margin-top:18px;max-width:52ch}
@@ -26,8 +26,8 @@
 .lp-stat{background:var(--bg);padding:26px 20px;text-align:center}
 .lp-stat b{display:block;font-family:"Switzer",sans-serif;font-weight:600;
   font-size:clamp(26px,3.4vw,40px);letter-spacing:-.02em;color:var(--ink);line-height:1}
-.lp-stat span{display:block;margin-top:9px;font-family: var(--label);font-size:10px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.lp-stat span{display:block;margin-top:9px;font-family: var(--label);font-size:13px;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--faint)}
 
 .lp-proof{padding:clamp(40px,6vw,76px) 0}
 .lp-proof h2{font-size:clamp(24px,3vw,36px)}
@@ -35,11 +35,11 @@
 .lp-pc{border:0;background:var(--bg2)}
 .lp-pc img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
 .lp-pc>div{padding:16px 17px 19px}
-.lp-pc-k{font-family: var(--label);font-size:10px;letter-spacing:.13em;
+.lp-pc-k{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--faint)}
 .lp-pc h3{font-size:16px;margin-top:8px;line-height:1.3}
-.lp-pc-c{display:block;margin-top:9px;font-size:12.5px;color:var(--soft)}
-.lp-note{margin-top:20px;font-size:12px;color:var(--faint);line-height:1.5}
+.lp-pc-c{display:block;margin-top:9px;font-size:13px;color:var(--soft)}
+.lp-note{margin-top:20px;font-size:13px;color:var(--faint);line-height:1.5}
 
 html.lp-page{overflow-x:clip}
 .lp-form-wrap{background:#0B1020;color:#EAF0FB;margin:0 calc(50% - 50vw);padding:clamp(40px,6vw,76px) clamp(20px,5vw,56px)}
@@ -47,7 +47,7 @@ html.lp-page{overflow-x:clip}
 .lp-form-in h2{font-size:clamp(24px,3vw,34px);color:#fff}
 .lp-form-in>p{margin-top:12px;color:#9FB0CC;font-size:15px;line-height:1.6}
 .lp-form-in form{margin-top:26px;display:grid;gap:6px}
-.lp-form-in label{font-family: var(--label);font-size:10.5px;letter-spacing:.14em;
+.lp-form-in label{font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:#9FB0CC;margin-top:12px}
 .lp-form-in input{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);
   color:#fff;padding:13px 14px;font:inherit;font-size:15px}
@@ -63,7 +63,7 @@ html.lp-page{overflow-x:clip}
 .lp-done.warn{border-color:rgba(236,32,39,.5);background:rgba(236,32,39,.08)}
 
 .lp-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:26px 0 40px;
-  font-family: var(--label);font-size:10.5px;letter-spacing:.12em;
+  font-family: var(--label);font-size:13px;letter-spacing:.04em;
   text-transform:uppercase;color:var(--faint)}
 .lp-foot a{color:var(--soft);text-decoration:none}
 .lp-foot a:hover{color:var(--blue)}
@@ -83,7 +83,7 @@ html.lp-page{overflow-x:clip}
 .lp-form-in textarea::placeholder{color:#6F80A0}
 .lp-form-in textarea:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
 .lp-form-in label em{font-style:normal;text-transform:none;letter-spacing:0;color:#6F80A0;margin-left:6px}
-.lp-fine{margin-top:12px;font-size:12.5px;color:#8A9BB8;text-align:center}
+.lp-fine{margin-top:12px;font-size:13px;color:#8A9BB8;text-align:center}
 /* the menus (LpSelect in pages/Campaign.jsx): closed, a field like the others; open, a sharp list on the form's navy */
 .lp-sel{position:relative}
 .lp-sel-b{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;box-sizing:border-box;
@@ -127,14 +127,14 @@ html.lp-page{overflow-x:clip}
 .lpf-intro p{margin-top:14px;color:#9FB0CC;font-size:16px;line-height:1.6;max-width:44ch}
 
 /* the side column: three numbered steps joined by a hairline, then the direct lines */
-.lpf-k{display:block;font-family:var(--label);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+.lpf-k{display:block;font-family:var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;
   color:#8A9BB8;font-weight:600}
 .lpf-aside{margin-top:clamp(28px,3vw,40px);padding-top:26px;border-top:1px solid rgba(255,255,255,.12)}
 .lpf-steps{list-style:none;margin:18px 0 0;padding:0;counter-reset:lpf}
 .lpf-steps li{position:relative;counter-increment:lpf;padding:0 0 22px 48px;display:grid;gap:3px}
 .lpf-steps li::before{content:counter(lpf,decimal-leading-zero);position:absolute;left:0;top:0;width:30px;height:30px;
   display:grid;place-items:center;box-sizing:border-box;border:1px solid rgba(255,255,255,.22);color:#fff;
-  font-family:var(--label);font-size:11.5px;font-weight:600;letter-spacing:.04em;background:#0B1020}
+  font-family:var(--label);font-size:13px;font-weight:600;letter-spacing:.04em;background:#0B1020}
 .lpf-steps li:first-child::before{background:#EC2027;border-color:#EC2027}
 .lpf-steps li:not(:last-child)::after{content:"";position:absolute;left:15px;top:30px;bottom:0;width:1px;
   background:rgba(255,255,255,.14)}
@@ -160,14 +160,14 @@ html.lp-page{overflow-x:clip}
 .lpf-grp{border:0;margin:0;padding:0;min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}
 .lpf-grp+.lpf-grp{margin-top:32px}
 .lpf-lg{float:left;width:100%;grid-column:1/-1;padding:0 0 12px;margin:0 0 2px;display:flex;align-items:center;gap:12px;
-  border-bottom:1px solid rgba(255,255,255,.1);font-family:var(--label);font-size:11px;font-weight:600;
-  letter-spacing:.18em;text-transform:uppercase;color:#fff}
+  border-bottom:1px solid rgba(255,255,255,.1);font-family:var(--label);font-size:13px;font-weight:600;
+  letter-spacing:.04em;text-transform:uppercase;color:#fff}
 .lpf-lg i{font-style:normal;letter-spacing:.04em;color:#fff;background:#EC2027;padding:3px 6px;line-height:1.2}
 .lpf-f{display:grid;gap:8px;min-width:0;align-content:start}
 .lpf-wide{grid-column:1/-1}
 .lp-form-in .lpf-f label{margin-top:0;font-family:"Switzer",sans-serif;font-size:13px;font-weight:500;
   letter-spacing:.01em;text-transform:none;color:#C6D0E2}
-.lp-form-in .lpf-f label em{font-size:12px;color:#8A9BB8}
+.lp-form-in .lpf-f label em{font-size:13px;color:#8A9BB8}
 
 /* the fields: recessed in the panel; hover firms the edge, focus lifts a pixel with a red border and underline,
    filled keeps a brighter edge */
@@ -211,7 +211,7 @@ html.lp-page{overflow-x:clip}
    they keep their size, and the small caps lines here come up to it */
 @media(max-width:640px){
   .lp-form-in .lpf-f label{font-size:13.5px !important}
-  .lpf-k{font-size:11px}
+  .lpf-k{font-size:13px}
 }
 @media(prefers-reduced-motion:reduce){
   .lp-form-in .lpf-f input,.lp-form-in .lpf-f textarea,.lp-form-in .lpf-f .lp-sel-b{transition:none;transform:none!important}
@@ -249,14 +249,16 @@ html.lp-page{overflow-x:clip}
 @keyframes lpPulse{0%{box-shadow:0 0 0 0 rgba(236,32,39,.45)}70%,100%{box-shadow:0 0 0 10px rgba(236,32,39,0)}}
 @media (prefers-reduced-motion:reduce){.lp-form-wrap::before,.lpf-panel::before,.lp-form-in .lpf-panel .cta::after,.lpf-steps li:first-child::before{animation:none}}
 
-/* 27 Oct (Bazil: "on the enquiry page can you follow on padding of our website"): the landing page takes the site's own
-   frame, the same width and side gutter as the nav and every other page (--maxw, --gut), in place of its narrower 1120px
-   column; the form band's inner column follows the same frame */
+/* 26 Oct: a long campaign title steps down a size so it holds two balanced lines in the 560 px column (rule 21) */
+.lp h1.is-long{font-size:clamp(30px,3.9vw,50px);text-wrap:balance}
+
+/* 28 Oct (from the 27 Oct note, Bazil: "on the enquiry page can you follow on padding of our website"): the landing page takes
+   the site's own frame, the same width and side gutter as the nav and every other page (--maxw, --gut), in place of its
+   narrower 1120px column; the form band's inner column follows the same frame */
 .lp{max-width:var(--maxw);padding:0 var(--gut)}
 .lp-form-wrap{padding-left:var(--gut);padding-right:var(--gut)}
 .lp-form-in.lpf-two{max-width:var(--maxw)}
 
-/* 28 Oct (Enquiry, "wtf is this": the form band ran off both sides of the screen). The band breaks out to the full width
-   with 50vw, but the site zooms the root on desktops (base.css :root zoom 1.12 and up), which inflates vw: the band came out
-   12% wider than the window and its edges, the heading and the form fields, were cut. The zoom is divided back out. */
+/* The form band breaks out to the full width with 50vw, but the site zooms the root on desktops (base.css :root zoom 1.12 and
+   up), which inflates vw: the band came out wider than the window and its edges were cut. The zoom is divided back out. */
 .lp-form-wrap{margin-left:calc(50% - 50vw / var(--zoomf,1));margin-right:calc(50% - 50vw / var(--zoomf,1))}

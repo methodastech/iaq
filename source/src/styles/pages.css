@@ -35,7 +35,7 @@
 /* 9 Sep (Bazil: "icons for each"): the chip is a row now, mark then label. The mark is sized to
    the cap height of the label so the two sit on one optical line, and it inherits the chip's
    colour, which is what makes the hero variant and the .b variant work without their own rules. */
-.pg-chip { font-family: var(--label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--soft); border: 0; background: rgba(23,33,58,.06); padding: 7px 10px; display: inline-flex; align-items: center; gap: 7px; }
+.pg-chip { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight: 600; color: var(--soft); border: 0; background: rgba(23,33,58,.06); padding: 7px 10px; display: inline-flex; align-items: center; gap: 7px; }
 .pg-chip svg { flex: none; width: 14px; height: 14px; opacity: .85; }
 .pg-chip.b { color: var(--blue-bright); background: rgba(236, 32, 39, .08); }
 
@@ -47,7 +47,7 @@
    field reads as an empty box. The filter is the same lift the homepage ring uses: the clip's
    "white" decodes at 231-236, and lifting it to 255 is what stops a grey rectangle showing. */
 .pg-head-fig video { display: block; width: 100%; height: clamp(220px, 34vw, 400px); object-fit: cover; object-position: 50% 50%; background: #fff; filter: contrast(1.04) brightness(1.1); }
-.pg-head-fig figcaption { font-family: var(--label); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-top: 9px; }
+.pg-head-fig figcaption { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--faint); margin-top: 9px; }
 
 /* ---- HERO head (2 Sep): the banner IS the band ----
    Full bleed image behind the copy, dark scrim heavier on the left where the type sits, white
@@ -81,7 +81,7 @@
 .pg-sec.flush { padding-bottom: clamp(22px, 3.2vh, 38px); }
 
 /* --soft (7.7:1), not --faint (3.42:1): every one of these is 9.5px or under */
-.pg-k { display: block; font-family: var(--label); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; font-weight:600; color: var(--soft); }
+.pg-k { display: block; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--soft); }
 /* 2 Sep (Bazil): headings run on ONE line wherever they fit. The old 24ch cap broke every
    section title into two lines with a one-word orphan; the cap now only bites on genuinely long
    titles, and `text-wrap: pretty` (base.css) stops the orphan when a wrap is unavoidable. */
@@ -89,11 +89,11 @@
 .pg-lede { font-size: clamp(14.5px, 1.6vw, 17px); color: var(--soft); max-width: 62ch; margin-top: 14px; }
 .pg-body { font-size: clamp(14.5px, 1.6vw, 16.5px); color: var(--soft); max-width: 64ch; margin-top: 16px; }
 .pg-body + .pg-body { margin-top: 14px; }
-.pg-note { font-family: var(--label); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); line-height: 1.95; margin-top: 20px; max-width: 82ch; }
+.pg-note { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--faint); line-height: 1.95; margin-top: 20px; max-width: 82ch; }
 
 .pg-split { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr); gap: clamp(22px, 4vw, 58px); align-items: start; margin-top: 26px; }
 .pg-pull { border-left: 2px solid var(--blue); padding: 3px 0 3px 18px; font-family: "Switzer", sans-serif; font-weight: 600; letter-spacing: -.01em; font-size: clamp(17px, 2.3vw, 23px); line-height: 1.28; max-width: 30ch; }
-.pg-pull small { display: block; font-family: var(--label); font-weight:600; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 12px; }
+.pg-pull small { display: block; font-family: var(--label); font-weight:600; font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 12px; }
 
 /* ------------------------------------------------------------------- cards */
 .pg-cards { display: grid; gap: 12px; margin-top: 26px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
@@ -107,16 +107,16 @@ a.pg-card:hover, a.pg-card:focus-visible { transform: translateY(-4px); }
 .pg-cardv { margin: -22px -20px 6px; aspect-ratio: 3 / 2; background: #fff; border-bottom: 0; overflow: hidden; }
 .pg-cardv img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; display: block; transform: scale(1.02); transition: transform .9s var(--e1); }
 .pg-card:hover .pg-cardv img { transform: scale(1.06); }
-.pg-card .pg-no { font-family: var(--label); font-size: 10px; letter-spacing: .16em; font-weight:600; color: var(--blue-bright); }
-.pg-card .pg-kick { font-family: var(--label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+.pg-card .pg-no { font-family: var(--label); font-size: 13px; letter-spacing:.04em; font-weight:600; color: var(--blue-bright); }
+.pg-card .pg-kick { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--faint); }
 .pg-card h3 { font-size: 19px; line-height: 1.2; }
-.pg-card h3 .pg-full { display: block; font-family: var(--label); font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin-top: 7px; line-height: 1.6; }
+.pg-card h3 .pg-full { display: block; font-family: var(--label); font-size: 13px; font-weight: 600; letter-spacing:.04em; text-transform: uppercase; color: var(--faint); margin-top: 7px; line-height: 1.6; }
 .pg-card p { font-size: 14px; color: var(--soft); line-height: 1.6; }
 /* 9 Sep (Bazil: "remove the lines and dashes"). The rule above every list and a red dash on
    every item were two decorations doing what indentation already does. */
 .pg-list { list-style: none; display: grid; gap: 8px; margin-top: 16px; }
 .pg-list li { position: relative; padding-left: 0; font-size: 13px; color: var(--soft); line-height: 1.5; }
-.pg-card .pg-go { margin-top: auto; padding-top: 14px; font-family: var(--label); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); display: inline-flex; align-items: center; gap: 8px; }
+.pg-card .pg-go { margin-top: auto; padding-top: 14px; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); display: inline-flex; align-items: center; gap: 8px; }
 .pg-card .pg-go::after { content: "\2192"; transition: transform .3s var(--e1); }
 a.pg-card:hover .pg-go::after { transform: translateX(4px); }
 
@@ -124,7 +124,7 @@ a.pg-card:hover .pg-go::after { transform: translateX(4px); }
 .pg-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 14px); background: none; border: 0; margin-top: 26px; }
 .pg-stat { background: var(--bg2); padding: 20px 16px; }
 .pg-stat b { display: block; font-family: "Switzer", sans-serif; font-weight: 600; letter-spacing: -.025em; line-height: 1; font-size: clamp(21px, 3.1vw, 33px); }
-.pg-stat span { display: block; font-family: var(--label); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); margin-top: 10px; line-height: 1.6; }
+.pg-stat span { display: block; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--soft); margin-top: 10px; line-height: 1.6; }
 
 /* -------------------------------------------------------------- scope lists */
 .pg-scope { list-style: none; margin-top: 24px; border-top: 1px solid var(--line); }
@@ -135,7 +135,7 @@ a.pg-card:hover .pg-go::after { transform: translateX(4px); }
 .pg-scope li:hover { padding-left: 10px; }
 .pg-scope li:hover::after { width: 100%; }
 .pg-scope li:hover span { color: var(--ink); }
-.pg-scope li i { font-style: normal; font-family: var(--label); font-size: 10.5px; letter-spacing: .14em; font-weight:600; color: var(--blue-bright); }
+.pg-scope li i { font-style: normal; font-family: var(--label); font-size: 13px; letter-spacing:.04em; font-weight:600; color: var(--blue-bright); }
 .pg-scope li span { font-size: clamp(15px, 1.7vw, 17.5px); line-height: 1.42; }
 .pg-scope li span em { font-style: normal; display: block; font-size: 13px; color: var(--soft); margin-top: 6px; line-height: 1.55; }
 
@@ -143,7 +143,7 @@ a.pg-card:hover .pg-go::after { transform: translateX(4px); }
 .pg-beats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 26px; }
 .pg-beat { border-top: 2px solid var(--blue); padding: 13px 2px 0; transition: transform .45s var(--e1); }
 .pg-beat:hover { transform: translateY(-4px); }
-.pg-beat i { font-style: normal; font-family: var(--label); font-size: 10px; letter-spacing: .16em; font-weight:600; color: var(--blue-bright); }
+.pg-beat i { font-style: normal; font-family: var(--label); font-size: 13px; letter-spacing:.04em; font-weight:600; color: var(--blue-bright); }
 .pg-beat p { font-size: 14.5px; line-height: 1.45; margin-top: 9px; }
 
 /* ------------------------------------------- the cycle rail (5 stage strip) */
@@ -159,12 +159,12 @@ a.pg-rail-n:hover, a.pg-rail-n:focus-visible { transform: translateY(-3px); }
 .pg-rail-ic svg { width: 19px; height: 19px; display: block; }
 a.pg-rail-n:hover .pg-rail-ic, .pg-rail-n.on .pg-rail-ic { color: var(--blue); }
 a.pg-rail-n:hover .pg-rail-ic { transform: translateY(-2px); }
-.pg-rail-n .n { font-family: var(--label); font-size: 10px; letter-spacing: .16em; font-weight:600; color: var(--faint); }
+.pg-rail-n .n { font-family: var(--label); font-size: 13px; letter-spacing:.04em; font-weight:600; color: var(--faint); }
 .pg-rail-n b { font-family: "Switzer", sans-serif; font-weight: 600; font-size: 15px; line-height: 1.15; letter-spacing: -.01em; }
 .pg-rail-n small { font-size: 13px; color: var(--soft); line-height: 1.5; }
 .pg-rail-n.on { border-color: var(--blue); background: rgba(236, 32, 39, .04); }
 .pg-rail-n.on .n { color: var(--blue-bright); }
-.pg-loop { display: flex; align-items: center; gap: 11px; margin-top: 16px; font-family: var(--label); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--blue-bright); }
+.pg-loop { display: flex; align-items: center; gap: 11px; margin-top: 16px; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight: 600; color: var(--blue-bright); }
 .pg-loop i { flex: none; width: 26px; height: 1px; background: var(--blue); }
 
 /* --------------------------------------------------------- reference proof */
@@ -180,7 +180,7 @@ a.pg-rail-n:hover .pg-rail-ic { transform: translateY(-2px); }
 .pg-pc-more .pg-nextic svg { width: 100%; height: 100%; }
 .pg-pc-more b { font-family: "Switzer", sans-serif; font-weight: 600; font-size: 16px; line-height: 1.25; color: var(--ink); }
 .pg-pc-more small { font-size: 13.5px; line-height: 1.55; color: var(--soft); }
-.pg-pc-more .pg-more-go { margin-top: 4px; font-family: var(--label); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); }
+.pg-pc-more .pg-more-go { margin-top: 4px; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); }
 .pg-pc-more:hover b { color: var(--blue-bright); }
 .pg-pc { border: 0; background: var(--panel); display: flex; flex-direction: column; overflow: hidden; color: inherit; text-decoration: none; transition: border-color .35s, transform .45s var(--e1); }
 .pg-pc:hover, .pg-pc:focus-visible { transform: translateY(-4px); }   /* 26 Sep: a block, no frame */
@@ -189,19 +189,19 @@ a.pg-rail-n:hover .pg-rail-ic { transform: translateY(-2px); }
 .pg-pc:hover .pg-pcv img { transform: scale(1.045); }
 /* the hover cue (2 Sep): a red strip with "Open project" rises from the bottom of the image, on
    every card that uses this vocabulary — hub, service pages, market pages, capability pages */
-.pg-pcv::after { content: "Open project \2192"; position: absolute; left: 0; right: 0; bottom: 0; padding: 9px 13px; background: var(--blue); color: #fff; font-family: var(--label); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight:600; transform: translateY(100%); transition: transform .45s var(--e1); pointer-events: none; }
+.pg-pcv::after { content: "Open project \2192"; position: absolute; left: 0; right: 0; bottom: 0; padding: 9px 13px; background: var(--blue); color: #fff; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; transform: translateY(100%); transition: transform .45s var(--e1); pointer-events: none; }
 .pg-pc:hover .pg-pcv::after, .pg-pc:focus-visible .pg-pcv::after { transform: none; }
 .pg-pc-in { padding: 15px 15px 17px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
-.pg-pc .pg-ref { display: flex; justify-content: space-between; gap: 8px; font-family: var(--label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); }
+.pg-pc .pg-ref { display: flex; justify-content: space-between; gap: 8px; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--soft); }
 .pg-pc .pg-ref .iso { color: var(--blue-bright); font-weight:600; text-align: right; }
 .pg-pc h3 { font-size: 16px; line-height: 1.22; }
-.pg-pc .pg-cl { font-size: 12.5px; color: var(--soft); }
+.pg-pc .pg-cl { font-size: 13px; color: var(--soft); }
 .pg-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 11px; }
-.pg-tag { font-family: var(--label); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 8px; border: 0; color: var(--soft); background: rgba(23,33,58,.06); }   /* 26 Sep: slim filled boxes */
+.pg-tag { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; padding: 4px 8px; border: 0; color: var(--soft); background: rgba(23,33,58,.06); }   /* 26 Sep: slim filled boxes */
 .pg-tag.b { color: var(--blue-bright); background: rgba(236, 32, 39, .08); }
 
 /* a quiet inline link: never competes with the page's one primary action */
-.pg-more { display: inline-flex; align-items: center; gap: 9px; margin-top: 20px; padding: 10px 0; font-family: var(--label); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); text-decoration: none; }
+.pg-more { display: inline-flex; align-items: center; gap: 9px; margin-top: 20px; padding: 10px 0; font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); text-decoration: none; }
 .pg-more::after { content: "\2192"; transition: transform .3s var(--e1); }
 .pg-more:hover::after { transform: translateX(4px); }
 .pg-mores { display: flex; flex-wrap: wrap; gap: 12px 26px; }
@@ -214,7 +214,7 @@ a.pg-rail-n:hover .pg-rail-ic { transform: translateY(-2px); }
    one idea. The outer frame goes; the dashed inner one still marks it as a placeholder. */
 .pg-slot { background: var(--bg2); padding: 0; margin-top: 20px; }
 .pg-slot-in { border: 0; padding: 22px 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 11px; }   /* 26 Sep: no grey outline; the filled slot and its red tag mark the placeholder */
-.pg-slot-tag { font-family: var(--label); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); border: 0; background: rgba(236, 32, 39, .07); padding: 6px 9px; }
+.pg-slot-tag { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--blue-bright); border: 0; background: rgba(236, 32, 39, .07); padding: 6px 9px; }
 .pg-slot b { font-family: "Switzer", sans-serif; font-weight: 600; font-size: clamp(15px, 1.9vw, 18px); line-height: 1.25; letter-spacing: -.01em; }
 .pg-slot p { font-size: 13.5px; color: var(--soft); line-height: 1.6; max-width: 60ch; }
 .pg-slot ul { list-style: none; display: grid; gap: 6px; }
@@ -244,9 +244,9 @@ a.pg-rail-n:hover .pg-rail-ic { transform: translateY(-2px); }
 .pg-cta h2 { font-size: clamp(24px, 3.3vw, 38px); margin-top: 13px; max-width: 34ch; color: #fff; }
 .pg-cta p { font-size: clamp(14px, 1.6vw, 16px); color: rgba(255, 255, 255, .86); margin-top: 15px; max-width: 48ch; line-height: 1.65; }
 .pg-cta-act { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
-.pg-cta-act .cta { font-size: 12px; padding: 15px 22px; background: #fff; color: var(--blue); }
+.pg-cta-act .cta { font-size: 13px; padding: 15px 22px; background: #fff; color: var(--blue); }
 .pg-cta-act .cta:hover { background: #0C1220; color: #fff; }
-.pg-cta-meta { font-family: var(--label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 255, 255, .72); line-height: 1.9; }
+.pg-cta-meta { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: rgba(255, 255, 255, .72); line-height: 1.9; }
 .pg-cta-meta a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, .4); }
 .pg-cta-meta a:hover { border-bottom-color: #fff; }
 
@@ -314,7 +314,7 @@ a.pg-rail-n:hover .pg-rail-ic { transform: translateY(-2px); }
   .pg-pc .pg-cl { font-size: 13px; }
   .pg-pc .pg-ref { flex-direction: column; gap: 3px; }
   .pg-pc .pg-ref .iso { text-align: left; }
-  .pg-tag { font-size: 7.5px; letter-spacing: .06em; padding: 4px 6px; }
+  .pg-tag { font-size: 13px; letter-spacing:.04em; padding: 4px 6px; }
   .pg-scope li { grid-template-columns: 34px minmax(0, 1fr); gap: 10px; padding: 14px 2px; }
   .pg-scope li span { font-size: 14.5px; }
   .pg-slot-in { padding: 16px 14px; }
@@ -373,24 +373,24 @@ a.pg-rail-n:hover .pg-rail-ic { transform: translateY(-2px); }
 @keyframes cycIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @media (max-width: 900px) { .cyc-detail { grid-template-columns: minmax(0, 1fr); } .cyc-detail-v { order: -1; min-height: 0; aspect-ratio: 2 / 1; border-left: 0; border-bottom: 1px solid var(--line); } }
 @media (prefers-reduced-motion: reduce) { .cyc-detail-t, .cyc-detail-v, .cyc-detail-v img { animation: none; } }
-.cyc-detail .pg-no { font-family: var(--label); font-size: 10px; letter-spacing: .16em; font-weight:600; color: var(--blue-bright); }
-.cyc-detail .pg-kick { font-family: var(--label); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+.cyc-detail .pg-no { font-family: var(--label); font-size: 13px; letter-spacing:.04em; font-weight:600; color: var(--blue-bright); }
+.cyc-detail .pg-kick { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--faint); }
 .cyc-detail h3 { font-size: 19px; line-height: 1.2; }
 .cyc-detail p { font-size: 14px; color: var(--soft); line-height: 1.6; max-width: 72ch; }
 .cyc-detail .pg-more { margin-top: 6px; }
-.cyc-lede b { display: block; margin-top: 8px; font-family: var(--label); font-weight:600; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-bright); }
+.cyc-lede b { display: block; margin-top: 8px; font-family: var(--label); font-weight:600; font-size: 13px; letter-spacing:.04em; text-transform: uppercase; color: var(--blue-bright); }
 
 /* ===== History: year breadcrumbs (18 Aug minutes: avoid the long vertical scroll) ===== */
 .cp-years{position:sticky;top:calc(var(--sticktop,78px) + 8px);z-index:12;display:flex;flex-wrap:wrap;gap:6px;
   margin:22px 0 26px;padding:9px 10px;border:0;
   background:rgba(247,249,252,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.cp-years a{font-family: var(--label);font-size:11px;letter-spacing:.08em;font-weight:600;
+.cp-years a{font-family: var(--label);font-size:13px;letter-spacing:.04em;font-weight:600;
   color:var(--faint);text-decoration:none;padding:6px 11px;transition:.2s}
 .cp-years a:hover{color:var(--ink);background:rgba(12,18,32,.06)}
 .cp-years a.on{color:var(--blue)}
 .cp-years a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .cp-mile{scroll-margin-top:calc(var(--navh,78px) + 76px)}
-@media(max-width:640px){.cp-years{gap:4px;padding:8px}.cp-years a{padding:5px 8px;font-size:10px}}
+@media(max-width:640px){.cp-years{gap:4px;padding:8px}.cp-years a{padding:5px 8px;font-size:13px}}
 
 /* 3 Sep (client: "number the markets"): the index was a mono tag reading "MKT · 001", which
    scanned as a code rather than a position in a set. It is now the numeral itself, at a size
@@ -399,8 +399,8 @@ a.pg-rail-n:hover .pg-rail-ic { transform: translateY(-2px); }
 .mk-card .no b{ font-family:"Switzer","Instrument Sans",sans-serif; font-weight:600;
   font-size:clamp(19px,1.7vw,26px); letter-spacing:-.02em; color:var(--ink);
   font-variant-numeric:tabular-nums; }
-.mk-card .no i{ font-style:normal; font-family: var(--label); font-size:10.5px;
-  font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--soft); }
+.mk-card .no i{ font-style:normal; font-family: var(--label); font-size:13px;
+  font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--soft); }
 
 /* the deep band (4 Sep, client: "too wordy, too white"): the hub banner behind the measures,
    text and tiles inverted, so the middle of the page carries an image instead of a wall of white */
@@ -472,12 +472,12 @@ a.pg-rail-n:hover .pg-rail-ic { transform: translateY(-2px); }
    a column rather than reading each one end to end. */
 .un-spec { margin: 3px 0 2px; display: grid; gap: 0; border-top: 1px solid var(--line); }
 .un-row { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
-.un-row dt { font-family: var(--label); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; font-weight:600; color: var(--faint); line-height: 1.7; }
-.un-row dd { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--soft); }
+.un-row dt { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--faint); line-height: 1.7; }
+.un-row dd { margin: 0; font-size: 13px; line-height: 1.5; color: var(--soft); }
 
-.un-k { font-family: var(--label); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; font-weight:600; color: var(--faint); margin-top: 6px; }
+.un-k { font-family: var(--label); font-size: 13px; letter-spacing:.04em; text-transform: uppercase; font-weight:600; color: var(--faint); margin-top: 6px; }
 .un-card .pg-list { margin-top: 4px; }
-.un-card .pg-list li { padding-left: 13px; font-size: 12.5px; color: var(--soft); }
+.un-card .pg-list li { padding-left: 13px; font-size: 13px; color: var(--soft); }
 .un-card .pg-list li::before { content: ""; position: absolute; left: 0; top: .55em; width: 4px; height: 1px; background: var(--line2); transition: background .35s; }
 .un-card:hover .pg-list li::before { background: var(--blue); }
 /* the links land on the same line across all three cards, whatever the copy above them did */
@@ -495,11 +495,11 @@ abbr[title]{text-decoration:underline dotted;text-underline-offset:3px;cursor:he
 .glossary-wrap{margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
 .glossary{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px 28px;margin:14px 0 0}
 .glossary div{display:grid;grid-template-columns:58px minmax(0,1fr);gap:10px;font-size:13px;line-height:1.5}
-.glossary dt{font-family:var(--label);font-size:11px;letter-spacing:.12em;font-weight:600;color:var(--ink);padding-top:2px}
+.glossary dt{font-family:var(--label);font-size:13px;letter-spacing:.04em;font-weight:600;color:var(--ink);padding-top:2px}
 .glossary dd{margin:0;color:var(--soft)}
 
 /* 10 Sep: breadcrumb trail above the page head */
-.pg-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px;font-family:var(--label);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.pg-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px;font-family:var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint)}
 .pg-crumbs a{color:var(--soft);text-decoration:none}.pg-crumbs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .pg-head-hero .pg-crumbs a,.pg-head-hero .pg-crumbs{color:rgba(255,255,255,.72)}.pg-head-hero .pg-crumbs a:hover{color:#fff}
 .prj-head .pg-crumbs,.prj-head .pg-crumbs a{color:rgba(255,255,255,.75)}.prj-head .pg-crumbs a:hover{color:#fff}
@@ -518,7 +518,7 @@ abbr[title]{text-decoration:underline dotted;text-underline-offset:3px;cursor:he
 .vb-media video,.vb-media img{width:100%;height:100%;object-fit:cover;object-position:60% 40%;display:block;filter:saturate(.8) brightness(.9)}
 .vb-scrim{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(7,12,24,.18) 0%,rgba(7,12,24,.42) 45%,rgba(7,12,24,.9) 100%),linear-gradient(90deg,rgba(7,12,24,.55) 0%,rgba(7,12,24,.15) 60%,rgba(7,12,24,0) 100%)}
 .vb-in{position:relative;z-index:1;width:100%;max-width:var(--maxw);margin:0 auto;padding:clamp(56px,10vh,120px) var(--gut) clamp(40px,6vh,72px)}
-.vb-crumbs{display:flex;align-items:center;gap:8px;font-size:12.5px;color:rgba(255,255,255,.62)}
+.vb-crumbs{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.62)}
 .vb-crumbs a{color:inherit;text-decoration:none}.vb-crumbs a:hover{color:#fff}
 .vb-crumbs i{font-style:normal;opacity:.6}
 .vb-years{display:flex;align-items:center;gap:14px;margin-top:clamp(22px,4vh,40px);font:600 13px/1 "Switzer",sans-serif;letter-spacing:.04em;color:rgba(255,255,255,.75)}
@@ -542,7 +542,7 @@ abbr[title]{text-decoration:underline dotted;text-underline-offset:3px;cursor:he
 
 /* 25 Sep, night (Bazil: "no vertical line in IAQ"): the pull quote stands without its left rule; its source line in sentence case */
 .pg-pull { border-left: 0; padding-left: 0; }
-.pg-pull small { font-family: "Switzer", "Instrument Sans", system-ui, sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: 0; text-transform: none; }
+.pg-pull small { font-family: "Switzer", "Instrument Sans", system-ui, sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0; text-transform: none; }
 
 /* 25 Sep (Bazil: "the titles for 3 business units, 4 works and 6 services should be the same size and each have an icon
    at its left"): the three kind titles share the page's h2 size and carry their kind's flat mark in its colour */
@@ -563,3 +563,12 @@ h2.kind-h.k-w{color:#231F20}
 /* 22 Oct (History: "why there are whitespace, please this section fit it screen"): the video banner fills the window under the
    nav, as the Home and About heroes do; phones keep their own height (the 700px rule above) */
 @media(min-width:701px){header.vb{margin-top:0;min-height:calc(100svh / var(--zoomf, 1) - var(--navh, 78px) - var(--tbh, 0px))}}
+
+/* 22 Oct, Polishing walk-through, note 17 (the History banner): the breadcrumb at the top of the banner, not at the foot above
+   the title; the years at display size on their rule (they are the point of the page); .vb-in static so the banner is the
+   crumbs' containing block. Rule 25. */
+.vb-in{ position:static; }
+.vb-crumbs{ position:absolute; top:28px; left:0; right:0; z-index:2; max-width:var(--maxw); margin:0 auto; padding:0 var(--gut); font-size:13.5px; }
+.vb-years{ margin-top:0; font-size:clamp(26px,3vw,40px); letter-spacing:-.02em; color:#fff; gap:20px; }
+.vb-years i{ width:clamp(160px,28vw,440px); }
+.vb-years + h1{ margin-top:18px; }

@@ -17,10 +17,11 @@ export const CAMPAIGNS = {
   project: {
     slug: 'project',
     eyebrow: 'Cleanroom and facility projects',
-    title: 'We Love Talking To Visionaries Like You.',   /* 28 Oct (client, Enquiry: "Replace below with: We Love Talking To Visionaries Like You.") */
+    title: 'We Love Talking To Visionaries Like You',   /* 26 Oct (IAQ review, NR, page 022: "Replace below with: We Love Talking To Visionaries Like You."), IAQ's line and capitals, no full stop */   /* 20 Oct (Sunny: "planning", not "building") */
     lede: 'Cleanrooms, dry rooms and the systems that hold them in spec, designed, built and maintained by one accountable team since 1995. Send the brief and our team will direct it to the appropriate contact.',   /* 19 Oct: no reply time (IAQ: no SLA approved) */
+    heroCopy: false,   /* 27 Oct (IAQ review, NR, page 022, boxed under "Replace below with"): the paragraph and the four points are off the hero; lede stays for the page description */
     points: [
-      'Design, procurement and construction under one contract',
+      'Design, procurement and construction',
       'ISO 3 to 7 cleanrooms and dry rooms to a specified dew point',
       'Process critical utilities and tool hook-up',
       'Testing, commissioning and maintenance after handover',
@@ -39,7 +40,7 @@ export const CAMPAIGNS = {
   semiconductor: {
     slug: 'semiconductor',
     eyebrow: 'Semiconductor facilities',
-    title: 'Cleanrooms for the companies making the chips.',
+    title: 'Cleanrooms for the companies making the chips',
     lede: 'ISO 3 to 7 cleanrooms, wafer fabs and backend plants, delivered across Malaysia, India and Europe by one accountable team. 31 years, over 250 projects, 1,050,000 m² of cleanroom built.',
     points: [
       'ISO 3 to 7 cleanroom design, build and certification',
@@ -59,7 +60,7 @@ export const CAMPAIGNS = {
   'data-centre': {
     slug: 'data-centre',
     eyebrow: 'Data centre facilities',
-    title: 'Where uptime is the only specification that matters.',
+    title: 'Where uptime is the only specification that matters',
     lede: 'Cooling, power and controlled environments at hyperscale. IAQ has delivered up to 160 MW in Malaysia, and maintains what it builds.',
     points: [
       'Chilled and condenser water systems at scale',
@@ -79,7 +80,7 @@ export const CAMPAIGNS = {
   'ev-battery': {
     slug: 'ev-battery',
     eyebrow: 'EV Battery facilities',
-    title: 'Dry rooms at the dew point the cell chemistry demands.',
+    title: 'Dry rooms at the dew point the cell chemistry demands',
     lede: 'Battery manufacturing demands humidity control far beyond ordinary cleanroom practice. IAQ has been building dry rooms to that standard since 2020.',
     points: [
       'Dry room design and construction to specified dew point',
