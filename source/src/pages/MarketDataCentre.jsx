@@ -22,6 +22,7 @@ export default function MarketDataCentre() {
       hash="data-centre"
       ind="data-centre"
       image="/assets/banners/mkt-data-centre.jpg"
+      video="/assets/videos/banners/mkt-data-centre.mp4"   /* 3 Nov (CTO's copy): the hero loop */
       /* 20 Oct (IAQ amendment sheet, Data Centre · Hero Banner, Industry Overview, Capabilities, Importance): IAQ's sections, in
          its order and words. The figures strip (160 MW and 9.6 MW, which the 13 Oct review said contradict each other) is gone.
          Spelling slips only corrected ("artificial", "capable", "data centre performance depends"). */

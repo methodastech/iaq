@@ -40,15 +40,15 @@ gsap.registerPlugin(ScrollTrigger)
 /* stage colour = the system's colour in their model; the rail icons carry it */
 export const STAGE_COLOR = { st: '#B7C0CC', ar: '#E87A2E', pu: '#22C55E', fp: '#DC2626', ac: '#22D3EE', el: '#EAB308', cr: '#67E8F9', tl: '#E5E7EB', ov: '#EC2027' }
 export const STAGES = [
-  { n: '1', k: 'st', seq: 'Piles · pile caps · ground beams · sub-fab slab · columns · waffle floor', t: 'Civil & Structural',   d: 'Piles, caps and ground beams below grade; slab, columns and the raised fab floor above it.' },
-  { n: '2', k: 'ar', seq: 'Roof trusses · purlins · roof deck · wall envelope', t: 'Architectural',        d: 'Steel roof trusses and purlins land, and the wall envelope closes the volume.' },
-  { n: '3', k: 'pu', seq: 'Pipe rack · PCW header · UPW header · risers to tools · gas cabinets', t: 'Process Utilities',    d: 'Process pipework routed through the sub-fab before anything sits above it.' },
-  { n: '4', k: 'fp', seq: 'Sprinkler mains · risers · branch lines', t: 'Fire Protection',      d: 'Sprinkler mains and risers, red by convention, threaded through every level.' },
-  { n: '5', k: 'ac', seq: 'Fresh-air intake · supply main · drops to plenum · return main · return out', t: 'Air-conditioning',     d: 'Supply and return ductwork fills the roof space above the cleanroom ceiling.' },
-  { n: '6', k: 'el', seq: 'Transformer · switchboards · busbar · cable trays · cabling', t: 'HT & LV Electrical',   d: 'Cable containment and distribution follow the duct routes.' },
-  { n: '7', k: 'cr', seq: 'Ceiling grid · FFU field · air handlers · partitions · exhaust stacks', t: 'Cleanroom System',     d: 'Ceiling grid, fan filter units and the plant that holds the class.' },
-  { n: '8', k: 'tl', seq: 'Process tools · load ports · hookup drops · pump skids · wet benches', t: 'Tools Hookup',         d: 'Process tools arrive on the fab floor and connect to every service beneath.' },
-  { n: '9', k: null, c: 'ov', seq: 'Review of all eight systems · envelope closes · plant lands · site handover', t: 'Overall',              d: 'Every system reviewed, then the envelope closes, the plant goes up and the site is handed over.' },
+  { n: '1', k: 'st', seq: 'Piles, pile caps, ground beams, sub-fab slab, columns, waffle floor', t: 'Civil & Structural',   d: 'Piles, caps and ground beams below grade; slab, columns and the raised fab floor above it.' },
+  { n: '2', k: 'ar', seq: 'Roof trusses, purlins, roof deck, wall envelope', t: 'Architectural',        d: 'Steel roof trusses and purlins land, and the wall envelope closes the volume.' },
+  { n: '3', k: 'pu', seq: 'Pipe rack, PCW header, UPW header, risers to tools, gas cabinets', t: 'Process Utilities',    d: 'Process pipework routed through the sub-fab before anything sits above it.' },
+  { n: '4', k: 'fp', seq: 'Sprinkler mains, risers, branch lines', t: 'Fire Protection',      d: 'Sprinkler mains and risers, red by convention, threaded through every level.' },
+  { n: '5', k: 'ac', seq: 'Fresh-air intake, supply main, drops to plenum, return main, return out', t: 'Air-conditioning',     d: 'Supply and return ductwork fills the roof space above the cleanroom ceiling.' },
+  { n: '6', k: 'el', seq: 'Transformer, switchboards, busbar, cable trays, cabling', t: 'HT & LV Electrical',   d: 'Cable containment and distribution follow the duct routes.' },
+  { n: '7', k: 'cr', seq: 'Ceiling grid, FFU field, air handlers, partitions, exhaust stacks', t: 'Cleanroom System',     d: 'Ceiling grid, fan filter units and the plant that holds the class.' },
+  { n: '8', k: 'tl', seq: 'Process tools, load ports, hookup drops, pump skids, wet benches', t: 'Tools Hookup',         d: 'Process tools arrive on the fab floor and connect to every service beneath.' },
+  { n: '9', k: null, c: 'ov', seq: 'Review of all eight systems, envelope closes, plant lands, site handover', t: 'Overall',              d: 'Every system reviewed, then the envelope closes, the plant goes up and the site is handed over.' },
 ]
 const SYS = STAGES.filter(s => s.k).map(s => s.k)     /* the 8 buildable systems, in order */
 const UNITS = STAGES.length                              /* 9 stage units across the runway */
@@ -99,7 +99,7 @@ export default function initFab3D(root, opts = {}) {
   renderer.setClearColor(driven ? 0x0F1319 : 0x070C18, 1)   /* the section's own navy: opaque, so the AO pass composites cleanly */
   renderer.outputColorSpace = THREE.SRGBColorSpace
   renderer.toneMapping = THREE.ACESFilmicToneMapping
-  renderer.toneMappingExposure = 1.0
+  renderer.toneMappingExposure = 1.14   /* 3 Nov (CTO's copy): a brighter grade, stronger key, softer sky, MSAA on the AO pass */
   renderer.shadowMap.enabled = true
   renderer.shadowMap.type = THREE.PCFShadowMap   /* PCFSoft is deprecated in r184 and silently falls back to this anyway */
   renderer.shadowMap.autoUpdate = false
@@ -113,9 +113,9 @@ export default function initFab3D(root, opts = {}) {
   const camera = new THREE.PerspectiveCamera(driven ? 24 : 34, 1, 0.5, 1400)   /* driven: a longer lens, nearer to an axonometric */
   const world = new THREE.Group(); scene.add(world)             /* yaw is applied here */
 
-  const hemi = new THREE.HemisphereLight(0xE3E9F2, 0x2A3448, 0.62); scene.add(hemi)
-  const key = new THREE.DirectionalLight(0xFFF6EA, 1.6)
-  key.position.set(60, 90, 40); key.castShadow = true
+  const hemi = new THREE.HemisphereLight(0xE3E9F2, 0x2A3448, 0.46); scene.add(hemi)
+  const key = new THREE.DirectionalLight(0xFFF6EA, 2.2)
+  key.position.set(85, 70, 30); key.castShadow = true
   /* 10 Sep: the shadow camera has to span 180 x 90 metres to hold a 120m building, so 2048
      was 11 texels per metre and every soft edge stair-stepped. 4096 on pointer devices puts
      it at 23; coarse pointers keep 2048 because they are also the slower GPUs. */
@@ -125,12 +125,12 @@ export default function initFab3D(root, opts = {}) {
   key.shadow.camera.near = 20; key.shadow.camera.far = 260
   key.shadow.bias = -0.0008; key.shadow.normalBias = 0.02
   scene.add(key)
-  const fill = new THREE.DirectionalLight(0x9DB4E8, 0.35); fill.position.set(-60, 30, -50); scene.add(fill)
+  const fill = new THREE.DirectionalLight(0x9DB4E8, 0.3); fill.position.set(-60, 30, -50); scene.add(fill)
   /* GTAO on pointer devices only: contact shadow under every beam, pile cap and tool foot */
   const useAO = !coarse
   let composer = null, aoPass = null
   if (useAO) {
-    composer = new EffectComposer(renderer)
+    composer = new EffectComposer(renderer, new THREE.WebGLRenderTarget(1, 1, { type: THREE.HalfFloatType, samples: 4 }))
     composer.addPass(new RenderPass(scene, camera))
     aoPass = new GTAOPass(scene, camera, 1, 1)
     aoPass.output = GTAOPass.OUTPUT.Default
@@ -288,7 +288,7 @@ export default function initFab3D(root, opts = {}) {
   systems.fin = { parts: [], mats: [], group: new THREE.Group(), built: -1, look: '' }; world.add(systems.fin.group)   /* the finish: envelope, entrance, plant, site */
 
   function material(k, hex, opt = {}) {
-    const m = new THREE.MeshStandardMaterial(Object.assign({ color: hex, roughness: 0.62, metalness: 0.08, envMapIntensity: 0.5 }, opt))
+    const m = new THREE.MeshStandardMaterial(Object.assign({ color: hex, roughness: 0.58, metalness: 0.06, envMapIntensity: 0.85 }, opt))
     m.userData.base = new THREE.Color(hex); m.userData.baseOpacity = opt.opacity !== undefined ? opt.opacity : 1
     m.userData.baseTransparent = !!opt.transparent
     m.userData.hasEmissive = opt.emissive !== undefined
@@ -851,7 +851,7 @@ export default function initFab3D(root, opts = {}) {
   ;(function existing() {
     const g = new THREE.Group(); world.add(g)
     const bx = -(BAYS * PITCH) / 2 - 42, bz = 6
-    const m = new THREE.MeshStandardMaterial({ color: 0xB9BDB8, roughness: 0.7, metalness: 0.1 })
+    const m = new THREE.MeshStandardMaterial({ color: 0xCDD1D4, roughness: 0.6, metalness: 0.08, envMapIntensity: 0.85 })
     const md = new THREE.MeshStandardMaterial({ color: 0x6B7075, roughness: 0.8 })
     const mesh2 = (geo, mat, x, y, z) => { const o = new THREE.Mesh(geo, mat); o.position.set(x, y, z); o.castShadow = o.receiveShadow = true; g.add(o) }
     mesh2(new THREE.BoxGeometry(40, 13, 26), m, bx, Y.capTop + 6.5, bz)
@@ -1625,7 +1625,7 @@ export default function initFab3D(root, opts = {}) {
     const rc = (u >= 8 && u < 8.5) ? STAGES[Math.min(7, Math.floor((u - 8) / 0.0625))].t : null
     /* this now runs every frame rather than once per scroll event, so the text is only
        written when it actually changes */
-    const label = STAGES[k].n + ' / ' + pad(UNITS) + ' · ' + (rc ? 'Review · ' + rc : STAGES[k].t)
+    const label = STAGES[k].n + ' / ' + pad(UNITS) + ', ' + (rc ? 'Review of ' + rc : STAGES[k].t)
     if (counter && label !== lastCounter) { counter.textContent = label; lastCounter = label }
     if (k === stageIdx) return
     stageIdx = k
@@ -1648,7 +1648,7 @@ export default function initFab3D(root, opts = {}) {
   function nameAt(k, worldPoint) {
     let best = null, bd = 1e9
     labelEls.forEach(L => { if (L.k !== k) return; _pl.copy(L.p).applyMatrix4(world.matrixWorld); const d = _pl.distanceTo(worldPoint); if (d < bd) { bd = d; best = L } })
-    return TITLE[k] + (best && bd < 40 ? ' · ' + best.el.querySelector('b').textContent : '')
+    return TITLE[k] + (best && bd < 40 ? ', ' + best.el.querySelector('b').textContent : '')
   }
   /* the part under the pointer lights up: a per-INSTANCE tint (instanceColor) so only that one
      beam, duct or tool glows, not every twin that shares its material. Restored on leave. */
@@ -1772,7 +1772,7 @@ export default function initFab3D(root, opts = {}) {
   function resize() {
     const r = view.getBoundingClientRect()
     W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height))
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, useAO ? 1.6 : 2))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, useAO ? 2.25 : 2.5))
     renderer.setSize(W, H, false)
     if (composer) { composer.setPixelRatio(renderer.getPixelRatio()); composer.setSize(W, H); aoPass.setSize(W, H); if (composer.userData && composer.userData.bloom) composer.userData.bloom.setSize(W, H) }
     camera.aspect = W / H

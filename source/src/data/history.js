@@ -88,7 +88,7 @@ export const SPAN = [
   },
   {
     yr: 2009, label: '2009', title: "Supporting Semiconductor Manufacturing",
-    text: "IAQ further strengthened its cleanroom and process facility expertise through project requiring highly controlled manufacturing environment and integrated utility systems.",
+    text: "IAQ further strengthened its cleanroom and process facility expertise through projects requiring highly controlled manufacturing environments and integrated utility systems.",
     /* 29 Sep: supplied as "ChatGPT Image Sep 29, 2026, 02_15_34 PM.png" (it replaced 02_10_21), kept as assets/history/2009-wafer-fab-ipoh.webp.
        Generated, so it carries the representation label. It shows a client's name on the facade, used as supplied */
     /* 22 Oct (Bazil: "please remove the signage"): the occupier's name is painted out of the facade, same photograph */
@@ -164,7 +164,7 @@ export const SPAN = [
   },
   {
     yr: 2019, label: '2019', title: "Scaling Project Delivery",
-    text: "The successful delivery of large-scale industrial facilities demonstrated IAQ's growing capability in managing complex project through integrated engineering and construction delivery models.",
+    text: "The successful delivery of large-scale industrial facilities demonstrated IAQ's growing capability in managing complex projects through integrated engineering and construction delivery models.",
     /* 29 Sep ("filled in the images. use suitable image"): the site's own */
     fig: { img: '/assets/projects/prj-003.webp', kind: 'Photograph', ar: '16 / 10',
            alt: 'A semiconductor backend plant from the air',

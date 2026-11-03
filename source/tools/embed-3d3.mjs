@@ -37,7 +37,9 @@ if (!jsName) die('the 3D page no longer names one ../../assets/*.js bundle')
 
 /* copy, the layout kept */
 fs.rmSync(OUT, { recursive: true, force: true })
-const skip = rel => /^projects[\\/]mranti-site/.test(rel) || /^assets[\\/]mranti-site-/.test(rel) || /^_headers$/.test(rel) ||
+/* 3 Nov: the 2 Nov delivery also carries two more demo projects, bm-tour and waterbay; IAQ 3D 3 loads neither, so they stay out */
+const skip = rel => /^projects[\\/](mranti-site|bm-tour|waterbay)/.test(rel) || /^assets[\\/](mranti-site|bm-tour|waterbay)-/.test(rel) ||
+  /^bm-tour([\\/]|$)/.test(rel) || /^_headers$/.test(rel) ||
   /^(index\.html|README\.txt|FILES\.txt)$/.test(rel)
 let n = 0
 const walk = dir => {
@@ -54,12 +56,17 @@ walk('')
 /* the script: the wheel goes to the page when framed, the page's scroll comes back */
 const jsPath = path.join(OUT, 'assets', jsName)
 let js = fs.readFileSync(jsPath, 'utf8')
-const A = 'let H=0;addEventListener("wheel",L=>{if(!v||'
-if (js.split(A).length !== 2) die('scroll bridge: expected one wheel handler after "let H=0;". The delivery changed; update this tool.')
+/* 3 Nov (the 2 Nov delivery): the minifier renames its variables from one build to the next (H became $, gt became bt, z
+   became T), so the handler, the clamp helper and the switch below are found by their shape, not their letters */
+const AM = js.match(/let ([\w$]+)=0;addEventListener\("wheel",([\w$]+)=>\{if\(!v\|\|/g)
+if (!AM || AM.length !== 1) die('scroll bridge: expected one wheel handler after "let <n>=0;". The delivery changed; update this tool.')
+const A = AM[0], AV = A.match(/^let ([\w$]+)=0;/)[1]
+const CL = (js.match(/([\w$]+)\.clamp\(d\.nearestBeat/) || [])[1]
+if (!CL) die('scroll bridge: no <helper>.clamp(d.nearestBeat( in the bundle. The delivery changed; update this tool.')
 const bridge =
-  'let H=0;' +
+  'let ' + AV + '=0;' +
   'window.parent!==window&&addEventListener("message",L=>{const D=L.data;if(!D||D.kind!=="b3d3-p"||L.origin!==location.origin||document.body.classList.contains("room"))return;' +
-  'C();b=!0;d.progress=D.f>=1?1:D.f<=0?0:gt.clamp(d.progress+D.df,0,1)});' +
+  'C();b=!0;d.progress=D.f>=1?1:D.f<=0?0:' + CL + '.clamp(d.progress+D.df,0,1)});' +
   /* how far the picture itself has got (it eases behind the progress), sent back so the page can hold at the end of the
      section until the finished facility is on screen */
   'window.parent!==window&&setInterval(()=>parent.postMessage({kind:"b3d3-shown",s:d.shown,p:d.progress},location.origin),150);' +
@@ -74,12 +81,13 @@ js = js.replace(A, bridge)
 /* 27 Oct ("i still stuck scroll up, not going back to process utilities, cleanroom"): once the finished facility has settled,
    the app leaves the build for a free orbit (z(!1)) and stops following the progress. A scroll from the page puts it back in
    the build (v||z(!0) above), and the orbit only takes over while the progress itself is at the end, not just the picture */
-const O = 'W&&!w&&v&&z(!1)'
-if (js.split(O).length !== 2) die('scroll bridge: expected one "finished, leave the build" switch. The delivery changed; update this tool.')
+const OM = js.match(/([\w$]+)&&!w&&v&&([\w$]+)\(!1\)/g)
+const O = OM && OM.length === 1 ? OM[0] : ''
+if (!O) die('scroll bridge: expected one "finished, leave the build" switch. The delivery changed; update this tool.')
 /* 27 Oct ("why scroll up it keep repeating with animation, not feel smooth"): framed in the page, the app never leaves the
    build for the free orbit at all, so a scroll back up just takes parts away from the same view instead of flying the
    camera between the orbit and the build each time; on its own page the orbit still takes over at the end */
-js = js.replace(O, 'W&&!w&&v&&d.progress>=.998&&window.parent===window&&z(!1)')
+js = js.replace(O, O.replace('&&v&&', '&&v&&d.progress>=.998&&window.parent===window&&'))
 fs.writeFileSync(jsPath, js)
 
 /* the page: a vertical swipe scrolls the website on phones */

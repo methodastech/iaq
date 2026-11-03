@@ -63,7 +63,7 @@ function ProofCard({ i }) {
 /* 25 Sep (IAQ, 24 Sep review: "merge all the description pages for each service into one"): the cover and the scope
    are exported so the single page /services/all can stack the six stages in order; this page still renders them */
 const SLUG = 'maintenance'
-export const META = { slug: SLUG, eyebrow: "Stage 05 · Maintenance", title: <>Protecting your investment, <br /><em>long after handover</em></>, lede: "Planned maintenance that protects asset lifespan, minimises downtime and keeps facilities compliant." }
+export const META = { slug: SLUG, eyebrow: "Stage 05: Maintenance", title: <>Protecting your investment, <br /><em>long after handover</em></>, lede: "Planned maintenance that protects asset lifespan, minimises downtime and keeps facilities compliant." }
 export function Cover() {
   return (
       <section className="pg-sec" aria-labelledby={"cov-h-"+SLUG}>
@@ -106,7 +106,7 @@ export function Scope() {
 }
 
 export default function ServiceMaintenance() {
-  useEffect(() => { document.title = 'IAQ Group · Maintenance · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · Maintenance' }, [])
 
   return (
     <>
@@ -116,11 +116,11 @@ export default function ServiceMaintenance() {
           a photoreal scene generated for this stage, so the page opens on where the work happens
           rather than on the same render the ring and the hub already showed. */}
       <PageHead crumbs={[{ label: 'Services', to: '/services' }]}
-        eyebrow="Stage 05 · Maintenance"
+        eyebrow="Stage 05: Maintenance"
         title={<>Protecting your investment, <br /><em>long after handover</em></>}
         lede="Planned maintenance that protects asset lifespan, minimises downtime and keeps facilities compliant."
         chips={['Lifecycle', 'Stage 5 of 6']}
-        figure={{ src: '/assets/banners/svc-maintain.jpg', alt: 'Maintenance: a filter change on an air handling unit in the plant room', hero: true }}
+        figure={{ src: '/assets/banners/svc-maintain.jpg', video: '/assets/videos/banners/svc-maintain.mp4', /* 3 Nov (CTO's copy): the banner loops, the still is its poster */ alt: 'Maintenance: a filter change on an air handling unit in the plant room', hero: true }}
       />
 
       {/* --------------------------------------------------- what it covers */}
@@ -162,7 +162,7 @@ export default function ServiceMaintenance() {
           <div className="pg-proof">{PROOF.map(i => <ProofCard i={i} key={i} />)}</div>
         </div>
       </section>
-      <ClosingBand note="Maintenance concept · Brand Method" />
+      <ClosingBand note="Maintenance concept, Brand Method" />
     </>
   )
 }

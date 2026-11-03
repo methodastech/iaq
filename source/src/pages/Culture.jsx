@@ -42,12 +42,12 @@ import '../styles/culture.css'
 
 /* the proof beside each value, every line from a published page on this site */
 const PROOF = {
-  'V·01': { text: '2.6 million safe manhours on the East Malaysia wafer fab expansion.', to: '/news/celebrating-2-6-million-safe-manhours' },
-  'V·02': { text: 'ISO 9001:2015 quality management, certified by Intertek and audited.', to: '/about/commitment' },
-  'V·03': { text: 'A written Whistleblowing Policy, published beside the Quality and Environment, Health and Safety policies.', to: '/policies' },
-  'V·04': { text: 'An ISO Class 1 cleanroom, the highest class IAQ has built, delivered for a semiconductor client.', to: '/about/history' },
-  'V·05': { text: 'A green certified plant delivered ahead of schedule, through the pandemic.', to: '/about/history' },
-  'V·06': { text: 'Builder of the Year at the 2024 Malaysian Construction Industry Excellence Awards, by CIDB.', to: '/about/history' },
+  V01: { text: '2.6 million safe manhours on the East Malaysia wafer fab expansion.', to: '/news/celebrating-2-6-million-safe-manhours' },
+  V02: { text: 'ISO 9001:2015 quality management, certified by Intertek and audited.', to: '/about/commitment' },
+  V03: { text: 'A written Whistleblowing Policy, published beside the Quality and Environment, Health and Safety policies.', to: '/policies' },
+  V04: { text: 'An ISO Class 1 cleanroom, the highest class IAQ has built, delivered for a semiconductor client.', to: '/about/history' },
+  V05: { text: 'A green certified plant delivered ahead of schedule, through the pandemic.', to: '/about/history' },
+  V06: { text: 'Builder of the Year at the 2024 Malaysian Construction Industry Excellence Awards, by CIDB.', to: '/about/history' },
 }
 
 /* The strip. Every photograph here appears nowhere else on the page; the hero owns the cleanroom,
@@ -95,7 +95,7 @@ const TRAIN = [
   { kind: 'In-house technical training', slug: 'wafer-fab-facility-design-excellence',
     img: '/assets/culture/training-wafer-fab-2025.webp', alt: 'IAQ engineers after the in-house wafer fabrication training',
     title: 'Introduction to Wafer Fabrication for Design & Construction',
-    p: 'Four modules for the engineering team. They cover fab technology, manufacturing, automation and fab construction design.' },
+    p: '4 modules for the engineering team. They cover fab technology, manufacturing, automation and fab construction design.' },
   { kind: 'Leadership', slug: 'leader-as-a-coach-penang',
     img: '/assets/culture/coaching-leader-as-coach-penang-2024.webp', alt: 'The IAQ Penang team after the Leader as a Coach training',
     title: 'Leader as a Coach, for the Penang team',
@@ -344,7 +344,7 @@ export default function Culture() {
             <div className="cu-origin-copy">
               <h2 id="cu-origin-h" className="cu-h2 cu-rv">It started with <em>indoor air quality</em></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>
-                Ir. Tiew Soon Aik founded IAQ in Malaysia in 1995, as a cleanroom specialist. Today it builds in seven countries.
+                Ir. Tiew Soon Aik founded IAQ in Malaysia in 1995, as a cleanroom specialist. Today it builds in 7 countries.
               </p>
               <Link className="cu-link cu-rv" style={{ '--d': '.12s' }} to="/about/history">The record since 1995 <Arrow /></Link>
             </div>
@@ -361,7 +361,7 @@ export default function Culture() {
         <section className="cu-sec cu-values" id="cu-values" aria-labelledby="cu-values-h">
           <div className="cu-w">
             <div className="cu-head">
-              <h2 id="cu-values-h" className="cu-h2 cu-rv">Six values, <br /><em>on the record</em></h2>
+              <h2 id="cu-values-h" className="cu-h2 cu-rv">6 values, <br /><em>on the record</em></h2>
               <p className="cu-p cu-rv" style={{ '--d': '.08s' }}>The values are IAQ&rsquo;s own words. Beside each one is where the record already shows it.</p>
             </div>
             <div className="cu-vgrid">
@@ -603,7 +603,7 @@ export default function Culture() {
           <div className="close-cards">
             <a className="crow" href={`mailto:${HR_EMAIL}`}><span className="ref">Recruitment</span><b>{HR_EMAIL}</b><i aria-hidden="true">&#8594;</i></a>
             <a className="crow" href={speculativeHref}><span className="ref">No role fits</span><b>Send a speculative CV</b><i aria-hidden="true">&#8594;</i></a>
-            <div className="crow is-static"><span className="ref">HQ &middot; Shah Alam</span><b className="adr">No.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor</b></div>
+            <div className="crow is-static"><span className="ref">HQ, Shah Alam</span><b className="adr">No.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor</b></div>
           </div>
         </div>
         {/* 26 Oct (IAQ review, NR, page 001: "To remove all the dust particle !"): the particle field (CloseAmbient's canvas) is off the band;

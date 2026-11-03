@@ -36,12 +36,12 @@ const R = 400                                   /* ring radius: chord between ne
    The empty centre of the ring is the SITE: the campus at dusk, standing at radius zero as a
    billboard so the ring turns around it. Six values, held on every site, literally. */
 const PHOTO = {
-  'V·01': ['/assets/ph-crane.webp', '50% 40%'],           /* safety: the site, cranes, edge protection */
-  'V·02': ['/assets/cycle3d/stage-commission.jpg', '50% 45%'], /* quality: the class proven by test */
-  'V·03': ['/assets/photo-opening.webp', '60% 60%'],     /* integrity: the team, faces to the camera */
-  'V·04': ['/assets/cycle3d/stage-design.jpg', '50% 50%'],   /* engineering: the design room */
-  'V·05': ['/assets/cycle3d/stage-maintain.jpg', '50% 45%'], /* efficiency: the plant room, in control */
-  'V·06': ['/assets/cycle3d/stage-hookup.jpg', '50% 50%'],   /* excellence: the finished tool bay */
+  'V01': ['/assets/ph-crane.webp', '50% 40%'],           /* safety: the site, cranes, edge protection */
+  'V02': ['/assets/cycle3d/stage-commission.jpg', '50% 45%'], /* quality: the class proven by test */
+  'V03': ['/assets/photo-opening.webp', '60% 60%'],     /* integrity: the team, faces to the camera */
+  'V04': ['/assets/cycle3d/stage-design.jpg', '50% 50%'],   /* engineering: the design room */
+  'V05': ['/assets/cycle3d/stage-maintain.jpg', '50% 45%'], /* efficiency: the plant room, in control */
+  'V06': ['/assets/cycle3d/stage-hookup.jpg', '50% 50%'],   /* excellence: the finished tool bay */
 }
 const MARKS = ['shield', 'check', 'people', 'drawing', 'gauge', 'chart']
 const SITE = '/assets/hero-campus.webp'

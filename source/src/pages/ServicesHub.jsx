@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import ClosingBand from '../components/ClosingBand.jsx'
-import ServicesSectionBar from '../components/ServicesSectionBar.jsx'
 import Related from '../components/Related.jsx'
 import CycleFlow from '../components/CycleFlow.jsx'
 import CycleRing from '../components/CycleRing.jsx'
@@ -254,7 +253,7 @@ function ProofCard({ i }) {
 }
 
 export default function ServicesHub() {
-  useEffect(() => { document.title = 'IAQ Group · Services · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · Services' }, [])
   /* the stage the interactive diagram is detailing: hover/focus a node to change it */
   const [stageI, setStageI] = useState(0)
   const s = STAGES[stageI]
@@ -301,7 +300,7 @@ export default function ServicesHub() {
       <MapBand />
       {/* 26 Sep (Bazil: "make the services page better ... more interesting, easy to understand"): the page's parts in one
           bar under the nav, the part in view lit */}
-      <ServicesSectionBar />
+      {/* 3 Nov (CTO's copy): the section bar is off the page (ServicesSectionBar.jsx stays); with the 3D gone it named one part */}
 
       {/* 17 Sep (client: "better to have 3 business unit on top of the page instead?" and "To
           minimize the description on this landing page and transfer the information to their
@@ -359,7 +358,7 @@ export default function ServicesHub() {
 
 
 
-      <ClosingBand note="Services concept · Brand Method" />
+      <ClosingBand note="Services concept, Brand Method" />
     </>
   )
 }

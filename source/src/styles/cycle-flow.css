@@ -570,3 +570,8 @@
 .cyc-mesh{display:none}
 .cyc-run,.play .cyc-run,.cyc-red,.play .cyc-red{stroke-linecap:butt}
 .play .cyc-chip svg{animation-duration:var(--cycP,7.62s)}
+
+/* 3 Nov (CTO's copy): the cycle's discs are white circles with a hairline edge, ink on hover, a red ring when on */
+.cyc-node .cyc-disc{background:#fff!important;border-radius:50%!important;box-shadow:0 0 0 1.5px #d5dbe5!important;overflow:hidden!important}
+.cyc-node:hover .cyc-disc,.cyc-node:focus-visible .cyc-disc{box-shadow:0 0 0 1.5px #0c1220!important}
+.cyc-node.on .cyc-disc,.cyc-node.on:hover .cyc-disc{box-shadow:0 0 0 2.5px #ec2027!important}

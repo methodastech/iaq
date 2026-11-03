@@ -56,6 +56,8 @@ export default function RegistryBanner() {
     <section className="rb" aria-labelledby="rbH">
       <figure className="rb-spot">
         <img src={SPOT.img} alt={SPOT.alt} decoding="async" fetchPriority="high" />
+        {/* 3 Nov (CTO's copy): the campus at dusk plays as a silent loop over its still */}
+        <video src="/assets/videos/banners/prj-campus-dusk.mp4" poster={SPOT.img} muted loop playsInline autoPlay preload="metadata" aria-hidden="true" tabIndex={-1} />
       </figure>
 
       {/* 26 Sep: no scrim and no grid; the words sit on their own navy block (registry-banner.css) */}

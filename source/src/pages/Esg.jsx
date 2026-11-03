@@ -33,7 +33,7 @@ import '../styles/company.css'
 const REPORTED = NEWS.filter(n => n.tag === 'CSR' || n.tag === 'EHS' || n.tag === 'Quality').slice(0, 6)
 
 export default function Esg() {
-  useEffect(() => { document.title = 'IAQ Group · ESG · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · ESG' }, [])
 
   return (
     <>
@@ -50,7 +50,7 @@ export default function Esg() {
       <section className="pg-sec">
         <div className="pg-in">
           <span className="eyebrow">ESG at IAQ</span>
-          <h2>Three commitments, held <em>as operating standards</em></h2>
+          <h2>3 commitments, held <em>as operating standards</em></h2>
           <p className="pg-lede">
             IAQ integrates environmental, social and corporate governance principles into every project.
             Built into the way the work is run, every day.
@@ -83,7 +83,7 @@ export default function Esg() {
           <div className="pg-split">
             <div>
               <p className="pg-body u-mt0">
-                We build with energy efficiency in mind. From eco-friendly materials to smarter cooling
+                We build with energy efficiency in mind, from eco-friendly materials to smarter cooling
                 systems that cut long-term energy use.
               </p>
               <p className="pg-body">
@@ -105,7 +105,7 @@ export default function Esg() {
 
           <div className="pg-slot">
             <div className="pg-slot-in">
-              <span className="pg-slot-tag">Energy savings evidence · supplied by IAQ</span>
+              <span className="pg-slot-tag">Energy savings evidence, supplied by IAQ</span>
               <b>The supporting figure this block asks for does not exist yet</b>
               <p>
                 This block is reserved for a stated saving, for example the energy saved through completed energy management projects. The figure publishes here once IAQ supplies it, verified and ready for the record.
@@ -169,7 +169,7 @@ export default function Esg() {
               <p className="pg-body">
                 IAQ&rsquo;s governance practice is built for transparency, accountability and ethical
                 decision-making. It follows the compliance standards that earn the trust of clients,
-                partners and stakeholders, and that a public company is judged by.
+                partners and stakeholders.
               </p>
             </div>
             <div>
@@ -201,8 +201,8 @@ export default function Esg() {
 
           <div className="pg-slot">
             <div className="pg-slot-in">
-              <span className="pg-slot-tag">Certificate artwork · supplied by IAQ</span>
-              <b>Three certificate logos, side by side, minimal text</b>
+              <span className="pg-slot-tag">Certificate artwork, supplied by IAQ</span>
+              <b>3 certificate logos, side by side, minimal text</b>
               <p>
                 That is the copy sheet&rsquo;s own specification for this block. The certificate artwork fills this block
                 as soon as IAQ supplies the files, with the standards named in full above in the meantime.
@@ -239,7 +239,7 @@ export default function Esg() {
 
           <div className="pg-slot">
             <div className="pg-slot-in">
-              <span className="pg-slot-tag">Formal reporting · in preparation</span>
+              <span className="pg-slot-tag">Formal reporting, in preparation</span>
               <b>IAQ is committed to ESG principles and is building the reporting to match</b>
               <p>
                 The downloadable policies referenced on the copy sheet, and the sustainability report now in preparation, will be linked from this page as soon as they are issued.
@@ -260,7 +260,7 @@ export default function Esg() {
           </div>
         </div>
       </section>
-      <ClosingBand note="Corporate Commitment concept · Brand Method" />
+      <ClosingBand note="Corporate Commitment concept, Brand Method" />
     </>
   )
 }

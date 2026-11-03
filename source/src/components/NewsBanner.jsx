@@ -66,10 +66,12 @@ export default function NewsBanner({ compact = false }) {
 
   return (
     <header className={'nb' + (compact ? ' nf-intro' : '')}>
+      {/* 3 Nov (CTO's copy): the field of faint type marks is a photograph now, World OSH Day 2024, with its loop
+          playing over it (the still stays under as the poster and for reduced motion) */}
       <div className="nb-field" aria-hidden="true">
-        <span className="nb-gl nb-gl-a"><NewsMark tag="Company" /></span>
-        <span className="nb-gl nb-gl-b"><NewsMark tag="EHS" /></span>
-        <span className="nb-gl nb-gl-c"><NewsMark tag="Industry" /></span>
+        <img className="nb-photo" src="/assets/iaq/events/world-osh-day-2024.webp" alt="" decoding="async" />
+        <video className="nb-photo nb-photo-v" src="/assets/videos/banners/news-osh-day.mp4" poster="/assets/iaq/events/world-osh-day-2024.webp"
+               muted loop playsInline autoPlay preload="metadata" aria-hidden="true" tabIndex={-1} />
       </div>
       <div className="nb-scrim" aria-hidden="true" />
 
@@ -96,10 +98,11 @@ export default function NewsBanner({ compact = false }) {
 
         {/* the wire */}
         {!compact && <div className="nb-wire" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-          <div className="nb-wire-k">
-            <span className="nb-live" aria-hidden="true" data-on={paused || still ? '0' : '1'} />
-            Latest from the newsroom
-          </div>
+          {/* 3 Nov (CTO's copy): the current story's own photograph heads the wire; the pulsing live dot is gone */}
+          <span className="nb-wire-pic" aria-hidden="true" key={'pic-' + cur.slug}>
+            <img src={cur.img || '/assets/iaq/events/world-osh-day-2024.webp'} alt="" decoding="async" />
+          </span>
+          <div className="nb-wire-k">Latest from the newsroom</div>
 
           <Link className="nb-wire-item" to={'/news/' + cur.slug} key={cur.slug}
                 onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>

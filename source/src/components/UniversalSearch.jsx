@@ -127,7 +127,7 @@ export default function UniversalSearch() {
             </React.Fragment>
           ))}
         </div>
-        <div className="us-foot"><span className="us-keys">&uarr;&darr; navigate &middot; &crarr; open</span><span><span className="us-n">{list.length}</span> results</span></div>
+        <div className="us-foot"><span className="us-keys">&uarr;&darr; navigate, &crarr; open</span><span><span className="us-n">{list.length}</span> results</span></div>
       </div>
     </div>
   )

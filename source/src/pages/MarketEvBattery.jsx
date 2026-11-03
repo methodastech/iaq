@@ -18,6 +18,7 @@ export default function MarketEvBattery() {
       hash="ev-battery"
       ind="ev-battery"
       image="/assets/banners/mkt-ev-battery.jpg"
+      video="/assets/videos/banners/mkt-ev-battery.mp4"   /* 3 Nov (CTO's copy): the hero loop */
       /* 20 Oct (IAQ amendment sheet, EV Battery · Hero Banner) */
       title={<>EV Battery <em>Manufacturing</em></>}
       lede="Supporting the Future of Electrification"

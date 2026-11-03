@@ -43,16 +43,16 @@ const O = [1, 1, 1, 0]            /* opacity is only ever used to take a card ou
    ring carried mixed the old site's stills with generated stage art; these six are all from the
    17 Sep SharePoint share, see public/assets/iaq/SOURCES.md) */
 const PHOTO = {
-  'V·01': ['/assets/iaq/val-safety.webp', '50% 50%'],            /* 30 Sep (Bazil: "recreate better picture that makes sense for each"): the toolbox talk at sunrise, harnesses on the scaffold */
-  'V·02': ['/assets/iaq/val-quality.webp', '50% 50%'],           /* a particle count test in a finished cleanroom */
-  'V·03': ['/assets/iaq/val-honesty.webp', '62% 40%'],           /* the programme walked through with the client, openly */
-  'V·04': ['/assets/iaq/val-engineering.webp', '50% 45%'],       /* the multidisciplinary team at the facility's BIM model ("dont show chairs") */
-  'V·05': ['/assets/iaq/val-efficiency.webp?v=suit', '50% 50%'],        /* 19 Oct: engineers in cleanroom coveralls inspecting a finished raised floor (was crews laying the floor; IAQ asked for checking, not installing) */
+  'V01': ['/assets/iaq/val-safety.webp', '50% 50%'],            /* 30 Sep (Bazil: "recreate better picture that makes sense for each"): the toolbox talk at sunrise, harnesses on the scaffold */
+  'V02': ['/assets/iaq/val-quality.webp', '50% 50%'],           /* a particle count test in a finished cleanroom */
+  'V03': ['/assets/iaq/val-honesty.webp', '62% 40%'],           /* the programme walked through with the client, openly */
+  'V04': ['/assets/iaq/val-engineering.webp', '50% 45%'],       /* the multidisciplinary team at the facility's BIM model ("dont show chairs") */
+  'V05': ['/assets/iaq/val-efficiency.webp?v=suit', '50% 50%'],        /* 19 Oct: engineers in cleanroom coveralls inspecting a finished raised floor (was crews laying the floor; IAQ asked for checking, not installing) */
   /* 25 Sep (Bazil: "make sure content correct"): the award photograph carried a subsidiary's name on the screen, which stays
      off public pages (client, DV3 A2.1); the finished ballroom stands for excellence delivered */
   /* 12 Oct ("use this image replace with that. give proper rename"): the gowned team in a finished cleanroom, supplied
      as WhatsApp Image 2026-10-09 at 11.50.02, kept as val-excellence-cleanroom-team.webp (val-excellence.webp stays) */
-  'V·06': ['/assets/iaq/val-excellence-cleanroom-team.webp', '50% 55%'],
+  'V06': ['/assets/iaq/val-excellence-cleanroom-team.webp', '50% 55%'],
 }
 const MARKS = ['shield', 'check', 'people', 'drawing', 'gauge', 'chart']
 

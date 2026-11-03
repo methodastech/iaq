@@ -148,7 +148,7 @@ function NotFound() {
           </div>
         </div>
       </section>
-      <ClosingBand note="News and Insights concept · Brand Method" />
+      <ClosingBand note="News and Insights concept, Brand Method" />
     </>
   )
 }
@@ -159,8 +159,8 @@ export default function Article() {
 
   useEffect(() => {
     document.title = item
-      ? `IAQ Group · ${item.title} · Brand Method`
-      : 'IAQ Group · Article · Brand Method'
+      ? `IAQ Group · ${item.title}`
+      : 'IAQ Group · Article'
   }, [item])
 
   const projects = useMemo(() => (item ? pickProjects(item.slug) : []), [item])
@@ -218,7 +218,7 @@ export default function Article() {
             ) : (
               <div className="pg-slot u-mt0">
                 <div className="pg-slot-in">
-                  <span className="pg-slot-tag">Article body · supplied by IAQ</span>
+                  <span className="pg-slot-tag">Article body, supplied by IAQ</span>
                   <b>The headline and date above are verified. The body copy follows from IAQ.</b>
                   <p>
                     This page holds the space for the story rather than filling it with stand-in text.
@@ -294,7 +294,7 @@ export default function Article() {
           </div>
         </div>
       </section>
-      <ClosingBand note="News and Insights concept · Brand Method" />
+      <ClosingBand note="News and Insights concept, Brand Method" />
     </>
   )
 }

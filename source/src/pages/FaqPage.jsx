@@ -13,20 +13,20 @@ import '../styles/services-map.css'
    the Contact page. The banner is IAQ's own Shah Alam office (Project Photos, site-office-4660), the people who answer.
    ============================================================================ */
 export default function FaqPage() {
-  useEffect(() => { document.title = 'IAQ Group · Questions clients ask · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · Frequently Asked Questions' }, [])
   return (
     <>
       <Nav />
       <PageHead
-        title={<>Questions <em>clients ask</em></>}
+        title={<>Frequently Asked <em>Questions</em></>}
         lede="The questions facility owners ask before they engage IAQ, answered. Any other question, ask."
-        figure={{ src: '/assets/iaq/site-office-4660.webp', alt: 'The IAQ office in Shah Alam: open desks with red chairs', hero: true }} />
+        figure={{ src: '/assets/iaq/site-office-4660.webp', video: '/assets/videos/banners/faq-site-office.mp4', alt: 'The IAQ office in Shah Alam: open desks with red chairs', hero: true }} />
       <section className="pg-sec sm-faq faq-page" aria-label="Questions and answers">
         <div className="pg-in">
           <Faq />
         </div>
       </section>
-      <ClosingBand note="Questions clients ask · Brand Method" />
+      <ClosingBand note="Frequently Asked Questions, Brand Method" />
     </>
   )
 }

@@ -17,7 +17,7 @@ export default function Flow() {
   const cardRefs = useRef({})
   const [wires, setWires] = useState([])
 
-  useEffect(() => { document.title = 'IAQ Group · Website Framework · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · Website Framework' }, [])
 
   const page = byId(sel)
   const inbound = useMemo(() => linksInto(sel), [sel])

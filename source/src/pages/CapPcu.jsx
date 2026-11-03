@@ -17,7 +17,7 @@ export default function CapPcu() {
       full="The utilities a production tool runs on"
       title={<>The utilities <em>are the facility</em></>}
       lede="Specialty gases, chemicals, ultrapure water and exhaust, designed, installed and commissioned as one system."
-      chips={['CDA · PCW · PV', 'UPW · Chemical · Exhaust']}
+      chips={['CDA, PCW and PV', 'UPW, chemical and exhaust']}
       /* 17 Sep: IAQ's own photograph (SharePoint Cleanroom Photos/P1010244): the utility runs feeding a cleanroom */
       image={{ src: '/assets/iaq/cr-utilities-p1010244.webp', alt: 'Utility runs feeding a cleanroom in an IAQ-built facility', hero: true }}
       /* 15 Sep (finish pass): moved onto UnitPage so it matches the three business-unit pages it is linked from.

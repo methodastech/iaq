@@ -107,7 +107,7 @@ function initRibbon(cv, fb) {
 /* 3 Sep (Bazil: "check the website for unneeded info"): every page used to push its own
    "<page> concept · Brand Method" line into the legal strip. One quiet label now, the same on
    every page; the per-page `note` prop is still accepted so no call site breaks. */
-const FOOT_NOTE = 'Prototype · Brand Method'
+const FOOT_NOTE = 'Prototype, Brand Method'   /* 3 Nov (CTO's copy): a comma, not a dot */
 /* 10 Sep audit: the prototype label, the ribbon and the per-page notes belong to the review build */
 /* 15 Sep: the shared flag, so ?launchview shows the footer exactly as it publishes */
 import { LAUNCH } from '../lib/launch.js'
@@ -126,7 +126,7 @@ export default function Footer({ note = FOOT_NOTE, nav = true }) {
           here on every page. 30 Sep (client: "this should be under this about us page"): they moved to the About overview,
           below the values (pages/About.jsx, .ab-awards); the white -rev copies stay in public/assets/certs */}
       <div className="f-base">
-        <span>&copy; 2026 IAQ Group &middot; IAQ Technology International Sdn. Bhd. 200001031412 (534019-T) &middot; ISO 9001 / 14001 / 45001 &middot; CIDB G7</span>
+        <span>&copy; 2026 IAQ Group. IAQ Technology International Sdn. Bhd. 200001031412 (534019-T). ISO 9001, 14001 and 45001. CIDB G7</span>
         {/* 27 Oct: the 3D's model credits, kept off the 3D itself (the tree model is CC BY 4.0, credit required) */}
         <span className="f-credit">3D: sky and textures Poly Haven, ambientCG (CC0); &ldquo;Tree Animate&rdquo; by Node_Art (Sketchfab, CC BY 4.0)</span>
         {!LAUNCH && <span>{FOOT_NOTE}</span>}

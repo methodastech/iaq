@@ -93,3 +93,27 @@
   .chips::-webkit-scrollbar{display:none}
   .fchip{flex:0 0 auto;scroll-snap-align:start}
 }
+
+/* 3 Nov (CTO's copy): the console restyled. Taller 44px controls with no borders, more air between rows and chips, the
+   open Filters button solid ink, the sort segment a borderless 40px pill, the last panel row aligned under the chips */
+.console{padding:18px 0}
+.console .row{gap:10px}
+.console .row+.row{margin-top:12px}
+.console .search{height:44px;padding:0 14px;max-width:460px}
+.console .fbtn{height:44px;padding:0 16px;border:0}
+.console .fbtn:focus{outline:0}
+.console .fbtn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.console.fopen .fbtn{background:var(--ink);color:#fff;border:0}
+.console.fopen .fbtn>svg:first-child,.console.fopen .fbtn .fcar{color:#fff}
+.console .clearbtn{height:44px;display:inline-flex;align-items:center}
+.console.fopen .fpanel{margin-top:14px}
+.flabel{width:132px;gap:8px}
+.chips{gap:8px}
+.fchip{padding:8px 12px;line-height:1}
+.fchip .ct{margin-left:7px}
+.fpanel .row+.row{margin-top:12px}
+.fpanel .row:last-child{margin-top:16px;padding-left:142px}
+.sortseg{height:40px;border:0;background:rgba(23,33,58,.06)}
+.sortseg .ss-lab{height:40px;border-right:0}
+.sortseg .ss{height:40px;padding:0 13px}
+@media(max-width:960px){ .fpanel .row:last-child{padding-left:0} }

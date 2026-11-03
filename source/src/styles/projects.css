@@ -212,3 +212,13 @@
 .rg-route:hover{border-color:var(--blue);color:var(--blue-bright)}
 .rg-route.is-key{background:var(--blue-bright);border-color:var(--blue-bright);color:#fff}
 .rg-route.is-key:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* 3 Nov (CTO's copy): the registry sits on a pale grey ground, the cards on white, the console's controls pale; the shortlist
+   save button is off the cards */
+main.wrap:has(#reg){background:#edf0f5;box-shadow:0 0 0 100vmax #edf0f5;clip-path:inset(0 -100vmax)}
+.pc{background:#fff;box-shadow:0 0 0 1px rgba(12,18,32,.08),0 16px 32px -24px rgba(12,18,32,.3)}
+.pc:hover{box-shadow:0 0 0 1px rgba(12,18,32,.1),0 26px 44px -28px rgba(12,18,32,.36)}
+/* (the CTO's copy also sets .console{background:#fff} here; its build loads console.css after this sheet, so the console
+   stays the grey #E4E9F0 band there. Left out, so dev and the build both show what the CTO's site shows.) */
+.console .search,.console .sortseg,.console select,.console button.filter,.console .fbtn{background:#F3F5F9}
+.pc-save{display:none!important}

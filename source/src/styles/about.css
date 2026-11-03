@@ -129,7 +129,7 @@ section.vm{background:#fff;color:var(--ink);padding:clamp(70px,12vh,130px) 0;pos
 .vm-card:hover .vm-mark{color:var(--blue);opacity:1}
 .vm-k{display:block;font-family:"Switzer","Instrument Sans",system-ui,sans-serif;
   font-size:clamp(26px,2.6vw,38px);letter-spacing:-.03em;font-weight:600;color:#fff;line-height:1}
-.vm-k::after{content:".";color:var(--blue)}
+.vm-k::after{content:none}   /* 3 Nov (CTO's copy): no full stop after Vision and Mission */
 
 .vm-card blockquote{margin:clamp(14px,1.8vh,22px) 0 0;max-width:34ch;
   font-family:"Switzer","Instrument Sans",system-ui,sans-serif;font-weight:500;letter-spacing:-.016em;
@@ -1131,3 +1131,8 @@ section.vm .vm-mark.vm-mark-fine svg.vmx .vmx-ripple{animation:vmxRipple 5.5s ea
    up to 1280 (28 to 41 percent of the lede's box) and bled off the banner's right edge. Below 1300 px it is off; on a wide
    screen it stays to the right of the text, where it was reviewed (rule 42 noted: decoration kept only where it does no harm). */
 @media (max-width:1299px){ .ab-hero .plx-mid{ display:none !important; } }
+/* 3 Nov (CTO's copy): the awards row wraps and centres with more space between smaller logos; the heading and its link in red */
+.ab-awards-row{gap:clamp(32px,3.4vw,64px)!important;flex-wrap:wrap!important;justify-content:center!important}
+.ab-awards-row li{height:clamp(48px,4vw,64px)!important}
+.ab-awards h2,a.ab-awards-a{color:var(--blue-bright)}
+a.ab-awards-a.ab-awards-a{margin-top:52px}

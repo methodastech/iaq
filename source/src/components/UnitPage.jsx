@@ -122,12 +122,17 @@ function Wafer() {
   )
 }
 
+/* 3 Nov (CTO's copy): a line-art drawing drifts on the right of the hero photograph, one per unit page */
+/* 3 Nov ("do you think black is suitable?", "yes please"): the drawings in navy, drawn for the dark hero (public/assets/iso-art/*-navy.svg:
+   faces in two navies, lines lighter, the red kept red) rather than the light drawings inverted to black */
+const HERO_ART = { 'cap-epc': '/assets/iso-art/fab-exploded-navy.svg', 'cap-tool': '/assets/iso-art/svc-hookup-navy.svg', 'cap-energy': '/assets/iso-art/svc-maintain-navy.svg' }
+
 export default function UnitPage(props) {
   const {
     id, no, of = 3, name, full, title, lede, image, art, band, pull,
     facts = [], what = [], whatParts = null, whatHead, hard, pains = [], painsHead, services, servicesHead, servicesLede, intro, bim, models, modelsHead, compare, bandRep,
     steps = [], items = [], why = [], cycleHead, cycleLede, hideCycle = false, hideWhen = false,
-    filter, proofNote, proofLink, cta, ctaBand, industries, whyHead, whyAfterScope = false, whyAfterServices = false, process, statement, capCards, rep, cycle, works = true, scope, introEnd, servicesFlow = false, modelsJoin = 'or',
+    filter, proofNote, proofLink, proofHead, cta, ctaBand, industries, whyHead, whyAfterScope = false, whyAfterServices = false, process, statement, capCards, rep, cycle, works = true, scope, introEnd, servicesFlow = false, modelsJoin = 'or',
   } = props
 
   const root = useRef(null)
@@ -143,7 +148,7 @@ export default function UnitPage(props) {
   /* which contract model the comparison is answering for */
   const [pick, setPick] = useState(0)
 
-  useEffect(() => { document.title = `IAQ Group · ${name} · Brand Method` }, [name])
+  useEffect(() => { document.title = `IAQ Group · ${name}` }, [name])
   useReveal(root)
   useMomentum()
 
@@ -254,6 +259,7 @@ export default function UnitPage(props) {
               </span>
               {/* 15 Oct ("remove all the tag"): no Representation tag on the hero picture */}
             </figure>
+            {HERO_ART[id] && <span className="un-hero-art" aria-hidden="true" data-rv="" style={{ '--d': '.3s' }}><img src={HERO_ART[id]} alt="" /></span>}
             {facts.length > 0 && (
               <ul className="un-facts" data-rv="" style={{ '--d': '.26s' }}>
                 {facts.map((f, i) => <li key={i} style={{ '--i': i }}><b data-n={/^\d+$/.test(String(f.v)) ? f.v : undefined}>{f.v}</b><span>{f.l}</span></li>)}
@@ -692,7 +698,7 @@ export default function UnitPage(props) {
           <section className="un-sec un-proof" aria-labelledby="un-proof-h">
             <div className="pg-in">
               <div className="un-proof-head">
-                <h2 id="un-proof-h" className="un-h2" data-rv="">Delivered <em>this way</em></h2>
+                <h2 id="un-proof-h" className="un-h2" data-rv="">{proofHead || <>Delivered <em>this way</em></>}</h2>{/* 3 Nov (CTO's copy): `proofHead`, a page's own heading (Tool Installation) */}
                 <Link className="un-more" to={(proofLink && proofLink.to) || '/projects'} data-rv="">{(proofLink && proofLink.label) || 'See all published projects'}</Link>
               </div>
               <div className="un-proof-grid" data-n={proof.length}>

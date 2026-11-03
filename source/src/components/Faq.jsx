@@ -59,13 +59,14 @@ export default function Faq({ embed = false }) {
       <div className="faq-list">
         {FAQ.map((g, gi) => (
           <section key={g.id} className={'faq-g' + (openG.has(g.id) ? ' is-open' : '')} data-g={g.id} aria-labelledby={'faq-' + g.id}>
-            <h3 id={'faq-' + g.id}>
+            {/* 3 Nov (CTO's copy): the group headings are h2, the page's own sections */}
+            <h2 id={'faq-' + g.id}>
               <button type="button" className="faq-gb" aria-expanded={openG.has(g.id)} onClick={() => toggleG(g.id)}>
                 <span className="faq-ic"><Icon name={g.icon} /></span>
                 <span className="faq-gt"><b>{g.name}</b><small>{g.lead}</small></span>
                 <span className="faq-gn">{g.items.length}</span><i aria-hidden="true" />
               </button>
-            </h3>
+            </h2>
             <div className="faq-gl"><ul>
               {g.items.map((it, i) => {
                 const isOpen = open === it.q

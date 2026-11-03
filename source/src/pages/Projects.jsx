@@ -15,7 +15,7 @@ import '../styles/projects.css'
 export default function Projects() {
   const navigate = useNavigate()
   useEffect(() => {
-    document.title = 'IAQ Group · Projects · Brand Method'
+    document.title = 'IAQ Group · Projects'
     return initProjectsPage({ navigate })
   }, [])
   return (
@@ -79,7 +79,7 @@ export default function Projects() {
       </main>
 
       {/* 21 Sep: the inline copy of the closing band is gone; the shared, rebuilt one renders here */}
-      <ClosingBand note="Registry concept · Brand Method" />
+      <ClosingBand note="Registry concept, Brand Method" />
     </>
   )
 }

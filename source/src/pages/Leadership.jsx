@@ -51,32 +51,32 @@ function Person({ name, role, portrait, experience }) {
 
 const BOARD = [
   {
-    name: 'Ir. Tiew Soon Aik', role: 'Founder', portrait: 'Portrait · founder',
+    name: 'Ir. Tiew Soon Aik', role: 'Founder', portrait: 'Founder portrait',
     experience: 'Founded IAQ in Malaysia in 1995 as a cleanroom specialist and led its evolution into a total facility solutions provider. The full professional record is to be supplied by IAQ.',
   },
   {
-    name: 'Name to be confirmed', role: 'Chief Executive Officer', portrait: 'Portrait · CEO',
+    name: 'Name to be confirmed', role: 'Chief Executive Officer', portrait: 'CEO portrait',
     experience: 'Name, portrait and professional record to be supplied by IAQ.',
   },
   {
-    name: 'Line-up to be confirmed', role: 'Board of Directors', portrait: 'Portraits · board',
+    name: 'Line-up to be confirmed', role: 'Board of Directors', portrait: 'Board portraits',
     experience: 'The board line-up, each position and the professional record behind it are to be supplied by IAQ.',
   },
 ]
 
 const EXEC = [
   {
-    name: 'Line-up to be confirmed', role: 'C-suite', portrait: 'Portraits · C-suite',
+    name: 'Line-up to be confirmed', role: 'C-suite', portrait: 'C-suite portraits',
     experience: 'Names, positions, portraits and professional records to be supplied by IAQ.',
   },
   {
-    name: 'Line-up to be confirmed', role: 'Managerial level', portrait: 'Portraits · management',
+    name: 'Line-up to be confirmed', role: 'Managerial level', portrait: 'Management portraits',
     experience: 'Names, positions, portraits and professional records to be supplied by IAQ.',
   },
 ]
 
 export default function Leadership() {
-  useEffect(() => { document.title = 'IAQ Group · Board & Leadership · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · Board & Leadership' }, [])
 
   return (
     <>
@@ -105,10 +105,10 @@ export default function Leadership() {
 
           <div className="pg-slot">
             <div className="pg-slot-in">
-              <span className="pg-slot-tag">Board line-up · supplied by IAQ</span>
+              <span className="pg-slot-tag">Board line-up, supplied by IAQ</span>
               <b>Every entry above other than the founder is a position ready for IAQ to name</b>
               <p>
-                Filling this page takes four things per individual and nothing less. Until they arrive,
+                Filling this page takes 4 things per individual and nothing less. Until they arrive,
                 no name is guessed and no biography is written.
               </p>
               <ul>
@@ -199,7 +199,7 @@ export default function Leadership() {
           </div>
         </div>
       </section>
-      <ClosingBand note="Board and Leadership concept · Brand Method" />
+      <ClosingBand note="Board and Leadership concept, Brand Method" />
     </>
   )
 }

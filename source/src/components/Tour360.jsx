@@ -129,7 +129,7 @@ export default function Tour360({ src, poster, label }) {
     return (
       <div className="pg-slot">
         <div className="pg-slot-in">
-          <span className="pg-slot-tag">360&deg; walkthrough &middot; capture supplied by IAQ</span>
+          <span className="pg-slot-tag">360&deg; walkthrough, capture supplied by IAQ</span>
           <p>
             IAQ already holds 360 captures of delivered facilities. Dropping one equirectangular
             image against this project turns this block into a walkthrough, with no other change.
@@ -153,7 +153,7 @@ export default function Tour360({ src, poster, label }) {
       </div>
       {open && !coarse && !err && (
         <div className="t360-bar">
-          <span>Drag to look around &middot; arrow keys also work</span>
+          <span>Drag to look around, arrow keys also work</span>
           <button type="button" className="t360-close" onClick={() => setOpen(false)}>Close</button>
         </div>
       )}

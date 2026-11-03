@@ -909,6 +909,7 @@ html.nav-under .hero{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--na
 .is-launch .pd-rec,
 .is-launch .off-slot,
 .is-launch .off-ph-tag,
+.is-launch .owed-note,   /* 3 Nov (CTO's copy): the "follows at launch" notes */
 /* 17 Sep: the slot wrappers too, or a hidden pair of slots leaves its 24px margin behind */
 .is-launch .gslots{display:none!important}
 
@@ -1141,7 +1142,7 @@ html.nav-under .hero{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--na
 
 /* 22 Sep (Bazil: "background reduce darkness"): the closing band's ground lifts from near-black to IAQ's deep navy,
    on every page (home.css sets #0A101F with !important, so this carries the extra specificity) */
-html body .close3d { background: #17213A !important; }
+html body .close3d { background: #121B30 !important; }   /* 3 Nov (CTO's copy): a shade deeper, was #17213A */
 
 /* 26 Sep (IAQ graphic rules: "rigid, strong, not heavy", nothing 700 or heavier): the browser draws b and strong "bolder",
    which is 900 inside 600 type; they hold at 600 */
@@ -1149,7 +1150,7 @@ b,strong{font-weight:600}
 /* every layer of the band resolved to #0A101F on purpose (home.css "one navy everywhere"), so the whole set moves together.
    26 Sep (IAQ graphic rules: "block per block", gradients only in rare cases): the three layers are flat navy, and these
    !important rules carry it over the older per-page layers (home.css, about.css, careers.css, projects.css) */
-html body .close3d .close-viz { background: #17213A !important; }
+html body .close3d .close-viz { background: #121B30 !important; }   /* 3 Nov (CTO's copy), with the band */
 html body .close3d .close-scrim { background: none !important; }
 html body .close3d footer { background: transparent !important; }   /* the footer overlaps the band's sitemap; the band is already flat navy, so no fill is needed and nothing is covered */
 
@@ -1434,6 +1435,32 @@ p, li, dd, figcaption, .lede, .pg-body, .pg-lede{ text-wrap:balance; }
 /* 23 Oct, Polishing sweep of the remaining pages (rules 22 and 23, the rules audit tools/rules-audit-1023.mjs): the card
    titles and short texts the audit found breaking into a stub line are balanced: project and news card titles, the
    project page's prompt, office addresses, the energy process cards, the History entries. */
-.nf-card-t, .pg-card h3, .pj-card h3, .prj-card h3, .pd-prompt, .off-addr, .hx-body-t, .mk-gx-c h3, .mk-gx-t{ text-wrap:balance; }
+.nf-card-t, .pg-card h3, .pj-card h3, .prj-card h3, .pd-prompt, .off-addr, .hx-body-t, .mk-gx-c h3, .mk-gx-t, .cr-why h2, .pc h3{ text-wrap:balance; }   /* 3 Nov (CTO's copy): + the Careers why title, the project cards */
 
 .sitefoot .f-base .f-credit,.f-base .f-credit{flex-basis:100%;order:9;font-size:10.5px;letter-spacing:.02em;opacity:.55;text-transform:none}   /* 27 Oct: the 3D credits, a quiet line under the base row */
+
+/* 3 Nov (CTO's copy): text links lose their arrows (the ">i" glyphs and the ":after" arrows), sit 30px under their text
+   and take the bright red */
+a.ab-awards-a,a.pg-more,a.sv-go,a.lp-more,a.h2-ind-go,a.nb-wire-go,a.pg-more-go,a.pd-link,a.dcs3-see,a.sm-uc-go,a.mk-cd-go,a.mk-gx-go,a.h2-arr,a.cpr-arr{margin-top:30px}
+.ab-awards-a>i,.pg-more>i,.sv-go>i,.lp-more>i,.faq-more>i,.mk-dl-all>i,.h2-ind-go>i,.nb-wire-go>i,.pg-more-go>i,.sm-uc-go>i,.mk-cd-go>i,.mk-gx-go>i,.h2-arr>i,.cpr-arr>i,a.go>i,.fw-open>i,.tl-hint>i{display:none}
+.pg-more:after,.sv-go:after,.pg-card .pg-go:after,.pd-link:after,.dcs3-see:after,.ps-links a:after{content:none}
+a.pg-more,a.sv-go,a.lp-more,a.h2-ind-go,a.nb-wire-go,a.pg-more-go,a.dcs3-see,a.sm-uc-go,a.mk-cd-go,a.mk-gx-go,a.faq-more{color:var(--blue-bright)}
+/* 3 Nov (CTO's copy): Markets and Services each carry their own colour in the bar, on hover and when current */
+.nav-links a[href="/markets"]:hover,.nav-links a[href="/markets"].on,.nav-links a[href="/markets"][aria-current]{color:#6e56e6}
+.nav.nav-clear .nav-links a[href="/markets"]:hover,.nav.nav-clear .nav-links a[href="/markets"].on,.nav.nav-clear .nav-links a[href="/markets"][aria-current]{color:#9d8cf5}
+.nav-links a[href="/services"]:hover,.nav-links a[href="/services"].here,.nav-links a[href="/services"].here:hover,.nav-has[data-hub=services-hub]:focus-within>a{color:#0b8fd8}
+.nav.nav-clear .nav-links a[href="/services"]:hover,.nav.nav-clear .nav-links a[href="/services"].here,.nav.nav-clear .nav-has[data-hub=services-hub]:focus-within>a{color:#5cbcf5}
+/* 3 Nov (CTO's copy): Projects (.rb) and News (.nb) open under the clear bar; a light page top takes its own colour
+   into the bar (Nav.jsx sets --nav-top) */
+html.nav-under .rb{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--navh,78px)}
+.nav.nav-clear-light{background:var(--nav-top,#fff);border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+html.nav-under .nb{margin-top:calc(-1 * var(--navh,78px));padding-top:var(--navh,78px)}
+/* 3 Nov (CTO's copy): the logo holds still; the wide menus lose their edge for a soft shadow */
+.logo3d-in,.logo3d:hover .logo3d-in{animation:none;transform:none}
+.nav-mega.sets.wide{border:0;outline:0;box-shadow:0 34px 70px -34px #0c12206b}
+.nav-mega.sets.wide:after{border:0;box-shadow:none}
+/* 3 Nov (CTO's copy): one small radius, 3px, on every button, field, chip, card, tile and panel */
+:root{--r:3px}
+:where(button,.btn,a.btn,[class*=-btn],[class*=btn-],input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea,[class*=chip],[class*=badge],[class*=pill],.tag,[class*=tag-],[class$=-tag],[class*=card],[class*=tile],[class*=panel],.gstat,.pg-stats>*,.fpc,.pc,.console,.sortseg,.stat,.mk-ov-fig,.mk-ov-mark,.un-jrny-node,.un-pick,.un-model,.un-proof,.un-scope,.un-what,.un-bento-c,.un-cap2-c,.un-whyv-c,.un-join,.sv-vis,.cyc-detail,:not(svg)[class*=-ic]){border-radius:var(--r)}
+.nm-col .nm-seg-sub{padding:0 0 10px!important;margin-top:-6px!important}
+.close3d footer.sitefoot{margin-top:0!important;padding-top:24px!important}

@@ -39,7 +39,7 @@ const REGIONS = [
 ]
 
 export default function GlobalPresence() {
-  useEffect(() => { document.title = 'IAQ Group · Global Presence · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · Global Presence' }, [])
 
   const grouped = useMemo(() => REGIONS.map(([key, name]) => ({
     key,
@@ -54,7 +54,7 @@ export default function GlobalPresence() {
       <PageHead crumbs={[{ label: 'About', to: '/about' }]}
         eyebrow="Where we are"
         title={<>Rooted in Malaysia, <br /><em>building across borders</em></>}
-        lede="Founded in Malaysia in 1995. Today a total facility solutions provider with offices in seven countries, measured in the programmes those offices run and the projects handed over."
+        lede="Founded in Malaysia in 1995. Today a total facility solutions provider with offices in 7 countries, measured in the programmes those offices run and the projects handed over."
       />
 
       {/* ── The map ─────────────────────────────────────────────────────── */}
@@ -63,7 +63,7 @@ export default function GlobalPresence() {
         <div className="pg-in">
           <div className="cp-globe-copy cp-map-copy">
             <span className="eyebrow">The footprint</span>
-            <h2>Seven countries, <br /><em>pinned where they are</em></h2>
+            <h2>7 countries, <br /><em>pinned where they are</em></h2>
             <p>
               Each flag marks an IAQ office, and each office supports clients locally while drawing on the group&rsquo;s full
               regional engineering capability. The grey marks are countries IAQ has built in.
@@ -83,8 +83,8 @@ export default function GlobalPresence() {
 
           <div className="pg-slot">
             <div className="pg-slot-in">
-              <span className="pg-slot-tag">Office addresses · supplied by IAQ</span>
-              <b>Seven countries confirmed · street addresses outstanding</b>
+              <span className="pg-slot-tag">Office addresses, supplied by IAQ</span>
+              <b>7 countries confirmed, street addresses outstanding</b>
               <p>
                 The country list is settled: Malaysia, Singapore, Germany, India, Sweden, USA, and Ireland from 10 September 2026.
                 Still needed from IAQ before launch:
@@ -112,7 +112,7 @@ export default function GlobalPresence() {
           {grouped.map(g => (
             <div key={g.key} style={{ marginTop: '28px' }}>
               <span className="cp-pk">
-                {g.name} · {g.items.length} {g.items.length === 1 ? 'project' : 'projects'}
+                {g.name}, {g.items.length} {g.items.length === 1 ? 'project' : 'projects'}
               </span>
               <div className="cp-rows">
                 {g.items.map(p => (
@@ -126,8 +126,8 @@ export default function GlobalPresence() {
             </div>
           ))}
 
-          <p className="pg-note">
-            18 projects published at concept stage · IAQ confirms the definitive launch list before go live · profile-only references stay off the page while their client names remain confidential
+          <p className="pg-note owed-note">{/* 3 Nov (CTO's copy): an owed note, off the launch build */}
+            18 projects published at concept stage. IAQ confirms the definitive launch list before go live. Profile-only references stay off the page while their client names remain confidential
           </p>
         </div>
       </section>
@@ -146,7 +146,7 @@ export default function GlobalPresence() {
           </div>
         </div>
       </section>
-      <ClosingBand note="Global Presence concept · Brand Method" />
+      <ClosingBand note="Global Presence concept, Brand Method" />
     </>
   )
 }

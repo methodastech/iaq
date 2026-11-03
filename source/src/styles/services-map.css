@@ -1519,3 +1519,23 @@ html.sm-scrolled .sm-cue{opacity:0;pointer-events:none}
   .sm-ub3 .sm-ub-card+.sm-ub-card{border-left:0;border-top:0}
   .sm-ub3 .sm-uc-go{margin-left:16px;margin-right:16px}
 }
+/* 3 Nov (CTO's copy): "Scroll to explore" in the tools row is a plain arrow, no disc behind it, red on hover; each unit
+   card's "Learn more" link takes its unit's colour */
+.sm-map-tools .sm-cue.sm-cue-row{gap:8px;height:38px;padding:0 6px 0 2px}
+.sm-map-tools .sm-cue.sm-cue-row i{width:auto;height:auto;background:none;display:grid;place-items:center}
+.sm-map-tools .sm-cue.sm-cue-row i svg{width:15px;height:15px}
+.sm-map-tools .sm-cue.sm-cue-row:hover i{background:none;color:#EC2027}
+.sm-ub-head a.sm-uc-go{color:var(--ub)}
+.sm-ub-head a.sm-uc-go:hover{color:var(--ubd)}
+/* 28 Oct (responsive check, High: "business unit cards squeezed on tablet"): from 720 to 1023 px the three cards were three
+   across with the mark beside the name, so the name and the text ran a word or two a line. On a tablet each unit is one row:
+   the picture on the left, the name, the description and the link beside it. */
+@media(min-width:720px) and (max-width:1023px){
+  .sm-ub3{grid-template-columns:minmax(0,1fr);gap:14px}
+  .sm-ub3 .sm-ub-card{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:auto auto 1fr;column-gap:28px;padding:16px 24px 16px 16px}
+  .sm-ub3 .sm-ub-card .sm-uc-pic{grid-column:1;grid-row:1 / span 3;align-self:stretch;aspect-ratio:auto;min-height:220px}
+  .sm-ub3 .sm-ub-card h3,.sm-ub3 .sm-ub-card .sm-uc-desc,.sm-ub3 .sm-ub-card .sm-uc-go{grid-column:2;margin-left:0;margin-right:0}
+  .sm-ub3 .sm-ub-card h3{margin-top:10px}
+  .sm-ub3 .sm-ub-card .sm-uc-go{align-self:end;padding-top:16px}
+  .sm-ub-head h3 .sm-ub-nm small{min-height:0}
+}

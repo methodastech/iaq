@@ -83,7 +83,7 @@ function EpcArt({ active }) {
           </g>
         )
       })}
-      <T x={ox} y="428" a="start" s={12.5} w={500} c={SOFT}>Six stages, in the order they run on site. One party answers for all of them.</T>
+      <T x={ox} y="428" a="start" s={12.5} w={500} c={SOFT}>6 stages, in the order they run on site. One party answers for all of them.</T>
     </svg>
   )
 }
@@ -105,10 +105,10 @@ function HookupArt({ active, bare }) {
   const DROPS = [0, 2, 3], TERMS = [2, 3], TOOL = [1, 2, 3], LIVE = [3]
   const firstDrop = `M${tx + 25} 64 V${ty}`, liveLine = `M${tx + tw} ${ty + th / 2} H540`
   return (
-    <svg className="un-art" viewBox="0 0 640 440" role="img" aria-label="Six services drop from the facility onto a process tool in a live cleanroom, then the tool goes live" data-active={active}>
+    <svg className="un-art" viewBox="0 0 640 440" role="img" aria-label="6 services drop from the facility onto a process tool in a live cleanroom, then the tool goes live" data-active={active}>
       <g className="un-node" style={{ '--i': 0 }}>
         <rect x="40" y="40" width="560" height="24" fill={INK} />
-        <T x="52" y="57" a="start" s={11.5} w={600} c="#fff" op=".85">FACILITY SERVICES · above the bay</T>
+        <T x="52" y="57" a="start" s={11.5} w={600} c="#fff" op=".85">FACILITY SERVICES, above the bay</T>
       </g>
       {/* the footprint: only drawn while Survey is the stage */}
       <rect className={'un-ghost' + (active === 0 ? ' is-on' : '')} x={tx + 2} y={ty + 2} width={tw - 4} height={th - 4} fill="none" stroke={RED} strokeWidth="3" strokeDasharray="10 8" />
@@ -211,7 +211,7 @@ function EnergyArt({ active }) {
    Define lights the systems; Design the runs; Install both; Test the verify chip on the runs;
    Commission the point of use with the dot running to it. */
 function PcuArt({ active }) {
-  const sys = ['Specialty gases', 'Chemicals', 'Ultrapure water', 'CDA · PCW · PV', 'Process exhaust']
+  const sys = ['Specialty gases', 'Chemicals', 'Ultrapure water', 'CDA, PCW and PV', 'Process exhaust']
   const tx = 470, ty = 150, tw = 130, th = 130, cy = ty + th / 2
   const SYS = [0, 2], RUNS = [1, 2, 3, 4], VERIFY = [3], POU = [4]
   const firstRun = `M220 62 C 300 62, 330 ${cy}, ${tx} ${cy}`

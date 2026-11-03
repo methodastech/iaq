@@ -49,15 +49,15 @@ export default function CapEnergy() {
       /* 26 Oct (IAQ review, NR, page 009): the title is the unit's full name, "Energy Facility Management"; it breaks before the blue word */
       title={<>Energy Facility <em>Management</em></>}
       /* IAQ funds implementation, upgrading, operation and maintenance Q-EM-C; payment on actual savings, or a fixed tariff, Q-EM-C. 18 words. */
-      lede="Optimising Performance. Advancing Sustainability."
+      lede="Optimising Performance, Advancing Sustainability"
       /* ESCO under Suruhanjaya Tenaga LIVE-EFM; zero upfront investment Q-EM-A */
-      chips={['Registered ESCO · Suruhanjaya Tenaga', 'Zero upfront investment']}
+      chips={['Registered ESCO with Suruhanjaya Tenaga', 'Zero upfront investment']}
       /* 17 Sep: IAQ's own drone photograph of a delivered plant at dusk (SharePoint, Project Photos), in place of
          the Higgsfield still and clip, so the representation tag goes. The band lower down is another frame of the same flight. */
       /* 19 Oct (client feedback, Hero Banner: "Premium visual: District Cooling / Energy Infrastructure / Central utility
          Facility"): the district cooling plant room, the picture the District Cooling market page opens on, in place of the
          plant from the air */
-      image={{ src: '/assets/banners/mkt-district-cooling.jpg', alt: 'A district cooling plant room: chillers and chilled water headers', hero: true }}
+      image={{ src: '/assets/banners/mkt-district-cooling.jpg', video: '/assets/videos/banners/mkt-district-cooling.mp4', /* 3 Nov (CTO's copy): the banner loops */ alt: 'A district cooling plant room: chillers and chilled water headers', hero: true }}
       /* the band below is IAQ's own photograph, so only the hero is tagged */
       bandRep={false}
       /* 15 Sep (UnitPage): the hero facts and the two funding models as cards. Zero upfront Q-EM-A; durations FLOW-EPC

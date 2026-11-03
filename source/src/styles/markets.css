@@ -523,7 +523,7 @@ a.mk-fact:hover{background:rgba(16,26,48,.86)}
 .mk-ov-fig::after{content:"";position:absolute;z-index:2;left:0;top:0;width:96px;height:3px;background:var(--mk)}
 .mk-ov-mark{position:absolute;z-index:2;left:18px;bottom:18px;display:grid;place-items:center;width:52px;height:52px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff}
 .mk-ov-mark svg{width:26px;height:26px;stroke-width:1.3}
-.mk-supp{margin-top:clamp(32px,5vh,52px);padding:clamp(24px,3vw,40px) clamp(24px,3vw,44px);background:linear-gradient(120deg,rgba(110,86,230,.10),rgba(110,86,230,.03) 60%,rgba(236,32,39,.03));border-left:3px solid var(--mk)}
+.mk-supp{margin-top:clamp(32px,5vh,52px);padding:clamp(24px,3vw,40px) clamp(24px,3vw,44px);background:linear-gradient(120deg,rgba(110,86,230,.10),rgba(110,86,230,.03) 60%,rgba(236,32,39,.03))}   /* 3 Nov (CTO's copy): no left rule */
 .mk-supp .mk-demands-h{margin-top:0}
 .mk-supp .mk-why-body{margin-bottom:0}
 @media(max-width:900px){.mk-ov.has-fig{grid-template-columns:1fr}.mk-ov-fig{aspect-ratio:16/9}}
@@ -635,3 +635,49 @@ a.mk-fact:hover{background:rgba(16,26,48,.86)}
 @media(max-width:560px){.mk-dl-row{grid-template-columns:88px minmax(0,1fr) auto;gap:12px;padding-right:14px}.mk-dl-iso{grid-column:2;grid-row:2;margin-top:-6px}.mk-dl-row i{grid-row:1 / span 2;grid-column:3}}
 /* 27 Oct (UI/UX sweep): row names and their lines balance, so no word sits alone on a last line (rule 21) */
 .mk-dl-rt b,.mk-dl-rt small{text-wrap:balance}
+
+/* 3 Nov (CTO's copy, Markets hub): the seven tiles four across (two on tablet, one on a phone), all equal; the market line mark
+   (HeroLineMarks) small in the top left, its red part in the market violet and breathing; no red rule on hover: instead an
+   "Explore market" bar in the market colour slides up from the foot and lifts the name and line with it. The proof cards
+   are white. The delivered list's class reads in the market colour and its row rule is off. */
+.mk-gx{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.mk-gx>.mk-gx-c,.mk-gx>.mk-gx-c.is-lead,.mk-gx>.mk-gx-c:nth-child(-n+3){grid-column:auto;min-height:clamp(300px,23vw,360px)}
+.mk-gx>.mk-gx-c.is-lead .mk-gx-foot b{font-size:clamp(20px,1.7vw,26px)}
+.mk-gx .mk-gx-top{justify-content:flex-start}
+.mk-gx .mk-gx-ic{width:34px;height:34px;border:0;background:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.mk-gx .mk-gx-ic svg,.mk-gx .mk-gx-ic .mk-gx-mk{width:34px;height:34px}
+.mk-gx-a:hover .mk-gx-ic,.mk-gx-a:focus-visible .mk-gx-ic{background:none;border:0}
+.mk-gx .mk-gx-go{text-transform:none;letter-spacing:0;font:600 14.5px/1 "Switzer",sans-serif;color:#ff4d55;opacity:1;gap:0}
+.mk-gx .mk-gx-go i{display:none}
+.mk-gx-a:hover .mk-gx-go,.mk-gx-a:focus-visible .mk-gx-go{color:#ff6a70}
+@media(max-width:1100px){.mk-gx{grid-template-columns:repeat(2,minmax(0,1fr))}.mk-gx>.mk-gx-c,.mk-gx>.mk-gx-c.is-lead{grid-column:auto}}
+@media(max-width:640px){.mk-gx{grid-template-columns:minmax(0,1fr)}}
+.pg-proof .pg-pc{background:#fff;box-shadow:0 0 0 1px rgba(12,18,32,.09),0 16px 32px -24px rgba(12,18,32,.28)}
+.mk-gx .mk-gx-go{color:#fff}
+.mk-gx-a:hover .mk-gx-go,.mk-gx-a:focus-visible .mk-gx-go{color:#ff4d55}
+.mk-gx-a::after{display:none}
+.mk-gx .mk-gx-a .mk-gx-go{position:absolute;left:0;right:0;bottom:0;z-index:3;margin:0;padding:13px 18px;background:var(--mk,#EC2027);color:#fff!important;opacity:1!important;font:600 14px/1 "Switzer",sans-serif;letter-spacing:.02em;text-transform:none;transform:translateY(100%);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.mk-gx .mk-gx-a .mk-gx-go::after{content:"\2192";margin-left:8px}
+.mk-gx .mk-gx-a:hover .mk-gx-go,.mk-gx .mk-gx-a:focus-visible .mk-gx-go{transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.mk-gx .mk-gx-go{transition:none}}
+.mk-dl-iso{color:var(--mk,#B5121B)}
+.mk-dl-row::after{display:none}
+.mk-gx .mk-gx-a .mk-gx-go{height:46px;padding:0 18px;display:flex;align-items:center}
+.mk-gx .mk-gx-foot>:not(.mk-gx-go){transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.mk-gx .mk-gx-a:hover .mk-gx-foot>:not(.mk-gx-go),.mk-gx .mk-gx-a:focus-visible .mk-gx-foot>:not(.mk-gx-go){transform:translateY(-46px)}
+@media(prefers-reduced-motion:reduce){.mk-gx .mk-gx-foot>:not(.mk-gx-go){transition:none}}
+.mk-gx .mk-gx-ic{width:46px;height:46px}
+.mk-gx .mk-gx-ic svg,.mk-gx .mk-gx-ic .mk-gx-mk{width:46px;height:46px;overflow:visible;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5));transition:filter .4s ease}
+.mk-gx .mk-gx-ic .mk-mv path:not([stroke=none]){stroke:var(--mk-l,#B4A8F7)!important;stroke-width:1.6}
+.mk-gx .mk-gx-ic .mk-mv path[stroke=none]{fill:var(--mk-l,#B4A8F7)!important}
+.mk-gx .mk-gx-ic .mk-mv{animation:mkSigBreath 3.4s ease-in-out infinite alternate}
+@keyframes mkSigBreath{0%{opacity:.62}to{opacity:1}}
+.mk-gx .mk-gx-a:hover .mk-gx-ic svg,.mk-gx .mk-gx-a:focus-visible .mk-gx-ic svg{filter:drop-shadow(0 1px 2px rgba(0,0,0,.5)) drop-shadow(0 0 7px rgba(157,140,245,.75))}
+@media(prefers-reduced-motion:reduce){.mk-gx .mk-gx-ic .mk-mv{animation:none}}
+
+/* 28 Oct (responsive check, High: "words break in the middle on the market pages"): on a phone the two-across capability
+   tiles were too narrow for their names ("Fabricatio / n"). One tile per row, and words wrap whole. */
+@media(max-width:640px){
+  .mk-caps .dd,.pg-sec .mk-caps .dd{grid-template-columns:minmax(0,1fr)!important}
+}
+.mk-caps .dd-lb,.pg-sec .mk-caps .dd-lb{word-break:normal!important;overflow-wrap:normal!important;hyphens:manual!important}

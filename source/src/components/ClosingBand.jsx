@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import FooterNav, { FooterBrand, FooterSocial } from './FooterNav.jsx'
 import Footer from './Footer.jsx'
 import FooterB from './FooterB.jsx'
+import CloseAmbient from './CloseAmbient.jsx'
 import '../styles/closing-band.css'
 
 /* ============================================================================
@@ -32,6 +33,10 @@ import '../styles/closing-band.css'
    ============================================================================ */
 
 const EMAIL = 'business@iaqtechnology.com.my'
+/* 3 Nov (CTO's copy): the particle field (CloseAmbient, three.js, loaded only near the band) is back on the band. It undoes
+   the 26 Oct removal (IAQ review, NR: "To remove all the dust particle !"); false takes it off again */
+/* 3 Nov: the CTO's copy has the particle field back; IAQ's 26 Oct review ("To remove all the dust particle !") stands, so it stays off */
+const SHOW_PARTICLES = false
 
 /* 22 Sep: footer option B for comparison (components/FooterB.jsx). ?footer=b turns it on for the session, ?footer=a off. */
 function footerVariant() {
@@ -73,13 +78,13 @@ export default function ClosingBand({ note, ask }) {
               {/* 22 Sep (Bazil: "no need copy button"): the email is a plain row */}
               <a className="crow" href={'mailto:' + EMAIL}><span className="ref">Email</span><b>{EMAIL}</b><i aria-hidden="true">&#8594;</i></a>
               <a className="crow" href="tel:+60351248319"><span className="ref">Phone</span><b>+603 5124 8319</b><i aria-hidden="true">&#8594;</i></a>
-              <Link className="crow" to="/global-presence"><span className="ref">HQ &middot; Shah Alam</span><b className="adr">No.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor</b><i aria-hidden="true">&#8594;</i></Link>
+              <Link className="crow" to="/global-presence"><span className="ref">HQ, Shah Alam</span><b className="adr">No.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor</b><i aria-hidden="true">&#8594;</i></Link>
             </div>}
           </div>
           <div className="cb-right">
             <div className="cb-ask">
               <h2 className="close-h cb-h">{(ask && ask.title) || <>Tell us what you are <em>building</em></>}</h2>
-              <p className="lede cb-lede">{(ask && ask.lede) || 'Feasibility to handover, one accountable team.'   /* 19 Oct (IAQ: "Do not promise response times unless IAQ has approved an SLA") */}</p>
+              <p className="lede cb-lede">{(ask && ask.lede) || 'Feasibility to handover, 1 accountable team.'   /* 19 Oct (IAQ: "Do not promise response times unless IAQ has approved an SLA") */}</p>
 
               <div className="cb-go">
                 {/* the answer travels as router state and, for a hard reload, in sessionStorage: the
@@ -94,14 +99,14 @@ export default function ClosingBand({ note, ask }) {
               {/* 22 Sep (Bazil: "no need copy button"): the email is a plain row */}
               <a className="crow" href={'mailto:' + EMAIL}><span className="ref">Email</span><b>{EMAIL}</b><i aria-hidden="true">&#8594;</i></a>
               <a className="crow" href="tel:+60351248319"><span className="ref">Phone</span><b>+603 5124 8319</b><i aria-hidden="true">&#8594;</i></a>
-              <Link className="crow" to="/global-presence"><span className="ref">HQ &middot; Shah Alam</span><b className="adr">No.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor</b><i aria-hidden="true">&#8594;</i></Link>
+              <Link className="crow" to="/global-presence"><span className="ref">HQ, Shah Alam</span><b className="adr">No.12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor</b><i aria-hidden="true">&#8594;</i></Link>
             </div>}
           </div>
         </div>
 
         {/* 26 Oct (IAQ review, NR, page 001: "To remove all the dust particle !"): the particle field (CloseAmbient's canvas) is off the band;
             its ground stays, the same navy gradient and scrim, so only the particles go. The component stays on disk */}
-        <div className="close-viz" aria-hidden="true"><div className="close-scrim"></div></div>
+        {SHOW_PARTICLES ? <CloseAmbient /> : <div className="close-viz" aria-hidden="true"><div className="close-scrim"></div></div>}
       </div>
       {!B && <Footer note={note} nav={false} />}
     </section>

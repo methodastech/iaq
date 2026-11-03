@@ -243,3 +243,17 @@
 /* 23 Oct (Bazil, of the six figures: "do we really need the lines?"): no. The hairline over each figure separated
    nothing the spacing does not already separate (rule 42, no decoration without a function; his standing no-lines taste). */
 @media (min-width: 981px){ .gr .gstat{ border-top:0; padding-top:0; } }
+
+/* 3 Nov (CTO's copy): a lighter ground, and the six figures 3 across with more air: the mark beside the number on one
+   line, the label under both across the whole column. Our marks stay (RecordFlat.jsx, .gr-mk); the CTO's layout is
+   written for his iaq-fg drawings, so it is set here on .gr-mk at his sizes (52px mark, 44px on a phone). */
+.glance.gr{background:linear-gradient(180deg,#E9EDF2,#F0F3F7 46%,#F7F9FC)}
+.gr .gstat .gr-mk{display:block;overflow:visible}
+@media(min-width:861px){
+  .gr .gstats{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(28px,3vw,44px);row-gap:clamp(44px,5vh,60px);margin-top:clamp(40px,5vh,56px);align-items:start}
+  .gr .gstat{display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:14px;row-gap:0;align-items:center}
+  .gr .gstat .gr-mk{grid-column:1;grid-row:1;width:52px;height:52px;align-self:center;margin:0}
+  .gr .gstat .num{grid-column:2;grid-row:1;align-self:center;font-size:clamp(34px,2.6vw,44px);line-height:1;letter-spacing:-.035em}
+  .gr .gstat .lab{grid-column:1 / -1;grid-row:2;margin-top:10px;font-size:14.5px;line-height:1.35;max-width:20ch;text-wrap:balance;color:#3E485C}
+}
+@media(max-width:860px){ .gr .gstat .gr-mk{width:44px;height:44px} }

@@ -275,7 +275,7 @@ function EsgG() {
   </>)
 }
 
-const SCENES = { 'V·01': Safety, 'V·02': Quality, 'V·03': Integrity, 'V·04': Engineering, 'V·05': Efficiency, 'V·06': Excellence }
+const SCENES = { V01: Safety, V02: Quality, V03: Integrity, V04: Engineering, V05: Efficiency, V06: Excellence }
 /* 21 Oct: the unit pages' reasons (UnitPage `why[].scene`) */
 Object.assign(SCENES, { puzzle: Puzzle, wafer: Wafer, plan: Plan, bridge: Bridge })
 Object.assign(SCENES, { esgE: EsgE, esgS: EsgS, esgG: EsgG })   /* 21 Oct: Corporate Commitment */

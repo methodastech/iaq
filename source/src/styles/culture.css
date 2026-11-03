@@ -473,7 +473,7 @@
 .cu-sub { margin-bottom: 14px; }
 .cu-sub-gap { margin-top: clamp(40px, 6vh, 64px); }
 .cu-meta { display: flex; flex-wrap: wrap; gap: 4px 0; font: 500 13px/1.4 "Switzer", sans-serif; color: var(--faint); }
-.cu-meta > span + span::before { content: "\00b7"; margin: 0 8px; }
+.cu-meta > span + span::before { content: ","; margin: 0 6px 0 0; }   /* 3 Nov (CTO's copy): a comma, not a middle dot */
 .cu-k { font: 600 13px/1.2 "Switzer", sans-serif; color: var(--blue-bright); }
 /* cards: training, care, voices (one shape, IAQ's own photograph on top) */
 .cu-cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: clamp(40px, 6vh, 64px); }
@@ -659,3 +659,5 @@
 }
 /* 27 Oct (UI/UX sweep): card titles balance, so no word sits alone on a last line (rule 21) */
 .cu-ct{text-wrap:balance}
+/* 3 Nov (CTO's copy): on a phone the scene box is the anchor for the value's number again */
+@media (max-width: 640px) { .cu-vc-top { position: relative; } }

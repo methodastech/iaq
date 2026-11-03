@@ -44,24 +44,24 @@ const OFFICES = [
   /* 17 Sep: IAQ's own photograph of the headquarters (SharePoint, HQ Offices, TianChad 4595) */
   { id: 'my-hq', img: '/assets/iaq/hq-front-4595.webp', cap: 'Headquarters, Shah Alam', cc: 'MY', country: 'Malaysia', city: 'Shah Alam', hq: true, entity: 'IAQ Technology International Sdn. Bhd.',
     addr: 'No. 12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor, Malaysia',
-    tel: '+603 5124 8319', hours: 'Mon to Fri · 9:00 to 18:00 · GMT +8' },
-  { id: 'my-penang', img: '/assets/culture/offices/my-penang.webp', cap: 'IAQ Penang office', cc: 'MY', country: 'Malaysia', city: 'Penang', entity: 'IAQ Technology International Sdn. Bhd. · northern branch, opened July 2025',
-    addr: '9, Lorong Valdor Jaya 2, Kawasan Perindustrian Valdor, 14200 Jawi, Pulau Pinang, Malaysia', hours: 'Mon to Fri · 9:00 to 18:00 · GMT +8' },
+    tel: '+603 5124 8319', hours: 'Mon to Fri, 9:00 to 18:00, GMT +8' },
+  { id: 'my-penang', img: '/assets/culture/offices/my-penang.webp', cap: 'IAQ Penang office', cc: 'MY', country: 'Malaysia', city: 'Penang', entity: 'Northern branch of IAQ Technology International Sdn. Bhd., opened July 2025',
+    addr: '9, Lorong Valdor Jaya 2, Kawasan Perindustrian Valdor, 14200 Jawi, Pulau Pinang, Malaysia', hours: 'Mon to Fri, 9:00 to 18:00, GMT +8' },
   { id: 'sg', img: '/assets/culture/sg-office-boardroom-2026.webp', cap: 'IAQ Engineering (SG) office, August 2026', cc: 'SG', country: 'Singapore', city: 'Singapore', entity: 'IAQ Engineering (SG) Pte. Ltd.',
     addr: '1 Tai Seng Avenue #04-03, Tai Seng Exchange, Singapore 536464',
     /* 25 Sep: the second Singapore office keeps its address; the entity name came off (client, DV3 A2.1: subsidiary names are not disclosed) */
     addr2: '4338 Alexandra Technopark, Tower B, #06-12, Singapore 119968', ent2: 'IAQ Utility Solutions (SG) Pte. Ltd.',
-    tel: '+65 6277 5240', hours: 'Mon to Fri · 9:00 to 18:00 · GMT +8' },
+    tel: '+65 6277 5240', hours: 'Mon to Fri, 9:00 to 18:00, GMT +8' },
   { id: 'de', img: '/assets/culture/offices/de.webp', rep: true, cap: REP_CAP, cc: 'DE', country: 'Germany', city: 'Dresden', entity: 'IAQ Engineering (DE) GmbH',
-    addr: '8. OG, Budapester Straße 5, 01069 Dresden, Germany', tel: '+49 351 4387 9529', hours: 'Mon to Fri · 9:00 to 17:00 · CET' },
+    addr: '8. OG, Budapester Straße 5, 01069 Dresden, Germany', tel: '+49 351 4387 9529', hours: 'Mon to Fri, 9:00 to 17:00, CET' },
   { id: 'in', img: '/assets/culture/india-office-reception-2026.webp', cap: 'Reception, India office, September 2026', cc: 'IN', country: 'India', city: 'Ahmedabad', entity: 'IAQ Solutions India Private Limited',
-    addr: '906, Satymev Eminence, Science City Road, Sola, Ahmedabad 380060, India', hours: 'Mon to Fri · 9:30 to 18:00 · IST' },
-  { id: 'se', img: '/assets/culture/offices/se.webp', rep: true, cap: REP_CAP, cc: 'SE', country: 'Sweden', city: 'Skellefteå', entity: 'IAQ Group · Nordic office',
-    addr: 'Trädgårdsgatan 13-15, 931 31 Skellefteå, Sweden', hours: 'Mon to Fri · 9:00 to 17:00 · CET' },
+    addr: '906, Satymev Eminence, Science City Road, Sola, Ahmedabad 380060, India', hours: 'Mon to Fri, 9:30 to 18:00, IST' },
+  { id: 'se', img: '/assets/culture/offices/se.webp', rep: true, cap: REP_CAP, cc: 'SE', country: 'Sweden', city: 'Skellefteå', entity: 'IAQ Group, Nordic office',
+    addr: 'Trädgårdsgatan 13-15, 931 31 Skellefteå, Sweden', hours: 'Mon to Fri, 9:00 to 17:00, CET' },
   /* 30 Sep ("remove usa on this page"): the US office card is off the Contact page; other pages keep their mentions */
   /* announced on the 10 Sep 2026 review (Nabilah: seven offices including Ireland); details to follow */
-  { id: 'ie', img: '/assets/culture/offices/ie.webp', rep: true, cap: REP_CAP, cc: 'IE', country: 'Ireland', city: 'Dublin', entity: 'IAQ Group · Ireland office',
-    addr: 'Block A, Georges Quay Plaza, George’s Quay, Dublin 2, Ireland', hours: 'Mon to Fri · 9:00 to 17:00 · GMT' },
+  { id: 'ie', img: '/assets/culture/offices/ie.webp', rep: true, cap: REP_CAP, cc: 'IE', country: 'Ireland', city: 'Dublin', entity: 'IAQ Group, Ireland office',
+    addr: 'Block A, Georges Quay Plaza, George’s Quay, Dublin 2, Ireland', hours: 'Mon to Fri, 9:00 to 17:00, GMT' },
 ]
 
 /* 22 Sep (Bazil: "put the country flags", "or you know, the sub country"): the list is by country
@@ -133,7 +133,7 @@ export default function Contact() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
   useEffect(() => {
-    document.title = 'IAQ Group · Start a Project · Brand Method'
+    document.title = 'IAQ Group · Start a Project'
     return initContact()
   }, [])
   return (
@@ -218,7 +218,7 @@ export default function Contact() {
                   <option value="" disabled>Choose one</option>
                   <option>Engineering Design &amp; Consultation</option>
                   <option>Procurement</option>
-                  <option>Construction &middot; EPCC / EPCM</option>
+                  <option>Construction, EPCC or EPCM</option>
                   <option>Testing &amp; Commissioning</option>
                   <option>Tool Installation</option>{/* 15 Oct naming: Tool Installation, before Maintenance */}
                   <option>Maintenance</option>
@@ -260,7 +260,7 @@ export default function Contact() {
             <li>
               <span className="cx-ic"><Icon name="pin" /></span>
               <div><span className="cx-k">Headquarters, Shah Alam</span><span className="cx-v cx-adr">No. 12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor</span>
-                <span className="cx-links"><a href="#find-us">See it on the map &rarr;</a><a href="#offices">All seven offices &rarr;</a></span></div>
+                <span className="cx-links"><a href="#find-us">See it on the map</a><a href="#offices">All 7 offices</a></span></div>
             </li>
           </ul>
           {/* 26 Oct (IAQ review, NR, page 021: "Remove this section."): "What happens next" and its three steps are off the side */}
@@ -302,7 +302,7 @@ export default function Contact() {
           <div className="off-head">
             {/* 15 Sep: the old heading claimed an office in every country IAQ builds in. It is false:
                 IAQ has built in China, Poland, France and Morocco with no office there. */}
-            <h2 id="offices-h">Seven countries, <br /><em>one point of contact</em></h2>
+            <h2 id="offices-h">7 countries, <br /><em>1 point of contact</em></h2>
             <p className="off-lede">Our offices serve projects across Asia and Europe. Send the brief to the nearest team. Every office can take it.</p>
           </div>
           <div className="of-grid">
@@ -317,7 +317,7 @@ export default function Contact() {
                   {g.offices.map(o => (
                     <div className="of-o" key={o.id}>
                       <div className="off-ph" aria-hidden={o.img ? undefined : 'true'}>
-                        {o.img ? <img src={o.img} alt={o.rep ? '' : o.cap} loading="lazy" decoding="async" /> : <span className="off-ph-tag">Office photo &middot; supplied by IAQ</span>}
+                        {o.img ? <img src={o.img} alt={o.rep ? '' : o.cap} loading="lazy" decoding="async" /> : <span className="off-ph-tag">Office photo, supplied by IAQ</span>}
                         {o.hq && <span className="of-hq">Headquarters</span>}
                         {/* 15 Oct ("remove all the tag"): no caption on the office photograph */}
                       </div>
@@ -328,7 +328,7 @@ export default function Contact() {
                         {o.addr2 && (<><p className="off-ent of-ent2">{o.ent2 || 'Second office'}</p><p className="off-addr">{o.addr2}</p></>)}
                         <ul className="of-meta">
                           <li><Icon name="phone" />{o.tel ? <a href={'tel:' + o.tel.replace(/[^+\d]/g, '')}>{o.tel}</a> : (LAUNCH ? <span>Via headquarters, <a href="tel:+60351248319">+603 5124 8319</a></span> : <span className="off-slot">Direct line supplied by IAQ &middot; until then via HQ <a href="tel:+60351248319">+603 5124 8319</a></span>)}</li>
-                          <li><Icon name="clock" /><span>{o.hours.replace(/ · /g, ', ')}</span></li>
+                          <li><Icon name="clock" /><span>{o.hours}</span></li>
                         </ul>
                       </div>
                     </div>
@@ -339,7 +339,7 @@ export default function Contact() {
             {/* the ninth cell closes the grid: one address for all of them */}
             <article className="of of-route">
               <span className="cx-ic"><Icon name="mail" /></span>
-              <h3>Choosing an office</h3>
+              <h3>Not sure which office?</h3>
               <p>Write to headquarters. The brief is routed to the nearest team.</p>
               <a className="of-mail" href={'mailto:' + EMAIL}>{EMAIL}</a>
               <a className="of-go" href="#contact-form"><span>Send the brief</span><i aria-hidden="true">&rarr;</i></a>
@@ -348,7 +348,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <ClosingBand note="Contact page concept · Brand Method" />
+      <ClosingBand note="Contact page concept, Brand Method" />
     </>
   )
 }

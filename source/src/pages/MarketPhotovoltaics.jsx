@@ -20,6 +20,7 @@ export default function MarketPhotovoltaics() {
       hash="photovoltaic"
       ind="photovoltaic"
       image="/assets/banners/mkt-photovoltaics.jpg"
+      video="/assets/videos/banners/mkt-photovoltaics.mp4"   /* 3 Nov (CTO's copy): the hero loop */
       /* 20 Oct (IAQ amendment sheet, Photovoltaics · Hero Banner) */
       title={<em>Photovoltaics</em>}
       lede="Supporting Clean Energy Manufacturing"
@@ -45,7 +46,7 @@ export default function MarketPhotovoltaics() {
       hideScope
       /* 22 Oct ("remove"): the "Classified where the process needs it" section and its content slot are off the page */
       slot={{
-        tag: 'Content slot · photovoltaics',
+        tag: 'Content slot for photovoltaics',
         title: 'Regulatory consents and waste approvals',
         body: 'This panel carries the named local authority consents, the toxic material handling approvals and the waste treatment standards held on the delivered solar facilities. Each one is published here as IAQ confirms it.',
         who: 'Supplied by IAQ',

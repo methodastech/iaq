@@ -1,5 +1,5 @@
 import ContactCta from '../components/ContactCta.jsx'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
 import Footer from '../components/Footer.jsx'
@@ -38,9 +38,34 @@ function stepRing (dir) {
   b[(i + dir + b.length) % b.length].click()
 }
 
+/* 3 Nov (CTO's copy): a section below the fold mounts only once the loader has gone (350ms after, or 6s at the most) and
+   it comes within 900px of the view; until then a plain block holds its height, so the first screen loads alone */
+function AfterLoader({ minHeight = '100vh', children }) {
+  const ref = useRef(null)
+  const [ready, setReady] = useState(() => typeof window !== 'undefined' && !!window.__iaqLoaderPlayed)
+  const [near, setNear] = useState(false)
+  useEffect(() => {
+    if (ready) return
+    let t = null
+    const go = () => { t = setTimeout(() => setReady(true), 350) }
+    if (window.__iaqLoaderPlayed) { go(); return () => clearTimeout(t) }
+    window.addEventListener('iaq:loaderdone', go, { once: true })
+    const cap = setTimeout(() => setReady(true), 6000)
+    return () => { window.removeEventListener('iaq:loaderdone', go); clearTimeout(t); clearTimeout(cap) }
+  }, [ready])
+  useEffect(() => {
+    const el = ref.current
+    if (!el || near) return
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setNear(true); io.disconnect() } }, { rootMargin: '900px 0px' })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [near])
+  return ready && near ? children : <div ref={ref} style={{ minHeight }} aria-hidden="true" />
+}
+
 export default function Home() {
   useEffect(() => {
-    document.title = 'IAQ Group · Total Facility Solutions · Brand Method'
+    document.title = 'IAQ Group · Total Facility Solutions'
     return initHome()
   }, [])
   return (
@@ -69,7 +94,7 @@ export default function Home() {
       <div className="hero-scrim" aria-hidden="true"></div>
       <canvas id="heroCanvas" aria-hidden="true"></canvas>
       <div className="hero-inner">
-        <span className="eyebrow"><span data-scramble="" data-scramble-speed="22" data-scramble-stagger="26">TOTAL FACILITY SOLUTIONS · EST. 1995</span></span>
+        <span className="eyebrow"><span data-scramble="" data-scramble-speed="22" data-scramble-stagger="26">Total facility solutions since 1995</span></span>
         {/* 24 Sep (Bazil: "just do what's best", after the voice pass): the brand promise from the Voice cards, 3·2,
             in place of the aspirational line. Three reveal lines; the red phrase is short enough for a phone. */}
         {/* 24 Sep (Bazil, on "The class you contract, the class you are handed": "say something better than this").
@@ -136,7 +161,7 @@ export default function Home() {
         <div className="lp-intro">
           {/* 28 Aug (client): the section carries its NAME as the heading, no eyebrow above it */}
           <h2>The delivery cycle</h2>
-          <p className="lp-lede" data-reveal="">Six stages, one accountable team. Each stage hands to the next.</p>{/* 15 Oct: "tools hookup feeds the next design" went with the new order */}
+          <p className="lp-lede" data-reveal="">6 stages, 1 accountable team</p>{/* 15 Oct: "tools hookup feeds the next design" went with the new order */}
         </div>
 
         <div className="lp-field" id="lpStage">
@@ -214,16 +239,12 @@ export default function Home() {
                 node and not part of the website"): the link is the site's button, and Previous and Next walk the ring by
                 pressing its stations, so the panel, the dial and the arc all move together */}
             <div className="lp-acts">
-              <a className="lp-more" id="lpMore" href="/services/all#design"><span id="lpMoreT">See Engineering Design &amp; Consultation</span>
-                <svg viewBox="0 0 26 10" fill="none" stroke="currentColor" strokeWidth="1.6"
-                     strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M1 5h23" /><path d="M20 1.2 24 5l-4 3.8" />
-                </svg>
-              </a>
+              {/* 3 Nov (CTO's copy): the button reads "More info", no arrow */}
+              <a className="lp-more" id="lpMore" href="/services/all#design"><span id="lpMoreT">More info</span></a>
               <span className="lp-nav">
                 <button type="button" aria-label="Previous stage" onClick={() => stepRing(-1)}><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2 4 7l5 5" /></svg></button>
                 <button type="button" aria-label="Next stage" onClick={() => stepRing(1)}><svg viewBox="0 0 14 14" aria-hidden="true"><path d="m5 2 5 5-5 5" /></svg></button>
-                <span className="lp-next-l">Next stage</span>
+                {/* 3 Nov (CTO's copy): the "Next stage" label is gone; the arrows say it */}
               </span>
             </div>
           </div>
@@ -247,7 +268,7 @@ export default function Home() {
     {/* 25 Sep (Bazil, circling the band: "put white spacing at the left and right and at the bottom"): the band is an
         inset panel now, white gutters either side (industry-grid.css .ig-grid) and white under it before the closing band */}
     <section className="sec" id="industries" style={{paddingTop:'clamp(48px,7vh,90px)',paddingBottom:'clamp(14px,2.2vh,28px)'}}>{/* 25 Sep, night (Bazil: "reduce bottom spacing"): the white under the market strip is a quarter of what it was */}
-      <IndustryGrid />
+      <AfterLoader minHeight="70vh"><IndustryGrid /></AfterLoader>
     </section>
 
     {/* Careers section removed from the home page on client feedback (16:04);
@@ -255,7 +276,7 @@ export default function Home() {
 
     {/* 21 Sep: the home page's own copy of the closing band is gone; it renders the shared one
         (components/ClosingBand.jsx), rebuilt the same day with the ask leading. */}
-    <ClosingBand note="Homepage concept · Brand Method" />
+    <ClosingBand note="Homepage concept, Brand Method" />
     </>
   )
 }

@@ -244,7 +244,7 @@ export default function RelExplorer({ value, onSelect, read = true, tour = false
           </figure>) })()}
         {sel ? <p>{sentence(sel)}</p> : <p className="rx-hint">Pick any service, unit, discipline or system to see what it connects to.</p>}
         <span className="rx-key"><i className="solid" />carried <i className="dash" />carried when the client asks</span>
-        <p className="rx-gl">Short forms: EPCC (Engineering, Procurement, Construction and Commissioning) · EPCM (Engineering, Procurement and Construction Management) · HVAC (heating, ventilation and air conditioning) · ACMV (air conditioning and mechanical ventilation)</p>
+        <p className="rx-gl">Short forms: EPCC (Engineering, Procurement, Construction and Commissioning), EPCM (Engineering, Procurement and Construction Management), HVAC (heating, ventilation and air conditioning), ACMV (air conditioning and mechanical ventilation)</p>
       </div>}
     </div>
   )

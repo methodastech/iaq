@@ -201,7 +201,7 @@ a.cx-v:hover{color:var(--blue-bright)}
 .of-meta a:hover{color:var(--blue-bright)}
 .off-slot{color:var(--faint);font-size:13px}
 /* the ninth cell: one address for all of them */
-.of-route{justify-content:center;gap:10px}
+.of-route{justify-content:flex-start;gap:10px}   /* 3 Nov (CTO's copy): the routing card reads from the top, aligned left */
 .of-route h3{margin:8px 0 0;font-size:clamp(20px,1.7vw,26px);letter-spacing:-.025em;line-height:1.1}
 .of-route p{margin:0;font-size:14.5px;color:var(--soft);max-width:34ch}
 .of-mail{font-family:"Switzer","Instrument Sans",sans-serif;font-weight:500;font-size:15.5px;color:var(--ink);text-decoration:none;overflow-wrap:anywhere}

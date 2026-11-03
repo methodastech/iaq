@@ -340,7 +340,7 @@ export const PROJECT_DETAIL = {
       'Mechanical and electrical for SCO1',
     ],
     systems: ['Mechanical and electrical', 'CSA'],
-    summary: 'Solar module manufacturer KMW building in the northern corridor.',
+    summary: 'Solar module manufacturer KMW building in the Northern Corridor.',
     source: 'IAQ company profile, page 31',
   },
 }

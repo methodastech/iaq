@@ -91,8 +91,10 @@ export default function MarketPage({
   /* 20 Oct (Food & Beverage, IAQ's amendment sheet): a page's own section headings and kickers, a heading over the tiles,
      and the scope row switched off */
   whyKick = 'What this market demands', demandsHead, whyMore, hideBand = false, deliverKick = 'How IAQ delivers it', deliverHead, hideScope = false,
+  video,   /* 3 Nov (CTO's copy): a silent loop over the hero still */
 }) {
-  useEffect(() => { document.title = `IAQ Group · ${name} · Brand Method` }, [name])
+  /* 3 Nov (CTO's copy): the tab title drops "· Brand Method" */
+  useEffect(() => { document.title = `IAQ Group · ${name}` }, [name])
   /* 22 Oct: the capability cards' light follows the pointer (markets.css, .mk-caps .dd-n::before); in percent, so the page zoom
      on wide screens does not throw it off */
   useEffect(() => {
@@ -125,12 +127,15 @@ export default function MarketPage({
 
       {/* ------------------------------------------------ 01 · sector hero */}
       <div className="mkb">
-        <div className="mkb-bg" aria-hidden="true"><img src={image} alt="" /></div>
+        {/* 3 Nov (CTO's copy): the market's own film loops over the still, which stays as its poster */}
+        <div className="mkb-bg" aria-hidden="true"><img src={image} alt="" />
+          {video && <video src={video} poster={image} muted loop playsInline autoPlay preload="metadata" tabIndex={-1} />}
+        </div>
         <div className="mkb-grid" aria-hidden="true" />
         {/* 25 Sep (Bazil: "put a detailed icon visual for each market here"), then that night ("have better looking icons for
             the market and put it at the right side of the title and description"): the tonal drawing is gone; the market's
             own line mark, large, on a frosted tile with its red duotone shadow, standing right after the title and lede */}
-        <PageHead crumbs={[{ label: 'Markets', to: '/markets' }]} eyebrow={`Market ${no} · Who we serve`} title={title} lede={lede}
+        <PageHead crumbs={[{ label: 'Markets', to: '/markets' }]} eyebrow="Who we serve" title={title} lede={lede}
           aside={<span className="mkb-ico"><MarketMotion id={id} /></span>} />
         {allFacts.length > 0 && <div className="mk-facts-w">
           <div className="pg-in">
@@ -265,7 +270,7 @@ export default function MarketPage({
           )}
         </div>
       </section>
-      <ClosingBand note={`${name} market concept · Brand Method`} />
+      <ClosingBand note={`${name} market concept, Brand Method`} />
     </>
   )
 }

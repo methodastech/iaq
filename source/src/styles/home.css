@@ -453,6 +453,11 @@ html.motion .hero .hl:nth-child(3)>span{animation-delay:.22s}
    and sitting under the arc's wedge */
 .lpn.on .lpn-disc{transform:scale(1.36);color:var(--blue);
   box-shadow:0 0 0 2px rgba(236,32,39,.75),0 22px 46px -18px rgba(236,32,39,.40)}
+/* 3 Nov (CTO's copy): the stations grow by their size (--k), not by a scale, so the ring and the icon stay crisp */
+.lpn-disc{--k:1;width:calc(var(--ds) * var(--k));height:calc(var(--ds) * var(--k));transition:width .6s var(--e1),height .6s var(--e1),box-shadow .6s var(--e1),color .4s ease}
+.lpn:hover .lpn-disc{--k:1.09;transform:none}
+.lpn.on .lpn-disc,.lpn.on:hover .lpn-disc{--k:1.36;transform:none}
+.lpn.on .lpn-lb{--lbg:14px}
 
 /* A live tether from the active station to the panel was tried and REMOVED the same day
    (client screenshots: with the active station at the bottom of the ring, the bezier swept a
@@ -676,7 +681,7 @@ html.motion .hero .hl:nth-child(3)>span{animation-delay:.22s}
   .lp-center{grid-column:1;grid-row:3;align-self:auto;max-width:none;padding-top:0}
   .lp-orbit{width:min(100%,92vw,480px);--ins:13%;--ds:42px}
   .lpn-lb{font-size:13px;letter-spacing:.04em;--lbg:9px;padding:2px 6px}
-  .lpn.on .lpn-disc{transform:scale(1.28)}
+  .lpn.on .lpn-disc,.lpn.on:hover .lpn-disc{--k:1.28;transform:none}   /* 3 Nov (CTO's copy): by size, was scale(1.28) */
   /* measured at 375px: R is only 130 here, so the same corner rule bites much harder — 46% left
      5px between the render and the active station and 50% overlapped it. 40% gives 16px. */
   /* 22 Sep: 62% -> 70%; the corners may sit under the ring now (multiply), so the old corner rule is retired */
@@ -1483,7 +1488,7 @@ html.motion .hero .hl:nth-child(3)>span{animation-delay:.22s}
    so it looks neat", "More about us should be a bit lower, give some space between the description and the button"):
    the lede's two lines balanced, and 46 px between the lede and the button on desktop (30 before). The phone rule
    (640 px and under) keeps its own 22 px. */
-@media (min-width:641px){ .hero .lede{ text-wrap:balance; } .hero-ctas{ margin-top:46px; } }
+@media (min-width:641px){ .hero .lede{ text-wrap:balance; } .hero-ctas{ margin-top:clamp(34px,calc(4.6vw / var(--zoomf, 1)),96px); } }   /* 3 Nov (CTO's copy): the gap scales with the screen, was 46px */
 
 /* 22 Oct, Polishing walk-through, notes 3 and 5 (Bazil: "the two over six ... just put number three and that's about it",
    "the presentation here is a bit bad", "it's as if this is a node and not part of the website", "put an arrow or a
@@ -1536,3 +1541,43 @@ html.motion .hero .hl:nth-child(3)>span{animation-delay:.22s}
    height at the foot of the banner, so the headline, the line and the button sat high with an empty band under them.
    On a phone the row takes no room; the three settle at the foot of the banner as the 22 Oct note meant. */
 @media (max-width:640px){ .hero .hero-inner>.hero-mkts{ display:none!important; } .hero .hero-inner,.hero .hero-inner:has(> .hero-mkts.hmk){ padding-bottom:36px; } }
+
+/* 3 Nov (CTO's copy), the delivery cycle: the band is plain white (the record band above no longer runs into it); the
+   stations are white discs with a hairline edge that turns ink on hover and a red ring when on; the card's button reads
+   "More info" with no arrow, and the "Next stage" label is gone (the two arrow buttons are 44px squares) */
+.glance.gr + .sec.lpx-band, section.sec.lpx-band, .sec.lpx-band, .lpx-band{background:#fff}
+.lp-orbit{--ds:clamp(56px,6vw,104px)}
+.lpn .lpn-mk img,.lpn.on .lpn-mk img{filter:contrast(1.32) saturate(1.1);mix-blend-mode:multiply}
+.lpn .lpn-disc{background:transparent;box-shadow:none;transition:width .6s var(--e1),height .6s var(--e1),box-shadow .5s var(--e1),background .3s ease}
+.lpn.on .lpn-disc,.lpn.on:hover .lpn-disc{background:#fff;box-shadow:0 28px 56px -26px #0c122061,0 0 0 1px #0c12200f}
+.lpn:hover:not(.on) .lpn-disc{background:#fff;box-shadow:0 18px 40px -24px #0c12204d,0 0 0 1px #0c12200d}
+.lp-nav{gap:6px}
+.lp-nav .lp-next-l{display:none}
+.lp-nav button{width:44px;height:44px;border:1px solid rgba(12,18,32,.12);background:#fff;color:var(--ink)}
+.lp-nav button:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.lp-nav button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.lp-more svg,.lp-more i{display:none}
+@media(min-width:861px){.lpx{row-gap:14px}}
+.lp-orbit{--ds:clamp(50px,4.8vw,84px)}
+.lpn.on .lpn-disc,.lpn.on:hover .lpn-disc{--k:1.22}
+.lpn-lb{white-space:nowrap}
+.lpn[data-i="0"] .lpn-lb,.lpn[data-i="5"] .lpn-lb{top:auto;bottom:calc(100% + var(--lbg,14px))}
+.lpn.on .lpn-lb,.lpn:hover .lpn-lb{--lbg:14px}
+.lp-orbit{margin-top:calc(var(--ds) * .85 + 30px)}
+.lp-orbit{width:min(100%,782px,69vh)}
+.lpn-disc,.lpn.on .lpn-disc,.lpn.on:hover .lpn-disc{background:#fff;border-radius:0;box-shadow:none}
+.lpn:hover .lpn-disc{box-shadow:none}
+.lpn .lpn-mk{width:86%;height:86%}
+.lpn[data-i="0"] .lpn-lb,.lpn[data-i="5"] .lpn-lb{top:calc(100% + var(--lbg,14px));bottom:auto}
+.lpn[data-i="1"] .lpn-lb,.lpn[data-i="4"] .lpn-lb{top:calc(100% + var(--lbg,14px));left:50%;right:auto;transform:translate(-50%)}
+.lp-orbit{margin-top:calc(var(--ds) * .85)}
+.lpn .lpn-disc{background:#fff!important;border-radius:50%!important;box-shadow:0 0 0 1.5px #d5dbe5!important;overflow:hidden!important}
+.lpn:hover .lpn-disc,.lpn:focus-visible .lpn-disc{box-shadow:0 0 0 1.5px #0c1220!important}
+.lpn.on .lpn-disc,.lpn.on:hover .lpn-disc{box-shadow:0 0 0 2.5px #ec2027!important}
+.lp-trk{-webkit-mask:radial-gradient(circle closest-side,transparent calc(100% - .85px),#000 calc(100% - .85px))!important;mask:radial-gradient(circle closest-side,transparent calc(100% - .85px),#000 calc(100% - .85px))!important}
+.lp-arc{-webkit-mask:radial-gradient(circle closest-side,transparent calc(100% - 1.87px),#000 calc(100% - 1.87px))!important;mask:radial-gradient(circle closest-side,transparent calc(100% - 1.87px),#000 calc(100% - 1.87px))!important}
+.lpn .lpn-disc{box-shadow:0 0 0 1.28px #d5dbe5!important}
+.lpn:hover .lpn-disc,.lpn:focus-visible .lpn-disc{box-shadow:0 0 0 1.28px #0c1220!important}
+.lpn .lpn-disc,.lpn:hover .lpn-disc,.lpn:focus-visible .lpn-disc{box-shadow:none!important}
+.lpn.on .lpn-disc,.lpn.on:hover .lpn-disc{box-shadow:0 0 0 2.12px #ec2027!important}
+@media(max-width:1000px){.lpn-lb{display:block;white-space:normal;width:max-content;max-width:116px;text-align:center;line-height:1.25}.lpn-lb i{display:inline;margin-right:7px}}

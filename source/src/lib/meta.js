@@ -9,9 +9,9 @@ const DEFAULT_IMG = '/assets/hero-campus.webp'
 
 /* description per route. Keys are matched longest-first, so '/services/all#design' wins over '/services'. */
 export const META = {
-  '/': ['IAQ Technology: design, procurement, construction, commissioning and maintenance of cleanrooms and hi-tech facilities across Asia.', '/assets/hero-campus.webp'],
+  '/': ['IAQ Technology: design, procurement, construction, commissioning and maintenance of cleanrooms and hi-tech facilities, from Malaysia across Asia and Europe.', '/assets/hero-campus.webp'],
   '/about': ['A Malaysian cleanroom specialist since 1995, now a total facility solutions provider operating across seven countries.', '/assets/hero-campus-dusk-clean.webp'],
-  '/about/history': ['Three decades of IAQ, from a 1995 indoor air quality workshop to a group delivering across seven countries.', '/assets/tl-2025-global.webp'],
+  '/about/history': ['3 decades of IAQ, from its founding in Malaysia in 1995 to a group delivering across 7 countries.', '/assets/tl-2025-global.webp'],
   '/about/leadership': ['The people accountable for how IAQ designs, builds and maintains process-critical facilities.', '/assets/photo-team.webp'],
   '/about/esg': ['How IAQ measures safety, carbon and governance across the group.', '/assets/about-2013-energy.webp'],
   '/projects': ['Over 250 delivered projects across semiconductor, data centre, EV battery and Bio LifeScience facilities.', '/assets/iaq/cr-ballroom-8575.webp'],
@@ -21,7 +21,7 @@ export const META = {
   '/faq': ['The questions facility owners ask before they engage IAQ, answered: models, time and cost, live fabs, handover and working with IAQ.', '/assets/iaq/site-office-4660.webp'],
   '/services/all': ['The six services on one page: each stage, what it covers and what IAQ carries at that stage.', '/assets/ph-blueprint.webp'],
   '/services/tool-installation': ['Total tool installation and hook-up: connecting production equipment precisely into the facility it sits in.', '/assets/ph-electrical.webp'],
-  '/services/energy-management': ['Energy audits, retrofits and district cooling with no upfront cost, paid from the savings or through a fixed cooling tariff.', '/assets/about-2013-energy.webp'],
+  '/services/energy-management': ['Energy audits, retrofits and district cooling with little or no upfront capital, paid from the savings or through a fixed cooling tariff.', '/assets/about-2013-energy.webp'],
   '/shortlist': ['The projects you saved. Send the list to a colleague, or attach it to an enquiry.', '/assets/iaq/cr-ballroom-8575.webp'],
   /* 10 Sep audit: the seven market pages and Corporate Commitment had no route meta, so they shared the
      homepage description in search results and link previews */
@@ -33,8 +33,8 @@ export const META = {
   '/markets/bio-lifescience': ['GMP parenteral plants, laboratories and medical device facilities, built to their cleanroom class by IAQ.', '/assets/banners/mkt-bio-lifescience.jpg'],
   '/markets/food-beverage': ['Hygienic flavour and food production environments, engineered and built by IAQ.', '/assets/banners/mkt-food-beverage.jpg'],
   '/about/commitment': ['IAQ Group corporate commitment: ISO 9001, ISO 14001, ISO 45001, CIDB G7, and the policies behind the delivery.', '/assets/badge-iso.webp'],
-  '/markets': ['Seven markets, one integrated team: semiconductor, data centre, EV battery, Bio LifeScience and more.', '/assets/industries/semiconductor.webp'],
-  '/global-presence': ['Seven countries, one integrated team. Where IAQ has offices and delivered work.', '/assets/tl-2025-global.webp'],
+  '/markets': ['7 markets, 1 integrated team: semiconductor, data centre, EV battery, Bio LifeScience and more.', '/assets/industries/semiconductor.webp'],
+  '/global-presence': ['7 countries, 1 integrated team. Where IAQ has offices and delivered work.', '/assets/tl-2025-global.webp'],
   '/portal': ['Staff sign-in for the IAQ CMS: newsroom, careers and the project registry.', '/assets/photo-team.webp'],
   /* 18 Sep: culture is the top section of the Careers page; /careers/culture redirects to /careers#culture */
   '/careers': ['How IAQ works and the roles open now: the values on the record, the safety record, where engineers grow, and every vacancy by department.', '/assets/photo-team.webp'],

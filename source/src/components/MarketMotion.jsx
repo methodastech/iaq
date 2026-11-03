@@ -8,7 +8,7 @@ import '../styles/market-motion.css'
    ink, no ground, no box, and IAQ red doing the ONE movement that says what the market is:
      semiconductor     a wafer on its chuck; the stepper beam sweeps it
      data centre       three racks; cold air runs the aisle and the units blink
-     EV battery        a prismatic cell in the dry room; it charges segment by segment, the bolt lands
+     EV battery        an isometric pack of six cells; each fills with charge in turn (3 Nov, CTO's drawing)
      photovoltaics     a module under the sun; the rays draw and the yield runs to the inverter
      district cooling  the chiller plant; chilled water travels the mains to three buildings
      bio lifescience   a bay under HEPA filters; laminar air falls over the vessel
@@ -55,16 +55,47 @@ const SCENES = {
       <path className="r" d="M220 11l6 5-6 5" />
     </Sheet>
   ),
-  'mkt-ev-battery': () => (
-    <Sheet cls="mm-ev" label="DRY ROOM, MINUS 40 DEW POINT">
-      <rect className="i f" x="46" y="46" width="140" height="70" />
-      <rect className="i f" x="186" y="68" width="10" height="26" />
-      {/* 20 Oct (client review, Sunny: "what is this alignment"): four equal segments with equal gaps and equal margins inside
-          the case, the bolt centred on the case, the terminal centred on its end */}
-      {[0, 1, 2, 3].map(k => <rect key={k} className="rf seg" style={{ '--pd': `${.4 + k * .5}s` }} x={57 + k * 31} y="55" width="25" height="52" />)}
-      <path className="wk pop" style={{ '--pd': '2.6s' }} d="M119.5 58 104.5 85h11l-4 19 16-28h-11l4-18z" />
-    </Sheet>
-  ),
+  /* 3 Nov (CTO's copy): the EV pack drawn in isometric, as the CTO has it: a tray, six cells standing on it, each filling with
+     charge in turn (.ev-lvl), the busbar running over the terminals (.ev-bus), a soft red glow under the pack */
+  'mkt-ev-battery': () => {
+    const P = (x, y, z) => [120 + (x - y) * .866, 100 + (x + y) * .5 - z]
+    const pts = a => a.map(p => p.map(v => Math.round(v * 10) / 10).join(',')).join(' ')
+    const cells = [0, 1, 2, 3, 4, 5].map(k => { const x0 = -47 + k * 16; return { k, x0, x1: x0 + 13 } })
+    const y0 = -20, y1 = 20, zb = 6, zt = 42
+    return (
+      <Sheet cls="mm-ev" label="">
+        <defs>
+          <filter id="evglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14" /></filter>
+          {cells.map(({ k, x0, x1 }) => <clipPath key={k} id={'evc' + k}><polygon points={pts([P(x0, y1, zb), P(x1, y1, zb), P(x1, y1, zt), P(x0, y1, zt)])} /></clipPath>)}
+        </defs>
+        <ellipse className="ev-glow" cx="120" cy="104" rx="78" ry="30" filter="url(#evglow)" />
+        <polygon className="i ev-sd" points={pts([P(-54, -26, 0), P(56, -26, 0), P(56, 26, 0), P(-54, 26, 0)])} />
+        <polygon className="i ev-fr" points={pts([P(-54, 26, 0), P(56, 26, 0), P(56, 26, zb), P(-54, 26, zb)])} />
+        <polygon className="i ev-sd" points={pts([P(56, -26, 0), P(56, 26, 0), P(56, 26, zb), P(56, -26, zb)])} />
+        <polygon className="i ev-top" points={pts([P(-54, -26, zb), P(56, -26, zb), P(56, 26, zb), P(-54, 26, zb)])} />
+        <polyline className="i o5" points={pts([P(-60, 10, 2), P(-54, 10, 2)])} />
+        <polyline className="i o5" points={pts([P(-60, 18, 2), P(-54, 18, 2)])} />
+        {cells.map(({ k, x0, x1 }) => (
+          <g key={k}>
+            <polygon className="i ev-sd" points={pts([P(x1, y0, zb), P(x1, y1, zb), P(x1, y1, zt), P(x1, y0, zt)])} />
+            <polygon className="i ev-fr" points={pts([P(x0, y1, zb), P(x1, y1, zb), P(x1, y1, zt), P(x0, y1, zt)])} />
+            <g clipPath={'url(#evc' + k + ')'}>
+              <rect className="ev-lvl" style={{ '--pd': `${k * .32}s` }} x={P(x0, y1, zt)[0] - 1} y={P(x0, y1, zt)[1] - 2}
+                    width={P(x1, y1, zb)[0] - P(x0, y1, zt)[0] + 2} height={P(x1, y1, zb)[1] - P(x0, y1, zt)[1] + 4} />
+            </g>
+            <polygon className="i ev-top" points={pts([P(x0, y0, zt), P(x1, y0, zt), P(x1, y1, zt), P(x0, y1, zt)])} />
+            <polygon className="i ev-fr" points={pts([P(x0 + 4, -14, zt), P(x0 + 9, -14, zt), P(x0 + 9, -8, zt), P(x0 + 4, -8, zt)])} />
+          </g>
+        ))}
+        <polyline className="i w08" points={pts(cells.map(({ x0 }) => P(x0 + 6.5, -11, zt + 1.2)))} />
+        <polyline className="ev-bus" points={pts(cells.map(({ x0 }) => P(x0 + 6.5, -11, zt + 1.2)))} />
+        <polygon className="i ev-fr" points={pts([P(52, y0, zb), P(56, y0, zb), P(56, y0, zt), P(52, y0, zt)])} />
+        <polygon className="i ev-top" points={pts([P(52, y0, zt), P(56, y0, zt), P(56, y1, zt), P(52, y1, zt)])} />
+        <polygon className="i ev-sd" points={pts([P(56, y0, zb), P(56, y1, zb), P(56, y1, zt), P(56, y0, zt)])} />
+        <polygon className="rf" points={pts([P(56, -4, 20), P(62, -4, 20), P(62, 4, 20), P(56, 4, 20)])} />
+      </Sheet>
+    )
+  },
   'mkt-photovoltaics': () => (
     <Sheet cls="mm-pv" label="CELL AND MODULE LINES">
       <circle className="i" cx="196" cy="34" r="9" />

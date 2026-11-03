@@ -10,7 +10,7 @@ import '../styles/tools-hookup-band.css'
    of the services page. `embed` drops the band's own section padding for the services page.
    ============================================================================ */
 const PHASES = [
-  ['Facilitize', 'Facilitization, before the tool arrives', 'Everything upstream of the tool’s connection point is built to the equipment maker’s facility requirements: the sub-fab and chase, the power, the structure and the room itself.'],
+  ['Facilitize', 'Facilitisation, before the tool arrives', 'Everything upstream of the tool’s connection point is built to the equipment maker’s facility requirements: the sub-fab and chase, the power, the structure and the room itself.'],
   ['Rig in', 'Rig-in and move-in', 'The tool is uncrated in a de-trash airlock, so cardboard and wood stay outside the cleanroom.'],
   ['Hook up', 'Hook-up proper', 'Each utility is tapped from the facility and connected into the tool, to its own standard.'],
   ['Commission', 'Commissioning', 'Every connection is proven before production: leak tested, purged and dried down to specification, balanced, and tested for continuity and every safety trip.'],
@@ -25,9 +25,9 @@ export default function ToolsHookupBand({ embed = false, id = 'tools-hookup', fo
       <div className="pg-in">
         {!bare && <>
         <h2 id={id + '-h'} className="kind-h k-s"><Icon name="link" className="kind-ic" />Tool Installation</h2>{/* 15 Oct (Sunny: "Use \"Tool Installation\" ... please stick to our wording"): IAQ's name, and it is service 5 */}
-        <p className="pg-lede">Service 5. Each production tool is connected into the live facility and released to production, in four phases.</p>
+        <p className="pg-lede">Service 5. Each production tool is connected into the live facility and released to production, in 4 phases.</p>
         </>}
-        {bare && <h3 id={id + '-h'} className="thb-sub">In four phases</h3>}
+        {bare && <h3 id={id + '-h'} className="thb-sub">In 4 phases</h3>}
         <ol className="thb-ph">
           {PHASES.map(([k, t, d], i) => (
             <li key={k}><span className="thb-n">{i + 1}</span><b>{t}</b><p>{d}</p></li>

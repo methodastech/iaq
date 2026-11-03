@@ -62,7 +62,7 @@ function Card({ n, list }) {
 }
 
 export default function News() {
-  useEffect(() => { document.title = 'IAQ Group · News & Insights · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · News & Insights' }, [])
 
   /* SORT EXPLICITLY. The portal unshifts every new row to position zero and lets the date be
      edited freely afterwards, so array order cannot be trusted. Ties break on slug so the order
@@ -71,8 +71,6 @@ export default function News() {
     () => [...NEWS].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : (a.slug < b.slug ? -1 : 1))),
     [],
   )
-
-  const interim = NEWS.filter(n => !n.img).length
 
   const featured = useMemo(() => rows.slice(0, FEATURED), [rows])
   /* 17 Sep (client: "to remove this section, top section is sufficient in my opinion"): the
@@ -116,12 +114,7 @@ export default function News() {
                 <i aria-hidden="true">&darr;</i>
               </button>
             )}
-            <p className="pg-note">
-              {NEWS.length} stories from the IAQ newsroom &middot; text and photographs as IAQ published them
-              on iaqtechnology.com.my
-              {interim > 0 && <> &middot; {interim} {interim === 1 ? 'story whose post had' : 'stories whose posts had'} no
-              IAQ photograph {interim === 1 ? 'shows' : 'show'} newsroom artwork</>}
-            </p>
+            {/* 3 Nov (CTO's copy): the "N stories from the IAQ newsroom" source note under the grid is gone */}
           </div>
         </section>
       )}
@@ -129,7 +122,7 @@ export default function News() {
       {/* 17 Sep: "Earlier, by topic" stood here, and the "Where this goes next" strip under it
           (client: "To remove this section on newsroom. I dont think it is necessary to have this
           section on this page"). Both are gone; the stories they held are in Latest above. */}
-      <ClosingBand note="News and Insights concept · Brand Method" />
+      <ClosingBand note="News and Insights concept, Brand Method" />
     </>
   )
 }

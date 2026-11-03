@@ -183,7 +183,7 @@ export default function Campaign({ slug }) {
               <article className="lp-pc" key={i}>
                 <img src={p.img} alt="" loading="lazy" />
                 <div>
-                  <span className="lp-pc-k">{p.loc} · {p.iso}</span>
+                  <span className="lp-pc-k">{p.loc}, {p.iso}</span>
                   <h3>{p.name}</h3>
                   <span className="lp-pc-c">{INDLBL[p.ind]}</span>
                 </div>

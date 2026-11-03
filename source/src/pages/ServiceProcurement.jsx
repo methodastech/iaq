@@ -60,7 +60,7 @@ function ProofCard({ i }) {
 /* 25 Sep (IAQ, 24 Sep review: "merge all the description pages for each service into one"): the cover and the scope
    are exported so the single page /services/all can stack the six stages in order; this page still renders them */
 const SLUG = 'procurement'
-export const META = { slug: SLUG, eyebrow: "Stage 02 · Procurement", title: <>The right materials, the right partners, <br /><em>right on time</em></>, lede: "Tracked, organised sourcing aligned to project requirements, quality standards and budget constraints." }
+export const META = { slug: SLUG, eyebrow: "Stage 02: Procurement", title: <>The right materials, the right partners, <br /><em>right on time</em></>, lede: "Tracked, organised sourcing aligned to project requirements, quality standards and budget constraints." }
 export function Cover() {
   return (
       <section className="pg-sec" aria-labelledby={"cov-h-"+SLUG}>
@@ -75,7 +75,7 @@ export function Cover() {
                 quality standards and budget.
               </p>
               <p className="pg-body">
-                On a hi-tech facility the programme is usually set by one or two long-lead items rather than the building. Tracking them from the day the design is signed off is what puts the
+                On a hi-tech facility the programme is usually set by 1 or 2 long-lead items rather than the building. Tracking them from the day the design is signed off is what puts the
                 construction stage on programme.
               </p>
             </div>
@@ -102,7 +102,7 @@ export function Scope() {
 }
 
 export default function ServiceProcurement() {
-  useEffect(() => { document.title = 'IAQ Group · Procurement · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · Procurement' }, [])
 
   return (
     <>
@@ -112,12 +112,12 @@ export default function ServiceProcurement() {
           a photoreal scene generated for this stage, so the page opens on where the work happens
           rather than on the same render the ring and the hub already showed. */}
       <PageHead crumbs={[{ label: 'Services', to: '/services' }]}
-        eyebrow="Stage 02 · Procurement"
+        eyebrow="Stage 02: Procurement"
         title={<>The right materials, the right partners, <br /><em>right on time</em></>}
         lede="Tracked, organised sourcing aligned to project requirements, quality standards and budget constraints."
         chips={['Supply chain', 'Stage 2 of 6']}
         /* 21 Oct (Bazil: "replace this image with related"): goods receiving, the equipment checked against the order */
-        figure={{ src: '/assets/services/svc-procurement-receiving.webp', alt: 'Procurement: two engineers at goods receiving checking a delivered air handling unit and equipment crates against a delivery checklist', hero: true }}
+        figure={{ src: '/assets/services/svc-procurement-receiving.webp', video: '/assets/videos/banners/svc-procurement.mp4', /* 3 Nov (CTO's copy): the banner loops, the still is its poster */ alt: 'Procurement: two engineers at goods receiving checking a delivered air handling unit and equipment crates against a delivery checklist', hero: true }}
       />
 
       {/* --------------------------------------------------- what it covers */}
@@ -158,7 +158,7 @@ export default function ServiceProcurement() {
           <div className="pg-proof">{PROOF.map(i => <ProofCard i={i} key={i} />)}</div>
         </div>
       </section>
-      <ClosingBand note="Procurement concept · Brand Method" />
+      <ClosingBand note="Procurement concept, Brand Method" />
     </>
   )
 }

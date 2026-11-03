@@ -17,11 +17,13 @@ const SITE = 'https://iaqtechnology.com'
                               the site's red emphasis (base.css: h1 em)
      lede     node            one paragraph under the title
      chips    array of nodes  optional mono tags under the lede
+     stats    array of {v, l} optional figures under the lede, a dl.pg-stats (3 Nov, CTO's copy)
      figure   optional visual, accepted in four shapes:
                 string        an image src
                 object        { src, alt, caption }            a still
                 object        { video, poster, alt, caption }  a silent loop
                 element       any React node, rendered as given
+              with `hero: true` the object may also carry `video`: a silent loop over the still (3 Nov, CTO's copy)
 
    The band carries its own horizontal gutter inside its `padding` shorthand
    (see .pg-head in pages.css) so it can never be flattened against the screen
@@ -96,7 +98,7 @@ function Crumbs({ crumbs, self }) {
   )
 }
 
-export default function PageHead({ eyebrow, title, lede, figure, chips, crumbs, aside }) {
+export default function PageHead({ eyebrow, title, lede, figure, chips, crumbs, aside, stats }) {
   const { pathname } = useLocation()
   const ref = useRef(null)
   /* HERO mode (2 Sep, Bazil: "make it take the whole banner spacing section and design on it"):
@@ -133,7 +135,11 @@ export default function PageHead({ eyebrow, title, lede, figure, chips, crumbs, 
     <header className={'pg-head' + (hero ? ' pg-head-hero' : '')} ref={ref}>
       {hero && (
         <>
-          <div className="pg-hero-bg" data-px="fig" aria-hidden="true"><img src={figure.src} alt="" /></div>
+          <div className="pg-hero-bg" data-px="fig" aria-hidden="true">
+            <img src={figure.src} alt="" />
+            {/* 3 Nov (CTO's copy): a hero may loop a silent film over its still; the still is the poster */}
+            {figure.video && <video src={figure.video} poster={figure.src} muted loop playsInline autoPlay preload="metadata" aria-hidden="true" tabIndex={-1} />}
+          </div>
           <div className="pg-hero-scrim" aria-hidden="true" />
           {figure.alt && <span className="u-visually-hidden">{figure.alt}</span>}
         </>
@@ -150,6 +156,12 @@ export default function PageHead({ eyebrow, title, lede, figure, chips, crumbs, 
             <ul className="pg-chips">
               {chips.map((c, i) => <li className="pg-chip" key={i}>{jargon(c)}</li>)}
             </ul>
+          )}
+          {/* 3 Nov (CTO's copy): headline figures under the lede */}
+          {stats && stats.length > 0 && (
+            <dl className="pg-stats">
+              {stats.map(s => <div key={s.l}><dt>{s.v}</dt><dd>{s.l}</dd></div>)}
+            </dl>
           )}
         </div>
         {aside && <div className="pg-head-aside">{aside}</div>}

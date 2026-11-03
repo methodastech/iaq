@@ -104,7 +104,7 @@ export default function FabAssembly() {
             </ol>
 
             <div className="fab-foot">
-              <span className="fab-count" aria-live="polite">01 / 09 · Civil &amp; Structural</span>
+              <span className="fab-count" aria-live="polite">01 / 09, Civil &amp; Structural</span>
             </div>
           </div>
 

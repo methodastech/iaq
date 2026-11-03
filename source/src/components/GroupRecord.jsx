@@ -97,7 +97,7 @@ const STATS = [
   { n: 7, label: 'Global offices', V: RfCtr },
   { n: 31, label: 'Years of experience', V: RfYrs },
   { n: 85, suffix: '%', label: 'Engineering workforce', V: RfEng },
-  { n: 20, label: 'Tons of carbon emission reduced annually', V: RfCo2 },
+  { n: 20, label: 'Tonnes of carbon emission reduced annually', V: RfCo2 },
   { n: 235, suffix: '+', label: 'Projects completed', V: RfPrj },
 ]
 
@@ -140,7 +140,7 @@ export default function GroupRecord() {
           {/* 22 Oct, note 2: the lede carries the figures as one sentence, so the six tiles under it are the proof, not the
               point. IAQ's 19 Oct description is in the Polishing record. */}
           <p className="lede">
-            Seven offices sit in the world&rsquo;s hi-tech clusters, from Penang to Dresden to Phoenix. 530 people,
+            7 offices sit in the world&rsquo;s hi-tech clusters, from Penang to Dresden to Phoenix. 530 people,
             85 percent of them engineers, have delivered 235 facilities since 1995.
           </p>
           {/* Bazil, 21 Sep: "number and icons same line". The drawing and the number share one row, the

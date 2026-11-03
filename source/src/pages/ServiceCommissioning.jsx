@@ -60,7 +60,7 @@ function ProofCard({ i }) {
 /* 25 Sep (IAQ, 24 Sep review: "merge all the description pages for each service into one"): the cover and the scope
    are exported so the single page /services/all can stack the six stages in order; this page still renders them */
 const SLUG = 'commissioning'
-export const META = { slug: SLUG, eyebrow: "Stage 04 · Testing & Commissioning", title: <>Proven performance <em>before you move in</em></>, lede: "Established testing and commissioning programmes that prove every facility operates as intended, at its optimum, before handover." }
+export const META = { slug: SLUG, eyebrow: "Stage 04: Testing & Commissioning", title: <>Proven performance <em>before you move in</em></>, lede: "Established testing and commissioning programmes that prove every facility operates as intended, at its optimum, before handover." }
 export function Cover() {
   return (
       <section className="pg-sec" aria-labelledby={"cov-h-"+SLUG}>
@@ -104,7 +104,7 @@ export function Scope() {
 }
 
 export default function ServiceCommissioning() {
-  useEffect(() => { document.title = 'IAQ Group · Testing & Commissioning · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · Testing & Commissioning' }, [])
 
   return (
     <>
@@ -114,13 +114,13 @@ export default function ServiceCommissioning() {
           a photoreal scene generated for this stage, so the page opens on where the work happens
           rather than on the same render the ring and the hub already showed. */}
       <PageHead crumbs={[{ label: 'Services', to: '/services' }]}
-        eyebrow="Stage 04 · Testing & Commissioning"
+        eyebrow="Stage 04: Testing & Commissioning"
         title={<>Proven performance <em>before you move in</em></>}
         lede="Established testing and commissioning programmes that prove every facility operates as intended, at its optimum, before handover."
         chips={['Validation', 'Stage 4 of 6']}
         /* 19 Oct (IAQ feedback: "one approved image that actually depicts the service"): an engineer testing in a cleanroom,
            in place of the empty finished ballroom, which showed the result rather than the testing */
-        figure={{ src: '/assets/banners/svc-commission.jpg', alt: 'Testing and commissioning: an engineer in a cleanroom suit taking a measurement with a tripod-mounted instrument', hero: true }}
+        figure={{ src: '/assets/banners/svc-commission.jpg', video: '/assets/videos/banners/svc-commission.mp4', /* 3 Nov (CTO's copy): the banner loops, the still is its poster */ alt: 'Testing and commissioning: an engineer in a cleanroom suit taking a measurement with a tripod-mounted instrument', hero: true }}
       />
 
       {/* --------------------------------------------------- what it covers */}
@@ -161,7 +161,7 @@ export default function ServiceCommissioning() {
           <div className="pg-proof">{PROOF.map(i => <ProofCard i={i} key={i} />)}</div>
         </div>
       </section>
-      <ClosingBand note="Testing and commissioning concept · Brand Method" />
+      <ClosingBand note="Testing and commissioning concept, Brand Method" />
     </>
   )
 }

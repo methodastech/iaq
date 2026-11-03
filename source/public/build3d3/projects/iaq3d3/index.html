@@ -21,10 +21,13 @@
       /* CC-BY 4.0 requires the credit wherever the models are shown */
       .credits { position: fixed; right: 10px; bottom: 8px; max-width: 60ch; text-align: right; font: 400 11px/1.4 "Segoe UI", Arial, sans-serif; color: rgba(40, 46, 52, .7); }
     </style>
-    <script type="module" crossorigin src="../../assets/iaq3d3-CtOdtf-a.js"></script>
+    <script type="module" crossorigin src="../../assets/iaq3d3-L17m1m_i.js"></script>
     <link rel="modulepreload" crossorigin href="../../assets/modulepreload-polyfill-B5Qt9EMX.js">
-    <link rel="modulepreload" crossorigin href="../../assets/wind-Dnd5-AVd.js">
-    <link rel="stylesheet" crossorigin href="../../assets/iaq3d3-BtgRWgaR.css">
+    <link rel="modulepreload" crossorigin href="../../assets/three.module-CBMxrSA8.js">
+    <link rel="modulepreload" crossorigin href="../../assets/OrbitControls-kT-Ff6ds.js">
+    <link rel="modulepreload" crossorigin href="../../assets/OutputPass-D76ZpN9A.js">
+    <link rel="modulepreload" crossorigin href="../../assets/wind-RuTtFFFM.js">
+    <link rel="stylesheet" crossorigin href="../../assets/iaq3d3-BYq_tZzS.css">
   <style id="b3d3-embed">@media (hover:none) and (pointer:coarse){#scene{touch-action:pan-y!important}}.credits{display:none!important}</style>
 </head>
   <body>
@@ -38,6 +41,8 @@
         <span><b>Pinch or ±</b> zoom</span><span><b>Hover</b> a part</span>
       </p>
       <div class="vt-zoom" role="group" aria-label="Zoom">
+        <!-- Classic: the model alone on black, no sky, site or trees (Azwan, 2026-11-02: "bring back a toggle ... call it classic. the bg in black") -->
+        <button type="button" id="classic" aria-label="Classic" aria-pressed="false" title="Classic: the model alone on black"><span class="xt-ic">◐</span><span class="xt-label">Classic</span></button>
         <button type="button" id="zoom-in" aria-label="Zoom in"><span class="xt-ic">+</span><span class="xt-label">Zoom in</span></button>
         <button type="button" id="zoom-out" aria-label="Zoom out"><span class="xt-ic">−</span><span class="xt-label">Zoom out</span></button>
         <button type="button" id="zoom-reset" aria-label="Reset view"><span class="xt-ic">↺</span><span class="xt-label">Reset view</span></button>

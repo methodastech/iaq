@@ -9,9 +9,10 @@ import { TYPLBL, fmtSize, pad3 } from '../data/projects.js'
 import { MARKETS } from '../data/markets.js'
 import { HERO_LINE } from '../components/HeroLineMarks.jsx'
 /* 22 Oct, Polishing walk-through, note 24 (Bazil: "more detailed premium polished icons for each section", "I really do not like icons
-   on a square within a square"): the drawn market marks (MarketMarks.jsx, the home record set) on the tiles, no tile */
-import { MkSem, MkDat, MkEv, MkPv, MkDch, MkBio, MkFnb } from '../components/MarketMarks.jsx'
-const TILE_MARK = { 'mkt-semiconductor': MkSem, 'mkt-data-centre': MkDat, 'mkt-ev-battery': MkEv, 'mkt-photovoltaics': MkPv, 'mkt-district-cooling': MkDch, 'mkt-bio-lifescience': MkBio, 'mkt-food-beverage': MkFnb }
+   on a square within a square"): the drawn market marks on the tiles, no tile */
+/* 3 Nov (CTO's copy): the tiles carry the market line marks (HeroLineMarks), their red part breathing (markets.css, mkSigBreath),
+   in place of the MarketMarks drawings */
+const TILE_MARK = HERO_LINE
 import { cmsProjects, live } from '../lib/cms.js'
 const PROJECTS = live(cmsProjects)
 import '../styles/pages.css'
@@ -54,6 +55,16 @@ const FLAGSHIPS = MARKETS.map(m => {
   return rows.length ? { ...rows[0], market: m.name } : null
 }).filter(Boolean)
 
+/* 3 Nov (CTO's copy): the "Search the whole record" card shows nine project pictures in a 3 x 3 grid (.pg-rec), ones the
+   seven proof cards above do not already show first, then any others. Hidden projects stay out (KEEP: the testing plant). */
+const REC_IMGS = (() => {
+  const shown = new Set(FLAGSHIPS.map(p => p.img)), out = []
+  const rows = PROJECTS.filter(p => !p.hide)
+  for (const p of rows) { if (out.length === 9) break; if (p.img && !shown.has(p.img) && !out.includes(p.img)) out.push(p.img) }
+  for (const p of rows) { if (out.length === 9) break; if (p.img && !out.includes(p.img)) out.push(p.img) }
+  return out
+})()
+
 const SHOW_STANDARDS = false   /* 21 Oct: the "What each market requires" table, see the note in the render */
 
 /* 22 Oct (IAQ amendment sheet, Markets overview · Industry Cards): IAQ's name and line for each card, as given; spelling slips
@@ -85,7 +96,8 @@ function MarketIndex() {
             <span className="mk-gx-foot">
               <b>{(CARD[m.id] || [m.name])[0]}</b>
               <span className="mk-gx-t">{(CARD[m.id] || [])[1]}</span>
-              <span className="mk-gx-go">Explore the market <i aria-hidden="true">&rarr;</i></span>
+              {/* 3 Nov (CTO's copy): a red bar that slides up on hover (markets.css), its arrow drawn by CSS */}
+              <span className="mk-gx-go">Explore market</span>
             </span>
           </Link>
         </li>
@@ -95,7 +107,7 @@ function MarketIndex() {
 }
 
 export default function MarketsHub() {
-  useEffect(() => { document.title = 'IAQ Group · Markets · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · Markets' }, [])   /* 3 Nov (CTO's copy): no "· Brand Method" */
 
   return (
     <>
@@ -110,9 +122,10 @@ export default function MarketsHub() {
            chips carry IAQ's own figures from the home page (16 Oct sheet) in place of 250+ projects and 1,050,000 m2 */
         /* 22 Oct (IAQ amendment sheet, Markets overview · Landing Page for Industry We Serve): IAQ's heading and paragraph, as given */
         title={<>Supporting the Facilities Behind <br /><em>Tomorrow&rsquo;s Industries</em></>}
-        lede="IAQ partners with clients across advanced manufacturing and critical infrastructure sectors, delivering engineering, procurement, construction, manufacturing readiness and energy management solutions tailored to the unique requirements of each industry."
-        chips={['7 markets', '235+ projects completed', '7 global offices', '31 years of experience']}
-        figure={{ src: '/assets/banners/mkt-hub.jpg', alt: 'A hi-tech industrial campus at dusk: facility blocks, rooftop plant, a data hall and a solar roof', hero: true }}
+        /* 3 Nov (CTO's copy): a shorter paragraph, the four figures as stats in place of the chips, and the hero film */
+        lede="IAQ partners with advanced manufacturing and critical infrastructure clients, delivering engineering, procurement, construction, manufacturing readiness and energy management, tailored to each industry."
+        stats={[{ v: '7', l: 'Markets' }, { v: '235+', l: 'Projects completed' }, { v: '7', l: 'Global offices' }, { v: '31', l: 'Years of experience' }]}
+        figure={{ src: '/assets/banners/mkt-hub.jpg', video: '/assets/videos/banners/mkt-hub.mp4', alt: 'A hi-tech industrial campus at dusk: facility blocks, rooftop plant, a data hall and a solar roof', hero: true }}
       />
       </div>
 
@@ -215,7 +228,7 @@ export default function MarketsHub() {
         <div className="pg-in">
           <span className="pg-k">Proof</span>
           <h2>One project from each market</h2>
-          <p className="pg-lede">One project from each market, from the published registry. The full record follows at launch.</p>
+          <p className="pg-lede">One project from each market, from the published registry.<span className="owed-note"> The full record follows at launch.</span></p>
 
           <div className="pg-proof">
             {FLAGSHIPS.map(p => (
@@ -224,7 +237,7 @@ export default function MarketsHub() {
                 <div className="pg-pc-in">
                   <span className="pg-ref"><span>{p.market}</span><span className="iso">{p.iso}</span></span>
                   <h3>{p.name}</h3>
-                  <span className="pg-cl">{p.client} &middot; {p.loc}</span>
+                  <span className="pg-cl">{p.client} in {p.loc}</span>
                   <div className="pg-tags">
                     {p.size > 0 && <span className="pg-tag b">{fmtSize(p)}</span>}
                     {TYPLBL[p.type] && <span className="pg-tag">{TYPLBL[p.type]}</span>}
@@ -235,10 +248,13 @@ export default function MarketsHub() {
             {/* the eighth cell, so seven proof cards read as a deliberate 4 over 4
                 rather than a ragged half-row with the record link hanging below it */}
             <Link className="pg-pc pg-pc-more" to="/projects">
-              <span className="pg-nextic"><Icon name="folder" /></span>
+              {/* 3 Nov (CTO's copy): a 3 x 3 grid of project pictures in place of the folder icon */}
+              <span className="pg-rec" aria-hidden="true">
+                {REC_IMGS.map((src, i) => <img key={src} src={src} alt="" loading="lazy" decoding="async" style={{ '--i': i }} />)}
+              </span>
               <b>Search the whole record</b>
               <small>Every project tagged by market, location, delivery model and cleanroom class.</small>
-              <span className="pg-more-go">Search all projects &rarr;</span>
+              <span className="pg-more-go">Search all projects</span>
             </Link>
           </div>
         </div>
@@ -250,7 +266,7 @@ export default function MarketsHub() {
           boilerplate, and a second /projects link within one screen of the proof
           strip's own. The cards and the table are the routes into the markets. */}
 
-      <ClosingBand note="Markets concept · Brand Method" />
+      <ClosingBand note="Markets concept, Brand Method" />
     </>
   )
 }

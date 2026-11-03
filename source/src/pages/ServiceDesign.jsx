@@ -61,7 +61,7 @@ function ProofCard({ i }) {
 /* 25 Sep (IAQ, 24 Sep review: "merge all the description pages for each service into one"): the cover and the scope
    are exported so the single page /services/all can stack the six stages in order; this page still renders them */
 const SLUG = 'design'
-export const META = { slug: SLUG, eyebrow: "Stage 01 · Engineering Design & Consultation", title: <>Where the facility <em>is decided</em></>, lede: "Concept to detailed design across CSA and MEP, with expert advice through the development of the project." }
+export const META = { slug: SLUG, eyebrow: "Stage 01: Engineering Design & Consultation", title: <>Where the facility <em>is decided</em></>, lede: "Concept to detailed design across CSA and MEP, with expert advice through the development of the project." }
 export function Cover() {
   return (
       <section className="pg-sec" aria-labelledby={"cov-h-"+SLUG}>
@@ -78,7 +78,7 @@ export function Cover() {
               </p>
               <p className="pg-body">
                 Decisions taken here set the budget, the programme and the classification the facility
-                will be tested against four stages later. That is why design sits inside the same team
+                will be tested against 4 stages later. That is why design sits inside the same team
                 that builds and commissions it, rather than outside it.
               </p>
             </div>
@@ -105,7 +105,7 @@ export function Scope() {
 }
 
 export default function ServiceDesign() {
-  useEffect(() => { document.title = 'IAQ Group · Engineering Design & Consultation · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · Engineering Design & Consultation' }, [])
 
   return (
     <>
@@ -115,11 +115,11 @@ export default function ServiceDesign() {
           a photoreal scene generated for this stage, so the page opens on where the work happens
           rather than on the same render the ring and the hub already showed. */}
       <PageHead crumbs={[{ label: 'Services', to: '/services' }]}
-        eyebrow="Stage 01 · Engineering Design & Consultation"
+        eyebrow="Stage 01: Engineering Design & Consultation"
         title={<>Where the facility <em>is decided</em></>}
         lede="Concept to detailed design across CSA and MEP, with expert advice through the development of the project."
-        chips={['CSA · MEP', 'Stage 1 of 6']}
-        figure={{ src: '/assets/iaq/bim-archi.webp', alt: 'Engineering design: the architectural model of a hi-tech facility, from IAQ\u2019s own Revit coordination model', hero: true }}
+        chips={['CSA and MEP', 'Stage 1 of 6']}
+        figure={{ src: '/assets/iaq/bim-archi.webp', video: '/assets/videos/banners/svc-design.mp4', /* 3 Nov (CTO's copy): the banner loops, the still is its poster */ alt: 'Engineering design: the architectural model of a hi-tech facility, from IAQ\u2019s own Revit coordination model', hero: true }}
       />
 
       {/* --------------------------------------------------- what it covers */}
@@ -160,7 +160,7 @@ export default function ServiceDesign() {
           <div className="pg-proof">{PROOF.map(i => <ProofCard i={i} key={i} />)}</div>
         </div>
       </section>
-      <ClosingBand note="Engineering design and consultation concept · Brand Method" />
+      <ClosingBand note="Engineering design and consultation concept, Brand Method" />
     </>
   )
 }

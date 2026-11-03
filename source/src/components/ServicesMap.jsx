@@ -345,7 +345,7 @@ export function FaqBand() {
         <div className="sm-faq-head" data-reveal="">
           <DmFaq className="faq-hic" />
           <div>
-            <h2 id="sm-faq-h" className="sm-faq-h">Questions clients ask</h2>{/* 26 Sep (Bazil: "questions ask") */}
+            <h2 id="sm-faq-h" className="sm-faq-h">Frequently Asked Questions</h2>{/* 26 Sep (Bazil: "questions ask") */}
             <p className="pg-lede">The questions facility owners ask before they engage IAQ, answered. Any other question, ask.</p>
           </div>
         </div>

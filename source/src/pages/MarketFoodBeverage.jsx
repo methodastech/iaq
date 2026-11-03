@@ -20,6 +20,7 @@ export default function MarketFoodBeverage() {
       hash="fnb"
       ind="fnb"
       image="/assets/banners/mkt-food-beverage.jpg"
+      video="/assets/videos/banners/mkt-food-beverage.mp4"   /* 3 Nov (CTO's copy): the hero loop */
       /* 20 Oct (IAQ amendment sheet, Food & Beverage · Hero Banner) */
       title={<>Food &amp; <em>Beverage</em></>}
       lede="Supporting Safe and Reliable Production Environments"
@@ -47,7 +48,7 @@ export default function MarketFoodBeverage() {
       hideScope
       /* 22 Oct ("remove"): the "A hygienic specification, not an ISO class" section and its content slot are off the page */
       slot={{
-        tag: 'Content slot · food and beverage',
+        tag: 'Content slot for food and beverage',
         title: 'Food safety standards and certification',
         body: 'The named food safety standards and third-party certifications the delivered plants were built to are being confirmed directly with IAQ. This panel publishes the full set here, with the certificates attached.',
         who: 'Supplied by IAQ',

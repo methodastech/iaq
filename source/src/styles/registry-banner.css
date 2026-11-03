@@ -125,3 +125,15 @@
   .rb .rb-stats > div{padding:0}
   .rb .rb-stats dt{font-size:28px !important}   /* base.css forces every dt to 13 px !important under 640 px; this outranks it */
 }
+
+/* 3 Nov (CTO's copy): the spotlight runs the full width under the words, a navy scrim from the left holds the type, the
+   caption sits bottom right; the head block widens to 820px and the four figures hold one row from 821px up */
+.rb-spot{left:0}
+.rb-spot::before{display:block;background:linear-gradient(90deg,rgba(23,33,58,.96) 0%,rgba(23,33,58,.88) 34%,rgba(23,33,58,.5) 60%,rgba(23,33,58,.3) 100%)}
+.rb-spot-cap{left:auto;right:clamp(20px,3vw,48px);bottom:clamp(16px,2.6vh,28px);align-items:flex-end;text-align:right}
+@media(max-width:820px){ .rb-spot::before{display:block;background:linear-gradient(180deg,rgba(23,33,58,.92),rgba(23,33,58,.7))} }
+.rb .rb-head.wrap{width:min(100%,820px)}
+@media(min-width:821px){
+  .rb-stats{flex-wrap:nowrap;gap:0 clamp(26px,3vw,52px)}
+  .rb-stats > div{padding:0;white-space:nowrap}
+}

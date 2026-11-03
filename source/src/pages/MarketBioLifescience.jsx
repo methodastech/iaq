@@ -21,6 +21,7 @@ export default function MarketBioLifescience() {
       hash="pharma"
       ind="pharma"
       image="/assets/banners/mkt-bio-lifescience.jpg"
+      video="/assets/videos/banners/mkt-bio-lifescience.mp4"   /* 3 Nov (CTO's copy): the hero loop */
       /* 20 Oct (IAQ amendment sheet, Bio LifeScience · Hero Banner) */
       title={<>BioLife <em>Science</em></>}
       lede="Enabling Innovation Through Controlled Environments"

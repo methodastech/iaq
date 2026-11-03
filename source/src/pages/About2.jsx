@@ -54,7 +54,7 @@ const COUNTS = [
 ]
 
 const AWARDS = [
-  ['/assets/badge-iso.webp', 'ISO 9001 · 14001 · 45001'],
+  ['/assets/badge-iso.webp', 'ISO 9001, 14001 and 45001'],
   ['/assets/badge-ukas.webp', 'UKAS accredited'],
   ['/assets/badge-cidb.webp', 'CIDB registered contractor'],
   ['/assets/badge-highwire-gold-2024.webp', 'Highwire Safety Gold 2024'],
@@ -286,8 +286,8 @@ function Reach () {
             Solutions Provider. This is the Journey of IAQ Group.
           </p>
           <ul className="a2-legend">
-            <li><i className="of" />Offices · Shah Alam HQ, Penang, Singapore, Dresden, India, Sweden, USA</li>
-            <li><i className="dl" />Delivered in · China, Poland, France, Morocco</li>
+            <li><i className="of" />Offices: Shah Alam HQ, Penang, Singapore, Dresden, India, Sweden, USA</li>
+            <li><i className="dl" />Delivered in China, Poland, France and Morocco</li>
           </ul>
           <Link to="/about/history" className="h2-pill h2-pill-ghost a2-rc-cta">
             Our History <Arr />
@@ -474,7 +474,7 @@ export default function About2 () {
         <Purpose />
         <Close />
       </main>
-      <ClosingBand note="About · concept 2 · Brand Method" />
+      <ClosingBand note="About, concept 2, Brand Method" />
     </>
   )
 }

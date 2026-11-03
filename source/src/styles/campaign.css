@@ -68,6 +68,7 @@ html.lp-page{overflow-x:clip}
 .lp-foot a{color:var(--soft);text-decoration:none}
 .lp-foot a:hover{color:var(--blue)}
 .lp-foot i{font-style:normal;margin:0 9px;color:var(--line2)}
+.lp-foot span>a+a{margin-left:18px}   /* 3 Nov (CTO's copy) */
 
 @media(max-width:880px){
   .lp-hero{grid-template-columns:1fr;gap:26px}

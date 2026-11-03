@@ -21,6 +21,7 @@ export default function MarketSemiconductor() {
          operating wafer fab: rows of process tools, overhead wafer transport, engineers in cleanroom suits at a tool, matte
          floor, no logos. Generated in ChatGPT, so it is a representation; the old banner stays in the folder */
       image="/assets/banners/mkt-semiconductor-fab.jpg"
+      video="/assets/videos/banners/mkt-semiconductor-fab.mp4"   /* 3 Nov (CTO's copy): the hero loop */
       /* 20 Oct (IAQ amendment sheet, Semiconductor · Hero Banner; IAQ: "substantiate all project-size, class, capacity and
          performance claims"): IAQ's header and line, and the figures strip (ISO 3 to 7, ISO Class 1, 43,000 m2, registry) is gone */
       title={<em>Semiconductor</em>}

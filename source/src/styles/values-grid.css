@@ -328,3 +328,7 @@ div.vb{ position:relative; margin-top:clamp(30px,4.5vh,56px); }   /* 22 Oct: div
 .vg .vx-rule { background: rgba(255, 255, 255, .16); }
 /* 27 Oct (UI/UX sweep): the value's line is a block so it can balance; no word alone on its last line (rule 21) */
 .vg .vc-line{display:block;text-wrap:balance}
+/* 3 Nov (CTO's copy): on the About values band the numbers are larger, the current one red and larger again, no tap ring */
+.vg .vc-dots button{font-size:17px;padding:4px 10px;background:none;line-height:1}
+.vg .vc-dots button.on{background:none;color:#FF4D55;font-size:20px}
+.vg .vc-dots button::after,.vg .vc-dots button.on::after{display:none}

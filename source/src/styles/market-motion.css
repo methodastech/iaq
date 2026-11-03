@@ -45,3 +45,19 @@
 @keyframes semBody{0%,48%{stroke-dashoffset:1;fill-opacity:0;opacity:1}64%{stroke-dashoffset:0;fill-opacity:0;opacity:1}72%,88%{stroke-dashoffset:0;fill-opacity:1;opacity:1}96%,100%{stroke-dashoffset:0;fill-opacity:0;opacity:0}}
 @keyframes semPins{0%,62%{opacity:0}72%,88%{opacity:1}96%,100%{opacity:0}}
 @media (prefers-reduced-motion: reduce){.mm.live .mm-sem *{animation:none!important}}
+
+/* 3 Nov (CTO's copy): the EV pack (MarketMotion, mkt-ev-battery): the tray and cells in three tones of white by face, each cell's
+   charge rising and falling in turn, the busbar current running, the glow under the pack breathing. A full pack under reduced motion. */
+.mm .ev-top{fill:rgba(255,255,255,.26)}
+.mm .ev-fr{fill:rgba(255,255,255,.12)}
+.mm .ev-sd{fill:rgba(255,255,255,.05)}
+.mm .ev-lvl{fill:var(--mk-m);opacity:.92;transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(.2)}
+.mm.live .ev-lvl{animation:evLevel 5.6s cubic-bezier(.4,0,.2,1) infinite;animation-delay:var(--pd,0s)}
+@keyframes evLevel{0%{transform:scaleY(.2)}50%{transform:scaleY(1)}82%{transform:scaleY(1)}100%{transform:scaleY(.2)}}
+.mm .ev-bus{stroke:var(--mk-l);stroke-width:2.2;fill:none;stroke-dasharray:4 9;stroke-linecap:butt}
+.mm.live .ev-bus{animation:evBus 1.4s linear infinite}
+@keyframes evBus{to{stroke-dashoffset:-13}}
+.mm .ev-glow{fill:var(--mk-m);opacity:.2}
+.mm.live .ev-glow{animation:evGlow 3.2s ease-in-out infinite alternate}
+@keyframes evGlow{0%{opacity:.12}100%{opacity:.3}}
+@media(prefers-reduced-motion:reduce){.mm .ev-lvl{transform:scaleY(1)}.mm.live .ev-lvl,.mm.live .ev-bus,.mm.live .ev-glow{animation:none}}

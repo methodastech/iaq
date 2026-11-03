@@ -738,7 +738,7 @@ export default function Home2() {
         <NewsTeaser />
         <ClosingCta />
       </main>
-      <ClosingBand note="Homepage concept 2 · Landing page copy deck" />
+      <ClosingBand note="Homepage concept 2, Landing page copy deck" />
     </>
   )
 }

@@ -27,6 +27,17 @@ export const LAYER_FILE = k => BASE + (k === 'shell' ? 'manifest.json' : `manife
    home build hands it over: its storey shell, clad and closed (closing walls, initFabReal). The frame, the systems and
    the tools stay out of sight until a pick lights them. */
 export const REST = ['shell']
+/* 3 Nov (client: "can use our original model but to make it cross section only"): the building is cut through on its
+   long axis and the north half is taken away, so the map opens on the section: the floors, the cleanroom walls and the
+   systems inside stand in the cut, in their own colours. SECTION the layers that show at rest, the heavier electrical only
+   on a wide screen. */
+/* 3 Nov, later ("i want full building but the wall i dont want"): the whole building again, not cut in half; its outer walls
+   are taken away instead (OPEN, the skin's shader below), so the floors, the roof, the frame and the systems show from
+   every side. SECTION_Z is back on the north face. */
+const SECTION_Z = -41
+const OPEN = { x0: -65.74, x1: 38.7, z0: -36.73, z1: 2.72, band: 3.2 }   /* the facade lines; a vertical face within band of one is wall */
+export const SECTION = ['structure', 'detail-cleanroomwalls', 'detail-ducts-lite', 'detail-processwater', 'detail-coldwater']
+const SECTION_WIDE = ['detail-electrical']
 
 const REST_COLOR = new THREE.Color('#D3DAE3')      /* the app's light model on the dark ground */
 const DIM_COLOR = new THREE.Color('#5C6675')       /* the building when something is picked: solid slate, the colour reads on it */
@@ -47,7 +58,7 @@ const GROUND_Y = 3.95
 /* 14 Oct (the home build's finished view, "envelope closes"): the south facade stands at z 2.72 and the crown band just
    outside it, so the cut moves out to z 3.4 and the building is closed, as the home build hands it over. The apron deck
    (south of z 5) stays out. */
-const KEEP = new THREE.Box3(new THREE.Vector3(-72, GROUND_Y, -41), new THREE.Vector3(38.7, 32, 3))   /* 20 Oct ("remove that thing": dashed lines on the east end): the model is cut at x 38.7, inside the closing east wall (38.45 to 38.85), so its own end face no longer sits in the wall's plane and flickers through it; the closing walls are not cut on x (closing, below) */
+const KEEP = new THREE.Box3(new THREE.Vector3(-72, GROUND_Y, SECTION_Z), new THREE.Vector3(38.7, 32, 3))   /* 20 Oct ("remove that thing": dashed lines on the east end): the model is cut at x 38.7, inside the closing east wall (38.45 to 38.85), so its own end face no longer sits in the wall's plane and flickers through it; the closing walls are not cut on x (closing, below) */
 
 export default function initFabReal(root, opts = {}) {
   const canvas = document.createElement('canvas')
@@ -148,6 +159,7 @@ export default function initFabReal(root, opts = {}) {
       sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
 varying vec3 vDetPos; varying vec3 vDetNrm;
 uniform float uClad;
+const vec4 uOpen = vec4(${(OPEN.x0 + OPEN.band).toFixed(2)}, ${(OPEN.x1 - OPEN.band).toFixed(2)}, ${(OPEN.z0 + OPEN.band).toFixed(2)}, ${(OPEN.z1 - OPEN.band).toFixed(2)});
 float detLine(float p, float w) {
   float f = abs(fract(p) - 0.5);
   float aa = max(fwidth(p), 1e-5);
@@ -171,6 +183,8 @@ vec3 detN() { vec3 n = vDetNrm; if (dot(n, n) < 1e-10) n = cross(dFdx(vDetPos), 
          panel rhythm (a third of the 22 Oct weight, anti-aliased), and only fade when a course falls under four pixels */
       float fade = 1.0 - smoothstep(0.16, 0.34, max(fwidth(vDetPos.y), 1e-5));
       diffuseColor.rgb *= 1.0 - 0.10 * uClad * fade * max(course, panel);
+      /* 3 Nov (OPEN): a vertical face on the facade line is outer wall, and is not drawn */
+      if (vDetPos.x < uOpen.x || vDetPos.x > uOpen.y || vDetPos.z < uOpen.z || vDetPos.z > uOpen.w) discard;
     }
   }`)
     }
@@ -207,7 +221,7 @@ vec3 detN() { vec3 n = vDetNrm; if (dot(n, n) < 1e-10) n = cross(dFdx(vDetPos), 
         g.add(r.scene); res()
       }).catch(err => { console.error('fabreal: ' + s.file + ' failed', err && (err.message || err)); res() }))))
       /* meshes wholly outside the main fab are hidden (nothing to clip); the layer's box is clamped to the fab */
-      g.traverse(o => { if (!o.isMesh) return; const ob = new THREE.Box3().setFromObject(o), sz = ob.getSize(new THREE.Vector3()); if (ob.min.x > KEEP.max.x || ob.min.z > KEEP.max.z || ob.max.y < GROUND_Y) o.visible = false
+      g.traverse(o => { if (!o.isMesh) return; const ob = new THREE.Box3().setFromObject(o), sz = ob.getSize(new THREE.Vector3()); if (ob.min.x > KEEP.max.x || ob.min.z > KEEP.max.z || ob.max.z < KEEP.min.z || ob.max.y < GROUND_Y) o.visible = false
         /* the shell carries two huge flat site plates (120 and 72 triangles over 80 to 130 m at roof height): the grey
            slabs Bazil circled. A shell mesh that thin and that long with so few triangles is a site plate, hidden */
         const i = o.geometry.index, t = (i ? i.count : o.geometry.attributes.position.count) / 3
@@ -365,8 +379,8 @@ vec3 detN() { vec3 n = vDetNrm; if (dot(n, n) < 1e-10) n = cross(dFdx(vDetPos), 
       m.opacity = 1; m.transparent = false; m.depthWrite = true; m.depthTest = true; m.needsUpdate = true
     }
     /* at rest every loaded layer shows, in its colour (the app's Overall); with a pick, the building and the lit layers */
-    for (const [key, g] of groups) g.visible = REST.includes(key) || (anyLit && lit.has(key))   /* 14 Oct: at rest, the closed building only */
-    signs.visible = closing.visible = !anyLit   /* 14 Oct: the sign, the crown and the closing walls at rest; a pick opens the building on the lit layers */
+    for (const [key, g] of groups) g.visible = REST.includes(key) || (anyLit ? lit.has(key) : SECTION.includes(key) || SECTION_WIDE.includes(key))   /* 3 Nov: at rest, the building in section with its systems in the cut */
+    signs.visible = closing.visible = false   /* 3 Nov (OPEN): the sign, the crown band and the closing walls sat on the outer walls, so they go with them */
     /* 14 Oct: at rest the 3D team's materials, with a pick the layer's own */
     for (const [key, g] of groups) g.traverse(o => { if (o.isMesh) o.material = anyLit ? mats.get(key) : (o.userData.own || mats.get(key)) })
     mark()
@@ -486,9 +500,9 @@ vec3 detN() { vec3 n = vDetNrm; if (dot(n, n) < 1e-10) n = cross(dFdx(vDetPos), 
     const cv = document.createElement('canvas'); cv.width = 1024; cv.height = Math.round(1024 / (LOGO_W / LOGO_H))
     const tex = new THREE.CanvasTexture(cv); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8
     const img = new Image(); img.onload = () => { const w = 1024 * .97, h = w / LOGO_AR; cv.getContext('2d').drawImage(img, (1024 - w) / 2, (cv.height - h) / 2, w, h); tex.needsUpdate = true; mark() }; img.src = '/build3d/signs/iaq-logo.png'
-    const logo = new THREE.MeshStandardMaterial({ map: tex, transparent: true, alphaTest: .05, depthWrite: false, roughness: .6, metalness: 0, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 })
+    const logo = new THREE.MeshStandardMaterial({ clippingPlanes: CLIP, map: tex, transparent: true, alphaTest: .05, depthWrite: false, roughness: .6, metalness: 0, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 })
     for (const s of [{ c: [-65.74 + .7 + LOGO_W / 2, LOGO_Y, -36.73], n: [0, 0, -1] }, { c: [-65.74, LOGO_Y, -36.73 + .7 + LOGO_W / 2], n: [-1, 0, 0] }]) { const m = new THREE.Mesh(new THREE.PlaneGeometry(LOGO_W, LOGO_H), logo); m.renderOrder = 2; place(m, s.c, s.n, .12) }
-    const red = new THREE.MeshStandardMaterial({ color: '#EF3F3E', roughness: .6, metalness: 0 })
+    const red = new THREE.MeshStandardMaterial({ color: '#EF3F3E', roughness: .6, metalness: 0, clippingPlanes: CLIP })
     const OUT = .3, TH = .12, BAND = .85, TOP = LOGO_Y - LOGO_H / 2 - .35
     for (const [x0, z0, x1, z1, nx, nz] of [[-65.74, -36.73, 38.83, -36.73, 0, -1], [-65.74, -36.73, -65.74, SOUTH, -1, 0], [-65.74, SOUTH, 38.83, SOUTH, 0, 1], [38.69, -36.73, 38.69, SOUTH, 1, 0]]) {
       const len = Math.hypot(x1 - x0, z1 - z0) + 2 * OUT + .1, alongX = Math.abs(x1 - x0) > Math.abs(z1 - z0)
@@ -527,7 +541,7 @@ vec3 detN() { vec3 n = vDetNrm; if (dot(n, n) < 1e-10) n = cross(dFdx(vDetPos), 
     /* 20 Oct ("can you remove that thing"): the loading-bay doors and their canopy along the south foot are gone */
   }
 
-  Promise.all(REST.map(loadLayer)).then(() => { if (opts.onReady) opts.onReady(); preload() })
+  Promise.all(REST.map(loadLayer)).then(async () => { if (opts.onReady) opts.onReady(); await Promise.all(SECTION.concat(window.innerWidth >= 1100 ? SECTION_WIDE : []).map(k => loadLayer(k).catch(() => {}))); preload() })
   /* a QA hook, as __globeQA elsewhere: what is loaded and where the model stands */
   /* QA: every mesh with its box and triangle count, largest box per triangle first (to find stray geometry) */
   window.__frMeshes = () => { const out = []; for (const [k, g] of groups) g.traverse(o => { if (!o.isMesh) return; const b = new THREE.Box3().setFromObject(o), sz = b.getSize(new THREE.Vector3()); const i = o.geometry.index; const t = (i ? i.count : o.geometry.attributes.position.count) / 3; out.push({ layer: k, name: o.name, tris: Math.round(t), size: sz.toArray().map(v => +v.toFixed(1)), min: b.min.toArray().map(v => +v.toFixed(1)), ratio: +(sz.length() / Math.sqrt(t)).toFixed(2), uuid: o.uuid }) }); return out.sort((a, b) => b.ratio - a.ratio) }

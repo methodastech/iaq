@@ -55,15 +55,16 @@
    The image box overshoots the band so the parallax drift never exposes an edge. */
 /* 3 Sep (Bazil): the hero banners were too tall and the copy sat on the floor. ~30% shorter,
    copy centred in the band. */
-.pg-head-hero { position: relative; overflow: hidden; background: #070C18; color: #fff; border-bottom: 0;
+/* 3 Nov (CTO's copy): the hero band and its scrim in navy #17213A, lighter than the old near-black */
+.pg-head-hero { position: relative; overflow: hidden; background: #17213A; color: #fff; border-bottom: 0;
   min-height: clamp(340px, 44vh, 520px); display: flex; align-items: center;
   padding-top: clamp(64px, 9vh, 110px); padding-bottom: clamp(40px, 6vh, 72px); }
 .pg-head-hero .pg-in { position: relative; z-index: 2; width: 100%; }
 .pg-hero-bg { position: absolute; left: 0; right: 0; top: -12%; bottom: -12%; z-index: 0; }
 .pg-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; display: block; }
 .pg-hero-scrim { position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(90deg, rgba(7, 12, 24, .86) 0%, rgba(7, 12, 24, .55) 46%, rgba(7, 12, 24, .12) 100%),
-              linear-gradient(180deg, rgba(7, 12, 24, .10) 0%, rgba(7, 12, 24, .28) 55%, rgba(7, 12, 24, .72) 100%); }
+  background: linear-gradient(90deg, rgba(23, 33, 58, .96) 0%, rgba(23, 33, 58, .88) 34%, rgba(23, 33, 58, .5) 60%, rgba(23, 33, 58, .3) 100%),
+              linear-gradient(180deg, rgba(23, 33, 58, 0) 55%, rgba(23, 33, 58, .3) 100%); }
 .pg-head-hero h1 { color: #fff; }
 .pg-head-hero h1 em { color: #FF4D55; }
 .pg-head-hero .eyebrow { color: #FF8A90; }
@@ -572,3 +573,43 @@ h2.kind-h.k-w{color:#231F20}
 .vb-years{ margin-top:0; font-size:clamp(26px,3vw,40px); letter-spacing:-.02em; color:#fff; gap:20px; }
 .vb-years i{ width:clamp(160px,28vw,440px); }
 .vb-years + h1{ margin-top:18px; }
+
+/* 3 Nov (CTO's copy): the History video banner shorter on wide screens; its year span "1994 to 2025" as one line in place of the
+   drawn rule, and on wide screens the years large in red outline at the top right of the banner */
+@media(min-width:701px){header.vb{min-height:clamp(360px,50vh,520px)}}
+@media(min-width:701px){.vb .vb-in{padding:clamp(36px,6vh,64px) var(--gut) clamp(30px,5vh,48px)}.vb .vb-lede{max-width:58ch}}
+.vb-years{gap:12px;font-size:clamp(22px,2.2vw,32px);letter-spacing:-.015em;align-items:baseline}
+.vb-years i{display:none}
+.vb-years b~b::before{content:"to";display:inline-block;margin-right:12px;font:500 14px/1 "Instrument Sans",system-ui,sans-serif;letter-spacing:0;color:rgba(255,255,255,.62);vertical-align:baseline}
+.vb-years+h1{margin-top:14px}
+@media(min-width:701px){
+  .vb-years{position:absolute;right:max(var(--gut),3%);top:clamp(60px,12%,96px);bottom:auto;z-index:1;margin:0;gap:.16em;align-items:baseline;pointer-events:none;font-family:"Switzer","Instrument Sans",system-ui,sans-serif;font-weight:600;font-size:clamp(72px,9vw,140px);line-height:.8;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.8px rgba(236,32,39,.66);text-shadow:0 0 44px rgba(236,32,39,.28)}
+  .vb-years b~b::before{content:none}
+  .vb-years+h1{margin-top:0}
+}
+
+/* 3 Nov (CTO's copy): PageHead `stats`, headline figures under the lede (the Markets hub: 7 Markets, 235+ Projects completed ...) */
+.pg-stats{display:flex;flex-wrap:wrap;gap:0 clamp(26px,3vw,52px);margin:clamp(26px,3.6vh,40px) 0 0}
+.pg-stats>div{white-space:nowrap}
+.pg-stats dt{font-family:"Switzer","Instrument Sans",sans-serif;font-weight:600;font-size:clamp(22px,2.3vw,34px);letter-spacing:-.025em;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.pg-stats dd{margin:7px 0 0;font-family:var(--label);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--soft)}
+.pg-head-hero .pg-stats dt{color:#fff}
+.pg-head-hero .pg-stats dd{color:#8E9BB4}
+@media(max-width:640px){.pg-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}.pg-stats>div{white-space:normal}.pg-stats dt{font-size:28px!important}}
+
+/* 3 Nov (CTO's copy): hero films (PageHead hero, the market heroes, and the .rb-spot / .nb-field loops) fill their box like the still;
+   none under reduced motion, where the still shows */
+.pg-hero-bg video,.mkb-bg video,.rb-spot video,.nb-field video.nb-photo-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
+.mkb-bg video{filter:saturate(.92)}
+.rb-spot video{object-position:50% 45%}
+.nb-field video.nb-photo-v{filter:saturate(.75) brightness(.62)}
+@media(prefers-reduced-motion:reduce){.pg-hero-bg video,.mkb-bg video,.rb-spot video,.nb-field video.nb-photo-v{display:none}}
+
+/* 3 Nov (CTO's copy): the "Search the whole record" card opens on a 3 x 3 grid of project pictures, each brightening in turn */
+.pg-pc-more{justify-content:flex-start;gap:9px}
+.pg-pc-more .pg-rec{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;width:100%;margin-bottom:6px}
+.pg-pc-more .pg-rec img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--r, 3px);opacity:.78;transform:scale(1);animation:pgRecScan 9s ease-in-out infinite;animation-delay:calc(var(--i, 0) * 1s);transition:opacity .35s}
+@keyframes pgRecScan{0%,100%{opacity:.78}8%{opacity:1}16%{opacity:.78}}
+.pg-pc-more:hover .pg-rec img{opacity:1;animation-play-state:paused}
+.pg-pc-more b{margin-top:4px}
+@media(prefers-reduced-motion:reduce){.pg-pc-more .pg-rec img{animation:none;opacity:1}}

@@ -128,3 +128,39 @@
   .nb .nb-facts > div{ padding-right:12px; }
   .nb .nb-facts dt{ font-size:21px !important; }
 }
+
+/* 3 Nov (CTO's copy): the banner field is IAQ's World OSH Day 2024 photograph (and its loop, pages.css), dimmed; the live dot
+   is gone; the wire is a card with the current story's photograph on its left, the label and story beside it and the next
+   dates under both. Ported as the CTO's copy stacks it, the last block deciding. */
+.nb-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(.75) brightness(.62)}
+.nb::before{display:none}
+.nb-live{display:none}
+.nb-wire{overflow:hidden;isolation:isolate;aspect-ratio:5/4;min-height:380px;display:flex;flex-direction:column;justify-content:flex-end;background:#0B1220;padding:clamp(18px,2vw,26px)}
+.nb-wire-pic{position:absolute;inset:0;z-index:0;display:block}
+.nb-wire-pic img{width:100%;height:100%;object-fit:cover;display:block;animation:nbIn .6s cubic-bezier(.22,1,.36,1) both}
+.nb-wire-pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,12,24,.08),rgba(7,12,24,.3) 42%,rgba(7,12,24,.94))}
+.nb-wire>*:not(.nb-wire-pic){position:relative;z-index:1}
+.nb-wire-k{margin-top:auto}
+@media(max-width:860px){ .nb-wire{aspect-ratio:auto;min-height:300px} }
+.nb-wire{display:flex!important;flex-direction:column;justify-content:flex-end}
+.nb-wire-pic::after{background:linear-gradient(180deg,rgba(7,12,24,.05),rgba(7,12,24,.18) 30%,rgba(7,12,24,.78) 62%,rgba(7,12,24,.96))}
+.nb-wire-k,.nb-wire-t,.nb-wire-m,.nb-wire-go{text-shadow:0 1px 2px rgba(0,0,0,.5),0 2px 12px rgba(0,0,0,.45)}
+.nb-wire{aspect-ratio:auto;min-height:0;padding:0 0 clamp(16px,1.8vw,22px);justify-content:flex-start}
+.nb-wire-pic{position:relative;inset:auto;aspect-ratio:16/10;flex:none}
+.nb-wire-pic::after{background:linear-gradient(180deg,rgba(7,12,24,0) 55%,rgba(11,18,32,.85))}
+.nb-wire>*:not(.nb-wire-pic){margin-left:clamp(16px,1.8vw,22px);margin-right:clamp(16px,1.8vw,22px)}
+.nb-wire-k{margin-top:clamp(14px,1.6vw,20px)}
+.nb-wire-k,.nb-wire-t,.nb-wire-m,.nb-wire-go{text-shadow:none}
+.nb-wire.nb-wire{aspect-ratio:auto!important;min-height:0!important;display:grid!important;grid-template-columns:180px minmax(0,1fr)!important;column-gap:20px;row-gap:0;align-items:start;justify-content:start;padding:clamp(18px,2vw,24px)!important}
+.nb-wire.nb-wire .nb-wire-pic{position:static!important;inset:auto!important;aspect-ratio:auto!important;grid-column:1;grid-row:1 / span 2;align-self:stretch;width:180px!important;height:auto!important;min-height:150px;margin:0!important;overflow:hidden;border-radius:var(--r,3px);opacity:1;transform:none}
+.nb-wire.nb-wire .nb-wire-pic::after{display:none}
+.nb-wire.nb-wire .nb-wire-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.nb-wire.nb-wire .nb-wire-k{grid-column:2;grid-row:1;margin:0}
+.nb-wire.nb-wire .nb-wire-item{grid-column:2;grid-row:2;margin-top:12px;flex:none}
+.nb-wire.nb-wire .nb-wire-t{margin-top:8px;font-size:clamp(17px,1.3vw,20px);line-height:1.25}
+.nb-wire.nb-wire .nb-wire-go{margin-top:12px}
+.nb-wire.nb-wire .nb-wire-next{grid-column:1 / -1;grid-row:3;margin-top:18px}
+@media(max-width:640px){
+  .nb-wire.nb-wire{grid-template-columns:110px minmax(0,1fr);column-gap:14px}
+  .nb-wire.nb-wire .nb-wire-pic{width:110px;height:84px}
+}

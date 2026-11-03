@@ -1,13 +1,13 @@
 import React from 'react'
 import UnitPage from '../components/UnitPage.jsx'
-import Icon from '../components/FlowIcon.jsx'
 
 /* 19 Oct (client feedback, EPC · "The work, and the system inside it section to replace and update the information"): IAQ's
    own section in place of the generic work and systems cards, its six capabilities in IAQ's order, each with its mark.
    Spelling slip only corrected ("through a multidisciplinary team"). */
+/* 3 Nov (CTO's copy): each capability carries its small isometric mark (public/assets/cycle-iso-sm) in place of the line icon */
 const CAPS = [
-  ['compass', 'Engineering & Design'], ['crate', 'Procurement'], ['crane', 'Construction'],
-  ['gas', 'Process Utilities'], ['link', 'Tool Installation'], ['gauge', 'Testing & Commissioning'],
+  ['design', 'Engineering & Design'], ['procure', 'Procurement'], ['construct', 'Construction'],
+  ['process-utilities', 'Process Utilities'], ['hookup', 'Tool Installation'], ['commission', 'Testing & Commissioning'],
 ]
 /* 22 Oct ("revert it back to old"): the 19 Oct grid again; the isometric, line-mark and other trials are in git (9566a07) */
 const EpcCapabilities = () => (
@@ -17,7 +17,7 @@ const EpcCapabilities = () => (
     <ul className="un-caps-grid">
       {CAPS.map(([ic, t], i) => (
         <li key={t} data-rv="" style={{ '--d': `${.08 + i * .05}s` }}>
-          <span className="un-svc-mark" aria-hidden="true"><Icon name={ic} /></span>
+          <span className="un-svc-mark un-svc-mark-iso" aria-hidden="true"><img src={`/assets/cycle-iso-sm/${ic}.webp`} alt="" width="168" height="168" decoding="async" /></span>
           <b>{t}</b>
         </li>
       ))}
@@ -70,7 +70,7 @@ export default function CapEpc() {
       lede="Integrated project delivery from concept development through commissioning."
       /* LIVE-EPCC and LIVE-EPCM; single point of contact Q-EPC-B; 12 to 24 months Q-EPC-B */
       /* 19 Oct (IAQ feedback, EPC · Metrics: "No blanket duration claim"): "Typically 12 to 24 months" is gone */
-      chips={['EPCC · EPCM', 'Single point of contact']}
+      chips={['EPCC or EPCM', 'Single point of contact']}
       /* 17 Sep: IAQ's own photograph from the SharePoint share (Cleanroom Photos/IMG_8578), a finished
          ballroom at handover. It replaces the Higgsfield still and its clip, so the representation tag goes. */
       /* 25 Sep (Bazil: "add video of clean room", IMG_8588 and IMG_8589 "a good representation of clean room", "remove

@@ -57,7 +57,7 @@ function Slot() {
   }
   return (
     <div className="rp-slot">
-      <span className="rp-slot-tag">Role description &middot; supplied by IAQ HR</span>
+      <span className="rp-slot-tag">Role description, supplied by IAQ HR</span>
       <p>
         This opening is real and current. Its duties and requirements have not been published yet,
         so nothing is stated here in IAQ&rsquo;s name. HR answers on the role directly at{' '}
@@ -142,8 +142,8 @@ export default function RolePage() {
 
   useEffect(() => {
     document.title = role
-      ? `IAQ Group · ${role.t} · Careers · Brand Method`
-      : 'IAQ Group · Role not found · Brand Method'
+      ? `IAQ Group · ${role.t} · Careers`
+      : 'IAQ Group · Role not found'
   }, [role])
 
   if (!role) {
@@ -156,7 +156,7 @@ export default function RolePage() {
         <section className="pg-sec"><div className="pg-in">
           <Link className="cta" to="/careers">See the open roles</Link>
         </div></section>
-        <ClosingBand note="Careers concept · Brand Method" />
+        <ClosingBand note="Careers concept, Brand Method" />
         <Footer />
       </>
     )
@@ -171,7 +171,7 @@ export default function RolePage() {
 
       <PageHead crumbs={[{ label: 'Careers', to: '/careers' }]}
         title={<>{role.t}</>}
-        lede={`${label(DEPTS, role.dept)} · ${label(LOCS, role.loc)} · reference ${role.ref}`}
+        lede={`${label(DEPTS, role.dept)} in ${label(LOCS, role.loc)}. Reference ${role.ref}`}
       />
 
       <section className="pg-sec rp-body">
@@ -223,7 +223,7 @@ export default function RolePage() {
         <div className="pg-in"><Apply role={role} /></div>
       </section>
 
-      <ClosingBand note="Careers concept · Brand Method" />
+      <ClosingBand note="Careers concept, Brand Method" />
       <Footer />
     </>
   )

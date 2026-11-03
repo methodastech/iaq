@@ -41,7 +41,7 @@ const FIG = {
      work. The picture keeps its left edge (pos) so the 4:3 crop holds the gauge */
   maintenance:   { src: '/assets/services/svc-maintenance-check.webp', pos: '0% 40%', alt: 'Two engineers in cleanroom coveralls checking a wall pressure gauge reading against a checklist on a tablet' },
 }
-const nameOf = S => S.META.eyebrow.replace(/^Stage \d+ · /, '')
+const nameOf = S => S.META.eyebrow.replace(/^Stage \d+: /, '')
 /* 28 Oct (from the 27 Oct layout, client: "Need to restructure the layout, a bit messy"): one block per stage. The name, the
    one line and the stage's own text sit in one column beside its picture, the picture side alternating down the page. The
    second heading ("The stage where ...") and the pull quote that repeated the text are not drawn (services-all.css .sa-body). */
@@ -69,7 +69,7 @@ function StageHead({ no, name, line, fig, children }) {
    sentence and picture first, then what it covers under a smaller heading, so the stage name is the one heading that leads.
    Spacing is the same between every stage (services-all.css). */
 export default function ServicesAll() {
-  useEffect(() => { document.title = 'IAQ Group · The six services · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · The 6 services' }, [])
   const [on, setOn] = useState('')
   useEffect(() => {
     /* the stage whose top has passed 40% of the window is lit; above the first stage nothing is */
@@ -85,9 +85,9 @@ export default function ServicesAll() {
     <>
       <Nav />
       <PageHead crumbs={[{ label: 'Services', to: '/services' }]}
-        title={<>Six stages, <br /><em>one page</em></>}
+        title={<>6 stages, <br /><em>1 page</em></>}
         lede="Each service, what it covers and what IAQ carries at that stage, in the order a facility runs through them."
-        figure={{ src: '/assets/iaq/cr-ballroom-8575.webp', alt: 'A finished ballroom cleanroom by IAQ: perforated raised floor, ceiling grid and light lines', hero: true }} />
+        figure={{ src: '/assets/iaq/cr-ballroom-8575.webp', video: '/assets/videos/banners/svc-all-ballroom.mp4', /* 3 Nov (CTO's copy): the banner loops, the still is its poster */ alt: 'A finished ballroom cleanroom by IAQ: perforated raised floor, ceiling grid and light lines', hero: true }} />
       {/* 21 Oct ("remove"): the six stage tags under the lede are gone; the numbered stage bar below already names them */}
       <nav className="sa-jump" aria-label="Stages">
         <div className="pg-in">
@@ -110,7 +110,7 @@ export default function ServicesAll() {
       <article className="sa-stage" id="tool-installation" data-stage="tool-installation">
         <StageHead no={5} name="Tool Installation" line="Each production tool is connected into the live facility and released to production." fig={FIG.tool}>
           <p className="pg-body">Total Tool Installation connects production equipment fully and precisely into the facility it sits in. IAQ designs, installs and commissions the process critical utilities, then brings each of them to the tool.</p>
-          <p className="pg-body">The utilities are built in two sections. The bulk systems are designed and built with the base build. Once the building is complete and the tools arrive, each utility is tapped from its valve manifold and connected into the tool: the hook-up.</p>
+          <p className="pg-body">The utilities are built in 2 sections. The bulk systems are designed and built with the base build. Once the building is complete and the tools arrive, each utility is tapped from its valve manifold and connected into the tool: the hook-up.</p>
         </StageHead>
         <ToolsHookupBand embed bare id="tool-installation-phases" />
       </article>
@@ -120,7 +120,7 @@ export default function ServicesAll() {
           {/* 21 Oct ("remove this section repeating"): S.Scope, "What IAQ carries at this stage.", is off every stage */}
         </article>
       ) })}
-      <ClosingBand note="The six services on one page · Brand Method" />
+      <ClosingBand note="The six services on one page, Brand Method" />
     </>
   )
 }

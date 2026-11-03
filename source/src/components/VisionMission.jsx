@@ -78,7 +78,7 @@ const CARDS = [
     img: '/assets/iaq/vm-vision-iaq-plant.webp?v=4k', pos: '50% 50%', rep: true,
     alt: 'A hi-tech plant with the IAQ wordmark on its facade, from the air at sunrise',
     lead: <>To be a <b>regional facility solutions provider with engineering excellence</b>, facilitating technological innovation and advancement in quality of life.</>,
-    note: 'Seven countries, and still expanding.',
+    note: '7 countries, and still expanding.',
     to: '/global-presence', cta: 'Where IAQ operates',
   },
   {

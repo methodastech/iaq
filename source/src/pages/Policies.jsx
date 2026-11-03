@@ -35,13 +35,13 @@ const POLICIES = [
     icon: 'shield',
     status: 'Awaiting text',
     must: 'The document must set out what personal data the site and the enquiry form collect, the lawful basis for holding it, how long it is kept, which processors it is shared with, any transfer outside Malaysia, and the route for a person to request access, correction or deletion.',
-    tag: 'Privacy Policy text, PDPA aligned · supplied by IAQ legal counsel',
+    tag: 'Privacy Policy text, PDPA aligned, supplied by IAQ legal counsel',
     /* 10 Sep audit (P26): a draft for IAQ legal to approve, edit or replace. Shown as a draft. */
     draft: [
       'IAQ Technology International Sdn. Bhd. and its group companies ("IAQ") collect personal data through this website only when a visitor sends an enquiry, applies for a role or asks for a document: name, company, work email, phone number and the message itself. The site sets no advertising cookies. Analytics, if enabled, is anonymised and can be declined.',
       'The data is used to reply to the enquiry, to route it to the right IAQ team or office, and to keep a record of the correspondence. It is held for as long as the enquiry or application is open and for a reasonable period afterwards, then deleted. It is not sold and it is not used for marketing without consent.',
       'IAQ may share the data with its group companies and with service providers that host the site or deliver email, under contract and only for these purposes. Where an office outside Malaysia handles the enquiry, the data may be transferred to that country with the same protection.',
-      'Under the Personal Data Protection Act 2010 a person may ask to see the data IAQ holds about them, to correct it, or to withdraw consent, by writing to the data protection contact named on this page. IAQ answers within the period the Act allows.',
+      'Under the Personal Data Protection Act 2010 a person may ask to see the data IAQ holds about them, to correct it, or to withdraw consent, by writing to IAQ at the email address on the Contact page. IAQ answers within the period the Act allows.',
     ],
     note: 'A Privacy Policy link already exists in the footer of the current live site. The text behind it was never captured and does not appear in any supplied document.',
   },
@@ -52,7 +52,7 @@ const POLICIES = [
     icon: 'file',
     status: 'Awaiting text',
     must: 'The document must set out acceptable use of the site, ownership of the content and the marks, the limits of any representation made on the site, third party links, and the governing law.',
-    tag: 'Terms of Use text · supplied by IAQ legal counsel',
+    tag: 'Terms of Use text, supplied by IAQ legal counsel',
     /* 10 Sep audit (P26): a draft for IAQ legal to approve, edit or replace. Shown as a draft. */
     draft: [
       'This website is published by IAQ Technology International Sdn. Bhd. for information about the IAQ group, its services and its track record. Content is provided in good faith and may change without notice; it is not an offer, a specification or professional advice, and any project is governed only by its signed contract.',
@@ -69,7 +69,7 @@ const POLICIES = [
     icon: 'grid',
     status: 'Awaiting scope decision',
     must: 'The document must list every cookie and tag the site sets, its purpose and its lifespan, separate analytics from anything strictly necessary, and describe how consent is captured, stored and withdrawn.',
-    tag: 'Cookie inventory and consent copy · supplied by IAQ legal counsel once the consent scope is agreed',
+    tag: 'Cookie inventory and consent copy, supplied by IAQ legal counsel once the consent scope is agreed',
     note: 'Analytics, Search Console and cookie consent are scheduled for launch. Discovery B2.10 opened the question of what the consent banner is for, so the scope is being agreed with IAQ before the wording is drafted.',
   },
   {
@@ -87,7 +87,7 @@ const POLICIES = [
       'IAQ is committed to meeting customer and interested-party requirements, statutory and regulatory requirements and the requirements of ISO 9001:2015, enhancing customer satisfaction through quality services, and continually improving the quality management system.',
     ],
     must: 'The signed policy statement, dated, with the management representative named, published as a downloadable PDF and summarised on this page.',
-    tag: 'Quality Policy PDF, signed and dated · supplied by IAQ QHSE',
+    tag: 'Quality Policy PDF, signed and dated, supplied by IAQ QHSE',
     note: 'Supplied 25 Sep 2026: the signed file published on IAQ\u2019s own site, now served from this site and attached on the Corporate Commitment page.',
   },
   {
@@ -105,7 +105,7 @@ const POLICIES = [
       'The statement is communicated to all stakeholders through the company shared folders, the website, the EHS notice boards and EHS training and awareness programmes, and reviewed periodically so it stays relevant and appropriate.',
     ],
     must: 'The signed environment, health and safety policy statement, dated, published as a downloadable PDF and summarised on this page alongside the site safety standard.',
-    tag: 'EHS Policy PDF, signed and dated · supplied by IAQ QHSE',
+    tag: 'EHS Policy PDF, signed and dated, supplied by IAQ QHSE',
     note: 'Supplied 25 Sep 2026: the signed file published on IAQ\u2019s own site, now served from this site and attached on the Corporate Commitment page.',
   },
   {
@@ -115,7 +115,7 @@ const POLICIES = [
     icon: 'people',
     status: 'Awaiting text',
     must: 'The document must state who may raise a concern, the channel it goes to, how the person raising it is protected, and how the outcome is recorded. A listing track company is expected to publish this.',
-    tag: 'Whistleblowing policy text and the reporting channel · supplied by IAQ legal counsel with the company secretary',
+    tag: 'Whistleblowing policy text and the reporting channel, supplied by IAQ legal counsel with the company secretary',
     note: 'Named in the purpose of this page in the site architecture. No text exists in any source.',
   },
 ]
@@ -150,7 +150,7 @@ export default function Policies() {
   const [active, setActive] = useState(LIST[0].id)
   const doc = LIST.find(p => p.id === active) || LIST[0]
 
-  useEffect(() => { document.title = 'IAQ Group · Policies · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · Policies' }, [])
 
   return (
     <>
@@ -257,7 +257,7 @@ export default function Policies() {
 
       {/* 21 Oct ("remove this"; IAQ, 13 Oct: "I do not need to show the cert on my website"): the "Certified, on the record" section
           and its three Intertek certificates are off the page; the files stay in public/docs/certificates */}
-      <ClosingBand note="Policies concept · Brand Method" />
+      <ClosingBand note="Policies concept, Brand Method" />
     </>
   )
 }

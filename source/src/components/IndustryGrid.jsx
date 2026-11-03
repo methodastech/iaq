@@ -341,8 +341,8 @@ export default function IndustryGrid() {
         {/* 24 Sep (Bazil: "better title, and make this follow the theme, something looks weird"): the site's own
             heading form, ink then the red phrase, instead of a three-line grey fade */}
         <h2 className="ig-h" data-reveal="">
-          Seven markets, <br />
-          <em>one integrated team</em>{/* 20 Oct (Sunny: "what is that standard of clean?") */}
+          7 markets, <br />
+          <em>1 integrated team</em>{/* 20 Oct (Sunny: "what is that standard of clean?") */}
         </h2>
 
         <div className="ig-intro-r">
@@ -353,7 +353,7 @@ export default function IndustryGrid() {
             how IAQ builds it and the projects that prove it.
           </p>
           <Link className="ig-cta" to="/markets" data-reveal="">
-            <span>Explore the seven markets</span><Arrow />
+            <span>Explore the 7 markets</span><Arrow />
           </Link>
         </div>
       </div>

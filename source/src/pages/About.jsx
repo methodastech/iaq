@@ -12,7 +12,7 @@ import '../styles/about.css'
 
 export default function About() {
   useEffect(() => {
-    document.title = 'IAQ Group \u00b7 About \u00b7 Brand Method'
+    document.title = 'IAQ Group \u00b7 About'
     return initAbout()
   }, [])
   return (
@@ -75,9 +75,9 @@ export default function About() {
     {/* 19 Oct (client feedback, About the Group · Section below headline): IAQ's statement and description. The sheet's
         description is cut off at "both"; it is IAQ's company overview from its current website, which ends "locally and
         globally". Spelling slips only corrected. */}
-    <p className="mline" data-mline>31 years of technical excellence through various service model with global presence across 7 countries</p>
+    <p className="mline" data-mline>31 years of technical excellence through various service models with global presence across 7 countries</p>
     <p className="mdesc" data-mline>
-      IAQ is a leading ISO 9001, ISO 14001 and ISO 45001 certified Malaysian owned company that delivers engineering and design consultation, procurement, construction, commissioning and testing, tool installation and maintenance services of plants and on-board project management services to client in diverse industries both locally and globally.
+      IAQ is a leading ISO 9001, ISO 14001 and ISO 45001 certified Malaysian owned company that delivers engineering and design consultation, procurement, construction, commissioning and testing, tool installation and maintenance services of plants and on-board project management services to clients in diverse industries both locally and globally.
     </p>
     </div>
     <figure className="man-photo">
@@ -141,7 +141,7 @@ export default function About() {
     – the stats + corporate film block ("The numbers behind the confidence") */}
 
 {/* 21 Sep: the inline copy of the closing band is gone; the shared, rebuilt one renders here */}
-<ClosingBand note="About page concept · Brand Method" />
+<ClosingBand note="About page concept, Brand Method" />
     </>
   )
 }

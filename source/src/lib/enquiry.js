@@ -29,7 +29,7 @@ export function mailtoFor (payload) {
     '',
     payload.message || '',
   ].filter(v => v !== false && v !== undefined && v !== null)
-  const subject = 'Enquiry from the IAQ website' + (payload.company ? ' · ' + payload.company : '')
+  const subject = 'Enquiry from the IAQ website' + (payload.company ? ', ' + payload.company : '')   /* 3 Nov (CTO's copy): a comma */
   return 'mailto:' + ENQUIRY_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'))
 }
 

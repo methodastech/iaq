@@ -48,7 +48,7 @@ export default function FooterB() {
             </div>
           </div>
           <div className="fb-base">
-            <span>&copy; 2026 IAQ Group &middot; IAQ Technology International Sdn. Bhd. 200001031412 (534019-T) &middot; ISO 9001 / 14001 / 45001 &middot; CIDB G7</span>
+            <span>&copy; 2026 IAQ Group, IAQ Technology International Sdn. Bhd. 200001031412 (534019-T), ISO 9001 / 14001 / 45001, CIDB G7</span>
             <a href="#top" onClick={top}>Back to top <i aria-hidden="true">&uarr;</i></a>
           </div>
         </div>

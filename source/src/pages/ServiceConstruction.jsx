@@ -60,7 +60,7 @@ function ProofCard({ i }) {
 /* 25 Sep (IAQ, 24 Sep review: "merge all the description pages for each service into one"): the cover and the scope
    are exported so the single page /services/all can stack the six stages in order; this page still renders them */
 const SLUG = 'construction'
-export const META = { slug: SLUG, eyebrow: "Stage 03 · Construction", title: <>Precision engineering, <br /><em>built to exact standards</em></>, lede: "Project management, coordination and communication through a construction programme tailored to each client, on schedule and within budget." }
+export const META = { slug: SLUG, eyebrow: "Stage 03: Construction", title: <>Precision engineering, <br /><em>built to exact standards</em></>, lede: "Project management, coordination and communication through a construction programme tailored to each client, on schedule and within budget." }
 export function Cover() {
   return (
       <section className="pg-sec" aria-labelledby={"cov-h-"+SLUG}>
@@ -105,7 +105,7 @@ export function Scope() {
 }
 
 export default function ServiceConstruction() {
-  useEffect(() => { document.title = 'IAQ Group · Construction · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · Construction' }, [])
 
   return (
     <>
@@ -115,10 +115,10 @@ export default function ServiceConstruction() {
           a photoreal scene generated for this stage, so the page opens on where the work happens
           rather than on the same render the ring and the hub already showed. */}
       <PageHead crumbs={[{ label: 'Services', to: '/services' }]}
-        eyebrow="Stage 03 · Construction"
+        eyebrow="Stage 03: Construction"
         title={<>Precision engineering, <br /><em>built to exact standards</em></>}
         lede="Project management, coordination and communication through a construction programme tailored to each client, on schedule and within budget."
-        chips={['EPCC · EPCM', 'Stage 3 of 6']}
+        chips={['EPCC or EPCM', 'Stage 3 of 6']}
         figure={{ src: '/assets/iaq/cr-build-2024-clear.webp', alt: 'Construction: a cleanroom on an IAQ site nearing completion, wall panels, ceiling grid and perforated floor in place', hero: true }}
       />
 
@@ -160,7 +160,7 @@ export default function ServiceConstruction() {
           <div className="pg-proof">{PROOF.map(i => <ProofCard i={i} key={i} />)}</div>
         </div>
       </section>
-      <ClosingBand note="Construction concept · Brand Method" />
+      <ClosingBand note="Construction concept, Brand Method" />
     </>
   )
 }

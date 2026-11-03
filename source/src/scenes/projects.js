@@ -387,7 +387,7 @@ export default function initProjectsPage(opts) {
       /* whole card links to its case page */
       var vis = p.img
         ? '<div class="pcv photo"><div class="clip"><img src="' + p.img + '" alt="' + p.client + ' project" loading="lazy"></div><span class="ph-cap">' + (p.cap || 'Site photo') + '</span>' + '</div>'
-        : '<div class="pcv"><div class="grid-bg"></div><span class="ph-ico">' + (ICONS[p.ind] || '') + '</span><span class="ph-cap">' + INDLBL[p.ind] + ' &middot; photo at production</span>' + '</div>'
+        : '<div class="pcv"><div class="grid-bg"></div><span class="ph-ico">' + (ICONS[p.ind] || '') + '</span><span class="ph-cap">' + INDLBL[p.ind] + ', photo at production</span>' + '</div>'
       /* a real anchor, not an <article> driven by a delegated click. The registry was the
          only place on the site where this card was not a link: no keyboard user could reach
          a project, no middle-click or open-in-new-tab, no crawlable href, and a screen
@@ -477,7 +477,7 @@ export default function initProjectsPage(opts) {
   var SORTLBL = { default: 'featured order', az: 'A to Z', industry: 'by industry' }
   function describeState () {
     var f = activeLabels()
-    return (f.length ? ' · ' + f.join(' · ') : '') + ' · ' + (SORTLBL[state.sort] || state.sort)
+    return (f.length ? ', ' + f.join(', ') : '') + ', ' + (SORTLBL[state.sort] || state.sort)
   }
 
   /* Real recovery, not a full stop: one chip per active facet that clears it BY NAME,

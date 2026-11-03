@@ -190,7 +190,7 @@ export default function ProjectDetail() {
   const [lb, setLb] = useState(-1)
 
   useEffect(() => {
-    document.title = 'IAQ Group · ' + P.name + ' · ' + INDLBL[P.ind] + ' · Brand Method'
+    document.title = 'IAQ Group · ' + P.name + ' · ' + INDLBL[P.ind]
     setLb(-1)
   }, [PIDX])
   useEffect(() => initProjectPage(), [])
@@ -246,7 +246,7 @@ export default function ProjectDetail() {
     ['The brief', !!(brief || (D && D.summary))],
     ['Scope delivered', !!(D && D.scopeOfWorks)],
     [`The numbers, ${numbersIn} of 4`, numbersIn === 4],
-    ['The story in three beats', !!story],
+    ['The story in 3 beats', !!story],
     [`Photos, ${photoCount} of 6 to 10`, photoCount >= 6],
     ['Project film', !!(D && D.video)],
     ['Business units', !!(D && D.units)],
@@ -355,7 +355,7 @@ export default function ProjectDetail() {
             ) : (
               <p className="pd-lede" id="prjBrief">{P.name}, {P.loc}.</p>
             )}
-            {!brief ? <p className="pd-slotline"><Slot /><span>The full brief in three lines.</span></p> : null}
+            {!brief ? <p className="pd-slotline"><Slot /><span>The full brief in 3 lines.</span></p> : null}
             {D && D.attribution ? <p className="pd-attr">{D.attribution}</p> : null}
 
             <div className="pd-ctx">
@@ -466,7 +466,7 @@ export default function ProjectDetail() {
             <p className="pd-slotline">
               {unitsOn
                 ? <span>The units that carried this project are marked.</span>
-                : <><Slot /><span>Which of IAQ&rsquo;s three business units carried this project.</span></>}
+                : <><Slot /><span>Which of IAQ&rsquo;s 3 business units carried this project.</span></>}
             </p>
             <div className="pd-units">
               {UNITS.map(u => {
@@ -526,7 +526,7 @@ export default function ProjectDetail() {
           <div className="ps-links">
             <span className="ps-k">Where this sits</span>
             <Link to={MARKET_ROUTE[P.ind] || '/markets'}>{ind} market</Link>
-            <Link to="/services">The six services</Link>
+            <Link to="/services">The 6 services</Link>
             <Link to={`/projects#${P.ind}`}>See all {ind} projects</Link>
           </div>
           <Link className="ps-back" to="/projects">&larr; All projects</Link>

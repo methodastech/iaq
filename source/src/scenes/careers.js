@@ -107,7 +107,7 @@ function jobBody(j){
       out='<p class="about">The full description for this role comes from IAQ HR. Open the role to '+
         'apply, or write to HR quoting the reference and the team will send it.</p>';
     } else {
-      out='<div class="jd-slot"><span class="jd-slot-tag">Role description &middot; supplied by IAQ HR</span>'+
+      out='<div class="jd-slot"><span class="jd-slot-tag">Role description, supplied by IAQ HR</span>'+
         '<b>The title, department and location are IAQ\'s own. The description follows from HR.</b>'+
         '<p>This opening is real and current. Its duties and requirements have not been '+
         'published yet, and this page holds the space rather than filling it with stand-in text. '+

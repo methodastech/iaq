@@ -23,7 +23,7 @@ export default function CapTool() {
       lede="Bridging Facility Readiness and Manufacturing Readiness"
       /* 29 Sep (client, Website Update: the hero's line "should be under below section", "you missing out the PCU
          description"): the line moved under "What PCU & TTI is." as the TTI half, beside a PCU half (whatParts) */
-      chips={['Tool installation · hook-up', 'Semiconductor fabs']}
+      chips={['Tool installation and hook-up', 'Semiconductor fabs']}
       /* the sixth service opens on its own banner (2 Sep): the tool being connected in a live bay */
       image={{
         /* 17 Sep: IAQ's own photograph (SharePoint Cleanroom Photos/P1010242): the utility runs above a
@@ -91,14 +91,14 @@ export default function CapTool() {
          lede and the first `what` paragraph); the TTI line is the hero's, moved here as the client asked. */
       /* 19 Oct (client feedback, PCU & TTI · Introduction to PCU & TTI): IAQ's heading and paragraph, in place of "What PCU &
          TTI is." and its PCU and TTI halves (29 Sep). Spelling slip only corrected ("competion"). */
-      whatHead={<>Manufacturing Readiness <br /><em>Start Here</em></>}
+      whatHead={<>Manufacturing Readiness <br /><em>Starts Here</em></>}
       whatParts={[
         { t: 'A production facility is only ready when its manufacturing equipment and utility systems operate as one. IAQ delivers integrated PCU and TTI solutions that connect critical utility infrastructure with manufacturing tools, enabling a seamless transition from facility completion to operational readiness.' },
       ]}
       what={[
         'Total Tool Installation connects production equipment fully and precisely into the facility it sits in. IAQ designs, installs and commissions the process critical utilities, then brings each of them to the tool.',
         /* SL questionnaire, section D, in IAQ's own terms */
-        'The utilities are built in two sections. The bulk systems are designed and built with the base build. Once the building is complete and the tools arrive, each utility is tapped from its valve manifold and connected into the tool: the hook-up.',
+        'The utilities are built in 2 sections. The bulk systems are designed and built with the base build. Once the building is complete and the tools arrive, each utility is tapped from its valve manifold and connected into the tool: the hook-up.',
         'Hook-up is the work between a delivered machine and a producing machine. The tool arrives on the floor as an inert box. Hook-up is every connection that makes it part of the line: power, gases, chemicals, water, exhaust, drainage, signals and safety interlocks.',
         'It is the last work done and the one with the least margin for error. The facility is finished, the cleanroom is live, the tool is worth more than the room, and the programme arrives compressed. The work is planned and sequenced to hold the date.',
       ]}
@@ -117,7 +117,7 @@ export default function CapTool() {
               { t: 'Chemical Distribution Systems', icon: 'flask' },
               { t: 'Ultra-Pure Water (UPW)', icon: 'water' },
               { t: 'Process Exhaust Systems', icon: 'airflow' },
-              { t: 'Waste Collection Treatment Systems', icon: 'sysWaste' },
+              { t: 'Waste Collection and Treatment Systems', icon: 'sysWaste' },
             ] },
           { t: 'Total Tool Installation', d: 'Comprehensive equipment integration services supporting manufacturing start-up and production readiness.',
             listHead: 'Core Services',
@@ -151,7 +151,7 @@ export default function CapTool() {
          stay in the props */
       hideCycle
       steps={[
-        { k: 'Facilitize', t: 'Facilitization, before the tool arrives', d: 'Everything upstream of the tool’s connection point is built to the equipment maker’s facility requirements: the sub-fab and chase, the power, the structure and the room itself. The frozen tool layout is the gate. Late layout changes are the most common source of rework.', covers: ['VMBs and VMPs for specialty gases', 'UPW and PCW loops, vacuum, drains, N₂ and CDA', 'Exhaust branches, each stream ducted separately', 'Power drops, panels, UPS and EMI surveys', 'Floor cut-outs, loading and vibration criteria', 'Bay ISO class, AMC, temperature and humidity'] },
+        { k: 'Facilitize', t: 'Facilitisation, before the tool arrives', d: 'Everything upstream of the tool’s connection point is built to the equipment maker’s facility requirements: the sub-fab and chase, the power, the structure and the room itself. The frozen tool layout is the gate. Late layout changes are the most common source of rework.', covers: ['VMBs and VMPs for specialty gases', 'UPW and PCW loops, vacuum, drains, N₂ and CDA', 'Exhaust branches, each stream ducted separately', 'Power drops, panels, UPS and EMI surveys', 'Floor cut-outs, loading and vibration criteria', 'Bay ISO class, AMC, temperature and humidity'] },
         { k: 'Rig in', t: 'Rig-in and move-in', d: 'The tool is uncrated in a de-trash airlock, so cardboard and wood stay outside the cleanroom. It is wiped down through the cleanliness zones, moved along a pre-agreed route, then set, levelled, anchored and seated on vibration isolation.', covers: ['De-trash airlock and staged wipe-down', 'Agreed tool route and floor protection', 'Set, level, anchor, vibration isolation'] },
         { k: 'Hook up', t: 'Hook-up proper', d: 'Each utility is tapped from the facility and connected into the tool, to its own standard. This is the work a cleanroom contractor actually sells.', covers: ['Process gas: electropolished 316L, orbital welded, logged', 'UPW, PCW and chiller lines, drains to the right waste stream', 'Vacuum fore-line and abatement tie-in', 'Exhaust connected and flow set per port', 'Power, grounding, bonding and EMO tie-in', 'Controls, toxic gas monitoring and interlocks', 'SECS/GEM network and AMHS interface'] },
         { k: 'Commission', t: 'Commissioning', d: 'Every connection is proven before production: leak tested, purged and dried down to specification, balanced, and tested for continuity and every safety trip. The tool is then handed to the client’s operations team.', covers: ['Pressure decay and helium leak testing, hydro on water lines', 'Purge, passivation and moisture dry-down', 'Exhaust balancing and airflow verification', 'Continuity, ground resistance, phase rotation', 'EMO, gas alarm and exhaust loss trip tests'] },
@@ -201,6 +201,8 @@ export default function CapTool() {
          the stages above. What the questionnaire does NOT clear is a reference project: "old
          projects only back in 2008" and client names "none", so the proof strip below stays on the
          registry's own semiconductor entries with no client named. */
+      /* 3 Nov (CTO's copy): the proof heading names the work, in place of "Delivered this way" */
+      proofHead={<>Semiconductor work <em>on the record</em></>}
       proofLink={{ label: 'See all semiconductor projects', to: '/projects#semiconductor' }}
       filter={p => p.ind === 'semiconductor'}
       proofNote="Published by scope and location only. Client names are withheld where the contract requires it."

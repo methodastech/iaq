@@ -61,14 +61,14 @@ export const HR_EMAIL = 'recruit@iaqtechnology.com.my'
 
 /** the mailto an apply control points at, carrying the role it came from */
 export const applyHref = role =>
-  `mailto:${HR_EMAIL}?subject=${encodeURIComponent(`Application · ${role.t} · ${role.ref}`)}`
+  `mailto:${HR_EMAIL}?subject=${encodeURIComponent(`Application for ${role.t}, ${role.ref}`)}`
   + `&body=${encodeURIComponent(
     `Hello IAQ,\n\nI would like to apply for ${role.t} (${role.ref}).\n\n`
     + 'My CV is attached.\n\nName:\nPhone:\nEarliest start date:\n\nThank you,\n')}`
 
 /** the speculative route, for the candidate none of the sixteen roles fits */
 export const speculativeHref =
-  `mailto:${HR_EMAIL}?subject=${encodeURIComponent('Speculative application · CV for consideration')}`
+  `mailto:${HR_EMAIL}?subject=${encodeURIComponent('Speculative application, CV for consideration')}`
   + `&body=${encodeURIComponent(
     'Hello IAQ,\n\nNone of the current openings matches me, but I would like to be considered '
     + 'for future roles.\n\nDiscipline:\nYears of experience:\nPreferred location:\n\n'

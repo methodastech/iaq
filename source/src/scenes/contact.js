@@ -89,6 +89,26 @@ function build(THREE, host, data, reduce){
     kerb: std(0xFAFBFC), road: std(0xDCE1E9), motor: std(0xD2D8E2), path: std(0xE6EAF0), dash: std(0xFFFFFF),
     clay: std(0xFFFFFF, 0.9), hq: std(0xEC2027, 0.55), tree: std(0xE4ECE3, 1), trunk: std(0xD9DDE3, 1), car: std(0xFBFCFD, 0.6),
   }
+  /* 3 Nov (CTO's copy): the buildings read as buildings. A window band per 3.4 m storey on the walls, broken by a
+     mullion every 2.4 m, tinted into the clay (pale blue) and into IAQ's red (grey), the ground storey a touch darker. */
+  const facade = (mat, glass, key) => {
+    mat.onBeforeCompile = sh => {
+      sh.uniforms.iaqGlass = { value: new THREE.Color(...glass) }
+      sh.vertexShader = sh.vertexShader
+        .replace('#include <common>', '#include <common>\nvarying vec3 iaqWp;')
+        .replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\niaqWp = (modelMatrix * vec4(transformed, 1.0)).xyz;')
+      sh.fragmentShader = sh.fragmentShader
+        .replace('#include <common>', '#include <common>\nvarying vec3 iaqWp; uniform vec3 iaqGlass;')
+        .replace('#include <normal_fragment_begin>', '#include <normal_fragment_begin>\n'
+          + '{ vec3 wn = normalize(transpose(mat3(viewMatrix)) * normal); float side = 1.0 - smoothstep(0.3, 0.6, abs(wn.y)); '
+          + 'float fl = fract((iaqWp.y - 0.9) / 3.4); float band = smoothstep(0.52, 0.56, fl) * (1.0 - smoothstep(0.90, 0.94, fl)); '
+          + 'float along = abs(wn.x) > abs(wn.z) ? iaqWp.z : iaqWp.x; float mull = step(0.92, fract(along / 2.4)); '
+          + 'float glass = band * (1.0 - mull) * side * step(3.2, iaqWp.y + 3.2 - 3.2) ; '
+          + 'float base = mix(0.9, 1.0, smoothstep(0.0, 3.0, iaqWp.y)); diffuseColor.rgb *= mix(vec3(1.0), iaqGlass, glass) * base; }')
+    }
+    mat.customProgramCacheKey = () => key
+  }
+  facade(M.clay, [0.8, 0.85, 0.92], 'iaq-facade-clay'); facade(M.hq, [0.62, 0.62, 0.66], 'iaq-facade-hq')
 
   /* ---- ground and the flat layers, stacked a few centimetres apart ---- */
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(16000, 16000), M.ground)
@@ -264,7 +284,7 @@ function build(THREE, host, data, reduce){
     const el = document.createElement('div'); el.className = 'hqm-l ' + cls; el.innerHTML = html; layer.appendChild(el)
     labels.push({ el, v: new THREE.Vector3(e, y, -n), maxDist, cls })
   }
-  label('hqm-l-hq', '<b>IAQ Group</b><span>Headquarters &middot; No. 12</span>', hqC[0], hqC[1], hqH + 19, 1e9)
+  label('hqm-l-hq', '<b>IAQ Group</b><span>Headquarters, No. 12</span>', hqC[0], hqC[1], hqH + 19, 1e9)
   ;(data.labels || []).forEach(([name, ref, e, n, maxDist]) => label('hqm-l-st' + (ref ? ' hqm-l-mw' : ''), name + (ref ? ' <i>' + ref + '</i>' : ''), e, n, 1, maxDist))
   const compass = host.parentElement && host.parentElement.querySelector('.hqm-n')
 

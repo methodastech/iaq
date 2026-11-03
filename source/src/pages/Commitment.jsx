@@ -376,7 +376,7 @@ function NewsCard ({ slug }) {
     <Link className="cc-card" to={`/news/${n.slug}`} data-cc>
       <span className="cc-card-ph"><img src={n.img} alt={n.imgAlt || ''} loading="lazy" decoding="async" /></span>
       <span className="cc-card-m">
-        <span className="cc-card-k">{n.tag} <i aria-hidden="true">&middot;</i> {longDate(n.date)}</span>
+        <span className="cc-card-k">{n.tag}, {longDate(n.date)}</span>
         <span className="cc-card-t">{n.title}</span>
       </span>
     </Link>
@@ -389,7 +389,7 @@ export default function Commitment () {
   useReveal(page)
   useCountUp(metrics)
   useEffect(() => {
-    document.title = 'IAQ Group · Corporate Commitment · Brand Method'
+    document.title = 'IAQ Group · Corporate Commitment'
   }, [])
 
   /* 22 Oct: the pillars' slider on phones, the card in view and the indicator under it */
@@ -413,7 +413,7 @@ export default function Commitment () {
       <PageHead crumbs={[{ label: 'About', to: '/about' }]}
         title={<>Corporate <em>Commitment</em></>}
         lede="Certified to ISO 9001, ISO 14001 and ISO 45001 and registered CIDB G7. The certificates, the policies and the safety record are published here in full."
-        figure={{ src: '/assets/iaq/site-aerial-build.webp', alt: 'Aerial view of an IAQ facility under construction', hero: true }}
+        figure={{ src: '/assets/iaq/site-aerial-build.webp', video: '/assets/videos/banners/commitment-site-aerial.mp4', alt: 'Aerial view of an IAQ facility under construction', hero: true }}
       />
 
       <div className="cc" ref={page}>

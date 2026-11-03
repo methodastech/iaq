@@ -56,11 +56,11 @@ const RECORDS = [
     s: 'Delivered in Malaysia as part of IAQ’s energy work.',
   },
   {
-    k: 'Award · 2024', b: 'Builder of the Year',
+    k: 'Award, 2024', b: 'Builder of the Year',
     s: 'Named at the Malaysian Construction Industry Excellence Awards by CIDB, judged on company performance, project management, technical expertise, innovation, quality, safety and sustainability.',
   },
   {
-    k: 'Award · 2024', b: 'Gold, OSH Management',
+    k: 'Award, 2024', b: 'Gold, OSH Management',
     s: 'Gold Award for OSH Management at the 20th OSH Excellence Awards, alongside the Highwire Safety Award at Gold level.',
   },
 ]
@@ -71,7 +71,7 @@ const RECORDS = [
 const recIcon = b => /projects delivered/i.test(b) ? 'recProject' : /ISO Class/.test(b) ? 'recClean' : /district cooling/i.test(b) ? 'recCooling' : /co-generative/i.test(b) ? 'recCogen' : /Builder/.test(b) ? 'recAward' : /OSH/.test(b) ? 'recMedal' : 'recSafety'
 
 export default function History() {
-  useEffect(() => { document.title = 'IAQ Group · History of IAQ · Brand Method' }, [])
+  useEffect(() => { document.title = 'IAQ Group · History of IAQ' }, [])
 
   return (
     <>
@@ -87,7 +87,7 @@ export default function History() {
            invent what was developed, when a project was won, or why the business expanded"): the head is IAQ's own
            paragraph, as given (spelling only corrected). The founder line, "began as a cleanroom specialist", the
            country list and the specialist / total-solutions positioning are gone: none of it is in IAQ's approved text */
-        title={<>Three decades <em>of engineering evolution</em></>}
+        title={<>3 decades <em>of engineering evolution</em></>}
         lede="Since 1995, IAQ has continuously expanded its engineering capabilities, project delivery expertise and global presence in support of advanced technology industries. From our foundations in Malaysia to projects across multiple international markets, our journey reflects a steadfast commitment to engineering excellence, innovation and long-term value creation."
         /* 25 Sep (Bazil: "need to replace this video with better and proper one", "put 31 years of development instead",
            "not need the banner to be too tall"): the generated crew clip is gone; IAQ's own plant at dusk from the air
@@ -102,7 +102,7 @@ export default function History() {
       <section className="pg-sec">
         <div className="pg-in">
           {/* 22 Oct, note 17 (Bazil: "you repeat three decades ... why not just put thirty years plus"): the figure, once */}
-          <h2>Thirty-one years, <br /><em>on the record</em></h2>
+          <h2>31 years, <br /><em>on the record</em></h2>
           <p className="pg-lede">
             Each is on record in IAQ&rsquo;s company profile, its newsroom or the project registry.
           </p>
@@ -130,7 +130,7 @@ export default function History() {
           The "Where this goes next" strip went with it (client: "Instead of having this section,
           maybe we can interlink our project reference in each year"). Each milestone that the
           registry actually holds now links straight to that project, in data/history.js. */}
-      <ClosingBand note="History of IAQ concept · Brand Method" />
+      <ClosingBand note="History of IAQ concept, Brand Method" />
     </>
   )
 }

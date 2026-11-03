@@ -96,10 +96,10 @@ export const PAGES = [
   /* ---------- 02 What we do ---------- */
   {
     id: 'services-hub', group: 'capability', label: 'Services', route: '/services', icon: 'cycle', status: 'new',
-    purpose: 'The six services of the delivery cycle, and the three business units the work is contracted through.',
+    purpose: 'The 6 services of the delivery cycle, and the 3 business units the work is contracted through.',
     /* reordered on the client review of 19 Aug 2026: units first, the six stages
        merged into the interactive cycle diagram, enquiry last */
-    blocks: ['Business units: EPC (EPCC / EPCM), Process Critical Utilities & Total Tool Installation Solutions, EFM', 'The cycle (six stages, interactive)', 'Proof strip', 'Enquiry'],
+    blocks: ['Business units: EPC (EPCC / EPCM), Process Critical Utilities & Total Tool Installation Solutions, EFM', 'The cycle (6 stages, interactive)', 'Proof strip', 'Enquiry'],
     cta: { label: 'Start a project', route: '/contact' },
     linksOut: ['cap-epc', 'cap-pcu', 'cap-tool', 'cap-energy', 'svc-design', 'svc-procurement', 'svc-construction', 'svc-commissioning', 'svc-maintenance', 'markets-hub', 'projects', 'exhibition'],
   },
@@ -165,7 +165,7 @@ export const PAGES = [
   },
   {
     id: 'cap-energy', group: 'capability', label: 'EFM', route: '/services/energy-management', icon: 'gauge', status: 'new',
-    purpose: 'Energy audits, retrofits and district cooling with no upfront cost, paid from the savings or a fixed cooling tariff.',
+    purpose: 'Energy audits, retrofits and district cooling with little or no upfront capital, paid from the savings or a fixed cooling tariff.',
     blocks: ['The service list', 'The risk-free financing model', 'Audit to monitoring', 'Savings evidence', 'Proof projects', 'Enquiry'],
     cta: { label: 'Request an energy audit', route: '/contact' },
     linksOut: ['services-hub', 'mkt-district-cooling', 'projects', 'contact'],
@@ -175,7 +175,7 @@ export const PAGES = [
   /* ---------- 03 Who we serve ---------- */
   {
     id: 'markets-hub', group: 'markets', label: 'Markets', route: '/markets', icon: 'grid', status: 'new',
-    purpose: 'Seven markets, one integrated team. The page where a buyer self-identifies in one click.',
+    purpose: '7 markets, 1 integrated team. The page where a buyer self-identifies in one click.',
     blocks: ['Intro', 'Seven market cards', 'Standards strip', 'Proof strip', 'Enquiry'],
     cta: { label: 'Start a project', route: '/contact' },
     linksOut: ['mkt-semiconductor', 'mkt-data-centre', 'mkt-ev-battery', 'mkt-photovoltaics', 'mkt-district-cooling', 'mkt-bio-lifescience', 'mkt-food-beverage', 'projects'],
@@ -231,7 +231,7 @@ export const PAGES = [
   },
   {
     /* 26 Oct (IAQ review, NR): the Services page's FAQ moved to a page of its own */
-    id: 'faq', group: 'momentum', label: 'Questions clients ask', route: '/faq', icon: 'file', status: 'new',
+    id: 'faq', group: 'momentum', label: 'Frequently Asked Questions', route: '/faq', icon: 'file', status: 'new',
     purpose: 'The questions facility owners ask before they engage IAQ, answered.',
     blocks: ['Header', 'Questions by group', 'Ask the team'],
     cta: { label: 'Start a project', route: '/contact' },
@@ -248,7 +248,7 @@ export const PAGES = [
     id: 'careers', group: 'momentum', label: 'Careers', route: '/careers', icon: 'people', status: 'live',
     /* 18 Sep (Bazil: "just have 2 sections, one is Careers, the other one is Culture. And it's just one
        page"): the culture section sits at the top of this page (#culture), the roles below (#roles). */
-    purpose: 'One page, two sections: how IAQ works, then the open roles by department.',
+    purpose: '1 page, 2 sections: how IAQ works, then the open roles by department.',
     blocks: ['Culture (top section)', 'Headband', 'Filter console', 'Role list', 'Why IAQ', 'What the work is', 'How applying works', 'Enquiry'],
     cta: { label: 'Apply', route: '/careers#roles' },
     /* 'culture' added 14 Sep: the Careers page is to lead with culture (checklist pn7) */

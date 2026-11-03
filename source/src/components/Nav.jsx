@@ -113,7 +113,7 @@ const MENUS = [
           full: 'Energy Facility Management', core: [3, 4], ask: [0, 1, 2],
           subs: [{ label: 'Cooling as a Service', route: '/services/energy-management', hash: '#un-models-h' }, { label: 'Energy Performance Contracting', route: '/services/energy-management', hash: '#un-models-h' }] },
       ] },
-      { head: 'Six services', kind: 'strip', links: [
+      { head: '6 services', kind: 'strip', links: [
         { label: 'Engineering Design',      route: '/services/all#design',            icon: 'compass', img: 'svc-design',     pitch: 'Concept to detailed design across CSA and MEP, where cost and compliance are decided.' },
         { label: 'Procurement',             route: '/services/all#procurement',       icon: 'crate',   img: 'svc-procure',    pitch: 'Tracked sourcing aligned to quality, budget and programme.' },
         { label: 'Construction',            route: '/services/all#construction',      icon: 'crane',   img: 'svc-construct',  pitch: 'Delivery on live sites: programme, trades and safety held together.' },
@@ -132,7 +132,7 @@ const MENUS = [
        heads, one row per market: photograph, red mark and name, what the market is measured by,
        and its class or specification. Both facts are the Markets hub table's own cells
        (pages/MarketsHub.jsx), copied here so the menu does not import a page. */
-    cols: [{ head: 'Seven markets', note: 'Where IAQ builds', kind: 'mlist',
+    cols: [{ head: '7 markets', note: 'Where IAQ builds', kind: 'mlist',
       pages: pagesInGroup('markets').filter(p => p.id !== 'markets-hub').map(p => p.id) }],
   },
   {
@@ -299,13 +299,32 @@ export default function Nav() {
   /* 22 Oct, Polishing walk-through, note 13 (Bazil, on About: "when I go up the navigation bar still white and not like
      disappear like the homepage"): every page that opens on a dark banner runs the bar clear at the top: About, the three
      unit pages, the markets hub and its seven pages, Contact (their banner wrappers are listed in base.css, nav-under) */
-  const overlap = pathname === '/' || pathname === '/services' || pathname === '/about' || pathname === '/contact' || /^\/markets(\/|$)/.test(pathname) ||
+  /* 3 Nov (CTO's copy): Projects and News run the bar clear at the top too */
+  const overlap = pathname === '/' || pathname === '/services' || pathname === '/about' || pathname === '/contact' || pathname === '/projects' || pathname === '/news' || /^\/markets(\/|$)/.test(pathname) ||
     /^\/services\/(epc-construction|tool-installation|energy-management)$/.test(pathname)
   useEffect(() => {
     const nav = navRef.current
     if (!nav) return
     document.documentElement.style.setProperty('--navh', nav.offsetHeight + 'px')
-    if (!overlap) return
+    /* 3 Nov (CTO's copy): over a light page top the bar takes the colour of the first painted block below it
+       (--nav-top) and drops its edge, "nav-clear-light", until the page scrolls */
+    if (!overlap) {
+      const tint = () => {
+        let el = nav.nextElementSibling, bg = ''
+        for (let i = 0; i < 4 && el; i++) {
+          bg = getComputedStyle(el).backgroundColor
+          if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') break
+          el = el.firstElementChild
+        }
+        nav.style.setProperty('--nav-top', bg && bg !== 'rgba(0, 0, 0, 0)' ? bg : '#fff')
+      }
+      const onTop = () => {
+        if ((window.scrollY || 0) < 40) { tint(); nav.classList.add('nav-clear-light') } else nav.classList.remove('nav-clear-light')
+      }
+      onTop()
+      window.addEventListener('scroll', onTop, { passive: true })
+      return () => { window.removeEventListener('scroll', onTop); nav.classList.remove('nav-clear-light') }
+    }
     document.documentElement.classList.add('nav-under')
     const onScroll = () => nav.classList.toggle('nav-clear', (window.scrollY || 0) < 40)
     onScroll()

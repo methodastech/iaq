@@ -34,7 +34,7 @@ export default function Shortlist() {
   const [adopted, setAdopted] = useState(false)
 
   useEffect(() => {
-    document.title = 'IAQ Group · Project shortlist · Brand Method'
+    document.title = 'IAQ Group · Project shortlist'
     return SL.subscribe(setOwn)
   }, [])
 

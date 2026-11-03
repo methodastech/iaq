@@ -26,7 +26,7 @@ import React, { useEffect, useRef } from 'react'
    Office list per the client confirmation of 19 Aug 2026: Malaysia (HQ),
    Singapore, Germany, India, Sweden, USA, Ireland (announced 10 Sep 2026) — seven countries. */
 const PINS = [
-  { lat: 3.07, lon: 101.52, office: true, name: 'Shah Alam · HQ' },
+  { lat: 3.07, lon: 101.52, office: true, name: 'Shah Alam, HQ' },
   { lat: 5.41, lon: 100.33, office: true, name: 'Penang' },
   { lat: 1.35, lon: 103.82, office: true, name: 'Singapore' },
   { lat: 51.05, lon: 13.74, office: true, name: 'Dresden' },

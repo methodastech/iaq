@@ -20,6 +20,7 @@ export default function MarketDistrictCooling() {
       hash="district-cooling"
       ind="district-cooling"
       image="/assets/banners/mkt-district-cooling.jpg"
+      video="/assets/videos/banners/mkt-district-cooling.mp4"   /* 3 Nov (CTO's copy): the hero loop */
       /* 20 Oct (IAQ amendment sheet, District Cooling & Heating · Hero Banner) */
       title={<>District Cooling <em>&amp; Heating</em></>}
       lede="Advancing Sustainable Urban Infrastructure"
@@ -45,7 +46,7 @@ export default function MarketDistrictCooling() {
       hideScope
       /* 22 Oct ("remove"): the "Measured in efficiency, not in particles" section and its content slot are off the page */
       slot={{
-        tag: 'Content slot · district cooling',
+        tag: 'Content slot for district cooling',
         title: 'Plant capacity and efficiency record',
         body: 'Installed capacity in refrigeration tons, the number of buildings connected and the measured operating efficiency of the delivered plants are being verified with IAQ before publication. This panel carries each figure the moment it is confirmed.',
         who: 'Supplied by IAQ',

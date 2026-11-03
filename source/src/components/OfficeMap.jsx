@@ -88,7 +88,7 @@ export default function OfficeMap ({ className = '' }) {
         {offices.map(o => (
           <div key={'c' + o.id} className={'om-call ' + o.side + (o.hq ? ' hq' : '')} style={pct(o.ax, o.ay)}>
             <Flag cc={o.cc} className="om-flag" />
-            <span className="om-t"><b>{o.country}</b><small>{o.city}{o.hq ? ' · Headquarters' : ''}</small></span>
+            <span className="om-t"><b>{o.country}</b><small>{o.city}{o.hq ? ', Headquarters' : ''}</small></span>
           </div>
         ))}
         {delivered.map(d => (
